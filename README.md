@@ -1,2 +1,2 @@
 # Docs
-User documentation on the usage of LUMI resources
+User documentation about the usage of LUMI resources
