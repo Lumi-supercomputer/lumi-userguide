@@ -1,0 +1,135 @@
+site_name: LUMI Docs
+edit_uri: "https://github.com/CSCfhttps://github.com/Lumi-supercomputer/Docs"
+site_url: "https://docs.lumi.eu/"
+site_description: Instructions, user guides and tutorials for the use of the LUMI supercomputer
+nav:
+  - Home: index.md
+  - Accounts:
+     - Overview: accounts/index.md
+     - How to create new user account: accounts/how-to-create-new-user-account.md
+     - How to change password: accounts/how-to-change-password.md
+     - How to manage user information: accounts/how-to-manage-user-information.md
+     - How to create new project: accounts/how-to-create-new-project.md
+     - How to add members to project: accounts/how-to-add-members-to-project.md
+     - How to add service access for project: accounts/how-to-add-service-access-for-project.md
+     - How to apply for billing units: accounts/how-to-apply-for-billing-units.md
+     - How to increase disk quotas: accounts/how-to-increase-disk-quotas.md
+     - How to view billing unit usage: accounts/how-to-view-billing-unit-usage.md
+     - Billing: accounts/billing.md
+  - Computing:
+     - Overview: computing/overview.md
+     - Systems: 
+        - Available systems: computing/available-systems.md
+        - LUMI-C: computing/systems-lumic.md
+        - LUMI-G: computing/systems-lumig.md
+     - Connecting: computing/connecting.md
+     - Disk areas: computing/disk.md
+     - Module environment: computing/modules.md
+     - Running jobs:
+        - Getting started: computing/running/getting-started.md
+        - Create LUMI-C batch jobs: computing/running/creating-job-scripts-lumic.md
+        - LUMI-C example scripts: computing/running/example-job-scripts-lumic.md
+        - Create LUMI-G batch jobs: computing/running/creating-job-scripts-lumig.md
+        - Mahti example scripts: computing/running/example-job-scripts-lumig.md
+        - Submitting a job: computing/running/submitting-jobs.md
+        - Available batch job partitions: computing/running/batch-job-partitions.md
+        - High throughput: computing/running/throughput.md
+        - Interactive usage: computing/running/interactive-usage.md
+        - Performance checklist: computing/running/performance-checklist.md
+     - Compiling:
+        - LUMI-C: computing/compiling-lumic.md
+        - LUMI-G: computing/compiling-lumig.md
+        - High performance libraries: computing/hpc-libraries.md
+     - Debugging: computing/debugging.md
+     - Performance analysis: computing/performance.md
+     - Containers:
+        - Running existing containers: computing/containers/run-existing.md
+  - Cloud:
+     - Concepts of cloud computing: lumik/concepts.md
+     - LUMI-K:
+       - Contents: lumik/index.md
+       - What is LUMI-K: lumik/lumik-what-is.md
+       - Containers & their Orchestration: lumik/containers.md
+       - Kubernetes and OpenShift concepts: lumik/concepts.md
+       - Getting Started:
+         - Getting access: lumik/access.md
+         - Using the web interface: lumik/usage/getting_started.md
+         - Command line tool installation and usage: lumik/usage/cli.md
+         - Security guide: lumik/usage/security-guide.md
+       - LUMI-K Tutorials:
+         - Deploying a static web server using the web interface: lumik/tutorials/basic-console.md
+         - Deploying a static web server using the command line: lumik/tutorials/elemental_tutorial.md
+         - Custom domain names and secure transport: lumik/tutorials/custom-domain.md
+         - Configuration, ConfigMaps and Secrets: lumik/tutorials/configuration.md
+         - Webhooks: lumik/tutorials/webhooks.md
+         - Reverse proxy authentication using a sidecar container: lumik/tutorials/sidecar_proxy_authentication.md
+         - Short introduction to YAML: lumik/tutorials/yaml_introduction.md
+         - How to transfer data to Rahti?: lumik/tutorials/transfer_data_rahti.md
+         - How to add docker hub credentials to a project: lumik/tutorials/docker_hub_login.md
+         - How to manually cache images in Rahti's registry: lumik/tutorials/docker_hub_manual_caching.md
+       - Storage in LUMI-K:
+         - Available storage options: lumik/storage/index.md
+         - Persistent volumes: lumik/storage/persistent.md
+         - Ephemeral storage: lumik/storage/ephemeral.md
+         - Sending e-mail from LUMI-K: lumik/tutorials/email.md
+       - Images:
+         - Overview: lumik/images/overview.md
+         - Creating an image: lumik/images/creating.md
+       - Rahti Templates: lumik/template-docs.md
+       - Projects and quota: lumik/usage/projects_and_quota.md
+       - Billing: lumik/billing.md
+       - External documentation: lumik/ext_docs.md
+  - Data:
+     - Moving data:
+        - Copying files using scp: data/moving/scp.md
+        - Graphical file transfer tools: data/moving/graphical_transfer.md
+        - Using rsync for data transfer and synchronization: data/moving/rsync.md
+        - Using wget to download data from web sites to LUMI: data/moving/wget.md
+        - Remote disk mounts: data/moving/disk_mount.md
+     - LUMI-O object storage:
+        - LUMI-O object storage: data/lumio/index.md
+        - Introduction to LUMI-O Storage service: data/lumio/introduction.md
+        - Accessing LUMI-O: data/lumio/accessing_allas.md
+        - Common Use Cases: data/lumio/using_allas/common_use_cases.md
+        - LUMI-O Clients: data/lumio/clients.md
+        - Common Error Messages: data/lumio/using_allas/error_messages.md
+        - Further information: data/lumio/further_info.md
+        - LUMI-O object storage related terms and concepts: data/lumio/terms_and_concepts.md
+  - Applications:
+     - In alphabetic order: apps/by_name.md
+     - By discipline: apps/by_discipline.md
+     - By availability: apps/by_partition.md
+  - Support:
+     - Tutorials: support/tutorials/index.md
+     - FAQ: support/faq/index.md
+     - Training material: support/training-material.md
+     - Contact: support/contact.md
+    
+theme:
+  name: material
+  custom_dir: mkdocs_csc/
+
+  font:
+    text: 'Raleway'
+    code: 'Source Code Pro'
+
+  logo: 'img/Docs_CSC_logo.svg#headerlogo"'
+
+extra_css:
+  - 'assets/stylesheets/extra.css'
+  - 'assets/stylesheets/extra_mobile.css'
+
+extra_javascript:
+  - 'assets/javascripts/extra.js'
+
+markdown_extensions:
+  - toc:
+      toc_depth: 2-6
+  - admonition
+  - attr_list
+  - pymdownx.details
+  - pymdownx.snippets
+
+google_analytics:
+  - 'UA-5406715-9'
+  - 'auto'
