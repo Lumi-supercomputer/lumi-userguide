@@ -1,8 +1,8 @@
-# Docs CSC
+# LUMI Docs
 
 This repository contains master data for
-(https://docs.csc.fi) which is in sync with 'master' branch.
-If you're looking for CSC user guides, click [here](https://docs.csc.fi).
+(https://docs.lumi-supercomputer.eu) which is in sync with 'main' branch.
+If you're looking for user guides related to LUMI, click [here](https://docs.lumi-supercomputer.eu).
 
 ## Creating issues
 
@@ -12,7 +12,7 @@ appreciate your help.
 
 The easiest way to create issues is to go to a page that you want to
 create an issue about, and click 'File a bug report for this
-article'. More general issues can be submitted through GitHubs [Issues tab](https://github.com/CSCfi/csc-user-guide/issues)
+article'. More general issues can be submitted through GitHubs [Issues tab](https://github.com/Lumi-supercomputer/docs/issues)
 Creating an Issue requires a GitHub account.
 
 
