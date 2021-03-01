@@ -16,7 +16,7 @@ template: main-index.html
 <h1 id="quicklinktitle"> Quick links </h1>
 
 <span class="index-quicklinks">
-[LUMI Overview](system/overview.md) 
+[LUMI Overvie](system/overview.md) 
 </span><br>
 <span class="index-quicklinks">
 [LUMI-C : The CPU computing parition](lumic/overview.md)
