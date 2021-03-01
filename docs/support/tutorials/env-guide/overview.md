@@ -1,12 +1,12 @@
 # Linux basics Tutorial for CSC
 
-* [Using Linux in command line](using-linux-in-command-line.md)
-* [Editing text and viewing images](text-and-image-processing.md)
-* [Working with bash shell](working-with-bash-shell.md)
-* [More commands for managing files](more-commands-for-managing-files.md)
-* [Commands for data processing](commands-for-data-processing.md)
-* [Packing and compression tools](packing-and-compression-tools.md)
-* [Linux bash scripts](linux-bash-scripts.md)
+* Using Linux in command line
+* Editing text and viewing images
+* Working with bash shell
+* More commands for managing files
+* Commands for data processing
+* Packing and compression tools
+* Linux bash scripts
 
 The servers of CSC use Linux operating systems. While the user's local 
 computer is normally used mainly through a graphical user interface, 

@@ -29,11 +29,11 @@ are meant for things like moving data and setting up and managing your
 batch jobs. You should not run actual jobs on the login nodes. There
 are only two login nodes and they are shared by everybody. Running big
 jobs on them can make the system slow and unresponsive for all
-(More details in our [usage policy](../../../computing/overview/#usage-policy)).
+(More details in our usage policy).
 
 Jobs should be run in the compute nodes. This is done using the *batch
 job system* also called a *scheduler* or a *workload manager*. The
-system in use in Puhti is called [Slurm](https://slurm.schedmd.com/overview.html).
+system in use in Puhti is called Slurm.
 
 To run your job through the batch job system you use command **srun**
 or write a batch jobs script and use command **sbatch**. We will
@@ -48,7 +48,7 @@ Puhti](../../computing/systems-puhti.md).
 
 Puhti has a selection of commonly used bioscience software
 available. You can check the listing in
-[Applications](../../apps/index.md).
+Applications.
 
 The application listing may not be quite up to date, so it is a good
 idea to use **module spider** command to see if a software (and which
@@ -85,7 +85,7 @@ module list
 To see which modules to load, see the instruction page for each software
 
 For more information on the module system, please see the user guide:
-[The module system](../../computing/modules.md).
+The module system.
 
 
 ## Planning your job
@@ -197,7 +197,7 @@ can use **sinteractive** command to open an interactive shell:
 ```text
 sinteractive -i
 ```
-For more detailed instructions, see the User Guide: [Interactive usage](../../computing/running/interactive-usage.md)
+For more detailed instructions, see the User Guide: Interactive usage
 
 Longer jobs that take more resources are best run as batch jobs.
 
@@ -205,7 +205,7 @@ Longer jobs that take more resources are best run as batch jobs.
 
 Running a batch job typically has three steps:
 1. Make sure you have all the necessary input files
-    1. For instructions on how to move data from your own computer to Puhti, see section [Data/Moving data](../../data/moving/index.md) in the User Guide
+    1. For instructions on how to move data from your own computer to Puhti, see section Data/Moving data in the User Guide
 2. Write a batch job script
     1. Use a text editor like nano, vim or emacs to write the script
     2. If you write the script on your own computer, and move it to 
@@ -238,7 +238,7 @@ listing jobs with **squeue** or checking past jobs with **sacct**.
 
 It is necessary to to inform the system which project should be
 billed. This is done with **--account**. You can check the projects that
-you belong to in [MyCSC](https://my.csc.fi/myProjects) or with `csc-projects`
+you belong to in MyCSC or with `csc-projects`
 in the command line.
 
 Bowtie2 is a shared memory application. As discussed earlier that
@@ -317,7 +317,7 @@ them as an array job. Array jobs offer an easy way to launch and manage
 a group of similar jobs.
 
 Running array jobs is described in detail in the User Guide: 
-[Array jobs](../../computing/running/array-jobs.md)
+Array jobs
 
 ## Managing jobs
 
@@ -359,7 +359,7 @@ Queueing time will depend on the overall load on the system (*i.e.* how many job
 queue before yours) and on the resource requirements of your jobs.
 
 If it feels your jobs queue a long time, you might want to check this FAQ entry:
-[Why is my batch job queueing so long?](../faq/why-is-my-job-queueing-so-long.md)
+Why is my batch job queueing so long?
 
 There are also other reasons, but they are less common. Consult **servicedesk@csc.fi** if necessary.
 
@@ -381,7 +381,7 @@ Most important things to check are the CPU efficiency and memory utilization.
 There are many things that can cause poor CPU efficiency. It could, for example,
 indicate that the program is waiting for disk access to catch up. In these cases
 you should consider using a node with fast local disk.  For details, please see the User Guide: 
-[Creating a batch job script for Puhti](../../computing/running/creating-job-scripts-puhti.md)
+Creating a batch job script for Puhti
 
 Low efficiency could also be due to reserving more than one core and the application
 scaling poorly. Check especially if the percentage matches the number of cores reserved,

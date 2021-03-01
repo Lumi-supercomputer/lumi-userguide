@@ -1,6 +1,6 @@
 # Extended instructions for using Maestro at CSC
 
-Please first read the actual [CSC Maestro page](../../apps/maestro.md)
+Please first read the actual CSC Maestro page
 and then consult the power user and special case instructions below.
 Further down there are steps to help solving or diagnosing issues
 and to prepare data for support requests.
@@ -15,7 +15,7 @@ and to prepare data for support requests.
 The recommended way to run Maestro jobs on Puhti is to create
 the input files on your local computer
 and instead of running them, write them to disk. The procedure is
-shown in [this video](../../apps/maestro.md) on our main Maestro page.
+shown in this video on our main Maestro page.
 
 Once the files have been copied to Puhti, the job is submitted to
 a compute node(s) by running the `job_name.sh` script
@@ -76,7 +76,7 @@ For example, this HOST entry, available for Schrödinger jobs as  _test_ (from `
  will use the Slurm partition _test_ (from `-p test`), allocate a maximum of 10 minutes of time, 2 GB
 of memory and consume resources from Project_2042424. If you need different
 resources you can edit this file, e.g. by adding a new entry. 
-The requests must be within the [partition limits](../../computing/running/batch-job-partitions.md).
+The requests must be within the partition limits.
 
 If your `schrodinger.hosts` file **on Puhti** does not have the --account=**something** defined
 delete the file and rerun the script to create it (`module load maestro` will
@@ -203,7 +203,7 @@ Windows users need to change the forward slash "/" to backward slash
 ### Authoritative job control instructions from the manual
 
 A more detailed discussion for advanced jobs can be found in Maestro help via
-(from the GUI or via login in [Schrödinger website](https://www.schrodinger.com/documentation)): 
+(from the GUI or via login in Schrödinger website): 
 
 *  "Job Control Guide" -> "Running jobs" -> "Running Jobs from the Command Line" -> 
 "The HOST, DRIVERHOST, and SUBHOST Options" 
@@ -231,30 +231,30 @@ that the overhead per subjob remains small, but not too long so that the
 job parallelizes efficiently i.e. you get your results quikcly and each 
 subjob has time to finish (and that the master job has time to finish).
 At least avoid subjobs that complete faster than 15 minutes. You can check 
-subjob duration afterwards with [seff](../faq/how-much-memory-my-job-needs.md)
+subjob duration afterwards with seff
 and use this info in your new jobs:
 
 `seff JOBID` 
 
 If time runs out for a subjob, search for "restart" in the 
-[Schrödinger Knowledge Base](https://www.schrodinger.com/support)
+Schrödinger Knowledge Base
 for yor module, and/or look again for the options of your driver with
 the `-h` flag. Most jobs are restartable, so you don't lose
 completed work or used resources.
 
 If you choose too many subjobs, Maestro will get confused on the Slurm
 messages and sorting out the issue can be difficult. Also, running too
-many subjobs at a time can lead to the [license running out](#availability-of-licenses),
+many subjobs at a time can lead to the license running out,
 and waiting in the queue have been in for nothing.
 
 ## Optimal disk usage
 
 The Schrödinger HOSTs in Puhti have not been configured to use
-the [NMVE local disk](../../../computing/running/creating-job-scripts-puhti/#local-storage),
+the NMVE local disk,
 which is available only on some of the
 compute nodes. Since most jobs don't gain speed advantage of NVME disk, you'll
 likely queue less, when not asking for it. If your job will require a lot or random I/O,
-please contact us at [servicedesk@csc.fi](mailto:servicedesk@csc.fi) on how to request it.
+please contact us at servicedesk@csc.fi on how to request it.
 The only disk available for the jobs is the
 same where your input files already are. Hence, it does not make sense
 to copy the files to a "temporary" location at the start of the
@@ -263,7 +263,7 @@ in latest versions (2020.1 onwards).
 
 ## Copying files to and from local computer
 
-There is a [detailed tutorial](/data/moving/) on how to accomplish
+There is a detailed tutorial on how to accomplish
 this. Below, is an efficient alternative in the command line, which
 works even in Windows power shell:
 
@@ -280,7 +280,7 @@ In a terminal in Puhti, run the job, and once it has completed, you can copy it 
 
 `scp -r your-username@puhti.csc.fi:/scratch/project_123456/glide-dock_1 .`
 
-You might be interested in some [additional ssh tips](../../../computing/connecting/#setting-up-ssh-keys),
+You might be interested in some additional ssh tips,
 which will release you from typing your password every time.
 
 ## Running the Maestro GUI on Puhti
@@ -288,8 +288,8 @@ which will release you from typing your password every time.
 This is **not recommended**. Running the GUI remotely is slow and prone
 to glitches. Please run the GUI locally, and only submit the jobs
 (run the script) on Puhti. If this is not possible, and you _have_ _to_ run the GUI on
-Puhti, use the [interactive partition](../../computing/running/interactive-usage.md)
-and [NoMachine](../../apps/nomachine.md).
+Puhti, use the interactive partition
+and NoMachine.
 
 ```bash
 module load maestro
@@ -320,7 +320,7 @@ or tokens from multiple modules. Typically, one running instance of a module (a 
 a subjob) requires several tokens. For example, Desmond and Glide jobs take 8 tokes each.
 
 CPU time is a different resource and has nothing to do with license tokens.
-When CPU-time runs out, you or your project manager can apply for more via [my.csc.fi](https://my.csc.fi).
+When CPU-time runs out, you or your project manager can apply for more via my.csc.fi.
 
 ## Fizzled jobs
 
@@ -351,7 +351,7 @@ _postmortem_ step below.
 
 ## Asking for support
 
-Maestro has a tool called [postmortem](https://www.schrodinger.com/kb/1692) 
+Maestro has a tool called postmortem 
 that can be used to create a
 zip file containing the details of a failed job and the Maestro
 environment. Please add that to your support request to help us analyse
@@ -376,8 +376,8 @@ $SCHRODINGER/utilities/postmortem your-puhti-schrodinger-jobid
 ```
 
 The file may be large, so instead of sending it as an email attachment, consider
-using [a-flip](/data/Allas/using_allas/a_commands/#a-list) and just sending the a link instead.
-Also, see above the recommendation to [try with small systems](#how-to-speed-up-simulations) - 
+using a-flip and just sending the a link instead.
+Also, see above the recommendation to try with small systems - 
 it will also enable you to use the test HOST and avoid queueing.
 
 Also, please have a look at these [instructions to make

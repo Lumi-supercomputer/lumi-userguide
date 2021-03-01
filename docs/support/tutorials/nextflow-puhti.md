@@ -1,6 +1,6 @@
 
 # Running Nextflow pipelines on Puhti
-[Nextflow](https://www.nextflow.io/) is a scalable and reproducible scientific workflow 
+Nextflow is a scalable and reproducible scientific workflow 
 management system that interacts with containerised applications to perform 
 compute-intensive tasks. Nextflow provides built-in support for containers 
 like Singularity, which is a containerisation technology that is compliant 
@@ -41,7 +41,7 @@ Here are some options for preparing your singularity image:
 - Convert a Docker image to Singularity on your local system and then copy it to Puhti.
 - Copy a Singularity image from a container registry to Puhti.
 
-You can also use [cPouta](../../cloud/pouta/launch-vm-from-web-gui.md) environment at CSC to build singularity images.
+You can also use cPouta environment at CSC to build singularity images.
 
 !!! note 
     Singularity is installed only on the compute nodes in Puhti and 
@@ -49,7 +49,7 @@ You can also use [cPouta](../../cloud/pouta/launch-vm-from-web-gui.md) environme
 
 ## 2. Login to Puhti supercomputer
 
-SSH into the login node of Puhti cluster (See instructions [here](../../computing/overview.md))
+SSH into the login node of Puhti cluster (See instructions here)
 
 ```
 ssh <csc_username>@puhti.csc.fi
@@ -65,7 +65,7 @@ source activate nextflow
 ```
 
 In case you need any custom installations with specific version of Nextflow in your 
-workspace, please follow instructions [here](../../apps/bioconda.md#2-installing-software-for-your-own-use-with-bioconda). 
+workspace, please follow instructions here. 
 
 For the installation of Nextflow, you can use the following conda approach: 
 
@@ -98,7 +98,7 @@ You can do the following basic preparation before running your Nextflow pipeline
 ## 5. Run your Nextflow pipeline as a batch job
 
 Please follow our instructions for writing a batch job on Puhti as described in 
-[CSC documentation pages](../../computing/running/example-job-scripts-puhti.md).
+CSC documentation pages.
 
 Here is a minimal script to get started with your Nextflow pipeline on Puhti:
 
@@ -121,7 +121,7 @@ nextflow run  <workflow.nf> [options]
 
 WtP is a scalable and easy-to-use workflow for phage identification 
 and analysis. More details about the pipeline can be found 
-[here](https://github.com/replikation/What_the_Phage).
+here.
 
 Login to Puhti and install Nextflow using the conda environment as instructed above.
 
@@ -148,7 +148,7 @@ containers as mentioned in `containers.config` file.
 ### Bring your WtP singularity images to Puhti
 
 WtP is a multi-container pipeline requiring as many as 21 singularity images 
-(see [here for further details)](https://github.com/replikation/What_the_Phage/blob/master/configs/container.config) 
+(see here for further details) 
 at the time of writing this tutorial. All these containers were downloaded 
 in cPouta environment to avoid any build failures of singularity images on Puhti due to the lack 
 of privileged access for users. For the sake of this tutorial, the downloaded singularity 

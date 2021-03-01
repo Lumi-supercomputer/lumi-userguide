@@ -1,13 +1,13 @@
 This tutorial page  provides step-by-step instructions on how to run Singularity containers of selected bio-applications in Puhti supercomputer. The selected examples shown below would serve as recipe for building your own customised singularity jobs.  
 
-   - [DeepVariant pipeline](#deepvariant-pipeline)
+   - DeepVariant pipeline
    - ...
 
 ### DeepVariant pipeline  ###
 
-DeepVariant pipeline (Poplin et al., Nature biotechnology, 2018) is used  to perform variant calling on WGS and WES data sets. More information about the deepvariant programmes can be found [here](https://github.com/google/deepvariant) 
+DeepVariant pipeline (Poplin et al., Nature biotechnology, 2018) is used  to perform variant calling on WGS and WES data sets. More information about the deepvariant programmes can be found here) 
 
-One needs to get DeepVariant docker image, models and test data in order to run the pipeline. Additionally, other prerequisites for running deepvariant method includes 1) obtaining a reference genome in [FASTA](https://en.wikipedia.org/wiki/FASTA_format) format and its corresponding index file (.fai). 2) An aligned reads file in [BAM](http://genome.sph.umich.edu/wiki/BAM) format and its corresponding index file (.bai).
+One needs to get DeepVariant docker image, models and test data in order to run the pipeline. Additionally, other prerequisites for running deepvariant method includes 1) obtaining a reference genome in FASTA format and its corresponding index file (.fai). 2) An aligned reads file in BAM format and its corresponding index file (.bai).
 
 #### Convert docker image into Singularity image on your local machine ####
 
@@ -35,7 +35,7 @@ and finally create a Singularity image as below:
 ```
 sudo SINGULARITY_NOHTTPS=1 singularity build deepvariant.simg  deffile
 ```
-Alternatively, one can download  pre-converted singularity images (both cpu and gpu versions) along with test data from CSC's [Allas](../../data/Allas/index.md) object storage as below:
+Alternatively, one can download  pre-converted singularity images (both cpu and gpu versions) along with test data from CSC's Allas object storage as below:
 
 ```
 wget https://a3s.fi/pilot_projects/Deepvariant_singularity.zip
@@ -91,7 +91,7 @@ deepvariant_gpu.simg \
 --output_gvcf=output.g.vcf.gz
 ```
 ### Deepvariant as an interactive job in Puhti
-One can run singularity containers also in the [interactive](../../computing/running/interactive-usage.md) mode.
+One can run singularity containers also in the interactive mode.
 For example, deepvariant can be run as follows: 
 
 Download and unzip the deepvariant folder with data and singularity images in the login node
