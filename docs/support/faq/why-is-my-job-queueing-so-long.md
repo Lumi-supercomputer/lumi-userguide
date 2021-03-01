@@ -17,6 +17,6 @@ This means that the partition is currently full. You will very likely get resour
 
 You might want to check these FAQ entries:
 
-* [How to estimate how much memory my batch job needs](how-much-memory-my-job-needs.md)
-* [When will my batch job run?](when-will-my-job-run.md)
+* How to estimate how much memory my batch job needs
+* When will my batch job run?
 

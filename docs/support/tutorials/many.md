@@ -9,7 +9,7 @@ The goal is to have a workflow that is
 There is a plethora of workflow tools. Whatever tool one chooses, it will
 unlikely match the particular workflow and underlying computing platform out of
 the box. Some amount of programming is needed in most cases. A very much related
-discussion is in [Array jobs](../../computing/running/array-jobs.md)
+discussion is in Array jobs
 chapter of <https://docs.csc.fi>.
 
 
@@ -18,7 +18,7 @@ chapter of <https://docs.csc.fi>.
 The maximum number of jobs that each user can submit per month should be kept
 below one thousand. Too many batch jobs will generate excess log data and slows
 down the job scheduler.
-[Array jobs](../../computing/running/array-jobs.md) are basically
+Array jobs are basically
 just a shorthand, so a single array job of 100 members counts the same as 100
 individual jobs from the batch queue system's perspective.
 
@@ -133,7 +133,7 @@ in environment variable `SLURM_ARRAY_TASK_ID`. Depending on the queue situation,
 many of these jobs can run in parallel.
 
 Next we load a module providing
-[GNU parallel](https://www.gnu.org/software/parallel/). We use this tool
+GNU parallel. We use this tool
 within the node to "schedule" all 3200 runs in a job, so that at any point
 in time all 40 cores are busy, but not overloaded.
 
@@ -171,5 +171,5 @@ sbatch job.sh
     the duration of the allocation, and the number of subjobs much larger
     than the cores requested in one task.
 
-You can use [seff](../faq/how-much-memory-my-job-needs.md) to learn how long 
+You can use seff to learn how long 
 past jobs have been.
