@@ -49,12 +49,12 @@ nav:
       - Compilers: development/compiling/compilers.md
       - CPU only code: development/compiling/cpu.md
       - GPU code: development/compiling/gpu.md
-      - High performance libraries: compiling/hpc-libraries.md
-    - Debugging: compiling/debugging.md
+      - High performance libraries: development/hpc-libraries.md
+    - Debugging: development/debugging.md
     - Profiling: 
-        compiling/profiling/index.md
-        compiling/profiling/cpu.md
-        compiling/profiling/gpu.md
+        development/profiling/index.md
+        development/profiling/cpu.md
+        development/profiling/gpu.md
   - Cloud:
     - Concepts of cloud computing: lumik/concepts.md
     - LUMI-K:
