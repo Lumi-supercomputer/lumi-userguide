@@ -3,9 +3,9 @@
 This is a quick start guide for Mahti users. It is assumed that you have
 previously used CSC supercomputing resources like Puhti, Sisu or
 Taito. If not, you can start by looking
-[here](../../computing/overview.md).
+here.
 
-**Go to [my.csc.fi](https://my.csc.fi) to apply for access to Mahti or
+**Go to my.csc.fi to apply for access to Mahti or
 view your projects and their project numbers if you already have
 access.**
 
@@ -22,8 +22,8 @@ $ ssh <csc_username>@mahti.csc.fi
 
 Modules are set up in a hierarchical fashion, meaning you need to load
 a compiler before MPI and other libraries appear. CSC uses the
-[Lmod](https://lmod.readthedocs.io) module system. More information
-about modules [here](../../computing/modules.md).
+Lmod module system. More information
+about modules here.
 
 Default modules, which are loaded automatically, are `gcc/9.3.0`,
 `openmpi/4.0.3` and `openblas/3.10`.
@@ -40,7 +40,7 @@ In Mahti, many applications benefit from hybrid MPI/OpenMP
 parallelization, so it is recommended to build a hybrid version if it
 is supported by your application.
 
-More information about compilers [here](../../computing/compiling-mahti.md).
+More information about compilers here.
 
 !!! warning "Note" 
     You need to have the MPI module loaded when submitting your jobs
@@ -48,21 +48,21 @@ More information about compilers [here](../../computing/compiling-mahti.md).
 ## High performance libraries
 
 Mahti has several high performance libraries installed, more
-information [here](../../computing/hpc-libraries.md).
+information here.
 
 ## Applications
 
-More information about specific applications can be found [here](../../apps/alpha.md).
+More information about specific applications can be found here.
 Note, the preinstalled selection is not as large as on Puhti.
 
 ## Running jobs
 
-Like Puhti, Mahti uses the [slurm](https://slurm.schedmd.com/documentation.html)
+Like Puhti, Mahti uses the slurm
 batch job system. A description of the different slurm partitions can
-be found [here](../../computing/running/batch-job-partitions.md).
+be found here.
 
-Instructions on how to submit jobs can be found [here](../../computing/running/creating-job-scripts-mahti.md)
-and example batch job scripts are found [here](../../computing/running/example-job-scripts-mahti.md)
+Instructions on how to submit jobs can be found here
+and example batch job scripts are found here
 
 ## Performance considerations
 
@@ -76,7 +76,7 @@ performance becomes worse. Binding of threads to CPU cores can also have
 an impact on performance. 
 
 More information about controlling hybrid applications can be found
-[here](../../computing/running/performance-checklist.md#hybrid-parallelization-in-mahti). 
+here. 
 
 ## Storage
 
@@ -94,12 +94,12 @@ The disk areas for different supercomputers are separate, *i.e.*
 **home**, **projappl** and **scratch** in Puhti cannot be directly
 accessed from Mahti.
 
-More detailed information about storage can be found [here](../../computing/disk.md).
+More detailed information about storage can be found here.
 
 ## Moving data between Mahti and Puhti
 
 Data can be moved between supercomputers via
-[Allas](../../data/Allas/index.md) by first uploading 
+Allas by first uploading 
 the data from one supercomputer and then downloading it to the other.
 This is the recommended approach if the data should also
 be preserved for a longer time.
@@ -112,13 +112,13 @@ issue in Puhti the command:
 ```bash
 rsync -azP my_results <username>@mahti.csc.fi:/scratch/project_2002291
 ```
-See [Using rsync](../../data/moving/rsync.md) for more detailed instructions
+See Using rsync for more detailed instructions
 for *rsync*.
 
 ## How Mahti and Puhti differ?
 
 If you are new to supercomputes, or the details below is unfamiliar, you
-likely should start with [Puhti](puhti_quick.md) and some [introductory tutorials](env-guide/overview.md) first.
+likely should start with Puhti first.
 In a nutshell, Mahti is meant for large parallel jobs, and Puhti for a wide
 variety of small to medium sized jobs including special resources.
 

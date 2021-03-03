@@ -1,25 +1,25 @@
 # Shape based molecular screening using GPU
 
 This tutorial will show how to use the 
-[Schrödinger Maestro Shape](https://www.schrodinger.com/Shape-Screening/)
+Schrödinger Maestro Shape
 tool to quickly screen the 
-[Molport molecular database](https://molport.com/shop/screeening-compound-database)
+Molport molecular database
 with 16 million structures (160 million conformations) on a GPU in Puhti.
 
 _Preparing_ the Molport database for GPU screening takes two weeks,
 but since the prepared _shape file_ is already available on Puhti the actual
 screening of your molecule takes only 5-20 minutes on a GPU. Read more 
-in a [blog on how sharing enables fast screening](https://www.csc.fi/-/sharing-enables-screening-16-million-structures-in-7-minutes)
+in a blog on how sharing enables fast screening
 .
 
 ## HOW-TO
 
 * Install Maestro on your local computer. Detailed instructions can
-  be found on [our Maestro page](../../apps/maestro.md).
+  be found on our Maestro page.
 * Draw / import the molecule you want to find similar molecules of
-* Run the [Maestro LigPrep](https://www.schrodinger.com/LigPrep/) tool on it
+* Run the Maestro LigPrep tool on it
 * Export the prepared molecule in the native Maestro format (mae), e.g. as `target.mae`
-* Copy the file to Puhti in your scratch area ([Tips for copying files](../../data/moving/index.md))
+* Copy the file to Puhti in your scratch area (Tips for copying files)
 * Copy (and edit if necessary) the following _script_ as `gpushape.bash` (don't copy the 139GB shape-file)
   to the same folder
     * This script will request 60 minutes of time on one GPU, use the _shape file_ from

@@ -5,7 +5,7 @@ ssh-tunnel into a non-GPU flavor in c- and ePouta. We are using noVNC because
 it allows us to use our browser to access the desktop, i.e. no 
 local installations needed. If you would like to have
 instructions on how to use a GPU instance for rendering look
-here: [How to use cPouta GPU for rendering](how-to-use-cpouta-gpu-for-rendering.md)
+here: How to use cPouta GPU for rendering
 
 [TOC]
 

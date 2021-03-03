@@ -210,7 +210,7 @@ data: letters or numbers.
 
 Each file has a name. Name can in principle be any combination of
 characters. However, several characters have special meaning e.g.
-`?, * and #`, see [below](#special-characters) and
+`?, * and #`, see below and
 thus using these characters in file names may cause problems. We
 recommend that you use only normal letters (lower or upper case),
 numbers, dot (`.`), dash (`-`) or under score (`_`) characters in

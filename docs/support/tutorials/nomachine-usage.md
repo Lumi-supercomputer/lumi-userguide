@@ -14,14 +14,14 @@ A short video will appear in here.
 - Enables remote graphics from CSC servers for Windows users
 - Improved remote graphics performance for Linux and Mac users
 - Suspendable session - continue later with all terminals etc. as they were, even from a different computer
-- Easy way to leave jobs running e.g. on the [interative partition](../../computing/running/interactive-usage.md) while logging off from laptop
+- Easy way to leave jobs running e.g. on the interative partition while logging off from laptop
 - Gives 4 virtual screens
 - Resolution/frame rate can be tuned - enables usage with even a really slow network
 
 **Cons:**
 
 - Very heavy 3D remote graphics performance will be poor. In this case, consider
-  [using GPUs for rendering in cPouta](../faq/how-to-use-cpouta-gpu-for-rendering.md)
+  using GPUs for rendering in cPouta
 - Requires installing the client (ssh + X11 forwarding are available on Mac & Linux anyway)
 
 ## Installation
@@ -29,7 +29,7 @@ A short video will appear in here.
 !!! note 
     this _may_ require admin privileges
 
-Download the NoMachine Enterprise _client_ (not the Desktop) from here: [https://www.nomachine.com/download-enterprise](https://www.nomachine.com/download-enterprise)
+Download the NoMachine Enterprise _client_ (not the Desktop) from here: https://www.nomachine.com/download-enterprise
 
 ## Configuration
 
