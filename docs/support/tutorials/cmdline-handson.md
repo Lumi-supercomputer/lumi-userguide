@@ -101,13 +101,13 @@ less slurm-JOBID.out (type q to quit)
 ```
 
 If the job failed, please check which project you had in the batch script `--account=???`
-[Typical reasons for a failed batch in our FAQ](../faq/why-does-my-batch-job-fail.md)
+Typical reasons for a failed batch in our FAQ
 
 ##Simple R job 
 
 Run a simple R job from a script. The script will fit a straight line
 through a file containing some x,y value pairs. More info on
-[running R in the CSC environment](../../apps/r-env-singularity.md)
+running R in the CSC environment
 
 ### a) Set up an interactive batch job and initialize R-environment
 
@@ -191,7 +191,7 @@ Now run the previous R script as a batch job.
 
 ### a) Create a batch job script, which will submit the job to the queue.
 
-Copy the *serial batch script* template from [CSC's R-env-singularity page](../../../apps/r-env-singularity/#serial-batch-jobs)
+Copy the *serial batch script* template from CSC's R-env-singularity page
 into a file called _batch.sh_
 
 In addition to setting up the computing requirements, this script
@@ -304,10 +304,10 @@ You should get the fit coefficients in separate files in the
 ### e) Collect the results and plot them.
 
 Note, plotting will work only if you have 
-[remote X11 forwarding](../../../computing/connecting/#using-graphical-applications) or you've
-connected to Puhti via [NoMachine](../../apps/nomachine.md).
+remote X11 forwarding or you've
+connected to Puhti via NoMachine.
 Actually, for R, there is even a tailored remote setup using 
-[RStudio Server](../../apps/r-env-singularity.md),
+RStudio Server,
 and you're welcome to use that, but in this tutorial, the key point is to 
 demonstrate the general approach.
 
@@ -326,7 +326,7 @@ The plot will appear in a separate window.
 ## Batch job with thread parallelization
 
 Some applications can be run in parallel to speed them up. In this
-example you run the [HMMER software](../../apps/hmmer.md) to describe 
+example you run the HMMER software to describe 
 and analyze related or similar protein sequence areas both in serial 
 and parallel to see if the jobs speed up.
 
@@ -341,7 +341,7 @@ wget https://a3s.fi/docs-files/example.fasta
 
 Let's first run the job with just one core. Copy one of the old batch
 scripts to current directory, and change / add the following items in
-it (or take a look at [these examples](../../computing/running//example-job-scripts-puhti.md)):
+it (or take a look at these examples):
 
 1. Output to `out_%j.txt`
 1. error to `err_%j.txt`

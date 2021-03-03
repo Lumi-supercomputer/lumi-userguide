@@ -39,5 +39,5 @@ squeue -u $USER -o "%.18i %.9P %.8j %.8u %.8T %.10M %.9l %.6D %Q"
 
 To minimize queueing, please also see:
 
-* [How to estimate how much memory my batch job needs](how-much-memory-my-job-needs.md)
-* [Why is my batch job queueing so long?](why-is-my-job-queueing-so-long.md)
+* How to estimate how much memory my batch job needs
+* Why is my batch job queueing so long?

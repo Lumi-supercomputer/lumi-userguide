@@ -223,7 +223,7 @@ geoconda in puhti.csc.fi, I recommend installing a project specific copy of Mini
 
 As Conda packages may take significant storage space it is not recommended to 
 to install Miniconda3 to your home directory. In stead you should install it to 
-the [ProjAppl]( ../../computing/disk.md) directory of your Puhti project.
+the ProjAppl directory of your Puhti project.
 
 To get an overview of your directories in Puhti, run command:
 ```text

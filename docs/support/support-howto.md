@@ -26,7 +26,7 @@ If you are asking for advice on e.g. how to use a particular software package, t
 
 ##Send your requests to ServiceDesk
 
-Always send requests to [servicedesk@csc.fi](mailto:servicedesk@csc.fi) instead of staff members directly. On servicedesk@csc.fi they get tracked, have higher visibility and will get picked up by the correct specialist. Some staff members work for the support requests only part time and also we are on holiday sometimes.
+Always send requests to servicedesk@csc.fi instead of staff members directly. On servicedesk@csc.fi they get tracked, have higher visibility and will get picked up by the correct specialist. Some staff members work for the support requests only part time and also we are on holiday sometimes.
 
 ##Tell us also what worked
 
@@ -42,9 +42,9 @@ Please do not send support requests by replying to old tickets, which are likely
 
 ##The XY problem
 
-This is a classic problem. Please read [http://xyproblem.info](http://xyproblem.info). Often we know the solution but sometimes we don't know the problem.
+This is a classic problem. Please read http://xyproblem.info. Often we know the solution but sometimes we don't know the problem.
 
-In short (quoting from [http://xyproblem.info](http://xyproblem.info)):
+In short (quoting from http://xyproblem.info):
 
 *   User wants to do X.
 *   User doesn't know how to do X, but thinks it can be done via Y.
@@ -65,10 +65,10 @@ You run a calculation which crashes after running for one week. You are tempted 
 
 ##If you can't create an example, explain what you've done
 
-Explain the steps and commands you've given before the problem and all output and errors that are produced. If the amount of data is large (more than 1MB) you can use [FUNET FileSender](https://filesender.funet.fi/) or [a-flip](../data/Allas/using_allas/a_commands.md#a-flip) to deliver files. Be specific, see above.
+Explain the steps and commands you've given before the problem and all output and errors that are produced. If the amount of data is large (more than 1MB) you can use FUNET FileSender or a-flip to deliver files. Be specific, see above.
 
 ##Specify your environment
 
 Have you or your colleague compiled the code? Which modules were loaded? If you use non-default modules or e.g. conda and you do not tell us about it, we will waste time when debugging with in a different environment.
 
-[_"How to" reused by permission from HPC group - UiT The Arctic University of Norway._](http://hpc.uit.no/en/latest/help/writing-support-requests.html)
+_"How to" reused by permission from HPC group - UiT The Arctic University of Norway._

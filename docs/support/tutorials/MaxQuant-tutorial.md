@@ -1,7 +1,7 @@
 
 # Running MaxQuant software on Puhti supercomputer
 
-[MaxQuant](https://maxquant.org/) is a quantitative proteomics software package designed for analyzing large mass-spectrometric data sets. More information about the software can be found [here](http://coxdocs.org/doku.php?id=maxquant:start). High-performance computing environment like Puhti is a suitable place for running compute-intensive jobs using MaxQuant software in proteomics research. 
+MaxQuant is a quantitative proteomics software package designed for analyzing large mass-spectrometric data sets. More information about the software can be found here. High-performance computing environment like Puhti is a suitable place for running compute-intensive jobs using MaxQuant software in proteomics research. 
 
 This tutorial provides instructions for running MaxQuant software on Puhti.
 
@@ -25,9 +25,9 @@ These modifications include changes in :
 
 ## Submit as a batch job to Puhti cluster
 
-- First login to Puhti computer (see instructions [here](../../computing/connecting.md))
+- First login to Puhti computer (see instructions here)
 
-- Change to your project directory on Puhti and copy your input files there ([tips on how to transfer files](../../data/moving/index.md)).
+- Change to your project directory on Puhti and copy your input files there tips on how to transfer files).
 
  This is your project directory (on scratch) where your .xml files, .fasta file, and raw data files are located
 
@@ -56,7 +56,7 @@ mono MaxQuant_1.6.3.4/MaxQuant/bin/MaxQuantCmd.exe --help
 
  - Finally submit your script
 
-Create a batch script according to the [instructions for shared memory jobs](../../../computing/running/creating-job-scripts-puhti#serial-and-shared-memory-batch-jobs) 
+Create a batch script according to the instructions for shared memory jobs 
 and make sure the script ends up in the same directory as your `mqpar.xml` 
 file and other data files are located.
 
@@ -111,7 +111,7 @@ The tutorial has example raw files and other necessary files to run MaxQuant for
 ## Look at the used resources once your job is finished
 
 Once `maxquant` job is finished, you can check the utilization of computing resources
-like [memory](../faq/how-much-memory-my-job-needs.md) and CPU usage efficiency.
+like memory and CPU usage efficiency.
 This will help you tune with better parameters for efficient usage of computing resources.
 
 You can use the following commands using job id:
