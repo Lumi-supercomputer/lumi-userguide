@@ -205,7 +205,7 @@ job is executing will be given in the last column of the output.
 In practice the list of jobs printed by this command will be much lengthier
 since all jobs, including those belonging to other users, will be visible.
 In order to see only the jobs that belong to you use the `squeue` command with
-the `--me` option.
+the `--me` flag.
 
 ```
 squeue --me
@@ -270,25 +270,23 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 In the example above, we consider the case of an OpenMP application. OpenMP is
 not Slurm-aware, so we also export the `OMP_NUM_THREADS` environment variable.
 This is accomplished by setting `OMP_NUM_THREADS` to `$SLURM_CPUS_PER_TASK`
-which is an environment variable created by Slurm and whose value is set by the
-`--cpus-per-task` option. 
+which is an environment variable created by Slurm and whose value is set by
+`--cpus-per-task`. 
 
 !!! warning
-    If the application has a command line option to set the number of threads, 
+    If the application has a command-line option to set the number of threads, 
     it should always be used to make sure the software behaves as expected.
 
 
-Required memory allocation can requested on a per node basis using the `--mem`
-option. For example if the job requires 16Gb to be allocated you can use the
-directive:
+Required memory per node is specified using `--mem`. For example, if the job
+requires 16Gb to be allocated you can use the directive:
 
 ```
 #SBATCH --mem=16G
 ```
 Different units for the memory allocation can be specified using the suffix
-`K`, `M`, `G` and `T` for Kilo, Mega, Giga and Tera bytes respectively. An
-other option is to specified the memory per allocated CPU with the
-`--mem-per-cpu` option.
+`K`, `M`, `G` and `T` for Kilo, Mega, Giga and Tera bytes respectively. Another
+option is to specify the memory per allocated CPU with `--mem-per-cpu`.
 
 ```
 #SBATCH --cpus-per-task=32
@@ -296,13 +294,13 @@ other option is to specified the memory per allocated CPU with the
 ```
 
 Where a total of `32CPU * 512M = 16Gb` of memory will be allocated to the job
-which is an equivalent memory allocation that the previous exmple where memory
+which is an equivalent memory allocation that the previous example where memory
 is allocated on a per node basis.
 
 !!! note
     The `default` partition is set up in exclusive mode, meaning that job can
     not share nodes with other running jobs. Thus, you will have access to all 
-    the memory on the node.
+    the memory of the node.
 
 
 ## MPI-based jobs
@@ -314,12 +312,28 @@ The number of MPI ranks to be created is
 #SBATCH --ntasks=256
 ```
 
-As MPI processes all have their separate memory space, These processes can be
-distributed among several compute nodes. 
+As MPI processes all have their separate memory space. These processes can be
+distributed among several compute nodes. For example, you can spread the 256
+tasks of the previous example among 4 nodes using the `--nodes` directive and
+then specify the number of tasks per node with the `--ntasks-per-node`
+directive. 
 
 ```
-#SBATCH --nodes=256
-#SBATCH --ntasks-per-node=256
+#SBATCH --nodes=4
+#SBATCH --ntasks-per-node=64
 ```
 
 ## Hybrid MPI+OpenMP jobs
+
+For hybrid MPI+OpenMP jobs, you have to use a combination of the directives 
+discussed previously:
+
+```
+#SBATCH --nodes=4
+#SBATCH --ntasks-per-node=16
+#SBATCH --cpus-per-task=8
+```
+
+In this example, the job requires 4 nodes (`--nodes`). On each of these nodes, 
+16 tasks (MPI ranks, `--ntasks-per-node`) will be spawned. Each task, use 8
+threads which is specified by the `--cpus-per-task` directive.
