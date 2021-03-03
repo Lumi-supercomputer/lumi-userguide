@@ -29,7 +29,8 @@ nav:
       - User environment: computing/environment/environment.md
       - Modules environment: computing/environment/modules.md
     - Running jobs:
-      - Getting Started: computing/jobs/index.md
+      - Overview: computing/jobs/index.md
+      - Getting Started: computing/jobs/slurm-quickstart.md
       - Available partitions: computing/jobs/partitions.md
       - Submitting a job: computing/jobs/submitting-jobs.md
       - LUMI-C batch jobs: computing/jobs/lumic.md
