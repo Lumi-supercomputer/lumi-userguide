@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Technical details about LUMI-C
 
 ## Compute
