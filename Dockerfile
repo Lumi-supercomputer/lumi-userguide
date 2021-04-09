@@ -15,7 +15,6 @@ RUN chgrp -R root ${ROOT_GROUP_DIRS} &&\
 COPY . .
 
 RUN pip3 install --no-cache-dir -r requirements.txt && \
-    bash scripts/generate_stamps.sh && \
     mkdocs build -d /usr/share/nginx/html
 
 COPY nginx.conf /etc/nginx
