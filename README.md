@@ -1,15 +1,16 @@
 # LUMI Docs
 
 This repository contains master data for the [LUMI documentation][1] which
-is in sync with 'main' branch. This documantation is written in Markdown which
+is in sync with 'main' branch. This documentation is written in Markdown which
 is converted to HTML/CSS/JS with the mkdocs static site generator. The
-documantation is themed with mkdocs-material with LUMI customization.
+documentation is themed with mkdocs-material + LUMI customization.
 
 [1]: https://docs.lumi-supercomputer.eu
 
 - [Create Issue](#creating-issues)
 - [Building](#building)
-  - [Edit with live preview](#edit-with-live-preview) 
+  - [Edit with live preview](#edit-with-live-preview)
+  - [Build a Docker Image](#build-a-docker-image) 
   - [Generate the static site](#generate-the-static-site)
 
 
@@ -64,6 +65,28 @@ mkdocs serve
 This command will start a live-reloading local web server that can be accessed
 in a web browser via: http://127.0.0.1:8000. The local web serve will 
 automatically re-render and reload the site when you edit the documentation.
+
+### Build a Docker Image
+
+You can also create a Docker container to host the docs. First build
+an image from the included Dockerfile.
+
+```
+sudo docker build -t lumi-user-guide .
+```
+
+This will build a container image called `lumi-user-guide`. Once the
+image is built, you can run it.
+
+```
+docker run --rm -it -p 80:8000 --name lumi-user-guide lumi-user-guide
+```
+
+This will run a web server on your computer. You can view the content of the 
+user guide by pointing your browser to
+[localhost][3].
+
+[3]: http://localhost
 
 ### Generate the static site
 
