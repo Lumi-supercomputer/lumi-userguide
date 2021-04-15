@@ -2,7 +2,7 @@
 template: home.html
 ---
 
-# Quick links
+# About LUMI
 
 - [LUMI-C : The CPU computing parition](lumic/overview.md)
 - [LUMI-G : The GPU accelarated LUMI partition](lumig/overview.md)
