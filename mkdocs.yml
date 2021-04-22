@@ -1,7 +1,7 @@
 site_name: Documentation
 repo_url: ""
 edit_uri: ""
-site_url: "https://test-lumi-supercomputer-docs.rahtiapp.fi/" #hasn't been chosen yet
+#site_url: "https://test-lumi-supercomputer-docs.rahtiapp.fi/" #hasn't been chosen yet
 site_description: >-
   Instructions, user guides and tutorials for the use of the LUMI supercomputer
 copyright: Copyright &copy; 2021 LUMI User Support Team
