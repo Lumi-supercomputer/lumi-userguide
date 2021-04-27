@@ -113,6 +113,7 @@ nav:
      - By discipline: apps/by_discipline.md
      - By availability: apps/by_partition.md
   - Support:
+    - Read before you start: support/most-important.md
     - Tutorials: support/tutorials/index.md
     - FAQ: support/faq/index.md
     - Training material: support/training-material.md
