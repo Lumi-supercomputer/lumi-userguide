@@ -6,32 +6,54 @@ site_description: >-
   Instructions, user guides and tutorials for the use of the LUMI supercomputer
 copyright: Copyright &copy; 2021 LUMI User Support Team
 nav:
-  - Home: index.md
-  - Accounts:
-    - Overview: accounts/index.md
-    - How to create new user account: accounts/create-new-user-account.md
-    - How to change password: accounts/change-password.md
-    - How to manage user information: accounts/manage-user-information.md
-    - How to create new project: accounts/create-new-project.md
-    - How to add members to project: accounts/add-members-to-project.md
-    - How to add service access for project: accounts/add-service-access-for-project.md
-    - How to apply for billing units: accounts/apply-for-billing-units.md
-    - How to increase disk quotas: accounts/increase-disk-quotas.md
-    - How to view billing unit usage: accounts/view-billing-unit-usage.md
-    - Billing: accounts/billing.md
-  - Computing:
-    - Overview: computing/index.md
-    - Connecting: computing/connecting.md
-    - Systems: 
-      - Available systems: computing/available-systems.md
-      - LUMI-C: computing/lumic.md
-      - LUMI-G: computing/lumig.md
-    - Environment: 
-      - User environment: computing/environment/environment.md
-      - Modules environment: computing/environment/modules.md
-    - Running jobs:
+- Home: index.html
+- Support:
+  - Overview: support/index.md
+  - Contact: support/contact.md
+  - Read before you start: support/most-important.md
+  - FAQ: support/faq/index.md
+  - Tutorials: support/tutorials/index.md
+  - Where you can get more help: support/more-support.md
+  - Training material: support/training-material.md
+- Accounts:
+  - Overview: accounts/index.md
+  - How to create new user account: accounts/create-new-user-account.md
+  - How to change password: accounts/change-password.md
+  - How to manage user information: accounts/manage-user-information.md
+  - How to create new project: accounts/create-new-project.md
+  - How to add members to project: accounts/add-members-to-project.md
+  - How to add service access for project: accounts/add-service-access-for-project.md
+  - How to apply for billing units: accounts/apply-for-billing-units.md
+  - How to increase disk quotas: accounts/increase-disk-quotas.md
+  - How to view billing unit usage: accounts/view-billing-unit-usage.md
+  - Billing: accounts/billing.md
+  - How to apply for accounts in different consortia countries: accounts/account-responsible.md
+- Developing:
+  - Overview: development/index.md
+  - Programming Environment: development/progenv.md
+  - Compiling:
+    - Overview: development/commpiling/index.md
+    - Compilers: development/compiling/compilers.md
+    - CPU only code: development/compiling/cpu.md
+    - GPU code: development/compiling/gpu.md
+    - High performance libraries: development/hpc-libraries.md
+  - Debugging: development/debugging.md
+  - Performance Analysis:
+    - Overview: development/profiling/index.md
+    - CPU: development/profiling/cpu.md
+    - GPU: development/profiling/gpu.md
+  - HPC Container Building: development/building-containers.md
+- Computing:
+  - Overview: computing/index.md
+  - Systems: 
+    - Available systems: computing/available-systems.md
+    - LUMI-C: computing/lumic.md
+    - LUMI-G: computing/lumig.md
+  - Connecting: computing/connecting.md
+  - Module environment: computing/environment/modules.md
+  - Running jobs:
       - Overview: computing/jobs/index.md
-      - Getting Started: computing/jobs/slurm-quickstart.md
+      - Introduction to SLURM: computing/jobs/slurm-quickstart.md
       - Available partitions: computing/jobs/partitions.md
       - Submitting a job: computing/jobs/submitting-jobs.md
       - LUMI-C batch jobs: computing/jobs/lumic.md
@@ -41,84 +63,82 @@ nav:
       - High throughput: computing/jobs/throughput.md
       - Interactive usage: computing/jobs/interactive.md
       - Performance checklist: computing/jobs/performance.md
-      - Containers:
-        - Running existing containers: computing/containers/run-existing.md
-    - Disk areas: computing/filesystem.md
-
-  - Development:
-    - Getting Started: development/index.md
-    - Compiling:
-      - Compilers: development/compiling/compilers.md
-      - CPU only code: development/compiling/cpu.md
-      - GPU code: development/compiling/gpu.md
-      - High performance libraries: development/hpc-libraries.md
-    - Debugging: development/debugging.md
-    - Profiling: 
-        development/profiling/index.md
-        development/profiling/cpu.md
-        development/profiling/gpu.md
-  - Cloud:
-    - Concepts of cloud computing: lumik/concepts.md
-    - LUMI-K:
-      - Contents: lumik/index.md
-      - What is LUMI-K: lumik/lumik-what-is.md
-      - Containers & their Orchestration: lumik/containers.md
-      - Kubernetes and OpenShift concepts: lumik/concepts.md
-      - Getting Started:
-        - Getting access: lumik/access.md
-        - Using the web interface: lumik/usage/getting_started.md
-        - Command line tool installation and usage: lumik/usage/cli.md
-        - Security guide: lumik/usage/security-guide.md
-      - LUMI-K Tutorials:
-        - Deploying a static web server using the web interface: lumik/howto/basic-console.md
-        - Deploying a static web server using the command line: lumik/howto/elemental_tutorial.md
-        - Custom domain names and secure transport: lumik/howto/custom-domain.md
-        - Configuration, ConfigMaps and Secrets: lumik/howto/configuration.md
-        - Webhooks: lumik/howto/webhooks.md
-        - Reverse proxy authentication using a sidecar container: lumik/howto/sidecar_proxy_authentication.md
-        - Short introduction to YAML: lumik/howto/yaml_introduction.md
-        - How to transfer data to Rahti?: lumik/howto/transfer_data_rahti.md
-        - How to add docker hub credentials to a project: lumik/howto/docker_hub_login.md
-        - How to manually cache images in Rahti's registry: lumik/howto/docker_hub_manual_caching.md
-      - Storage in LUMI-K:
-        - Available storage options: lumik/storage/index.md
-        - Persistent volumes: lumik/storage/persistent.md
-        - Ephemeral storage: lumik/storage/ephemeral.md
-        - Sending e-mail from LUMI-K: lumik/howto/email.md
-      - Images:
-        - Overview: lumik/images/overview.md
-        - Creating an image: lumik/images/creating.md
-      - Rahti Templates: lumik/template-docs.md
-      - Projects and quota: lumik/usage/projects_and_quota.md
-      - Billing: lumik/billing.md
-      - External documentation: lumik/ext_docs.md
-  - Storage:
-    - Moving data:
-      - Copying files using scp: data/moving/scp.md
-      - Graphical file transfer tools: data/moving/graphical_transfer.md
-      - Using rsync for data transfer and synchronization: data/moving/rsync.md
-      - Using wget to download data from web sites to LUMI: data/moving/wget.md
-      - Remote disk mounts: data/moving/disk_mount.md
-    - LUMI-O object storage:
-      - LUMI-O object storage: data/lumio/index.md
-      - Introduction to LUMI-O Storage service: data/lumio/introduction.md
-      - Accessing LUMI-O: data/lumio/accessing_allas.md
-      - Common Use Cases: data/lumio/using_allas/common_use_cases.md
-      - LUMI-O Clients: data/lumio/clients.md
-      - Common Error Messages: data/lumio/using_allas/error_messages.md
-      - Further information: data/lumio/further_info.md
-      - LUMI-O object storage related terms and concepts: data/lumio/terms_and_concepts.md
-  - Applications:
-     - In alphabetic order: apps/by_name.md
-     - By discipline: apps/by_discipline.md
-     - By availability: apps/by_partition.md
-  - Support:
-    - Read before you start: support/most-important.md
-    - Tutorials: support/tutorials/index.md
-    - FAQ: support/faq/index.md
-    - Training material: support/training-material.md
-    - Contact: support/contact.md
-
+      - Containers: computing/containers/run-containers.md
+  - Workflows: computing/workflow-examples.md
+  - Environment: 
+    - User environment: computing/environment/environment.md
+    - Modules environment: computing/environment/modules.md
+- Storing:
+  - Overview: data/index.md
+  - HPC file systems:
+    - Overview: data/parallel/index.md
+    - LUMI-P Lustre File system: data/parallel/lumi-p.md
+    - LUMI-F Lustre File system (Flash): data/parallel/lumi-f.md
+  - LUMI-O object storage:
+    - Overview: data/lumio/index.md
+    - Introduction to LUMI-O Storage service: data/lumio/introduction.md
+    - Accessing LUMI-O: data/lumio/accessing_allas.md
+    - Common Use Cases: data/lumio/using_allas/common_use_cases.md
+    - LUMI-O Clients: data/lumio/clients.md
+    - Common Error Messages: data/lumio/using_allas/error_messages.md
+    - Further information: data/lumio/further_info.md
+    - LUMI-O object storage related terms and concepts: data/lumio/terms_and_concepts.md
+  - Moving data:
+    - Copying files using scp: data/moving/scp.md
+    - Graphical file transfer tools: data/moving/graphical_transfer.md
+    - Using rsync for data transfer and synchronization: data/moving/rsync.md
+    - Using wget to download data from web sites to LUMI: data/moving/wget.md
+    - Remote disk mounts: data/moving/disk_mount.md
+  - Sensitive Data:
+    - Overview: data/sensitive/index.md
+- Analyzing: 
+  - Overview: data-analysis/index.md
+  - Remote visualization: data_analysis/remote-visualization.md
+  - Python and Jupyter Notebooks: data_analysis/python-jupyter.md
+  - Useful shell commands: data_analysis/commandline.md
+- Applications:
+  - Overview: apps/index.md
+  - In alphabetic order: apps/by_name.md
+  - By discipline: apps/by_discipline.md
+  - By availability: apps/by_partition.md
+- Container Services:
+  - Concepts of cloud computing: lumik/concepts.md
+  - HPC Containers: computing/hpc-containers.md
+  - LUMI-K:
+    - Contents: lumik/index.md
+    - What is LUMI-K: lumik/lumik-what-is.md
+    - Containers & their Orchestration: lumik/containers.md
+    - Kubernetes and OpenShift concepts: lumik/concepts.md
+    - Getting Started:
+      - Getting access: lumik/access.md
+      - Using the web interface: lumik/usage/getting_started.md
+      - Command line tool installation and usage: lumik/usage/cli.md
+      - Security guide: lumik/usage/security-guide.md
+    - LUMI-K Tutorials:
+      - Deploying a static web server using the web interface: lumik/howto/basic-console.md
+      - Deploying a static web server using the command line: lumik/howto/elemental_tutorial.md
+      - Custom domain names and secure transport: lumik/howto/custom-domain.md
+      - Configuration, ConfigMaps and Secrets: lumik/howto/configuration.md
+      - Webhooks: lumik/howto/webhooks.md
+      - Reverse proxy authentication using a sidecar container: lumik/howto/sidecar_proxy_authentication.md
+      - Short introduction to YAML: lumik/howto/yaml_introduction.md
+      - How to transfer data to Rahti?: lumik/howto/transfer_data_rahti.md
+      - How to add docker hub credentials to a project: lumik/howto/docker_hub_login.md
+      - How to manually cache images in Rahti's registry: lumik/howto/docker_hub_manual_caching.md
+    - Storage in LUMI-K:
+      - Available storage options: lumik/storage/index.md
+      - Persistent volumes: lumik/storage/persistent.md
+      - Ephemeral storage: lumik/storage/ephemeral.md
+      - Sending e-mail from LUMI-K: lumik/howto/email.md
+    - Images:
+      - Overview: lumik/images/overview.md
+      - Creating an image: lumik/images/creating.md
+    - Rahti Templates: lumik/template-docs.md
+    - Projects and quota: lumik/usage/projects_and_quota.md
+    - Billing: lumik/billing.md
+    - External documentation: lumik/ext_docs.md
+  - Docker Stack: lumik/docker.md
+ 
 theme:
   name: material
   greetings: Welcome to the LUMI Documentation
