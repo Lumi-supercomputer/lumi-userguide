@@ -15,7 +15,7 @@ available through programming environments. In addition to compilers,
 a set highly optimized libraries at one's disposal.
 
 - [Discover the programming environments](compiling/prgenv.md)
-- [See which libraries are available](libraries/prgenv.md)
+- [See which libraries are available](compiling/libraries.md)
   
 ## Debugging
 

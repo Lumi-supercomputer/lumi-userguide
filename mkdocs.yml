@@ -43,7 +43,7 @@ nav:
       - Overview: development/profiling/index.md
       - CPU: development/profiling/cpu.md
       - GPU: development/profiling/gpu.md
-    - HPC Container Building: development/building-containers.md
+    - Building HPC Container: development/containers.md
   - Computing:
     - Overview: computing/index.md
     - Connecting: computing/connecting.md
@@ -52,88 +52,85 @@ nav:
       - CPU Partition: computing/systems/lumic.md
       - GPU Partition: computing/systems/lumig.md
     - Running jobs:
-      - Overview: computing/index.md
+      - Overview: computing/jobs/index.md
       - Slurm Quickstart: computing/jobs/slurm-quickstart.md
       - Available partitions: computing/jobs/partitions.md
       - Batch jobs: computing/jobs/batch-job.md
-      - Example jobs: computing/jobs/examples.md
       - Ditribution and binding: computing/jobs/distribution-binding.md
       - High throughput: computing/jobs/throughput.md
       - Interactive usage: computing/jobs/interactive.md
       - Performance checklist: computing/jobs/performance.md
-      - Containers: computing/containers/run-containers.md
-    - Workflows: computing/workflow-examples.md
+      - HPC Containers: computing/jobs/containers.md
   - Storing:
-    - Overview: data/index.md
+    - Overview: storage/index.md
     - HPC file systems:
-      - Overview: data/parallel/index.md
-      - LUMI-P Lustre File system: data/parallel/lumi-p.md
-      - LUMI-F Lustre File system (Flash): data/parallel/lumi-f.md
+      - Overview: storage/parallel/index.md
+      - LUMI-P Lustre File system: storage/parallel/lumip.md
+      - LUMI-F Lustre File system (Flash): storage/parallel/lumif.md
     - LUMI-O object storage:
-      - Overview: data/lumio/index.md
-      - Introduction to LUMI-O Storage service: data/lumio/introduction.md
-      - Accessing LUMI-O: data/lumio/accessing_allas.md
-      - Common Use Cases: data/lumio/using_allas/common_use_cases.md
-      - LUMI-O Clients: data/lumio/clients.md
-      - Common Error Messages: data/lumio/using_allas/error_messages.md
-      - Further information: data/lumio/further_info.md
-      - LUMI-O object storage related terms and concepts: data/lumio/terms_and_concepts.md
+      - Overview: storage/object/index.md
+      - Introduction to LUMI-O Storage service: storage/object/intro.md
+      - Accessing LUMI-O: storage/object/accessing.md
+      - Common Use Cases: storage/object/use_cases.md
+      - LUMI-O Clients: storage/object/clients.md
+      - Common Error Messages: storage/object/error_messages.md
+      - Further information: storage/object/further_info.md
+      - LUMI-O object storage related terms and concepts: storage/object/terms_and_concepts.md
     - Moving data:
-      - Copying files using scp: data/moving/scp.md
-      - Graphical file transfer tools: data/moving/graphical_transfer.md
-      - Using rsync for data transfer and synchronization: data/moving/rsync.md
-      - Using wget to download data from web sites to LUMI: data/moving/wget.md
-      - Remote disk mounts: data/moving/disk_mount.md
-    - Sensitive Data:
-      - Overview: data/sensitive/index.md
+      - Copying files using scp: storage/moving/scp.md
+      - Graphical file transfer tools: storage/moving/graphical_transfer.md
+      - Using rsync for data transfer and synchronization: storage/moving/rsync.md
+      - Using wget to download data from web sites to LUMI: storage/moving/wget.md
+      - Remote disk mounts: storage/moving/disk_mount.md
+    - Sensitive Data: storage/sensitive-data.md
   - Analyzing: 
     - Overview: data-analysis/index.md
     - Hardware: data-analysis/lumid.md
-    - Remote visualization: data_analysis/remote-visualization.md
-    - Python and Jupyter Notebooks: data_analysis/python-jupyter.md
-    - Useful shell commands: data_analysis/commandline.md
+    - Remote visualization: data-analysis/remote-visualization.md
+    - Python and Jupyter Notebooks: data-analysis/python-jupyter.md
+    - Useful shell commands: data-analysis/commandline.md
   - Applications:
     - Overview: apps/index.md
     - In alphabetic order: apps/by_name.md
     - By discipline: apps/by_discipline.md
     - By availability: apps/by_partition.md
   - Container Services:
-    - Concepts of cloud computing: lumik/concepts.md
-    - HPC Containers: computing/hpc-containers.md
+    - Concepts of cloud computing: container/concepts.md
+    - HPC Containers: computing/jobs/containers.md
     - LUMI-K:
-      - Contents: lumik/index.md
-      - What is LUMI-K: lumik/lumik-what-is.md
-      - Containers & their Orchestration: lumik/containers.md
-      - Kubernetes and OpenShift concepts: lumik/concepts.md
+      - Contents: container/index.md
+      - What is LUMI-K: container/lumik-what-is.md
+      - Containers & their Orchestration: container/containers.md
+      - Kubernetes and OpenShift concepts: container/concepts.md
       - Getting Started:
-        - Getting access: lumik/access.md
-        - Using the web interface: lumik/usage/getting_started.md
-        - Command line tool installation and usage: lumik/usage/cli.md
-        - Security guide: lumik/usage/security-guide.md
+        - Getting access: container/access.md
+        - Using the web interface: container/usage/getting_started.md
+        - Command line tool installation and usage: container/usage/cli.md
+        - Security guide: container/usage/security-guide.md
       - LUMI-K Tutorials:
-        - Deploying a static web server using the web interface: lumik/howto/basic-console.md
-        - Deploying a static web server using the command line: lumik/howto/elemental_tutorial.md
-        - Custom domain names and secure transport: lumik/howto/custom-domain.md
-        - Configuration, ConfigMaps and Secrets: lumik/howto/configuration.md
-        - Webhooks: lumik/howto/webhooks.md
-        - Reverse proxy authentication using a sidecar container: lumik/howto/sidecar_proxy_authentication.md
-        - Short introduction to YAML: lumik/howto/yaml_introduction.md
-        - How to transfer data to Rahti?: lumik/howto/transfer_data_rahti.md
-        - How to add docker hub credentials to a project: lumik/howto/docker_hub_login.md
-        - How to manually cache images in Rahti's registry: lumik/howto/docker_hub_manual_caching.md
+        - Deploying a static web server using the web interface: container/howto/basic-console.md
+        - Deploying a static web server using the command line: container/howto/elemental_tutorial.md
+        - Custom domain names and secure transport: container/howto/custom-domain.md
+        - Configuration, ConfigMaps and Secrets: container/howto/configuration.md
+        - Webhooks: container/howto/webhooks.md
+        - Reverse proxy authentication using a sidecar container: container/howto/sidecar_proxy_authentication.md
+        - Short introduction to YAML: container/howto/yaml_introduction.md
+        - How to transfer data to Rahti?: container/howto/transfer_data_rahti.md
+        - How to add docker hub credentials to a project: container/howto/docker_hub_login.md
+        - How to manually cache images in Rahti's registry: container/howto/docker_hub_manual_caching.md
       - Storage in LUMI-K:
-        - Available storage options: lumik/storage/index.md
-        - Persistent volumes: lumik/storage/persistent.md
-        - Ephemeral storage: lumik/storage/ephemeral.md
-        - Sending e-mail from LUMI-K: lumik/howto/email.md
+        - Available storage options: container/storage/index.md
+        - Persistent volumes: container/storage/persistent.md
+        - Ephemeral storage: container/storage/ephemeral.md
+        - Sending e-mail from LUMI-K: container/howto/email.md
       - Images:
-        - Overview: lumik/images/overview.md
-        - Creating an image: lumik/images/creating.md
-      - Rahti Templates: lumik/template-docs.md
-      - Projects and quota: lumik/usage/projects_and_quota.md
-      - Billing: lumik/billing.md
-      - External documentation: lumik/ext_docs.md
-    - Docker Stack: lumik/docker.md
+        - Overview: container/images/overview.md
+        - Creating an image: container/images/creating.md
+      - Rahti Templates: container/template-docs.md
+      - Projects and quota: container/usage/projects_and_quota.md
+      - Billing: container/billing.md
+      - External documentation: container/ext_docs.md
+    - Docker Stack: container/docker.md
 
 theme:
   name: material
