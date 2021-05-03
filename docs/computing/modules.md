@@ -1,4 +1,4 @@
-# Software Modules
+# Modules Environment
 
 Software modules allow you to control which software and versions are 
 available in your environment. Modules contain the necessary information to
@@ -67,11 +67,11 @@ meaning that it is the module that will be loaded if no version is specified.
 
 ### Loading and removing modules
 
-To load a module to use the module load command. For example, to load the Cray
-Compiling Environment, use:
+To load a module to use the module load command. For example, to load the Cray 
+FFTW library, use:
 
 ```
-module load cce
+module load cray-fftw
 ```
 
 This command will load the default version of the module. If the software you
@@ -82,14 +82,14 @@ To load a specific version of the module you need to specify it in the name of
 the module.
 
 ```
-module load cce/11.0.0
+module load cray-fftw/3.3.8.8
 ```
 
 In order to unload a module from your environment, use the `unload` sub-command
 followed by the name of the module you want to remove.
 
 ```
-module remove cce
+module remove cray-fftw
 ```
 
 You can also remove all loaded modules from your environment by using the 
@@ -106,7 +106,7 @@ documentation of the software package can be obtained using the `help`
 sub-command.
 
 ```
-module help cce
+module help cray-fftw
 CHANGEME
 ```
 
@@ -115,7 +115,7 @@ the module, you can inspect the content of the module file using the `show`
 sub-command.
 
 ```
-module show cce
+module show cray-fftw
 CHANGEME
 ```
 

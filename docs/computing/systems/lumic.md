@@ -1,9 +1,4 @@
----
-hide:
-  - navigation
----
-
-# Technical details about LUMI-C
+# LUMI-C: The CPU Partiton
 
 ## Compute
 

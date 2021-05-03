@@ -1,9 +1,4 @@
----
-hide:
-  - navigation
----
-
-# Technical details about LUMI-G
+# LUMI-G: The GPU Partition
 
 ## Compute
 
