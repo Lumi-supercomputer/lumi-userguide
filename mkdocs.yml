@@ -162,7 +162,7 @@ theme:
   
   home_primary:
     title: Get Started
-    page: getting-started/
+    page: support/most-important/
   home_secondary:
     title: LUMI Overview
     page: system/overview/
