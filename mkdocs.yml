@@ -88,6 +88,7 @@ nav:
       - Overview: data/sensitive/index.md
   - Analyzing: 
     - Overview: data-analysis/index.md
+    - Hardware: data-analysis/lumid.md
     - Remote visualization: data_analysis/remote-visualization.md
     - Python and Jupyter Notebooks: data_analysis/python-jupyter.md
     - Useful shell commands: data_analysis/commandline.md
