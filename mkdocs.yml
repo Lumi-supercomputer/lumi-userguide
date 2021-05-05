@@ -56,7 +56,7 @@ nav:
       - Slurm Quickstart: computing/jobs/slurm-quickstart.md
       - Available partitions: computing/jobs/partitions.md
       - Batch jobs: computing/jobs/batch-job.md
-      - Ditribution and binding: computing/jobs/distribution-binding.md
+      - Distribution and binding: computing/jobs/distribution-binding.md
       - High throughput: computing/jobs/throughput.md
       - Interactive usage: computing/jobs/interactive.md
       - Performance checklist: computing/jobs/performance.md
@@ -177,7 +177,7 @@ extra:
 
 markdown_extensions:
   - toc:
-      toc_depth: 2-6
+      toc_depth: 3
   - admonition
   - attr_list
   - footnotes
