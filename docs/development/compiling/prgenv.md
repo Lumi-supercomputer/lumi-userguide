@@ -160,15 +160,18 @@ should provide the appropriate include (`-I`) and library (`-L`) search paths
 as well as linking command (`-l`).
 
 
-??? warning "For Cray Veteran"
-    If you have used a Cray system in the past, you may be familiar with the legacy
-    linking behaviour of the Cray compiler wrappers. Historically, the wrappers
-    build statically linked executables. In recent version of the Cray programming
-    environment this not the case anymore, libraries are now dynamically linked.
+??? warning "About Linking"
+    If you have used a Cray system in the past, you may be familiar with the 
+    legacy linking behaviour of the Cray compiler wrappers. Historically, the 
+    wrappers build statically linked executables. In recent version of the Cray
+    programming environment this not the case anymore, libraries are now 
+    dynamically linked.
 
     The compiler wrapper encodes the paths to the libraries using runpath. This
-    ensures that the executable can find the correct runtime libraries even in the
-    case where the library module is not loaded.
+    ensures that the executable can find the correct runtime libraries even in
+    the case where the library module is not loaded.
+
+    Static linking is unsupported at the moment
 
 ### Using the wrapper with a `configure` script
 
