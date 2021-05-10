@@ -7,8 +7,8 @@ This page is meant to help a user determine the cause of a program failure and
 diagnose a program that hang. In the following, two tools are presented: the
 [Stack Trace Analysis Tool][1] (STAT) and the 
 [Abnormal Termination Processing][2] (ATP). Both tools rely on the analysis of 
-the stack backtrace to determine where the application is stalled or view of 
-what the application as doing at the time of the crash.
+the stack backtrace to determine where the application is stalled or view where 
+the application was at the time of the crash.
 
 ## STAT: The Stack Trace Analysis Tool
 
