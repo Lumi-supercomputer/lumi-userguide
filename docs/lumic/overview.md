@@ -13,7 +13,6 @@ LINPACK performance of ca. 8 Petaflops.
 | Number of Nodes  | CPU type                                              | CPU cores     | Memory  | Local storage | Network     |
 | -----------------|-------------------------------------------------------|---------------|---------|---------------|-------------|
 | 1376             | AMD EPYC 7003 series<br>(2.x GHz base, 3.x GHz boost) | 128<br>(2x64) | 256 GB  | none          | 1x 100 Gb/s |
-| 1376             | AMD EPYC 7003 series<br>(2.x GHz base, 3.x GHz boost) | 128<br>(2x64) | 256 GB  | none          | 1x 100 Gb/s | 
 | 128              | AMD EPYC 7003 series<br>(2.x GHz base, 3.x GHz boost) | 128<br>(2x64) | 1024 GB | none          | 1x 100 Gb/s |
 | 32               | AMD EPYC 7003 series<br>(2.x GHz base, 3.x GHz boost) | 128<br>(2x64) | 2048 GB | none          | 1x 100 Gb/s |
 
