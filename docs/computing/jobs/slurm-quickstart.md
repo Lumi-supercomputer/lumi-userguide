@@ -10,20 +10,19 @@ as the batch scheduler and resource manager.
 ## Slurm commands overview
 
 In the following, you will learn how to submit your job using the
-[Slurm Workload Manager][1]. If you`re familiar with Slurm, you
+[Slurm Workload Manager][1]. If you're familiar with Slurm, you
 probably won't learn much and will be more interested in learning
 how to submit jobs to the [LUMI-C][2] and [LUMI-G][3] partitions. If you
 aren't acquainted with Slurm, the following will introduce you to
 the basics.
 
-
 The main commands for using Slurm are summarized in the table below.
 
 | Command   | Description                                                 |
-| ----------|-------------------------------------------------------------|
+| --------- | ----------------------------------------------------------- |
 | `sbatch`  | Submit a batch script                                       |
-| `srun`    | Run a parallel job                                          |
-| `squeue`  | View information about jobs located in the scheduling queue |
+| `srun`    | Run a parallel job(step)                                    |
+| `squeue`  | View information about jobs in the scheduling queue         |
 | `scancel` | Signal or cancel jobs, job arrays or job steps              |
 | `sinfo`   | View information about nodes and partitions                 |
 
@@ -63,6 +62,7 @@ module load MyApp/1.2.3
 
 srun myapp -i input -o output
 ```
+
 In the previous example, the first line `#!/bin/bash` specifies that the script
 should be interpreted as a bash script.
 
@@ -90,9 +90,9 @@ and other listings. The second directive sets the billing project for the job
 The account argument is mandatory. Failing to set it will cause the job to 
 be held with the reason `AssocMaxJobsLimit`. 
 
-The remaining lines specified the resources needed for the job. 
-The first one is the **maximum** time our job can run. If your job exceeds
-the time limit, it's terminated regardless of whether it's finished or not. 
+The remaining lines specify the resources needed for the job. 
+The first one is the **maximum** time your job can run. If your job exceeds
+the time limit, it is terminated regardless of whether it has finished or not. 
 
 ```
 #SBATCH --time=02:00:00
@@ -112,14 +112,15 @@ will need to run
 ```
 
 In this instance we request one task (process) to be run on one node. A task
-corresponds to a process (or an MPI rank). CPU and that 2GB of memory should
-be allocated to our job.
+corresponds to a process (or an MPI rank). One CPU thread (used, for example, with
+OpenMP) is requested for the one task as well as 2 GiB of memory should
+be allocated to the whole job.
 
 The next line defines the partition to which the job will be submitted.
 Partitions are (possibly overlapping) groups of nodes with similar resources or
-associated limits. In our example, the job doesn't use a lot of resources and
-will fit perfectly onto the `small` partition. More informations about the 
-available partitions can be [found here][4].
+associated limits. In our example, the job does not use a lot of resources and
+will fit perfectly onto the `small` partition. See [partitions][4] for more
+informations about the available partitions.
 
 ```
 #SBATCH --partition=small
@@ -141,7 +142,7 @@ using the `srun` command.
 srun myapp -i input -o output
 ```
 
-[4]: partitions.md
+[4]: /computing/jobs/partitions/
 
 ### Submit a batch job 
 
@@ -149,7 +150,7 @@ To submit the job script we just created we use the `sbatch` command. The
 general syntax can be condensed as
 
 ```
-sbatch [options] [job_script [ job_script_arguments ...]]
+sbatch [options] job_script [job_script_arguments ...]
 ```
 
 The available options are the same as the one you use in the batch script:
@@ -167,12 +168,12 @@ Submitted batch job 123456
 ```
 
 The `sbatch` command returns immediately and if the job is successfully
-launched, the command prints out the ID number of the job.
+submitted, the command prints out the ID number of the job.
 
 ### Examine the queue
 
-Once you have submitted you batch script it won't necessarily runs immediately,
-it may sit in the queue of pending jobs for some time before its required
+Once you have submitted your batch script it won't necessarily run immediately.
+It may wait in the queue of pending jobs for some time before its required
 resources become available. In order to view your jobs in the queue, use the
 `squeue`.
 
@@ -182,7 +183,7 @@ $ squeue
  123456     small exampleJ lumi_usr  PD       0:00      1 (Priority)
 ```
 
-The output gives you the state of your job in the `ST` column. In our case, the
+The output shows the state of your job in the `ST` column. In our case, the
 job is pending (`PD`). The last column indicates the reason why the job isn't
 running: `Priority`. This indicates that your job is queued behind a higher
 priority job. One other possible reason can be that your job is waiting for
@@ -201,8 +202,7 @@ The `ST` column will now display a `R` value (for `RUNNING`). The `TIME` column
 will represent the time your job is running and the list of nodes on which your
 job is executing will be given in the last column of the output.
 
-
-In practice the list of jobs printed by this command will be much lengthier
+In practice the list of jobs printed by this command will be much longer,
 since all jobs, including those belonging to other users, will be visible.
 In order to see only the jobs that belong to you use the `squeue` command with
 the `--me` flag.
@@ -227,7 +227,7 @@ while for the second no node has been choosen yet.
 
 ### Cancelling a job
 
-Sometimes things just don't go as planned. If you have made and your job
+Sometimes things just don't go as planned. If your job
 doesn't run as expected, you may need to cancel your job. This can be achieved
 using the `scancel` command which takes the job ID of the job to cancel. 
 
@@ -278,8 +278,8 @@ which is an environment variable created by Slurm and whose value is set by
     it should always be used to make sure the software behaves as expected.
 
 
-Required memory per node is specified using `--mem`. For example, if the job
-requires 16Gb to be allocated you can use the directive:
+The required memory per node is specified using `--mem`. For example, if the job
+requires 16 GiB to be allocated you can use the directive:
 
 ```
 #SBATCH --mem=16G
@@ -293,12 +293,12 @@ option is to specify the memory per allocated CPU with `--mem-per-cpu`.
 #SBATCH --mem-per-cpu=512M
 ```
 
-Where a total of `32CPU * 512M = 16Gb` of memory will be allocated to the job
+Where a total of `32 CPU * 512 M/CPU = 16 GiB` of memory will be allocated to the job
 which is an equivalent memory allocation that the previous example where memory
 is allocated on a per node basis.
 
 !!! note
-    The `default` partition is set up in exclusive mode, meaning that job can
+    The `default` partition is set up in exclusive mode, meaning that jobs can
     not share nodes with other running jobs. Thus, you will have access to all 
     the memory of the node.
 
@@ -306,7 +306,7 @@ is allocated on a per node basis.
 ## MPI-based jobs
 
 MPI parallelization is based upon processes communicating by passing messages.
-The number of MPI ranks to be created is 
+The number of MPI ranks to be allocated is specified by
 
 ```
 #SBATCH --ntasks=256
@@ -335,5 +335,5 @@ discussed previously:
 ```
 
 In this example, the job requires 4 nodes (`--nodes`). On each of these nodes, 
-16 tasks (MPI ranks, `--ntasks-per-node`) will be spawned. Each task, use 8
+16 tasks (MPI ranks, `--ntasks-per-node`) will be spawned. Each task uses 8
 threads which is specified by the `--cpus-per-task` directive.

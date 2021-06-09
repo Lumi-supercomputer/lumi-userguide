@@ -11,7 +11,7 @@ Before you can
 
 ### Using preinstalled softwares
 
-Softwares on LUMI can be accessed through [modules][1]. With the help module
+Softwares on LUMI can be accessed through [modules][1]. With the help of the module
 command you will be able to load and unload the desired compilers, tools
 and libraries.
 
@@ -19,7 +19,7 @@ and libraries.
 
 ### Running
 
-Running programs on the LUMI compute nodes requires you need to write a 
+Running programs on the LUMI compute nodes requires you to write a 
 [job submission script][2] or to request access to an [interactive session][3].
 
 [2]: jobs/
