@@ -1,5 +1,8 @@
 # Slurm Quickstart
 
+[slurm]: https://slurm.schedmd.com/
+[partitions]: ./partitions.md
+
 An HPC cluster is made up of a number of compute nodes, which consist of one or
 more processors, memory and in the case of the GPU nodes, GPUs. These computing
 resources are allocated to the user by the resource manager. This is achieved
@@ -10,11 +13,17 @@ as the batch scheduler and resource manager.
 ## Slurm commands overview
 
 In the following, you will learn how to submit your job using the
+<<<<<<< HEAD
 [Slurm Workload Manager][1]. If you're familiar with Slurm, you
 probably won't learn much and will be more interested in learning
 how to submit jobs to the [LUMI-C][2] and [LUMI-G][3] partitions. If you
 aren't acquainted with Slurm, the following will introduce you to
 the basics.
+=======
+[Slurm Workload Manager][slurm]. If you're familiar with Slurm, you
+probably won't learn much. However, If you aren't acquainted with Slurm, 
+the following will introduce you to the basics.
+>>>>>>> d7399ae3a69b246f5c252c3e895befd480c23de2
 
 The main commands for using Slurm are summarized in the table below.
 
@@ -26,9 +35,6 @@ The main commands for using Slurm are summarized in the table below.
 | `scancel` | Signal or cancel jobs, job arrays or job steps              |
 | `sinfo`   | View information about nodes and partitions                 |
 
-[1]: https://slurm.schedmd.com/
-[2]: computing/jobs/lumic.md
-[3]: computing/jobs/lumig.md
 
 ### Batch script
 
@@ -118,9 +124,15 @@ be allocated to the whole job.
 
 The next line defines the partition to which the job will be submitted.
 Partitions are (possibly overlapping) groups of nodes with similar resources or
+<<<<<<< HEAD
 associated limits. In our example, the job does not use a lot of resources and
 will fit perfectly onto the `small` partition. See [partitions][4] for more
 informations about the available partitions.
+=======
+associated limits. In our example, the job doesn't use a lot of resources and
+will fit perfectly onto the `small` partition. More informations about the 
+available partitions can be [found here][partitions].
+>>>>>>> d7399ae3a69b246f5c252c3e895befd480c23de2
 
 ```
 #SBATCH --partition=small
@@ -142,8 +154,11 @@ using the `srun` command.
 srun myapp -i input -o output
 ```
 
+<<<<<<< HEAD
 [4]: /computing/jobs/partitions/
 
+=======
+>>>>>>> d7399ae3a69b246f5c252c3e895befd480c23de2
 ### Submit a batch job 
 
 To submit the job script we just created we use the `sbatch` command. The
@@ -240,6 +255,7 @@ submitting your job or by using `squeue`. The `scancel` command applies to
 either a pending job waiting in the queue or to an already running job. In the
 first case, the job will simply be removed from the queue while in the latter,
 the execution will be stopped.
+<<<<<<< HEAD
 
 ## Serial and shared memory jobs
 
@@ -337,3 +353,5 @@ discussed previously:
 In this example, the job requires 4 nodes (`--nodes`). On each of these nodes, 
 16 tasks (MPI ranks, `--ntasks-per-node`) will be spawned. Each task uses 8
 threads which is specified by the `--cpus-per-task` directive.
+=======
+>>>>>>> d7399ae3a69b246f5c252c3e895befd480c23de2
