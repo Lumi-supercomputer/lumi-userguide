@@ -13,17 +13,9 @@ as the batch scheduler and resource manager.
 ## Slurm commands overview
 
 In the following, you will learn how to submit your job using the
-<<<<<<< HEAD
-[Slurm Workload Manager][1]. If you're familiar with Slurm, you
-probably won't learn much and will be more interested in learning
-how to submit jobs to the [LUMI-C][2] and [LUMI-G][3] partitions. If you
-aren't acquainted with Slurm, the following will introduce you to
-the basics.
-=======
 [Slurm Workload Manager][slurm]. If you're familiar with Slurm, you
 probably won't learn much. However, If you aren't acquainted with Slurm, 
 the following will introduce you to the basics.
->>>>>>> d7399ae3a69b246f5c252c3e895befd480c23de2
 
 The main commands for using Slurm are summarized in the table below.
 
@@ -124,15 +116,9 @@ be allocated to the whole job.
 
 The next line defines the partition to which the job will be submitted.
 Partitions are (possibly overlapping) groups of nodes with similar resources or
-<<<<<<< HEAD
-associated limits. In our example, the job does not use a lot of resources and
-will fit perfectly onto the `small` partition. See [partitions][4] for more
-informations about the available partitions.
-=======
 associated limits. In our example, the job doesn't use a lot of resources and
 will fit perfectly onto the `small` partition. More informations about the 
 available partitions can be [found here][partitions].
->>>>>>> d7399ae3a69b246f5c252c3e895befd480c23de2
 
 ```
 #SBATCH --partition=small
@@ -154,11 +140,6 @@ using the `srun` command.
 srun myapp -i input -o output
 ```
 
-<<<<<<< HEAD
-[4]: /computing/jobs/partitions/
-
-=======
->>>>>>> d7399ae3a69b246f5c252c3e895befd480c23de2
 ### Submit a batch job 
 
 To submit the job script we just created we use the `sbatch` command. The
@@ -255,103 +236,3 @@ submitting your job or by using `squeue`. The `scancel` command applies to
 either a pending job waiting in the queue or to an already running job. In the
 first case, the job will simply be removed from the queue while in the latter,
 the execution will be stopped.
-<<<<<<< HEAD
-
-## Serial and shared memory jobs
-
-In serial or in shared-memory parallelism, applications achieve parallelism by
-executing one or multiple threads within one compute node. This means that with
-shared memory parallelism, jobs are limited to the total amount of memory and
-cores on one node.
-
-In the introductory example we discuss a serial job.
-
-```
-#SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=1
-```
-
-In case, you want to run a threaded application that will use 32 threads, then
-specify that you will have 32 threads with the `--cpus-per-task=32` directive.
-
-```
-#SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=32
-
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
-```
-
-In the example above, we consider the case of an OpenMP application. OpenMP is
-not Slurm-aware, so we also export the `OMP_NUM_THREADS` environment variable.
-This is accomplished by setting `OMP_NUM_THREADS` to `$SLURM_CPUS_PER_TASK`
-which is an environment variable created by Slurm and whose value is set by
-`--cpus-per-task`. 
-
-!!! warning
-    If the application has a command-line option to set the number of threads, 
-    it should always be used to make sure the software behaves as expected.
-
-
-The required memory per node is specified using `--mem`. For example, if the job
-requires 16 GiB to be allocated you can use the directive:
-
-```
-#SBATCH --mem=16G
-```
-Different units for the memory allocation can be specified using the suffix
-`K`, `M`, `G` and `T` for Kilo, Mega, Giga and Tera bytes respectively. Another
-option is to specify the memory per allocated CPU with `--mem-per-cpu`.
-
-```
-#SBATCH --cpus-per-task=32
-#SBATCH --mem-per-cpu=512M
-```
-
-Where a total of `32 CPU * 512 M/CPU = 16 GiB` of memory will be allocated to the job
-which is an equivalent memory allocation that the previous example where memory
-is allocated on a per node basis.
-
-!!! note
-    The `default` partition is set up in exclusive mode, meaning that jobs can
-    not share nodes with other running jobs. Thus, you will have access to all 
-    the memory of the node.
-
-
-## MPI-based jobs
-
-MPI parallelization is based upon processes communicating by passing messages.
-The number of MPI ranks to be allocated is specified by
-
-```
-#SBATCH --ntasks=256
-```
-
-As MPI processes all have their separate memory space. These processes can be
-distributed among several compute nodes. For example, you can spread the 256
-tasks of the previous example among 4 nodes using the `--nodes` directive and
-then specify the number of tasks per node with the `--ntasks-per-node`
-directive. 
-
-```
-#SBATCH --nodes=4
-#SBATCH --ntasks-per-node=64
-```
-
-## Hybrid MPI+OpenMP jobs
-
-For hybrid MPI+OpenMP jobs, you have to use a combination of the directives 
-discussed previously:
-
-```
-#SBATCH --nodes=4
-#SBATCH --ntasks-per-node=16
-#SBATCH --cpus-per-task=8
-```
-
-In this example, the job requires 4 nodes (`--nodes`). On each of these nodes, 
-16 tasks (MPI ranks, `--ntasks-per-node`) will be spawned. Each task uses 8
-threads which is specified by the `--cpus-per-task` directive.
-=======
->>>>>>> d7399ae3a69b246f5c252c3e895befd480c23de2
