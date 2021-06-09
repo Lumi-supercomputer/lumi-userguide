@@ -67,13 +67,8 @@ which will be loaded (with `module load <full-name>`) if no version is specified
 
 ### Loading and removing modules
 
-<<<<<<< HEAD:docs/computing/environment/modules.md
-To load a module use the `module load` command. For example, to load the Cray
-Compiling Environment, use:
-=======
-To load a module to use the module load command. For example, to load the Cray 
+To load a module use the module load command. For example, to load the Cray 
 FFTW library, use:
->>>>>>> d7399ae3a69b246f5c252c3e895befd480c23de2:docs/computing/modules.md
 
 ```
 module load cray-fftw
