@@ -1,26 +1,33 @@
+---
+title: Computing - Overview
+---
+
+[modules]: ./modules.md
+[jobsub]: ./jobs/submitting-jobs.md
+[interactive]: ./jobs/interactive.md
+[lumic]: ./systems/lumic.md
+[lumig]: ./systems/lumig.md
+
 # Overview
 
+## Connecting
 
-### Connecting
+## Learn More About the LUMI Hardware
+ 
+- Learn more about LUMI-C: [the CPU partition][lumic]
+- Learn more about LUMI-G: [the GPU partition][lumig]
 
-Before you can
+## Setup your Environment
 
-### Get to know the LUMI hardware and partitions
-
-
-
-### Using preinstalled softwares
-
-Softwares on LUMI can be accessed through [modules][1]. With the help of the module
+Softwares on LUMI can be accessed through [modules][modules]. With the help of the module
 command you will be able to load and unload the desired compilers, tools
 and libraries.
 
-[1]: environment/modules
+## Running your Jobs
 
-### Running
+The basic step to run your application on LUMI can be sumarized as follow:
 
-Running programs on the LUMI compute nodes requires you to write a 
-[job submission script][2] or to request access to an [interactive session][3].
-
-[2]: jobs/
-[3]: jobs/interactive
+- Determine the resources needed for your job
+- Pick a partition (queue) that will provide the required resources
+- Create a job script that describes the resources needed for your job and the
+  the steps needed to run your application

@@ -1,5 +1,0 @@
-#How can I share my data with other users?
-
-Sharing data, e.g. datasets or research results, is easy in the Allas object storage. You can share these either with a limited audience, e.g. other projects, or allow access for everybody by making the data public.
-
-Read more about sharing your data in Allas.
