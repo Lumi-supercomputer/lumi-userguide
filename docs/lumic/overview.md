@@ -10,17 +10,17 @@ hide:
 The LUMI-C partition consists of 1536 compute nodes with an estimated combined
 LINPACK performance of ca. 8 Petaflops.
 
-| Number of Nodes  | CPU type                                              | CPU cores     | Memory  | Local storage | Network     |
-| -----------------|-------------------------------------------------------|---------------|---------|---------------|-------------|
-| 1376             | AMD EPYC 7003 series<br>(2.x GHz base, 3.x GHz boost) | 128<br>(2x64) | 256 GB  | none          | 1x 100 Gb/s |
-| 128              | AMD EPYC 7003 series<br>(2.x GHz base, 3.x GHz boost) | 128<br>(2x64) | 1024 GB | none          | 1x 100 Gb/s |
-| 32               | AMD EPYC 7003 series<br>(2.x GHz base, 3.x GHz boost) | 128<br>(2x64) | 2048 GB | none          | 1x 100 Gb/s |
+| Nodes  | CPUs                                              | CPU cores     | Memory  | Local storage | Network     |
+| :--------------: | :---------------------------------------------------: | :-----------: | :-----: | :-----------: | :---------: |
+| 1376             | AMD EPYC 7003 series<br>with 64 cores at 2.x GHz base, 3.x GHz boost<br>2 CPU sockets per node | 128<br>(2x64) | 256 GiB  | none          | 1x 100 Gb/s |
+| 128              | AMD EPYC 7003 series<br>(2.x GHz base, 3.x GHz boost) | 128<br>(2x64) | 1024 GiB | none          | 1x 100 Gb/s |
+| 32               | AMD EPYC 7003 series<br>(2.x GHz base, 3.x GHz boost) | 128<br>(2x64) | 2048 GiB | none          | 1x 100 Gb/s |
 
 
 ### Cores, core complexes and compute dies
 
-The EPYC 7003 series server CPU has the ["Zen 3" compute core](1), which is the
-same core that is found in the Ryzen 5000 series consumer GPUs. The cores are
+The EPYC 7003 series server CPU has the ["Zen 3" compute core][1], which is the
+same core that is found in the Ryzen 5000 series consumer CPUs. The cores are
 fully x64-64 compatible and support AVX2 256-bit vector instructions for a
 maximum throughput of 16 double precision FLOPS.
 
@@ -40,7 +40,7 @@ the LUMI-C compute nodes, the standard configuration is 4 NUMA zones
 ## Network
 
 At first, the LUMI-C nodes will have a 100 Gb/s network card (HPE/Cray 
-"Slingshot"), but the nodes will later be upgraded to 200 Gigabit/s when LUMI-G
+Slingshot), but the nodes will later be upgraded to 200 Gb/s when LUMI-G
 becomes operational in 2022.
 
 ## Storage
