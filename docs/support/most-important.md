@@ -28,7 +28,6 @@ All the other tasks should be done on the compute nodes either as normal batch j
 LUMI uses the SLURM batch queue system and the "srun" command to launch jobs. LUMI consists of several partition with different kinds of compute nodes:
 
 * **LUMI-C**: Jobs that uses CPU only. The nodes have 128 cores and 256, 1024, or 2048 GB memory. `#SBATCH --partition=lumi-c`
-* **LUMI-G**: Jobs that uses CPU and GPUs. CPU-only jobs should not be run here unless they are part of the workflow and very short (e.g. a quick post-processing step). The nodes have 8 GPUs, 64 CPU cores, and 512 GB of memory. `#SBATCH --partition=lumi-g`
 * **LUMI-D**: Jobs that require very large memory (8 TB) or Nvidia GPUs for visualization. Best use for interactive jobs, but regular batch jobs can be run with an X hour limit. `#SBATCH --partition=lumi-d`
 
 ## How to run
