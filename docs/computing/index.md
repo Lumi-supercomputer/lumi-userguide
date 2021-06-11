@@ -15,7 +15,6 @@ title: Computing - Overview
 ## Learn More About the LUMI Hardware
  
 - Learn more about LUMI-C: [the CPU partition][lumic]
-- Learn more about LUMI-G: [the GPU partition][lumig]
 
 ## Setup your Environment
 

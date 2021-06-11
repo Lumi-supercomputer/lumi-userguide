@@ -14,10 +14,10 @@ require a lot of memory.
 | 8     | AMD EPYC 7742 (2.25 GHz) | 128 (2x64) | 2048 GiB | 8x NVIDIA RTX8000 <br> with 48 GB memory | 14 TB SSD | 2x100 Gb/s |
 
 **Note**: The CPUs in LUMI-D are one generation older (Zen 2 / "Rome") than in
-LUMI-C and LUMI-G (Zen 3 / "Milan"). There should be no big problem with
+LUMI-C (Zen 3 / "Milan"). There should be no big problem with
 software compatibility, though, as only a few new processor instructions related
 to encryption and virtualization was added to the Zen 3 core. We expect that
-almost all programs compiled for LUMI-C and LUMI-G (e.g. with `-march=znver3`)
+almost all programs compiled for LUMI-C (e.g. with `-march=znver3`)
 will run on LUMI-D with good performance. Please see this page [FIXME] for more
 information about Zen 2 vs. Zen 3 differences.
 
