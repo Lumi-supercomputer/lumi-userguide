@@ -5,11 +5,11 @@
 The LUMI-C partition consists of 1536 compute nodes with an estimated combined
 LINPACK performance of ca. 8 Petaflops.
 
-| Nodes  | CPUs                                              | CPU cores     | Memory  | Local storage | Network     |
-| :--------------: | :---------------------------------------------------: | :-----------: | :-----: | :-----------: | :---------: |
-| 1376             | AMD EPYC 7003 series<br>with 64 cores at 2.x GHz base, 3.x GHz boost<br>2 CPU sockets per node | 128<br>(2x64) | 256 GiB  | none          | 1x 100 Gb/s |
-| 128              | AMD EPYC 7003 series<br>(2.x GHz base, 3.x GHz boost) | 128<br>(2x64) | 1024 GiB | none          | 1x 100 Gb/s |
-| 32               | AMD EPYC 7003 series<br>(2.x GHz base, 3.x GHz boost) | 128<br>(2x64) | 2048 GiB | none          | 1x 100 Gb/s |
+| Nodes | CPUs                                                  | CPU cores     | Memory   | Local storage | Network     |
+| :---: | :---------------------------------------------------: | :-----------: | :------: | :-----------: | :---------: |
+| 1376  | AMD EPYC 7003 series<br>(2.x GHz base, 3.x GHz boost) | 128<br>(2x64) | 256 GiB  | none          | 1x 100 Gb/s |
+| 128   | AMD EPYC 7003 series<br>(2.x GHz base, 3.x GHz boost) | 128<br>(2x64) | 512 GiB  | none          | 1x 100 Gb/s |
+| 32    | AMD EPYC 7003 series<br>(2.x GHz base, 3.x GHz boost) | 128<br>(2x64) | 1024 GiB | none          | 1x 100 Gb/s |
 
 
 ### Cores, core complexes and compute dies
