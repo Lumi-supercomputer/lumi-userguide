@@ -7,9 +7,9 @@ LINPACK performance of ca. 8 Petaflops.
 
 | Nodes | CPUs                                                  | CPU cores     | Memory   | Local storage | Network     |
 | :---: | :---------------------------------------------------: | :-----------: | :------: | :-----------: | :---------: |
-| 1376  | AMD EPYC 7003 series<br>(2.x GHz base, 3.x GHz boost) | 128<br>(2x64) | 256 GiB  | none          | 1x 100 Gb/s |
-| 128   | AMD EPYC 7003 series<br>(2.x GHz base, 3.x GHz boost) | 128<br>(2x64) | 512 GiB  | none          | 1x 100 Gb/s |
-| 32    | AMD EPYC 7003 series<br>(2.x GHz base, 3.x GHz boost) | 128<br>(2x64) | 1024 GiB | none          | 1x 100 Gb/s |
+| 1376  | AMD EPYC 7763 series<br>(2.45 GHz base, 3.5 GHz boost) | 128<br>(2x64) | 256 GiB  | none          | 1x 100 Gb/s |
+| 128   | AMD EPYC 7763 series<br>(2.45 GHz base, 3.5 GHz boost) | 128<br>(2x64) | 512 GiB  | none          | 1x 100 Gb/s |
+| 32    | AMD EPYC 7763 series<br>(2.45 GHz base, 3.5 GHz boost) | 128<br>(2x64) | 1024 GiB | none          | 1x 100 Gb/s |
 
 
 ### Cores, core complexes and compute dies
@@ -26,7 +26,7 @@ maximum throughput of 16 double precision FLOPS.
 The EPYC server CPU consists of multiple chips, so-called core complex dies
 (CCDs). There are 8 CCDs with 8 cores each and they are all connected to a
 central I/O die which contains the memory controller. There are 8 memory
-channels running DDR4 at 3200 MT/s.
+channels with a peak theoretical bandwidth 204.8 GB/s per socket.
 
 The number of NUMA zones in a CPU socket can be configured to from 1 up to 4. On
 the LUMI-C compute nodes, the standard configuration is 4 NUMA zones
