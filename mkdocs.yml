@@ -50,6 +50,7 @@ nav:
     - Module environment: computing/modules.md
     - Systems:
       - CPU Partition: computing/systems/lumic.md
+      - GPU EAP Partition: computing/systems/kuura.md
     - Running jobs:
       - Overview: computing/jobs/index.md
       - Slurm Quickstart: computing/jobs/slurm-quickstart.md
