@@ -34,10 +34,10 @@ programming environments for LUMI.
 ### Switching compiler suites
 
 The compiler collections are accessible through [modules][modules] and in 
-particular, the `module restore` command
+particular, the `module load` command
 
 ```
-$ module restore PrgEnv-<name>
+$ module load PrgEnv-<name>
 ```
 
 where `<name>` is the name of the compiler suite. There is 3 collections
@@ -52,7 +52,7 @@ available on LUMI. The default collection is Cray.
 For example, if you want to use the GNU’s compiler collection:
 
 ```
-$ module restore PrgEnv-gnu
+$ module load PrgEnv-gnu
 ```
 
 After you have loaded a programming environment, [compiler wrappers][2] (`cc`,
@@ -62,10 +62,10 @@ After you have loaded a programming environment, [compiler wrappers][2] (`cc`,
 
 If the default compiler version does not suit you, you can change the version
 after a programming environment versions. This operation is performed using
-the `module switch` command.
+the `module swap` command.
 
 ```
-module switch <compiler> <compiler>/<version>
+module swap <compiler> <compiler>/<version>
 ```
 
 Where `<compiler>` is the name of the compiler module for the loaded programming
@@ -74,13 +74,13 @@ environment and `<compiler>` the version you want to use. For example:
 === "CCE"
 
     ```
-    module switch cce cce/11.0.2
+    module swap cce cce/11.0.2
     ```
 
 === "GNU"
 
     ```
-    module switch gcc gcc/10.2.0
+    module swap gcc gcc/10.2.0
     ```
 
 
@@ -159,19 +159,26 @@ user-provided options in order to be linked. For other libraries, the user
 should provide the appropriate include (`-I`) and library (`-L`) search paths
 as well as linking command (`-l`).
 
+If you have used a Cray system in the past, you may be familiar with the legacy 
+linking behaviour of the Cray compiler wrappers. Historically, the wrappers 
+build statically linked executables. In recent version of the Cray programming 
+environment this not the case anymore, libraries are now **dynamically linked**.
+The following options are available to you to control the behaviour of your 
+application
 
-??? warning "About Linking"
-    If you have used a Cray system in the past, you may be familiar with the 
-    legacy linking behaviour of the Cray compiler wrappers. Historically, the 
-    wrappers build statically linked executables. In recent version of the Cray
-    programming environment this not the case anymore, libraries are now 
-    dynamically linked.
+- Follow the default Linux policy and at runtime use the system default version
+  of the shared libraries (so may change as and when system is upgraded)
+- Hardcodes the path of each library into the binary at compile time so that a
+  specific version is when the application start (as long as lib is still 
+  installed). Set `CRAY_ADD_RPATH=yes` at compile time to use this mode.
+- Allow the currently loaded programming environement modules to select the 
+  library version at runtime. Application must not be linked with 
+  `CRAY_ADD_RPATH=yes` and must add the following line to the Slurm script:
+  ```
+  export LD_LIBRARY_PATH=${CRAY_LD_LIBRARY_PATH}:$LD_LIBRARY_PATH
+  ```
 
-    The compiler wrapper encodes the paths to the libraries using runpath. This
-    ensures that the executable can find the correct runtime libraries even in
-    the case where the library module is not loaded.
-
-    Static linking is unsupported at the moment
+Static linking is unsupported at the moment.
 
 ### Using the wrapper with a `configure` script
 
