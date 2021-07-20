@@ -18,6 +18,7 @@ description: |
 [modules]: ../../computing/modules.md
 [libraries]: libraries.md
 [cray-libraries]: libraries.md#cray-libraries
+[cce]: cce.md
 
 This page will give you an overview of the Cray programming environment. It 
 starts with a presentation of the [programming environments][1] and
@@ -140,9 +141,13 @@ Cray Fortran compiler.
 
 ### Wrapper and compiler options
 
-The man pages of the wrappers and of the compilers are a good place to explore
-the options. The command to access the man pages are presented in the table
-below.
+Detailed information about the available compilers option are available here:
+
+- [Cray Compiling Environment][cce]
+
+The man pages of the wrappers and of the underlying compilers are also a good 
+place to explore the options. The command to access the man pages are presented 
+in the table below.
 
 | Language | Wrapper   | CCE           | GNU            |
 |----------|-----------|---------------|----------------|
