@@ -51,7 +51,7 @@ module swap cce cce/<version>
 OpenMP **is turned off by default** which is the opposite of earlier version of
 the CCE compilers. It is turned on using the `-homp` or `-fopenmp` flag.
 
-The CCE Fortran compiler allow to control the level of optimization of OpenMP 
+The CCE Fortran compiler allows to control the level of optimization of OpenMP 
 directives with the `-hthreadN` (`N = 0...3`). A value `N = 0` being off and 
 `N = 3` specifying the most aggressive optimization. **The default value is 
 `N = 2`**.
@@ -61,14 +61,14 @@ directives with the `-hthreadN` (`N = 0...3`). A value `N = 0` being off and
 To ease a debugging process, it's useful to generate an executable containing 
 debugging information. For this purpose, you can use the `-g` option. 
 
-Most of the time, the debug information works best at low level of code 
+Most of the time, the debug information works best at low levels of code 
 optimization, so consider using the `-O0` level. The `-g` options can be 
-specified on a per-file basis so that only a small part of you application incur
-the debugging penalty.
+specified on a per-file basis so that only a small part of your application 
+incur the debugging penalty.
 
 ## Compiler feedback
 
-The compilers can generate loopmarks which indicate the type of optimisation
+The compilers can generate loopmarks which indicate the type of optimization
 performed. This feature is enabled by the `-hlist=m` option for the Fortran
 compiler, and the `-fsave-loopmark` in the case of the C/C++ compilers. For 
 example
@@ -89,7 +89,7 @@ example
     ```
 
 will produce a file called `saxpy.lst` where you can find a listing of your code
-with annotations indicating which optimizations where performed by the compiler.
+with annotations indicating which optimizations were performed by the compiler.
 
 === "Fortran"
 
@@ -133,7 +133,7 @@ with annotations indicating which optimizations where performed by the compiler.
 
 Use the explain command to display an explanation of any message issued by the 
 compiler. This message will be identified with a code looking like 
-`ftn-<number>`. You can pass this identifier as argument to the `explain` 
+`ftn-<number>`. You can pass this identifier as an argument to the `explain` 
 command to find out more about the error.
 
 
@@ -203,12 +203,12 @@ If your application is sensitive to the floating-point optimization, use the
 One the `PrgEnv-cray` module is loaded (by default) you can invoke the Cray C 
 compiler with the `cc` command. The C++ compiler may be invoked with the `CC`
 command. These compilers are based on Clang/LLVM with Cray improvements. The 
-Cray improvements can be be turned off with the `-fno-cray` flag.
+Cray improvements can be turned off with the `-fno-cray` flag.
 
 Clang does not apply optimizations unless they are requested. Most optimization
 are enabled using the `-O2` level. Recommended flags are
 
-- `-Ofast` to enables all the optimizations including aggressive optimizations
+- `-Ofast` to enable all the optimizations including aggressive optimizations
    that may violate strict compliance with language standards
 - `-flto` to enable aggressive link time optimizations 
 
