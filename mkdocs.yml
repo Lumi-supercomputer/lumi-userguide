@@ -32,6 +32,7 @@ nav:
     - Overview: development/index.md
     - Compiling:
       - Programing environment: development/compiling/prgenv.md
+      - Cray Compilers: development/compiling/cce.md
       - High performance libraries: development/compiling/libraries.md
       - Compile GPU code: development/compiling/gpu.md
       - Memory optimization: development/compiling/memory.md
