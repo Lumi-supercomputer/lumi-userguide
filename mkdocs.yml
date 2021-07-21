@@ -10,7 +10,6 @@ nav:
   - Support:
     - Overview: support/index.md
     - Contact: support/contact.md
-    - Read before you start: support/most-important.md
     - FAQ: support/faq/index.md
     - Tutorials: support/tutorials/index.md
     - Where you can get more help: support/more-support.md
@@ -111,7 +110,7 @@ theme:
   
   home_primary:
     title: Get Started
-    page: support/most-important/
+    page: generic/getstarted/
   home_secondary:
     title: LUMI Overview
     page: generic/overview/

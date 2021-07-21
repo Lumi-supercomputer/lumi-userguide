@@ -1,4 +1,9 @@
-# The most important information
+---
+hide:
+  - navigation
+---
+
+# Get Started with LUMI
 
 Please read through all of this carefully before you start running on LUMI. Here we describe the a few set of basic rules and the important information that you need to get started running jobs.
 
