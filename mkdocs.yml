@@ -31,9 +31,9 @@ nav:
   - Developing:
     - Overview: development/index.md
     - Compiling:
-      - Programing environment: development/compiling/prgenv.md
-      - Cray Compilers: development/compiling/cce.md
-      - GNU Compilers: development/compiling/gnu.md
+      - Programming environment: development/compiling/prgenv.md
+      - Cray compilers: development/compiling/cce.md
+      - GNU compilers: development/compiling/gnu.md
       - High performance libraries: development/compiling/libraries.md
       - Compile GPU code: development/compiling/gpu.md
       - Memory optimization: development/compiling/memory.md
@@ -114,7 +114,7 @@ theme:
     page: support/most-important/
   home_secondary:
     title: LUMI Overview
-    page: system/overview/
+    page: generic/overview/
 
 #extra_javascript:
 #  - 'assets/javascripts/extra.js'
