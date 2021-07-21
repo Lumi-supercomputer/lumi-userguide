@@ -53,10 +53,8 @@ hide:
     <img src="/assets/images/lumi-snowflake.svg" width="90%" style="margin: 0 auto;">
   </figure>
 </div>
- 
-## LUMI Partitions
 
-### LUMI-C: The CPU Partition
+## LUMI-C: The CPU Partition
 
 The LUMI-C partition consists of 1536 compute nodes with an estimated combined
 LINPACK performance of ca. 8 Petaflops. Each LUMI-C compute nodes are equipped 
@@ -66,7 +64,7 @@ multithreading (SMT) allowing for up to 256 threads per node.
 
 - [More information about LUMI-C][lumi-c]
 
-### LUMI-D: The Data Analytics Partition
+## LUMI-D: The Data Analytics Partition
 
 LUMI-D is intended for interactive data analytics and visualization. It is also
 a good place run pre- and post-processing jobs that require a lot of memory. It
@@ -76,7 +74,7 @@ with 64 cores each running at 2.25 GHz for a total of 128 cores per node.
 
 - [More information about LUMI-D][lumi-d]
 
-### LUMI-P and F: Parallel Filesystems
+## LUMI-P and F: Parallel Filesystems
 
 LUMI has two Lustre parallel filesystems consisting of
 
@@ -85,7 +83,7 @@ LUMI has two Lustre parallel filesystems consisting of
 - a flash storage partition optimized to support high IOPS rates with an 
   aggregated performance of 1740 GB/s and 7PB of storage capacity
 
-### LUMI-O: The Object storage
+## LUMI-O: The Object Storage
 
 Object storage is a data storage architecture that manages data as objects 
 instead of a file hierarchy. Each object includes the data, the metadata and a
