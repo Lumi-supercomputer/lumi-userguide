@@ -62,11 +62,12 @@ nav:
       - Interactive usage: computing/jobs/interactive.md
   - Storing:
     - Overview: storage/index.md
-    - HPC file systems:
+    - Parallel file systems:
       - Overview: storage/parallel/index.md
+      - Lustre: storage/parallel/lustre.md
       - LUMI-P Lustre File system: storage/parallel/lumip.md
       - LUMI-F Lustre File system (Flash): storage/parallel/lumif.md
-    - LUMI-O object storage:
+    - Object storage:
       - Overview: storage/object/index.md
       - Introduction to LUMI-O Storage service: storage/object/intro.md
       - Accessing LUMI-O: storage/object/accessing.md
