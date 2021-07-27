@@ -47,7 +47,8 @@ hide:
     Instinct GPUs. In addition to this, there is a smaller CPU-only partition 
     LUMI-C that features AMD Epyc Milan CPUs and an auxiliary partition 
     for data analytics with large memory nodes and some GPUs for data 
-    visualization.
+    visualization. Besides partitions dedicated to computation, LUMI also offer 
+    storage partitions for a total of 117PB of storage space.
   </p>
   <figure>
     <img src="/assets/images/lumi-snowflake.svg" width="90%" style="margin: 0 auto;">
