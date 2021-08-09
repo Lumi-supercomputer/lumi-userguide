@@ -21,16 +21,17 @@ simplified diagram below.
   filenames, directories, access permissions, and file layout
 - One or more **object storage servers (OSS)** that store file data on one or 
   more **object storage targets (OST)**
-- **Clients** that access and use the data
+- **Clients**  are compute, visualisation or login nodes that access and use the
+  data
 
 ## File Striping
 
 One of the main factors leading to the high performance of Lustre file systems 
 is the ability to stripe data across multiple storage targets (OSTs). This means
 that files are split into chunks which are then distributed among the OSTs. Read
-and write operations on striped files will access multiple OST's concurrently. 
+and write operations on striped files will access multiple OSTs concurrently. 
 As a result, I/O performance is improved since writing or reading from multiple
-OST's simultaneously increases the available I/O bandwidth. 
+OSTs simultaneously increases the available I/O bandwidth. 
 
 <figure>
   <img src="/assets/images/lustre-striping.svg" width="600px">
@@ -64,6 +65,8 @@ a directory or a file:
 - a new file with the specified layout will be created if a file is passed to 
   the command
 
+Maximal striping can be achieved by setting the stripe count to `-1`.
+
 ### Get the Striping Pattern 
 
 Information about the striping of a directory or a file can be retrived using
@@ -94,3 +97,36 @@ In the example above, you can see that `file.txt` inherited the layout of its
 parent directory and that the file is striped on 4 OSTs (14, 1, 3 and 5).
 
 ## Performance Considerations
+
+Striping should be adapted to your application I/O pattern and the size of your
+files. The following section describes general considerations.
+
+### Stripe count
+
+In theory, a larger number of stripes increase the I/O bandwidth and thus
+performance. In particular, application that writes to a single file from 
+hundreds of nodes, may benefit from stripping over as many OSTs. Moreover, 
+striping is needed if you write a huge amount of data as a single OST may not 
+have enough free space to store all the data. For applications creating a large
+number of small files as with a file per process scheme, large stripe counts can
+cause overhead and damage the performance.
+
+- when multiple processes access the same large file in parallel set a stripe 
+  count >1 andan integral factor of the number of processes
+- with a file-per-process I/O pattern, avoid striping (stripe count of 1) in 
+  order to limit OST contention.
+
+### Stripe size
+
+Stripe size has less of an impact on performance than the stripe count and no 
+impact at all if the stripe count is 1. However, when dealing with large files,
+the stripe size may influence the performance:
+
+- the smallest recommended stripe size is 512 KB
+- a good stripe size is between 1 MB and 4 MB in most situations
+- the maximum stripe size is 4 GB but you should only use this value for very
+  large file
+
+If your application write to the file in a consistent and aligned way, make the
+stripe size a multiple of the `write()` size. The goal is perform write 
+operations that go entirely to one server instead of crossing object boundary. 
