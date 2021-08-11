@@ -34,8 +34,7 @@ nav:
       - Cray compilers: development/compiling/cce.md
       - GNU compilers: development/compiling/gnu.md
       - High performance libraries: development/compiling/libraries.md
-      - Compile GPU code: development/compiling/gpu.md
-      - Memory optimization: development/compiling/memory.md
+      - Using hugepages: development/compiling/hugepages.md
     - Debugging:
       - Debugging: development/debugging/gdb4hpc.md
       - Memory debugging: development/debugging/valgrind4hpc.md
