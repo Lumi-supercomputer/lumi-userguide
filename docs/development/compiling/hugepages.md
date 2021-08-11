@@ -1,8 +1,6 @@
-# Memory Optimization
+# Hugepages
 
-## Hugepages
-
-### Background Information
+## Background Information
 
 Memory is managed in blocks known as pages. The default size of a page is 4KB.
 CPUs have a built-in memory management unit that manages a list of these pages
@@ -12,7 +10,7 @@ hardware instruction can be found in the TLB, the mapping can be determined
 quickly. If not, a TLB miss occurs, and the system falls back to slower,
 software-based address translation, resulting in performance issues.
 
-### Why Using Hugepages
+## Why Using Hugepages
 
 Since the size of the TLB is fixed in the hardware, a way to reduce the chance
 of a TLB miss is to increase the page size. Using very large page sizes can
@@ -33,7 +31,7 @@ Hugepages can be beneficial
   the PGAS programming model, to map the static data and/or private heap onto 
   huge pages
 
-### How to Use Hugepages
+## How to Use Hugepages
 
 To use hugepages load the module corresponding to the page size you wish to
 use. For example to use a page size of 2MB
