@@ -77,7 +77,7 @@ launching your application with `srun` with `<bind>` the type of resource:
     the 2 logical threads of the CPU cores. As we use the 
     [default distribution][distribution], cores are distributed in a round robin
     fashion between the 2 sockets of 
-the nodes.
+    the nodes.
 
     ```
     srun --nodes=2 --ntasks=8 --cpu-bind=cores ./application
