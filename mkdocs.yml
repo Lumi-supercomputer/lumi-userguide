@@ -41,8 +41,7 @@ nav:
       - Crash or dealock: development/debugging/stat-atp.md
     - Performance Analysis:
       - Overview: development/profiling/index.md
-      - CPU: development/profiling/cpu.md
-      - GPU: development/profiling/gpu.md
+      - CrayPat: development/profiling/perftools.md
     - Building HPC Container: development/containers.md
   - Computing:
     - Overview: computing/index.md
