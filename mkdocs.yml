@@ -83,7 +83,6 @@ theme:
   features:
     # - navigation.instant
     - navigation.tabs
-    - navigation.instant
     - search.suggest
   
   palette:
@@ -91,9 +90,7 @@ theme:
     primary: lumi
     accent: lumi
 
-  font:
-    text: canada-type-gibson
-    code: Source Code Pro
+  font: false
   
   favicon: assets/favicon.png
 
