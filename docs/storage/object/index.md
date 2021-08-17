@@ -7,7 +7,11 @@ Within your object storage project space, you can create buckets. These
 buckets will store objects with metadata associated to these objects. 
 
 <figure>
-  <img src="/assets/images/object-storage-component.svg" width="450">
+  <img 
+    src="/assets/images/object-storage-component.svg" 
+    width="450"
+    alt="Object storage components"
+  >
 </figure>
 
 - **Buckets**: Containers used to store one or more objects. You can see a 

@@ -12,7 +12,11 @@ A Lustre file system has three major functional units that provided as a
 simplified diagram below.
 
 <figure>
-  <img src="/assets/images/lustre-overview.svg" width="600px">
+  <img 
+    src="/assets/images/lustre-overview.svg" 
+    width="600px"
+    alt="Overview of the building blocks of a Lustre file system"
+  >
   <figcaption>Overview of the building blocks of a Lustre file system</figcaption>
 </figure>
 
@@ -34,7 +38,11 @@ As a result, I/O performance is improved since writing or reading from multiple
 OSTs simultaneously increases the available I/O bandwidth. 
 
 <figure>
-  <img src="/assets/images/lustre-striping.svg" width="600px">
+  <img 
+    src="/assets/images/lustre-striping.svg" 
+    width="600px"
+    alt="Sriping of a 8MB file over 4 OSTs"
+  >
   <figcaption>
     striping of a 8MB file over 4 OSTs (stripe count = 4). Each stripe is 1MB 
     (stripe size = 1m) in size. Each OST store 2 stripes.

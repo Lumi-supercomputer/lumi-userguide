@@ -51,7 +51,12 @@ hide:
     storage partitions for a total of 117PB of storage space.
   </p>
   <figure>
-    <img src="/assets/images/lumi-snowflake.svg" width="90%" style="margin: 0 auto;">
+    <img 
+      src="/assets/images/lumi-snowflake.svg" 
+      width="90%" 
+      style="margin: 0 auto;"
+      alt="LUMI from 3000 feets"
+    >
   </figure>
 </div>
 
