@@ -25,7 +25,11 @@ have 32 KiB of private L1 cache, a 32 KiB instruction cache, and 512 KiB of L2
 cache.
 
 <figure>
-  <img src="/assets/images/milan-overview.svg" width="560">
+  <img 
+    src="/assets/images/milan-overview.svg" 
+    width="560"
+    alt="Overview of an AMD EPYC 7763 CPU"
+  >
   <figcaption>Overview of an AMD EPYC 7763 CPU</figcaption>
 </figure>
 
@@ -41,7 +45,12 @@ with 2 CCDs per quadrant. The figure below, gives you an overview of the
 distances between the NUMA nodes.
 
 <figure>
-  <img align="left" src="/assets/images/numa-lumic.svg" width="400">
+  <img 
+    align="left" 
+    src="/assets/images/numa-lumic.svg" 
+    width="400"
+    alt="Distances between NUMA nodes"
+  >
   <figcaption>Distances between NUMA nodes</figcaption>
 </figure>
 
