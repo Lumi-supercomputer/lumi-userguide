@@ -43,7 +43,22 @@ CrayPat is the full-featured program analysis tool set. The typical workflow is
 
 Sampling is a statistical profiling. By taking regular snapshots of the 
 applications call stack, we can create a statistical profile of where the 
-application spends most of its  time. One of the main advantages of a sampling 
+application spends most of its  time.
+
+<figure>
+  <img 
+    src="/assets/images/sampling.svg" 
+    width="450"
+    alt="Sampling of an application"
+  >
+  <figcaption>
+    Sampling of an application. Snapshots of the applications call stack are 
+    captured a regular interval to create a statistical profile.
+  </figcaption>
+</figure>
+
+
+One of the main advantages of a sampling 
 experiment is the low overhead that is fixed by the choice of sampling rate. 
 On the other hand, sampling is non-deterministic and can only provide a 
 statistical picture of the application behaviour.
@@ -92,9 +107,24 @@ function. This allows the collection of accurate information about specific
 areas of the code every time the event occurs. This allows for a more accurate 
 and more detailed information as data are collected from every traced function 
 call not a statistical average. Tracing may require the program to be 
-instrumented. The main downside it that the instrumentation code inserted will 
-be run every time an instrumented function is called in order to record the 
-information. This may introduce significant profiling overhead.
+instrumented. 
+
+<figure>
+  <img 
+    src="/assets/images/tracing.svg" 
+    width="450"
+    alt="Tracing of an application"
+  >
+  <figcaption>
+    Instrumentation of an application for tracing. The instrumentation code is
+    inserted so that all events of interest are captured allowing for much more 
+    detailed information.
+  </figcaption>
+</figure>
+
+The main downside it that the instrumentation code inserted will be run every 
+time an instrumented function is called in order to record the information. 
+This may introduce significant profiling overhead.
 
 #### Automatic program analysis (APA)
 
