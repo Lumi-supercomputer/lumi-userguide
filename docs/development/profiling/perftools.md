@@ -1,6 +1,7 @@
 # Cray Performance Analysis Tool
 
 [sampling]: #sampling
+[lite]: #perftools-lite
 
 CrayPat is a performance analysis tool used to evaluate program behaviour on 
 HPE Cray supercomputer systems.
@@ -31,6 +32,17 @@ INFO: creating the PerfTools-instrumented executable 'app.x'
 You can then run your application as normal, the profiling information will 
 be written to the standard output.
 
+Other `perftools-lite` modules are available for users seeking information other
+than that provided by the default `perftools-lite` module.
+
+- `perftools-lite-events`: event profile (tracing)
+- `perftools-lite-gpu`: GPU kernel and data movement events profiling
+- `perftools-lite-loops`: loop work estimates
+- `perftools-lite-hbm`: memory profiling
+
+Once you have them loaded, these modules can be used in the same way as 
+`perftools-lite`.
+
 ## CrayPat
 
 CrayPat is the full-featured program analysis tool set. The typical workflow is 
@@ -53,7 +65,7 @@ application spends most of its  time.
   >
   <figcaption>
     Sampling of an application. Snapshots of the applications call stack are 
-    captured a regular interval to create a statistical profile.
+    captured at regular intervals to create a statistical profile.
   </figcaption>
 </figure>
 
@@ -74,26 +86,28 @@ module load perftools
 cc -o app.x source.c
 ```
 
-The second step is to use `pat_build` to instruments your application.
+The second step is to use `pat_build`.
 
 ```
 pat_build app.x
 ```
 
-Here we instrument the application `app.x`, the resulting instrumented 
-executable being `app.x+pat`. You can also use the `-o <output_exe>` to specify
-the name of the instrumented application.
+This command will create a new executable with name `<exec>+pat`. In our 
+example, we will produce `app.x+pat`. The name can be chosen by the user using
+the `-o <output_exe>` option. The default experiment is a sampling experiment.
 
-The next step is to execute the instrumented executable that will generate a 
-directory with a name beginning with the name of your application and containing
-the profiling information will be created. The name of this output directory 
-can be changed with the `PAT_RT_EXPDIR_NAME` environment variable. For example
+The next step is to run the application. A directory with a name beginning with 
+the name of your application will be created as a result. This directory 
+contains the profiling information gathered during the run. You can change the 
+name of this output directory with the `PAT_RT_EXPDIR_NAME` environment 
+variable. For example
 
 ```
 export PAT_RT_EXPDIR_NAME=apa_sample_exp.${SLURM_JOBID}
+srun ./app.x+pat
 ```
 
-You can use this directory to generate more detailled report with the 
+You can use this directory to generate more detailed report with the 
 `pat_report` command.
 
 ```
