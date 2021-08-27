@@ -13,7 +13,7 @@ simplified diagram below.
 
 <figure>
   <img 
-    src="/assets/images/lustre-overview.svg" 
+    src="../../../assets/images/lustre-overview.svg" 
     width="600px"
     alt="Overview of the building blocks of a Lustre file system"
   >
@@ -39,7 +39,7 @@ OSTs simultaneously increases the available I/O bandwidth.
 
 <figure>
   <img 
-    src="/assets/images/lustre-striping.svg" 
+    src="../../../assets/images/lustre-striping.svg" 
     width="600px"
     alt="Sriping of a 8MB file over 4 OSTs"
   >

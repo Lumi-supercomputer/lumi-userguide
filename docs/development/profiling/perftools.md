@@ -59,7 +59,7 @@ application spends most of its  time.
 
 <figure>
   <img 
-    src="/assets/images/sampling.svg" 
+    src="../../../assets/images/sampling.svg" 
     width="450"
     alt="Sampling of an application"
   >
@@ -125,7 +125,7 @@ instrumented.
 
 <figure>
   <img 
-    src="/assets/images/tracing.svg" 
+    src="../../../assets/images/tracing.svg" 
     width="450"
     alt="Tracing of an application"
   >
