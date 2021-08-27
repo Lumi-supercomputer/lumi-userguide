@@ -11,7 +11,7 @@ logical threads, enabling simultaneous multithreading.
 
 <figure>
   <img 
-    src="/assets/images/socket-core-threads.svg" 
+    src="../../../assets/images/socket-core-threads.svg" 
     width="700"
     alt="Concept of socket, core and threads">
   <figcaption>Concept of socket, core and threads</figcaption>
@@ -71,7 +71,7 @@ launching your application with `srun` with `<bind>` the type of resource:
     ```
 
     <figure>
-      <img src="/assets/images/cpu-bind-threads.svg" width="650" alt="CPU bind threads">
+      <img src="../../../assets/images/cpu-bind-threads.svg" width="650" alt="CPU bind threads">
     </figure>
 
 === "Cores"
@@ -87,7 +87,7 @@ launching your application with `srun` with `<bind>` the type of resource:
     ```
 
     <figure>
-      <img src="/assets/images/cpu-bind-cores.svg" width="650" alt="CPU bind cores">
+      <img src="../../../assets/images/cpu-bind-cores.svg" width="650" alt="CPU bind cores">
     </figure>
 
 === "Sockets"
@@ -101,7 +101,7 @@ launching your application with `srun` with `<bind>` the type of resource:
     ```
 
     <figure>
-      <img src="/assets/images/cpu-bind-sockets.svg" width="650" alt="CPU bind sockets">
+      <img src="../../../assets/images/cpu-bind-sockets.svg" width="650" alt="CPU bind sockets">
     </figure>
 
 More options and details are available in the [srun documentation][srun] or via
@@ -124,7 +124,7 @@ distribution describe how the taks are distributed between the nodes.
     ```
 
     <figure>
-      <img src="/assets/images/distribution-block.svg" width="450" alt="Distribution block">
+      <img src="../../../assets/images/distribution-block.svg" width="450" alt="Distribution block">
     </figure>
 
 === "cyclic"
@@ -138,7 +138,7 @@ distribution describe how the taks are distributed between the nodes.
     ```
 
     <figure>
-      <img src="/assets/images/distribution-cyclic.svg" width="450" alt="Distribution cyclic">
+      <img src="../../../assets/images/distribution-cyclic.svg" width="450" alt="Distribution cyclic">
     </figure>
 
 You can specify the distribution across sockets within a node by adding a second
@@ -156,7 +156,7 @@ represent the **rank of the tasks**.
     ```
 
     <figure>
-      <img src="/assets/images/distribution-block-block.svg" width="400" alt="Distribution block:block">
+      <img src="../../../assets/images/distribution-block-block.svg" width="400" alt="Distribution block:block">
     </figure>
 
 === "block:cyclic"
@@ -170,7 +170,7 @@ represent the **rank of the tasks**.
     ```
 
     <figure>
-      <img src="/assets/images/distribution-block-cyclic.svg" width="400" alt="Distribution block:cyclic">
+      <img src="../../../assets/images/distribution-block-cyclic.svg" width="400" alt="Distribution block:cyclic">
     </figure>
 
 === "cyclic:block"
@@ -185,7 +185,7 @@ represent the **rank of the tasks**.
     ```
 
     <figure>
-      <img src="/assets/images/distribution-cyclic-block.svg" width="400" alt="Distribution cyclic:block">
+      <img src="../../../assets/images/distribution-cyclic-block.svg" width="400" alt="Distribution cyclic:block">
     </figure>
 
 === "cyclic:cyclic"
@@ -200,7 +200,7 @@ represent the **rank of the tasks**.
     ```
 
     <figure>
-      <img src="/assets/images/distribution-cyclic-cyclic.svg" width="400" alt="Distribution cyclic:cyclic">
+      <img src="../../../assets/images/distribution-cyclic-cyclic.svg" width="400" alt="Distribution cyclic:cyclic">
     </figure>
 
 

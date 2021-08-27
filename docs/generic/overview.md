@@ -52,7 +52,7 @@ hide:
   </p>
   <figure>
     <img 
-      src="/assets/images/lumi-snowflake.svg" 
+      src="../../assets/images/lumi-snowflake.svg" 
       width="90%" 
       style="margin: 0 auto;"
       alt="LUMI from 3000 feets"
