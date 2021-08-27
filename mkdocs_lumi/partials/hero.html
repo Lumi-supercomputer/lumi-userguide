@@ -1,0 +1,79 @@
+{% if page and page.meta and page.meta.announce %}
+  {% set announce = page.meta.announce %}
+  {% if announce.content %}
+    <div class="tx-hero__announce {{'tx-hero__announce_' ~ announce.type if announce.type}}">
+      <p>
+        {{announce.content}}
+      </p>
+    </div>
+  {% endif %}
+{% endif %}
+<div class="tx-hero">
+  
+  <div class="tx-hero__content">
+    {% if page and page.meta and page.meta.hero %}
+      {% set hero = page.meta.hero %}
+    {% endif %}
+    
+    {% if hero %}
+      {% set description = hero.description %}
+      {% set title = hero.title %}
+      {% set button_primary = hero.button_primary %}
+      {% set button_secondary = hero.button_secondary %}
+      {% set quicklinks = hero.quicklinks %}
+    {% endif %}
+
+    {% if not description %}
+      {% set description = config.site_description %}
+    {% endif %}
+
+    {% if title %}
+      <h1>{{ title }}</h1>
+    {% endif %}
+
+    {% if description %}
+      <p>{{ description }}</p>
+    {% endif %}
+    
+    {% if button_primary or button_secondary %}
+      <div class="tx-hero__buttons">
+        {% if button_primary %}
+          <a
+            href="{{ button_primary.page | url }}"
+            title="{{ button_primary.title | e }}"
+            class="md-button md-button--primary"
+          >
+            {{ button_primary.title }}
+          </a>
+        {% endif %}
+
+        {% if button_secondary %}
+          <a
+            href="{{ button_secondary.page | url }}"
+            title="{{ button_secondary.title | e }}"
+            class="md-button"
+          >
+            {{ button_secondary.title }}
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+  {% if quicklinks %}
+    <div class="tx-hero__quicklinks">
+      <h2>Quick Links</h2>
+      <ul>
+      {% for link in quicklinks%}
+        <li>
+          <a
+            href="{{ link.href | url }}"
+            title="{{ link.title | e }}"
+          >
+            {{ link.title }}
+          </a>
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+</div>
