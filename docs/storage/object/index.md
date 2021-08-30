@@ -1,5 +1,7 @@
 # Overview
 
+**The object storage is not available yet**
+
 In an object-based storage, data are managed as objects instead of being 
 organized as files in a directory hierarchy.
 

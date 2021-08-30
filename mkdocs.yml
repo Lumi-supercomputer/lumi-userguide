@@ -63,16 +63,14 @@ nav:
     - Parallel file systems:
       - Overview: storage/parallel/index.md
       - Lustre: storage/parallel/lustre.md
-      - LUMI-P Lustre File system: storage/parallel/lumip.md
-      - LUMI-F Lustre File system (Flash): storage/parallel/lumif.md
+      - LUMI-P Lustre file system: storage/parallel/lumip.md
+      - LUMI-F Lustre flash based file system: storage/parallel/lumif.md
     - Object storage:
       - Overview: storage/object/index.md
     - Moving data:
-      - Copying files using scp: storage/moving/scp.md
-      - Graphical file transfer tools: storage/moving/graphical_transfer.md
+      - Copying files with scp: storage/moving/scp.md
       - Using rsync for data transfer and synchronization: storage/moving/rsync.md
       - Using wget to download data from web sites to LUMI: storage/moving/wget.md
-      - Remote disk mounts: storage/moving/disk_mount.md
  
 theme:
   name: material
