@@ -12,10 +12,10 @@ share the node with other jobs. Therefore, make sure that
 your application can take advantage of all the resources on the node as you
 will be billed for the complete node regardless of the resource actually used.
 
-| Name    | Max walltime | Max jobs     | Max ressources/job |
-| ------- | ------------ | ------------ | ------------------ |
-| default | 2 days       | 100          | 500 nodes          |
-| large   | 1 day        | n/a          | All nodes          |
+| Name     | Max walltime | Max jobs     | Max ressources/job |
+| -------- | ------------ | ------------ | ------------------ |
+| standard | 2 days       | 100          | 500 nodes          |
+| large    | 1 day        | n/a          | All nodes          |
 
 ## Partitions allocatable by resources
 
