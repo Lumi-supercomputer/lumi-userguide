@@ -4,8 +4,6 @@
 [lumif]: parallel/lumif.md 
 [lumip]: parallel/lumip.md 
 
-The LUMI storage is composed of two main partitions:
-
 The table below gives you an overview of the available options for storage. Note
 that, except for the user home directory, data storage is allocated per project.
 
