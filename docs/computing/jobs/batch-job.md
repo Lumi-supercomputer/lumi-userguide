@@ -24,15 +24,89 @@ particular the page about [sbatch][slurm-sbatch].
 
 ### Shared memory jobs
 
-TODO
+```
+#!/bin/bash -l
+#SBATCH --job-name=examplejob   # Job name
+#SBATCH --output=examplejob.o%j # Name of stdout output file
+#SBATCH --error=examplejob.e%j  # Name of stderr error file
+#SBATCH --partition=small       # Partition (queue) name
+#SBATCH --ntasks=1              # One task (process)
+#SBATCH --cpus-per-task=128     # Number of cores (threads)
+#SBATCH --time=12:00:00         # Run time (hh:mm:ss)
+#SBATCH --mail-type=all         # Send email at begin and end of job
+#SBATCH --account=project_id    # Project ID
+#SBATCH --mail-user=username@domain.com
+
+# Any other commands must follow the #SBATCH directives
+
+# Set the number of threads based on --cpus-per-task
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+ 
+./your_application
+```
 
 ### MPI-based jobs
 
-TODO
+```
+#!/bin/bash -l
+#SBATCH --job-name=examplejob   # Job name
+#SBATCH --output=examplejob.o%j # Name of stdout output file
+#SBATCH --error=examplejob.e%j  # Name of stderr error file
+#SBATCH --partition=standard    # Partition (queue) name
+#SBATCH --nodes=50              # Total number of nodes 
+#SBATCH --ntasks=6400           # Total number of mpi tasks
+#SBATCH --time= 1-12:00:00      # Run time (d-hh:mm:ss)
+#SBATCH --mail-type=all         # Send email at begin and end of job
+#SBATCH --account=project_id    # Project ID
+#SBATCH --mail-user=username@domain.com
+
+# Any other commands must follow the #SBATCH directives
+
+# Launch MPI code 
+srun ./your_application # Use srun instead of mpirun or mpiexec
+```
 
 ### Hybrid MPI+OpenMP jobs
 
-TODO
+```
+#!/bin/bash -l
+#SBATCH --job-name=examplejob   # Job name
+#SBATCH --output=examplejob.o%j # Name of stdout output file
+#SBATCH --error=examplejob.e%j  # Name of stderr error file
+#SBATCH --partition=standard    # Partition (queue) name
+#SBATCH --nodes=50              # Total number of nodes 
+#SBATCH --ntasks-per-node=16    # Number of mpi tasks per node
+#SBATCH --cpus-per-task=8       # Number of cores (threads) per task
+#SBATCH --time=1-12:00:00       # Run time (d-hh:mm:ss)
+#SBATCH --mail-type=all         # Send email at begin and end of job
+#SBATCH --account=project_id    # Project ID
+#SBATCH --mail-user=username@domain.com
+
+# Any other commands must follow the #SBATCH directives
+
+# Set the number of threads based on --cpus-per-task
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+
+# Launch MPI code 
+srun ./your_application # Use srun instead of mpirun or mpiexec
+```
+
+### Serial Job
+
+```
+#!/bin/bash -l
+#SBATCH --job-name=examplejob   # Job name
+#SBATCH --output=examplejob.o%j # Name of stdout output file
+#SBATCH --error=examplejob.e%j  # Name of stderr error file
+#SBATCH --partition=debug       # Partition (queue) name
+#SBATCH --ntasks=1              # One task (process)
+#SBATCH --time=00:15:00         # Run time (hh:mm:ss)
+#SBATCH --mail-type=all         # Send email at begin and end of job
+#SBATCH --account=project_id    # Project ID
+#SBATCH --mail-user=username@domain.com
+ 
+./your_application
+```
 
 ## Common Slurm options
 
