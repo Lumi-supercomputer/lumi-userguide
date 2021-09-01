@@ -23,6 +23,27 @@ The Abnormal Termination Processing (ATP) is a tool that monitors a running
 program. In the event of a fatal signal encountered by the program, ATP will 
 handle the signal and perform analysis on the dying application.
 
+### Usage
+
+Using ATP requires that the target application is built with debug symbols (`-g`
+compiler flag).
+
+The next step is to set the `ATP_ENABLED` environment variable in you batch 
+script. It's also recommended to set the maximum size of core files to 
+`unlimited`.
+
+```
+module load atp
+
+export ATP_ENABLED=1
+ulimit –c unlimited
+
+srun <srun_options> ./application
+```
+
+### Viewing the Results
+
+
 [^1]: A stack trace represents a call stack at a certain point in time, listing
       the function calls that lead up to the call that caused a problem.
 [^2]: Deadlock is a situation when two threads (or processes) are waiting for 

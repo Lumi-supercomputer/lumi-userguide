@@ -2,31 +2,56 @@
 title: Computing - Overview
 ---
 
-[modules]: ./modules.md
-[jobsub]: ./jobs/submitting-jobs.md
+[connecting]: ./connecting.md
+[modules]: modules.md
+[lumic]: systems/lumic.md
+[lumid]: systems/lumid.md
+[slurm_quickstart]: jobs/slurm-quickstart.md
+[partitions]: ./jobs/partitions.md
+[batch_jobs]: ./jobs/batch-job.md
+[binding]: ./jobs/distribution-binding.md
+[throughput]: ./jobs/throughput.md
 [interactive]: ./jobs/interactive.md
-[lumic]: ./systems/lumic.md
-[lumig]: ./systems/lumig.md
+[storage]: ../storage/index.md
 
-# Overview
+## Learn More About the Hardware
 
-## Connecting
+In the first phase of the LUMI installation, LUMI-C, the CPU partition and 
+LUMI-D, the data analytics partition are installed. LUMI-C consists of 1536 
+compute nodes fitted with two last generation AMD Epyc Milan 64 core CPUs.
 
-## Learn More About the LUMI Hardware
- 
-- Learn more about LUMI-C: [the CPU partition][lumic]
+- [Learn more about the CPU nodes][lumic]
+
+LUMI-D consists of 12 nodes either with a large memory or NVDIA RTX GPUs as well
+as on node storage.
+
+- [Learn more about the data analytics nodes][lumid]
 
 ## Setup your Environment
 
-Softwares on LUMI can be accessed through [modules][modules]. With the help of the module
-command you will be able to load and unload the desired compilers, tools
-and libraries.
+Software on LUMI can be accessed through modules. With the help of the module 
+command, you will be able to load and unload the desired compilers, tools and 
+libraries.
+
+- [Read more about the module command][modules]
 
 ## Running your Jobs
 
-The basic step to run your application on LUMI can be sumarized as follow:
+To get started with running your application on LUMI, you need to write a batch
+jobs script and submit it to the scheduler and resource manager. LUMI use Slurm 
+as batch job system.
 
-- Determine the resources needed for your job
-- Pick a partition (queue) that will provide the required resources
-- Create a job script that describes the resources needed for your job and the
-  the steps needed to run your application
+- [Get familiar with the Slurm be with the quick start guide][slurm_quickstart]
+- [Learn more about the available partition (queue)][partitions]
+- [Check out some example batch scripts][batch_jobs]
+- [See how to run a job interactively][interactive]
+- [See how to submit a large number of independent jobs][throughput]
+
+## Storage
+
+The data analytics nodes have large local storage but it is not the case
+for the other compute nodes. When using the latter, input and output data of 
+your application can be stored in the scratch spaces which are large Lustre 
+parallel file systems. 
+
+- [Go to the storage overview][storage]

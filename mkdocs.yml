@@ -7,14 +7,7 @@ site_description: >-
 copyright: Copyright &copy; 2021 LUMI User Support Team
 nav:
   - Home: index.md
-  - Support:
-    - Overview: support/index.md
-    - Contact: support/contact.md
-    - FAQ: support/faq/index.md
-    - Tutorials: support/tutorials/index.md
-    - Where you can get more help: support/more-support.md
-    - Training material: support/training-material.md
-  - Accounts:
+  - First Steps:
     - Overview: accounts/index.md
     - How to create new user account: accounts/create-new-user-account.md
     - How to change password: accounts/change-password.md
@@ -27,6 +20,27 @@ nav:
     - How to view billing unit usage: accounts/view-billing-unit-usage.md
     - Billing: accounts/billing.md
     - How to apply for accounts in different consortia countries: accounts/account-responsible.md
+  - Computing:
+    - Overview: computing/index.md
+    - Connecting: computing/connecting.md
+    - Moving data: storage/moving/scp-rsync.md
+    - Module environment: computing/modules.md
+    - Hardware:
+      - CPU nodes: computing/systems/lumic.md
+      - Data analytics nodes: computing/systems/lumid.md
+      - GPU EAP nodes: computing/systems/kuura.md
+    - Running jobs:
+      - Slurm Quickstart: computing/jobs/slurm-quickstart.md
+      - Available partitions: computing/jobs/partitions.md
+      - Batch jobs: computing/jobs/batch-job.md
+      - Distribution and binding: computing/jobs/distribution-binding.md
+      - High throughput: computing/jobs/throughput.md
+      - Interactive usage: computing/jobs/interactive.md
+    - Storage:
+      - Overview: storage/index.md
+      - Lustre: storage/parallel/lustre.md
+      - Project Scratch: storage/parallel/lumip.md
+      - Project Scratch Fast: storage/parallel/lumif.md
   - Developing:
     - Overview: development/index.md
     - Compiling:
@@ -42,35 +56,7 @@ nav:
     - Performance Analysis:
       - Overview: development/profiling/index.md
       - CrayPat: development/profiling/perftools.md
-    - Building HPC Container: development/containers.md
-  - Computing:
-    - Overview: computing/index.md
-    - Connecting: computing/connecting.md
-    - Module environment: computing/modules.md
-    - Systems:
-      - CPU Partition: computing/systems/lumic.md
-      - GPU EAP Partition: computing/systems/kuura.md
-    - Running jobs:
-      - Overview: computing/jobs/index.md
-      - Slurm Quickstart: computing/jobs/slurm-quickstart.md
-      - Available partitions: computing/jobs/partitions.md
-      - Batch jobs: computing/jobs/batch-job.md
-      - Distribution and binding: computing/jobs/distribution-binding.md
-      - High throughput: computing/jobs/throughput.md
-      - Interactive usage: computing/jobs/interactive.md
-  - Storing:
-    - Overview: storage/index.md
-    - Parallel file systems:
-      - Overview: storage/parallel/index.md
-      - Lustre: storage/parallel/lustre.md
-      - LUMI-P Lustre file system: storage/parallel/lumip.md
-      - LUMI-F Lustre flash based file system: storage/parallel/lumif.md
-    - Object storage:
-      - Overview: storage/object/index.md
-    - Moving data:
-      - Copying files with scp: storage/moving/scp.md
-      - Using rsync for data transfer and synchronization: storage/moving/rsync.md
-      - Using wget to download data from web sites to LUMI: storage/moving/wget.md
+  - Help Desk: generic/helpdesk.md
  
 theme:
   name: material
@@ -81,6 +67,7 @@ theme:
   features:
     # - navigation.instant
     - navigation.tabs
+    - navigation.sections
     - search.suggest
   
   palette:
