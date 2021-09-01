@@ -1,7 +1,7 @@
 # LUMI-C: The CPU Partition
 
-The LUMI-C partition consists of 1536 compute nodes with an estimated combined
-LINPACK performance of ca. 8 Petaflops.
+The LUMI-C partition consists of 1536 compute nodes with an aggregated LINPACK 
+performance of 5.63 Petaflops.
 
 | Nodes | CPUs                                            | CPU cores     | Memory   | Local storage | Network     |
 | :---: | :---------------------------------------------: | :-----------: | :------: | :-----------: | :---------: |
