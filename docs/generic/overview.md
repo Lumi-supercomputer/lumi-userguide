@@ -36,7 +36,9 @@ hide:
 # LUMI Overview
 
 [lumi-c]: ../computing/systems/lumic.md
-[lumi-d]: ../data-analysis/lumid.md
+[lumi-d]: ../computing/systems/lumid.md
+[lumi-f]: ../storage/parallel/lumif.md
+[lumi-p]: ../storage/parallel/lumip.md
 
 <div class="lumi-overview">
   <p>
@@ -74,7 +76,7 @@ multithreading (SMT) allowing for up to 256 threads per node.
 
 LUMI-D is intended for interactive data analytics and visualization. It is also
 a good place run pre- and post-processing jobs that require a lot of memory. It
-consists of a 4 nodes with large memory capacity (8TB) and 8 nodes with NVIDIA
+consists of a 4 nodes with large memory capacity (8 TB) and 8 nodes with NVIDIA
 RTX8000 GPUs. Each LUMI-D compute nodes are equipped with two AMD EPYC 7742 CPUs
 with 64 cores each running at 2.25 GHz for a total of 128 cores per node.
 
@@ -82,12 +84,17 @@ with 64 cores each running at 2.25 GHz for a total of 128 cores per node.
 
 ## LUMI-P and F: Parallel Filesystems
 
-LUMI has two Lustre parallel filesystems consisting of
+LUMI has two Lustre parallel file systems consisting of:
 
-- a main storage partition with an aggregated performance of 960 GB/s and 80PB
-  of storage capacity
-- a flash storage partition optimized to support high IOPS rates with an 
-  aggregated performance of 1740 GB/s and 7PB of storage capacity
+A main storage partition (LUMI-P) composed of 4 independent Lustre file systems
+with an aggregated performance of 240 GB/s and a 20 PB storage capacity each
+
+- [More information about LUMI-P][lumi-p]
+
+A flash storage partition (LUMI-F) optimized to support high IOPS rates with 
+an aggregated performance of 1740 GB/s and 7 PB of storage capacity
+
+- [More information about LUMI-F][lumi-f]
 
 ## LUMI-O: The Object Storage
 
