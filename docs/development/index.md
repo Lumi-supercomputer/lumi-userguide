@@ -34,3 +34,5 @@ The best way to extract the best performance is to know your program.
 It is precisely what profiling is all about: collecting information about the 
 performance of your application. These informations will help you to optimize 
 your program for faster execution and more efficient computing resource usage.
+
+- [Learn more](./profiling/index.md)
