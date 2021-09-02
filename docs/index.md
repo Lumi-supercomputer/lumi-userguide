@@ -13,7 +13,6 @@ template: home.html
 # About LUMI
 
 - [LUMI-C : The CPU computing partition](computing/systems/lumic.md)
-- [LUMI-D : Data analytics and visualization on LUMI](data-analysis/lumid.md)
-- [LUMI-O : The object storage of LUMI](storage/object/index.md)
+- [LUMI-D : Data analytics and visualization on LUMI](computing/systems/lumid.md)
 - [LUMI-F : The flash-based storage of LUMI](storage/parallel/lumif.md)
 - [LUMI-P : The parallel filesystem of LUMI](storage/parallel/lumip.md)
