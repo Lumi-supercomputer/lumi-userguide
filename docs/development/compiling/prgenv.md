@@ -71,7 +71,7 @@ module swap <compiler> <compiler>/<version>
 ```
 
 Where `<compiler>` is the name of the compiler module for the loaded programming
-environment and `<compiler>` the version you want to use. For example:
+environment and `<compiler>` the version you want to use. For example
 
 === "CCE"
 
@@ -142,6 +142,14 @@ Cray Fortran compiler.
 
 ### Wrapper and compiler options
 
+The following flags are a good starting point to achieved good performance:
+
+| Compilers	   | Good performance                                  | Agressive optimizations |
+|--------------|---------------------------------------------------|-------------------------|
+| Cray C/C++	 | `-O2 -funroll-loops -ffast-math`                  | `-Ofast -funroll-loops` |
+| Cray Fortran | Default                                           | `-O3 -hfp3`             |
+| GCC	         | `-O2 -ftree-vectorize -funroll-loops -ffast-math` | `-Ofast -funroll-loops` |
+
 Detailed information about the available compiler options are available here:
 
 - [Cray Compiling Environment][cce]
@@ -157,6 +165,22 @@ in the table below.
 | C        | `man cc`  | `man craycc`  | `man gcc`      |
 | C++      | `man CC`  | `man crayCC`  | `man g++`      |
 | Fortran  | `man ftn` | `man crayftn` | `man gfortran` |
+
+### Choosing the target architecture
+
+To choose the target architecture when compiling, you have to load the 
+appropriate combination of modules. These modules influence the optimizations
+performed by the compiler as well as the librairies (e.g. linear algebra 
+librairies) used.
+
+The table below summarize the available modules.
+
+| Module                    | Target                                     |
+|---------------------------|--------------------------------------------|
+| `craype-x86-milan`        | LUMI-C CPUs                                |
+| `craype-x86-rome`         | LUMI-D CPUs, login nodes CPUs and EAP CPUs |
+| `craype-accel-amd-gfx908` | EAP GPUs                                   |
+| `craype-accel-nvidia75`   | LUMI-D GPUs                                |
 
 ### Libraries Linking
 
@@ -179,8 +203,8 @@ application
 - Hardcodes the path of each library into the binary at compile time so that a
   specific version is when the application start (as long as lib is still 
   installed). Set `CRAY_ADD_RPATH=yes` at compile time to use this mode.
-- Allow the currently loaded programming environement modules to select the 
-  library version at runtime. Application must not be linked with 
+- Allow the currently loaded programming environment modules to select the 
+  library version at runtime. Applications must not be linked with 
   `CRAY_ADD_RPATH=yes` and must add the following line to the Slurm script:
   ```
   export LD_LIBRARY_PATH=${CRAY_LD_LIBRARY_PATH}:$LD_LIBRARY_PATH

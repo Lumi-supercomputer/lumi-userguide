@@ -39,20 +39,32 @@ OpenMP is turned off by default, it's turned on using the `-fopenmp` flag.
 :material-help-circle-outline: `man gcc` - `man gfortran`
 
 The default optimization level of the GNU compiler is `-O0` it's therefore 
-necessary to add additional optimization flags. The recommended flags are
+necessary to add additional optimization flags. A good starting point is
 
 ```
--O3 -ffast-math -funroll-loops
+-O2 -ftree-vectorize -funroll-loops -ffast-math
 ```
 
-- the `-O3` option enable most of the opimizations, including vectorization and 
-  inlining
-- the `-ffast-math` relax the IEEE specfications for math functions. This option
+- the `-O2` option performs nearly all supported optimizations
+- the `-ffast-math` relax the IEEE specifications for math functions. This option
   can produce incorrect results, don't use this flag if you code is sensitive 
   to floating-point optimizations.
 - the `-funroll-loops` option allows the compiler to unroll loops
 
+A more aggressive option might be
 
+```
+-O3 -funroll-loops
+```
+
+or for even more aggressive optimization
+
+```
+-Ofast -funroll-loops
+```
+
+The `-Ofast` enables all `-O3` optimizations and disregard strict standards 
+compliance.
 
 ## Compiler Feedback
 
