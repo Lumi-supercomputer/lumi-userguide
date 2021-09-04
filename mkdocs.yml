@@ -8,18 +8,8 @@ copyright: Copyright &copy; 2021 LUMI User Support Team
 nav:
   - Home: index.md
   - First Steps:
-    - Overview: accounts/index.md
-    - How to create new user account: accounts/create-new-user-account.md
-    - How to change password: accounts/change-password.md
-    - How to manage user information: accounts/manage-user-information.md
-    - How to create new project: accounts/create-new-project.md
-    - How to add members to project: accounts/add-members-to-project.md
-    - How to add service access for project: accounts/add-service-access-for-project.md
-    - How to apply for billing units: accounts/apply-for-billing-units.md
-    - How to increase disk quotas: accounts/increase-disk-quotas.md
-    - How to view billing unit usage: accounts/view-billing-unit-usage.md
-    - Billing: accounts/billing.md
-    - How to apply for accounts in different consortia countries: accounts/account-responsible.md
+    - Overview: firststeps/index.md
+    - Get started: firststeps/getstarted.md
   - Computing:
     - Overview: computing/index.md
     - Connecting: computing/connecting.md
@@ -85,7 +75,7 @@ theme:
   
   home_primary:
     title: Get Started
-    page: generic/getstarted/
+    page: firststeps/getstarted/
   home_secondary:
     title: LUMI Overview
     page: generic/overview/
