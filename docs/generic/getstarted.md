@@ -3,71 +3,83 @@ hide:
   - navigation
 ---
 
+!!! warning
+    This page is a placeholder, it does not reflect the actual first steps with
+    LUMI.
+
 # Get Started with LUMI
 
-Please read through all of this carefully before you start running on LUMI. Here we describe the a few set of basic rules and the important information that you need to get started running jobs.
+Please read through all of this carefully before you start running on LUMI. Here
+we describe the a few set of basic rules and the important information that you
+need to get started running jobs.
 
-We start from the assumption that you have received your account information. If not please see this page [Accounts/how to get an account].
+We start from the assumption that you have received your account information.
+If not please see this page [Accounts/how to get an account].
 
 ## How to log in
 
 Connect using a ssh client:
 
-    ssh username@login.lumi-supercomputer.eu
+ssh username@login.lumi-supercomputer.eu
 
-Where yourcscusername is the username you get from CSC. If you cannot get a connection at all, your IP number range might be blocked from login. Please contact Support.
+where you need to replace `username` with your own username. If you cannot get 
+a connection at all, your IP number range might be blocked from login. 
+Please contact Support.
 
 ## Where to run
 
-When you login to LUMI, you end up on one of the login nodes. These login nodes are shared by all users and they are not intended for heavy computing.
+When you login to LUMI, you end up on one of the login nodes. These login nodes
+are shared by all users and they are not intended for heavy computing.
 
 The login nodes should be used only for:
 
-* compiling (but consider allocating a compute for large build jobs)
-* managing batch jobs
-* moving data
-* light pre- and postprocessing (a few cores / a few GB of memory)
+- compiling (but consider allocating a compute for large build jobs)
+- managing batch jobs
+- moving data
+- light pre- and postprocessing (a few cores / a few GB of memory)
 
-All the other tasks should be done on the compute nodes either as normal batch jobs or as interactive batch jobs. Programs not adhering to these rules will be terminated without warning.
+All the other tasks should be done on the compute nodes either as normal batch
+jobs or as interactive batch jobs. Programs not adhering to these rules will be
+terminated without warning.
 
-LUMI uses the SLURM batch queue system and the "srun" command to launch jobs. LUMI consists of several partition with different kinds of compute nodes:
-
-* **LUMI-C**: Jobs that uses CPU only. The nodes have 128 cores and 256, 1024, or 2048 GB memory. `#SBATCH --partition=lumi-c`
-* **LUMI-D**: Jobs that require very large memory (8 TB) or Nvidia GPUs for visualization. Best use for interactive jobs, but regular batch jobs can be run with an X hour limit. `#SBATCH --partition=lumi-d`
+Compute intensive jobs must be submitted to the job scheduling system. LUMI uses
+Slurm as the job scheduler.
 
 ## How to run
 
-In order to run, you need a project allocation. Please check that you are member of project with an active allocation with lumi-projects command
+In order to run, you need a project allocation. Please check that you are member
+of project with an active allocation with `TODO` command
 
-    [username@lumi ~]$ lumi-projects
-    -----------------------------------------------------------------
-    Project: project_XXXXX    Owner: N. N.
-    Title: "Machine Learning"
-    Start: 2021-01-17 End: 2022-01-17 Status: open
-    Budget:   1000000  Used   950000 Remain:      50000
-    Latest resource grant: XXXX-XX-XX
-    -----------------------------------------------------------------
+```
+TODO
+```
 
-The project name listed after "Project:" is what you should give as account name in SLURM when submitting jobs: `#SBATCH --account=<project>`. If you do not have a project, please contact support.
+The project name listed after "Project:" is what you should give as account name
+in Slurm when submitting jobs: `#SBATCH --account=<project>`. If you do not have
+a project, please contact support.
 
-Here is a typical batch script for SLURM. This script runs the LINPACK benchmark on 2 compute nodes with 64 MPI ranks on each node (128 total) and 2 OpenMP threads per rank.
+Here is a typical batch script for Slurm. This script runs the LINPACK benchmark
+on 2 compute nodes with 16 MPI ranks on each node (32 total) and 8 OpenMP 
+threads per rank.
 
-    #!/bin/bash
-    #SBATCH --job-name=HPL
-    #SBATCH --account=<project>
-    #SBATCH --time=00:05:00
-    #SBATCH --nodes=2
-    #SBATCH --ntasks-per-node=64
-    #SBATCH --cpus-per-task=2
-    #SBATCH --partition=lumi-c
-    ##SBATCH --mail-type=BEGIN #uncomment to enable mail
+```
+#!/bin/bash
+#SBATCH --job-name=HPL
+#SBATCH --account=<project>
+#SBATCH --time=00:05:00
+#SBATCH --nodes=2
+#SBATCH --ntasks=32
+#SBATCH --ntasks-per-node=16
+#SBATCH --cpus-per-task=8
+#SBATCH --partition=standard
 
-    module load partition/LUMI-CPU
-    module load LUMI-21.02
-    module load HPL
+module load partition/LUMI-CPU
+module load LUMI-21.02
+module load HPL
 
-    export OMP_NUM_THREADS=1
-    srun HPL
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+srun HPL
+```
 
 To run this job, copy the input files from .. into your scratch directory and submit the job with the sbatch command
 
@@ -81,7 +93,9 @@ The job should finish within 10 minutes. Check that it has run correctly...
 
 ## Where to store data
 
-On LUMI there are several disk areas: home, projects, scratch (LUMI-P) and fast flash-backed scratch (LUMI-F). Please familiarize yourself with the areas and their specific purposes.
+On LUMI there are several disk areas: home, projects, scratch (LUMI-P) and fast 
+flash-backed scratch (LUMI-F). Please familiarize yourself with the areas and 
+their specific purposes.
 
 * **Home**: /users/username. Use mainly for configuration files and source code. The home directory is not intended for data analysis or computing. There is no cleaning and the files are backed up.
 * **Project**: /project/projectname. Use to store analyzed results and to share e.g. software installations with other project members. There is no cleaning but files are not backed up!
@@ -107,7 +121,12 @@ An overview of your directories in a supercomputer you are currently logged on c
     ----------------------------------------------------------------------------------
     /scratch/project_2012345        56G/1T         150.53k/1000k Ortotopology modeling
     
-**The scratch and projects directories are meant to be shared by all the members of the project**. All new files and directories are also fully accessible for other group members (including read, write and execution permissions). If you want to have a private area in scratch and projects, you can create your own personal folder there and restrict access from your group members with the chmod command.
+**The scratch and projects directories are meant to be shared by all the members
+of the project**. All new files and directories are also fully accessible for 
+other group members (including read, write and execution permissions). If you 
+want to have a private area in scratch and projects, you can create your own 
+personal folder there and restrict access from your group members with the 
+chmod command.
 
 Setting read-only permissions for your group members for the directory my_directory:
 
