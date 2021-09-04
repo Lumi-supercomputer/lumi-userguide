@@ -56,7 +56,8 @@ nav:
     - Performance Analysis:
       - Overview: development/profiling/index.md
       - CrayPat: development/profiling/perftools.md
-  - Help Desk: generic/helpdesk.md
+  - Help Desk: 
+    - Help Desk: generic/helpdesk.md
  
 theme:
   name: material
