@@ -1,5 +1,8 @@
 # GNU Compilers
 
+[gcc-opt]: https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html
+[gcc-debug]: https://gcc.gnu.org/onlinedocs/gcc/Debugging-Options.html
+[gcc-dev]: https://gcc.gnu.org/onlinedocs/gcc/Developer-Options.html
 
 The GNU Compiler Collection (GCC) includes front ends for the C (`gcc`), C++ 
 (`g++`), and Fortran (`gfortran`) programming languages. Invoking these 
@@ -66,10 +69,14 @@ or for even more aggressive optimization
 The `-Ofast` enables all `-O3` optimizations and disregard strict standards 
 compliance.
 
+- [GCC documentation about optimization options][gcc-opt]
+
 ## Compiler Feedback
 
 Information about the optimizations and transformations performed by the 
 compiler can be obtained using the `-fopt-info` option.
+
+- [GCC documentation about developer options][gcc-dev]
 
 ## Debugging
 
@@ -80,3 +87,5 @@ Most of the time, the debug information works best at low levels of code
 optimization, so consider using the `-O0` level. The `-g` options can be 
 specified on a per-file basis so that only a small part of your application incur
 the debugging penalty.
+
+- [GCC documentation about debug options][gcc-debug]
