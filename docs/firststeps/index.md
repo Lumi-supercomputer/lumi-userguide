@@ -1,2 +1,2 @@
 !!! warning
-    This page will be updated with the acual inforamtion as soon as possible
+    This page will be updated with the actual information as soon as possible.
