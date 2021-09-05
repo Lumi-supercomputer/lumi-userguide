@@ -47,79 +47,65 @@ Slurm as the job scheduler.
 
 ## How to run
 
-In order to run, you need a project allocation. Please check that you are member
-of project with an active allocation with `TODO` command
+In order to run, you need a project allocation. Please check that you are a member
+of a project with an active allocation with `TODO` command
 
 ```
 TODO
 ```
 
-The project name listed after "Project:" is what you should give as account name
-in Slurm when submitting jobs: `#SBATCH --account=<project>`. If you do not have
-a project, please contact support.
+**TODO:** describe how to get your project ID
 
-Here is a typical batch script for Slurm. This script runs the LINPACK benchmark
+Here is a typical batch script for Slurm. This script runs an application
 on 2 compute nodes with 16 MPI ranks on each node (32 total) and 8 OpenMP 
 threads per rank.
 
 ```
-#!/bin/bash
-#SBATCH --job-name=HPL
+$ cat batch_script.slurm
+#!/bin/bash -l
+#SBATCH --job-name=test-job
 #SBATCH --account=<project>
-#SBATCH --time=00:05:00
+#SBATCH --time=01:00:00
 #SBATCH --nodes=2
 #SBATCH --ntasks=32
 #SBATCH --ntasks-per-node=16
 #SBATCH --cpus-per-task=8
 #SBATCH --partition=standard
 
-module load partition/LUMI-CPU
-module load LUMI-21.02
-module load HPL
-
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
-srun HPL
+srun ./application
 ```
 
-To run this job, copy the input files from .. into your scratch directory and submit the job with the sbatch command
+This script is submitted to the resource manager using the `sbatch` command.
 
-    cd /scratch/disk/myprojectname
-    cp /software/HPL/smalldemo .
-    vim/emacs job.sh
-    (copy-paste above and save)
-    sbatch job.sh
+```
+sbatch batch_script.slurm
+```
 
-The job should finish within 10 minutes. Check that it has run correctly...
+- [More information about running jobs on LUMI](../computing/index.md)
 
 ## Where to store data
 
 On LUMI there are several disk areas: home, projects, scratch (LUMI-P) and fast 
-flash-backed scratch (LUMI-F). Please familiarize yourself with the areas and 
-their specific purposes.
+flash-backed scratch (LUMI-F):
 
-* **Home**: /users/username. Use mainly for configuration files and source code. The home directory is not intended for data analysis or computing. There is no cleaning and the files are backed up.
-* **Project**: /project/projectname. Use to store analyzed results and to share e.g. software installations with other project members. There is no cleaning but files are not backed up!
-* **Scratch** /scratch/disk/projectname and a smaller, but faster /scratch/flash/projectname area. Use these when running jobs. Shared with other project members. The files are not backed up! Old files are cleaned automatically after 90 days. Any data that should be preserved for a longer time should be copied either to /project or to the LUMI-O storage. 
+- **User home**: the home directory (`$HOME`) can be used to store your 
+  configuration files and personal data
+- **Project persistent storage**: the project persistent storage is intended to 
+  share data amongst the members of a project. Typically, this space can be used
+  to share applications and libraries compiled for the project
+- **Parallel Filesystems (Scratch)**: the scratch spaces are Lustre file systems
+  intended as **temporary** storage for input, output or checkpoint data of 
+  your application. LUMI offers 2 types of scratch storage solution: LUMI-P 
+  with spinning disks and LUMI-F based on flash storage.
 
-* **Again: only the home directory is backed up!**
-* **Again: files in /scratch are deleted after 90 days!**
+An overview of your directories in a supercomputer you are currently logged on
+can be displayed with the `TODO` command. Please verify that you get
+similar looking output when running the command. If not, please contact support.
 
-An overview of your directories in a supercomputer you are currently logged on can be displayed with the lumi-workspaces command. Please verify that you get similar looking output when running the command. If not, please contact support.
-
-    [kkayttaj@puhti ~]$ csc-workspaces 
-    Disk area               Capacity(used/max)  Files(used/max)  Project description  
-    ----------------------------------------------------------------------------------
-    Personal home folder
-    ----------------------------------------------------------------------------------
-    /users/kkayttaj                2.05G/10G       23.24k/100k
-
-    Project applications 
-    ----------------------------------------------------------------------------------
-    /projappl/project_2012345     3.056G/50G       23.99k/100k   Ortotopology modeling
-    
-    Project scratch 
-    ----------------------------------------------------------------------------------
-    /scratch/project_2012345        56G/1T         150.53k/1000k Ortotopology modeling
+```
+TODO demonstrate the storage managment commands
+```
     
 **The scratch and projects directories are meant to be shared by all the members
 of the project**. All new files and directories are also fully accessible for 
@@ -133,9 +119,22 @@ Setting read-only permissions for your group members for the directory my_direct
     mkdir my_directory
     chmod -R g-w my_directory
 
-## More information
+- [Learn more about the LUMI storage](../storage/index.md)
 
-* How to contact support
-* Links to start of doc pages
-* Links to Cray docs (if publically available)
-* Links to AMD ROCm docs
+## Compiling and Developing your Code
+
+LUMI comes with the multiple programming environments: Cray, GNU and AOCC. 
+In addition, the most common libraries used in an HPC environment tuned for LUMI
+are also available. Parallel debugger and profiling tools are also at one's 
+disposal.
+
+- [Learn more about the programming environments](../development/compiling/prgenv.md)
+- [Learn more about debugging](../development/debugging/gdb4hpc.md)
+- [Learn more about profiling](../development/profiling/index.md)
+
+## Getting Help
+
+The LUMI User Support Team is here to help if you have any question or problem
+regarding your usage of LUMI.
+
+- [How to contact LUMI User Support Team](../generic/helpdesk.md)
