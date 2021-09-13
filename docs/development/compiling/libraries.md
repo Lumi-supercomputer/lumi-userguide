@@ -1,18 +1,20 @@
-# Librairies
+# Libraries
 
 [1]: #cray-libraries
-[2]: #librairies-supported-by-the-lust
+[2]: #libraries-supported-by-the-lust
 
 [doc-fftw]: http://www.fftw.org/fftw3_doc/
 [doc-hdf5]: https://portal.hdfgroup.org/display/HDF5/Learning+the+Basics
 [doc-netcdf]: https://www.unidata.ucar.edu/software/netcdf/docs/
+[doc-openblas]: https://github.com/xianyi/OpenBLAS/wiki/User-Manual
+[doc-blis]: https://github.com/flame/blis/wiki
 
 ## Cray Libraries
 
-For libraries that are available as a modules prefixed by `cray-`  the compiler 
-wrappers will automatically take care of adding search paths for include files 
-and libraries and provide the linker with the appropriate options. This means
-that, as a user, you don't need to provides such information to
+For libraries that are available as a modules prefixed by `cray-`, the compiler 
+wrappers will automatically take care of adding the search paths for the include files 
+and the libraries and provide the linker with the appropriate options. This means
+that, as a user, you don't need to provide such information to `cray-libsci`, `cray-fftw`, `cray-hdf5`, and `cray-netcdf`.
 
 [libsci]: #libsci
 [fftw]: #fftw
@@ -26,9 +28,9 @@ that, as a user, you don't need to provides such information to
 :material-help-circle-outline: `man intro_libsci`
 
 Cray LibSci is a collection of numerical routines tuned for
-performance on Cray systems. Most users, on most codes, will find they
-obtain better performance by using calls to Cray LibSci routines in
-their applications instead of calls to public domain or user‐written versions.
+performance on Cray systems. Most users, for most codes, will find that they
+obtain better performance by using Cray LibSci routines in
+their applications instead of using public domain or user‐written versions.
 
 The general components of Cray LibSci are:
 
@@ -71,7 +73,7 @@ even and odd data, respectively.
 :material-package-variant: `module load cray-hdf5` | `module load cray-hdf5-parallel`
 
 HDF5 is a data model, library, and file format for storing and managing data.
-It supports an unlimited variety of datatypes, and is designed for flexible
+It supports a variety of datatypes, and is designed for flexible
 and efficient I/O and for high volume and complex data. HDF5 is portable and
 is extensible, allowing applications to evolve in their use of HDF5. The HDF5
 Technology suite includes tools and applications for managing, manipulating,
@@ -99,6 +101,22 @@ of scientific data.
 
 A serial [NetCDF][netcdf] built against parallel [HDF5][hdf5].
 
-## Librairies supported by the LUST
+## Libraries supported by the LUST
 
-TODO
+In addition to Cray LibSci and MKL, you will also find OpenBLAS and BLIS installed when you load a LUMI software stack.
+
+#### OpenBLAS
+
+:material-package-variant: `module load OpenBLAS`
+
+OpenBLAS is an optimized BLAS library based on the old GotoBLAS2 library. OpenBLAS contains subroutines that have been tested and optimized for AMD Zen processors.
+
+[Official documentation][doc-openblas]
+
+#### BLIS
+
+:material-package-variant: `module load BLIS`
+
+BLIS is another BLAS library, which is also based on GotoBLAS2. According to [their own benchmarks](https://github.com/flame/blis/blob/master/docs/Performance.md#zen2) on Zen 2 processors, BLIS can sometimes be faster than both Intel's MKL and OpenBLAS, so it is worth testing if you want to get the absolute best performance.
+
+[Official documentation][doc-blis]
