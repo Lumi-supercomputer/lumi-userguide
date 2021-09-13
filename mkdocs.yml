@@ -29,8 +29,8 @@ nav:
     - Storage:
       - Overview: storage/index.md
       - Lustre: storage/parallel/lustre.md
-      - Project Scratch: storage/parallel/lumip.md
-      - Project Scratch Fast: storage/parallel/lumif.md
+      - Project scratch: storage/parallel/lumip.md
+      - Project fast scratch: storage/parallel/lumif.md
   - Developing:
     - Overview: development/index.md
     - Compiling:
@@ -42,12 +42,12 @@ nav:
     - Debugging:
       - Debugging: development/debugging/gdb4hpc.md
       - Memory debugging: development/debugging/valgrind4hpc.md
-      - Crash or dealock: development/debugging/stat-atp.md
-    - Performance Analysis:
+      - Crash or deadlock: development/debugging/stat-atp.md
+    - Performance analysis:
       - Overview: development/profiling/index.md
       - CrayPat: development/profiling/perftools.md
-  - Help Desk: 
-    - Help Desk: generic/helpdesk.md
+  - Help desk: 
+    - Help desk: generic/helpdesk.md
  
 theme:
   name: material
