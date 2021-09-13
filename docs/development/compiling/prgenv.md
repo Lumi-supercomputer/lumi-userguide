@@ -144,7 +144,7 @@ Cray Fortran compiler.
 
 The following flags are a good starting point to achieved good performance:
 
-| Compilers	   | Good performance                                  | Agressive optimizations |
+| Compilers	   | Good performance                                  | Aggressive optimizations |
 |--------------|---------------------------------------------------|-------------------------|
 | Cray C/C++	 | `-O2 -funroll-loops -ffast-math`                  | `-Ofast -funroll-loops` |
 | Cray Fortran | Default                                           | `-O3 -hfp3`             |
@@ -168,10 +168,7 @@ in the table below.
 
 ### Choosing the target architecture
 
-To choose the target architecture when compiling, you have to load the 
-appropriate combination of modules. These modules influence the optimizations
-performed by the compiler as well as the librairies (e.g. linear algebra 
-librairies) used.
+When using the Cray programming environment, there is no need to specify compiler flags to target specific CPU architecture, like `-march` and `-mtune` in gcc. Instead, you load an appropiate combination of modules to choose the target architecture when compiling. These modules influence the optimizations performed by the compiler, as well as the libraries (e.g. which BLAS routines are used in Cray LibSci) used. Therefore, we recommend that you compile with `craype-x86-milan` for LUMI-C, even if the compiler optimziations for Zen 3 processors are immature at the moment.
 
 The table below summarize the available modules.
 
@@ -180,7 +177,7 @@ The table below summarize the available modules.
 | `craype-x86-milan`        | LUMI-C CPUs                                |
 | `craype-x86-rome`         | LUMI-D CPUs, login nodes CPUs and EAP CPUs |
 | `craype-accel-amd-gfx908` | EAP GPUs                                   |
-| `craype-accel-nvidia75`   | LUMI-D GPUs                                |
+| `craype-accel-nvidia75`   | LUMI-D GPUs                                | 
 
 ### Libraries Linking
 
@@ -193,15 +190,15 @@ as well as linking command (`-l`).
 
 If you have used a Cray system in the past, you may be familiar with the legacy 
 linking behaviour of the Cray compiler wrappers. Historically, the wrappers 
-build statically linked executables. In recent version of the Cray programming 
-environment this not the case anymore, libraries are now **dynamically linked**.
+built statically linked executables. In recent versions of the Cray programming 
+environment, this not the case anymore, libraries are now **dynamically linked**.
 The following options are available to you to control the behaviour of your 
 application
 
 - Follow the default Linux policy and at runtime use the system default version
   of the shared libraries (so may change as and when system is upgraded)
-- Hardcodes the path of each library into the binary at compile time so that a
-  specific version is when the application start (as long as lib is still 
+- Hard code the path of each library into the binary at compile time so that a
+  specific version is loaded when the application start (as long as the library is still 
   installed). Set `CRAY_ADD_RPATH=yes` at compile time to use this mode.
 - Allow the currently loaded programming environment modules to select the 
   library version at runtime. Applications must not be linked with 
@@ -210,7 +207,7 @@ application
   export LD_LIBRARY_PATH=${CRAY_LD_LIBRARY_PATH}:$LD_LIBRARY_PATH
   ```
 
-Static linking is unsupported at the moment.
+Static linking is unsupported by Cray at the moment.
 
 ### Using the wrapper with a `configure` script
 
