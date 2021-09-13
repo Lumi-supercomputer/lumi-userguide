@@ -20,7 +20,9 @@ If not please see this page [Accounts/how to get an account].
 
 Connect using a ssh client:
 
-ssh username@login.lumi-supercomputer.eu
+```
+ssh username@login.lumi-supercomputer.eu  (FIXME)
+```
 
 where you need to replace `username` with your own username. If you cannot get 
 a connection at all, your IP number range might be blocked from login. 
@@ -48,10 +50,10 @@ Slurm as the job scheduler.
 ## How to run
 
 In order to run, you need a project allocation. Please check that you are member
-of project with an active allocation with `TODO` command
+of project with an active allocation with the `FIXME` command:
 
 ```
-TODO
+FIXME
 ```
 
 The project name listed after "Project:" is what you should give as account name
@@ -81,10 +83,10 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 srun HPL
 ```
 
-To run this job, copy the input files from .. into your scratch directory and submit the job with the sbatch command
+To run this job, copy the input files from FIXME into your scratch directory and submit the job with the sbatch command:
 
     cd /scratch/disk/myprojectname
-    cp /software/HPL/smalldemo .
+    cp /FIXME/HPL/smalldemo .
     vim/emacs job.sh
     (copy-paste above and save)
     sbatch job.sh
@@ -93,7 +95,7 @@ The job should finish within 10 minutes. Check that it has run correctly...
 
 ## Where to store data
 
-On LUMI there are several disk areas: home, projects, scratch (LUMI-P) and fast 
+On LUMI, there are several disk areas: home, projects, scratch (LUMI-P) and fast 
 flash-backed scratch (LUMI-F). Please familiarize yourself with the areas and 
 their specific purposes.
 
@@ -102,7 +104,7 @@ their specific purposes.
 * **Scratch** /scratch/disk/projectname and a smaller, but faster /scratch/flash/projectname area. Use these when running jobs. Shared with other project members. The files are not backed up! Old files are cleaned automatically after 90 days. Any data that should be preserved for a longer time should be copied either to /project or to the LUMI-O storage. 
 
 * **Again: only the home directory is backed up!**
-* **Again: files in /scratch are deleted after 90 days!**
+* **Again: files in /scratch are deleted after 90 (FIXME) days!**
 
 An overview of your directories in a supercomputer you are currently logged on can be displayed with the lumi-workspaces command. Please verify that you get similar looking output when running the command. If not, please contact support.
 
@@ -125,10 +127,8 @@ An overview of your directories in a supercomputer you are currently logged on c
 of the project**. All new files and directories are also fully accessible for 
 other group members (including read, write and execution permissions). If you 
 want to have a private area in scratch and projects, you can create your own 
-personal folder there and restrict access from your group members with the 
-chmod command.
-
-Setting read-only permissions for your group members for the directory my_directory:
+personal folder in there and restrict access from your group members with the 
+`chmod` command. For example, setting read-only permissions for your group members for the directory my_directory:
 
     mkdir my_directory
     chmod -R g-w my_directory
