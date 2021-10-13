@@ -17,6 +17,6 @@ script:
 
   # Checks all files for commonly misspelled English words with client9's misspell
   - bash tests/misspell.bash
-  # Testing if the build works
+  # Testing if the build works and if there were warnings
   - bash tests/checkbuild.bash
 
