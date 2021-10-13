@@ -15,7 +15,7 @@ need to get started running jobs.
 
 ## User registration 
 
-Regarding the user registration and project creation please see [accounts](/accounts/registration.md).
+Regarding the user registration and project creation please see [accounts](../accounts/registration.md).
 
 ## How to log in
 
