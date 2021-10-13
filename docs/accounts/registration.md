@@ -10,7 +10,7 @@ hide:
 # Where to start the process?
 
 LUMI Countries have different kind of portals. Please contact your local contacts to get the URL.
-The portals will lead you to MyAccessID registration page, where you have to accept Acceptable Use Policy and LUMI Terms of Use document, which is linked there. Please read it carfully!
+The portals will lead you to MyAccessID registration page, where you have to accept Acceptable Use Policy and LUMI Terms of Use document, which is linked there. Please read it carefully! 
 
 <figure>
   <img 
@@ -18,14 +18,14 @@ The portals will lead you to MyAccessID registration page, where you have to acc
     width="560"
     alt="Screenshot of registrationg portal"
   >
-  <figcaption>Registration portal, which is reuiqr</figcaption>
+  <figcaption>MyAccessID Registration portal</figcaption>
 </figure>
 
  
 You may also modify the email address, but we recommend to keep your organisational email address.
 
 The authentication on the portal done with home organisation identity provider, which can be selected from the list. 
-In case that is not possible please contact LUST team https://lumi-supercomputer.eu/user-support/need-help/account/ with the error message and you may also contact your identity provider directly.
+In case that is not possible please [contact LUST team](https://lumi-supercomputer.eu/user-support/need-help/account/) with the error message and you may also contact your identity provider directly.
 
 Accessing LUMI will happend with ssh key pair. 
 After registering the key, there can be couple of hours delay until it is sychronised.
@@ -33,15 +33,25 @@ You also need to be a member of a project. Project's PI will create a project an
 When the project is accepted the user accounts will be created in LUMI. You will receive email from CSC's Identity management system informing your localt project ID and user account.
 
 # SSH key pair 
+ 
+<figure>
+  <img 
+    src="../assets/images/myaccessid_own_profile.png" 
+    width="560"
+    alt="Screenshot of user profile settings to setup ssh public key"
+  >
+  <figcaption>MyAccessID Own profile information to add ssh public key.</figcaption>
+</figure>
 
-After registration, you need to register PUBLIC ssh key in your user profile (URL will be added here) . From there, the public key will be copied to LUMI with some delay according to the synchronisation schedule. The instructions to create ssh key pair is below.
+
+After registration, you need to register PUBLIC ssh key in your [user profile](https://mms.myaccessid.org/fed/gui/) . From there, the public key will be copied to LUMI with some delay according to the synchronisation schedule. The instructions to create ssh key pair is below.
 
 ## Setting up SSH keys
 
 !!! warning "Note"
     The private key should never be shared with anyone, not even with
     CSC staff. It should be also stored only in the local computer (Public key
-    can be safely stored in cloud services).
+    can be safely stored in cloud services). Protect it with a good password!
 
 An SSH key pair can be generated in the Linux, macOS, Windows PowerShell and MobaXterm terminal as follows. For Putty, see [PuTTy SSH keys instructions](#ssh-keys-with-putty) below.
 
