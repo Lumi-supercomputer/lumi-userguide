@@ -106,8 +106,8 @@ with annotations indicating which optimizations were performed by the compiler.
       10.                   end subroutine saxpy
     ```
 
-    The signification of the annotations can be found at the begining of the 
-    listing file. In our example, we can see for exmaple that the compiler did 
+    The signification of the annotations can be found at the beginning of the 
+    listing file. In our example, we can see for example that the compiler did 
     vectorized (`V`) and unrolled our loop (`r`).
     
 === "C/C++"
@@ -123,8 +123,8 @@ with annotations indicating which optimizations were performed by the compiler.
     10.            }
     ```
 
-    The signification of the annotations can be found at the begining of the 
-    listing file. In our example, we can see for exmaple that the compiler did
+    The signification of the annotations can be found at the beginning of the 
+    listing file. In our example, we can see for example that the compiler did
     vectorized (`V`) and unrolled our loop (`u`).
 
 ## Compiler Messages
