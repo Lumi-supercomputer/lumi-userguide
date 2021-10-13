@@ -13,8 +13,9 @@ Please read through all of this carefully before you start running on LUMI. Here
 we describe the a few set of basic rules and the important information that you
 need to get started running jobs.
 
-We start from the assumption that you have received your account information.
-If not please see this page [Accounts/how to get an account].
+## User registration 
+
+Regarding the user registration and project creation please see [Accounts/how to get an account].
 
 ## How to log in
 
@@ -24,7 +25,7 @@ Connect using a ssh client:
 ssh username@login.lumi-supercomputer.eu  (FIXME)
 ```
 
-where you need to replace `username` with your own username. If you cannot get 
+where you need to replace `username` with your own username, which you received via email during the registration. If you cannot get 
 a connection at all, your IP number range might be blocked from login. 
 Please contact Support.
 
