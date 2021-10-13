@@ -14,7 +14,7 @@ The portals will lead you to MyAccessID registration page, where you have to acc
 
 <figure>
   <img 
-    src="../../../assets/images/Puhuri_Registration_example.png" 
+    src="../assets/images/Puhuri_Registration_example.png" 
     width="560"
     alt="Screenshot of registrationg portal"
   >
