@@ -219,7 +219,7 @@ squeue --me --start
 
 In our example, both jobs listed will start June 1 at different time. You will
 also notice that for the first the scheduler plan to run the job on `node0012`
-while for the second no node has been choosen yet.
+while for the second no node has been chosen yet.
 
 ### Cancelling a job
 
