@@ -1,0 +1,22 @@
+---
+sudo: false
+dist: bionic
+addons:
+  apt:
+    packages:
+      - aspell
+      - aspell-en
+      - python3
+      - python3-pip
+      - python3-setuptools
+before_install:
+  - pip3 install --user wheel
+  - pip3 install --user --requirement requirements.txt
+  - go get github.com/client9/misspell/cmd/misspell
+script:
+
+  # Checks all files for commonly misspelled English words with client9's misspell
+  - bash tests/misspell.bash
+  # Testing if the build works
+  - bash tests/checkbuild.bash
+
