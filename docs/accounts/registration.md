@@ -12,7 +12,16 @@ hide:
 LUMI Countries have different kind of portals. Please contact your local contacts to get the URL.
 The portals will lead you to MyAccessID registration page, where you have to accept Acceptable Use Policy and LUMI Terms of Use document, which is linked there. Please read it carfully!
 
-!(Registration)[assets/images/Puhuri_Registration_example.png] 
+<figure>
+  <img 
+    src="../../../assets/images/Puhuri_Registration_example.png" 
+    width="560"
+    alt="Screenshot of registrationg portal"
+  >
+  <figcaption>Registration portal, which is reuiqr</figcaption>
+</figure>
+
+ 
 You may also modify the email address, but we recommend to keep your organisational email address.
 
 The authentication on the portal done with home organisation identity provider, which can be selected from the list. 
