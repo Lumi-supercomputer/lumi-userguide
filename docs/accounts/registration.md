@@ -14,7 +14,7 @@ The portals will lead you to MyAccessID registration page, where you have to acc
 
 <figure>
   <img 
-    src="assets/images/Puhuri_Registration_example.png" 
+    src="/assets/images/Puhuri_Registration_example.png" 
     width="560"
     alt="Screenshot of registrationg portal"
   >
@@ -22,13 +22,17 @@ The portals will lead you to MyAccessID registration page, where you have to acc
 </figure>
 
  
-You may also modify the email address, but we recommend to keep your organisational email address.
+You may also modify the email address, but according to [LUMI Terms of Use](https://www.lumi-supercomputer.eu/lumi-general-terms-of-use_1-0/) you must your organisational email address.
 
 The authentication on the portal done with home organisation identity provider, which can be selected from the list. 
 In case that is not possible please [contact LUST team](https://lumi-supercomputer.eu/user-support/need-help/account/) with the error message and you may also contact your identity provider directly.
 
 Accessing LUMI will happend with ssh key pair. 
+
+
 After registering the key, there can be couple of hours delay until it is sychronised.
+
+
 You also need to be a member of a project. Project's PI will create a project and invite members via email address. Resource allocator of each country will accept the project.
 When the project is accepted the user accounts will be created in LUMI. You will receive email from CSC's Identity management system informing your localt project ID and user account.
 
@@ -36,7 +40,7 @@ When the project is accepted the user accounts will be created in LUMI. You will
  
 <figure>
   <img 
-    src="../../assets/images/myaccessid_own_profile.png" 
+    src="../assets/images/myaccessid_own_profile.png" 
     width="560"
     alt="Screenshot of user profile settings to setup ssh public key"
   >
