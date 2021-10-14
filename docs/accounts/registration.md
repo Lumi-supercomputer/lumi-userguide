@@ -40,7 +40,7 @@ When the project is accepted the user accounts will be created in LUMI. You will
  
 <figure>
   <img 
-    src="/docs/assets/images/myaccessid_own_profile.png" 
+    src="/assets/images/myaccessid_own_profile.png" 
     width="560"
     alt="Screenshot of user profile settings to setup ssh public key"
   >
