@@ -1,7 +1,7 @@
 # LUMI-C: The CPU Partition
 
 The LUMI-C partition consists of 1536 compute nodes with an aggregated LINPACK 
-performance of 5.63 Petaflops.
+performance of 5.63 Petaflops (FIXME).
 
 | Nodes | CPUs                                            | CPU cores     | Memory   | Local storage | Network     |
 | :---: | :---------------------------------------------: | :-----------: | :------: | :-----------: | :---------: |
@@ -36,7 +36,9 @@ cache.
 The EPYC CPUs consist of multiple chiplets, so-called core complex dies
 (CCDs). There are 8 CCDs per processor with 8 cores each. The L3 cache is shared
 between the eight cores of a CCD and has a capacity of 32 MiB for a total 256 
-MiB of L3 cache per processor. The cores are all connected to a central I/O die
+MiB of L3 cache per processor. Note this differs from the earlier Zen 2 and EPYC 7002-series processors where 4 cores shared the L3 cache and there were two groups of 4 cores (a "CCX") inside each CCD. This can improve the performance of certain workloads as a single core can have access to more L3 cache.
+
+The CCD units are all connected to a central I/O die
 which contains the memory controller. There are 8 memory channels with a peak 
 theoretical bandwidth of 204.8 GB/s per socket.
 
