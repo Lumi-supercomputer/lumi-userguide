@@ -11,6 +11,8 @@ MDS (metadata server) and 32 Object Storage Targets (OSTs).
 
 ## Usage
 
+The scratch storage is located at `/scratch/project_<project-number>`
+
 ## Billing and Quota
 
 The quota is enforced on a per project basis. The default quota is 5 TB and 2 

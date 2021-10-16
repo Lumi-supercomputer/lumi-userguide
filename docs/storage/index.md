@@ -33,6 +33,8 @@ this space can be used to share applications and libraries compiled for the
 project. **Just like the user home directory you are NOT supposed to run jobs 
 from your the project persistent space**.
 
+The project persistent storage is located at `/projappl/project_<project-number>`.
+
 The project persistent directory is purged once the project expire.
 
 ## Parallel Filesystems (Scratch)
