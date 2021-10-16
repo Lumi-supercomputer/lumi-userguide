@@ -26,7 +26,7 @@ document, which is linked there. Please read it carefully!
 <figure>
   <img 
     src="../../assets/images/Puhuri_Registration_example.png" 
-    width="560"
+    width="480"
     alt="Screenshot of registration portal"
   >
   <figcaption>MyAccessID Registration portal</figcaption>
@@ -87,14 +87,14 @@ you need to generate an SSH key pair.
     set the number of bits to 4096. Press the button *Generate*.
 
     <figure>
-      <img src="/assets/images/win-keygen-step1.png" width="400" alt="Create SSH key pair with windows - step 1">
+      <img src="../../assets/images/win-keygen-step1.png" width="400" alt="Create SSH key pair with windows - step 1">
     </figure>
 
     You will be requested to move the mouse in the Key area to generate some 
     entropy; do so until the green bar is completely filled.
 
     <figure>
-      <img src="/assets/images/win-keygen-step2.png" width="400" alt="Create SSH key pair with windows - step 2">
+      <img src="../../assets/images/win-keygen-step2.png" width="400" alt="Create SSH key pair with windows - step 2">
     </figure>
 
     After that, enter a comment in the Key comment field and a strong
@@ -103,7 +103,7 @@ you need to generate an SSH key pair.
     **Do not leave the passphrase empty**.
 
     <figure>
-      <img src="/assets/images/win-keygen-step3.png" width="400" alt="Create SSH key pair with windows - step 3">
+      <img src="../../assets/images/win-keygen-step3.png" width="400" alt="Create SSH key pair with windows - step 3">
     </figure>
 
     The next step is to save you public and private kay. Click on the *Save 
@@ -129,8 +129,8 @@ key file in the field.
 
 <figure>
   <img 
-    src="/assets/images/myaccessid_own_profile.png" 
-    width="560"
+    src="../../assets/images/myaccessid_own_profile.png" 
+    width="480"
     alt="Screenshot of user profile settings to setup ssh public key"
   >
   <figcaption>MyAccessID Own profile information to add ssh public key.</figcaption>
