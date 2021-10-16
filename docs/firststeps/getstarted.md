@@ -3,35 +3,155 @@ hide:
   - navigation
 ---
 
-!!! warning
-    This page is a placeholder, it does not reflect the actual first steps with
-    LUMI.
-
 # Get Started with LUMI
 
+[terms-of-use]: https://www.lumi-supercomputer.eu/lumi-general-terms-of-use_1-0/
+[support-account]: https://lumi-supercomputer.eu/user-support/need-help/account/
+[myaccessid-profile]: https://mms.myaccessid.org/fed/gui/
+[puttygen]: https://www.puttygen.com/#How_to_use_PuTTYgen
+[support]: https://lumi-supercomputer.eu/user-support/need-help/
+[registration]: ../accounts/registration.md
+
 Please read through all of this carefully before you start running on LUMI. Here
-we describe the a few set of basic rules and the important information that you
-need to get started running jobs.
+we describe a few sets of basic rules and the important information that you
+need to get started.
 
-## User registration 
+## Setting up SSH key pair
 
-Regarding the user registration and project creation please see [accounts](../accounts/registration.md).
+LUMI Countries have different kinds of portals. Please contact your local 
+contacts to get the URL. The portals will lead you to MyAccessID registration 
+page, where you have to accept Acceptable Use Policy and LUMI Terms of Use 
+document, which is linked there. Please read it carefully! 
+
+<figure>
+  <img 
+    src="../../assets/images/Puhuri_Registration_example.png" 
+    width="560"
+    alt="Screenshot of registration portal"
+  >
+  <figcaption>MyAccessID Registration portal</figcaption>
+</figure>
+
+ 
+You may also modify the email address, but according to 
+[LUMI Terms of Use][terms-of-use] you must your organizational email address.
+
+The authentication on the portal done with home organization identity provider,
+which can be selected from the list. In case that is not possible please 
+[contact the support team][support-account] with the error message and you may also
+contact your identity provider directly.
+
+Accessing LUMI will happen with ssh key pair. After registering the key, there
+can be a couple of hours delay until it is synchronized.
+
+You also need to be a member of a project. Project's PI will create a project 
+and invite members via email address. Resource allocators of each country will 
+accept the project. When the project is accepted, the user accounts will be 
+created in LUMI. You will receive email from CSC's Identity management system 
+informing you of your project ID and user account.
+
+### Generate your SSH keys
+
+After registration, you need to register a **public** key. In order to do that
+you need to generate an SSH key pair.
+
+=== "From a terminal (all OS)"
+
+    An SSH key pair can be generated in the Linux, macOS, Windows PowerShell and 
+    MobaXterm terminal. It is important to create a long enough key length. For
+    example, you can use the following command to generate a 4096 bits RSA key:
+
+    ```bash
+    ssh-keygen -t rsa -b 4096
+    ```
+
+    You will be prompted for a file name and location where to save the
+    key. Accept the defaults by pressing ++enter++. Alternatively, you choose a
+    custom name and location. For example `/home/username/.ssh/id_rsa_lumi`.
+
+    Next, you will be asked for a passphrase. Please choose a secure
+    passphrase. It should be at least 8 characters long and should contain
+    numbers, letters and special characters. **Do not leave the passphrase 
+    empty**.
+
+    After that a SSH key pair is created. If you choose the name given as an
+    example, you should have the `id_rsa_lumi` and `id_rsa_lumi.pub` in your
+    `.ssh` directory.
+
+=== "With MobaXTerm or PuTTY (Windows)"
+
+    An SSH key pair can be generated with the PuTTygen tool or with MobaXterm 
+    (**Tools :octicons-arrow-right-16: MobaKeyGen**). Both tools are identical.
+    
+    In order to generate your key pairs for LUMI, choose the option RSA is chosen
+    set the number of bits to 4096. Press the button *Generate*.
+
+    <figure>
+      <img src="/assets/images/win-keygen-step1.png" width="400" alt="Create SSH key pair with windows - step 1">
+    </figure>
+
+    You will be requested to move the mouse in the Key area to generate some 
+    entropy; do so until the green bar is completely filled.
+
+    <figure>
+      <img src="/assets/images/win-keygen-step2.png" width="400" alt="Create SSH key pair with windows - step 2">
+    </figure>
+
+    After that, enter a comment in the Key comment field and a strong
+    passphrase. Please choose a secure passphrase. It should be at least 8 
+    characters long and should contain numbers, letters and special characters.
+    **Do not leave the passphrase empty**.
+
+    <figure>
+      <img src="/assets/images/win-keygen-step3.png" width="400" alt="Create SSH key pair with windows - step 3">
+    </figure>
+
+    The next step is to save you public and private kay. Click on the *Save 
+    public key* button and save it to the desired location (for example, with 
+    `id_rsa_lumi.pub` as a name). Do the same with your private key by clicking
+    on the *Save private key* button and save it to the desired location (for 
+    example, with `id_rsa_lumi` as a name).
+
+!!! warning "Note"
+    The private key should never be shared with anyone, not even with
+    LUMI staff. It should also be stored only in the local computer (public key
+    can be safely stored in cloud services). Protect it with a good password!
+
+### Upload your public key 
+ 
+Nox that you have generated your key pair, you need to set up your **public** key
+in your [user profile][myaccessid-profile]. From there, the public key will be 
+copied to LUMI with some delay according to the synchronization schedule.
+
+To register your key, click in the *Authentication* tab and then on the green 
+button next to *Public ssh Key*. Then, copy paste the content of your **public**
+key file in the field.
+
+<figure>
+  <img 
+    src="/assets/images/myaccessid_own_profile.png" 
+    width="560"
+    alt="Screenshot of user profile settings to setup ssh public key"
+  >
+  <figcaption>MyAccessID Own profile information to add ssh public key.</figcaption>
+</figure>
 
 ## How to log in
 
 Connect using a ssh client:
 
 ```
-ssh username@login.lumi-supercomputer.eu  (FIXME)
+ssh username@login.lumi-supercomputer.eu
 ```
 
-where you need to replace `username` with your own username, which you received via email during the registration. If you cannot get 
-a connection at all, your IP number range might be blocked from login. 
-Please contact Support.
+where you need to replace `username` with your own username, which you received
+via email during the registration. If you cannot get a connection at all, your 
+IP number range might be blocked from login. Please contact the
+[support][support-account].
 
-## Where to run
+## Running
 
-When you login to LUMI, you end up on one of the login nodes. These login nodes
+When you log in to LUMI, you end up on one of the login nodes. These login nodes
 are shared by all users and they are not intended for heavy computing.
 
 The login nodes should be used only for:
@@ -46,18 +166,16 @@ jobs or as interactive batch jobs. Programs not adhering to these rules will be
 terminated without warning.
 
 Compute intensive jobs must be submitted to the job scheduling system. LUMI uses
-Slurm as the job scheduler.
+Slurm as the job scheduler. In order to run, you need a project allocation. 
+You need to specify your project ID in your job script (or via the command line
+when submitting your job) in order for your job to be submitted to the queue. 
 
-## How to run
+!!! missing
 
-In order to run, you need a project allocation. Please check that you are member
-of project with an active allocation with the `FIXME` command:
-
-```
-FIXME
-```
-
-**TODO:** describe how to get your project ID
+    Commands to gather information about the project and quota are not
+    available yet. However, you can use the `groups` command to retrieve your 
+    project ID when connected to LUMI: you should see that you are part of a 
+    group named `project_xxxxxxxxx`.
 
 Here is a typical batch script for Slurm. This script runs an application
 on 2 compute nodes with 16 MPI ranks on each node (32 total) and 8 OpenMP 
@@ -67,7 +185,7 @@ threads per rank.
 $ cat batch_script.slurm
 #!/bin/bash -l
 #SBATCH --job-name=test-job
-#SBATCH --account=<project>
+#SBATCH --account=<project_xxxxxxxxx>
 #SBATCH --time=01:00:00
 #SBATCH --nodes=2
 #SBATCH --ntasks=32
@@ -79,14 +197,6 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 srun ./application
 ```
 
-To run this job, copy the input files from FIXME into your scratch directory and submit the job with the sbatch command:
-
-    cd /scratch/disk/myprojectname
-    cp /FIXME/HPL/smalldemo .
-    vim/emacs job.sh
-    (copy-paste above and save)
-    sbatch job.sh
-
 - [More information about running jobs on LUMI](../computing/index.md)
 
 ## Where to store data
@@ -95,39 +205,11 @@ On LUMI, there are several disk areas: home, projects, scratch (LUMI-P) and fast
 flash-backed scratch (LUMI-F). Please familiarize yourself with the areas and 
 their specific purposes.
 
-* **Home**: /users/username. Use mainly for configuration files and source code. The home directory is not intended for data analysis or computing. There is no cleaning and the files are backed up.
-* **Project**: /project/projectname. Use to store analyzed results and to share e.g. software installations with other project members. There is no cleaning but files are not backed up!
-* **Scratch** /scratch/disk/projectname and a smaller, but faster /scratch/flash/projectname area. Use these when running jobs. Shared with other project members. The files are not backed up! Old files are cleaned automatically after 90 days. Any data that should be preserved for a longer time should be copied either to /project or to the LUMI-O storage. 
-
-* **Again: only the home directory is backed up!**
-* **Again: files in /scratch are deleted after 90 (FIXME) days!**
-
-An overview of your directories in a supercomputer you are currently logged on can be displayed with the lumi-workspaces command. Please verify that you get similar looking output when running the command. If not, please contact support.
-
-    [kkayttaj@puhti ~]$ csc-workspaces 
-    Disk area               Capacity(used/max)  Files(used/max)  Project description  
-    ----------------------------------------------------------------------------------
-    Personal home folder
-    ----------------------------------------------------------------------------------
-    /users/kkayttaj                2.05G/10G       23.24k/100k
-
-    Project applications 
-    ----------------------------------------------------------------------------------
-    /projappl/project_2012345     3.056G/50G       23.99k/100k   Ortotopology modeling
-    
-    Project scratch 
-    ----------------------------------------------------------------------------------
-    /scratch/project_2012345        56G/1T         150.53k/1000k Ortotopology modeling
-    
-**The scratch and projects directories are meant to be shared by all the members
-of the project**. All new files and directories are also fully accessible for 
-other group members (including read, write and execution permissions). If you 
-want to have a private area in scratch and projects, you can create your own 
-personal folder in there and restrict access from your group members with the 
-`chmod` command. For example, setting read-only permissions for your group members for the directory my_directory:
-
-    mkdir my_directory
-    chmod -R g-w my_directory
+|              | Path                       | Description                                                                            |
+|--------------|----------------------------|----------------------------------------------------------------------------------------|
+| **Home**     | `/users/<username>`        | for user configuration files and source code                                           | 
+| **Project**: | `/projappl/<project_name>` | act as the project home directory                                                      |
+| **Scratch**  | `/scratch/<project_name>`  | intended as temporary storage for input, output or checkpoint data of your application |
 
 - [Learn more about the LUMI storage](../storage/index.md)
 
@@ -145,9 +227,4 @@ disposal.
 ## Getting Help
 
 The LUMI User Support Team is here to help if you have any question or problem
-regarding your usage of LUMI.
-
-* How to contact support
-* Links to start of doc pages
-* Links to Cray docs (if publically available)
-* Links to AMD ROCm docs
+regarding your usage of LUMI. You can contact the support team [here][support].

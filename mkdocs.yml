@@ -7,9 +7,7 @@ site_description: >-
 copyright: Copyright &copy; 2021 LUMI User Support Team
 nav:
   - Home: index.md
-  - First Steps:
-    - Overview: firststeps/index.md
-    - Get started: firststeps/getstarted.md
+  - First Steps: firststeps/getstarted.md
   - Computing:
     - Overview: computing/index.md
     - Connecting: computing/connecting.md
@@ -100,6 +98,7 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.tabbed
   - pymdownx.superfences
+  - pymdownx.keys
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
