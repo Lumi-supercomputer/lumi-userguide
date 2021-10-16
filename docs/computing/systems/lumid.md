@@ -18,8 +18,7 @@ LUMI-C (Zen 3 / "Milan"). There should be no big problem with
 software compatibility, though, as only a few new processor instructions related
 to encryption and virtualization was added to the Zen 3 core. We expect that
 almost all programs compiled for LUMI-C (e.g. with `-march=znver3`)
-will run on LUMI-D with good performance. Please see this page [FIXME] for more
-information about Zen 2 vs. Zen 3 differences.
+will run on LUMI-D with good performance.
 
 ## GPUs
 
