@@ -66,8 +66,9 @@ you need to generate an SSH key pair.
     ```
 
     You will be prompted for a file name and location where to save the
-    key. Accept the defaults by pressing ++enter++. Alternatively, you choose a
-    custom name and location. For example `/home/username/.ssh/id_rsa_lumi`.
+    key. Accept the defaults by pressing ++enter++. Alternatively, you can 
+    choose a custom name and location. For example 
+    `/home/username/.ssh/id_rsa_lumi`.
 
     Next, you will be asked for a passphrase. Please choose a secure
     passphrase. It should be at least 8 characters long and should contain
@@ -75,16 +76,16 @@ you need to generate an SSH key pair.
     empty**.
 
     After that a SSH key pair is created. If you choose the name given as an
-    example, you should have the `id_rsa_lumi` and `id_rsa_lumi.pub` in your
-    `.ssh` directory.
+    example, you should have files named `id_rsa_lumi` and `id_rsa_lumi.pub` in
+    your `.ssh` directory.
 
 === "With MobaXTerm or PuTTY (Windows)"
 
     An SSH key pair can be generated with the PuTTygen tool or with MobaXterm 
     (**Tools :octicons-arrow-right-16: MobaKeyGen**). Both tools are identical.
     
-    In order to generate your key pairs for LUMI, choose the option RSA is chosen
-    set the number of bits to 4096. Press the button *Generate*.
+    In order to generate your key pairs for LUMI, choose the option RSA and
+    set the number of bits to 4096. The, press the *Generate* button.
 
     <figure>
       <img src="../../assets/images/win-keygen-step1.png" width="400" alt="Create SSH key pair with windows - step 1">
@@ -106,7 +107,7 @@ you need to generate an SSH key pair.
       <img src="../../assets/images/win-keygen-step3.png" width="400" alt="Create SSH key pair with windows - step 3">
     </figure>
 
-    The next step is to save you public and private kay. Click on the *Save 
+    The next step is to save your public and private key. Click on the *Save 
     public key* button and save it to the desired location (for example, with 
     `id_rsa_lumi.pub` as a name). Do the same with your private key by clicking
     on the *Save private key* button and save it to the desired location (for 
