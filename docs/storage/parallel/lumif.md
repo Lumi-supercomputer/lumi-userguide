@@ -10,6 +10,8 @@ of 7 PB and an aggregate bandwidth of 1 740 GB/s. It is composed of 2 MDSs
 
 ## Usage
 
+
+
 ## Billing and Quota
 
 The quota is enforced on a per project basis. The default quota is 1 TB and 1 
@@ -19,8 +21,6 @@ we invite you to reconsider your data workflow. Having a large number of small
 files can creates contention at the metadata servers and may limit the 
 performance due to limited striping (more explanation is provided on the 
 [Lustre][lustre] page).
-
-The flash storage is billed 
 
 ## Purge Policy
 
