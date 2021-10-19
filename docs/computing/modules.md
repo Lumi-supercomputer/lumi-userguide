@@ -99,7 +99,7 @@ You can also remove all loaded modules from your environment by using the
 module purge
 ```
 
-### Get infomation about the module
+### Get information about the module
 
 Information about a module such as its description, usage and links to the
 documentation of the software package can be obtained using the `help`
