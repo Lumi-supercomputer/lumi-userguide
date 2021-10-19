@@ -168,7 +168,7 @@ in the table below.
 
 ### Choosing the target architecture
 
-When using the Cray programming environment, there is no need to specify compiler flags to target specific CPU architecture, like `-march` and `-mtune` in gcc. Instead, you load an appropiate combination of modules to choose the target architecture when compiling. These modules influence the optimizations performed by the compiler, as well as the libraries (e.g. which BLAS routines are used in Cray LibSci) used. Therefore, we recommend that you compile with `craype-x86-milan` for LUMI-C, even if the compiler optimziations for Zen 3 processors are immature at the moment.
+When using the Cray programming environment, there is no need to specify compiler flags to target specific CPU architecture, like `-march` and `-mtune` in gcc. Instead, you load an appropriate combination of modules to choose the target architecture when compiling. These modules influence the optimizations performed by the compiler, as well as the libraries (e.g. which BLAS routines are used in Cray LibSci) used. Therefore, we recommend that you compile with `craype-x86-milan` for LUMI-C, even if the compiler optimziations for Zen 3 processors are immature at the moment.
 
 The table below summarize the available modules.
 
