@@ -18,9 +18,9 @@ need to get started.
 
 ## Setting up SSH key pair
 
-LUMI Countries have different kinds of portals. Please contact your local 
-contacts to get the URL. The portals will lead you to MyAccessID registration 
-page, where you have to accept Acceptable Use Policy and LUMI Terms of Use 
+**You can only log in to LUMI using SSH keys**. There are no passwords. In order for this to work, you need to register your SSH key with MyAccessID, from where LUMI will fetch it.
+
+LUMI Countries have different kinds of portals managing user access to the system. Please contact your local HPC organization to find which URL to go to. The portals will lead you to MyAccessID registration age, where you have to accept Acceptable Use Policy and LUMI Terms of Use 
 document, which is linked there. Please read it carefully! 
 
 <figure>
@@ -36,19 +36,16 @@ document, which is linked there. Please read it carefully!
 You may also modify the email address, but according to 
 [LUMI Terms of Use][terms-of-use] you must your organizational email address.
 
-The authentication on the portal done with home organization identity provider,
+The authentication in the portal is done with home organization identity provider,
 which can be selected from the list. In case that is not possible please 
 [contact the support team][support-account] with the error message and you may also
 contact your identity provider directly.
 
-Accessing LUMI will happen with ssh key pair. After registering the key, there
-can be a couple of hours delay until it is synchronized.
-
-You also need to be a member of a project. Project's PI will create a project 
-and invite members via email address. Resource allocators of each country will 
+You also need to be a member of a project. The project's PI will create a project 
+and invite members based on email addresses. Resource allocators of each country will 
 accept the project. When the project is accepted, the user accounts will be 
 created in LUMI. You will receive email from CSC's Identity management system 
-informing you of your project ID and user account.
+informing you of your project ID and user account name.
 
 ### Generate your SSH keys
 
@@ -116,7 +113,7 @@ you need to generate an SSH key pair.
 !!! warning "Note"
     The private key should never be shared with anyone, not even with
     LUMI staff. It should also be stored only in the local computer (public key
-    can be safely stored in cloud services). Protect it with a good password!
+    can be safely stored in cloud services). Protect it with a good password! Otherwise, anyone with access to the file system can steal your SSH key.
 
 ### Upload your public key 
  
@@ -137,12 +134,14 @@ key file in the field.
   <figcaption>MyAccessID Own profile information to add ssh public key.</figcaption>
 </figure>
 
+After registering the key, there can be a couple of hours delay until it is synchronized.
+
 ## How to log in
 
 Connect using a ssh client:
 
 ```
-ssh username@login.lumi-supercomputer.eu
+ssh username@lumi.csc.fi
 ```
 
 where you need to replace `username` with your own username, which you received
