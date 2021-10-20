@@ -122,8 +122,8 @@ in your [user profile][myaccessid-profile]. From there, the public key will be
 copied to LUMI with some delay according to the synchronization schedule.
 
 To register your key, click in the *Authentication* tab and then on the green 
-button next to *Public ssh Key*. Then, copy paste the content of your **public**
-key file in the field.
+button next to *Public ssh Key*. Then, copy/paste the content of your **public**
+key file in the field. **Note:** SSH key structure is <algorithm> <key> <comment>. Please EXCLUDE <comment> from your copy/paste
 
 <figure>
   <img 
