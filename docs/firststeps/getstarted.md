@@ -20,7 +20,7 @@ need to get started.
 
 **You can only log in to LUMI using SSH keys**. There are no passwords. In order for this to work, you need to register your SSH key with MyAccessID, from where LUMI will fetch it.
 
-LUMI Countries have different kinds of portals managing user access to the system. Please contact your local HPC organization to find which URL to go to. The portals will lead you to MyAccessID registration age, where you have to accept Acceptable Use Policy and LUMI Terms of Use 
+LUMI Countries have different kinds of portals managing user access to the system. Please contact your local HPC organization to find which URL to go to. The portals will lead you to MyAccessID registration age, where you have to accept the Acceptable Use Policy and LUMI Terms of Use 
 document, which is linked there. Please read it carefully! 
 
 <figure>
@@ -34,11 +34,11 @@ document, which is linked there. Please read it carefully!
 
  
 You may also modify the email address, but according to 
-[LUMI Terms of Use][terms-of-use] you must your organizational email address.
+[LUMI Terms of Use][terms-of-use] you must use your organizational email address.
 
 The authentication in the portal is done with home organization identity provider,
 which can be selected from the list. In case that is not possible please 
-[contact the support team][support-account] with the error message and you may also
+[contact the support team][support-account] with the error message, and you may also
 contact your identity provider directly.
 
 You also need to be a member of a project. The project's PI will create a project 
@@ -216,7 +216,7 @@ their specific purposes.
 
 ## Compiling and Developing your Code
 
-LUMI comes with the multiple programming environments: Cray, GNU and AOCC. 
+LUMI comes with multiple programming environments: Cray, GNU, and AOCC. 
 In addition, the most common libraries used in an HPC environment tuned for LUMI
 are also available. Parallel debugger and profiling tools are also at one's 
 disposal.
@@ -227,5 +227,5 @@ disposal.
 
 ## Getting Help
 
-The LUMI User Support Team is here to help if you have any question or problem
+The LUMI User Support Team is here to help if you have any questions or problems
 regarding your usage of LUMI. You can contact the support team [here][support].
