@@ -118,7 +118,7 @@ you need to generate an SSH key pair.
 
 ### Upload your public key 
  
-Nox that you have generated your key pair, you need to set up your **public** key
+Now that you have generated your key pair, you need to set up your **public** key
 in your [user profile][myaccessid-profile]. From there, the public key will be 
 copied to LUMI with some delay according to the synchronization schedule.
 
