@@ -45,6 +45,8 @@ nav:
     - Performance analysis:
       - Overview: development/profiling/index.md
       - CrayPat: development/profiling/perftools.md
+  - Known Issues:
+    - Known Issues: issues/index.md
   - Help desk: 
     - Help desk: generic/helpdesk.md
  
