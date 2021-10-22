@@ -36,13 +36,13 @@ programming environments for LUMI.
 ### Switching compiler suites
 
 The compiler collections are accessible through [modules][modules] and in 
-particular, the `module load` command
+particular, the `module load` command:
 
 ```
 $ module load PrgEnv-<name>
 ```
 
-where `<name>` is the name of the compiler suite. There is 3 collections
+where `<name>` is the name of the compiler suite. There are 3 collections
 available on LUMI. The default collection is Cray.
 
 |      | Description                   | Module collection |
@@ -57,17 +57,17 @@ For example, if you want to use the GNU’s compiler collection:
 $ module load PrgEnv-gnu
 ```
 
-After you have loaded a programming environment, [compiler wrappers][2] (`cc`,
+After you have loaded a programming environment, the [compiler wrappers][2] (`cc`,
 `CC` and `ftn`) are available.
 
 ### Changing compiler versions
 
 If the default compiler version does not suit you, you can change the version
-after a programming environment versions. This operation is performed using
+after having a loaded a programming environment. This operation is performed using
 the `module swap` command.
 
 ```
-module swap <compiler> <compiler>/<version>
+$ module swap <compiler> <compiler>/<version>
 ```
 
 Where `<compiler>` is the name of the compiler module for the loaded programming
@@ -76,13 +76,13 @@ environment and `<compiler>` the version you want to use. For example
 === "CCE"
 
     ```
-    module swap cce cce/11.0.2
+    $ module swap cce cce/11.0.2
     ```
 
 === "GNU"
 
     ```
-    module swap gcc gcc/10.2.0
+    $ module swap gcc gcc/10.2.0
     ```
 
 
@@ -168,7 +168,7 @@ in the table below.
 
 ### Choosing the target architecture
 
-When using the Cray programming environment, there is no need to specify compiler flags to target specific CPU architecture, like `-march` and `-mtune` in gcc. Instead, you load an appropiate combination of modules to choose the target architecture when compiling. These modules influence the optimizations performed by the compiler, as well as the libraries (e.g. which BLAS routines are used in Cray LibSci) used. Therefore, we recommend that you compile with `craype-x86-milan` for LUMI-C, even if the compiler optimziations for Zen 3 processors are immature at the moment.
+When using the Cray programming environment, there is no need to specify compiler flags to target specific CPU architecture, like `-march` and `-mtune` in gcc. Instead, you load an appropriate combination of modules to choose the target architecture when compiling. These modules influence the optimizations performed by the compiler, as well as the libraries (e.g. which BLAS routines are used in Cray LibSci) used. Therefore, we recommend that you compile with `craype-x86-milan` for LUMI-C, even if the compiler optimizations for Zen 3 processors are immature at the moment.
 
 The table below summarize the available modules.
 

@@ -38,17 +38,31 @@ the operation.
 To list the modules currently active in your environment, use the command:
 
 ```
-module list
-
-Currently Loaded Modules:
-CHANGEME
+$ module list
+Currently Loaded Modulefiles:
+  1) cce/11.0.4                                  5) craype-network-ofi
+  2) craype/2.7.7                                6) perftools-base/21.05.0
+  3) craype-x86-rome                             7) xpmem/2.2.40-7.0.1.0_2.4__g1d7a24d.shasta
+  4) libfabric/1.11.0.4.79                       8) PrgEnv-cray/8.0.0
 ```
 
 In order to list the available modules, you can use the command
 
 ```
-module avail
-CHANGEME
+$ module avail
+
+------------------------------------ /opt/cray/pe/perftools/21.05.0/modulefiles ------------------------------------
+perftools             perftools-lite-events perftools-lite-hbm    perftools-preload
+perftools-lite        perftools-lite-gpu    perftools-lite-loops
+
+--------------------------------------------- /opt/cray/pe/modulefiles ---------------------------------------------
+PrgEnv-aocc/8.0.0(default)                cray-netcdf/4.7.4.4(default)
+PrgEnv-aocc/8.1.0                         cray-netcdf/4.7.4.6
+PrgEnv-cray/8.0.0(default)                cray-netcdf-hdf5parallel/4.7.4.4(default)
+PrgEnv-cray/8.1.0                         cray-netcdf-hdf5parallel/4.7.4.6
+PrgEnv-gnu/8.0.0(default)                 cray-openshmemx/11.2.1(default)
+PrgEnv-gnu/8.1.0                          cray-openshmemx/11.3.2
+... (+ many more modules)
 ```
 
 This will list all the names and versions of the modules available. Modules
@@ -58,11 +72,14 @@ identified by a version number. All the modules of a particular
 name can be listed by adding a _name_ as argument of the `module avail` command. 
 
 ```
-module avail <name>
-CHANGEME
+$ module avail PrgEnv-gnu
+
+--------------------------------------------- /opt/cray/pe/modulefiles ---------------------------------------------
+PrgEnv-gnu/8.0.0(default) PrgEnv-gnu/8.1.0
+
 ```
 
-One of these modules is identified with a `(D)`. This is the default module,
+One of these modules is identified with a `(D)` or `(default)`. This is the default module,
 which will be loaded (with `module load <full-name>`) if no version is specified.
 
 ### Loading and removing modules
@@ -71,7 +88,7 @@ To load a module use the module load command. For example, to load the Cray
 FFTW library, use:
 
 ```
-module load cray-fftw
+$ module load cray-fftw
 ```
 
 This command will load the default version of the module. If the software you
@@ -82,32 +99,53 @@ To load a specific version of the module you need to specify it after the name o
 the module.
 
 ```
-module load cray-fftw/3.3.8.8
+$ module load cray-fftw/3.3.8.11
 ```
 
 In order to unload a module from your environment, use the `unload` sub-command
 followed by the name of the module you want to remove.
 
 ```
-module remove cray-fftw
+$ module remove cray-fftw
 ```
 
 You can also remove all loaded modules from your environment by using the 
 `purge` sub-command.
 
 ```
-module purge
+$ module purge
 ```
 
-### Get infomation about the module
+### Get information about the module
 
 Information about a module such as its description, usage and links to the
 documentation of the software package can be obtained using the `help`
 sub-command.
 
 ```
-module help cray-fftw
-CHANGEME
+$ module help cray-fftw
+----------- Module Specific Help for 'cray-fftw/3.3.8.10' ---------
+
+
+===================================================================
+FFTW 3.3.8.10
+============
+  Release Date:
+  -------------
+    May 2021
+
+
+  Purpose:
+  --------
+    This Cray FFTW 3.3.8.10 release is supported on Cray EX (formerly
+    Shasta) systems. FFTW is supported on the host CPU but not on the
+    accelerator of Cray systems.
+
+    The Cray FFTW 3.3.8.10 release provides the following:
+      - Optimizations for AMD Milan CPUs
+    See the Product and OS Dependencies section for details.
+...
+
 ```
 
 On the other hand, if you are more interested in what is actually defined by
@@ -115,8 +153,20 @@ the module, you can inspect the content of the module file using the `show`
 sub-command.
 
 ```
-module show cray-fftw
-CHANGEME
+$ module show cray-fftw
+-------------------------------------------------------------------
+/opt/cray/pe/modulefiles/cray-fftw/3.3.8.10:
+
+conflict	 cray-fftw 
+conflict	 fftw 
+setenv		 FFTW_VERSION 3.3.8.10 
+setenv		 CRAY_FFTW_VERSION 3.3.8.10 
+setenv		 CRAY_FFTW_PREFIX /opt/cray/pe/fftw/3.3.8.10/x86_rome 
+setenv		 FFTW_ROOT /opt/cray/pe/fftw/3.3.8.10/x86_rome 
+setenv		 FFTW_DIR /opt/cray/pe/fftw/3.3.8.10/x86_rome/lib 
+setenv		 FFTW_INC /opt/cray/pe/fftw/3.3.8.10/x86_rome/include 
+prepend-path	 PATH /opt/cray/pe/fftw/3.3.8.10/x86_rome/bin 
+...
 ```
 
 ## Saving your environment
