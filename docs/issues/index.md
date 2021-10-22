@@ -21,3 +21,8 @@ You need to specify the memory for your job:
   memory on the node with `--mem=0`
 - if you don't request exclusive access to the node set the value of `--mem`
   according to the needs of your job
+
+## Job get stuck in `CG` state
+
+the issue is linked to a missing component in the management software stack. 
+We contacted HPE and are waiting for the problem to be fixed.
