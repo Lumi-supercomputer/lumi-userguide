@@ -169,6 +169,8 @@ prepend-path	 PATH /opt/cray/pe/fftw/3.3.8.10/x86_rome/bin
 ...
 ```
 
+The environment variables defines are sometimes useful when building software. For example, you could pass `-I$(FFTW_INC)` to the compiler to add the header files for the FFTW library.
+
 ## Saving your environment
 
 Sometimes, if you frequently use multiple modules together, it might be useful
