@@ -44,13 +44,13 @@ hide:
   <p>
     LUMI is one of the three European pre-exascale supercomputers. It's an 
     HPE Cray EX supercomputer consisting of several partitions targeted for 
-    different use cases. The largest partition of the system is the LUMI-G 
-    partition consisting of GPU accelerated nodes using future-generation AMD 
-    Instinct GPUs. In addition to this, there is a smaller CPU-only partition 
-    LUMI-C that features AMD Epyc Milan CPUs and an auxiliary partition 
+    different use cases. The largest partition of the system is the "LUMI-G" 
+    partition consisting of GPU accelerated nodes using a future-generation AMD 
+    Instinct GPUs. In addition to this, there is a smaller CPU-only partition, 
+    "LUMI-C" that features AMD EPYC "Milan" CPUs and an auxiliary partition 
     for data analytics with large memory nodes and some GPUs for data 
     visualization. Besides partitions dedicated to computation, LUMI also offer 
-    storage partitions for a total of 117PB of storage space.
+    several storage partitions for a total of 117 PB of storage space.
   </p>
   <figure>
     <img 
@@ -66,7 +66,7 @@ hide:
 
 The LUMI-C partition consists of 1536 compute nodes with an estimated combined
 LINPACK performance of ca. 8 Petaflops. Each LUMI-C compute nodes are equipped 
-with two AMD EPYC 7763 CPUs with 64 cores each running at 2.5 GHz for a total 
+with 2 AMD EPYC 7763 CPUs with 64 cores each running at 2.5 GHz for a total 
 of 128 cores per node. The cores have support for 2-way simultaneous 
 multithreading (SMT) allowing for up to 256 threads per node.
 
@@ -77,7 +77,7 @@ multithreading (SMT) allowing for up to 256 threads per node.
 LUMI-D is intended for interactive data analytics and visualization. It is also
 a good place run pre- and post-processing jobs that require a lot of memory. It
 consists of a 4 nodes with large memory capacity (8 TB) and 8 nodes with NVIDIA
-RTX8000 GPUs. Each LUMI-D compute nodes are equipped with two AMD EPYC 7742 CPUs
+RTX8000 GPUs. Each LUMI-D compute nodes are equipped with 2 AMD EPYC 7742 CPUs
 with 64 cores each running at 2.25 GHz for a total of 128 cores per node.
 
 - [More information about LUMI-D][lumi-d]

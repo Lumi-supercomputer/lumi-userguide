@@ -77,7 +77,7 @@ Maximal striping can be achieved by setting the stripe count to `-1`.
 
 ### Get the Striping Pattern 
 
-Information about the striping of a directory or a file can be retrived using
+Information about the striping of a directory or a file can be retrieved using
 the `lfs getstripe` command.
 
 ```
