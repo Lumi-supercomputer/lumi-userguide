@@ -2,6 +2,10 @@
 template: home.html
 ---
 
+!!! failure "Known Issues"
+
+    Known issues can be found [here](./issues/index.md).
+
 
 !!! warning
     This documentation may frequently change over the course of the pilot 
