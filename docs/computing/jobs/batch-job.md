@@ -22,6 +22,16 @@ particular the page about [sbatch][slurm-sbatch].
 
 ## Example Batch Scripts
 
+!!! error "Specify the account"
+
+    The account option (`--account=project_<id>`) is mandatory. Failing to set 
+    it will cause the following error:
+
+    ```
+    Unable to allocate resources: Job violates accounting/QOS policy 
+    (job submit limit, user's size and/or time limits)
+    ```
+
 ### Shared memory jobs
 
 ```
@@ -34,7 +44,7 @@ particular the page about [sbatch][slurm-sbatch].
 #SBATCH --cpus-per-task=128     # Number of cores (threads)
 #SBATCH --time=12:00:00         # Run time (hh:mm:ss)
 #SBATCH --mail-type=all         # Send email at begin and end of job
-#SBATCH --account=project_id    # Project ID
+#SBATCH --account=project_<id>  # Project for billing
 #SBATCH --mail-user=username@domain.com
 
 # Any other commands must follow the #SBATCH directives
@@ -57,7 +67,7 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 #SBATCH --ntasks=6400           # Total number of mpi tasks
 #SBATCH --time= 1-12:00:00      # Run time (d-hh:mm:ss)
 #SBATCH --mail-type=all         # Send email at begin and end of job
-#SBATCH --account=project_id    # Project ID
+#SBATCH --account=project_<id>  # Project for billing
 #SBATCH --mail-user=username@domain.com
 
 # Any other commands must follow the #SBATCH directives
@@ -79,7 +89,7 @@ srun ./your_application # Use srun instead of mpirun or mpiexec
 #SBATCH --cpus-per-task=8       # Number of cores (threads) per task
 #SBATCH --time=1-12:00:00       # Run time (d-hh:mm:ss)
 #SBATCH --mail-type=all         # Send email at begin and end of job
-#SBATCH --account=project_id    # Project ID
+#SBATCH --account=project_<id>  # Project for billing
 #SBATCH --mail-user=username@domain.com
 
 # Any other commands must follow the #SBATCH directives

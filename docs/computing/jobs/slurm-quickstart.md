@@ -85,8 +85,15 @@ and other listings. The second directive sets the billing project for the job
 #SBATCH --account=myAmazingProject
 ```
 
-The account argument is mandatory. Failing to set it will cause the job to 
-be held with the reason `AssocMaxJobsLimit`. 
+!!! error "Specify the account"
+
+    The account option is mandatory. Failing to set it will cause the following
+    error:
+
+    ```
+    Unable to allocate resources: Job violates accounting/QOS policy 
+    (job submit limit, user's size and/or time limits)
+    ```
 
 The remaining lines specify the resources needed for the job. 
 The first one is the **maximum** time your job can run. If your job exceeds
