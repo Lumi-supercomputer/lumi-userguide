@@ -7,7 +7,7 @@ hide:
 
 [terms-of-use]: https://www.lumi-supercomputer.eu/lumi-general-terms-of-use_1-0/
 [support-account]: https://lumi-supercomputer.eu/user-support/need-help/account/
-[myaccessid-profile]: https://mms.myaccessid.org/fed/gui/
+[myaccessid-profile]: https://mms.myaccessid.org/profile/
 [puttygen]: https://www.puttygen.com/#How_to_use_PuTTYgen
 [support]: https://lumi-supercomputer.eu/user-support/need-help/
 [registration]: ../accounts/registration.md
@@ -122,13 +122,13 @@ Now that you have generated your key pair, you need to set up your **public** ke
 in your [user profile][myaccessid-profile]. From there, the public key will be 
 copied to LUMI with some delay according to the synchronization schedule.
 
-To register your key, click in the *Authentication* tab and then on the green 
-button next to *Public ssh Key*. Then, copy/paste the content of your **public**
-key file in the field. **Note:** SSH key structure is *algorithm, key, comment*. Please EXCLUDE *comment* from your copy/paste.
+To register your key, click on the *Settings* item of the menu on the left
+as shown in the figure below. Then select *Ssh keys*. From here you can add a new public key
+or remove an old one. **Note:** SSH key structure is *algorithm, key, comment*. Please EXCLUDE *comment* from your copy/paste.
 
 <figure>
   <img 
-    src="../../assets/images/myaccessid_own_profile.png" 
+    src="../../assets/images/MyAccessID_ssh-key.png" 
     width="480"
     alt="Screenshot of user profile settings to setup ssh public key"
   >
