@@ -80,7 +80,7 @@ you need to generate an SSH key pair.
     it into MyAccessId.org, make sure there are no NewLines or Spaces in the
     resulting pasted text.
 
-    Next, you will be asked for a passphrase. See [important note][#passphrase] about
+    Next, you will be asked for a passphrase. See [important note][] about
     the passhrase.
 
     After that a SSH key pair is created. You should have files named
@@ -121,7 +121,8 @@ you need to generate an SSH key pair.
     example, with `id_rsa_lumi` as a name).
 
 ### "Note on SSH passphrase"
-!!! warning "Note on SSH passphrase"
+    Plese read carefuly the following note:
+!!! warning "Note"
     Please choose a secure passphrase. Remember that a good passphrase does not have
     to be a hard one to remember.
     
