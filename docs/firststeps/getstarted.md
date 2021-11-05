@@ -194,21 +194,21 @@ After that your new SSH key should be recognized and accepted by LUMI login node
 Connect using a ssh client:
 
 ```
-ssh username@lumi.csc.fi
+ssh _your_lumi_username_@lumi.csc.fi
 ```
 
-where you need to replace `username` with your own username, which you received
+where you need to replace `_your_lumi_username_` with your own username, which you received
 via email during the registration. If you cannot get a connection at all, your 
 IP number range might be blocked from login. Please contact the
-[support][support-account]. If you can get a connection but LUMI is not logging
-you in, please contact the [support][support-account] , pasting into the support
-request text the textual screen scrape of your terminal with the outputs of the
-following commands:
+[support][support-account]. If you can get an SSH connection but LUMI is not logging
+you in and is not giving you command prompt, please contact the [support][support-account],
+pasting into the support request text the textual screen scrape of your terminal with the
+outputs of the following commands:
 
 ```bash
  (
 ssh-keygen -y -f $HOME/.ssh/id_rsa_lumi
-ssh -vvv -i $HOME/.ssh/id_rsa_lumi  _your_username_@lumi.csc.fi
+ssh -vvv -i $HOME/.ssh/id_rsa_lumi  _your_lumi_username_@lumi.csc.fi
  )
 ```
 
