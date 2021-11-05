@@ -67,7 +67,7 @@ you need to generate an SSH key pair.
     example, you can use the following command to generate a 4096 bits RSA key:
 
     ```bash
-     bash -c '
+     (
     mkdir $HOME/.ssh/ && chmod 700 $HOME/.ssh
     ssh-keygen -t rsa -b 4096  -f $HOME/.ssh/id_rsa_lumi
     ls -l  $HOME/.ssh/id_rsa_lumi $HOME/.ssh/id_rsa_lumi.pub
@@ -75,7 +75,7 @@ you need to generate an SSH key pair.
     echo =+=+=+=+=+=+=+= START OF Your public key:
     ( cat  $HOME/.ssh/id_rsa_lumi.pub | ( read algo key comment ; echo "$algo $key" ) )
     echo =+=+=+=+=+=+=+= END OF Your public key.
-      '
+      )
     ```
     After running the above, your terminal should look similar to this [keygen output][sample-ssh-keygen-output].
     
@@ -202,10 +202,10 @@ request text the textual screen scrape of your terminal with the outputs of the
 following commands:
 
 ```bash
- bash -c '
+ (
 ssh-keygen -y -f $HOME/.ssh/id_rsa_lumi
 ssh -vvv -i $HOME/.ssh/id_rsa_lumi  _your_username_@lumi.csc.fi
- '
+ )
 ```
 
 ## Running
