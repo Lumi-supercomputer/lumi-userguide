@@ -14,7 +14,7 @@ template: home.html
     [support service](mailto:support@lumi-supercomputer.eu). Happy computing!
 
 
-# About LUMI
+# About LUIM
 
 - [LUMI-C : The CPU computing partition](computing/systems/lumic.md)
 - [LUMI-D : Data analytics and visualization on LUMI](computing/systems/lumid.md)
