@@ -55,27 +55,40 @@ you need to generate an SSH key pair.
 
 === "From a terminal (all OS)"
 
+    This section is intended for users that are not familiar with details of SSH
+    usage. If you already know how SSH works, feel free to be able to modify
     An SSH key pair can be generated in the Linux, macOS, Windows PowerShell and 
     MobaXterm terminal. It is important to create a long enough key length. For
     example, you can use the following command to generate a 4096 bits RSA key:
 
     ```bash
-    ssh-keygen -t rsa -b 4096
+    mkdir $HOME/.ssh/ && chmod 700 $HOME/.ssh
+    ssh-keygen -t rsa -b 4096  -f $HOME/.ssh/id_rsa_lumi
+    ls -l  $HOME/.ssh/id_rsa_lumi $HOME/.ssh/id_rsa_lumi.pub
+    echo Copy everything between the =+=+=+=+=+=+=+=, not inclusive of these lines
+    echo =+=+=+=+=+=+=+= START OF Your public key:
+    cat $HOME/.ssh/id_rsa_lumi.pub
+    echo =+=+=+=+=+=+=+= END OF Your public key.
     ```
-
-    You will be prompted for a file name and location where to save the
-    key. Accept the defaults by pressing ++enter++. Alternatively, you can 
-    choose a custom name and location. For example 
-    `/home/username/.ssh/id_rsa_lumi`.
+    Between the =+=+=+=+=+=+=+= is one line of ASCII output, which will likely
+    show up on your terminal as multiple lines. If you are later cutting and pasting
+    it into MyAccessId.org, make sure there are no NewLines or Spaces in the
+    resulting pasted text.
 
     Next, you will be asked for a passphrase. Please choose a secure
     passphrase. It should be at least 8 characters long and should contain
-    numbers, letters and special characters. **Do not leave the passphrase 
-    empty**.
+    numbers, letters and special characters. If you prefer not to use special characters,
+    make sure that the passphrase is at least 19 characters long.
+    **Do not leave the passphrase empty**.
+    **Write down this passphrase to a secure place.**
+    **This passphrase will be needed later to log in.**
+    **Do not give this passphrase to anyone.**
+    **Do not include this passphrase in any support requests.** (There is no legitimate
+    use of this passphrase by any support personnel, at any time. Report anyone asking
+    you to give them your passphrase or password, immediately please.)
 
-    After that a SSH key pair is created. If you choose the name given as an
-    example, you should have files named `id_rsa_lumi` and `id_rsa_lumi.pub` in
-    your `.ssh` directory.
+    After that a SSH key pair is created. You should have files named
+    `id_rsa_lumi` and `id_rsa_lumi.pub` in your `$HOME/.ssh` directory.
 
 === "With MobaXTerm or PuTTY (Windows)"
 
@@ -135,7 +148,8 @@ or remove an old one. **Note:** SSH key structure is *algorithm, key, comment*. 
   <figcaption>MyAccessID Own profile information to add ssh public key.</figcaption>
 </figure>
 
-After registering the key, there can be a couple of hours delay until it is synchronized.
+After registering the key, there can be a about 15 minutes delay until it is synchronized.
+After that your new SSH key should be recognized and accepted by LUMI login nodes.
 
 ## How to log in
 
@@ -148,7 +162,11 @@ ssh username@lumi.csc.fi
 where you need to replace `username` with your own username, which you received
 via email during the registration. If you cannot get a connection at all, your 
 IP number range might be blocked from login. Please contact the
-[support][support-account].
+[support][support-account]. If you can get a connection but LUMI is not logging
+you in, please contact the [support][support-account] , pasting into request the
+output of the following commands:
+`ssh-keygen -y -f /path/to/private.key.generated.above`
+`ssh -vvv -i /path/to/private.key.generated.above  _your_username_@lumi.csc.fi`
 
 ## Running
 
