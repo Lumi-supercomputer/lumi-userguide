@@ -120,8 +120,9 @@ you need to generate an SSH key pair.
     on the *Save private key* button and save it to the desired location (for 
     example, with `id_rsa_lumi` as a name).
 
-### "Note on SSH passphrase"
-    Plese read carefuly the following note:
+### Note on SSH passphrase
+    Please read carefuly the following note:
+    
 !!! warning "Note"
     Please choose a secure passphrase. Remember that a good passphrase does not have
     to be a hard one to remember.
