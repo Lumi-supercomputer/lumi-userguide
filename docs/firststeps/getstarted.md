@@ -62,13 +62,15 @@ you need to generate an SSH key pair.
     example, you can use the following command to generate a 4096 bits RSA key:
 
     ```bash
+     bash -c '
     mkdir $HOME/.ssh/ && chmod 700 $HOME/.ssh
     ssh-keygen -t rsa -b 4096  -f $HOME/.ssh/id_rsa_lumi
     ls -l  $HOME/.ssh/id_rsa_lumi $HOME/.ssh/id_rsa_lumi.pub
     echo Copy everything between the =+=+=+=+=+=+=+=, not inclusive of these lines
     echo =+=+=+=+=+=+=+= START OF Your public key:
-    cat $HOME/.ssh/id_rsa_lumi.pub
+    ( cat  $HOME/.ssh/id_rsa_lumi.pub | ( read algo key comment ; echo "$algo $key" ) )
     echo =+=+=+=+=+=+=+= END OF Your public key.
+      '
     ```
     Between the =+=+=+=+=+=+=+= is one line of ASCII output, which will likely
     show up on your terminal as multiple lines. If you are later cutting and pasting
