@@ -11,6 +11,7 @@ hide:
 [puttygen]: https://www.puttygen.com/#How_to_use_PuTTYgen
 [support]: https://lumi-supercomputer.eu/user-support/need-help/
 [registration]: ../accounts/registration.md
+[sample-ssh-keygen-output]: sample-ssh-keygen-output.md
 
 Please read through all of this carefully before you start running on LUMI. Here
 we describe a few sets of basic rules and the important information that you
@@ -72,6 +73,8 @@ you need to generate an SSH key pair.
     echo =+=+=+=+=+=+=+= END OF Your public key.
       '
     ```
+    After running the above, your terminal should look something like this [sample-ssh-keygen-output][keygen output].
+    
     Between the =+=+=+=+=+=+=+= is one line of ASCII output, which will likely
     show up on your terminal as multiple lines. If you are later cutting and pasting
     it into MyAccessId.org, make sure there are no NewLines or Spaces in the
