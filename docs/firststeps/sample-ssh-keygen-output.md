@@ -1,4 +1,4 @@
-``` text/plain
+```bash
 Generating public/private rsa key pair.
 /home/_your_local_username_/.ssh/id_rsa_lumi already exists.
 Overwrite (y/n)? y
