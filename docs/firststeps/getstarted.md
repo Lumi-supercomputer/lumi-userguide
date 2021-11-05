@@ -137,10 +137,15 @@ you need to generate an SSH key pair.
     Make sure that the passphrase is at least 20 characters and easy to remember.
     
     Example of a good passphrase generator is [here][correcthorsebatterystaple].
+    
     **Do not leave the passphrase empty**.
+    
     **Write down this passphrase to a secure place.**
+    
     **This passphrase will be needed later to log in.**
+    
     **Do not give this passphrase to anyone.**
+    
     **Do not include this passphrase in any support requests.** (There is no legitimate
     use of this passphrase by any support personnel, at any time. Report anyone asking
     you to give them your passphrase or password, immediately please.)
