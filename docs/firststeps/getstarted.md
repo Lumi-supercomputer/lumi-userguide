@@ -73,7 +73,7 @@ you need to generate an SSH key pair.
     echo =+=+=+=+=+=+=+= END OF Your public key.
       '
     ```
-    After running the above, your terminal should look something like this [sample-ssh-keygen-output][keygen output].
+    After running the above, your terminal should look something like this [keygen output][sample-ssh-keygen-output].
     
     Between the =+=+=+=+=+=+=+= is one line of ASCII output, which will likely
     show up on your terminal as multiple lines. If you are later cutting and pasting
