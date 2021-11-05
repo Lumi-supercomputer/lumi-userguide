@@ -185,7 +185,9 @@ IP number range might be blocked from login. Please contact the
 [support][support-account]. If you can get a connection but LUMI is not logging
 you in, please contact the [support][support-account] , pasting into request the
 output of the following commands:
+
 `ssh-keygen -y -f /path/to/private.key.generated.above`
+
 `ssh -vvv -i /path/to/private.key.generated.above  _your_username_@lumi.csc.fi`
 
 ## Running
