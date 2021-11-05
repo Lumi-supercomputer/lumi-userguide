@@ -15,7 +15,7 @@ hide:
 [note-on-ssh-passphrase]: #note-on-ssh-passphrase
 [bad-complex-password]: https://xkcd.com/936/
 [correcthorsebatterystaple]: https://correcthorsebatterystaple.com/
-
+[torproject]: https://torproject.org/
 
 Please read through all of this carefully before you start running on LUMI. Here
 we describe a few sets of basic rules and the important information that you
@@ -137,6 +137,15 @@ you need to generate an SSH key pair.
     Make sure that the passphrase is at least 20 characters and easy to remember.
     
     Example of a good passphrase generator is [here][correcthorsebatterystaple].
+
+    Note for the security extra-cautious people: Any online website that sends you a password
+    (like the [correcthorsebatterystaple.com][correcthorsebatterystaple] generator), or
+    receives from you a password, should be accessed in goole-agnostic and facebook-agnostic
+    and other-privacy-endangering-giant-agnostic ways, such as with cleared
+    of cookies in your browser or better yet, clear of all traceable information (including IP address),
+    like using the [Tor browser][torproject]. Otherwise you are risking that these nonprivacy
+    giants will on top of your usernames also know your passwords to various online
+    services or offline files, like your new private SSH key.
     
     **Do not leave the passphrase empty**.
     
