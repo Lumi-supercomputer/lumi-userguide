@@ -73,24 +73,15 @@ you need to generate an SSH key pair.
     echo =+=+=+=+=+=+=+= END OF Your public key.
       '
     ```
-    After running the above, your terminal should look something like this [keygen output][sample-ssh-keygen-output].
+    After running the above, your terminal should look similar to this [keygen output][sample-ssh-keygen-output].
     
     Between the =+=+=+=+=+=+=+= is one line of ASCII output, which will likely
     show up on your terminal as multiple lines. If you are later cutting and pasting
     it into MyAccessId.org, make sure there are no NewLines or Spaces in the
     resulting pasted text.
 
-    Next, you will be asked for a passphrase. Please choose a secure
-    passphrase. It should be at least 8 characters long and should contain
-    numbers, letters and special characters. If you prefer not to use special characters,
-    make sure that the passphrase is at least 19 characters long.
-    **Do not leave the passphrase empty**.
-    **Write down this passphrase to a secure place.**
-    **This passphrase will be needed later to log in.**
-    **Do not give this passphrase to anyone.**
-    **Do not include this passphrase in any support requests.** (There is no legitimate
-    use of this passphrase by any support personnel, at any time. Report anyone asking
-    you to give them your passphrase or password, immediately please.)
+    Next, you will be asked for a passphrase. See [important note][#passphrase] about
+    the passhrase.
 
     After that a SSH key pair is created. You should have files named
     `id_rsa_lumi` and `id_rsa_lumi.pub` in your `$HOME/.ssh` directory.
@@ -129,8 +120,27 @@ you need to generate an SSH key pair.
     on the *Save private key* button and save it to the desired location (for 
     example, with `id_rsa_lumi` as a name).
 
-!!! warning "Note"
-    The private key should never be shared with anyone, not even with
+### "Note on SSH passphrase"
+!!! warning "Note on SSH passphrase"
+    Please choose a secure passphrase. Remember that a good passphrase does not have
+    to be a hard one to remember.
+    
+    Those of you who fancy a bit of computability calculations can appreciate
+    [this][https://xkcd.com/936/] explanation, while others can take our word for it.
+    
+    If you have idetic memory, make sure it is at least 8 characters long and contains
+    numbers, letters and special characters. If you prefer not to use contrapted passwords
+    that are difficult to remember, make sure that the passphrase is at least 20 characters
+    long. Example of a good passphrase generator is [here][https://correcthorsebatterystaple.com/].
+    **Do not leave the passphrase empty**.
+    **Write down this passphrase to a secure place.**
+    **This passphrase will be needed later to log in.**
+    **Do not give this passphrase to anyone.**
+    **Do not include this passphrase in any support requests.** (There is no legitimate
+    use of this passphrase by any support personnel, at any time. Report anyone asking
+    you to give them your passphrase or password, immediately please.)
+
+    The private key, with or without passphrase, should never be shared with anyone, not even with
     LUMI staff. It should also be stored only in the local computer (public key
     can be safely stored in cloud services). Protect it with a good password! Otherwise, anyone with access to the file system can steal your SSH key.
 
