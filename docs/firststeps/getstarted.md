@@ -1,6 +1,6 @@
 ---
 hide:
-  - navigation
+  - navigationssh-keygen -y -f
 ---
 
 # Get Started with LUMI
@@ -202,8 +202,10 @@ request text the textual screen scrape of your terminal with the outputs of the
 following commands:
 
 ```bash
+ bash -c '
 ssh-keygen -y -f $HOME/.ssh/id_rsa_lumi
 ssh -vvv -i $HOME/.ssh/id_rsa_lumi  _your_username_@lumi.csc.fi
+ '
 ```
 
 ## Running
