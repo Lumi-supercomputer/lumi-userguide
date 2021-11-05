@@ -197,8 +197,9 @@ where you need to replace `username` with your own username, which you received
 via email during the registration. If you cannot get a connection at all, your 
 IP number range might be blocked from login. Please contact the
 [support][support-account]. If you can get a connection but LUMI is not logging
-you in, please contact the [support][support-account] , pasting into request the
-textual screen scrape of your terminal with the outputs of the following commands:
+you in, please contact the [support][support-account] , pasting into the support
+request text the textual screen scrape of your terminal with the outputs of the
+following commands:
 
 ```bash
 ssh-keygen -y -f $HOME/.ssh/id_rsa_lumi
