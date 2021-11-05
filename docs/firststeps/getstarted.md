@@ -133,10 +133,10 @@ you need to generate an SSH key pair.
     Those of you who fancy an occasional computability calculation can appreciate
     [this][bad-complex-password] explanation, while others can take our word for it.
     
-    If you have idetic memory, make sure it is at least 8 characters long and contains
-    numbers, letters and special characters. If you prefer not to use contrapted passwords
-    that are difficult to remember, make sure that the passphrase is at least 20 characters
-    long. Example of a good passphrase generator is [here][correcthorsebatterystaple].
+    You may prefer not to use contrapted passwords that are difficult to remember.
+    Make sure that the passphrase is at least 20 characters and easy to remember.
+    
+    Example of a good passphrase generator is [here][correcthorsebatterystaple].
     **Do not leave the passphrase empty**.
     **Write down this passphrase to a secure place.**
     **This passphrase will be needed later to log in.**
