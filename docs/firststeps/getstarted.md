@@ -14,6 +14,7 @@ hide:
 [sample-ssh-keygen-output]: sample-ssh-keygen-output.md
 [note-on-ssh-passphrase]: #note-on-ssh-passphrase
 [bad-complex-password]: https://xkcd.com/936/
+[correcthorsebatterystaple]: https://correcthorsebatterystaple.com/
 
 
 Please read through all of this carefully before you start running on LUMI. Here
@@ -83,7 +84,7 @@ you need to generate an SSH key pair.
     it into MyAccessId.org, make sure there are no NewLines or Spaces in the
     resulting pasted text.
 
-    Next, you will be asked for a passphrase. See [important note][] about
+    Next, you will be asked for a passphrase. See [important note][note-on-ssh-passphrase] about
     the passhrase.
 
     After that a SSH key pair is created. You should have files named
@@ -109,7 +110,7 @@ you need to generate an SSH key pair.
     </figure>
 
     After that, enter a comment in the Key comment field and a strong
-    passphrase. See [important note][#Note-on-SSH-passphrase] about the passhrase.
+    passphrase. See [important note][note-on-ssh-passphrase] about the passhrase.
 
     <figure>
       <img src="../../assets/images/win-keygen-step3.png" width="400" alt="Create SSH key pair with windows - step 3">
@@ -135,7 +136,7 @@ you need to generate an SSH key pair.
     If you have idetic memory, make sure it is at least 8 characters long and contains
     numbers, letters and special characters. If you prefer not to use contrapted passwords
     that are difficult to remember, make sure that the passphrase is at least 20 characters
-    long. Example of a good passphrase generator is [here][https://correcthorsebatterystaple.com/].
+    long. Example of a good passphrase generator is [here][correcthorsebatterystaple].
     **Do not leave the passphrase empty**.
     **Write down this passphrase to a secure place.**
     **This passphrase will be needed later to log in.**
