@@ -1,6 +1,6 @@
 ---
 hide:
-  - navigationssh-keygen -y -f
+  - navigation
 ---
 
 # Get Started with LUMI
@@ -61,10 +61,13 @@ you need to generate an SSH key pair.
 === "From a terminal (all OS)"
 
     This section is intended for users that are not familiar with details of SSH
-    usage. If you already know how SSH works, feel free to be able to modify
+    usage. If you already know how SSH works, feel free to modify these instructions,
+    at your own risk and peril, of course.
+    
     An SSH key pair can be generated in the Linux, macOS, Windows PowerShell and 
     MobaXterm terminal. It is important to create a long enough key length. For
-    example, you can use the following command to generate a 4096 bits RSA key:
+    example, you can use the following command to generate a 4096 bits RSA key
+    and display the part which you will later need to paste into MyAccountId.org :
 
     ```bash
      (
@@ -142,7 +145,7 @@ you need to generate an SSH key pair.
     (like the [correcthorsebatterystaple.com][correcthorsebatterystaple] generator), or
     receives from you a password, should be accessed in goole-agnostic and facebook-agnostic
     and other-privacy-endangering-giant-agnostic ways, such as with cleared
-    of cookies in your browser or better yet, clear of all traceable information (including IP address),
+    cookies in your browser or better yet, clear of all traceable information (including IP address),
     like using the [Tor browser][torproject]. Otherwise you are risking that these nonprivacy
     giants will on top of your usernames also know your passwords to various online
     services or offline files, like your new private SSH key.
@@ -167,7 +170,8 @@ you need to generate an SSH key pair.
  
 Now that you have generated your key pair, you need to set up your **public** key
 in your [user profile][myaccessid-profile]. From there, the public key will be 
-copied to LUMI with some delay according to the synchronization schedule.
+copied to LUMI with some delay according to the synchronization schedule. This schedule
+is currently at once every 10 minutes.
 
 To register your key, click on the *Settings* item of the menu on the left
 as shown in the figure below. Then select *Ssh keys*. From here you can add a new public key
