@@ -12,6 +12,9 @@ hide:
 [support]: https://lumi-supercomputer.eu/user-support/need-help/
 [registration]: ../accounts/registration.md
 [sample-ssh-keygen-output]: sample-ssh-keygen-output.md
+[note-on-ssh-passphrase]: #note-on-ssh-passphrase
+[bad-complex-password]: https://xkcd.com/936/
+
 
 Please read through all of this carefully before you start running on LUMI. Here
 we describe a few sets of basic rules and the important information that you
@@ -126,8 +129,8 @@ you need to generate an SSH key pair.
     Please choose a secure passphrase. Remember that a good passphrase does not have
     to be a hard one to remember.
     
-    Those of you who fancy a bit of computability calculations can appreciate
-    [this][https://xkcd.com/936/] explanation, while others can take our word for it.
+    Those of you who fancy an occasional computability calculation can appreciate
+    [this][bad-complex-password] explanation, while others can take our word for it.
     
     If you have idetic memory, make sure it is at least 8 characters long and contains
     numbers, letters and special characters. If you prefer not to use contrapted passwords
