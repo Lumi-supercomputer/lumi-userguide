@@ -124,7 +124,7 @@ you need to generate an SSH key pair.
 
 ### Note on SSH passphrase
 
-    Please read carefuly the following note:
+    Please read carefuly the following note
     
 !!! warning "Note"
     Please choose a secure passphrase. Remember that a good passphrase does not have
