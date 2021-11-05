@@ -106,9 +106,7 @@ you need to generate an SSH key pair.
     </figure>
 
     After that, enter a comment in the Key comment field and a strong
-    passphrase. Please choose a secure passphrase. It should be at least 8 
-    characters long and should contain numbers, letters and special characters.
-    **Do not leave the passphrase empty**.
+    passphrase. See [important note][#Note-on-SSH-passphrase] about the passhrase.
 
     <figure>
       <img src="../../assets/images/win-keygen-step3.png" width="400" alt="Create SSH key pair with windows - step 3">
@@ -121,6 +119,7 @@ you need to generate an SSH key pair.
     example, with `id_rsa_lumi` as a name).
 
 ### Note on SSH passphrase
+
     Please read carefuly the following note:
     
 !!! warning "Note"
