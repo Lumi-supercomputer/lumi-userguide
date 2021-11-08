@@ -67,28 +67,24 @@ you need to generate an SSH key pair.
     An SSH key pair can be generated in the Linux, macOS, Windows PowerShell and 
     MobaXterm terminal. It is important to create a long enough key length. For
     example, you can use the following command to generate a 4096 bits RSA key
-    and display the part which you will later need to paste into MyAccountId.org :
+    and display your public key which you will later need to paste into MyAccountId.org :
 
     ```bash
      (
     mkdir $HOME/.ssh/ && chmod 700 $HOME/.ssh
     ssh-keygen -t rsa -b 4096  -f $HOME/.ssh/id_rsa_lumi
     ls -l  $HOME/.ssh/id_rsa_lumi $HOME/.ssh/id_rsa_lumi.pub
-    echo Copy everything between the =+=+=+=+=+=+=+=, not inclusive of these lines
-    echo =+=+=+=+=+=+=+= START OF Your public key:
-    ( cat  $HOME/.ssh/id_rsa_lumi.pub | ( read algo key comment ; echo "$algo $key" ) )
-    echo =+=+=+=+=+=+=+= END OF Your public key.
+    echo =+=+=+=+=+=+=+= Your public key is [algorithm, key, comment] :
+    cat  $HOME/.ssh/id_rsa_lumi.pub
+    echo =+=+=+=+=+=+=+=
       )
     ```
-    After running the above, your terminal should look similar to this [keygen output][sample-ssh-keygen-output].
     
-    Between the =+=+=+=+=+=+=+= is one line of ASCII output, which will likely
-    show up on your terminal as multiple lines. If you are later cutting and pasting
-    it into MyAccessId.org, make sure there are no NewLines or Spaces in the
-    resulting pasted text.
-
-    Next, you will be asked for a passphrase. See [important note][note-on-ssh-passphrase] about
-    the passhrase.
+    After running the above, your terminal should look similar to
+    this [keygen output][sample-ssh-keygen-output].
+   
+    During the execution of the above command, you will be asked for a passphrase.
+    See [important note][note-on-ssh-passphrase] about the passhrase.
 
     After that a SSH key pair is created. You should have files named
     `id_rsa_lumi` and `id_rsa_lumi.pub` in your `$HOME/.ssh` directory.
@@ -175,7 +171,7 @@ is currently at once every 10 minutes.
 
 To register your key, click on the *Settings* item of the menu on the left
 as shown in the figure below. Then select *Ssh keys*. From here you can add a new public key
-or remove an old one. **Note:** SSH key structure is *algorithm, key, comment*. Please EXCLUDE *comment* from your copy/paste.
+or remove an old one. **Note:** SSH key structure is *algorithm, key, comment*.
 
 <figure>
   <img 
@@ -193,7 +189,7 @@ After that your new SSH key should be recognized and accepted by LUMI login node
 
 Connect using a ssh client:
 
-```
+```bash
 ssh  -i $HOME/.ssh/id_rsa_lumi  _your_lumi_username_@lumi.csc.fi
 ```
 
