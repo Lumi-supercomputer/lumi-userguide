@@ -194,7 +194,7 @@ After that your new SSH key should be recognized and accepted by LUMI login node
 Connect using a ssh client:
 
 ```
-ssh _your_lumi_username_@lumi.csc.fi
+ssh  -i $HOME/.ssh/id_rsa_lumi  _your_lumi_username_@lumi.csc.fi
 ```
 
 where you need to replace `_your_lumi_username_` with your own username, which you received
