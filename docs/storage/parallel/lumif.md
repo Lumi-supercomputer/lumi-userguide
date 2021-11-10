@@ -10,7 +10,7 @@ of 7 PB and an aggregate bandwidth of 1 740 GB/s. It is composed of 2 MDSs
 
 ## Usage
 
-
+The flash storage is located at `/flash/project_<project-number>`
 
 ## Billing and Quota
 
