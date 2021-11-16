@@ -21,6 +21,27 @@ Please read through all of this carefully before you start running on LUMI. Here
 we describe a few sets of basic rules and the important information that you
 need to get started.
 
+The process of obtaining access to LUMI consists of two main steps.
+ - Registering for your person an identity within the PUHURI system
+ - Setting up an SSH key pair
+
+## Registering your identity
+First your person has to be identified within PUHURI. This process is generally initiated by national LUMI allocator creating a project within PUHURI, allocating and approving resources for it and creating an invitation to you email address as it is known to the resource allocator. PUHURI then sends an invitation link to your email address.
+
+Using your browser, you access this invitation link several times for several registration steps (accepting invitation, creating MyAccessId account, accepting terms and conditions and privacy) until your personal identity builds up required properties, at which point CSC.FI creates a corresponding project and your new LUMI username and sends you email notifying you. Within about an hour or two after receiving this email, you should be able to SSH in into a LUMI login node. See section "How to log in" below.
+
+Please note that you will not be asked for or provided with LUMI account password. LUMI access does not use password authenticaion. It uses authentication via SSH keys only.
+
+As you create MyAccessId account, you are required to upload your SSH public key. If you are unsure what it is or how it works, see the "Setting up SSH key pair" section below.
+
+### Summary of identity registration steps:
+
+1) Access the Invitation Link and follow instructions
+2) Accept Documents presented in MyAccessId
+3) Access the Invitation Link to create the account
+4) Upload SSH your public key. If you don't have one yet, see the section below.
+
+
 ## Setting up SSH key pair
 
 **You can only log in to LUMI using SSH keys**. There are no passwords. In order for this to work, you need to register your SSH key with MyAccessID, from where LUMI will fetch it.
