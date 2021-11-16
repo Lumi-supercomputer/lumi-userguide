@@ -22,7 +22,9 @@ we describe a few sets of basic rules and the important information that you
 need to get started.
 
 The process of obtaining access to LUMI consists of two main steps.
+
  - Registering for your person an identity within the PUHURI system
+
  - Setting up an SSH key pair
 
 ## Registering your identity
@@ -36,15 +38,13 @@ As you create MyAccessId account, you are required to upload your SSH public key
 
 ### Summary of identity registration steps:
 
-1) Access the Invitation Link and follow instructions
+1) Access the Invitation Link and follow instructions. Your identity will be 
+
 2) Accept Documents presented in MyAccessId
+
 3) Access the Invitation Link to create the account
-4) Upload SSH your public key. If you don't have one yet, see the section below.
 
-
-## Setting up SSH key pair
-
-**You can only log in to LUMI using SSH keys**. There are no passwords. In order for this to work, you need to register your SSH key with MyAccessID, from where LUMI will fetch it.
+4) Upload SSH your public key. If you don't have one yet, see the "Generate your SSH keys" section below.
 
 LUMI Countries have different kinds of portals managing user access to the system. Please contact your local HPC organization to find which URL to go to. The portals will lead you to MyAccessID registration age, where you have to accept the Acceptable Use Policy and LUMI Terms of Use 
 document, which is linked there. Please read it carefully! 
@@ -72,6 +72,12 @@ and invite members based on email addresses. Resource allocators of each country
 accept the project. When the project is accepted, the user accounts will be 
 created in LUMI. You will receive email from CSC's Identity management system 
 informing you of your project ID and user account name.
+
+
+## Setting up SSH key pair
+
+**You can only log in to LUMI using SSH keys**. There are no passwords. In order for this to work, you need to register your SSH key with MyAccessID, from where LUMI will fetch it.
+
 
 ### Generate your SSH keys
 
