@@ -38,7 +38,7 @@ As you create MyAccessId account, you are required to upload your SSH public key
 
 ### Summary of identity registration steps:
 
-1) Access the Invitation Link and follow instructions. Your identity will be 
+1) Access the Invitation Link and follow instructions.
 
 2) Accept Documents presented in MyAccessId
 
