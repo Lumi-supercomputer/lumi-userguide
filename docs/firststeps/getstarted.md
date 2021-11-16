@@ -40,7 +40,7 @@ As you create MyAccessId account, you are required to upload your SSH public key
 
 1) Access the Invitation Link and follow instructions.
 
-2) Accept Documents presented in MyAccessId
+2) Accept the Documents presented in MyAccessId
 
 3) Access the Invitation Link to create the account
 
