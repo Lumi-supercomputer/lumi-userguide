@@ -11,14 +11,40 @@ hide:
 [puttygen]: https://www.puttygen.com/#How_to_use_PuTTYgen
 [support]: https://lumi-supercomputer.eu/user-support/need-help/
 [registration]: ../accounts/registration.md
+[sample-ssh-keygen-output]: sample-ssh-keygen-output.md
+[note-on-ssh-passphrase]: #note-on-ssh-passphrase
+[bad-complex-password]: https://xkcd.com/936/
+[correcthorsebatterystaple]: https://correcthorsebatterystaple.com/
+[torproject]: https://torproject.org/
 
 Please read through all of this carefully before you start running on LUMI. Here
 we describe a few sets of basic rules and the important information that you
 need to get started.
 
-## Setting up SSH key pair
+The process of obtaining access to LUMI consists of two main steps.
 
-**You can only log in to LUMI using SSH keys**. There are no passwords. In order for this to work, you need to register your SSH key with MyAccessID, from where LUMI will fetch it.
+ - Registering for your person an identity within the PUHURI system
+
+ - Setting up an SSH key pair
+
+## Registering your identity
+First your person has to be identified within PUHURI. This process is generally initiated by national LUMI allocator creating a project within PUHURI, allocating and approving resources for it and creating an invitation to you email address as it is known to the resource allocator. PUHURI then sends an invitation link to your email address.
+
+Using your browser, you access this invitation link several times for several registration steps (accepting invitation, creating MyAccessId account, accepting terms and conditions and privacy) until your personal identity builds up required properties, at which point CSC.FI creates a corresponding project and your new LUMI username and sends you email notifying you. Within about an hour or two after receiving this email, you should be able to SSH in into a LUMI login node. See section "How to log in" below.
+
+Please note that you will not be asked for or provided with LUMI account password. LUMI access does not use password authenticaion. It uses authentication via SSH keys only.
+
+As you create MyAccessId account, you are required to upload your SSH public key. If you are unsure what it is or how it works, see the "Setting up SSH key pair" section below.
+
+### Summary of identity registration steps:
+
+1) Access the Invitation Link and follow instructions.
+
+2) Accept the Documents presented in MyAccessId
+
+3) Access the Invitation Link to create the account
+
+4) Upload SSH your public key. If you don't have one yet, see the "Generate your SSH keys" section below.
 
 LUMI Countries have different kinds of portals managing user access to the system. Please contact your local HPC organization to find which URL to go to. The portals will lead you to MyAccessID registration age, where you have to accept the Acceptable Use Policy and LUMI Terms of Use 
 document, which is linked there. Please read it carefully! 
@@ -47,6 +73,12 @@ accept the project. When the project is accepted, the user accounts will be
 created in LUMI. You will receive email from CSC's Identity management system 
 informing you of your project ID and user account name.
 
+
+## Setting up SSH key pair
+
+**You can only log in to LUMI using SSH keys**. There are no passwords. In order for this to work, you need to register your SSH key with MyAccessID, from where LUMI will fetch it.
+
+
 ### Generate your SSH keys
 
 After registration, you need to register a **public** key (**Note! Key must be RSA
@@ -55,27 +87,34 @@ you need to generate an SSH key pair.
 
 === "From a terminal (all OS)"
 
+    This section is intended for users that are not familiar with details of SSH
+    usage. If you already know how SSH works, feel free to modify these instructions,
+    at your own risk and peril, of course.
+    
     An SSH key pair can be generated in the Linux, macOS, Windows PowerShell and 
     MobaXterm terminal. It is important to create a long enough key length. For
-    example, you can use the following command to generate a 4096 bits RSA key:
+    example, you can use the following command to generate a 4096 bits RSA key
+    and display your public key which you will later need to paste into MyAccountId.org :
 
     ```bash
-    ssh-keygen -t rsa -b 4096
+     (
+    mkdir $HOME/.ssh/ && chmod 700 $HOME/.ssh
+    ssh-keygen -t rsa -b 4096  -f $HOME/.ssh/id_rsa_lumi
+    ls -l  $HOME/.ssh/id_rsa_lumi $HOME/.ssh/id_rsa_lumi.pub
+    echo =+=+=+=+=+=+=+= Your public key is [algorithm, key, comment] :
+    cat  $HOME/.ssh/id_rsa_lumi.pub
+    echo =+=+=+=+=+=+=+=
+      )
     ```
+    
+    After running the above, your terminal should look similar to
+    this [keygen output][sample-ssh-keygen-output].
+   
+    During the execution of the above command, you will be asked for a passphrase.
+    See [important note][note-on-ssh-passphrase] about the passhrase.
 
-    You will be prompted for a file name and location where to save the
-    key. Accept the defaults by pressing ++enter++. Alternatively, you can 
-    choose a custom name and location. For example 
-    `/home/username/.ssh/id_rsa_lumi`.
-
-    Next, you will be asked for a passphrase. Please choose a secure
-    passphrase. It should be at least 8 characters long and should contain
-    numbers, letters and special characters. **Do not leave the passphrase 
-    empty**.
-
-    After that a SSH key pair is created. If you choose the name given as an
-    example, you should have files named `id_rsa_lumi` and `id_rsa_lumi.pub` in
-    your `.ssh` directory.
+    After that a SSH key pair is created. You should have files named
+    `id_rsa_lumi` and `id_rsa_lumi.pub` in your `$HOME/.ssh` directory.
 
 === "With MobaXTerm or PuTTY (Windows)"
 
@@ -97,9 +136,7 @@ you need to generate an SSH key pair.
     </figure>
 
     After that, enter a comment in the Key comment field and a strong
-    passphrase. Please choose a secure passphrase. It should be at least 8 
-    characters long and should contain numbers, letters and special characters.
-    **Do not leave the passphrase empty**.
+    passphrase. See [important note][note-on-ssh-passphrase] about the passhrase.
 
     <figure>
       <img src="../../assets/images/win-keygen-step3.png" width="400" alt="Create SSH key pair with windows - step 3">
@@ -111,8 +148,44 @@ you need to generate an SSH key pair.
     on the *Save private key* button and save it to the desired location (for 
     example, with `id_rsa_lumi` as a name).
 
+### Note on SSH passphrase
+
+    Please read carefuly the following note
+    
 !!! warning "Note"
-    The private key should never be shared with anyone, not even with
+    Please choose a secure passphrase. Remember that a good passphrase does not have
+    to be a hard one to remember.
+    
+    Those of you who fancy an occasional computability calculation can appreciate
+    [this][bad-complex-password] explanation, while others can take our word for it.
+    
+    You may prefer not to use contrapted passwords that are difficult to remember.
+    Make sure that the passphrase is at least 20 characters and easy to remember.
+    
+    Example of a good passphrase generator is [here][correcthorsebatterystaple].
+
+    Note for the security extra-cautious people: Any online website that sends you a password
+    (like the [correcthorsebatterystaple.com][correcthorsebatterystaple] generator), or
+    receives from you a password, should be accessed in goole-agnostic and facebook-agnostic
+    and other-privacy-endangering-giant-agnostic ways, such as with cleared
+    cookies in your browser or better yet, clear of all traceable information (including IP address),
+    like using the [Tor browser][torproject]. Otherwise you are risking that these nonprivacy
+    giants will on top of your usernames also know your passwords to various online
+    services or offline files, like your new private SSH key.
+    
+    **Do not leave the passphrase empty**.
+    
+    **Write down this passphrase to a secure place.**
+    
+    **This passphrase will be needed later to log in.**
+    
+    **Do not give this passphrase to anyone.**
+    
+    **Do not include this passphrase in any support requests.** (There is no legitimate
+    use of this passphrase by any support personnel, at any time. Report anyone asking
+    you to give them your passphrase or password, immediately please.)
+
+    The private key, with or without passphrase, should never be shared with anyone, not even with
     LUMI staff. It should also be stored only in the local computer (public key
     can be safely stored in cloud services). Protect it with a good password! Otherwise, anyone with access to the file system can steal your SSH key.
 
@@ -120,11 +193,12 @@ you need to generate an SSH key pair.
  
 Now that you have generated your key pair, you need to set up your **public** key
 in your [user profile][myaccessid-profile]. From there, the public key will be 
-copied to LUMI with some delay according to the synchronization schedule.
+copied to LUMI with some delay according to the synchronization schedule. This schedule
+is currently at once every 10 minutes.
 
 To register your key, click on the *Settings* item of the menu on the left
 as shown in the figure below. Then select *Ssh keys*. From here you can add a new public key
-or remove an old one. **Note:** SSH key structure is *algorithm, key, comment*. Please EXCLUDE *comment* from your copy/paste.
+or remove an old one. **Note:** SSH key structure is *algorithm, key, comment*.
 
 <figure>
   <img 
@@ -135,20 +209,31 @@ or remove an old one. **Note:** SSH key structure is *algorithm, key, comment*. 
   <figcaption>MyAccessID Own profile information to add ssh public key.</figcaption>
 </figure>
 
-After registering the key, there can be a couple of hours delay until it is synchronized.
+After registering the key, there can be a about 15 minutes delay until it is synchronized.
+After that your new SSH key should be recognized and accepted by LUMI login nodes.
 
 ## How to log in
 
 Connect using a ssh client:
 
-```
-ssh username@lumi.csc.fi
+```bash
+ssh  -i $HOME/.ssh/id_rsa_lumi  _your_lumi_username_@lumi.csc.fi
 ```
 
-where you need to replace `username` with your own username, which you received
+where you need to replace `_your_lumi_username_` with your own username, which you received
 via email during the registration. If you cannot get a connection at all, your 
 IP number range might be blocked from login. Please contact the
-[support][support-account].
+[support][support-account]. If you can get an SSH connection but LUMI is not logging
+you in and is not giving you command prompt, please contact the [support][support-account],
+pasting into the support request text the textual screen scrape of your terminal with the
+outputs of the following commands:
+
+```bash
+ (
+ssh-keygen -y -f $HOME/.ssh/id_rsa_lumi
+ssh -vvv -i $HOME/.ssh/id_rsa_lumi  _your_lumi_username_@lumi.csc.fi
+ )
+```
 
 ## Running
 
