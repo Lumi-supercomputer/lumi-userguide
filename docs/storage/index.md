@@ -9,10 +9,10 @@ that, except for the user home directory, data storage is allocated per project.
 
 |                       | Quota | Max files | Expandable   | Backup | Retention        |
 |:---------------------:|-------|-----------|:------------:|--------|------------------|
-| User<br>Home          | 11 GB | 100k      | No           | Yes    | User lifetime    |
-| Project<br>Scratch    | 2 TB  | 2000k     | Yes<br>500TB | No     | 90 days          |
+| User<br>Home          | 20 GB | 100k      | No           | Yes    | User lifetime    |
+| Project<br>Scratch    |  5 TB | 2000k     | Yes<br>500TB | No     | 90 days          |
 | Project<br>Persistent | 50 GB | 100k      | Yes<br>500GB | No     | Project lifetime |
-| Project<br>Fast       | 1 TB  | 1000k     | Yes<br>100TB | No     | 30 days          |
+| Project<br>Fast       |  1 TB | 1000k     | Yes<br>100TB | No     | 30 days          |
 
 When a storage space is marked as expandable, it means that you can request 
 more space if needed.
