@@ -15,7 +15,7 @@ The scratch storage is located at `/scratch/project_<project-number>`
 
 ## Billing and Quota
 
-The quota is enforced on a per project basis. The default quota is 2 TB and 2 
+The quota is enforced on a per project basis. The default quota is 5 TB and 2 
 million files. If you need more space, this quota can be pushed up to 500 TB 
 upon request. However, if you are limited by the quota on the number of files, 
 we invite you to reconsider your data workflow. Having a large number of small
