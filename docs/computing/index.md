@@ -4,7 +4,8 @@ title: Computing - Overview
 
 [connecting]: ./connecting.md
 [modules]: modules.md
-[softwarestack]: ./softwarestacks.md
+[Lmod_modules]: ./Lmod_modules.md
+[softwarestacks]: ./softwarestacks.md
 [lumic]: systems/lumic.md
 [lumid]: systems/lumid.md
 [slurm_quickstart]: jobs/slurm-quickstart.md
@@ -48,7 +49,9 @@ command, you will be able to load and unload the desired compilers, tools and
 libraries.
 
 - [Read more about the module command][modules]
-- [Read more about the software stacks][softwarestack]
+- [Read more about Lmod modules][Lmod_modules], relevant if you use the
+  LUMI software stack from the next bullet.
+- [Read more about the software stacks][softwarestacks]
 
 ## Running your Jobs
 
