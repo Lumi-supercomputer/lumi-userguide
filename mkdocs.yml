@@ -47,6 +47,10 @@ nav:
     - Performance analysis:
       - Overview: development/profiling/index.md
       - CrayPat: development/profiling/perftools.md
+  - Software:
+    - Overview: software/index.md
+    - Installing software:
+      - EasyBuild: software/installing/easybuild.md
   - Known Issues:
     - Known Issues: issues/index.md
   - Help desk: 
