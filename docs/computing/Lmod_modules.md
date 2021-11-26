@@ -14,6 +14,18 @@
     eval "module load craype-x86-rome craype-network-ofi craype-accel-host perftools-base xpmem"
     ```
 
+    Some of the examples on this page only work if you also have the LUMI
+    software stacks activated as explained on [
+    the page on software stacks][softwarestacks.md].
+
+!!! tip
+    If you are already somewhat familiar with modules from your home system
+    you may get more from this page if you first read our
+    [page on the available software stacks][softwarestacks]. However, if you
+    are not very familiar with modules it may be best to first read this
+    page, then the one on [the software stacks][softwarestacks] and then
+    re-read this page as you will get more information out of it.
+
 Software modules allow you to control which software and versions are
 available in your environment. Modules contain the necessary information to
 allow you to run a particular application or provide you access to a
@@ -50,16 +62,16 @@ same Lmod features.
     module --version
     ```
     at the command prompt. For the old environment modules,
-    the oguptu will start with `VERSION=3.2.11` or something similar, for the
+    the output will start with `VERSION=3.2.11` or something similar, for the
     new Environment Modules it will report as `Modules Release 4.X` or
-    `Modules Release 5.x` or something simular, and for Lmod it will explicitly
+    `Modules Release 5.x` or something similar, and for Lmod it will explicitly
     say `Modules based on Lua`.
 
 ## The `module` command
 
 Modules are managed by the `module` command:
 
-```
+```bash
 module <sub-command> <module-name>
 ```
 
@@ -67,19 +79,18 @@ where the _sub-command_ indicates the operation you want to perform. The
 _sub-command_ is followed by the name of the module on which you want to perform
 the operation.
 
-| Sub-command | Description                                          |
-| ------------|------------------------------------------------------|
-| `spider`    | Search for modules and display help                  |
-| `keyword`   | Search for modules based on keywords                 |
-| `avail`     | List available modules                               |
-| `whatis`    | Display short information about modules              |
-| `help`      | Print the help message of a module                   |
-| `list`      | List the currently modules loaded                    |
-| `load`      | Load a module                                        |
-| `remove`    | Remove a module from your environment                |
-| `purge`     | Unload all modules from your environment             |
-| `show`      | Show the commands in the module's definition file    |
-
+| Sub-command      | Description                                          |
+| -----------------|------------------------------------------------------|
+| `spider`         | Search for modules and display help                  |
+| `keyword`, `key` | Search for modules based on keywords                 |
+| `avail`, `av`    | List available modules                               |
+| `whatis`         | Display short information about modules              |
+| `help`           | Print the help message of a module                   |
+| `list`           | List the currently modules loaded                    |
+| `load`, `add`    | Load a module                                        |
+| `unload`         | Remove a module from your environment                |
+| `purge`          | Unload all modules from your environment             |
+| `show`           | Show the commands in the module's definition file    |
 
 
 ## Finding modules
@@ -295,5 +306,187 @@ of the package (if the version is not specified) or the indicated version.
 
 ## Loading and unloading modules
 
+Loading and unloading modules in Lmod is very similar to other module systems. Also
+node that only *available*  modules can be loaded with the commands below. Some
+*installed*  modules may only become *available* after first loading other modules
+as discussed above.
+
+To load a module use the module load command. For example, to load the Cray
+FFTW library, use:
+
+```bash
+$ module load cray-fftw
+```
+
+This command will load the default version of the module. If the software you
+loaded has dependencies, they will be loaded in your environment at the same
+time.
+
+To load a specific version of the module you need to specify it after the name of
+the module.
+
+```bash
+$ module load cray-fftw/3.3.8.11
+```
+
+In order to unload a module from your environment, use the `unload` sub-command
+followed by the name of the module you want to remove.
+
+```
+$ module unload cray-fftw
+```
+
+In most cases multiple `module load` or `module unload` commands can be combined
+in a single `module load` or `module unload` command. One exception to this is
+any sequence of loads or unloads involving the `cpe` module from the Cray
+Programming Environment as loading or unloading of this module only takes full
+effect at the next `module` command.
+
+You can also remove all loaded modules from your environment by using the
+`purge` sub-command.
+
+```bash
+$ module purge
+```
+
+In Lmod, some modules can be declared as sticky modules by the sysadmins. These modules
+will not be removed by `module purge` and will produce an error message when you try
+to unload them with `module unload`. On LUMI this is the case for the modules that
+activate a software stack so that it is possible to unload all modules that are
+loaded in the stack without de-activating the stack. Sticky modules can still be
+unloaded or purged by adding the `--force` option, e.g.,
+```bash
+module --force unload LUMI
+module --force purge
+```
+Note the position of the `--force` argument.
+
+It is also possible to see the Lmod commands that are executed when loading a module
+using `module show`. E.g.,
+```bash
+module load CrayEnv
+module show cray-fftw
+```
+will show
+```
+-------------------------------------------------------------------------------------------------------
+   /opt/cray/pe/lmod/modulefiles/cpu/x86-rome/1.0/cray-fftw/3.3.8.10.lua:
+-------------------------------------------------------------------------------------------------------
+help([[Release info:  /opt/cray/pe/fftw/3.3.8.10/release_info]])
+help([[Documentation: `man intro_fftw3`]])
+whatis("FFTW 3.3.8.10 - Fastest Fourier Transform in the West")
+setenv("FFTW_VERSION","3.3.8.10")
+setenv("CRAY_FFTW_VERSION","3.3.8.10")
+setenv("FFTW_DIR","/opt/cray/pe/fftw/3.3.8.10/x86_rome/lib")
+setenv("FFTW_INC","/opt/cray/pe/fftw/3.3.8.10/x86_rome/include")
+setenv("PE_FFTW_PKGCONFIG_VARIABLES","PE_FFTW_OMP_REQUIRES_@openmp@")
+setenv("PE_FFTW_OMP_REQUIRES"," ")
+setenv("PE_FFTW_OMP_REQUIRES_openmp","_mp")
+setenv("PE_FFTW_PKGCONFIG_LIBS","fftw3f_mpi:libfftw3f_threads:fftw3f:fftw3_mpi:libfftw3_threads:fftw3")
+prepend_path("PKG_CONFIG_PATH","/opt/cray/pe/fftw/3.3.8.10/x86_rome/lib/pkgconfig")
+prepend_path("PATH","/opt/cray/pe/fftw/3.3.8.10/x86_rome/bin")
+prepend_path("MANPATH","/opt/cray/pe/fftw/3.3.8.10/share/man")
+prepend_path("CRAY_LD_LIBRARY_PATH","/opt/cray/pe/fftw/3.3.8.10/x86_rome/lib")
+prepend_path("PE_PKGCONFIG_PRODUCTS","PE_FFTW")
+```
+The interesting lines are the `setenv` lines which tell which environment variables
+will be set and the `prepend_path` lines which tell which directories will be added
+to certain PATH-style variables.
+
+
+## Saving your environment
+
+Sometimes, if you frequently use multiple modules together, it might be useful
+to save your environment as a module collection. However, you should do so only
+if you fully understand how Lmod works and what is saved as saving environments
+is rather fragile in Lmod. E.g., in the LUMI software stack, saving a collection
+on the login nodes may not give you the right binaries when working on one of
+the types of compute nodes, even though tha application modules have the same name
+and version. Also, when saving a collection of modules, the full pathname to each
+of the module files is saved so the stored collection will break if modules have
+to be moved.
+
+A collection can be created using `save` sub-command.
+
+```
+module save <collection-name>
+```
+
+Your saved collections can be listed using the `savelist` sub-command.
+
+```
+module savelist
+```
+
+But, of course, the main interest of a collection is that you can load all the
+modules it contains in one command. This is done using the `restore`
+sub-command.
+
+```
+module restore <collection-name>
+```
+
+More options to manage collections of modules can be found by running `module help`
+or in [the Lmod USer Manual](https://lmod.readthedocs.io/en/latest/010_user.html#user-collections).
+Note however that the latter may contain options or commands that do not yet work
+on the version of Lmod supported on LUMI.
+
+
+## Create and use your own modules
+
+When you install software yourself, it may make life easier if you make it available
+through a module. Some software for HPC systems will also produce modules during the
+installation process, e.g., the Intel oneAPI compilers.
+
+Lmod supports most Tcl-based module files written for the various versions of
+Environment Modules. It also has its own format for module files, which are Lua
+programs though with a restricted set of Lua functions available. More information
+on developing module files is available in
+[the Lmod documentation](https://lmod.readthedocs.io/en/latest/index.html).
+Note however that that documentation is for the latest version of Lmod and not all
+features may be supported on the version of Lmod that is installed on LUMI.
+
+??? Tip "Tip: Study an existing module file"
+    If you want to study an existing module file then `module show <modulename>`
+    will also show you where to find the module file.
+
+Adding directories to the search path for modules is done with
+```bash
+module use <directory>
+```
+Conversely, removing a directory is done with
+```bash
+module unuse <directory>
+```
+Removing a directory from the module search path will also unload the modules
+that are loaded from that directory.
+
+??? Tip "For advanced users: Resetting the MODULEPATH"
+    The search path for modules is stored in the environment variable `MODULEPATH`.
+    Adding directories to the search path by manipulating `MODULEPATH` is possible.
+    However overwriting the variable and removing directories can have nasty side
+    effects and bring the internal data structures of Lmod in an inconsistent state,
+    e.g., because there may now be modules loaded from directories that are not
+    in the MODULEPATH.
+
+    If you want to overwrite MODULEPATH, e.g., to build your own private environment
+    fully independent from those that LUMI offers, you also need to re-initialise Lmod
+    by running
+    ```bash
+    source /usr/share/lmod/lmod/init/bash
+    ```
+
+## Further reading
+
+On LUMI we use the Lmod implementation as provided by HPE-Cray as part of the programming
+environment. The version of Lmod is way behind the most recent version. This implies
+that not all information that can be found on the internet is also correct for LUMI.
+
+  * [Official Lmod documentation on readthedocs](https://lmod.readthedocs.io/), but
+    this is always for the latest version.
+
+!!! failure "Issue: man module"
+    On LUMI, `man module` produces the manual page for Environment Modules 3.2.x,
+    another module system also supported by HPE-Cray.
 
 
