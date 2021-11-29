@@ -8,8 +8,8 @@
 
 The GPU partition will consist of 2560 nodes, each node with one 64 core AMD 
 Trento CPU and four AMD MI250X GPUs. Each MI250X GPU consists of two compute 
-dies, each with 110 compute units each, and each compute unit has 64 stream 
-processors for a total of 14080 stream processors.
+dies, each with 110 compute units. Each compute unit has 64 stream processors 
+for a total of 14080 stream processors.
 
 | Nodes | CPUs       | CPU cores | Memory   | GPUs                                                       | Network     |
 | :---: | :--------: | :-------: | :------: | :--------------------------------------------------------- | :---------: |
