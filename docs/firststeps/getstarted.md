@@ -11,6 +11,7 @@ hide:
 [puttygen]: https://www.puttygen.com/#How_to_use_PuTTYgen
 [support]: https://lumi-supercomputer.eu/user-support/need-help/
 [registration]: ../accounts/registration.md
+[connecting]: ../computing/connecting.md
 
 Please read through all of this carefully before you start running on LUMI. Here
 we describe a few sets of basic rules and the important information that you
@@ -149,6 +150,8 @@ where you need to replace `username` with your own username, which you received
 via email during the registration. If you cannot get a connection at all, your 
 IP number range might be blocked from login. Please contact the
 [support][support-account].
+
+- [More information on how to setup SSH for LUMI][connecting]
 
 ## Running
 
