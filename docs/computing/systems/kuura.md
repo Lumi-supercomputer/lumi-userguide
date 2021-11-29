@@ -1,5 +1,8 @@
 # Kuura: GPU Early Access Platform
 
+!!! warning
+    This page is about a partition that is not yet available
+
 Kuura, the LUMI-G Early Access Platform, consists of 14 nodes with AMD MI100 
 GPUs to facilitate smooth take-up of the final system. The specification of 
 these nodes is summarized in the table below.
