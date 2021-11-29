@@ -13,8 +13,21 @@ title: Computing - Overview
 [throughput]: ./jobs/throughput.md
 [interactive]: ./jobs/interactive.md
 [storage]: ../storage/index.md
+[getstarted]: ../firststeps/getstarted.md
 
-## Learn More About the Hardware
+## Connecting
+
+Before connecting to LUMI, you need to generate an SSH key pair and upload your
+public key to MyAccessID.
+
+- [Follow the get started guide][getstarted]
+
+You can do additional setup, like adding your key to an agent or setting
+up a shortcut for LUMI in your SSH configuration.
+
+- [Setup SSH for LUMI][connecting]
+
+## Learn more about the hardware
 
 In the first phase of the LUMI installation, LUMI-C, the CPU partition and 
 LUMI-D, the data analytics partition are installed. LUMI-C consists of 1536 
