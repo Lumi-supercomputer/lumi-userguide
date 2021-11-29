@@ -3,6 +3,9 @@
 [rtx-8000-product]: https://www.nvidia.com/en-us/design-visualization/quadro/rtx-8000/
 [rtx-8000-specs]: https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/quadro-product-literature/quadro-rtx-8000-us-nvidia-946977-r1-web.pdf
 
+!!! warning
+    This page is about a partition that is not yet available
+
 The LUMI-D partition consists of a 12 nodes with large memory capacity and
 Nvidia GPUs. LUMI-D is intended for interactive data analytics and
 visualization. It is also a good place run pre- and post-processing jobs that
