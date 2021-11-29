@@ -17,10 +17,5 @@ script:
 
   # Checks all files for commonly misspelled English words with client9's misspell
   - bash tests/misspell.bash
-  # Testing if the build works and if there were warnings
+  # Testing if the build works
   - bash tests/checkbuild.bash
-  # Check links 
-  - python3 tests/python_link_tests/link_check.py
-  # There should be no FIXME entries present
-  - bash tests/check_fixme.sh
-
