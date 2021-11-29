@@ -20,17 +20,28 @@ It is assumed that you are already familiar with Slurm. If not, you can read the
 to the Slurm [documentation][slurm-doc] or [manual pages][slurm-man] and in 
 particular the page about [sbatch][slurm-sbatch].
 
+## Specifying the account
+
+The account option (`--account=project_<id>`) is mandatory. Failing to set 
+it will cause the following error:
+
+```
+Unable to allocate resources: Job violates accounting/QOS policy 
+(job submit limit, user's size and/or time limits)
+```
+
+If you don't want to specify the account to use every time you submit a job, you
+can add the following lines to your `.bashrc` file.
+
+```
+export SBATCH_ACCOUNT=project_<id>
+export SALLOC_ACCOUNT=project_<id>
+```
+
+Where you have to replace `project_<id>` with the project name that has been 
+assigned to you.
+
 ## Example Batch Scripts
-
-!!! error "Specify the account"
-
-    The account option (`--account=project_<id>`) is mandatory. Failing to set 
-    it will cause the following error:
-
-    ```
-    Unable to allocate resources: Job violates accounting/QOS policy 
-    (job submit limit, user's size and/or time limits)
-    ```
 
 ### Shared memory jobs
 
