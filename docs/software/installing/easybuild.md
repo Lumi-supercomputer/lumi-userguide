@@ -91,7 +91,11 @@ the `EasyBuild-user` module:
 module load EasyBuild-user
 ```
 This will print a line on the screen indicating were software will be installed as
-a confirmation. If you want more information about the full configuration of
+a confirmation. It will also create the directory structure for the user software
+installation if it does not yet exist, including the structure of the user repository
+discussed below in the ["Advanced guide"](#advanced-guide-to-easybuild-on-lumi),
+section ["Building your own EasyBuild repository"](#building-your-own-easybuild-repository).
+If you want more information about the full configuration of
 EasyBuild, you can execute
 ```bash
 eb --show-config
@@ -117,9 +121,9 @@ package. In this case, it indicates that it is a build of the 2021 version
 purely for CPU and also includes PLUMED as we have also builds without
 PLUMED (which is not compatible with every GROMACS version).
 
-EasyBuild is configured so that it searches two repositories on the system and
-a user repository (see the advanced guide on how to build your user repository)
-so if all needed EasyBuild recipes are in one of those repository or in the current
+EasyBuild is configured so that it searches the current directory, the user
+repository and two repositories on the system so if all needed EasyBuild
+recipes are in one of those repository or in the current
 directory, all you need to do to install the package is to run
 ```bash
 eb -r GROMACS-2021-cpeGNU-21.08-PLUMED-2.7.2-CPU.eb
@@ -139,15 +143,72 @@ and if EasyBuild needs to install this module as a dependency of another package
 EasyBuild will fail to locate the build recipe.
 
 
-
 ## Advanced guide to EasyBuild on LUMI
 
 
 ### Toolchains on Cray
 
+Toolchains in EasyBuild contains at least a compiler, but can also contains an MPI
+library and a number of mathematical libraries (BLAS, LAPACK, ScaLAPACK and a FFT
+library). Programs compiled with different toolchains cannot be loaded together
+(though the module system will not always prevent this on LUMI).
+
+The toolchains on LUMI are different of what you may be used from non-Cray systems.
+On most systems, EasyBuild uses its own toolchains installed from within EasyBuild,
+but on LUMI we use toolchains that are based on the Cray Programming Environment.
+Three toolchains are currently implemented
+
+  - `cpeGNU` is the equivalent of the Cray `PrgEnv-gnu` programming environment
+  - `cpeCray` is the equivalent of the Cray `PrgEnv-cray` programming environment
+  - `cpeAMD` is the equivalent of the Cray `PrgEnv-aocc` programming environment
+
+All three toolchains use `cray-mpich` over the Open Fabric Interface library
+(`craype-network-ofi`) and Cray LibSci for the mathematical libraries, with the
+releases taken from the Cray PE release that corresponds to the version number of the
+`cpeGNU`, `cpeCray` or `cpeAMD` module.
+
+??? note "cpeGNU/Cray/AMD and PrgEnv-gnu/cray/aocc"
+    Currently the `cpeGNU`, `cpeCray` and `cpeAMD` modules don't load the corresponding
+    `PrgEnv-*` modules nor the `cpe/<version>` modules. This is because in the current
+    setup of LUMI both modules have their problems and the result of loading those
+    modules is not always as intended.
+
+    If you want to compile software that uses modules from the LUMI stack, it is best
+    to use one of the `cpeGNU`, `cpeCray` or `cpeAMD` modules to load the compiler
+    and libraries rather than the matching `cpe/<version>` and `PrgEnv-*` modules as those may
+    not always load all modules in the correct version.
+
+Since the LUMI software stack does not support the EasyBuild common toolchains (such
+as the EasyBuild intel and foss toolchains) one cannot use the default EasyBuild build
+recipes without modifying them. Hence they are not included in the robot search path
+of EasyBuild so that you don't accidentally try to install them, but it is possible
+to search for packages in that repository also using `eb -S` and `eb --search`.
+
 
 ### Building your own EasyBuild repository
 
+We advise users to maintain their own repository of EasyConfig files which they installed
+in their personal or project space. This may help to rebuild your environment for a
+later project on LUMI. It may even be a good idea to keep the repository on a personal
+GitHub or other version control service.
+
+The repository is created automatically the first time `EasyBuild-user` is loaded.
+The directory is called `UserRepo` and is in `$EBU_USER_PREFIX` (or
+the default location `$HOME/EasyBuild` if you don't set the environment variable).
+It must be structured similarly to
+[the main EasyBuild EasyConfig repository](https://github.com/easybuilders/easybuild-easyconfigs).
+The EasyBuild recipes (`.eb` files) should be in a subdirectory `easybuild/easyconfigs`,
+leaving room for personal EasyBlocks also (which would then go in the
+`easybuild/easyblocks` subdirectory) and even personal configuration files that overwrite
+some system options. This setup also guarantees compatibility with some EasyBuild features
+for very advanced users that go way beyond this page.
+
+To store this repository on GitHub, you can follow the GitHub documentation, and in
+particular the page ["Adding an existing project to GitHub using the command line](https://docs.github.com/en/github/importing-your-projects-to-github/importing-source-code-to-github/adding-an-existing-project-to-github-using-the-command-line).
+
+Technical documentation on the toolchains on LUMI and the directory structure of EasyBuild
+can be found in
+[the documentation of the LUMI-SoftwareStack GitHub repository](https://github.com/Lumi-supercomputer/LUMI-SoftwareStack/tree/main/docs).
 
 
 ## Further reading
@@ -177,7 +238,7 @@ we suggest the following sources of information:
         that haven't been as thoroughly checked or are deemed not appropriate for central
         installation at this point. However, they are fully compatible with the setup
         on LUMI, with correct dependency versions etc.
-  - Other EasyBuild recipes for the Cray Programming Enviornment
+  - Other EasyBuild recipes for the Cray Programming Environment
       - [CSCS GitHub repository](https://github.com/eth-cscs/production).
         Most of the recipes are for Piz Daint which uses slightly different toolchains.
         Moreover dependencies typically need updating as the software installation
