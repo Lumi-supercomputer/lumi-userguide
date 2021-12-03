@@ -25,7 +25,7 @@ integrated.
 | Floating-point optimizations  | -hfpN, N=0...4            | -ffp=N, N=0...4 |
 | Suggested Optimization        | default                   | -O3             |
 | Aggressive Optimization       | -O3 -hfp3                 | -Ofast -ffp=3   |
-| OpenMP recognition            | -homp                     | -fopenmp        |
+| OpenMP recognition            | -fopenmp                  | -fopenmp        |
 | Variable sizes                | -s real64<br>-s integer64 | N/A             |
 | Debug                         | -g                        | -g              |
 
