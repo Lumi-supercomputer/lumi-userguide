@@ -4,10 +4,14 @@ hide:
   - toc
 ---
 
+[helpdesk]: https://lumi-supercomputer.eu/user-support/need-help/
+
 # Helpdesk
 
 If you have any problem or question related to the use of LUMI, feel free to
 contact the LUMI User Support Team.
+
+The LUMI help desk is accessible [here][helpdesk].
 
 The LUMI helpdesk is open Monday to Friday:
 
