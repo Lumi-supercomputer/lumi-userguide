@@ -16,6 +16,7 @@ nav:
     - Module environment: computing/modules.md
     - Hardware:
       - CPU nodes: computing/systems/lumic.md
+      - GPU nodes: computing/systems/lumig.md
       - Data analytics nodes: computing/systems/lumid.md
       - GPU EAP nodes: computing/systems/kuura.md
     - Running jobs:
