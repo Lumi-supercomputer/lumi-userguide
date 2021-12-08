@@ -1,7 +1,7 @@
 # Data Analytics Nodes
 
-[rtx-8000-product]: https://www.nvidia.com/en-us/design-visualization/quadro/rtx-8000/
-[rtx-8000-specs]: https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/quadro-product-literature/quadro-rtx-8000-us-nvidia-946977-r1-web.pdf
+[a40-product]: https://www.nvidia.com/en-us/data-center/a40/
+[a40-specs]: https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a40/proviz-print-nvidia-a40-datasheet-us-nvidia-1469711-r8-web.pdf
 
 !!! warning
     This page is about a partition that is not yet available
@@ -14,7 +14,7 @@ require a lot of memory.
 | Nodes | CPU                                                                 | Memory | GPUs                                 | Disk      | Network    |
 |-------|---------------------------------------------------------------------|--------|--------------------------------------|-----------|------------|
 | 4     | AMD EPYC 7742<br>2.25 GHz base<br>3.4 GHz boost<br>128 cores (2x64) | 8 TB   | none                                 | 25 TB SSD | 2x100 Gb/s |
-| 8     | AMD EPYC 7742<br>2.25 GHz base<br>3.4 GHz boost<br>128 cores (2x64) | 2 TB   | 8x NVIDIA RTX8000<br>48 GB of memory | 14 TB SSD | 2x100 Gb/s |
+| 8     | AMD EPYC 7742<br>2.25 GHz base<br>3.4 GHz boost<br>128 cores (2x64) | 2 TB   | 8x NVIDIA A40<br>48 GB of memory | 14 TB SSD | 2x100 Gb/s |
 
 **Note**: The CPUs in LUMI-D are one generation older (Zen 2 / "Rome") than in
 LUMI-C (Zen 3 / "Milan"). There should be no big problem with
@@ -25,14 +25,14 @@ will run on LUMI-D with good performance.
 
 ## GPUs
 
-The interactive GPU nodes have 8 NVIDIA Quadro RTX8000 GPUs each with 4,608 GPU
-cores, 576 Tensor cores, 72 RT cores and 48 GiB GDDR6 Memory. The current Nvidia
-driver version is [FIXME]. The CUDA Toolkit for GPU development is also
-installed so that it is possible to run and test CUDA code, but the main purpose
-is visualization of these GPUs are visualizing, not GPU computing.
+The interactive GPU nodes have 8 NVIDIA A40 GPUs each with 10 752 CUDA
+cores, 336 Tensor cores, 84 RT cores and 48 GiB GDDR6 Memory. The CUDA Toolkit 
+for GPU development is also installed so that it is possible to run and test 
+CUDA code, but the main purpose is visualization of these GPUs are visualizing,
+not GPU computing.
 
-* [Nvidia RTX8000 Product Page][rtx-8000-product]
-* [Nvidia RTX8000 Data Sheet][rtx-8000-specs]
+* [Nvidia A40 Product Page][a40-product]
+* [Nvidia A40 Data Sheet][a40-specs]
 
 ## Storage
 
