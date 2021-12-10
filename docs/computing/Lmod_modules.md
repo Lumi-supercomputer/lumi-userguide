@@ -18,6 +18,11 @@
     software stacks activated as explained on [
     the page on software stacks][softwarestacks.md].
 
+??? warning "Change from the pilot phase: Switch to Lmod"
+    During the pilot phase, Environment Modules 3 was used as the module
+    environment. However, the production software stack is based on the
+    more modern Lmod environment.
+
 !!! tip
     If you are already somewhat familiar with modules from your home system
     you may get more from this page if you first read our
@@ -111,7 +116,7 @@ also search for these but this feature.
     software in a module is not fully exploited on LUMI as the output
     of some module commands becomes very long and ways to disabling that output do
     not work properly in the current version of Lmod on LUMI. This is due to two
-    bugs one of which is present even in newer versions of LUMI as of November 2021.
+    bugs one of which is present even in newer versions of Lmod as of November 2021.
 
 ### module spider
 
@@ -201,15 +206,15 @@ It has three levels, producing different output:
      ```
      will return
      ```
-    -------------------------------------------------------------------
-      git: git/2.33.1
-    -------------------------------------------------------------------
+     -------------------------------------------------------------------
+       git: git/2.33.1
+     -------------------------------------------------------------------
         Description:
           Git is a free and open source distributed version control
           system
 
         You will need to load all module(s) on any one of the lines below
-    before the "git/2.33.1" module is available to load.
+        before the "git/2.33.1" module is available to load.
 
           CrayEnv
           LUMI/21.08  partition/C

@@ -47,10 +47,10 @@ export EBU_USER_PREFIX=/projappl/project_465000000/EasyBuild
     If you participate
     in multiple projects, you'll have to either have only a very personal software
     setup in your home directory which noone else can use, or a setup in each of the
-    project directories as sharing is not possible.
-    Our setup can also support only one user software setup at a time. However, you can
+    project directories as sharing of project directories across projects is not possible.
+    Our modules can also support only one user software setup at a time. However, you can
     always switch to a different setup by changing the value of the `EBU_USER_PREFIX`
-    environment variable. However, you should only do so when no modules are loaded,
+    environment variable, but you should only do so when no modules are loaded,
     not even the `LUMI` module. Hence you should always do a
     ```bash
     module --force purge
@@ -77,13 +77,14 @@ module load LUMI/21.08
 This should also automatically load the right `partition` module for the part of LUMI
 you are on. See also the [page on the software stacks][softwarestacks].
 
-??? Failure "Issue: Only partition/L is currently supported"
+??? Failure "Issue: Only partition/L and partition/C are currently supported"
     Note that in the initial version of the software stack, only `partition/L`
-    is supported. In the future there will be a sepatare `partition/C` for the regular
-    compute nodes to support processor-specific optimisations.
+    and `partition/C` are supported.
 
 Though it is technically possible to cross-compile software for a different partition,
-it is not recommended to do so. E.g., tests in the build process may fail.
+it may not be without problems as not all install scripts that come with software
+support cross-compiling and as tests may fail when compiling for a CPU with instructions
+that the host CPU does not support.
 
 The next step to install software in the directory you have just indicated, is to load
 the `EasyBuild-user` module:
