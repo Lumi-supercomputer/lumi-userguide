@@ -12,7 +12,8 @@ On LUMI, two types of software stacks are currently offered:
 
   - CrayEnv offers the Cray Programming Environment (PE) and allows one to use it completely
     in the way intended by HPE-Cray. The environment also offers a limited selection
-    of additional tools, often in updated versions compared to what SUSE offers.
+    of additional tools, often in updated versions compared to what SUSE Linux,
+    the basis of the Cray Linux environment, offers.
     If you need a richer environment, you should use our other software stacks.
 
   - LUMI is an extensible software stack that is mostly managed through
@@ -21,7 +22,7 @@ On LUMI, two types of software stacks are currently offered:
     number.
 
     A deliberate choice was made to only offer a limited number of software packages
-    in the central stack as the setup of redundancy on LUMI makes it difficult to
+    in the globally installed stack as the setup of redundancy on LUMI makes it difficult to
     update the stack in a way that is guaranteed to not affect running jobs and as
     a large central stack is also hard to manage. However, the EasyBuild setup is
     such that users can easily install additional software in their home or project
@@ -106,11 +107,11 @@ that this is a release that we will try to support long-term (ideally two years,
 we expect that heavy changes to the system in the initial year of operation will make
 that impossible).
 
-The second block, titles "Modify the module display style", are a number of modules
+The second block, titled "Modify the module display style", contains a number of modules
 that can be used to change the way the module tree is displayed. The `ModuleColour`
 modules can be used to turn the colour on or off in the module display. The `ModuleLabel`
 modules change the way the modules are subdivided in blocks and the way those blocks
-are presented. `ModuleLAbel/label` is the default and will collapse related groups
+are presented. `ModuleLabel/label` is the default and will collapse related groups
 of modules in single blocks, including the Cray PE modules. `ModuleLabel/PEhierarchy`
 will still use the user-friendly style of labelling but will show the complete hierarchy
 in the modules of the Cray PE. `ModuleLabel/system` does not use the user-friendly
@@ -126,22 +127,6 @@ a number of additional tools. The `CrayEnv` module will try to detect the node t
 of LUMI it is running on and load an appropriate set of targeting modules to configure
 the Cray PE. These modules are not sticky and will be removed by `module purge` but
 can always be re-instated by simply loading the `CrayEnv` module again.
-
-
-??? warning "Node type detection code does not yet work, set LUMI_OVERWRITE_PARTITION"
-    The node type detection code is still under development. Currently please set (and export)
-    the environment variable LUMI_OVERWRITE_PARTITON to either L (configuration for
-    the login nodes with AMD Rome CPU), C (configuration for the regular compute nodes,
-    with AMD Milan CPU) or D (when available, configuration for the data analysis and
-    visualisation nodes). E.g.,
-
-    ```bash
-    export LUMI_OVERWRITE_PARTITION=L
-    ```
-
-    Note that setting this variable to `L` will always work and is enough at the moment
-    as the compilers do not yet provide AMD Milan optimisations. However, GCC 11 and
-    Clang 13 will provide those optimisations.
 
 
 ### LUMI
@@ -174,24 +159,9 @@ module load LUMI/21.08 partition/L
 will load the software stack for the login nodes (which in fact will also work on the
 compute nodes and data analysis and visualisation nodes).
 
-??? warning "Node type detection code does not yet work, set LUMI_OVERWRITE_PARTITION"
-    The node type detection code is still under development. Currently please set (and export)
-    the environment variable LUMI_OVERWRITE_PARTITON to either L (configuration for
-    the login nodes with AMD Rome CPU), C (configuration for the regular compute nodes,
-    with AMD Milan CPU) or D (when available, configuration for the data analysis and
-    visualisation nodes). E.g.,
-
-    ```bash
-    export LUMI_OVERWRITE_PARTITION=L
-    ```
-
-    Note that setting this variable to `L` will always work and is enough at the moment
-    as the compilers do not yet provide AMD Milan optimisations. However, GCC 11 and
-    Clang 13 will provide those optimisations.
-
-??? failure "Only partition/L is supported"
-    Currently only `partition/L` is supported. So far there is no software installed
-    for the other partitions. However, software in `partition/L` can be used on the
+??? failure "Only partition/L and partition/C are supported"
+    Note that in the initial version of the software stack, only `partition/L`
+    and `partition/C` are supported. Software in `partition/L` can be used on the
     compute nodes also and there is even some MPI-based software already installed in
     that partition. Running MPI programs is not supported on the login nodes, but the
     modules may still contain useful pre- or postprocessing software that can be used on
@@ -224,6 +194,10 @@ toolchain that only contains the compiler. Software compiled with different `cpe
 toolchains cannot be loaded at the same time, but can be loaded together with software
 compiled with the SYSTEM toolchain. The module system currently does not protect you
 against making such mistakes! However, software may fail to work properly.
+
+??? failure "Issue: cpeAMD does not yet work"
+    In `LUMI/21.08`, `cpeAMD` does not work as the AMD compiler is not properly
+    installed. This will be fixed in an upcoming maintenance interval.
 
 
 ## Adding additional software to the LUMI software stack
