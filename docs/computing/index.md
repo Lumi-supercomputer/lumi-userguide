@@ -4,6 +4,8 @@ title: Computing - Overview
 
 [connecting]: ./connecting.md
 [modules]: modules.md
+[Lmod_modules]: ./Lmod_modules.md
+[softwarestacks]: ./softwarestacks.md
 [lumic]: systems/lumic.md
 [lumid]: systems/lumid.md
 [slurm_quickstart]: jobs/slurm-quickstart.md
@@ -29,8 +31,8 @@ up a shortcut for LUMI in your SSH configuration.
 
 ## Learn more about the hardware
 
-In the first phase of the LUMI installation, LUMI-C, the CPU partition and 
-LUMI-D, the data analytics partition are installed. LUMI-C consists of 1536 
+In the first phase of the LUMI installation, LUMI-C, the CPU partition and
+LUMI-D, the data analytics partition are installed. LUMI-C consists of 1536
 compute nodes fitted with two last generation AMD EPYC "Milan" 64-core CPUs and 256 GiB of memory.
 
 - [Learn more about the CPU nodes][lumic]
@@ -42,16 +44,21 @@ as on node storage.
 
 ## Setup your Environment
 
-Software on LUMI can be accessed through modules. With the help of the `module` 
-command, you will be able to load and unload the desired compilers, tools and 
+Software on LUMI can be accessed through modules. With the help of the `module`
+command, you will be able to load and unload the desired compilers, tools and
 libraries.
 
-- [Read more about the module command][modules]
+- [Read more about the module command][modules], the module system used
+  during the pilot phase (until the week of December 13).
+- [Read more about Lmod modules][Lmod_modules], relevant if you use the
+  LUMI software stack from the next bullet, and the default from somewhere
+  in the week of December 13.
+- [Read more about the software stacks][softwarestacks]
 
 ## Running your Jobs
 
 To get started with running your application on LUMI, you need to write a batch
-jobs script and submit it to the scheduler and resource manager. LUMI uses Slurm 
+jobs script and submit it to the scheduler and resource manager. LUMI uses Slurm
 as the batch job system.
 
 - [Get familiar with Slurm with the quick start guide][slurm_quickstart]
@@ -62,6 +69,6 @@ as the batch job system.
 
 ## Storage
 
-Please note that only the data analytics nodes have local storage, when running on the compute nodes in LUMI-C, the input and output data of your application must be stored in the scratch spaces of the parallel file systems. 
+Please note that only the data analytics nodes have local storage, when running on the compute nodes in LUMI-C, the input and output data of your application must be stored in the scratch spaces of the parallel file systems.
 
 - [Go to the storage overview][storage]
