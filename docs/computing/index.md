@@ -48,9 +48,11 @@ Software on LUMI can be accessed through modules. With the help of the `module`
 command, you will be able to load and unload the desired compilers, tools and
 libraries.
 
-- [Read more about the module command][modules]
+- [Read more about the module command][modules], the module system used
+  during the pilot phase (until the week of December 13).
 - [Read more about Lmod modules][Lmod_modules], relevant if you use the
-  LUMI software stack from the next bullet.
+  LUMI software stack from the next bullet, and the default from somewhere
+  in the week of December 13.
 - [Read more about the software stacks][softwarestacks]
 
 ## Running your Jobs
