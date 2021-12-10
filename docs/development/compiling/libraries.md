@@ -100,23 +100,3 @@ of scientific data.
 :material-package-variant: `module load cray-netcdf-hdf5parallel`
 
 A serial [NetCDF][netcdf] built against parallel [HDF5][hdf5].
-
-## Libraries supported by the LUST
-
-In addition to Cray LibSci and MKL, you will also find OpenBLAS and BLIS installed when you load a LUMI software stack.
-
-#### OpenBLAS
-
-:material-package-variant: `module load OpenBLAS`
-
-OpenBLAS is an optimized BLAS library based on the old GotoBLAS2 library. OpenBLAS contains subroutines that have been tested and optimized for AMD Zen processors.
-
-[Official documentation][doc-openblas]
-
-#### BLIS
-
-:material-package-variant: `module load BLIS`
-
-BLIS is another BLAS library, which is also based on GotoBLAS2. According to [their own benchmarks](https://github.com/flame/blis/blob/master/docs/Performance.md#zen2) on Zen 2 processors, BLIS can sometimes be faster than both Intel's MKL and OpenBLAS, so it is worth testing if you want to get the absolute best performance.
-
-[Official documentation][doc-blis]
