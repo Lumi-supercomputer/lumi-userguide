@@ -271,7 +271,7 @@ can be loaded directly without first loading other modules. It can be used in tw
  2. With the name of a module (or a part of the name) it will show all modules that
     match that (part of) a name. E.g.,
     ```bash
-    module gnuplot
+    module avail gnuplot
     ```
     will show something along the lines of
     ```
