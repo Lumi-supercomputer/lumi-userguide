@@ -13,8 +13,7 @@ nav:
     - Overview: computing/index.md
     - Connecting: computing/connecting.md
     - Moving data: storage/moving/scp-rsync.md
-    - Module environment: computing/modules.md
-    - Lmod module environment: computing/Lmod_modules.md
+    - Module environment: computing/Lmod_modules.md
     - Software stacks: computing/softwarestacks.md
     - Hardware:
       - CPU nodes: computing/systems/lumic.md
@@ -87,7 +86,6 @@ theme:
   home_secondary:
     title: LUMI Overview
     page: generic/overview/
-
 
 extra:
   social:

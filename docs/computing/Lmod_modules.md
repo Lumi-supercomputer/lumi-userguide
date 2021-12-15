@@ -1,27 +1,6 @@
-# Lmod Modules Environment
+# Modules Environment
 
 [softwarestacks]: ./softwarestacks.md
-
-??? info "Not the default during the pilot phase"
-    Lmod is not the default module environment on LUMI during the
-    early stages of the pilot phase but will be used by the
-    [LUMI software stacks](softwarestacks.md).
-
-    It can be enabled by adding the following lines in your .bashrc
-    ```bash
-    export MODULEPATH=/opt/cray/pe/lmod/modulefiles/core:/opt/cray/pe/lmod/modulefiles/craype-targets/default:/opt/cray/modulefiles:/opt/modulefiles
-    source /usr/share/lmod/lmod/init/bash
-    eval "module load craype-x86-rome craype-network-ofi craype-accel-host perftools-base xpmem"
-    ```
-
-    Some of the examples on this page only work if you also have the LUMI
-    software stacks activated as explained on [
-    the page on software stacks][softwarestacks.md].
-
-??? warning "Change from the pilot phase: Switch to Lmod"
-    During the pilot phase, Environment Modules 3 was used as the module
-    environment. However, the production software stack is based on the
-    more modern Lmod environment.
 
 !!! tip
     If you are already somewhat familiar with modules from your home system
