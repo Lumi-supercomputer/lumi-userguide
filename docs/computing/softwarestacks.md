@@ -2,12 +2,6 @@
 
 The LUMI software stacks are made available through the LMOD module environment.
 
-!!! tip "Temporary setup"
-    During the current pilot phase, LMOD is not yet de default module system on
-    LUMI and the software stacks are not yet activated by default. Run
-    `/appl/lumi/LUMI-SoftwareStack/activate_LMOD_LUMI.sh` to get up-to-date
-    instructions on how to activate the software stacks in the mean time.
-
 On LUMI, two types of software stacks are currently offered:
 
   - CrayEnv offers the Cray Programming Environment (PE) and allows one to use it completely
