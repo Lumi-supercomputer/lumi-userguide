@@ -15,7 +15,7 @@ description: |
 [3]: #compile-an-mpi-program
 [4]: #compile-an-openmp-program
 
-[modules]: ../../computing/modules.md
+[modules]: ../../computing/Lmod_modules.md
 [libraries]: libraries.md
 [cray-libraries]: libraries.md#cray-libraries
 [cce]: cce.md
