@@ -8,6 +8,7 @@ hide:
 [terms-of-use]: https://www.lumi-supercomputer.eu/lumi-general-terms-of-use_1-0/
 [support-account]: https://lumi-supercomputer.eu/user-support/need-help/account/
 [myaccessid-profile]: https://mms.myaccessid.org/profile/
+[mycsc-profile]: https://my.csc.fi/
 [puttygen]: https://www.puttygen.com/#How_to_use_PuTTYgen
 [support]: https://lumi-supercomputer.eu/user-support/need-help/
 [registration]: ../accounts/registration.md
@@ -119,24 +120,42 @@ you need to generate an SSH key pair.
 
 ### Upload your public key 
  
-Now that you have generated your key pair, you need to set up your **public** key
-in your [user profile][myaccessid-profile]. From there, the public key will be 
-copied to LUMI with some delay according to the synchronization schedule.
+=== "For regular users"
 
-To register your key, click on the *Settings* item of the menu on the left
-as shown in the figure below. Then select *Ssh keys*. From here you can add a new public key
-or remove an old one. **Note:** SSH key structure is *algorithm, key, comment*. Please EXCLUDE *comment* from your copy/paste.
+    Now that you have generated your key pair, you need to set up your **public** key
+    in your [user profile][myaccessid-profile]. From there, the public key will be 
+    copied to LUMI with some delay according to the synchronization schedule.
 
-<figure>
-  <img 
-    src="../../assets/images/MyAccessID_ssh-key.png" 
-    width="480"
-    alt="Screenshot of user profile settings to setup ssh public key"
-  >
-  <figcaption>MyAccessID Own profile information to add ssh public key.</figcaption>
-</figure>
+    To register your key, click on the *Settings* item of the menu on the left
+    as shown in the figure below. Then select *Ssh keys*. From here you can add a new public key
+    or remove an old one. **Note:** SSH key structure is *algorithm, key, comment*. Please EXCLUDE *comment* from your copy/paste.
 
-After registering the key, there can be a couple of hours delay until it is synchronized.
+    <figure>
+      <img src="../../assets/images/MyAccessID_ssh-key.png" width="480" alt="Screenshot of user profile settings to setup ssh public key">
+      <figcaption>MyAccessID Own profile information to add ssh public key.</figcaption>
+    </figure>
+
+    After registering the key, there can be a couple of hours delay until it is synchronized.
+
+=== "For users with a Finnish allocation"
+
+    Now that you have generated your key pair, you need to set up your 
+    **public** key in your [MyCSC profile][mycsc-profile]. From there, the 
+    public key will be copied to LUMI with some delay according to the 
+    synchronization schedule.
+
+    To register your key with [MyCSC][mycsc-profile], click on *My Profile* item
+    of the menu on the left as shown in the figure below. Then scroll to the end 
+    and in the *SSH PUBLIC KEYS* panel click the *Modify* button. From here,
+    click the *Add new* button and paste your new public key in the text area 
+    and click *Add*.
+
+    <figure>
+      <img src="../../assets/images/csc-profile.png" width="700" alt="Screenshot of user profile settings to setup ssh public key">
+      <figcaption>MyCSC profile information to add ssh public key.</figcaption>
+    </figure>
+
+    After registering the key, there can be a couple of hours delay until it is synchronized.
 
 ## How to log in
 
