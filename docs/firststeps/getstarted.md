@@ -20,10 +20,16 @@ need to get started.
 
 ## Setting up SSH key pair
 
-**You can only log in to LUMI using SSH keys**. There are no passwords. In order for this to work, you need to register your SSH key with MyAccessID, from where LUMI will fetch it.
+**You can only log in to LUMI using SSH keys**. There are no passwords. In order
+for this to work, you need to register your SSH key with MyAccessID, from where
+LUMI will fetch it. The portal is the only way to add an SSH key. If you have a
+Finnish allocation, then, you have to add your key to your MyCSC profile.
 
-LUMI Countries have different kinds of portals managing user access to the system. Please contact your local HPC organization to find which URL to go to. The portals will lead you to MyAccessID registration age, where you have to accept the Acceptable Use Policy and LUMI Terms of Use 
-document, which is linked there. Please read it carefully! 
+LUMI Countries have different kinds of portals managing user access to the
+system. Please contact your local HPC organization to find which URL to go to.
+The portals will lead you to MyAccessID registration age, where you have to
+accept the Acceptable Use Policy and LUMI Terms of Use document, which is linked
+there. Please read it carefully! 
 
 <figure>
   <img 
