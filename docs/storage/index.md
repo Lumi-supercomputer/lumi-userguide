@@ -17,6 +17,13 @@ that, except for the user home directory, data storage is allocated per project.
 When a storage space is marked as expandable, it means that you can request 
 more space if needed.
 
+## Billing
+
+Storage is billed by volume as well as time. The billing units are TB-hours. For
+the regular scratch file system, 1TB that stays for 1 hour on the filesystem, 
+consumes 1TB-hour. For the flash based filesytem 1TB for 1 hour consumes 
+10 TB-hours.
+
 ## User Home
 
 Each user has a home directory (`$HOME`) that can contain up to 10 GB of data. 
