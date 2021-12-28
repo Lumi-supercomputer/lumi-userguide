@@ -52,7 +52,7 @@ informing you of your project ID and user account name.
 ### Generate your SSH keys
 
 After registration, you need to register a **public** key (**Note! Key must be RSA
-4K bits or elliptic curve**). In order to do that
+4K bits or ed25519**). In order to do that
 you need to generate an SSH key pair.
 
 === "From a terminal (all OS)"
@@ -63,6 +63,12 @@ you need to generate an SSH key pair.
 
     ```bash
     ssh-keygen -t rsa -b 4096
+    ```
+
+    or for a ed25519 key:
+
+    ```bash
+    ssh-keygen -t ed25519
     ```
 
     You will be prompted for a file name and location where to save the
