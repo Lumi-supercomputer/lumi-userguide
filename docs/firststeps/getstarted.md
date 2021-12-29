@@ -13,23 +13,33 @@ hide:
 [support]: https://lumi-supercomputer.eu/user-support/need-help/
 [registration]: ../accounts/registration.md
 [connecting]: ../computing/connecting.md
+[website-getstarted]: https://lumi-supercomputer.eu/get-started/
 
 Please read through all of this carefully before you start running on LUMI. Here
 we describe a few sets of basic rules and the important information that you
 need to get started.
 
-## Setting up SSH key pair
+## Access to LUMI
 
-**You can only log in to LUMI using SSH keys**. There are no passwords. In order
-for this to work, you need to register your SSH key with MyAccessID, from where
-LUMI will fetch it. The portal is the only way to add an SSH key. If you have a
-Finnish allocation, then, you have to add your key to your MyCSC profile.
+To access LUMI, you need to be a member of a project. LUMI Countries have
+different policies for LUMI access. An overview of the access policies is 
+provided [here][website-getstarted].
 
-LUMI Countries have different kinds of portals managing user access to the
-system. Please contact your local HPC organization to find which URL to go to.
-The portals will lead you to MyAccessID registration age, where you have to
-accept the Acceptable Use Policy and LUMI Terms of Use document, which is linked
-there. Please read it carefully! 
+Resource allocators of each country will create the project and invite the PI.
+The project PI can then invite members based on email addresses. If you have
+been granted access to LUMI but didn't receive an invitation to a project,
+please contact your PI or local HPC center.
+
+In order to access the portal, you need to register to MyAccessID. The procedure
+depends on the country but in general this can be achieved via the *Sign in with
+MyAccessID*. The authentication is done with your home organization identity
+provider, which can be selected from the list. In case that is not possible
+please [contact the support team][support-account] with the error message. You
+may also contact your identity provider directly.
+
+For the next step, you will be directed to the registration page, where you have
+to accept the Acceptable Use Policy and LUMI Terms of Use document, which is
+linked there. Please read it carefully! 
 
 <figure>
   <img 
@@ -40,20 +50,15 @@ there. Please read it carefully!
   <figcaption>MyAccessID Registration portal</figcaption>
 </figure>
 
- 
-You may also modify the email address, but according to 
-[LUMI Terms of Use][terms-of-use] you must use your organizational email address.
+You may also modify the email address, but according to [LUMI Terms of
+Use][terms-of-use] you must use your organizational email address.
 
-The authentication in the portal is done with home organization identity provider,
-which can be selected from the list. In case that is not possible please 
-[contact the support team][support-account] with the error message, and you may also
-contact your identity provider directly.
+## Setting up SSH key pair
 
-You also need to be a member of a project. The project's PI will create a project 
-and invite members based on email addresses. Resource allocators of each country will 
-accept the project. When the project is accepted, the user accounts will be 
-created in LUMI. You will receive email from CSC's Identity management system 
-informing you of your project ID and user account name.
+**You can only log in to LUMI using SSH keys**. There are no passwords. In order
+for this to work, you need to register your SSH key with MyAccessID, from where
+LUMI will fetch it. The portal is the only way to add an SSH key. If you have a
+Finnish allocation, then, you have to add your key to your MyCSC profile.
 
 ### Generate your SSH keys
 
