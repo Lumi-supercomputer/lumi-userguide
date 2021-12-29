@@ -51,7 +51,7 @@ linked there. Please read it carefully!
 </figure>
 
 You may also modify the email address, but according to [LUMI Terms of
-Use][terms-of-use] you must use your organizational email address.
+Use][terms-of-use] you must use your institutional email address.
 
 ## Setting up SSH key pair
 
