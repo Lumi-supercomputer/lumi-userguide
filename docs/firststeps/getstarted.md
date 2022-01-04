@@ -179,7 +179,7 @@ you need to generate an SSH key pair.
 Connect using a ssh client:
 
 ```
-ssh username@lumi.csc.fi
+ssh -i<path-to-private-key> <username>@lumi.csc.fi
 ```
 
 where you need to replace `username` with your own username, which you received
