@@ -104,6 +104,34 @@ launching your application with `srun` with `<bind>` the type of resource:
       <img src="../../../assets/images/cpu-bind-sockets.svg" width="650" alt="CPU bind sockets">
     </figure>
 
+=== "Custom binding"
+
+    It is possible to specify exactly where each task will run by giving SLURM a list of CPU-IDs to bind to. In this example, we use this feature to run 64 MPI tasks per compute node on LUMI in a way that spreads out the MPI ranks across all compute core complexes (CCDs) in the AMD EPYC CPU, so that each CCD is half populated. Typically, this is done to get more effective memory capacity and memory bandwidth per MPI rank, but also to reach higher clock frequencies when only half of the cores in a CCD are being active.
+
+    ```
+    #SBATCH --ntasks-per-node=64
+    ...
+    srun --cpu-bind=map_cpu:0,1,2,3,8,9,10,11,16,17,18,19,24,25,26,27,32,33,34,35,40,41,42,43,48,49,50,51,56,57,58,59,64,65,66,67,72,73,74,75,80,81,82,83,88,89,90,91,96,97,98,99,104,105,106,107,112,113,114,115,120,121,122,123 ./application
+    ```
+
+    If you would not specify the CPU binding like this, the tasks would run on cores 0-63 in sequential order and only be able to utilize half of the available memory bandwidth. This might make a substantial difference, depending on the application.
+
+    For reference, the binding maps for a few more configurations are given here. 96 cores, corresponding to 6 out of 8 cores used on each CCD,
+
+    ```
+    #SBATCH --ntasks-per-node=96
+    ...
+    srun --cpu-bind=map_cpu:0,1,2,3,4,5,8,9,10,11,12,13,16,17,18,19,20,21,24,25,26,27,28,29,32,33,34,35,36,37,40,41,42,43,44,45,48,49,50,51,52,53,56,57,58,59,60,61,64,65,66,67,68,69,72,73,74,75,76,77,80,81,82,83,84,85,88,89,90,91,92,93,96,97,98,99,100,101,104,105,106,107,108,109,112,113,114,115,116,117,120,121,122,123,124,125 ./application
+    ```
+
+    and 112 cores (7 out of 8 cores on a CCD). This configuration is useful because of the divisor 7, which allows for grid partitioning using dimensions divisible by e.g. 7 or 14. For example, an electronic structure program which relies on k-point parallelization could use 14 k-points and get efficient parallelization using 112 cores rather than 128.
+
+    ```
+    #SBATCH --ntasks-per-node=112
+    ...
+    srun --cpu-bind=map_cpu:0,1,2,3,4,5,6,8,9,10,11,12,13,14,16,17,18,19,20,21,22,24,25,26,27,28,29,30,32,33,34,35,36,37,38,40,41,42,43,44,45,46,48,49,50,51,52,53,54,56,57,58,59,60,61,62,64,65,66,67,68,69,70,72,73,74,75,76,77,78,80,81,82,83,84,85,86,88,89,90,91,92,93,94,96,97,98,99,100,101,102,104,105,106,107,108,109,110,112,113,114,115,116,117,118,120,121,122,123,124,125,126 ./application
+    ```
+
 More options and details are available in the [srun documentation][srun] or via
 the manpage: `man srun`.
 
