@@ -9,7 +9,7 @@ that, except for the user home directory, data storage is allocated per project.
 
 |                       | Quota | Max files | Expandable   | Backup | Retention        |
 |:---------------------:|-------|-----------|:------------:|--------|------------------|
-| User<br>Home          | 10 GB | 100k      | No           | Yes    | User lifetime    |
+| User<br>Home          | 20 GB | 100k      | No           | Yes    | User lifetime    |
 | Project<br>Scratch    |  5 TB | 2000k     | Yes<br>500TB | No     | 90 days          |
 | Project<br>Persistent | 50 GB | 100k      | Yes<br>500GB | No     | Project lifetime |
 | Project<br>Fast       |  1 TB | 1000k     | Yes<br>100TB | No     | 30 days          |
@@ -26,7 +26,7 @@ consumes 1TB-hour. For the flash based filesytem 1TB for 1 hour consumes
 
 ## User Home
 
-Each user has a home directory (`$HOME`) that can contain up to 10 GB of data. 
+Each user has a home directory (`$HOME`) that can contain up to 20 GB of data. 
 It is intended to store user configuration files and personal data. **You are
 NOT supposed to run jobs from your home directory**.
 
