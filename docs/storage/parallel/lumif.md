@@ -22,6 +22,12 @@ files can creates contention at the metadata servers and may limit the
 performance due to limited striping (more explanation is provided on the 
 [Lustre][lustre] page).
 
+!!! warning "Flash if billed at a 10x rate"
+
+    The flash storage is billed at the 10x rate. This means that if you consume
+    1 TB of flash storage for 1 hour, you will consume 10 TB-hours of your 
+    storage allocation.
+
 ## Purge Policy
 
 !!! failure "Data rentention policies not active"
