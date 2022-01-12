@@ -17,6 +17,12 @@ that, except for the user home directory, data storage is allocated per project.
 When a storage space is marked as expandable, it means that you can request 
 more space if needed.
 
+!!! failure "Data rentention policies not active"
+
+    Scratch automatic cleaning is not active at the moment. Please remove the 
+    files that are no longer needed by your project on a regular basis if you 
+    don't want to run out of TB-hours.
+
 ## Billing
 
 Storage is billed by volume as well as time. The billing units are TB-hours. For

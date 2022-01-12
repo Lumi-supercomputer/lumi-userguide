@@ -24,6 +24,12 @@ performance due to limited striping (more explanation is provided on the
 
 ## Purge Policy
 
+!!! failure "Data rentention policies not active"
+
+    Scratch automatic cleaning is not active at the moment. Please remove the 
+    files that are no longer needed by your project on a regular basis if you 
+    don't want to run out of TB-hours.
+
 You are not supposed to use the scratch space a long-term storage. The 
 scratch file system is a temporary storage space. Files that have not been
 accessed will be **purged after 30 days**.
