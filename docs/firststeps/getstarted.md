@@ -248,7 +248,7 @@ their specific purposes.
 |              | Path                       | Description                                                                            |
 |--------------|----------------------------|----------------------------------------------------------------------------------------|
 | **Home**     | `/users/<username>`        | for user configuration files and source code                                           | 
-| **Project**: | `/projappl/<project_name>` | act as the project home directory                                                      |
+| **Project**: | `/project/<project_name>` | act as the project home directory                                                      |
 | **Scratch**  | `/scratch/<project_name>`  | intended as temporary storage for input, output or checkpoint data of your application |
 | **Flash**    | `/flash/<project_name>`    | fast scratch space based on flash storage                                              |
 

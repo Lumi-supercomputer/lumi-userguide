@@ -34,13 +34,13 @@ not in CrayEnv.
 By default our EasyBuild setup will install software in `$HOME/EasyBuild`. However,
 this location can be changed by pointing the environment variable `EBU_USER_PREFIX`
 to the directory where you want to create the software installation. In most cases
-a subdirectory in your `/projappl/project_*` directory is the best location to install
+a subdirectory in your `/project/project_*` directory is the best location to install
 software as that directory is both permanent for the duration of your project and
 shared with all users in your project so that everybody can use the software. It is
 a very good idea to set this environment variable in your `.profile` or `.bashrc`file.
 E.g.,
 ```bash
-export EBU_USER_PREFIX=/projappl/project_465000000/EasyBuild
+export EBU_USER_PREFIX=/project/project_465000000/EasyBuild
 ```
 
 ??? Tip "Tip for users with multiple projects"

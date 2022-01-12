@@ -216,13 +216,13 @@ that is 100% compatible with the system stack. That software will be
 automatically visible when loading the `LUMI` module.
 
 The default location for user-installed software in `$HOME/EasyBuild`. However,
-we advise to install software in the `/projappl` directory of the project
+we advise to install software in the `/project` directory of the project
 instead so that a single software installation can be used by all members of the
 project. This is done by pointing the environment variable `EBU_USER_PREFIX` to
 the software installation directory, e.g.,
 
 ```bash
-export EBU_USER_PREFIX=/projappl/project_465000000
+export EBU_USER_PREFIX=/project/project_465000000
 ```
 
 It is a good idea to do this in your `.profile` or `.bashrc` file.
