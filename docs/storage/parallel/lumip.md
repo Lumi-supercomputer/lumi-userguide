@@ -23,6 +23,10 @@ files can creates contention at the metadata servers and may limit the
 performance due to limited striping (more explanation is provided on the 
 [Lustre][lustre] page).
 
+Scratch storage is billed by volume as well as time. The billing units are 
+TB-hours. In practice, 1TB that stays for 1 hour on the filesystem will consume
+1TB-hour of your storage allocation.
+
 ## Purge Policy
 
 !!! failure "Data rentention policies not active"
