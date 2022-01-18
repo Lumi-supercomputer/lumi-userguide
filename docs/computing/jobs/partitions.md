@@ -28,7 +28,12 @@ that your job may share the node with other jobs.
 | ------- | ------------ | ----------------------- | ------------------ |
 | debug   | 30 minutes   | 1 running<br/>1 queuing | 4 nodes            |
 | small   | 1 day        | 200                     | 4 nodes            |
-| longrun | 7 days       | 1 running<br/>1 queuing | 1 nodes            |
+
+!!! info "Large Memory Nodes"
+    The large memory nodes (512GB and 1TB) are located in the `small` partition.
+    Therefore, in order to use these nodes, you need to select the `small`
+    partition (`--partion=small`). Then, the large memory nodes will be 
+    allocated if you request more memory than the standard compute nodes.
 
 ## Getting information about partitions
 
