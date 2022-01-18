@@ -1,5 +1,7 @@
 # LUMI-C: The CPU Partition
 
+[storage]: ../../storage/index.md
+
 The LUMI-C partition consists of 1536 compute nodes with an aggregated LINPACK 
 performance of 5.63 Petaflops.
 
@@ -73,4 +75,4 @@ LUMI-G becomes operational in 2022.
 ## Storage
 
 There is no local storage on the compute nodes in LUMI-C. You have to use one of
-the parallel file systems.
+the [parallel file systems][storage].
