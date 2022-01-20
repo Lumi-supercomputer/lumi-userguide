@@ -23,8 +23,8 @@ need to get started.
 ## Access to LUMI
 
 !!! Warning "Users with Finnish allocation"
-    This section does not apply for users with a Finnish allocation. These users 
-    are invited to follow the instruction starting from the 
+    This section does not apply for users with a Finnish allocation (via MyCSC).
+    These users are invited to follow the instruction starting from the 
     [next section][jump-ssh-key].
 
 To access LUMI, you need to be a member of a project. LUMI Countries have
