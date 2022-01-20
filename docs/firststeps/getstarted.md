@@ -14,12 +14,18 @@ hide:
 [registration]: ../accounts/registration.md
 [connecting]: ../computing/connecting.md
 [website-getstarted]: https://lumi-supercomputer.eu/get-started/
+[jump-ssh-key]: #setting-up-ssh-key-pair
 
 Please read through all of this carefully before you start running on LUMI. Here
 we describe a few sets of basic rules and the important information that you
 need to get started.
 
 ## Access to LUMI
+
+!!! Warning "Users with Finnish allocation"
+    This section does not apply for users with a Finnish allocation. These users 
+    are invited to follow the instruction starting from the 
+    [next section][jump-ssh-key].
 
 To access LUMI, you need to be a member of a project. LUMI Countries have
 different policies for LUMI access. An overview of the access policies is 
