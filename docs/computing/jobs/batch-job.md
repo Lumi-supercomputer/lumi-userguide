@@ -129,6 +129,41 @@ srun ./your_application # Use srun instead of mpirun or mpiexec
 ./your_application
 ```
 
+## Common error messages
+
+Below are common error messages you may get when the job submission fails.
+
+### Invalid account or account/partition combination specified
+
+The complete error message is as shown below:
+
+```
+sbatch: error: Batch job submission failed: Invalid account or account/partition combination specified
+```
+
+This error message refers to Slurm options `--account=<project>` and
+`--partition`. The most common causes are:
+
+- project does not exist.
+- project exists, but you are not a member of it
+- partition does not exist
+
+### Job violates accounting/QOS policy
+
+The complete error message is as shown below:
+
+```
+sbatch: error: AssocMaxSubmitJobLimit
+sbatch: error: Batch job submission failed: Job violates accounting/QOS policy (job submit limit, user's size and/or time limits)
+```
+
+The most common causes are:
+
+- your allocation has no compute time left
+- job script is missing the `--account` parameter.
+- your project has too many jobs in the system, either running or queuing.
+  Slurm counts each job within an array job as a separate job.
+
 ## Common Slurm options
 
 ### Basic job specification
