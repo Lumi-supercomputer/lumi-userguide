@@ -16,5 +16,12 @@ On LUMI we support various ways to install software
  - HPC containers
 
 
-## Learn about specific packages
+## Learn more about the LUMI software Policy
+
+If you want to learn more about the LUMI software policy, you can watch this
+recording from the last Easybuild User Meeting.
+
+<iframe width="620" height="348" style="display: block; margin: 50px auto;"
+src="https://www.youtube.com/embed/hZezVG6lJNk">
+</iframe>
 
