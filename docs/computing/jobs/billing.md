@@ -26,29 +26,32 @@ For example, 16 nodes for 12 hours:
 
 ### Small partition
 
-When using the small partition you are billed per core. Your job will consume
-1 core-hour per allocated core and per hour.
-
-For example, 32 cores for 12 hours: 
+When using the small partition you are billed per allocated core or if you are 
+above a certain threshold per chunk of 2GB of memory. Here is the formula that 
+is used for billing:
 
 ```
-32 cores x 12 hours = 384 core-hours
+corehours = max(ncore, ceil(mem/2GB)) x time
 ```
 
-!!! Warning "Billing policy change in the future"
-    The billing policy will change in the future to take into account the 
-    memory allocated to the job. The general formula for billing will be:
-    
-    ```
-    corehours = max(ncore, ceil(mem/2GB)) * time
-    ```
+- if you use less than 2GB of memory per core, you are charged per allocated
+  cores
+- if you use more than 2GB of memory per core, you are charged per 2GB slice
+  of memory
+- if you are using the large memory nodes you will be billed per 2GB slice
+  of memory
 
-    The implications of this future policy is that
+For example, 4 cores, 4GB of memory for 1 day:
 
-    - if you use less than 2GB of memory per core, you are charged per allocated
-      cores
-    - if you use more than 2GB of memory per core, you are charged per 2GB slice
-      of memory
+```
+4 cores x 24 hours = 96 core-hours
+```
+
+For example, 4 cores, 32GB of memory for 1 day:
+
+```
+32GB / 2GB x 24 hours = 384 core-hours
+```
 
 ## Storage billing
 
