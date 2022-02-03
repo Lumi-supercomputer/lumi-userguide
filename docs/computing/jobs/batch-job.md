@@ -150,8 +150,8 @@ environment variables in your `.bashrc`:
 
 If you want to perform specific operations in your batch script when a job has 
 been requeued you can check the value of the `SLURM_RESTART_COUNT` variable. The
-value of this variable will be 0 if it's the first time the job is run. If the 
-job has been restarted then the value will bethe number of times the job has 
+value of this variable will be `0` if it's the first time the job is run. If the 
+job has been restarted then the value will be the number of times the job has 
 been restarted.
 
 ## Common error messages
