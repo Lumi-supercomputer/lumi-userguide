@@ -20,6 +20,7 @@ It is assumed that you are already familiar with Slurm. If not, you can read the
 to the Slurm [documentation][slurm-doc] or [manual pages][slurm-man] and in 
 particular the page about [sbatch][slurm-sbatch].
 
+
 ## Specifying the account
 
 The account option (`--account=project_<id>`) is mandatory. Failing to set 
@@ -128,6 +129,30 @@ srun ./your_application # Use srun instead of mpirun or mpiexec
  
 ./your_application
 ```
+
+## Automatic requeuing
+
+The LUMI Slurm configuration has **automatic requeuing** of jobs upon node 
+failure **enabled**. It means that if a node fails, your job will be 
+automatically resubmitted to the queue and will have the same job ID and 
+possibly truncate the previous output. Here are some important parameters you 
+can use to alter the default behavior.
+
+- you can disable automatic requeuing using the `--no-requeue` option
+- you can avoid your output file being truncated in case of requeuing by using
+  the `--open-mode=append` option
+
+You can apply these two options permanently by exporting the following 
+environment variables in your `.bashrc`:
+
+- `SBATCH_NO_REQUEUE=1` to disable requeuing
+- `SBATCH_OPEN_MODE=append` to avoid output truncating after requeuing
+
+If you want to perform specific operations in your batch script when a job has 
+been requeued you can check the value of the `SLURM_RESTART_COUNT` variable. The
+value of this variable will be 0 if it's the first time the job is run. If the 
+job has been restarted then the value will bethe number of times the job has 
+been restarted.
 
 ## Common error messages
 
