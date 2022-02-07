@@ -15,7 +15,11 @@ will be billed for the complete node regardless of the resource actually used.
 | Name     | Max walltime | Max jobs     | Max ressources/job |
 | -------- | ------------ | ------------ | ------------------ |
 | standard | 2 days       | 100          | 500 nodes          |
-| large    | 1 day        | n/a          | All nodes          |
+| bench    | 1 day        | n/a          | All nodes          |
+
+The `bench` partition is not available by default and is reserved for 
+large-scale runs. Projects wishing to have access to this partition must send a 
+request to the support.
 
 ## Partitions allocatable by resources
 
