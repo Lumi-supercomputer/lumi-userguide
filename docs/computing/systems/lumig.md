@@ -39,7 +39,7 @@ More information can be found here:
 
 LUMI-G is not yet installed, the current timeline is as follows:
 
-- **mid-March 2022**: 6 cabinets (140 Pflop/s)
-- **early May 2022**: start of the LUMI-G pilot phase
-- **mid-June 2022**: the rest of LUMI-G
-- **Summer 2022**: general availability
+- **March 2022**: 6 cabinets (140 Pflop/s)
+- **June 2022**: start of the LUMI-G pilot phase
+- **Summer 2022**: the rest of LUMI-G
+- **Fall 2022**: general availability
