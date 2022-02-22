@@ -52,6 +52,7 @@ nav:
     - Overview: software/index.md
     - Installing software:
       - EasyBuild: software/installing/easybuild.md
+      - Python: software/installing/python.md
   - Known Issues:
     - Known Issues: issues/index.md
   - Help desk: 
