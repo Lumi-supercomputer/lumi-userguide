@@ -79,6 +79,32 @@ before using the command.
 - https://www.anaconda.com/terms-of-service
 - https://www.anaconda.com/blog/anaconda-commercial-edition-faq
 
+### Practical example 
+
+Using the previous `env.yml`
+
+```
+mkdir MyEnv
+conda-containerize new --prefix MyEnv env.yml 
+```
+After the installation finishes we can add the installation dir to our PATH
+and use it like normal
+
+```
+$ export PATH="$PWD/MyEnv/bin:$PATH"
+$ python --version
+3.8.8
+$ python3
+Python 3.8.8 | packaged by conda-forge | (default, Feb 20 2021, 16:22:27) 
+[GCC 9.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import scipy
+>>> import nglview
+>>> 
+```
+
+
+
 ## Modifying a conda installation
 
 As Tykky installed software resides in a container, it can not be directly modified.
