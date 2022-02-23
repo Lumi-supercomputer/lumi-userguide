@@ -31,7 +31,7 @@ that your job may share the node with other jobs.
 | Name    | Max walltime | Max jobs                | Max ressources/job |
 | ------- | ------------ | ----------------------- | ------------------ |
 | debug   | 30 minutes   | 1 running<br/>1 queuing | 4 nodes            |
-| small   | 1 day        | 200                     | 4 nodes            |
+| small   | 3 days       | 200                     | 4 nodes            |
 
 !!! info "Large Memory Nodes"
     The large memory nodes (512GB and 1TB) are located in the `small` partition.
