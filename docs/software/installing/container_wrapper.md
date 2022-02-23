@@ -3,7 +3,7 @@
 ## Intro
 
 Tykky is a set of tools which wrap installations inside 
-a container to improve startup times, 
+a Apptainer/Singularity container to improve startup times, 
 reduce IO load, and lessen the number of files on large parallel filesystems. 
 
 Additionally, Tykky will generate wrappers so that installed
@@ -15,11 +15,17 @@ mpi installation.
 
 This documentation covers a subset of the functionality and focuses on
 conda and Python, a large part of the advanced use-cases
-are not covered here yet. If you notice that your program or language behaves differently
-or incorrectly, please contact support.
+are not covered here yet.
+
+!!! Warning
+  As Tykky is still under development some of the more advanced features might change in exact usage and API.
 
 ## Basic conda installation
+`
+To access the tools provided by Tykky, simply load the module, `module load tykky`
 
+
+Then we can run:
 ```bash
 conda-containerize new --prefix <install_dir> env.yml
 ```
@@ -37,20 +43,14 @@ dependencies:
   - nglview
 ```
 
-Or then generate them from an existing environment
+Or generate them from an existing environment
 
 ```
-export CONDA_DEFAULT_ENV=<target_env_name>
-```
-
-Then 
-
-```
-conda env export > env.yaml 
+conda env export -n <target_env_name> > env.yaml 
 ```
 or 
 ```
-conda list --explicit > env.txt
+conda list -n <target_env_name> --explicit > env.txt
 ```
 
 After the installation is done you simply need to add 
@@ -71,6 +71,13 @@ conda-containerize new -r req.txt --prefix <install_dir> env.yml
 The tool also supports using [mamba](https://github.com/mamba-org/mamba) 
 for installing packages. Enable this feature by adding the `--mamba` flag. 
 `conda-containerize new --mamba ...`
+
+Make sure that you have read and understood the license terms for miniconda and any used channels
+before using the command. 
+
+- https://www.anaconda.com/end-user-license-agreement-miniconda
+- https://www.anaconda.com/terms-of-service
+- https://www.anaconda.com/blog/anaconda-commercial-edition-faq
 
 ## Modifying a conda installation
 
@@ -127,60 +134,11 @@ wrap-install -w </path/inside/container> <container> --prefix <install_dir>
 ```
 where `<container>` can be a filepath or any url accepted by singularity (e.g `docker//:` `oras//:` or any other singularity accepted format)
 `-w` needs to be an absolute path (or comma separated list) inside the container. Wrappers will then be automatically
-created for the executables in the target directories / for the target path.  
+created for the executables in the target directories / for the target path.
 
-## Small more complicated example
+## More complicated example
 
-_Tykky is still under development so some of the more advanced features
-might change in exact usage_
-
-Let's compile a small fftw toy code inside a container.
-
-def.yml
-```
-channels:
-  - conda-forge
-  - eumetsat
-dependencies:
-  - fftw3
-  - gxx
-```
-
-install_prog.sh
-```
-cp fftw.cpp $CW_INSTALLATION_PATH
-cd $CW_INSTALLATION_PATH
-export CPATH="$CPATH:$env_root/include"
-g++ -lfftw3 -L $env_root/lib fftw.cpp -o fftw_prog
-```
-[fftw.cpp](https://github.com/SouthAfricaDigitalScience/fftw3-deploy/blob/master/hello-world.cpp)
-
-Here the `CW_INSTALLATION_PATH` point to the root of the installation which will be containerized,
-files placed outside this path will not be part of the installation. `env_root`
-is a `conda-containerize` specific variable which point to the root of the conda environment.
-
-```
-mkdir Inst
-conda-containerize new --prefix Inst/ --post install_test.sh -w fftw_prog def.yml 
-```
-
-After this we can now run our toy program 
-``` 
-$ Inst/bin/fftw_prog
-0.868345
-0.934584
-1.01441
-1.11207
-1.23383
-64.513
-1.59397
-.
-.
-.
-```
-
-The size of this installation is 591MB and 165 files, if we would have
-installed it outside the container it would be 1.4GB and 34251 files.
+[Example in tool repository](https://github.com/CSCfi/hpc-container-wrapper/blob/master/examples/fftw.md)
 
 ## How it works
 
