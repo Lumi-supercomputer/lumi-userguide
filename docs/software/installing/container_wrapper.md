@@ -18,10 +18,10 @@ conda and Python, a large part of the advanced use-cases
 are not covered here yet.
 
 !!! Warning
-  As Tykky is still under development some of the more advanced features might change in exact usage and API.
+    As Tykky is still under development some of the more advanced features might change in exact usage and API.
 
 ## Basic conda installation
-`
+
 To access the tools provided by Tykky, simply load the module, `module load tykky`
 
 
