@@ -17,6 +17,11 @@ that, except for the user home directory, data storage is allocated per project.
 When a storage space is marked as expandable, it means that you can request 
 more space if needed.
 
+!!! failure "LUMI-F unavailable until summer 2022"
+
+    To prepare for the installation of LUMI-G, LUMI-F has been removed from the
+    system and will be available again after LUMI-G installation is completed.
+
 !!! failure "Data rentention policies not active"
 
     Scratch automatic cleaning is not active at the moment. Please remove the 
@@ -51,6 +56,11 @@ The project persistent storage is located at `/project/project_<project-number>`
 The project persistent directory is purged once the project expire.
 
 ## Parallel Filesystems (Scratch)
+
+!!! failure "LUMI-F unavailable until summer 2022"
+
+    To prepare for the installation of LUMI-G, LUMI-F has been removed from the
+    system and will be available again after LUMI-G installation is completed.
 
 The scratch spaces are Lustre file systems intended as **temporary** storage for
 input, output or checkpoint data of your application. LUMI offers 2 types of 

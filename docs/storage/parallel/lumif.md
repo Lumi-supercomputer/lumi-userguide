@@ -2,6 +2,11 @@
 
 [lustre]: lustre.md
 
+!!! failure "LUMI-F unavailable until summer 2022"
+
+    To prepare for the installation of LUMI-G, LUMI-F has been removed from the
+    system and will be available again after LUMI-G installation is completed.
+
 ## Description
 
 The LUMI flash based scratch [Lustre][lustre] file system has a storage capacity
