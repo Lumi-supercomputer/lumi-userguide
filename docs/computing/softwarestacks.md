@@ -17,7 +17,7 @@ On LUMI, two types of software stacks are currently offered:
 
   - LUMI is an extensible software stack that is mostly managed through
     [EasyBuild][easybuild]. Each version of the LUMI software stack is based on
-    the version of the Cray Programming Environment with the same version 
+    the version of the Cray Programming Environment with the same version
     number.
 
     A deliberate choice was made to only offer a limited number of software
@@ -52,7 +52,7 @@ On LUMI, two types of software stacks are currently offered:
     TCP/IP mode. Moreover, many Conda-provided binaries are only compiled for a
     generic 64-bit x86 processor and don't use any of the newer instructions or
     don't contain other processor-specific optimisations.
-    
+
     We do recognize, however, that sometimes there are no other options so we
     are working on a container-based solution to install conda-based software
     distributions, however, without a guarantee that software installed through
@@ -67,7 +67,7 @@ Running `module avail` on a fresh shell will show a list similar to:
 $ module avail
 
 
--------------------------- HPE-Cray PE modules ----------------------------   
+-------------------------- HPE-Cray PE modules ----------------------------
    PrgEnv-aocc/8.0.0      (D)      cray-openshmemx/11.3.2
    PrgEnv-aocc/8.1.0               cray-pals/1.0.14
 
@@ -94,46 +94,46 @@ $ module avail
 The first block in the output are the modules available throught the default
 software stack.
 
-The second block in the output shows the available software stacks: `CrayEnv` 
+The second block in the output shows the available software stacks: `CrayEnv`
 and `LUMI/21.08`. The `(S)` besides the name shows that these are sticky modules
 that won't be removed by default by ``module purge``. This is done to enable you
-to quickly clean your environment without having to re-initialise from scratch. 
+to quickly clean your environment without having to re-initialise from scratch.
 The `LTS` next to `LUMI/21.08` denotes that this is a release that we will try
 to support long-term (ideally two years, but we expect that heavy changes to the
 system in the initial year of operation will make that impossible).
 
-The third block, titled *Modify the module display style*, contains a number of 
+The third block, titled *Modify the module display style*, contains a number of
 modules that can be used to change the way the module tree is displayed:
 
-  * `ModuleColour`: these modules can be used to turn the colour on or off in 
+  * `ModuleColour`: these modules can be used to turn the colour on or off in
      the module display.
-  * `ModuleLabel`: change the way the modules are subdivided in blocks and the 
-     way those blocks are presented. 
+  * `ModuleLabel`: change the way the modules are subdivided in blocks and the
+     way those blocks are presented.
   * `ModuleLabel/label` is the default and will collapse related groups
-     of modules in single blocks, including the Cray PE modules. 
-  * `ModuleLabel/PEhierarchy`: will still use the user-friendly style of 
-     labeling but will show the complete hierarchy in the modules of the Cray 
-     PE. 
+     of modules in single blocks, including the Cray PE modules.
+  * `ModuleLabel/PEhierarchy`: will still use the user-friendly style of
+     labeling but will show the complete hierarchy in the modules of the Cray
+     PE.
   * `ModuleLabel/system`: does not use the user-friendly label texts, but shows
-     the path of the module directory instead. 
-  * `ModulePowerUser`: will also reveal several hidden modules, most of which 
-     are only important to sysadmins or users who really want to do EasyBuild 
+     the path of the module directory instead.
+  * `ModulePowerUser`: will also reveal several hidden modules, most of which
+     are only important to sysadmins or users who really want to do EasyBuild
      development in a clone of the software stack.
 
 
 ### CrayEnv (default)
 
-Loading `CrayEnv` will essentially give you the default Cray environment 
+Loading `CrayEnv` will essentially give you the default Cray environment
 enriched with a number of additional tools. The `CrayEnv` module will try to
 detect the node type of LUMI it is running on and load an appropriate set of
 targeting modules to configure the Cray PE. These modules are not sticky and
-will be removed by `module purge` but can always be reinstated by simply 
+will be removed by `module purge` but can always be reinstated by simply
 loading the `CrayEnv` module again.
 
 ### LUMI
 
 `LUMI` is our main software stack, managed mostly with [EasyBuild][easybuild].
-It contains software build with the system compiler and the `PrgEnv-gnu`, 
+It contains software build with the system compiler and the `PrgEnv-gnu`,
 `PrgEnv-cray` and `PrgEnv-aocc` programming environments, which includes Cray
 MPI and the Cray scientific libraries. As mixing compiler versions and library
 versions is dangerous, the stack is organised in versions that correspond to the
@@ -148,10 +148,10 @@ module, e.g.,
 module load LUMI/21.08
 ```
 
-The `LUMI` module will try to detect the node type it is running on and will 
+The `LUMI` module will try to detect the node type it is running on and will
 automatically select the software stack for the node type by automatically
 loading a `partition` module. However, that choice can always be overwritten by
-loading another `partition` module, and this can even be done in a single 
+loading another `partition` module, and this can even be done in a single
 command, e.g.,
 
 ```bash
@@ -184,14 +184,19 @@ modules:
   - The module version contains `cpeCray-yy.mm`: The package is compiled with
     the `PrgEnv-cray` programming environment.
 
-  - The module version contains `cpeAMD-yy.mm`:  The package is compiled with
-    the `PrgEnv-aocc` programming environment.
+  - The module version contains `cpeAOCC-yy.mm`:  The package is compiled with
+    the `PrgEnv-aocc` programming environment, the AMD compilers for CPU-only
+    work (hence available only on LUMI-C, LUMI-D and the login nodes)
+
+  - The module version contains `cpeAMD-yy.mm`: The package is compiled with
+    the `PrgEnv-AMD` programming environment, the Cray wrapper around the
+    AMD ROCm compilers. This environment will only be offered on LUMI-G.
 
   - The name contains neither of those: The package is compiled with the system
     gcc compiler, something that is only done for software that is absolutely
     not performance-critical like some build tools and workflow tools.
 
-In EasyBuild, `cpeGNU`, `cpeCray` and `cpeAMD` are called toolchains, a set of
+In EasyBuild, `cpeGNU`, `cpeCray`, `cpeAOCC` and `cpeAMD` are called toolchains, a set of
 compatible compilers, MPI and mathematical libraries. Software compiled with the
 system compiler is also called software compiled with the system toolchain,
 which is a restricted toolchain that only contains the compiler. Software
@@ -200,9 +205,10 @@ can be loaded together with software compiled with the SYSTEM toolchain. The
 module system currently does not protect you against making such mistakes!
 However, software may fail to work properly.
 
-??? failure "Issue: cpeAMD does not yet work"
-    In `LUMI/21.08`, `cpeAMD` does not work as the AMD compiler is not properly
-    installed. This will be fixed in an upcoming maintenance interval.
+??? failure "Issue: cpeAOCC not in 21.08"
+    In `LUMI/21.08`, `cpeAOCC` can not work as the AMD compiler is not properly
+    installed. Hence the `cpeAOCC` toolchain is only offered from the`21.12` stack
+    on.
 
 
 ## Adding additional software to the LUMI software stack
