@@ -158,8 +158,6 @@ you need to generate an SSH key pair.
       <figcaption>MyAccessID Own profile information to add ssh public key.</figcaption>
     </figure>
 
-    After registering the key, there can be a couple of hours delay until it is synchronized.
-
 === "For users with a Finnish allocation"
 
     Now that you have generated your key pair, you need to set up your 
@@ -178,7 +176,9 @@ you need to generate an SSH key pair.
       <figcaption>MyCSC profile information to add ssh public key.</figcaption>
     </figure>
 
-    After registering the key, there can be a couple of hours delay until it is synchronized.
+After registering the key, there can be a couple of hours delay until it is
+synchronized. **You will receive your username via email once your account is 
+created**.
 
 ## How to log in
 
