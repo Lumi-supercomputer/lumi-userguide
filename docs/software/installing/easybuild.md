@@ -19,7 +19,8 @@ better choice as you can then share with the other people in your project) and u
 that software. It requires not much more than loading a module that configure
 EasyBuild for local installations and running EasyBuild with a few recipes that
 can be supplied by the LUMI User Support Team or your national support team or that
-you may write yourself.
+you may write yourself. And this software is then build in exactly the same way as
+it would be in a central installation.
 
 *Before continuing to read this page, make sure you are familiar with the
 [setup of the software stacks on LUMI][softwarestacks] and somewhat familiar with
@@ -111,7 +112,7 @@ The first part of the name, `GROMACS`, is the name of the package. The second
 part of the name, `2021` is the version of GROMACS, in this case the initial
 2021 release. The next part, `cpeGNU-21.08`, denotes the so-called * toolchain*
 used for the build. The `cpeGNU` toolchain uses the `PrgEnv-gnu` programming
-environment, the `cpeCray` toolchain the `PrgEnv-cray` PE and the `cpeAMD`
+environment, the `cpeCray` toolchain the `PrgEnv-cray` PE and the `cpeAOCC`
 toolchain the `PrgEnv-aocc` environment. The version of the toolchain should
 match the version of the LUMI software stack or the installation will fail.
 (In fact, it is not just the version in the file name that should match but
@@ -122,16 +123,23 @@ package. In this case, it indicates that it is a build of the 2021 version
 purely for CPU and also includes PLUMED as we have also builds without
 PLUMED (which is not compatible with every GROMACS version).
 
-EasyBuild is configured so that it searches the current directory, the user
-repository and two repositories on the system so if all needed EasyBuild
+EasyBuild is configured so that it searches in the user
+repository and two repositories on the system. The current directory is not
+part of the default search path but is easily added with a command line
+option. By default, EasyBuild will not install dependencies of a package
+and fail instead if one or more of the dependencies cannot be found, but that
+is also easily changed on the command line.
+If all needed EasyBuild
 recipes are in one of those repository or in the current
 directory, all you need to do to install the package is to run
 ```bash
-eb -r GROMACS-2021-cpeGNU-21.08-PLUMED-2.7.2-CPU.eb
+eb -r . GROMACS-2021-cpeGNU-21.08-PLUMED-2.7.2-CPU.eb
 ```
 The `-r` tells EasyBuild to also install dependencies that may not yet be installed,
-and should be omitted if you want full control and install dependency by dependency
-before installint the package (which may be very useful if building right away fails).
+and with the dot added to it, to also add the current directory to the front of the
+search path. The `-r .` or `-r` flags
+should be omitted if you want full control and install dependency by dependency
+before installing the package (which may be very useful if building right away fails).
 
 If you now type `module avail` you should see the
 ```
@@ -161,29 +169,30 @@ Three toolchains are currently implemented
 
   - `cpeGNU` is the equivalent of the Cray `PrgEnv-gnu` programming environment
   - `cpeCray` is the equivalent of the Cray `PrgEnv-cray` programming environment
-  - `cpeAMD` is the equivalent of the Cray `PrgEnv-aocc` programming environment
+  - `cpeAOCC` is the equivalent of the Cray `PrgEnv-aocc` programming environment
 
 All three toolchains use `cray-mpich` over the Open Fabric Interface library
 (`craype-network-ofi`) and Cray LibSci for the mathematical libraries, with the
 releases taken from the Cray PE release that corresponds to the version number of the
-`cpeGNU`, `cpeCray` or `cpeAMD` module.
+`cpeGNU`, `cpeCray` or `cpeAOCC` module.
 
-??? note "cpeGNU/Cray/AMD and PrgEnv-gnu/cray/aocc"
-    Currently the `cpeGNU`, `cpeCray` and `cpeAMD` modules don't load the corresponding
+??? note "cpeGNU/Cray/AOCC and PrgEnv-gnu/cray/aocc"
+    Currently the `cpeGNU`, `cpeCray` and `cpeAOCC` modules don't load the corresponding
     `PrgEnv-*` modules nor the `cpe/<version>` modules. This is because in the current
     setup of LUMI both modules have their problems and the result of loading those
     modules is not always as intended.
 
     If you want to compile software that uses modules from the LUMI stack, it is best
-    to use one of the `cpeGNU`, `cpeCray` or `cpeAMD` modules to load the compiler
+    to use one of the `cpeGNU`, `cpeCray` or `cpeAOCC` modules to load the compiler
     and libraries rather than the matching `cpe/<version>` and `PrgEnv-*` modules as those may
     not always load all modules in the correct version.
 
 Since the LUMI software stack does not support the EasyBuild common toolchains (such
 as the EasyBuild intel and foss toolchains) one cannot use the default EasyBuild build
 recipes without modifying them. Hence they are not included in the robot search path
-of EasyBuild so that you don't accidentally try to install them, but it is possible
-to search for packages in that repository also using `eb -S` and `eb --search`.
+of EasyBuild so that you don't accidentally try to install them (and also removed
+from the search path for `eb -S` or `eb --search` to avoid any confustion that they
+might work).
 
 
 ### Building your own EasyBuild repository
@@ -246,3 +255,13 @@ we suggest the following sources of information:
         on LUMI is not in sync with the CSCS installation. The repository is particularly
         useful for CPU-only programs as the GPUs in their system are not compatible
         with those in LUMI.
+  - EasyBuild recipes that are not compatible with the Cray Programming Environment but that
+    may sometimes be a good source to start developing compatible ones (if you're an
+    EasyBuild expert):
+      - [EasyBuilders repository](https://github.com/easybuilders/easybuild-easyconfigs/tree/develop/easybuild/easyconfigs),
+        the repository of EasyConfig files that also come with EasyBuild.
+      - [ComputeCanada repository](https://github.com/ComputeCanada/easybuild-easyconfigs)
+      - [IT4Innovations repository](https://code.it4i.cz/sccs/easyconfigs-it4i)
+      - [Fred Hutchinson Cancer Research Center repository](https://github.com/FredHutch/easybuild-life-sciences/tree/main/fh_easyconfigs)
+      - [University of Antwerpen repository](https://github.com/hpcuantwerpen/UAntwerpen-easyconfigs)
+      - [University of Leuven repository](https://github.com/hpcleuven/easybuild-easyconfigs/tree/master/easybuild/easyconfigs)
