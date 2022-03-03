@@ -161,13 +161,13 @@ module load LUMI/21.08 partition/L
 will load the software stack for the login nodes (which in fact will also work
 on the compute nodes and data analysis and visualisation nodes).
 
-??? failure "Only partition/L and partition/C are supported" Note that in the
-    initial version of the software stack, only `partition/L` and `partition/C`
-    are supported. Software in `partition/L` can be used on the compute nodes
-    also and there is even some MPI-based software already installed in that
-    partition. Running MPI programs is not supported on the login nodes, but the
-    modules may still contain useful pre- or postprocessing software that can be
-    used on the login nodes.
+??? failure "Only partition/L and partition/C are supported"
+    Note that in the initial version of the software stack, only `partition/L`
+    and `partition/C` are supported. Software in `partition/L` can be used on
+    the compute nodes also and there is even some MPI-based software already
+    installed in that partition. Running MPI programs is not supported on the
+    login nodes, but the modules may still contain useful pre- or
+    postprocessing software that can be used on the login nodes.
 
 Once loaded you will be presented with a lot of modules in a flat naming scheme.
 This means that all software available in that version of the LUMI software
