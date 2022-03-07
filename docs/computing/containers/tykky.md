@@ -48,10 +48,14 @@ Or generate them from an existing environment
 ```
 conda env export -n <target_env_name> > env.yaml 
 ```
+_Windows and MacOS will need to add the `--from-history` flag to the export command_
+
 or 
 ```
 conda list -n <target_env_name> --explicit > env.txt
 ```
+_Using the `--explicit` option only works if the existing environment is
+on a Linux machine with x86 CPU architecture. Otherwise the result will not be transferable to Lumi_  
 
 After the installation is done you simply need to add 
 the bin diretory `<install_dir>/bin` to the path. 
@@ -79,7 +83,7 @@ before using the command.
 - https://www.anaconda.com/terms-of-service
 - https://www.anaconda.com/blog/anaconda-commercial-edition-faq
 
-### Practical example 
+### End-to-end example 
 
 Using the previous `env.yml`
 
