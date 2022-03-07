@@ -21,7 +21,7 @@ nav:
       - Data analytics nodes: computing/systems/lumid.md
       - GPU EAP nodes: computing/systems/kuura.md
     - Containers:
-      - Container wrapper: computing/containers/tykky.md
+      - Container wrapper (Tykky): computing/containers/tykky.md
     - Running jobs:
       - Slurm Quickstart: computing/jobs/slurm-quickstart.md
       - Available partitions: computing/jobs/partitions.md
