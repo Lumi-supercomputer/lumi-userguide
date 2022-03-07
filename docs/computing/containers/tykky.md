@@ -58,7 +58,7 @@ _Using the `--explicit` option only works if the existing environment is
 on a Linux machine with x86 CPU architecture. Otherwise the result will not be transferable to Lumi_  
 
 After the installation is done you simply need to add 
-the bin diretory `<install_dir>/bin` to the path. 
+the bin directory `<install_dir>/bin` to the path. 
 
 ```bash
 export PATH="<install_dir>/bin:$PATH"
@@ -91,7 +91,7 @@ Using the previous `env.yml`
 mkdir MyEnv
 conda-containerize new --prefix MyEnv env.yml 
 ```
-After the installation finishes we can add the installation dir to our PATH
+After the installation finishes we can add the installation directory to our PATH
 and use it like normal
 
 ```
