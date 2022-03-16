@@ -1,12 +1,12 @@
-# Tykky
+# Lumi container wrapper
 
 ## Intro
 
-Tykky is a set of tools which wrap installations inside 
+The Lumi container wrapper is a set of tools which wrap installations inside 
 a Apptainer/Singularity container to improve startup times, 
 reduce IO load, and lessen the number of files on large parallel filesystems. 
 
-Additionally, Tykky will generate wrappers so that installed
+Additionally, the Lumi container wrapper will generate wrappers so that installed
 software can be used (almost) as if it were not containerized. Depending
 on tool selection and settings, either the whole host filesystem or
 a limited subset is visible during execution and installation. This means that
@@ -18,11 +18,11 @@ conda and Python, a large part of the advanced use-cases
 are not covered here yet.
 
 !!! Warning
-    As Tykky is still under development some of the more advanced features might change in exact usage and API.
+    As the Lumi container wrapper is still under development some of the more advanced features might change in exact usage and API.
 
 ## Basic conda installation
 
-To access the tools provided by Tykky, simply load the module, `module load tykky`
+To access the tools provided by the Lumi container wrapper, simply load the module, `module load lumi-container-wrapper`
 
 
 Then we can run:
@@ -111,7 +111,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 ## Modifying a conda installation
 
-As Tykky installed software resides in a container, it can not be directly modified.
+As the Lumi container wrapper installed software resides in a container, it can not be directly modified.
 Small python packages can be added normally using `pip`, but then the python packages are
 sitting on the parallel filesystem so not recommended for any larger installations.  
 
@@ -156,7 +156,7 @@ coming from within container.
 
 ## Existing containers 
 
-Tykky also provides a tool to generate wrappers for existing containers, so that they can be used 
+The Lumi container wrapper also provides a tool to generate wrappers for existing containers, so that they can be used 
 transparently (no need to prepend `singularity exec ...`, or modify scripts if switching between containerized versions of tools).
 
 ```
