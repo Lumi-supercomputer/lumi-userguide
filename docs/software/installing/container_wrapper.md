@@ -20,10 +20,16 @@ are not covered here yet.
 
 ## Basic conda installation
 
-To access the tools provided by the LUMI container wrapper, simply load the module, `module load lumi-container-wrapper`
+The tools provided by the LUMI container wrapper are accessible by loading the
+`lumi-container-wrapper` module that is available in the `LUMI` and `CrayEnv` 
+environment.
 
+```
+module load LUMI lumi-container-wrapper
+```
 
 Then we can run:
+
 ```bash
 conda-containerize new --prefix <install_dir> env.yml
 ```
