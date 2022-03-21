@@ -6,7 +6,7 @@
 !!! warning
     This page is about a partition that is not yet available
 
-The LUMI-D partition consists of a 12 nodes with large memory capacity and
+The LUMI-D partition consists of a 16 nodes with large memory capacity and
 Nvidia GPUs. LUMI-D is intended for interactive data analytics and
 visualization. It is also a good place run pre- and post-processing jobs that
 require a lot of memory.
