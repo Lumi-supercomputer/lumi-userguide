@@ -1,9 +1,15 @@
-# Installing Python packages
+# Installing and using Python packages
 
 [quota]: ../../storage/index.md
 [cray_python]: python/cray_python.md
 [container_wrapper]: python/container_wrapper.md
 [container_self]: python/container_self.md
+
+!!! note
+    When you log onto LUMI, no Python module is loaded by default. Running
+    `python` without loading a module or container first will result in you using
+    the operating system default Python which is likely not what you intend as it
+    is horrible outdated for normal standards.
 
 ## Background
 

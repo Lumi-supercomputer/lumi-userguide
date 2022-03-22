@@ -13,9 +13,8 @@ On LUMI we support various ways to install software
  - [EasyBuild][easybuild] is our primary tool to manage the central software
    stack and we made it easy to install additional software in your home or
    project directory that extends that stack.
- - There are different ways available to install Python packages, all with
-   their adavantages and disadvantages. Please check out our [python
-guide][python_installation].
+ - [Python][python_installation] can be loaded using different approaches, all
+   with their advantages and disadvantages.
  - Spack
  - HPC containers
 
