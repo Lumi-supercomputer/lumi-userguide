@@ -54,6 +54,7 @@ nav:
       - EasyBuild: software/installing/easybuild.md
     - Python:
       - Overview: software/python/index.md
+      - Container Wrapper: software/installing/container_wrapper.md
       - Python Slurm jobs: software/python/python-slurm.md
   - Known Issues:
     - Known Issues: issues/index.md

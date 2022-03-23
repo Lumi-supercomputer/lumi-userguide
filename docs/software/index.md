@@ -3,6 +3,7 @@ title: Software - Overview
 ---
 
 [easybuild]: ./installing/easybuild.md
+[contwrapper]: ./installing/container_wrapper.md
 
 
 ## Learn more about installing software on LUMI
@@ -12,8 +13,9 @@ On LUMI we support various ways to install software
  - [EasyBuild][easybuild] is our primary tool to manage the central software
    stack and we made it easy to install additional software in your home or
    project directory that extends that stack.
- - Spack
- - HPC containers
+ - [Container wrapper][contwrapper] is a set of tools which wrap installations
+   inside a Apptainer/Singularity container. These tools are recommended to 
+   install Conda and pip packages on LUMI.
 
 
 ## Learn more about the LUMI software Policy

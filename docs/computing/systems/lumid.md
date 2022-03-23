@@ -6,14 +6,14 @@
 !!! warning
     This page is about a partition that is not yet available
 
-The LUMI-D partition consists of a 12 nodes with large memory capacity and
+The LUMI-D partition consists of a 16 nodes with large memory capacity and
 Nvidia GPUs. LUMI-D is intended for interactive data analytics and
 visualization. It is also a good place run pre- and post-processing jobs that
 require a lot of memory.
 
 | Nodes | CPU                                                                 | Memory | GPUs                                 | Disk      | Network    |
 |-------|---------------------------------------------------------------------|--------|--------------------------------------|-----------|------------|
-| 4     | AMD EPYC 7742<br>2.25 GHz base<br>3.4 GHz boost<br>128 cores (2x64) | 8 TB   | none                                 | 25 TB SSD | 2x100 Gb/s |
+| 8     | AMD EPYC 7742<br>2.25 GHz base<br>3.4 GHz boost<br>128 cores (2x64) | 4 TB   | none                                 | 25 TB SSD | 2x100 Gb/s |
 | 8     | AMD EPYC 7742<br>2.25 GHz base<br>3.4 GHz boost<br>128 cores (2x64) | 2 TB   | 8x NVIDIA A40<br>48 GB of memory | 14 TB SSD | 2x100 Gb/s |
 
 **Note**: The CPUs in LUMI-D are one generation older (Zen 2 / "Rome") than in
