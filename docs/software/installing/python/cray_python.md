@@ -29,8 +29,7 @@ or in a submission script) using:
 If the packages you require are not included in the HPE Cray Python
 distribution, further packages can be added using `pip`.  We recommend either
 installing them globally for your user account, as described in this section,
-or into virtual environments, see [next section](## Setting up virtual
-environments).
+or into virtual environments, see [next section](#setting-up-virtual-environments).
 
 Installing packages for your user account is in principle as simple as calling
 `pip`.  However, as the /home file systems are not available on the compute

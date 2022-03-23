@@ -1,6 +1,6 @@
 # Installing and using Python packages
 
-[quota]: ../../storage/index.md
+[quota]: '../../storage/index.md'
 [cray_python]: python/cray_python.md
 [container_wrapper]: python/container_wrapper.md
 [container_self]: python/container_self.md
@@ -19,7 +19,7 @@ This puts a lot of strain on our LUSTRE file system which excels
 at serving serving bigger files to several nodes at the same time but struggles
 with many small files as the distribution of the metadata becomes a bottleneck.
 Therefore to ensure good file system performance, we enforce quite tight [quotas
-on the number of files](number of file quotas) which makes some common python
+on the number of files](quota) which makes some common python
 installation methods impractical.
 
 ## Overview of Python installation approaches
