@@ -146,7 +146,7 @@ you need to generate an SSH key pair.
 === "For regular users"
 
     Now that you have generated your key pair, you need to set up your **public** key
-    in your [user profile][myaccessid-profile]. From there, the public key will be 
+    in your [:material-account: **user profile**][myaccessid-profile]. From there, the public key will be 
     copied to LUMI with some delay according to the synchronization schedule.
 
     To register your key, click on the *Settings* item of the menu on the left
@@ -158,12 +158,10 @@ you need to generate an SSH key pair.
       <figcaption>MyAccessID Own profile information to add ssh public key.</figcaption>
     </figure>
 
-    After registering the key, there can be a couple of hours delay until it is synchronized.
-
 === "For users with a Finnish allocation"
 
     Now that you have generated your key pair, you need to set up your 
-    **public** key in your [MyCSC profile][mycsc-profile]. From there, the 
+    **public** key in your [:material-account: **user profile**][mycsc-profile]. From there, the 
     public key will be copied to LUMI with some delay according to the 
     synchronization schedule.
 
@@ -178,7 +176,9 @@ you need to generate an SSH key pair.
       <figcaption>MyCSC profile information to add ssh public key.</figcaption>
     </figure>
 
-    After registering the key, there can be a couple of hours delay until it is synchronized.
+After registering the key, there can be a couple of hours delay until it is
+synchronized. **You will receive your username via email once your account is 
+created**.
 
 ## How to log in
 

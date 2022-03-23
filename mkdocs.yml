@@ -53,6 +53,7 @@ nav:
     - Installing software:
       - EasyBuild: software/installing/easybuild.md
       - Python: software/installing/python.md
+      - Container Wrapper: software/installing/container_wrapper.md
   - Known Issues:
     - Known Issues: issues/index.md
   - Help desk: 

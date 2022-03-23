@@ -1,7 +1,7 @@
 # LUMI Docs
 
 This repository contains master data for the [LUMI documentation][1] which
-is in sync with 'main' branch. This documentation is written in Markdown which
+is in sync with 'production' branch. This documentation is written in Markdown which
 is converted to HTML/CSS/JS with the mkdocs static site generator. The
 documentation is themed with mkdocs-material + LUMI customization.
 

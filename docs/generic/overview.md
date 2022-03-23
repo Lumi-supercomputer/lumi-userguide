@@ -76,8 +76,8 @@ multithreading (SMT) allowing for up to 256 threads per node.
 
 LUMI-D is intended for interactive data analytics and visualization. It is also
 a good place run pre- and post-processing jobs that require a lot of memory. It
-consists of a 4 nodes with large memory capacity (8 TB) and 8 nodes with NVIDIA
-RTX8000 GPUs. Each LUMI-D compute nodes are equipped with 2 AMD EPYC 7742 CPUs
+consists of a 8 nodes with large memory capacity (4 TB) and 8 nodes with NVIDIA
+A40 GPUs. Each LUMI-D compute nodes are equipped with 2 AMD EPYC 7742 CPUs
 with 64 cores each running at 2.25 GHz for a total of 128 cores per node.
 
 - [More information about LUMI-D][lumi-d]

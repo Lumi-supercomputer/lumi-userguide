@@ -4,6 +4,7 @@ title: Software - Overview
 
 [easybuild]: ./installing/easybuild.md
 [python_installation]: ./installing/python.md
+[contwrapper]: ./installing/container_wrapper.md
 
 
 ## Learn more about installing software on LUMI
@@ -15,8 +16,9 @@ On LUMI we support various ways to install software
    project directory that extends that stack.
  - [Python][python_installation] can be loaded using different approaches, all
    with their advantages and disadvantages.
- - Spack
- - HPC containers
+ - [Container wrapper][contwrapper] is a set of tools which wrap installations
+   inside a Apptainer/Singularity container. These tools are recommended to 
+   install Conda and pip packages on LUMI.
 
 
 ## Learn more about the LUMI software Policy
