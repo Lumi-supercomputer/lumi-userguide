@@ -97,7 +97,7 @@ performance tuned CRAY package versions of for example `numpy`, `scipy` and
 
 Finally, you're ready to `activate` your environment. This is done by running
 ```
-source /work/t01/t01/auser/<<name of your virtual environment>>/bin/activate
+source /projappl/project_XXXX/virtual-env/bin/activate
 ```
 Once your environment is activated you will be able to install packages as
 usual using `pip install <<package name>>`. These packages will only be
