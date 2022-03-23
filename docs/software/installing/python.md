@@ -29,7 +29,12 @@ environments and packages:
 
   1. [Using Cray Python module](cray_python)
   2. [Creating a Python container using our wrapper script](container_wrapper)
-  3. [Creating a Conda based container](container_self)
+  <!-- 3. [Creating a Conda based container](container_self) -->
+
+Cray Python comes with a very limited selection of packages (mostly scipy,
+mpi4py, dask and numpy). In case these are not sufficient and you need to
+install many additionally, we recommend to use our [wrapper
+script](container_wrapper) to set up a python environment inside a container. 
 
 !!! failure "Do not use Conda directly without a container"
     Installing software through Conda should be the method of last resort on
