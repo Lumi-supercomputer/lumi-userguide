@@ -14,8 +14,11 @@ description: |
   [2.3]: #using-the-wrapper-with-a-configure-script
 [3]: #compile-an-mpi-program
 [4]: #compile-an-openmp-program
+[5]: #accessing-the-programming-environment-on-lumi
 
 [modules]: ../../computing/Lmod_modules.md
+[softwarestacks]: ../../computing/softwarestacks.md
+[easybuild]: ../../software/installing/easybuild.md
 [libraries]: libraries.md
 [cray-libraries]: libraries.md#cray-libraries
 [cce]: cce.md
@@ -270,3 +273,46 @@ different compilers.
 
 When using the OpenMP compiler flag, the wrapper will link to the 
 [multithreaded version of the Cray libraries][cray-libraries].
+
+
+## Accessing the programming environment on LUMI
+
+The Cray programming environment can be accessed in three different ways on LUMI:
+
+1.  Right after login, ``PrgEnv-cray`` is loaded, pretty much as users familiar with
+    Cray systems would expect. The set of target modules however is not adapted to the
+    node that you are on but a set that is safe for the whole system. Users are 
+    responsible for managing those modules and swapping with an additional set. Executing
+    ``module purge`` will unload the target modules also and cause error messages when you
+    try to subsequently load a programming environment as some modules (including
+    ``cray-mpich``) can only be loaded when a suitable target module is loaded.
+
+2.  Working in the ``CrayEnv`` [software stack][softwarestacks]: (Re)-loading the 
+    ``CrayEnv`` module will (re)set the target modules to an optimal set for the
+    node type that you are on. Executing ``module purge`` will also trigger a reload
+    of ``CrayEnv``, unless the ``--force`` option is used. 
+
+    The ``CrayEnv`` stack also provides an updated set of build tools and some other tools
+    useful to programmers in a way that they cannot conflict with tools in the ``LUMI``
+    software stacks (which is why they are not offered in the bare environment).
+
+    We advise users who want to use the Cray programming environment but do not need
+    any of the libraries etc. installed in the ``LUMI`` software stacks to use the
+    ``CrayEnv`` stack rather than the bare environment.
+
+3.  Working in the ``LUMI`` [software stack][softwarestacks]: The ``LUMI`` software stack
+    offers a range of libraries and packages mostly installed via [EasyBuild][easybuild].
+    It is possible to install additional software on top of those stacks using EasyBuild,
+    and use those libraries and tools to compile or develop other software outside the
+    EasyBuild environment.
+
+    Each ``LUMI`` stack corresponds to a particular release of the Cray programming environment.
+    It is possible to use the ``PrgEnv`` modules in this environment. However, EasyBuild
+    requires its own set of modules to integrate with the Cray programming environment and we 
+    advise users to use those instead when working in the ``LUMI`` stack: ``cpeCray`` replaces
+    ``PrgEnv-cray``, ``cpeGNU`` replaces ``PrgEnv-gnu``, ``cpeAOCC`` replaces ``PrgEnv-aocc``  
+    and ``cpeAMD`` will replace ``PrgEnv-amd`` when that environment becomes available on the
+    LUMI-G partition. These modules also take care of the target architecture modules based
+    on the ``partition`` module that is loaded (which offer a way to do cross-compiling for
+    another section of LUMI than you are working on).
+
