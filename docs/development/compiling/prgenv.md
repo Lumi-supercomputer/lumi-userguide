@@ -63,6 +63,18 @@ $ module load PrgEnv-gnu
 After you have loaded a programming environment, the [compiler wrappers][2] (`cc`,
 `CC` and `ftn`) are available.
 
+??? Bug "PrgEnv-aocc broken in 21.08 and 21.12"
+    The ``PrgEnv-aocc`` module does not work correctly in the 21.08 and 21.12 
+    releases of the Cray programming environment. This is due to different reasons.
+    The ``aocc/3.0.0`` module (used as the default version of AOCC in the 21.08
+    release) is broken since the compilers themselves are not installed. The
+    ``aocc/3.1.0`` module has a bug in the code of the module. This has been fixed 
+    in later releases of the Crey programming environment so that problem will be
+    solved when those releases are installed. Due to the way the installation of the
+    Cray programming environment works it is currently not possible for us to correct
+    the module by hand.
+
+
 ### Changing compiler versions
 
 If the default compiler version does not suit you, you can change the version
@@ -279,18 +291,18 @@ When using the OpenMP compiler flag, the wrapper will link to the
 
 The Cray programming environment can be accessed in three different ways on LUMI:
 
-1.  Right after login, ``PrgEnv-cray`` is loaded, pretty much as users familiar with
-    Cray systems would expect. The set of target modules however is not adapted to the
+1.  Right after login, ``PrgEnv-cray`` is loaded as most users familiar with
+    Cray systems would expect. The set of target modules is not adapted to the
     node that you are on but a set that is safe for the whole system. Users are 
-    responsible for managing those modules and swapping with an additional set. Executing
+    responsible for managing those modules and swapping with an appropriate set. Executing
     ``module purge`` will unload the target modules also and cause error messages when you
-    try to subsequently load a programming environment as some modules (including
-    ``cray-mpich``) can only be loaded when a suitable target module is loaded.
+    subsequently try to load a programming environment as some modules (including
+    ``cray-mpich`` and ``cray-fftw``) can only be loaded when a suitable target module is loaded.
 
 2.  Working in the ``CrayEnv`` [software stack][softwarestacks]: (Re)-loading the 
     ``CrayEnv`` module will (re)set the target modules to an optimal set for the
     node type that you are on. Executing ``module purge`` will also trigger a reload
-    of ``CrayEnv``, unless the ``--force`` option is used. 
+    of ``CrayEnv``, unless the ``--force`` option is used to unload the module. 
 
     The ``CrayEnv`` stack also provides an updated set of build tools and some other tools
     useful to programmers in a way that they cannot conflict with tools in the ``LUMI``
@@ -310,9 +322,15 @@ The Cray programming environment can be accessed in three different ways on LUMI
     It is possible to use the ``PrgEnv`` modules in this environment. However, EasyBuild
     requires its own set of modules to integrate with the Cray programming environment and we 
     advise users to use those instead when working in the ``LUMI`` stack: ``cpeCray`` replaces
-    ``PrgEnv-cray``, ``cpeGNU`` replaces ``PrgEnv-gnu``, ``cpeAOCC`` replaces ``PrgEnv-aocc``  
-    and ``cpeAMD`` will replace ``PrgEnv-amd`` when that environment becomes available on the
+    ``PrgEnv-cray``, ``cpeGNU`` replaces ``PrgEnv-gnu``, ``cpeAOCC`` replaces ``PrgEnv-aocc`` and 
+    ``cpeAMD`` will replace ``PrgEnv-amd`` when that environment becomes available on the
     LUMI-G partition. These modules also take care of the target architecture modules based
     on the ``partition`` module that is loaded (which offer a way to do cross-compiling for
     another section of LUMI than you are working on).
+
+!!! Remark "Workaround for ``PrgEnv/aocc`` bug in 21.12"
+    The ``cpeAOCC/21.12`` in ``LUMI/21.12`` contains a workaround for the problems with the
+    ``aocc/3.1.0`` module. Hence it is possible to use the AOCC compilers bh working in
+    the ``LUMI/21.12`` stack and using ``cpeAOCC/21.12`` rather than loading the
+    ``PrgEnv-aocc`` module.
 
