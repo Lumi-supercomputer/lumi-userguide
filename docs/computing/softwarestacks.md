@@ -31,7 +31,10 @@ On LUMI, two types of software stacks are currently offered:
     additional software in their home or project directory using EasyBuild build
     recipes that we provide or they develop, and that software will fully
     integrate in the central stack (even the corresponding modules will be made
-    available automatically).
+    available automatically). In that way, users can create their own project
+    environment in a way that is not harder than using tools like conda or
+    Python virtual environments, while building a software installation that is
+    fully tuned to the hardware of LUMI.
 
 ??? info "Using Python and R"
     Software on LUMI is installed on parallel file systems. These file systems
@@ -43,9 +46,10 @@ On LUMI, two types of software stacks are currently offered:
     For Python we offer [Container Wrapper][containerwrapper] (module
     ``lumi-container-wrapper``) which can be used to install packages on top of 
     the ``cray-python`` module using ``pip``, or to create a Conda installation.
-    Note that packages that cone that way as binaries may not be properly 
+    Note that packages that ``pip`` or conda install from binaries may not be properly 
     optimized for the hardware of LUMI, and it is rather likely that MPI 
-    libraries installed that way will not function well on LUMI.
+    libraries installed that way will not function well on LUMI, certainly
+    when they use MPI.
 
 
 ??? info "Installing software with Conda"
@@ -69,7 +73,7 @@ On LUMI, two types of software stacks are currently offered:
 
 ## Selecting the software stack
 
-Running `module avail` on a fresh shell will show a list similar to:
+Running `module avail` on a fresh shell will show a list like:
 
 ```
 $ module avail
@@ -117,12 +121,12 @@ that won't be removed by default by ``module purge``. This is done to enable you
 to quickly clean your environment without having to re-initialise from scratch.
 In the future we may mark some stacks also with `LTS` next to their name
 which would then denote that this is a release that we will try
-to support long-term (ideally two years), but at the moment the system is
-changing to rapidly (as some of the hardware is new and not an evolution of
-previous hardware) sp we cannot guarantee any level of longevity for any
+to support long-term (ideally two years), but currently the system is
+changing too rapidly (as some of the hardware is new and not an evolution of
+previous hardware) so we cannot guarantee any level of longevity for any
 of the software stacks.
 
-The next block, titled *Modify the module display style*, contains a number of
+The next block, titled *Modify the module display style*, contains several
 modules that can be used to change the way the module tree is displayed:
 
   * `ModuleColour`: these modules can be used to turn the colour on or off in
@@ -141,10 +145,10 @@ modules that can be used to change the way the module tree is displayed:
      development in a clone of the software stack.
 
 
-### CrayEnv (default)
+### CrayEnv
 
 Loading `CrayEnv` will essentially give you the default Cray environment
-enriched with a number of additional tools. The `CrayEnv` module will try to
+enriched with several additional tools. The `CrayEnv` module will try to
 detect the node type of LUMI it is running on and load an appropriate set of
 target architecture modules to configure the Cray PE (see the documentation
 page on [the programming environment][prgenv] in the Development section).
@@ -189,7 +193,7 @@ on the compute nodes and data analysis and visualisation nodes).
     and `partition/C` are supported. Software in `partition/L` can be used on
     the compute nodes also and there is even some MPI-based software already
     installed in that partition. However, from the `LUMI/21.12` stack on, 
-    software compiled in `partition/G` may offer better performance on the 
+    software compiled in `partition/C` may offer better performance on the 
     compute nodes of LUMI-C as that software is not optimised for the specific
     architecture of the CPUs in those nodes.
 
@@ -221,14 +225,14 @@ modules:
     AMD ROCm compilers. This environment will only be offered on LUMI-G.
 
   - The name contains neither of those: The package is compiled with the system
-    gcc compiler, something that is only done for software that is absolutely
+    gcc compiler, something that is only done for software that is
     not performance-critical like some build tools and workflow tools.
 
 In EasyBuild, `cpeGNU`, `cpeCray`, `cpeAOCC` and `cpeAMD` are called toolchains, a set of
 compatible compilers, MPI and mathematical libraries. Software compiled with the
 system compiler is also called software compiled with the system toolchain,
 which is a restricted toolchain that only contains the compiler. Software
-compiled with different `cpe*` toolchains cannot be loaded at the same time, but
+compiled with different `cpe*` toolchains cannot be loaded at the same time but
 can be loaded together with software compiled with the SYSTEM toolchain. The
 module system currently does not protect you against making such mistakes!
 However, software may fail to work properly.
@@ -244,7 +248,7 @@ However, software may fail to work properly.
 The `LUMI` software stack itself cannot offer all software to all users as that
 would be both confusing (certainly as sometimes customisations are expected) and
 impossible to maintain (as it would not be clear when software can be removed
-and no longer needs to be updated). Therefore the `LUMI` software stack can be
+and no longer needs to be updated). Therefore, the `LUMI` software stack can be
 extended with software installed in the user's space through EasyBuild in a way
 that is 100% compatible with the system stack. That software will be
 automatically visible when loading the `LUMI` module.
