@@ -8,7 +8,7 @@
 
 
 !!! tip
-    If you are already somewhat familiar with modules from your home system
+    If you are already somewhat familiar with modules from your home system,
     you may get more from this page if you first read our
     [page on the available software stacks][softwarestacks]. However, if you
     are not very familiar with modules it may be best to first read this
@@ -89,8 +89,8 @@ and available modules. Installed modules are all modules that are installed on
 the system. Available modules are all modules that can be loaded directly at
 that time without first loading other modules. The available modules are often
 only a subset of the installed modules. However, Lmod can tell you for each
-installed module what steps you have to take to also make it available so that
-you can load it. This is why the commands for finding modules are so important.
+installed module what steps you must take to also make it available so that
+you can load it. Therefore, the commands for finding modules are so important.
 
 Some modules may also provide multiple software packages or extensions. Lmod can
 also search for these but this feature.
@@ -100,8 +100,9 @@ also search for these but this feature.
     other software in a module is not fully exploited on LUMI as the output of
     some module commands becomes very long and ways to disabling that output do
     not work properly in the current version of Lmod on LUMI. This is due to two
-    bugs, one of which is present even in newer versions of Lmod as of November
-    2021.
+    bugs in the version of Lmod that HPE Cray uses, one of which has only been
+    solved in very recent (early 2022) versions.
+
 
 ### module spider
 
@@ -116,7 +117,7 @@ It has three levels, producing different outputs:
     find which module(s) to load.
 
     Note that `module spider` will also search in packages that are hidden from
-    being displayed. These packages can be loaded and used. However we hide them
+    being displayed. These packages can be loaded and used. However, we hide them
     either because they are not useful to regular users or because we think that
     they will rarely or never be directly loaded by a user and want to avoid
     overloading the module display.
@@ -163,7 +164,8 @@ It has three levels, producing different outputs:
             CMake/3.21.2 (E)
             CMake/3.22.2 (E)
 
-    Names marked by a trailing (E) are extensions provided by another module.
+    Names marked by a trailing (E) are extensions provided by 
+    another module.
     ```
     This tells that there is no `CMake` module on the system but that two 
     versions of `CMake` (3.21.2 and 3.22.2) are available on the system as
@@ -181,7 +183,7 @@ It has three levels, producing different outputs:
         due to the way the Cray programming environment has to be installed 
         on the system.
 
-    In some cases, if there is no ambiguity, `module spider` will actually
+    In some cases, if there is no ambiguity, `module spider` will
     already produce help about the package.
 
  3. `module spider <module name>/<version>` will show more help information
@@ -199,8 +201,8 @@ It has three levels, producing different outputs:
           Git is a free and open source distributed version control
           system
 
-        You will need to load all module(s) on any one of the lines below before 
-        the "git/2.35.1" module is available to load.
+        You will need to load all module(s) on any one of the lines 
+        below before the "git/2.35.1" module is available to load.
 
           CrayEnv
           LUMI/21.12  partition/C
@@ -217,7 +219,7 @@ It has three levels, producing different outputs:
 
     This form of `module spider` can also be used to find out how a tool provided
     as an extension by another module can be made available. E.g., in a previous 
-    example we whave seen that `CMake/3.22.2` is available via another module.
+    example we we've seen that `CMake/3.22.2` is available via another module.
     Now
     ```
     module spider CMake/3.22.2
@@ -245,7 +247,7 @@ It has three levels, producing different outputs:
 
 ### module keyword
 
-Another search command that is sometimes useful is `module keyword`. It really
+Another search command that is sometimes useful is `module keyword`. It 
 just searches for the given word in the short descriptions that are included in
 most module files and in the name of the module. The output is not always
 complete since not all modules may have a complete enough short description.
@@ -427,7 +429,7 @@ to save your environment as a module collection. However, you should do so only
 if you fully understand how Lmod works and what is saved as saving environments
 is rather fragile in Lmod. E.g., in the LUMI software stack, saving a collection
 on the login nodes may not give you the right binaries when working on one of
-the types of compute nodes, even though tha application modules have the same
+the types of compute nodes, even though the application modules have the same
 name and version. Also, when saving a collection of modules, the full pathname
 to each of the module files is saved so *the stored collection will break if
 modules have to be moved*.
@@ -458,11 +460,12 @@ latter may contain options or commands that do not yet work on the version of
 Lmod supported on LUMI.
 
 
-## Create and use your own modules
+## Creating and using your own modules
 
 When you install software yourself, it may make life easier if you make it
 available through a module. Some software for HPC systems will also produce
-modules during the installation process, e.g., the Intel oneAPI compilers.
+modules during the installation process, e.g., the Intel oneAPI compilers
+(which are not supported on LUMI).
 
 Lmod supports most Tcl-based module files written for the various versions of
 Environment Modules. It also has its own format for module files, which are Lua
@@ -493,9 +496,9 @@ that are loaded from that directory.
     `MODULEPATH` is possible. However overwriting the variable and removing
     directories can have nasty side effects and bring the internal data
     structures of Lmod in an inconsistent state, e.g., because there may now be
-    modules loaded from directories that are not in the MODULEPATH.
+    modules loaded from directories that are not in the ``MODULEPATH``.
 
-    If you want to overwrite MODULEPATH, e.g., to build your own private environment
+    If you want to overwrite ``MODULEPATH``, e.g., to build your own private environment
     fully independent from those that LUMI offers, you also need to re-initialise Lmod
     by running
     ```bash
@@ -504,7 +507,7 @@ that are loaded from that directory.
 
 ## Further reading
 
-On LUMI we use the Lmod implementation as provided by HPE-Cray as part of the
+On LUMI we use the Lmod implementation as provided by HPE Cray as part of the
 programming environment. The version of Lmod is way behind the most recent
 version. This implies that not all information that can be found on the internet
 is also correct for LUMI.
