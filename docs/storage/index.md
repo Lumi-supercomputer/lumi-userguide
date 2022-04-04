@@ -2,7 +2,11 @@
 
 [lustre]: parallel/lustre.md
 [lumif]: parallel/lumif.md 
-[lumip]: parallel/lumip.md 
+[lumip]: parallel/lumip.md
+[contwrapper]: ../software/installing/container_wrapper.md
+
+[sionlib]: https://www.fz-juelich.de/ias/jsc/EN/Expertise/Support/Software/SIONlib/_node.html
+[hdf5]: https://www.hdfgroup.org/solutions/hdf5/
 
 The table below gives you an overview of the available options for storage. Note
 that, except for the user home directory, data storage is allocated per project.
@@ -10,12 +14,36 @@ that, except for the user home directory, data storage is allocated per project.
 |                       | Quota | Max files | Expandable   | Backup | Retention        |
 |:---------------------:|-------|-----------|:------------:|--------|------------------|
 | User<br>Home          | 20 GB | 100k      | No           | Yes    | User lifetime    |
-| Project<br>Scratch    | 50 TB | 2000k     | Yes<br>500TB | No     | 90 days          |
 | Project<br>Persistent | 50 GB | 100k      | Yes<br>500GB | No     | Project lifetime |
+| Project<br>Scratch    | 50 TB | 2000k     | Yes<br>500TB | No     | 90 days          |
 | Project<br>Fast       |  2 TB | 1000k     | Yes<br>100TB | No     | 30 days          |
 
 When a storage space is marked as expandable, it means that you can request 
 more space if needed.
+
+=== "User home"
+
+    Each user has a home directory (`$HOME`) that can contain up to
+    20 GB of data. It is intended to store user configuration files and personal
+    data.  The user home directory is purged once the user account expire.
+
+=== "Project persistent storage"
+
+    Is intended to share data amongst the members of a project. You can see this
+    workspace as the project home directory. Typically, this space can be used 
+    to share applications and libraries compiled for the project. The project
+    persistent storage is located at `/project/project_<project-number>`. The
+    project persistent directory is purged once the project expire.
+
+=== "Project scratch" 
+
+    Lustre file systems intended as temporary storage for input, output or
+    checkpoint data of your application. LUMI offers 2 types of scratch storage
+    solution: LUMI-P with spinning disks and LUMI-F based on flash storage.
+
+- [Learn more about Lustre][lustre]
+- [Learn more about the Project Scratch storage][lumip]
+- [Learn more about the Project Fast storage][lumif]
 
 !!! failure "LUMI-F unavailable until summer 2022"
 
@@ -35,41 +63,27 @@ the regular scratch file system, 1TB that stays for 1 hour on the filesystem,
 consumes 1TB-hour. For the flash based filesytem 1TB for 1 hour consumes 
 10 TB-hours.
 
-## User Home
+## About the number of files quota
 
-Each user has a home directory (`$HOME`) that can contain up to 20 GB of data. 
-It is intended to store user configuration files and personal data. **You are
-NOT supposed to run jobs from your home directory**.
+For reasons related to performance, we are particularly attentive to the number
+of files present on the parallel filesystem. A lot of small files negatively
+impact all users by stressing the filesystem metadata servers. Therefore, any 
+requests to increase the number of files will be evaluated carefully by the 
+Support Team and must be fully justified.
 
-The user home directory is purged once the user account expire.
+Requests that will be **rejected** include:
 
-## Project Persistent Storage
+- You are using Conda: you should use the [container wrapper][contwrapper]
+  tool.
+- The compilation of your application is generating too many files for your home
+  or project directory: you should compile your application from the scratch and
+  then install it in your home or project directory. Exception can be made if
+  you are developing an application on LUMI and you want to keep the source and
+  object files in the long term.
 
-The Project Persistent storage is intended to share data amongst the members of
-a project. You can see this workspace as the project home directory. Typically, 
-this space can be used to share applications and libraries compiled for the 
-project. **Just like the user home directory you are NOT supposed to run jobs 
-from your the project persistent space**.
-
-The project persistent storage is located at `/project/project_<project-number>`.
-
-The project persistent directory is purged once the project expire.
-
-## Parallel Filesystems (Scratch)
-
-!!! failure "LUMI-F unavailable until summer 2022"
-
-    To prepare for the installation of LUMI-G, LUMI-F has been removed from the
-    system and will be available again after LUMI-G installation is completed.
-
-The scratch spaces are Lustre file systems intended as **temporary** storage for
-input, output or checkpoint data of your application. LUMI offers 2 types of 
-scratch storage solution: LUMI-P with spinning disks and LUMI-F based on flash 
-storage.
-
-- [Learn more about Lustre][lustre]
-- [Learn more about the Project Scratch storage][lumip]
-- [Learn more about the Project Fast storage][lumif]
+In general, applications that generate a lot of small files per processes are 
+not well suited for LUMI. If you are the developer of such application, you 
+should consider tools like [HDF5][hdf5] or [SIONlib][sionlib].
 
 ## Object Storage
 

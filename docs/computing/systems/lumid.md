@@ -4,7 +4,7 @@
 [a40-specs]: https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a40/proviz-print-nvidia-a40-datasheet-us-nvidia-1469711-r8-web.pdf
 
 !!! warning
-    This page is about a partition that is not yet available
+    Only the large memory nodes of LUMI-D are available at the moment.
 
 The LUMI-D partition consists of a 16 nodes with large memory capacity and
 Nvidia GPUs. LUMI-D is intended for interactive data analytics and
@@ -33,14 +33,3 @@ not GPU computing.
 
 * [Nvidia A40 Product Page][a40-product]
 * [Nvidia A40 Data Sheet][a40-specs]
-
-## Storage
-
-* The servers in LUMI-D have local SSDs with a total capacity of 25 TB for the
-  CPU nodes and 14 TB for the GPU nodes [FIXME]. This storage is accessible on
-  the path `/scratch/local` [FIXME]. It is a good idea to use the local disks
-  when working with many small files (e.g. compiling), as that will be faster
-  than using the parallel file system.
-* The LUMI-D nodes are connected with 2x 100GbE Adapters to the Cray Slingshot 
-  Network, which means that they can access to all the parallel file systems 
-  (LUMI-P and LUMI-F) with good performance.

@@ -19,7 +19,6 @@ nav:
       - CPU nodes: computing/systems/lumic.md
       - GPU nodes: computing/systems/lumig.md
       - Data analytics nodes: computing/systems/lumid.md
-      - GPU EAP nodes: computing/systems/kuura.md
     - Running jobs:
       - Slurm Quickstart: computing/jobs/slurm-quickstart.md
       - Available partitions: computing/jobs/partitions.md
@@ -53,8 +52,7 @@ nav:
     - Installing software:
       - EasyBuild: software/installing/easybuild.md
       - Container Wrapper: software/installing/container_wrapper.md
-  - Known Issues:
-    - Known Issues: issues/index.md
+  - Early Access Platform: eap/index.md
   - Help desk: 
     - Help desk: generic/helpdesk.md
  
@@ -63,12 +61,12 @@ theme:
   greetings: Welcome to the LUMI Documentation
   custom_dir: mkdocs_lumi/
   language: en
-
   features:
     # - navigation.instant
     - navigation.tabs
     - navigation.sections
     - search.suggest
+    - content.code.annotate
   
   palette:
     scheme: default
@@ -105,9 +103,17 @@ markdown_extensions:
   - attr_list
   - footnotes
   - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.tabbed
-  - pymdownx.superfences
   - pymdownx.keys
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
