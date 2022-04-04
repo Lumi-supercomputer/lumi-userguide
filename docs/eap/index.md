@@ -7,6 +7,8 @@ hide:
 [prgenv]: ../development/compiling/prgenv.md
 [batch]: ../computing/jobs/batch-job.md
 [slurm]: ../computing/jobs/slurm-quickstart.md
+[MI100]: https://www.amd.com/en/products/server-accelerators/instinct-mi100
+[MI250X]: https://www.amd.com/en/products/server-accelerators/instinct-mi250x
 
 # LUMI-G Early Access Platform
 
@@ -19,36 +21,57 @@ hide:
     read the section on the [module system][lmod] and the 
     [programming environment][prgenv].
 
-The LUMI early access platform consists of nodes with MI100 GPUs that are the predecessors of the MI250X GPUs that will be in LUMI-G, with the intended use case being to give users access to the software stack so that they can work on preparing their software for the LUMI-G nodes when they arrive. Specifically the hardware is 14 nodes (starting with 4 being available) with the hardware summarized in the table below:
-
+The LUMI early access platform consists of nodes with MI100 GPUs that are the
+predecessors of the MI250X GPUs that will be in LUMI-G, with the intended use
+case being to give users access to the software stack so that they can work on
+preparing their software for the LUMI-G nodes when they arrive. Specifically the
+hardware is 14 nodes (starting with 4 being available) with the hardware
+summarized in the table below:
 
 
 | Nodes | CPUs                                                                | Memory | GPUs            | Local storage   | Network     |
 | :---: | :-----------------------------------------------------------------: | -----: | :-------------: | :-------------: | :---------: |
 | 14    | 1x 64 cores AMD EPYC 7662<br>2.0 GHz base<br>3.3 GHz boost | 512GB   | 4x AMD MI100    | 2x 3TB NVMe   | 1x 100 Gb/s |
 
-The [MI100 GPU](https://www.amd.com/en/products/server-accelerators/instinct-mi100) is the predecessor the the [MI250X GPU](https://www.amd.com/en/products/server-accelerators/instinct-mi250x) that will be in LUMI-G. As the MI100 GPUs is the previous generation doing direct comparisons with the GPUs that LUMI-G will use is not straight forward. While it may seem like a good first approximation that one MI100 GPU is about on par with one of the two dies in an MI250X based on the number of compute units, that does not take into account: the increased FP64 and DGEMM performance, the performance achievable with packed FP32, the increased bfloat16 performance, or the increased memory bandwidth.
+The [MI100 GPU][MI100] is the predecessor the the [MI250X][MI250X] that will be
+in LUMI-G. As the MI100 GPUs is the previous generation doing direct comparisons
+with the GPUs that LUMI-G will use is not straight forward. While it may seem
+like a good first approximation that one MI100 GPU is about on par with one of
+the two dies in an MI250X based on the number of compute units, that does not
+take into account: the increased FP64 and DGEMM performance, the performance
+achievable with packed FP32, the increased bfloat16 performance, or the
+increased memory bandwidth.
 
-In the EAP nodes the four MI100 GPUs are connected to each other with direct infinity fabric links providing direct GPU to GPU link, each link provides 46 GB/s of bandwidth in each direction. Each of the MI250X GPUs in LUMI-G will show up as 2 devices, and the infinity fabric mesh in those nodes is more complex with more links, but the basic idea is the same with direct GPU to GPU links. The one thing the EAP nodes cannot emulate is the fast infinity fabric link between the two dies on one MI250X board.
+In the EAP nodes the four MI100 GPUs are connected to each other with direct
+infinity fabric links providing direct GPU to GPU link, each link provides 46
+GB/s of bandwidth in each direction. Each of the MI250X GPUs in LUMI-G will show
+up as 2 devices, and the infinity fabric mesh in those nodes is more complex
+with more links, but the basic idea is the same with direct GPU to GPU links.
+The one thing the EAP nodes cannot emulate is the fast infinity fabric link
+between the two dies on one MI250X board.
 
-The network in the EAP nodes is significantly different to that which the LUMI-G nodes will have, the EAP nodes have a single 100gbit network adapter, whereas the LUMI-G nodes will have 4x200gbit adapters. Hence any performance achieved by multi node runs is not at all representative of the LUMI-G nodes, and multi node runs should really only be done to test functionality.  
+The network in the EAP nodes is significantly different to that which the LUMI-G
+nodes will have, the EAP nodes have a single 100gbit network adapter, whereas
+the LUMI-G nodes will have 4x200gbit adapters. Hence any performance achieved by
+multi-node runs is not at all representative of the LUMI-G nodes, and multi-node
+runs should really only be done to test functionality.  
 
 ## About the programming environment
 
 The programming environment of the EAP is still experimental and do not entirely
 reflect the final environment or performance of the progrmming environment that 
-when LUMI-G will be available. Here is a list of the caracteristics of the 
+when LUMI-G will be available. Here is a list of the characteristics of the 
 current platform that will be available once LUMI-G is available:
 
-- OpenMP offload support will is available for C/C++ and Fortran with the Cray
+- OpenMP offload support will be available for C/C++ and Fortran with the Cray
   compilers (PrgEnv-cray). The same is true for the AMD compilers. Currently the
-  AMD compilers are available by loading the the `rocm` module. On the final 
-  system they will be a `PrgEnv-amd` module.
-- HIP code can be be compiled with the Cray C++ compiler wrapper (`CC`) or with
+  AMD compilers are available by loading the `rocm` module. On the final 
+  system, they will be a `PrgEnv-amd` module.
+- HIP code can be compiled with the Cray C++ compiler wrapper (`CC`) or with
   the AMD `hipcc` compiler wrappper.
-- An GPU-aware MPI implementation is available (loading the `cray-mpich`) 
-  module. You can use this MPI library with the Cray and AMD environment. Note
-  However that during, the LUMI User Support Team noticed that the the 
+- A GPU-aware MPI implementation is available (loading the `cray-mpich` 
+  module). You can use this MPI library with the Cray and AMD environment. Note
+  that during testing the LUMI User Support Team noticed that the 
   inter-node bandwidth is low (~4.5 GB/s). On the final system, it will be 
   possible to initiate communication directly from the GPU (MPI call from HIP 
   kernels). This feature is not available on the Early Access Platform.
