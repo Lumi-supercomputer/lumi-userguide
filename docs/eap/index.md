@@ -238,7 +238,7 @@ launch an application with 2 MPI ranks with 8 threads and 1 GPU per rank.
 #SBATCH --account=<project_XXXXXXXXX> (2)
 #SBATCH --time=10:00 (3)
 #SBATCH --ntasks=2 (4)
-#SBATCH --cpus-per-tasks=8 (5)
+#SBATCH --cpus-per-task=8 (5)
 #SBATCH --gpus-per-task=1 (6)
 
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK # (7)
@@ -265,7 +265,7 @@ srun <executable> # (8)
    of GPUs is the same as the number of tasks (MPI ranks).
 
 7. If your application is multithreaded with OpenMP, set the value of 
-   `OMP_NUM_THREADS` to the value set with `--cpus-per-tasks`
+   `OMP_NUM_THREADS` to the value set with `--cpus-per-task`
 
 7. Launch your application with `srun`. They are no `mpirun`/`mpiexec` on LUMI. 
    You should always use `srun` to launch your application. If your application 
