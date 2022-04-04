@@ -2,20 +2,10 @@
 template: home.html
 ---
 
-!!! failure "Known Issues"
-
-    Known issues can be found [here](./issues/index.md).
-
-
-!!! warning
-    This documentation is in beta and may frequently change. Please report any 
-    problem with the present documentation to the 
-    [support service](mailto:support@lumi-supercomputer.eu). Happy computing!
-
-
 # About LUMI
 
 - [LUMI-C : The CPU computing partition](computing/systems/lumic.md)
 - [LUMI-D : Data analytics and visualization on LUMI](computing/systems/lumid.md)
 - [LUMI-F : The flash-based storage of LUMI](storage/parallel/lumif.md)
 - [LUMI-P : The parallel filesystem of LUMI](storage/parallel/lumip.md)
+- [LUMI-EAP : The GPU early Access Platform LUMI](eap/index.md)
