@@ -5,7 +5,7 @@ Singularity is available on LUMI-C as the executable `singularity`. No modules n
 ## Pulling container images from a registry
 Singularity allows pulling images from container registries such as DockerHub or AMD Infinity Hub. For instance, the Ubuntu image `ubuntu:21.04` can be pulled from DockerHub with the following command:
 ```bash
-srun -p<partition> -A<account> singularity pull docker://ubuntu:latest
+singularity pull docker://ubuntu:latest
 ```
 This will create the singularity image file `ubuntu_21.04.sif` on the directory where the command was run.
 
@@ -32,31 +32,12 @@ VERSION_CODENAME=hirsute
 UBUNTU_CODENAME=hirsute
 ```
 
-## Running an application container
-
-Generic application containers can be easily run on the compute nodes. Here we use [Julia](http://julialang.org/) container, `julia` in the DockerHub, as an example of interactive run and batch submission. Julia can execute as both multithreaded and parallel application. It can be pulled with the command:
-```bah
-singularity pull docker://julia
-```
-Singularity file `julia_latest.sif` will be created. Julia can be executed interactively on a single LUMI-C node with N threads allocating N cpu cores:
-```bash
-srun --pty --nodes=1 --ntasks-per-node=1 --cpus-per-task=<N> --time=30 -p<partition> -A<account> singularity run --env JULIA_NUM_THREADS=<N> julia_latest.sif
-```
-
-Running with parallel (multiprocess) execution model requires specific Julia code, say in `my_parallel_script.jl` file. It can be executed with a batch submission on a single node with N parallel processes:
-```bash
-srun --nodes=1 --ntasks-per-node=<N> --cpus-per-task=1 --time=30 -p<partition> -A<account> singularity exec julia_latest.sif julia -p 20 my_parallel_script.jl
-```
-Both multithreading and multiprocessing can be combined with `--ntasks-per-node` (for a number o processes) and `--cpus-per-task` (for a number of threads) SLURM options.
-
-Multinode, distributed execution would require custom "ClusterManager" plugin for integration with SLURM which will require specific version of the container. The same applies to GPU enabled execution on the LUMI-G compute nodes.  
-
 ## Running an MPI application within the container
 Containerized MPI applications can be run with Singularity. However, in order to properly make use of LUMI's high speed network, it is necessary to mount a few host system directories inside the container and set `LD_LIBRARY_PATH` so that the necessary dynamic libraries are available at runtime. Doing that, the MPI installed in the container image is replaced by the one of the host.
 
 This is can be done automatically by loading the module `singularity-lumi/<version>-mpi`.
 
-> For MPI-enabled containers, the application inside the container must be dynamically linked to an MPI version that is [ABI-compatible](https://www.mpich.org/abi/) with the host MPI.
+!!! For MPI-enabled containers, the application inside the container must be dynamically linked to an MPI version that is [ABI-compatible](https://www.mpich.org/abi/) with the host MPI.
 
 The following singularity definition file `mpi_osu.def`, installs MPICH-3.1.4, which is ABI-compatible with the Cray-MPICH found on LUMI. Then the that MPICH is used later to compile the [OSU microbenchmarks](https://mvapich.cse.ohio-state.edu/benchmarks/). Finally, the OSU point to point bandwidth test is set as the runscript of the image.
 ```
@@ -162,4 +143,23 @@ This gives
 2097152              2481.68
 4194304              2380.51
 ```
-The bandwidth obtained doing this is quite low comparing with the results obtained when using the host's MPI.
+Like in this example, the performance obtained doing this might be quite low compared to the results obtained when using the host's MPI.
+
+## Example: Running Julia within a container
+
+Generic application containers can be easily run on the compute nodes. Here we use [Julia](http://julialang.org/) container, `julia` in the DockerHub, as an example of interactive run and batch submission. Julia can execute as both multithreaded and parallel application. It can be pulled with the command:
+```bah
+singularity pull docker://julia
+```
+Singularity file `julia_latest.sif` will be created. Julia can be executed interactively on a single LUMI-C node with N threads allocating N cpu cores:
+```bash
+srun --pty --nodes=1 --ntasks-per-node=1 --cpus-per-task=<N> --time=30 -p<partition> -A<account> singularity run --env JULIA_NUM_THREADS=<N> julia_latest.sif
+```
+
+Running with parallel (multiprocess) execution model requires specific Julia code, say in `my_parallel_script.jl` file. It can be executed with a batch submission on a single node with N parallel processes:
+```bash
+srun --nodes=1 --ntasks-per-node=<N> --cpus-per-task=1 --time=30 -p<partition> -A<account> singularity exec julia_latest.sif julia -p 20 my_parallel_script.jl
+```
+Both multithreading and multiprocessing can be combined with `--ntasks-per-node` (for a number o processes) and `--cpus-per-task` (for a number of threads) SLURM options.
+
+Multinode, distributed execution would require custom "ClusterManager" plugin for integration with SLURM which will require specific version of the container. The same applies to GPU enabled execution on the LUMI-G compute nodes.
