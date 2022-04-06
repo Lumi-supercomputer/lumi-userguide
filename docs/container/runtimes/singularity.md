@@ -7,9 +7,9 @@ Singularity allows pulling images from container registries such as DockerHub or
 ```bash
 singularity pull docker://ubuntu:latest
 ```
-This will create the singularity image file `ubuntu_21.04.sif` on the directory where the command was run.
+This will create the Singularity image file `ubuntu_21.04.sif` in the directory where the command was run.
 
-!!! The compute nodes of LUMI-C are not connected to internet. As a consequence, the images need to be pulled in the login nodes.
+!!! The compute nodes of LUMI-C are not connected to the internet. As a consequence, the images need to be pulled in on the login nodes (or transferred to LUMI with other means such `scp`).
 
 ## Running a container
 Once the image has been pulled, the container can be run. For instance, here we check the version of Ubuntu running in the container
@@ -39,7 +39,7 @@ This is can be done automatically by loading the module `singularity-lumi/<versi
 
 !!! For MPI-enabled containers, the application inside the container must be dynamically linked to an MPI version that is [ABI-compatible](https://www.mpich.org/abi/) with the host MPI.
 
-The following singularity definition file `mpi_osu.def`, installs MPICH-3.1.4, which is ABI-compatible with the Cray-MPICH found on LUMI. Then the that MPICH is used later to compile the [OSU microbenchmarks](https://mvapich.cse.ohio-state.edu/benchmarks/). Finally, the OSU point to point bandwidth test is set as the runscript of the image.
+The following Singularity definition file `mpi_osu.def`, installs MPICH-3.1.4, which is ABI-compatible with the Cray-MPICH found on LUMI. Then the that MPICH is used later to compile the [OSU microbenchmarks](https://mvapich.cse.ohio-state.edu/benchmarks/). Finally, the OSU point to point bandwidth test is set as the runscript of the image.
 ```
 bootstrap: docker
 from: ubuntu:21.04
@@ -73,12 +73,12 @@ from: ubuntu:21.04
     /usr/local/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_bw
 ```
 The image can be built outside of LUMI with 
-```
+```bash
 sudo singularity build mpi_osu.sif mpi_osu.def
 ```
 The OSU point to point bandwidth test can be run with
-```
-module load singularity-lum/<version>-mpi`
+```bash
+module load singularity-lumi/<version>-mpi`
 srun -p<partition> -A<account> -N2 singularity run mpi_osu.sif
 ```
 which gives the bandwidth measured for different message sizes
@@ -112,8 +112,8 @@ which gives the bandwidth measured for different message sizes
 
 ## Running an MPI application with the container's MPI installation
 MPI applications can be run without replacing the container's MPI. To do so, Slurm needs to be instructed to use the PMI-2 process management interface by passing `--mpi=pmi2` to `srun`
-```
-srun -p<partition> -A<account> --mpi=pmi2  -N2 singularity run mpi_osu.sif
+```bash
+srun -p<partition> -A<account> --mpi=pmi2 -N2 singularity run mpi_osu.sif
 ```
 This gives
 ```
@@ -148,7 +148,7 @@ Like in this example, the performance obtained doing this might be quite low com
 ## Example: Running Julia within a container
 
 Generic application containers can be easily run on the compute nodes. Here we use [Julia](http://julialang.org/) container, `julia` in the DockerHub, as an example of interactive run and batch submission. Julia can execute as both multithreaded and parallel application. It can be pulled with the command:
-```bah
+```bash
 singularity pull docker://julia
 ```
 Singularity file `julia_latest.sif` will be created. Julia can be executed interactively on a single LUMI-C node with N threads allocating N cpu cores:
