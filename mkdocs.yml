@@ -52,6 +52,8 @@ nav:
     - Installing software:
       - EasyBuild: software/installing/easybuild.md
       - Container Wrapper: software/installing/container_wrapper.md
+    - Scientific Applications:
+      - VASP: software/packages/vasp.md
   - Early Access Platform: eap/index.md
   - Help desk: 
     - Help desk: generic/helpdesk.md
