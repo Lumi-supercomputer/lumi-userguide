@@ -54,6 +54,7 @@ nav:
       - Container Wrapper: software/installing/container_wrapper.md
     - Scientific Applications:
       - VASP: software/packages/vasp.md
+      - Quantum ESPRESSO: software/packages/quantumespresso.md
   - Early Access Platform: eap/index.md
   - Help desk: 
     - Help desk: generic/helpdesk.md
