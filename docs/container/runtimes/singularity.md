@@ -32,6 +32,13 @@ VERSION_CODENAME=hirsute
 UBUNTU_CODENAME=hirsute
 ```
 
+By default, some file system partitions, such as `/scratch`, are not accessible from the container.
+To make them available, they need to be explicitely bound by passing
+the `-B/--bind` command line option to `singularity exec/run`. For instance
+```
+srun -p<partition> -A<account> singularity exec -B /scratch/<account>/<user-name>:/scratch ubuntu_21.04.sif ls /scratch
+```
+
 ## Running an MPI application within the container
 Containerized MPI applications can be run with Singularity. However, in order to properly make use of LUMI's high speed network, it is necessary to mount a few host system directories inside the container and set `LD_LIBRARY_PATH` so that the necessary dynamic libraries are available at runtime. Doing that, the MPI installed in the container image is replaced by the one of the host.
 
