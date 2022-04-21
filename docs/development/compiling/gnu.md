@@ -33,6 +33,9 @@ and then switch to the desired version using
 module swap gcc gcc/<version>
 ```
 
+As of April 2022, GCC versions 9.3.0, 10.3.0, and 11.2.0 are available on LUMI. We recommend using GCC 11, if possible, because it can optimize code specifically for the Zen 3 processors in LUMI (with the `craype-x86-milan` module or the compiler flag `-march=znver3`). GCC 9 and 10 can only optimize for Zen 2 processors. The performance difference is quite small, though, on average ca 1%, see for example [these tests from Phoronix](https://www.phoronix.com/scan.php?page=article&item=amd-znver3-gcc11&num=1).
+
+
 ## OpenMP Support
 
 OpenMP is turned off by default, it's turned on using the `-fopenmp` flag.
@@ -70,6 +73,20 @@ The `-Ofast` enables all `-O3` optimizations and disregard strict standards
 compliance.
 
 - [GCC documentation about optimization options][gcc-opt]
+
+## Legacy Fortran codes
+
+It is common to experience problems when compiling older Fortran codes with GCC 10 and newer versions. Typically, these codes are not fully compliant with the Fortran standard. The most common is error message is `Error: Type mismatch ...` in connection with MPI calls.  In those cases, a less strict compiler mode can be activated with the extra flags:
+
+```
+-fallow-argument-mismatch
+```
+
+or 
+
+```
+-std=legacy
+```
 
 ## Compiler Feedback
 
