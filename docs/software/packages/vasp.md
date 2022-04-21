@@ -1,10 +1,12 @@
 # VASP on LUMI
 
-VASP (Vienna Ab Initio Simulation Package) is a popular software package for "atomic scale materials modelling from first principles" (see the [VASP home page](https://www.vasp.at/)). In general, it runs well on LUMI-C. **There is currently no version of VASP that can use the AMD GPUs in the Early Access Platform or LUMI-G.**
+VASP (Vienna Ab Initio Simulation Package) is a popular software package for "atomic scale materials modelling from first principles" (see the [VASP home page](https://www.vasp.at/)). In general, it runs well on LUMI-C.
+
+**There is currently no version of VASP that can use the AMD GPUs in the Early Access Platform or LUMI-G.**
 
 ## Installing VASP 
 
-We provide automatic installation scripts for several versions of VASP. The procedure in general is described on the [EasyBuild page](../installing/easybuild.md). The step by step procedure to install VASP 6.3.0 is a follows:
+We provide automatic installation scripts for several versions of VASP. The procedure in general is described on the [EasyBuild page](../installing/easybuild.md). The step by step procedure to install VASP 6.3.0 is:
 
 1. Download the VASP source code "vasp.6.3.0.tgz" from the [VASP portal](https://www.vasp.at/).
 2. Upload the file somewhere to your home directory on LUMI.
@@ -14,7 +16,7 @@ We provide automatic installation scripts for several versions of VASP. The proc
 
 Then, you can run the install command:
 
-    eb --sourcepath=[directory where the VASP source is stored] /appl/lumi/LUMI-EasyBuild-contrib/easybuild/easyconfigs/v/VASP/VASP-6.3.0-cpeGNU-21.12.eb -r
+    eb --sourcepath=[directory where the VASP source is stored] VASP-6.3.0-cpeGNU-21.12.eb -r
 
 Afterwards, you will have a module called "VASP/6.3.0-cpeGNU-21.12" installed in your home directory.
 
@@ -46,7 +48,7 @@ A typical batch job using 4 compute nodes and MPI only:
     export OMP_NUM_THREADS=1
     ulimit -s unlimited
 
-    module load LUMI/21.12 partition/L VASP/6.3.0-cpeGNU-21.12
+    module load LUMI/21.12 partition/C VASP/6.3.0-cpeGNU-21.12
     srun vasp_std
 
 A typical batch job with MPI and 8 OpenMP threads per rank:
@@ -68,7 +70,7 @@ A typical batch job with MPI and 8 OpenMP threads per rank:
 
     ulimit -s unlimited
 
-    module load LUMI/21.12 partition/L VASP/6.3.0-cpeGNU-21.12
+    module load LUMI/21.12 partition/C VASP/6.3.0-cpeGNU-21.12
     srun vasp_std
 
 ## Recommendations
