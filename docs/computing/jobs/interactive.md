@@ -54,3 +54,21 @@ the job. For example, to allocate 1 node for 30 minutes and spawn a shell
 ```
 srun --account=<project> --time=00:30:00 --nodes=1 --pty bash
 ```
+
+## Using `srun` to check running jobs
+
+The `srun` command can also be used to check in on a running job in the cluster, for example, to run the `top` command, or similar. In this case, you need to give the job ID and possibly also the specific name of a compute node.
+
+This starts a shell on the first allocated node in a specific job:
+
+    srun --overlap --pty --jobid=<jobid> bash
+
+To check processor and memory usage quickly, you can run `top` directly:
+
+    srun --overlap --pty --jobid=<jobid> top
+
+The `-w nid00XXXX` option can be added to select a specific compute node to view:
+
+    srun --overlap --pty --jobid=<jobid> -w nid002217 top
+
+You can see which compute nodes your job is allocated to by running the `squeue` command and looking in the "NODELIST" column.
