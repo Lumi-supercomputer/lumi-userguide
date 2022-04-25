@@ -53,6 +53,28 @@ For example, 4 cores, 32GB of memory for 1 day:
 32GB / 2GB x 24 hours = 384 core-hours
 ```
 
+### Checking core hours used
+
+You can use the commands `sreport` and `sacct` to see how many core hours your project has consumed so far. These commands query the accounting database used by SLURM and are always up to date. For example, to get a summary of a how much a certain project has run start from the start of a certain date up until now, you can write:
+
+```
+sreport -t hours cluster AccountUtilization account=project_465000XXX start=2022-01-01 end=now
+
+```
+
+Example output:
+
+    --------------------------------------------------------------------------------
+      Cluster         Account     Login     Proper Name       Used   Energy 
+    --------- --------------- --------- --------------- ---------- -------- 
+         lumi project_465000+                               739228        0 
+         lumi project_465000+     spock           Spock     120228        0 
+         lumi project_465000+      data            Data     300000        0 
+         lumi project_465000+      tpol           T'Pol     319000        0 
+
+
+The top row is summary for all project members. Please note that SLURM counts usage in CPU thread hours, so the numbers need to be divided by 2 to get the corresponding CPU core hours.
+
 ## Storage billing
 
 Storage is billed by volume as well as time. The billing units are GB-hours.
