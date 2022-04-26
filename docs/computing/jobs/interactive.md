@@ -57,9 +57,9 @@ srun --account=<project> --time=00:30:00 --nodes=1 --pty bash
 
 ## Using `srun` to check running jobs
 
-The `srun` command can also be used to check in on a running job in the cluster, for example, to run the `top` command, or similar. In this case, you need to give the job ID and possibly also the specific name of a compute node.
+Currently, ssh:ing to compute nodes is not allowed, but the `srun` command can be used to check in on a running job in the cluster. In this case, you need to give the job ID and possibly also the specific name of a compute node to srun.
 
-This starts a shell on the first allocated node in a specific job:
+This starts a shell, where you can run any command, on the first allocated node in a specific job:
 
     srun --overlap --pty --jobid=<jobid> bash
 
@@ -72,3 +72,8 @@ The `-w nid00XXXX` option can be added to select a specific compute node to view
     srun --overlap --pty --jobid=<jobid> -w nid002217 top
 
 You can see which compute nodes your job is allocated to by running the `squeue` command and looking in the "NODELIST" column.
+
+If you want to do this on the Early Access Platform with GPUs, you need to give an extra flag: `--gpus-per-task=0`, otherwise your monitoring job will not run. For example, to run the `rocm-smi` command on an EAP node and check the GPU usage, do like this:
+
+    srun --gpus-per-task=0 --overlap --jobid=<jobid> --pty rocm-smi
+
