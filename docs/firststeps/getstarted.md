@@ -151,7 +151,7 @@ you need to generate an SSH key pair.
 
     To register your key, click on the *Settings* item of the menu on the left
     as shown in the figure below. Then select *Ssh keys*. From here you can add a new public key
-    or remove an old one. **Note:** SSH key structure is *algorithm, key, comment*. Please EXCLUDE *comment* from your copy/paste.
+    or remove an old one.
 
     <figure>
       <img src="../../assets/images/MyAccessID_ssh-key.png" width="480" alt="Screenshot of user profile settings to setup ssh public key">
