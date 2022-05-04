@@ -15,7 +15,7 @@ nav:
     - Moving data: storage/moving/scp-rsync.md
     - Module environment: computing/Lmod_modules.md
     - Software stacks: computing/softwarestacks.md
-    - Containers: computing/containers/index.md
+    - Containers: computing/containers.md
     - Hardware:
       - CPU nodes: computing/systems/lumic.md
       - GPU nodes: computing/systems/lumig.md
@@ -52,7 +52,10 @@ nav:
     - Overview: software/index.md
     - Installing software:
       - EasyBuild: software/installing/easybuild.md
-      - Container Wrapper: software/installing/container_wrapper.md
+    - Containers:
+      - Container Wrapper: software/containers/wrapper.md
+      - MPI Container: software/containers/cray_mpich.md
+      - Julia Container: software/containers/julia.md
     - Scientific Applications:
       - VASP: software/packages/vasp.md
       - Quantum ESPRESSO: software/packages/quantumespresso.md
