@@ -86,7 +86,8 @@ The OSU point-to-point bandwidth test can be run with
 
 ```bash
 module load singularity-bindings
-srun -p<partition> -A<account> -N2 singularity run mpi_osu.sif
+srun --partition=<partition> --account=<account> \
+     --nodes=2 singularity run mpi_osu.sif
 ```
 
 which gives the bandwidth measured for different message sizes

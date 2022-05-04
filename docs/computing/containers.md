@@ -73,7 +73,8 @@ Once the image has been pulled, the container can be run. For instance, here we
 check the version of Ubuntu running in the container
 
 ```bash
-srun -p<partition> -A<account> singularity exec ubuntu_21.04.sif cat /etc/os-release
+srun --partition=<partition> --account=<account> singularity exec \
+     ubuntu_21.04.sif cat /etc/os-release
 ```
 
 This prints
@@ -98,8 +99,9 @@ accessible from the container. To make them available, they need to be
 explicitly bound by passing the `-B/--bind` command line option to 
 `singularity exec/run`. For instance
 
-```
-srun -p<partition> -A<account> singularity exec -B /scratch/<account> ubuntu_21.04.sif ls /scratch/<account>
+```bash
+srun --partition=<partition> --account=<account> singularity exec \
+     -B /scratch/<account> ubuntu_21.04.sif ls /scratch/<account>
 ```
 
 ## Application-specific container
