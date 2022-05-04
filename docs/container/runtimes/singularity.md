@@ -1,5 +1,7 @@
 ## Singularity
 
+[software_installing]: ../../software/installing/easybuild.md
+
 Singularity is available on LUMI-C as the executable `singularity`. No modules need to be loaded.
 
 ## Pulling container images from a registry
@@ -40,12 +42,19 @@ srun -p<partition> -A<account> singularity exec -B /scratch/<account>/<user-name
 ```
 
 ## Running an MPI application within the container
-Containerized MPI applications can be run with Singularity. However, in order to properly make use of LUMI's high speed network, it is necessary to mount a few host system directories inside the container and set `LD_LIBRARY_PATH` so that the necessary dynamic libraries are available at runtime. Doing that, the MPI installed in the container image is replaced by the one of the host.
+Containerized MPI applications can be run with Singularity. However, in order to properly make use of LUMI's high speed network, it is necessary to mount a few host system directories inside the container and set `LD_LIBRARY_PATH` so that the necessary dynamic libraries are available at run time. Doing that, the MPI installed in the container image is replaced by the one of the host.
 
-This is can be done automatically by loading the module `singularity-lumi/<version>-mpi`.
+We have put together all the necessary setup in a module that can be installed by the user with EasyBuild:
+```bash
+module load LUMI partition/<lumi-partition> EasyBuild-user
+eb singularity-bindings-system-cpeGNU-<toolchain-version>.eb -r
+```
+That will create the module `singularity-bindings/system-cpeGNU-<toolchain-version>`.
+More information on installing software with EasyBuild can be found [here][software_installing].
 
 !!! For MPI-enabled containers, the application inside the container must be dynamically linked to an MPI version that is [ABI-compatible](https://www.mpich.org/abi/) with the host MPI.
 
+Let's consider an example to show how to use the `singularity-bindings` to run a containerized MPI application.
 The following Singularity definition file `mpi_osu.def`, installs MPICH-3.1.4, which is ABI-compatible with the Cray-MPICH found on LUMI. Then the that MPICH is used later to compile the [OSU microbenchmarks](https://mvapich.cse.ohio-state.edu/benchmarks/). Finally, the OSU point to point bandwidth test is set as the runscript of the image.
 ```
 bootstrap: docker
@@ -85,7 +94,7 @@ sudo singularity build mpi_osu.sif mpi_osu.def
 ```
 The OSU point to point bandwidth test can be run with
 ```bash
-module load singularity-lumi/<version>-mpi`
+module load singularity-bindings`
 srun -p<partition> -A<account> -N2 singularity run mpi_osu.sif
 ```
 which gives the bandwidth measured for different message sizes
