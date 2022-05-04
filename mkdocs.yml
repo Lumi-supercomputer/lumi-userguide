@@ -15,7 +15,7 @@ nav:
     - Moving data: storage/moving/scp-rsync.md
     - Module environment: computing/Lmod_modules.md
     - Software stacks: computing/softwarestacks.md
-    - Containers: container/runtimes/singularity.md
+    - Containers: computing/containers/index.md
     - Hardware:
       - CPU nodes: computing/systems/lumic.md
       - GPU nodes: computing/systems/lumig.md
