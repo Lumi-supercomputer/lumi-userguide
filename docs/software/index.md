@@ -3,7 +3,7 @@ title: Software - Overview
 ---
 
 [easybuild]: ./installing/easybuild.md
-[contwrapper]: ./installing/container_wrapper.md
+[contwrapper]: ./containers/wrapper.md
 
 
 ## Learn more about installing software on LUMI

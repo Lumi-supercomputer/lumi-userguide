@@ -3,7 +3,7 @@
 [easybuild]: https://easybuild.io/
 [repodoc]: https://github.com/Lumi-supercomputer/LUMI-SoftwareStack/tree/main/docs
 
-[containerwrapper]: ../software/installing/container_wrapper.md
+[containerwrapper]: ../software/containers/wrapper.md
 [prgenv]: ../development/compiling/prgenv.md
 
 The LUMI software stacks are made available through the LMOD module environment.
