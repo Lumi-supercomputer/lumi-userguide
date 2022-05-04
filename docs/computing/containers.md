@@ -94,7 +94,7 @@ VERSION_CODENAME=hirsute
 UBUNTU_CODENAME=hirsute
 ```
 
-By default, some file system partitions, such as `/scratch`,`/projappl` are not
+By default, some file system partitions, such as `/scratch`,`/project` are not
 accessible from the container. To make them available, they need to be
 explicitly bound by passing the `-B/--bind` command line option to 
 `singularity exec/run`. For instance
