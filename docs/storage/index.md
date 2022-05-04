@@ -3,7 +3,7 @@
 [lustre]: parallel/lustre.md
 [lumif]: parallel/lumif.md 
 [lumip]: parallel/lumip.md
-[contwrapper]: ../software/installing/container_wrapper.md
+[contwrapper]: ../software/containers/wrapper.md
 
 [sionlib]: https://www.fz-juelich.de/ias/jsc/EN/Expertise/Support/Software/SIONlib/_node.html
 [hdf5]: https://www.hdfgroup.org/solutions/hdf5/
