@@ -1,4 +1,4 @@
-## Singularity
+# Singularity
 
 [software_installing]: ../../software/installing/easybuild.md
 
@@ -33,8 +33,10 @@ Singularity allows pulling images from container registries such as DockerHub or
 singularity pull docker://ubuntu:latest
 ```
 This will create the Singularity image file `ubuntu_21.04.sif` in the directory where the command was run.
+ **Please take care to only use images uploaded from reputable sources** as these images can easily be a source of security vulnerabilities or even contain malicious code.
 
-!!! The compute nodes of LUMI-C are not connected to the internet. As a consequence, the images need to be pulled in on the login nodes (or transferred to LUMI with other means such as `scp`).  **Please take care to only use images uploaded from reputable sources** as these images can easily be a source of security vulnerabilities or even contain malicious code.
+!!! note
+    The compute nodes of LUMI-C are not connected to the internet. As a consequence, the images need to be pulled in on the login nodes (or transferred to LUMI with other means such as `scp`). 
 
 
 !!! hint
