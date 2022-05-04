@@ -81,6 +81,9 @@ srun -p<partition> -A<account> singularity exec -B /scratch/<account> ubuntu_21.
 ```
 
 ## Running an MPI application within the container
+
+For a more high level overview you can read a [tutorial on mpi in containers](https://permedcoe.github.io/mpi-in-container/)
+
 Containerized MPI applications can be run with Singularity. However, in order to properly make use of LUMI's high speed network, it is necessary to mount a few host system directories inside the container and set `LD_LIBRARY_PATH` so that the necessary dynamic libraries are available at run time. Doing that, the MPI installed in the container image is replaced by the one of the host.
 
 We have put together all the necessary setup in a module that can be installed by the user with EasyBuild:
