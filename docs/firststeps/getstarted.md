@@ -15,6 +15,7 @@ hide:
 [connecting]: ../computing/connecting.md
 [website-getstarted]: https://lumi-supercomputer.eu/get-started/
 [jump-ssh-key]: #setting-up-ssh-key-pair
+[eidas-eduid]: https://puhuri.neic.no/user_guides/myaccessid_registration/
 
 Please read through all of this carefully before you start running on LUMI. Here
 we describe a few sets of basic rules and the important information that you
@@ -39,9 +40,13 @@ please contact your PI or local HPC center.
 In order to access the portal, you need to register to MyAccessID. The procedure
 depends on the country but in general this can be achieved via the *Sign in with
 MyAccessID*. The authentication is done with your home organization identity
-provider, which can be selected from the list. In case that is not possible
-please [contact the support team][support-account] with the error message. You
-may also contact your identity provider directly.
+provider (recommended), which can be selected from the list. Alternative 
+registration options are available for some countries. Please see 
+[here][eidas-eduid] for information about these alternatives.
+
+In case neither of the registration option works for you, please 
+[contact the support team][support-account]. You may also contact your identity 
+provider directly.
 
 For the next step, you will be directed to the registration page, where you have
 to accept the Acceptable Use Policy and LUMI Terms of Use document, which is
@@ -151,7 +156,7 @@ you need to generate an SSH key pair.
 
     To register your key, click on the *Settings* item of the menu on the left
     as shown in the figure below. Then select *Ssh keys*. From here you can add a new public key
-    or remove an old one. **Note:** SSH key structure is *algorithm, key, comment*. Please EXCLUDE *comment* from your copy/paste.
+    or remove an old one. **Note:** SSH key structure is *algorithm, key, comment*. 
 
     <figure>
       <img src="../../assets/images/MyAccessID_ssh-key.png" width="480" alt="Screenshot of user profile settings to setup ssh public key">
@@ -189,11 +194,19 @@ ssh -i<path-to-private-key> <username>@lumi.csc.fi
 ```
 
 where you need to replace `username` with your own username, which you received
-via email during the registration. If you cannot get a connection at all, your 
-IP number range might be blocked from login. Please contact the
-[support][support-account].
+via email when you account is created in the identity manager. There may be a
+10-15 minute delay before your account is before your account is actually
+created on LUMI, be patient. If after this delay you cannot connect, please
+contact the [support][support-account].
 
 - [More information on how to setup SSH for LUMI][connecting]
+
+Your username can also be retrieved via the different portals, depending on 
+your resource allocator:
+
+- the Puhuri Portal by clicking on the **Remote accounts** in the left menu
+- myCSC by clicking on **My Profile** in the left menu
+- the SUPR portal under **Account > Existing Accounts**
 
 ## Running
 
