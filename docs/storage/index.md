@@ -56,6 +56,12 @@ more space if needed.
     files that are no longer needed by your project on a regular basis if you 
     don't want to run out of TB-hours.
 
+## Using compute nodes `/tmp`
+                                                                         
+The `/tmp` directory on the compute nodes resides in memory and is included in
+the job memory request. This means that your job can run of memory if you write
+to much data to `/tmp`   
+
 ## Billing
 
 Storage is billed by volume as well as time. The billing units are TB-hours. For
