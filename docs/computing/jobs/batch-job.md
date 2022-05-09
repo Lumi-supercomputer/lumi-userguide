@@ -234,6 +234,12 @@ The most common causes are:
 | `--mem-per-cpu`   | Set the memory per allocated CPU cores |
 | `--mem-per-gpu`   | Set the memory per allocated GPU       | 
 
+!!! info                                                                              
+    The `/tmp` directory on the compute nodes resides in memory and is included in    
+    the job memory request. This means that your job can run of memory if you write to
+    much data to `/tmp`                                                               
+
+
 ### Receive email notifications
 
 Email notifications from Slurm can be requested when certain events occur (job
