@@ -242,6 +242,11 @@ The most common causes are:
 
 ### Receive email notifications
 
+!!! warning
+    
+    The email notification feature is not yet configured and does not work at
+    the moment.
+
 Email notifications from Slurm can be requested when certain events occur (job
 starts, fails, ...).
 
