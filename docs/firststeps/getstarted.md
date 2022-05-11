@@ -24,9 +24,9 @@ need to get started.
 ## Access to LUMI
 
 !!! Warning "Users with Finnish allocation"
-    This section does not apply for users with a Finnish allocation (via MyCSC).
+    This section does not apply for users with a Finnish allocation (via [MyCSC](https://my.csc.fi/welcome)).
     These users are invited to follow the instruction starting from the 
-    [next section][jump-ssh-key].
+    [next section][jump-ssh-key]. See also [here how to create a Finnish LUMI project](https://docs.csc.fi/accounts/how-to-create-new-project/#creating-a-lumi-project-and-applying-for-resources).
 
 To access LUMI, you need to be a member of a project. LUMI Countries have
 different policies for LUMI access. An overview of the access policies is 
