@@ -38,15 +38,14 @@ been granted access to LUMI but didn't receive an invitation to a project,
 please contact your PI or local HPC center.
 
 In order to access the portal, you need to register to MyAccessID. The procedure
-depends on the country but in general this can be achieved via the *Sign in with
-MyAccessID*. The authentication is done with your home organization identity
-provider (recommended), which can be selected from the list. Alternative 
-registration options are available for some countries. Please see 
-[here][eidas-eduid] for information about these alternatives.
-
-In case neither of the registration option works for you, please 
+depends on the country. The recommended authentication method is to use your 
+home organization's identity provider. You should find it by typing your 
+organization into the *Choose Your Identity Provider* search field. If you found
+your organization, but you got an error, please
 [contact the support team][support-account]. You may also contact your identity 
-provider directly.
+provider directly. Alternative  registration options are available for some 
+countries. Please see [here][eidas-eduid] for information about these 
+alternatives.
 
 For the next step, you will be directed to the registration page, where you have
 to accept the Acceptable Use Policy and LUMI Terms of Use document, which is
