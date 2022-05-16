@@ -76,6 +76,16 @@ current platform that will be available once LUMI-G is available:
   possible to initiate communication directly from the GPU (MPI call from HIP 
   kernels). This feature is not available on the Early Access Platform.
 
+!!! failure
+    
+    Search path definition for the HIP libraries is incomplete at the moment
+    in the `rocm` module. If you experience issue at link time or runtime with
+    either missing HIP functions or libraries, please export:
+    
+    ```
+    export LD_LIBRARY_PATH=$HIP_LIB_PATH:$LD_LIBRARY_PATH
+    ```
+
 ## Compiling HIP code
 
 You have two options to compile you HIP code: you can use the ROCm AMD compiler
