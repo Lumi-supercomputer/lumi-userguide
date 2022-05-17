@@ -1,12 +1,10 @@
 # Arm Forge on LUMI
 
-Arm Forge is installed on LUMI in project directory `/projappl/project_462000031/EasyBuild/SW/LUMI-21.12/common/ARMForge/22.0.1/`.
+Arm Forge is installed on LUMI in project directory `/appl/lumi/SW/system/EB/ARMForge/22.0.1/`.
 
 Add it to your current enviromnent with the following commands:
 ```
-export EBU_USER_PREFIX=/project/project_462000031/EasyBuild
-module load LUMI/21.12
-module load ARMForge/22.0.1
+module load LUMI ARMForge
 ```
 
 For the training it is recommended to use Forge with the desktop client that can be installed on a local computer. It can be downloaded 
