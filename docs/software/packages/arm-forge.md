@@ -10,7 +10,7 @@ module load ARMForge/22.0.1
 ```
 
 For the training it is recommended to use Forge with the desktop client that can be installed on a local computer. It can be downloaded 
-from [here](https://developer.arm.om/tools-and-software/server-and-hpc/downloads/arm-forge) for Windows, Linux and MacOS.
+from [here](https://developer.arm.com/tools-and-software/server-and-hpc/downloads/arm-forge) for Windows, Linux and MacOS.
 
 Once the client is installed on a local computer you can use "Remote Launch" with the following configuration:
 
