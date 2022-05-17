@@ -28,13 +28,8 @@ To run debugging DDT session directly from Forge GUI on computing nodes use MPI 
 `-p debug -A project_462000031`.
 
 Other approach is to use "Reverse Connect" feature. It allows you to submit program with debugger wrapper directly on the system. The wrapper will connect
-back to the GUI on your local computer. You need to enable remote connection to LUMI from the client GUI with "Remote Launch" and execute the job using 
-`ddt --connect` before you actual `srun` command directly from the command line or from sbatch script. After your job starts it will signal client on your 
-local computer and you will be asked to accept reverse connection. 
+back to the GUI on your local computer. You need to enable remote connection to LUMI from the client GUI with "Remote Launch". Next execute the job directly
+from the command line or from sbatch script, using `ddt --connect` before your actual `srun`. After your job starts it will signal client on your local computer 
+and you will be asked to accept reverse connection. 
 
 The process of reverse connection is described [here](https://developer.arm.com/documentation/101136/2112/Arm-Forge/Connecting-to-a-remote-system/Reverse-Connect).
-
-
-
-
-
