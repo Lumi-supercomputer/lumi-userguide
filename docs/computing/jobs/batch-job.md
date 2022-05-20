@@ -69,6 +69,11 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 ### MPI-based jobs
 
+!!! Failure "Fortan MPI program fails to start"
+    If Fortran based program with MPI fails to start with large number of nodes
+    (512 nodes for instance), add `export PMI_NO_PREINITIALIZE=y` to your batch
+    script.  
+
 ```
 #!/bin/bash -l
 #SBATCH --job-name=examplejob   # Job name
