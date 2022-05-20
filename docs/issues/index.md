@@ -14,6 +14,5 @@ We contacted HPE and are waiting for the problem to be fixed.
 
 ## Fortan MPI program fails to start
 
-If Fortran based program with MPI fails to start on large partition of the system 
-(512 nodes for instance) then add `export PMI_NO_PREINITIALIZE=y` line to jour 
-batch script.      
+If Fortran based program with MPI fails to start with large number of node (512 
+nodes for instance), add `export PMI_NO_PREINITIALIZE=y` to your batch script.     
