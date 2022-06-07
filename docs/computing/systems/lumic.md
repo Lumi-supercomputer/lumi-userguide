@@ -20,7 +20,7 @@ support for 2-way simultaneous multithreading (SMT) allowing for up to 256
 threads per node.
 
 The EPYC 7763 CPU cores are ["Zen 3" compute cores][1], the same core that can 
-be found in the Ryzen 5000 series consumer CPUs. These cores are fully x64-64
+be found in the Ryzen 5000 series consumer CPUs. These cores are fully x86-64
 compatible and support AVX2 256-bit vector instructions for a maximum 
 throughput of 16 double precision FLOP/clock (AVX2 FMA operations). The cores
 have 32 KiB of private L1 cache, a 32 KiB instruction cache, and 512 KiB of L2
