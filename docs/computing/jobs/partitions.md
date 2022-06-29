@@ -14,7 +14,7 @@ share the node with other jobs. Therefore, make sure that
 your application can take advantage of all the resources on the node as you
 will be billed for the complete node regardless of the resource actually used.
 
-| Name     | Max walltime | Max jobs          | Max ressources/job |
+| Name     | Max walltime | Max jobs          | Max resources/job  |
 | -------- | ------------ | ----------------- | ------------------ |
 | standard | 2 days       | 120 (100 running) | 512 nodes          |
 | bench    | 1 day        | n/a               | All nodes          |
@@ -30,7 +30,7 @@ that you can request a sub-node allocation: you can request only part of the
 resources (cores and memory) available on the compute node. This also means 
 that your job may share the node with other jobs.
 
-| Name     | Max walltime | Max jobs                | Max ressources/job |
+| Name     | Max walltime | Max jobs                | Max resources/job  |
 | -------- | ------------ | ----------------------- | ------------------ |
 | debug    | 30 minutes   |   1 (1 running)         | 4 nodes            |
 | small    | 3 days       | 220 (200 running)       | 4 nodes            |
