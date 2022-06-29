@@ -25,7 +25,7 @@ more space if needed.
 
     Each user has a home directory (`$HOME`) that can contain up to
     20 GB of data. It is intended to store user configuration files and personal
-    data.  The user home directory is purged once the user account expire.
+    data.  The user home directory is purged once the user account expires.
 
 === "Project persistent storage"
 
@@ -33,7 +33,7 @@ more space if needed.
     workspace as the project home directory. Typically, this space can be used 
     to share applications and libraries compiled for the project. The project
     persistent storage is located at `/project/project_<project-number>`. The
-    project persistent directory is purged once the project expire.
+    project persistent directory is purged once the project expires.
 
 === "Project scratch" 
 
