@@ -41,11 +41,37 @@
 
   
   <section class="tx-container">
+  
     <div class="md-grid md-typeset">
+      {% set greetings = config.theme.greetings %}
+      {% if greetings %}
+        <h1>{{ greetings }}</h1>
+      {% endif %}
+      <p>{{ config.site_description }}</p>
+      {% set primary = config.theme.home_primary %}
+      {% if primary %}
+        <a
+          href="{{ primary.page | url }}"
+          title="{{ primary.title | e }}"
+          class="md-button md-button--primary"
+        >
+          {{ primary.title }}
+        </a>
+      {% endif %}
+      <!-- {% set secondary = config.theme.home_secondary %}
+      {% if secondary %}
+        <a
+          href="{{ secondary.page | url }}"
+          title="{{ secondary.title | e }}"
+          class="md-button"
+        >
+          {{ secondary.title }}
+        </a>
+      {% endif %} -->
       <div class="tx-hero">
         
         <div class="tx-hero__content__left">
-          {% set greetings = config.theme.greetings %}
+          <!-- {% set greetings = config.theme.greetings %}
           {% if greetings %}
             <h1>{{ greetings }}</h1>
           {% endif %}
@@ -69,10 +95,16 @@
             >
               {{ secondary.title }}
             </a>
-          {% endif %}
+          {% endif %} -->
+          
+          {{ page.content }}
+
         </div>
         <div class="tx-hero__content__right">
-          {{ page.content }}
+        
+          <!--{{ page.content }}-->
+          
+          
         </div>
       </div>
     </div>
