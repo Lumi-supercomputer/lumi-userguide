@@ -6,21 +6,33 @@ site_description: >-
   Instructions, user guides and tutorials for the use of the LUMI supercomputer
 copyright: Copyright &copy; 2021 LUMI User Support Team
 nav:
-  - Home: index.md
-  - First Steps: 
-    - Get Started: firststeps/getstarted.md
-  - Computing:
-    - Overview: computing/index.md
-    - Connecting: computing/connecting.md
-    - Moving data: storage/moving/scp-rsync.md
-    - Module environment: computing/Lmod_modules.md
-    - Software stacks: computing/softwarestacks.md
-    - Containers: computing/containers.md
+  - Docs Home: 
+    - Welcome: index.md
+  - Computing environment:
+    - Structure: overview/generic.md
+    - Overview: overview/overview.md
     - Hardware:
       - CPU nodes: computing/systems/lumic.md
       - GPU nodes: computing/systems/lumig.md
       - Data analytics nodes: computing/systems/lumid.md
-    - Running jobs:
+    - Storage:
+      - Overview: storage/index.md
+      - Lustre: storage/parallel/lustre.md
+      - Project scratch: storage/parallel/lumip.md
+      - Project fast scratch: storage/parallel/lumif.md
+    - Module Environment:
+      - Set module environment: computing/index.md
+      - Module environment: computing/Lmod_modules.md
+      - Software stacks: computing/softwarestacks.md
+      - Containers: computing/containers.md
+  - Connecting: 
+    - Computing resources: connecting/access.md
+    - SSH keys: connecting/ssh-keys.md
+    - First steps in compact form: firststeps/getstarted.md
+    - Additional SSH tips: connecting/connecting_.md
+    - Moving data: storage/moving/scp-rsync.md
+  - Running jobs:
+    
       - Slurm Quickstart: computing/jobs/slurm-quickstart.md
       - Available partitions: computing/jobs/partitions.md
       - Billing: computing/jobs/billing.md
@@ -28,11 +40,7 @@ nav:
       - Distribution and binding: computing/jobs/distribution-binding.md
       - High throughput: computing/jobs/throughput.md
       - Interactive usage: computing/jobs/interactive.md
-    - Storage:
-      - Overview: storage/index.md
-      - Lustre: storage/parallel/lustre.md
-      - Project scratch: storage/parallel/lumip.md
-      - Project fast scratch: storage/parallel/lumif.md
+    
   - Developing:
     - Overview: development/index.md
     - Compiling:
@@ -60,7 +68,7 @@ nav:
       - VASP: software/packages/vasp.md
       - Quantum ESPRESSO: software/packages/quantumespresso.md
   - Early Access Platform: eap/index.md
-  - Help desk: 
+  - Getting Help: 
     - Help desk: generic/helpdesk.md
  
 theme:
@@ -91,8 +99,8 @@ theme:
     title: Get Started
     page: firststeps/getstarted/
   home_secondary:
-    title: LUMI Overview
-    page: generic/overview/
+    title: To LUMI Main Page
+    page: https://lumi-supercomputer.eu/
 
 extra:
   social:

@@ -1,12 +1,13 @@
-# Connecting to LUMI
+# Additional SSH tips
 
 [getstarted]: ../firststeps/getstarted.md
 [account-support]: https://lumi-supercomputer.eu/user-support/need-help/account/
 
 This page gives you more details on how to configure your machine to access 
-LUMI. However, it does not cover the first necessary steps to connect to LUMI
+LUMI. 
+<!-- However, it does not cover the first necessary steps to connect to LUMI
 like how to generate a key pair and setup your public SSH key on your MyAccessID
-profile. Instruction on how to do that can be found [here][getstarted]. 
+profile. Instruction on how to do that can be found [here][getstarted].  -->
 
 ## From the command line
 
