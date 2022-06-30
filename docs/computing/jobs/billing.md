@@ -15,8 +15,8 @@ differs.
 ### Standard partition
 
 The standard partition is operated in exclusive mode: the entire node will always 
-be allocated. In practice, you 128 core-hours are billed for every allocated 
-node and per hour even if your job requested less than 128 cores per node.
+be allocated. In practice, 128 core-hours are billed for every allocated 
+node and per hour even if your job has requested less than 128 cores per node.
 
 For example, 16 nodes for 12 hours: 
 
