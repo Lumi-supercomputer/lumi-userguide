@@ -74,8 +74,10 @@ Below are some useful options to use with `rsync`:
   location.
 - If you are having connection issues the `-v` will increase verbosity and may help
   diagnose the problem. The `-v` flag is also useful for showing what rsync is going, otherwise there is no output unless errors occur. 
+- `--copy-links` transforms symlink into referent file/dir. This is useful for syncing `/scratch/` and `/projappl/` directories as on LUMI they are symbolic links to the LUSTRE filesystem. 
 
 You can combine many of these options together into a single flag. Here are some useful examples:
 
 - `rsync -ave "ssh -i /path/to/ssh-key" <origin-path> <destination-path>` - archive mode with verbosity
 - `rsync -avPe "ssh -i /path/to/ssh-key" <origin-path> <destination-path>` - The `-P` flag combines `--partial` and `--progress` which is useful for resuming a transfer and showing a sync's progress in the terminal. 
+- `rsync -ahvPe "ssh -i /path/to/ssh-key" --copy-links --delete /projappl/destination-path /path/to/local` - This syncs a folder on your `/projappl/` space with a local directory. The `-h` command specifies humand readable progression and the `--copy-links` is necessary for using `rsync` with any folders in `/projappl/` as they as symbolically linked. 
