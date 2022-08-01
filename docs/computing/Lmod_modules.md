@@ -139,17 +139,19 @@ It has three levels, producing different outputs:
           utility
 
          Versions:
-            gnuplot/5.4.2-cpeCray-21.08
-            gnuplot/5.4.2-cpeGNU-21.08
             gnuplot/5.4.3-cpeAOCC-21.12
+            gnuplot/5.4.3-cpeAOCC-22.06
             gnuplot/5.4.3-cpeCray-21.12
+            gnuplot/5.4.3-cpeCray-22.06
             gnuplot/5.4.3-cpeGNU-21.12
+            gnuplot/5.4.3-cpeGNU-22.06    ```
     ```
     so even though the capitalisation of the name was wrong, it can tell us that
-    there are five versions of gnuplot. The `cpeGNU-21.08` and `cpeCray-21.08`
+    there are six versions of gnuplot. The `cpeGNU-22.06` and `cpeCray-22.06`
     tell that the difference is the compiler that was used to install gnuplot,
     being the GNU compiler (PrgEnv-gnu) and the Cray compiler (PrgEnv-cray)
-    respectively.
+    respectively. This is somewhat important as it is risky to combine modules
+    compiled with different compilers.
 
     Similarly,
     ```bash
@@ -161,14 +163,14 @@ It has three levels, producing different outputs:
       CMake:
     ----------------------------------------------------------------
          Versions:
-            CMake/3.21.2 (E)
             CMake/3.22.2 (E)
+            CMake/3.23.2 (E)
 
     Names marked by a trailing (E) are extensions provided by 
     another module.
     ```
     This tells that there is no `CMake` module on the system but that two 
-    versions of `CMake` (3.21.2 and 3.22.2) are available on the system as
+    versions of `CMake` (3.22.2 and 3.23.2) are available on the system as
     extensions of another module.
 
     !!! info "Information on LUMI software stacks?"
@@ -190,58 +192,58 @@ It has three levels, producing different outputs:
     about the package, including information on which other modules need to be
     loaded to be able to load the package. E.g.,
     ```bash
-    module spider git/2.33.1
+    module spider git/2.37.0
     ```
     will return
     ```
     ----------------------------------------------------------------
-      git: git/2.35.1
+      git: git/2.37.0
     ----------------------------------------------------------------
         Description:
           Git is a free and open source distributed version control
           system
 
         You will need to load all module(s) on any one of the lines 
-        below before the "git/2.35.1" module is available to load.
+        below before the "git/2.37.0" module is available to load.
 
           CrayEnv
-          LUMI/21.12  partition/C
-          LUMI/21.12  partition/D
-          LUMI/21.12  partition/G
-          LUMI/21.12  partition/L
-
-        Help:
+          LUMI/22.06  partition/C
+          LUMI/22.06  partition/D
+          LUMI/22.06  partition/EAP
+          LUMI/22.06  partition/G
+          LUMI/22.06  partition/L
     ```
     (abbreviated output). Note that it also tells you which other modules need
     to be loaded. You need to choose the line which is appropriate for you and
-    load all modules on that line, not the whole list of in this case 9
+    load all modules on that line, not the whole list of in this case 11
     modules.
 
     This form of `module spider` can also be used to find out how a tool provided
     as an extension by another module can be made available. E.g., in a previous 
-    example we we've seen that `CMake/3.22.2` is available via another module.
+    example we we've seen that `CMake/3.23.2` is available via another module.
     Now
     ```
-    module spider CMake/3.22.2
+    module spider CMake/3.23.2
     ```
     will return output similar to
     ```
     ----------------------------------------------------------------
-      CMake: CMake/3.22.2 (E)
+      CMake: CMake/3.23.2 (E)
     ----------------------------------------------------------------
         This extension is provided by the following modules. To 
         access the extension you must load one of the following 
         modules. Note that any module names in parentheses show the 
         module location in the software hierarchy.
 
-           buildtools/21.12 (LUMI/21.12 partition/L)
-           buildtools/21.12 (LUMI/21.12 partition/G)
-           buildtools/21.12 (LUMI/21.12 partition/D)
-           buildtools/21.12 (LUMI/21.12 partition/C)
-           buildtools/21.12 (CrayEnv)
+           buildtools/22.06 (LUMI/22.06 partition/L)
+           buildtools/22.06 (LUMI/22.06 partition/G)
+           buildtools/22.06 (LUMI/22.06 partition/EAP)
+           buildtools/22.06 (LUMI/22.06 partition/D)
+           buildtools/22.06 (LUMI/22.06 partition/C)
+           buildtools/22.06 (CrayEnv)    
     ```
-    This tells that `CMake` is provided by the `buildtools/21.12` module and also 
-    indicates five possible combinations of software stack modules that can provide
+    This tells that `CMake` is provided by the `buildtools/22.06` module and also 
+    indicates six possible combinations of software stack modules that can provide
     that module.
 
 
@@ -264,7 +266,7 @@ will return something along the lines of
 The following modules match your search criteria: "mp3"
 ----------------------------------------------------------------
 
-  LAME: LAME/3.100-cpeAOCC-21.12, LAME/3.100-cpeCray-21.08, ...
+  LAME: LAME/3.100-cpeAOCC-21.12, LAME/3.100-cpeAOCC-22.06, LAME/3.100-cpeCray-21.12, LAME/3.100-cpeCray-22.06, ...
     LAME is a high quality MPEG Audio Layer III (mp3) encoder
 ```
 though the output will depend on the version of Lmod. This may not be the most
@@ -290,15 +292,15 @@ in two ways:
     using only its name.
 
  2. With the name of a module (or a part of the name) it will show all modules
-    that match that (part of) a name. E.g., when `LUMI/21.12` is loaded,
+    that match that (part of) a name. E.g., when `LUMI/22.06` is loaded,
     ```bash
     module avail gnuplot
     ```
     will show something along the lines of
     ```
-    ----- EasyBuild managed software for software stack LUMI/21.12 on LUMI-L -----
-       gnuplot/5.4.3-cpeAOCC-21.12    gnuplot/5.4.3-cpeGNU-21.12 (D)
-       gnuplot/5.4.3-cpeCray-21.12
+    ----- EasyBuild managed software for software stack LUMI/22.06 on LUMI-L -----
+       gnuplot/5.4.3-cpeAOCC-22.06    gnuplot/5.4.3-cpeGNU-22.06 (D)
+       gnuplot/5.4.3-cpeCray-22.06
 
       Where:
        D:  Default Module
@@ -353,7 +355,7 @@ To load a specific version of the module you need to specify it after the name
 of the module.
 
 ```bash
-$ module load cray-fftw/3.3.8.12
+$ module load cray-fftw/3.3.10.1
 ```
 
 In order to unload a module from your environment, use the `unload` sub-command
@@ -396,25 +398,25 @@ module show cray-fftw
 ```
 will show
 ```
---------------------------------------------------------------------------------------------------
-   /opt/cray/pe/lmod/modulefiles/cpu/x86-rome/1.0/cray-fftw/3.3.8.12.lua:
---------------------------------------------------------------------------------------------------
-help([[Release info:  /opt/cray/pe/fftw/3.3.8.12/release_info]])
+---------------------------------------------------------------------------------------------------------------------------
+   /opt/cray/pe/lmod/modulefiles/cpu/x86-rome/1.0/cray-fftw/3.3.10.1.lua:
+---------------------------------------------------------------------------------------------------------------------------
+help([[Release info:  /opt/cray/pe/fftw/3.3.10.1/release_info]])
 help([[Documentation: `man intro_fftw3`]])
-whatis("FFTW 3.3.8.12 - Fastest Fourier Transform in the West")
-setenv("FFTW_VERSION","3.3.8.12")
-setenv("CRAY_FFTW_VERSION","3.3.8.12")
-setenv("FFTW_ROOT","/opt/cray/pe/fftw/3.3.8.12/x86_rome")
-setenv("FFTW_DIR","/opt/cray/pe/fftw/3.3.8.12/x86_rome/lib")
-setenv("FFTW_INC","/opt/cray/pe/fftw/3.3.8.12/x86_rome/include")
+whatis("FFTW 3.3.10.1 - Fastest Fourier Transform in the West")
+setenv("FFTW_VERSION","3.3.10.1")
+setenv("CRAY_FFTW_VERSION","3.3.10.1")
+setenv("FFTW_ROOT","/opt/cray/pe/fftw/3.3.10.1/x86_rome")
+setenv("FFTW_DIR","/opt/cray/pe/fftw/3.3.10.1/x86_rome/lib")
+setenv("FFTW_INC","/opt/cray/pe/fftw/3.3.10.1/x86_rome/include")
 setenv("PE_FFTW_PKGCONFIG_VARIABLES","PE_FFTW_OMP_REQUIRES_@openmp@")
 setenv("PE_FFTW_OMP_REQUIRES"," ")
 setenv("PE_FFTW_OMP_REQUIRES_openmp","_mp")
 setenv("PE_FFTW_PKGCONFIG_LIBS","fftw3f_mpi:libfftw3f_threads:fftw3f:fftw3_mpi:libfftw3_threads:fftw3")
-prepend_path("PKG_CONFIG_PATH","/opt/cray/pe/fftw/3.3.8.12/x86_rome/lib/pkgconfig")
-prepend_path("PATH","/opt/cray/pe/fftw/3.3.8.12/x86_rome/bin")
-prepend_path("MANPATH","/opt/cray/pe/fftw/3.3.8.12/share/man")
-prepend_path("CRAY_LD_LIBRARY_PATH","/opt/cray/pe/fftw/3.3.8.12/x86_rome/lib")
+prepend_path("PKG_CONFIG_PATH","/opt/cray/pe/fftw/3.3.10.1/x86_rome/lib/pkgconfig")
+prepend_path("PATH","/opt/cray/pe/fftw/3.3.10.1/x86_rome/bin")
+prepend_path("MANPATH","/opt/cray/pe/fftw/3.3.10.1/share/man")
+prepend_path("CRAY_LD_LIBRARY_PATH","/opt/cray/pe/fftw/3.3.10.1/x86_rome/lib")
 prepend_path("PE_PKGCONFIG_PRODUCTS","PE_FFTW")
 ```
 The interesting lines are the `setenv` lines which tell which environment
