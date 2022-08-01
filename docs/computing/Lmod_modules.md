@@ -215,7 +215,7 @@ It has three levels, producing different outputs:
     ```
     (abbreviated output). Note that it also tells you which other modules need
     to be loaded. You need to choose the line which is appropriate for you and
-    load all modules on that line, not the whole list of in this case 9
+    load all modules on that line, not the whole list of in this case 11
     modules.
 
     This form of `module spider` can also be used to find out how a tool provided
