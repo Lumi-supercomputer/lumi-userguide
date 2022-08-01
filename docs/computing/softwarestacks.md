@@ -81,13 +81,13 @@ $ module avail
 ... some lines removed here
 
 -------------------------- HPE-Cray PE modules ----------------------------
-   PrgEnv-aocc/8.0.0      (D)      cray-openshmemx/11.3.2
-   PrgEnv-aocc/8.1.0               cray-pals/1.0.14
+   PrgEnv-aocc/8.2.0      (D)      cray-openshmemx/11.5.5
+   PrgEnv-aocc/8.3.3               cray-pals/1.1.8
 
 ... some lines removed here
 
 ----------------------------- Software stacks -----------------------------
-   CrayEnv (S)    LUMI/21.08 (S,D)    LUMI/21.12 (S)
+   CrayEnv (S)    LUMI/21.12 (S,D)    LUMI/22.06 (S)
 
 --------------------- Modify the module display style ---------------------
    ModuleColour/off        (S)      ModuleLabel/system   (S)
@@ -115,7 +115,7 @@ The first block(s) in the output are the modules available through the default
 software stack.
 
 The *Software stacks* block in the output shows the available software stacks: 
-`CrayEnv`, `LUMI/21.08` and `LUMI/21.12` in this example. 
+`CrayEnv`, `LUMI/21.12` and `LUMI/22.06` in this example. 
 The `(S)` besides the name shows that these are sticky modules
 that won't be removed by default by ``module purge``. This is done to enable you
 to quickly clean your environment without having to re-initialise from scratch.
@@ -124,7 +124,8 @@ which would then denote that this is a release that we will try
 to support long-term (ideally two years), but currently the system is
 changing too rapidly (as some of the hardware is new and not an evolution of
 previous hardware) so we cannot guarantee any level of longevity for any
-of the software stacks.
+of the software stacks. In fact, past experience has shown that we may have
+to remove a stack after 6 to 8 months.
 
 The next block, titled *Modify the module display style*, contains several
 modules that can be used to change the way the module tree is displayed:
@@ -172,7 +173,7 @@ The LUMI software stack is activated by loading the desired version of the LUMI
 module, e.g.,
 
 ```bash
-module load LUMI/21.08
+module load LUMI/22.06
 ```
 
 The `LUMI` module will try to detect the node type it is running on and will
@@ -182,13 +183,13 @@ loading another `partition` module, and this can even be done in a single
 command, e.g.,
 
 ```bash
-module load LUMI/21.08 partition/L
+module load LUMI/22.06 partition/L
 ```
 
 will load the software stack for the login nodes (which in fact will also work
 on the compute nodes and data analysis and visualisation nodes).
 
-??? failure "Only partition/L and partition/C are supported"
+??? failure "Only partition/L and partition/C are fully supported"
     Note that in the initial version of the software stack, only `partition/L`
     and `partition/C` are supported. Software in `partition/L` can be used on
     the compute nodes also and there is even some MPI-based software already
@@ -237,10 +238,11 @@ can be loaded together with software compiled with the SYSTEM toolchain. The
 module system currently does not protect you against making such mistakes!
 However, software may fail to work properly.
 
-??? failure "Issue: cpeAOCC not in 21.08"
-    In `LUMI/21.08`, `cpeAOCC` can not work as the AMD compiler is not properly
-    installed. Hence the `cpeAOCC` toolchain is only offered from the`21.12` stack
-    on.
+??? failure "Issue: Missing programming environments"
+    In `LUMI/21.12`, `cpeAMD` (is not yet supported. 
+    In `LUMI/22.06`, `cpeAOCC` and `cpeAMD` are not yet properly
+    installed.
+    Compiling in any `21.08` environment is no longer supported.
 
 
 ## Adding additional software to the LUMI software stack
