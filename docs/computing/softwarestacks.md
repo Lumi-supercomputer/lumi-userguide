@@ -162,7 +162,7 @@ to a set suitable for the node type you are working on.
 
 `LUMI` is our main software stack, managed mostly with [EasyBuild][easybuild].
 It contains software build with the system compiler and the `PrgEnv-gnu`,
-`PrgEnv-cray` and `PrgEnv-aocc` programming environments, which includes Cray
+`PrgEnv-cray`, `PrgEnv-aocc` and `PrgEnv-amd` programming environments, which includes Cray
 MPI and the Cray scientific libraries. As mixing compiler versions and library
 versions is dangerous, the stack is organised in versions that correspond to the
 version of the Cray PE used to compile the software. Some versions may have the

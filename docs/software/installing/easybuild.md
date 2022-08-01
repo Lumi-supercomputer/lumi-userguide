@@ -117,10 +117,12 @@ GROMACS-2021.4-cpeGNU-22.06-PLUMED-2.7.4-CPU.eb
 ```
 The first part of the name, `GROMACS`, is the name of the package. The second
 part of the name, `2021.4` is the version of GROMACS, in this case the initial
-2021 release. The next part, `cpeGNU-22.06`, denotes the so-called * toolchain*
+2021 release. The next part, `cpeGNU-22.06`, denotes the so-called *toolchain*
 used for the build. The `cpeGNU` toolchain uses the `PrgEnv-gnu` programming
-environment, the `cpeCray` toolchain the `PrgEnv-cray` PE and the `cpeAOCC`
-toolchain the `PrgEnv-aocc` environment. The version of the toolchain should
+environment, the `cpeCray` toolchain the `PrgEnv-cray` PE, the `cpeAOCC`
+toolchain the `PrgEnv-aocc` environment and the `cpeAMD` toolchain the
+`PrgEnv-amd` environment. 
+The version of the toolchain should
 match the version of the LUMI software stack or the installation will fail.
 (In fact, it is not just the version in the file name that should match but
 the version of the toolchain that is used in the recipe file.) The next part
@@ -177,13 +179,14 @@ Three toolchains are currently implemented
   - `cpeGNU` is the equivalent of the Cray `PrgEnv-gnu` programming environment
   - `cpeCray` is the equivalent of the Cray `PrgEnv-cray` programming environment
   - `cpeAOCC` is the equivalent of the Cray `PrgEnv-aocc` programming environment
+  - `cpeAMD` is the equivalent of the Cray `PrgEnv-amd` programming environment
 
-All three toolchains use `cray-mpich` over the Open Fabric Interface library
+All four toolchains use `cray-mpich` over the Open Fabric Interface library
 (`craype-network-ofi`) and Cray LibSci for the mathematical libraries, with the
 releases taken from the Cray PE release that corresponds to the version number of the
 `cpeGNU`, `cpeCray` or `cpeAOCC` module.
 
-??? note "cpeGNU/Cray/AOCC and PrgEnv-gnu/cray/aocc"
+??? note "cpeGNU/Cray/AOCC/AMD and PrgEnv-gnu/cray/aocc/amd"
     Currently the `cpeGNU`, `cpeCray` and `cpeAOCC` modules don't load the corresponding
     `PrgEnv-*` modules nor the `cpe/<version>` modules. This is because in the current
     setup of LUMI both modules have their problems and the result of loading those
