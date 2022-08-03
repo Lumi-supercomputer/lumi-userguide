@@ -6,70 +6,97 @@ site_description: >-
   Instructions, user guides and tutorials for the use of the LUMI supercomputer
 copyright: Copyright &copy; 2021 LUMI User Support Team
 nav:
-  - Docs Home: 
+  - Intro: 
     - Welcome: index.md
-  - Computing environment:
-    - Structure: overview/generic.md
-    - Overview: overview/overview.md
-    - Hardware:
-      - CPU nodes: computing/systems/lumic.md
-      - GPU nodes: computing/systems/lumig.md
-      - Data analytics nodes: computing/systems/lumid.md
+  - First steps: 
+    - Get Started: firststeps/getstarted-new.md
+    - Access to LUMI: firststeps/accessLUMI.md
+    - Setting up SSH key pair: firststeps/SSH-keys.md
+    - Logging in (with SSH client): firststeps/loggingin.md
+    # - LUMI web interface: firststeps/openondemand.md
+    - Moving data to/from LUMI: storage/moving/scp-rsync.md
+    - Next steps: firststeps/nextsteps.md
+  - Hardware:
+    - Hardware overview: overview/overview.md
+    - Compute nodes:
+      - CPU nodes - LUMI-C: computing/systems/lumic.md
+      - GPU nodes - LUMI-G: computing/systems/lumig.md
+      - Data analytics nodes - LUMI-D: computing/systems/lumid.md
+      - Early access platform: eap/index.md
     - Storage:
-      - Overview: storage/index.md
-      - Lustre: storage/parallel/lustre.md
-      - Project scratch: storage/parallel/lumip.md
-      - Project fast scratch: storage/parallel/lumif.md
-    - Module Environment:
-      - Set module environment: computing/index.md
-      - Module environment: computing/Lmod_modules.md
+      - Lustre file system: storage/parallel/lustre.md
+      - Main storage - LUMI-P: storage/parallel/lumip.md
+      - Flash storage - LUMI-F: storage/parallel/lumif.md
+      # - Object storage - LUMI-O: storage/parallel/lumio.md
+    - Interconnect: computing/interconnect.md
+    # - Auxiliary platforms:
+    #   - Container Orchestration Platform - LUMI-K: computing/auxiliary/lumik.md
+  - Software:
+    - Overview: software/index.md
+    - Setup your Environment:
+      - Module Environment: computing/Lmod_modules.md
       - Software stacks: computing/softwarestacks.md
-      - Containers: computing/containers.md
-  - Connecting: 
-    - Computing resources: connecting/access.md
-    - SSH keys: connecting/ssh-keys.md
-    - First steps in compact form: firststeps/getstarted.md
-    - Additional SSH tips: connecting/connecting_.md
-    - Moving data: storage/moving/scp-rsync.md
-  - Running jobs:
-    
-      - Slurm Quickstart: computing/jobs/slurm-quickstart.md
-      - Available partitions: computing/jobs/partitions.md
+    - Installing software:
+      - EasyBuild: software/installing/easybuild.md
+      - Python: software/installing/python.md
+      - Container wrapper: software/containers/wrapper.md
+    - Containers: 
+      - Singularity/Apptainer containers: computing/containers.md
+    # - License server: computing/license-server.md
+  - Run jobs:
+      - Overview: runjobs/overview.md
+      - Data storage options: storage/storing-data.md
       - Billing: computing/jobs/billing.md
-      - Batch jobs: computing/jobs/batch-job.md
-      - Distribution and binding: computing/jobs/distribution-binding.md
-      - High throughput: computing/jobs/throughput.md
-      - Interactive usage: computing/jobs/interactive.md
-    
+      - Scheduled jobs - SLURM jobs:      
+        - Slurm Quickstart: computing/jobs/slurm-quickstart.md
+        - Available partitions: computing/jobs/partitions.md
+        - Batch jobs: computing/jobs/batch-job.md
+        - Array jobs: computing/jobs/throughput.md
+        - Interactive Slurm jobs: computing/jobs/interactive.md
+        - Container jobs: software/containers/cray_mpich.md
+        - Distribution & binding options: computing/jobs/distribution-binding.md
+        - Python scheduled jobs: computing/jobs/python-jobs.md
+        - Julia scheduled jobs: software/containers/julia.md
+        # - Kubernetes as a scheculed job: computing/jobs/kubernetes-jobs.md
+      # - Interactive jobs (via Open Ondemand):
+      #   - Jupyterlab: computing/via-openondemand/jupyterlab.md
+      #   - RStudio: computing/via-openondemand/rstudio.md
+  #     - Serving containers: 
+  #       - Something about using LUMI-K: computing/serving_containers/using-lumik.md
   - Developing:
-    - Overview: development/index.md
+    - Developing and Monitoring:
+      - Overview: development/index.md
     - Compiling:
       - Programming environment: development/compiling/prgenv.md
       - Cray compilers: development/compiling/cce.md
+      - AMD compilers: development/compiling/amd.md
       - GNU compilers: development/compiling/gnu.md
-      - High performance libraries: development/compiling/libraries.md
+    - High performance libraries: 
+      - Cray libraries: development/compiling/libraries.md
+    - Optimizing for LUMI:
       - Using hugepages: development/compiling/hugepages.md
     - Debugging:
-      - Debugging: development/debugging/gdb4hpc.md
+      - Parallel debugging: development/debugging/gdb4hpc.md
       - Memory debugging: development/debugging/valgrind4hpc.md
       - Crash or deadlock: development/debugging/stat-atp.md
     - Performance analysis:
-      - Overview: development/profiling/index.md
+      - Performance analysis strategies: development/profiling/index.md
       - CrayPat: development/profiling/perftools.md
-  - Software:
-    - Overview: software/index.md
-    - Installing software:
-      - EasyBuild: software/installing/easybuild.md
-    - Containers:
-      - Container Wrapper: software/containers/wrapper.md
-      - MPI Container: software/containers/cray_mpich.md
-      - Julia Container: software/containers/julia.md
-    - Scientific Applications:
+      - Arm Forge: development/profiling/armforge.md
+    - Monitoring jobs: development/monitoring/index.md
+  - App guides:
+    - Overview: app_guides/overview.md
+    - Scientific applications:
       - VASP: software/packages/vasp.md
       - Quantum ESPRESSO: software/packages/quantumespresso.md
-  - Early Access Platform: eap/index.md
-  - Getting Help: 
+  - Help desk: 
     - Help desk: generic/helpdesk.md
+    - About LUST (LUMI User Support Team): generic/aboutLUST.md 
+    # - What is supported by LUST: generic/def-of-supported.md
+    - Tech support FAQ: generic/FAQ.md
+    - Training: generic/training.md
+    - Service breaks: generic/service-breaks.md
+    
  
 theme:
   name: material
@@ -97,7 +124,7 @@ theme:
   
   home_primary:
     title: Get Started
-    page: firststeps/getstarted/
+    page: firststeps/getstarted-new/
   home_secondary:
     title: To LUMI Main Page
     page: https://lumi-supercomputer.eu/
