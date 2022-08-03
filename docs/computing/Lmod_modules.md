@@ -15,6 +15,10 @@
     page, then the one on [the software stacks][softwarestacks] and then
     re-read this page as you will get more information out of it.
 
+Software on LUMI can be accessed through modules. With the help of the `module`
+command, you will be able to load and unload the desired compilers, tools and
+libraries.
+
 Software modules allow you to control which software and versions are available
 in your environment. Modules contain the necessary information to allow you to
 run a particular application or provide you access to a particular library so

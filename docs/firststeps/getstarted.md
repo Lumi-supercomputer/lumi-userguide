@@ -12,7 +12,7 @@ hide:
 [puttygen]: https://www.puttygen.com/#How_to_use_PuTTYgen
 [support]: https://lumi-supercomputer.eu/user-support/need-help/
 [registration]: ../accounts/registration.md
-[connecting]: ../computing/connecting.md
+[connecting]: ../connecting/connecting_.md
 [website-getstarted]: https://lumi-supercomputer.eu/get-started/
 [jump-ssh-key]: #setting-up-ssh-key-pair
 [eidas-eduid]: https://puhuri.neic.no/user_guides/myaccessid_registration/
