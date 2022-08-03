@@ -39,43 +39,70 @@
     }
   </style>
 
-  
+  <!-- <style>
+    body {
+      /* border: 1px solid black; */
+      margin-top: 1px;
+      margin-bottom: 1px;
+      margin-right: 200px;
+      margin-left: 1px;
+      background-color: rgb(203, 224, 243);
+    }
+    /* Hide navigation */
+    @media screen and (min-width: 76.25em) {
+      .md-sidebar--primary {
+        display: none;
+      }
+    }
+  </style>   -->
+
+
   <section class="tx-container">
-  
+
     <div class="md-grid md-typeset">
-      {% set greetings = config.theme.greetings %}
-      {% if greetings %}
-        <h1>{{ greetings }}</h1>
-      {% endif %}
-      <p>{{ config.site_description }}</p>
-      {% set primary = config.theme.home_primary %}
-      {% if primary %}
-        <a
-          href="{{ primary.page | url }}"
-          title="{{ primary.title | e }}"
-          class="md-button md-button--primary"
-        >
-          {{ primary.title }}
-        </a>
-      {% endif %}
-      <!-- {% set secondary = config.theme.home_secondary %}
-      {% if secondary %}
-        <a
-          href="{{ secondary.page | url }}"
-          title="{{ secondary.title | e }}"
-          class="md-button"
-        >
-          {{ secondary.title }}
-        </a>
-      {% endif %} -->
+ 
+      {{ page.content }}
+
+      <br />
+
+      <b><h1 align="center">
+        Welcome to the LUMI Documentation
+      </h1></b>
+
+      <p align="center">
+        <!-- You have landed on the home page of the documentation of the 3<sup>rd</sup> fastest supercomputer in the World! <br /> -->
+        
+        These pages contain instructions, user guides and tutorials for the use of the LUMI supercomputer.
+      </p>
+
+      <br />
+
+      <p align="center">
+        {% set primary = config.theme.home_primary %}
+        {% if primary %}
+          <a
+            href="{{ primary.page | url }}"
+            title="{{ primary.title | e }}"
+            class="md-button md-button--primary"
+          >
+            {{ primary.title }}
+          </a>
+        {% endif %}
+      </p>
+
       <div class="tx-hero">
         
         <div class="tx-hero__content__left">
-          <!-- {% set greetings = config.theme.greetings %}
+
+          <!-- 
+            
+          {% set greetings = config.theme.greetings %}
           {% if greetings %}
             <h1>{{ greetings }}</h1>
           {% endif %}
+
           <p>{{ config.site_description }}</p>
+          
           {% set primary = config.theme.home_primary %}
           {% if primary %}
             <a
@@ -86,7 +113,9 @@
               {{ primary.title }}
             </a>
           {% endif %}
+          
           {% set secondary = config.theme.home_secondary %}
+          
           {% if secondary %}
             <a
               href="{{ secondary.page | url }}"
@@ -95,24 +124,50 @@
             >
               {{ secondary.title }}
             </a>
-          {% endif %} -->
+          {% endif %} 
           
-          {{ page.content }}
+          -->
 
         </div>
         <div class="tx-hero__content__right">
-        
-          <!--{{ page.content }}-->
-          
+
           
         </div>
       </div>
     </div>
   </section>
+
+
+  <br />
+
+
+  <p align="center">
+  <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+    <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" />
+  </a>
+  <br />This work is licensed under a 
+  <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License
+  </a>
+  </p>
+
+  <!-- The block below is the same licence in compatct form -->
+
+  <!-- <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+    <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" />
+  </a>
+  <br />This work is licensed under a 
+  <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License
+  </a> -->
+
+
+  
+
 {% endblock %}
 
 
 {% block content %}{% endblock %}
+
+
 
 
 {% block footer %}{% endblock %}

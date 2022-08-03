@@ -1,7 +1,7 @@
----
+<!-- ---
 hide:
   - navigation
----
+--- -->
 
 [lmod]: ../computing/Lmod_modules.md
 [prgenv]: ../development/compiling/prgenv.md
