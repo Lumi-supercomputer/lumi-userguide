@@ -6,27 +6,27 @@ Quantum ESPRESSO (QE) is "an integrated suite of Open-Source computer codes for 
 
 ## Installing Quantum ESPRESSO
 
-We provide automatic installation scripts for several versions of QE. The procedure in general is described on the [EasyBuild page](../installing/easybuild.md). The step by step procedure to install QE  7.0 is:
+We provide automatic installation scripts for several versions of QE. The procedure in general is described on the [EasyBuild page](../installing/easybuild.md). The step by step procedure to install QE 7.1 is:
 
-1. Load the LUMI software environment: `module load LUMI/21.12`.
+1. Load the LUMI software environment: `module load LUMI/22.06`.
 2. Select the LUMI-C partition: `module load partition/C`.
 3. Load the EasyBuild module: `module load EasyBuild-user`.
 
 Then, you can run the install command:
 
-    eb QuantumESPRESSO-7.0-cpeGNU-21.12.eb -r
+    eb QuantumESPRESSO-7.1-cpeGNU-22.06.eb -r
 
-The installation takes ca 3 minutes. Afterwards, you will have a module called "QuantumESPRESSO/7.0.0-cpeGNU-21.12" installed in your home directory.
+The installation takes ca 3 minutes. Afterwards, you will have a module called "QuantumESPRESSO/7.1.0-cpeGNU-22.06" installed in your home directory.
 
-    module load QuantumESPRESSO/7.0.0-cpeGNU-21.12
+    module load QuantumESPRESSO/7.1.0-cpeGNU-22.06
 
-The usual QE binaries, `pw.x`, `ph.x` etc will now be in your PATH. Launch QE with e.g. `srun pw.x`. Please note that you must do `module load LUMI/21.12 partition/C` to see your Quantum Espresso module in the module system. The same applies to the SLURM batch scripts which you send to the compute nodes.
+The usual QE binaries, `pw.x`, `ph.x` etc will now be in your PATH. Launch QE with e.g. `srun pw.x`. Please note that you must do `module load LUMI/22.06 partition/C` to see your Quantum Espresso module in the module system. The same applies to the SLURM batch scripts which you send to the compute nodes.
 
 You can see other versions of QE that can be automatically installed by running the EasyBuild command
 
     eb -S QuantumESPRESSO
 
-or checking the [LUMI-EasyBuild-contrib](https://github.com/Lumi-supercomputer/LUMI-EasyBuild-contrib/tree/main/easybuild/easyconfigs/q/QuantumESPRESSO) repository on GitHub directly.
+or checking the [LUMI-EasyBuild-contrib](https://github.com/Lumi-supercomputer/LUMI-EasyBuild-contrib/tree/main/easybuild/easyconfigs/q/QuantumESPRESSO) repository on GitHub directly. It is generally recommended to use the latest version of Quantum Espresso compiled with the most current Cray programming environment. Older version often work, but may not run optimally as the system configuration (software, libraries, drivers, underlying hardware etc) may have changed since they originally built.
 
 ## Example batch scripts 
 
@@ -44,9 +44,8 @@ A typical batch job using 2 compute nodes and MPI only:
     #SBATCH -c 1
 
     export OMP_NUM_THREADS=1
-    ulimit -s unlimited
 
-    module load LUMI/21.12 partition/C QuantumESPRESSO/7.0.0-cpeGNU-21.12
+    module load LUMI/22.06 partition/C QuantumESPRESSO/7.1.0-cpeGNU-22.06
     srun pw.x -nk 4 -i gab128.in > gab128.out
 
 A typical batch job with MPI and 4 OpenMP threads per rank:
@@ -66,9 +65,7 @@ A typical batch job with MPI and 4 OpenMP threads per rank:
     export OMP_PLACES=cores
     export OMP_PROC_BIND=close
 
-    ulimit -s unlimited
-
-    module load LUMI/21.12 partition/C QuantumESPRESSO/7.0.0-cpeGNU-21.12
+    module load LUMI/22.06 partition/C QuantumESPRESSO/7.1.0-cpeGNU-22.06
     srun pw.x -nk 4 -i gab128.in > gab128.out
 
 ## Recommendations
@@ -92,7 +89,8 @@ A few more examples of CPU bind maps are given on the [Distribution and Bindind 
 
 **OpenMP parallelization can be used primarily to save memory**. It is automatically used when `OMP_NUM_THREADS` is set to something else than 1 in the job script. OpenMP seems to work with decent efficiency on LUMI-C. Try testing lower numbers of `OMP_NUM_THREADS` first, about 2-4. Typically you will get about the same speed as with MPI only for regular DFT calculations, maybe somewhat faster (5-10%). The main benefit, however, is considerably less memory usage, ca 20% less for DFT. We have not tested the effect on exact exchange or other higher order methods yet.
 
-**FFT task parallelization and pencil decomposition are both necessary when running a large number of cores per pool of k-points**. The `-ntg` flag alone seems to not work in recent versions of Quantum Espresso. You need to use it together with pencil decomposition (`-pd true`), which is an undocumented feature. Typically, small values of `-ntg` are sufficient to see any speed-up, for example `-ntg 2 -pd true`.
+**FFT task parallelization and pencil decomposition are both necessary when running a large number of cores per pool of k-points**. The `-ntg` flag alone seems to not work in recent versions of Quantum Espresso. You need to use it together with pencil decomposition (`-pd true`), which is an undocumented feature. Typically, small values of `-ntg` are sufficient to see speed-up, for example `-ntg 2 -pd true`, but you need to increase `-ntg` as the number of cores increases.
 
 **For sub-space diagonalization with SCALAPACK (the flag `-nd`), keeping the default (maximum) value is typically best.** Reducing it will typically just increase the runtime.
 
+**The RMM-DIIS diagonalization algorithm is significantly faster than the Davidson algorithm on LUMI**. This is the option `diagonalization=rmm-davidson` in the input file. For regular DFT, it can be 50% faster per SCF step, so it is worth trying out. As usual, the electronic convergence may not be as a stable as with the Davidson algorithm, so it depends on the use case whether there is a net gain.
