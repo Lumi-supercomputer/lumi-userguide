@@ -22,7 +22,7 @@ their specific purposes.
 | **Scratch**  | `/scratch/<project_name>`  | intended as temporary storage for input, output or checkpoint data of your application |
 | **Flash**    | `/flash/<project_name>`    | fast scratch space based on flash storage                                              |
 
-## Where to store data
+## Where to store data?
 
 From the table below you can get an overview of the available options for storage. Note
 that, except for the user home directory, data storage is allocated per project.
@@ -106,6 +106,15 @@ Requests that will be **rejected** include:
 In general, applications that generate a lot of small files per processes are 
 not well suited for LUMI. If you are the developer of such application, you 
 should consider tools like [HDF5][hdf5] or [SIONlib][sionlib].
+
+You can check the memory and file usage quotas of your projects with the following commands:
+
+```
+module load lumi-workspaces
+
+lumi-workspaces
+```
+
 
 ## Object Storage
 

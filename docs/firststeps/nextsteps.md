@@ -17,6 +17,16 @@
 [storing-data]: ../storage/storing-data.md
 [billing]: ../computing/jobs/billing.md
 [lustre]: ../storage/parallel/lustre.md
+[module-env]: ../computing/Lmod_modules.md
+[software]: ../computing/softwarestacks.md
+[app-guides]: ../app_guides/overview.md
+[helpdesk]: ../generic/helpdesk.md
+[LUST]: ../generic/aboutLUST.md
+[tFAQ]: ../generic/FAQ.md
+[training]: ../generic/training.md
+[service-breaks]: ../generic/service-breaks.md
+
+
 
 
 # Next steps
@@ -37,8 +47,8 @@ This page helps you to start navigating the different sections in this documenta
 - Info about the [LUMI partitions][Hardware]
 
 ## Software: 
-- How to set up your module environment
-- Learn about installing software on LUMI
+- How to set up your [module environment][module-env]
+- Learn about [LUMI software stacks][software] and installing software on LUMI
 
 ## Run jobs:
 - How to [run jobs on LUMI][running-jobs]
@@ -53,18 +63,15 @@ This page helps you to start navigating the different sections in this documenta
 - Monitoring jobs
 
 
-
-
 ## App guides:
-- Have in mind a specific application to run on LUMI? Check this section for help and best practices 
-
+- A specific application to run on LUMI? Check the [App guides][app-guides] section 
 
 ## Help desk:
-- Need help? 
-- Learn about the LUMI user support team and what do we give support for
-- See the most requently asked questions about using the LUMI comuting environment from our tech support FAQ
-- Learn about training courses and material about LUMI
-- Keep updated about service breaks
+- How to [get help][helpdesk] with using LUMI
+- [Learn about the LUMI user support team][LUST] and what we give support for
+- See the most requently asked questions about connecting to LUMI and using the LUMI comuting environment from our [tech support FAQ][tFAQ]
+- Learn about [training courses and material][training] about LUMI
+- Keep updated about [service breaks][service-breaks]
 
 
 </br>
