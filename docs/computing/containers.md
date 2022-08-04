@@ -6,6 +6,7 @@
 [docker-wiki]: https://en.wikipedia.org/wiki/Docker_(software)
 [apptainer]: https://apptainer.org/
 [apptainer-guide]: https://apptainer.org/docs/user/main/index.html
+[container-jobs]: ../software/containers/cray_mpich.md
 
 This section of the documentation describes briefly how to use singularity on
 LUMI 
@@ -67,9 +68,13 @@ vulnerabilities or even contain malicious code.
     export SINGULARITY_CACHEDIR=/tmp/$USER
     ```
 
-## Running a container
+<br />
 
-Once the image has been pulled, the container can be run. For instance, here we
+Once the image has been pulled, the container can be run. Check instructions for running containers at [container jobs][container-jobs].
+
+
+<!-- 
+For instance, here we
 check the version of Ubuntu running in the container
 
 ```bash
@@ -107,4 +112,4 @@ srun --partition=<partition> --account=<account> singularity exec \
 ## Application-specific container
 
  * [Running MPI applications within the container][cray_mpich]
- * [Running Julia within a container][julia]
+ * [Running Julia within a container][julia]  -->
