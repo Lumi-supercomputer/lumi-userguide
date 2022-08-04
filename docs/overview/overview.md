@@ -8,11 +8,11 @@
 }
 
 .lumi-overview p {
-  width: 50%;
+  width: 45%;
 }
 
 .lumi-overview figure {
-    width: 50%;
+    width: 55%;
   }
 
 @media (max-width: 740px) {
@@ -21,34 +21,45 @@
   }
 
   .lumi-overview p {
-    width: 100%;
+    width: 50%;
   }
 
   .lumi-overview figure {
-    width: 100%;
+    width: 50%;
   }
 }
 </style>
 
-# LUMI Overview
+# LUMI Hardware
 
 [lumi-c]: ../computing/systems/lumic.md
+[lumi-g]: ../computing/systems/lumig.md
 [lumi-d]: ../computing/systems/lumid.md
 [lumi-f]: ../storage/parallel/lumif.md
 [lumi-p]: ../storage/parallel/lumip.md
+[lumi-o]: ../storage/parallel/lumio.md
+[eap]: ../eap/index.md
 
+<!-- [LUMI-C : The CPU computing partition][lumi-c]
+
+[LUMI-G : The GPU computing partition][lumi-g]
+
+[LUMI-D : Data analytics and visualization on LUMI][lumi-d]
+
+[LUMI-F : The flash-based storage of LUMI][lumi-f]
+
+[LUMI-P : The parallel filesystem of LUMI][lumi-p]
+
+[LUMI-O : The object storage][lumi-o]
+
+<br /> 
+
+[LUMI-EAP : The GPU early Access Platform LUMI][eap] 
+
+-->
+
+<!-- 
 <div class="lumi-overview">
-  <p>
-    LUMI is one of the three European pre-exascale supercomputers. It's an 
-    HPE Cray EX supercomputer consisting of several partitions targeted for 
-    different use cases. The largest partition of the system is the "LUMI-G" 
-    partition consisting of GPU accelerated nodes using a future-generation AMD 
-    Instinct GPUs. In addition to this, there is a smaller CPU-only partition, 
-    "LUMI-C" that features AMD EPYC "Milan" CPUs and an auxiliary partition 
-    for data analytics with large memory nodes and some GPUs for data 
-    visualization. Besides partitions dedicated to computation, LUMI also offer 
-    several storage partitions for a total of 117 PB of storage space.
-  </p>
   <figure>
     <img 
       src="../../assets/images/lumi-snowflake.svg" 
@@ -57,45 +68,62 @@
       alt="LUMI from 3000 feets"
     >
   </figure>
+</div> -->
+
+<!-- <font size="-1">
+</font> -->
+
+
+LUMI is one of the three European pre-exascale supercomputers. It's an HPE Cray EX supercomputer consisting of several partitions targeted for different use cases. The largest partition of the system is the "LUMI-G" partition consisting of GPU accelerated nodes using a future-generation AMD Instinct GPUs. In addition to this, there is a smaller CPU-only partition, "LUMI-C" that features AMD EPYC "Milan" CPUs and an auxiliary partition for data analytics with large memory nodes and some GPUs for data 
+visualization. Besides partitions dedicated to computation, LUMI also offer several storage partitions for a total of 117 PB of storage space.
+
+
+<div class="lumi-overview">
+  <p>
+    <br>
+    <a href="../../computing/systems/lumic">LUMI-C : The CPU computing partition</a><br>
+    <a href="../../computing/systems/lumig">LUMI-G : The GPU computing partition</a><br>
+    <a href="../../computing/systems/lumid">LUMI-D : Data analytics and visualization</a><br>
+    <a href="../../storage/parallel/lumif">LUMI-F : The flash-based storage</a><br>
+    <a href="../../storage/parallel/lumip">LUMI-P : The parallel filesystem</a><br>
+    <!-- <a href="../../storage/parallel/lumio">LUMI-O : The object storage</a><br> -->
+    LUMI-O : The object storage
+    <br />
+    LUMI-K : Container orchestration platform
+    <br />
+    <br />
+    <a href="../../eap">LUMI-EAP : The GPU early Access Platform</a>
+  
+  </p>
+    <figure>
+    <img 
+      src="../../assets/images/lumi-snowflake.svg" 
+      width="100%" 
+      style="margin: 0 auto;"
+      alt="LUMI from 3000 feets"
+    >
+  </figure>  
 </div>
 
-## LUMI-C: The CPU Partition
+<!-- 
+[lumi-c]: ../computing/systems/lumic.md
+[lumi-d]: ../computing/systems/lumid.md
+[lumi-f]: ../storage/parallel/lumif.md
+[lumi-p]: ../storage/parallel/lumip.md
+[eap]: ../eap/index.md -->
 
-The LUMI-C partition consists of 1536 compute nodes with an estimated combined
-LINPACK performance of ca. 8 Petaflops. Each LUMI-C compute nodes are equipped 
-with 2 AMD EPYC 7763 CPUs with 64 cores each running at 2.5 GHz for a total 
-of 128 cores per node. The cores have support for 2-way simultaneous 
-multithreading (SMT) allowing for up to 256 threads per node.
 
-- [More information about LUMI-C][lumi-c]
+<!-- # LUMI Structure -->
+<!-- 
+[LUMI-C : The CPU computing partition][lumi-c]
 
-## LUMI-D: The Data Analytics Partition
+[LUMI-D : Data analytics and visualization on LUMI][lumi-d]
 
-LUMI-D is intended for interactive data analytics and visualization. It is also
-a good place run pre- and post-processing jobs that require a lot of memory. It
-consists of a 8 nodes with large memory capacity (4 TB) and 8 nodes with NVIDIA
-A40 GPUs. Each LUMI-D compute nodes are equipped with 2 AMD EPYC 7742 CPUs
-with 64 cores each running at 2.25 GHz for a total of 128 cores per node.
+[LUMI-F : The flash-based storage of LUMI][lumi-f]
 
-- [More information about LUMI-D][lumi-d]
+[LUMI-P : The parallel filesystem of LUMI][lumi-p]
 
-## LUMI-P and F: Parallel Filesystems
+[LUMI-EAP : The GPU early Access Platform LUMI][eap] -->
 
-LUMI has two Lustre parallel file systems consisting of:
 
-A main storage partition (LUMI-P) composed of 4 independent Lustre file systems
-with an aggregated performance of 240 GB/s and a 20 PB storage capacity each
 
-- [More information about LUMI-P][lumi-p]
-
-A flash storage partition (LUMI-F) optimized to support high IOPS rates with 
-an aggregated performance of 1740 GB/s and 7 PB of storage capacity
-
-- [More information about LUMI-F][lumi-f]
-
-## LUMI-O: The Object Storage
-
-Object storage is a data storage architecture that manages data as objects 
-instead of a file hierarchy. Each object includes the data, the metadata and a
-globally unique identifier. This partition may be used for storing, sharing and
-staging your data. It's based on Ceph and has a storage capacity of 30 PB.

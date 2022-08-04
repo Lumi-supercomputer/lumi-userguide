@@ -1,13 +1,56 @@
-# Containerized MPI applications
+# Container jobs
+
+## Running a container
+
+Here, for instance, we check the version of Ubuntu running in the container
+
+```bash
+srun --partition=<partition> --account=<account> singularity exec \
+     ubuntu_21.04.sif cat /etc/os-release
+```
+
+This prints
+
+```
+NAME="Ubuntu"
+VERSION="21.04 (Hirsute Hippo)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 21.04"
+VERSION_ID="21.04"
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+VERSION_CODENAME=hirsute
+UBUNTU_CODENAME=hirsute
+```
+
+By default, some file system partitions, such as `/scratch`,`/project` are not
+accessible from the container. To make them available, they need to be
+explicitly bound by passing the `-B/--bind` command line option to 
+`singularity exec/run`. For instance
+
+```bash
+srun --partition=<partition> --account=<account> singularity exec \
+     -B /scratch/<account> ubuntu_21.04.sif ls /scratch/<account>
+```
+
+<!-- ## Application-specific container
+
+ * [Running MPI applications within the container][cray_mpich] -->
+
+
+## Running containerized MPI applications
 
 [software_installing]: ../../software/installing/easybuild.md
 [mpich-abi]: https://www.mpich.org/abi/
 [permedcoe-mpi]: https://permedcoe.github.io/mpi-in-container
 [osu-benchmark]: https://mvapich.cse.ohio-state.edu/benchmarks/
 
-## Using the host MPI
+### Using the host MPI
 
-### Binding to the host
+#### Binding to the host
 
 Containerized MPI applications can be run with Singularity. However, in order to
 properly make use of LUMI's high-speed network, it is necessary to mount a few
@@ -27,7 +70,7 @@ That will create the module `singularity-bindings/system-cpeGNU-<toolchain-versi
 More information on installing software with EasyBuild can be found
 [here][software_installing].
 
-### Create a container compatible with LUMI
+#### Create a container compatible with LUMI
 
 Let's consider a simple example to see how to use the `singularity-bindings` to
 run a containerized MPI application. 
@@ -120,7 +163,7 @@ which gives the bandwidth measured for different message sizes
 4194304             12242.46
 ```
 
-## Using the container MPI
+### Using the container MPI
 
 MPI applications can be run without replacing the container's MPI. To do so,
 Slurm needs to be instructed to use the PMI-2 process management interface by
@@ -166,3 +209,5 @@ compared to the results obtained when using the host's MPI.
 
 For a higher-level overview, you can read a [tutorial on MPI in
 containers][permedcoe-mpi].
+
+
