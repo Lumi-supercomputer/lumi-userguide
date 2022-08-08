@@ -196,6 +196,7 @@ pass a pointer to memory allocated on the GPU to the MPI calls. This MPI
 implementation can be used by loading the `cray-mpich` module loaded.
 
 ```
+module load CrayEnv
 module load craype-accel-amd-gfx90a
 module load cray-mpich
 module load rocm
