@@ -25,6 +25,7 @@
 [tFAQ]: ../generic/FAQ.md
 [training]: ../generic/training.md
 [service-breaks]: ../generic/service-breaks.md
+[eap]: ../eap/index.md
 
 
 
@@ -45,6 +46,7 @@ This page helps you to start navigating the different sections in this documenta
 ## Hardware:        
 - The [Lustre file system][lustre]
 - Info about the [LUMI partitions][Hardware]
+- Info about the [Early access platform][eap]
 
 ## Software: 
 - How to set up your [module environment][module-env]
