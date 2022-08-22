@@ -92,9 +92,10 @@ nav:
   - Help desk: 
     - Help desk: generic/helpdesk.md
     - About LUST (LUMI User Support Team): generic/aboutLUST.md 
-    # - What is supported by LUST: generic/def-of-supported.md
     - Tech support FAQ: generic/FAQ.md
+    - Known issues: issues/index.md
     - Training: generic/training.md
+    - Monthly coffee breaks: generic/coffeebreaks.md
     - Service breaks: generic/service-breaks.md
     
  
