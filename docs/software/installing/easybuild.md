@@ -70,17 +70,24 @@ selected version of the LUMI software stack and partition when you do `module av
 and `module spider` will also search those directories.
 
 The second step is to ensure that the right version of the software stack is loaded.
-Assume that we want to install software in the `LUMI/21.08` stack, then one needs to
+Assume that we want to install software in the `LUMI/22.06` stack, then one needs to
 execute
 ```bash
-module load LUMI/21.08
+module load LUMI/22.06
 ```
 This should also automatically load the right `partition` module for the part of LUMI
 you are on. See also the [page on the software stacks][softwarestacks].
 
-??? Failure "Issue: Only partition/L and partition/C are currently supported"
-    Note that in the initial version of the software stack, only `partition/L`
-    and `partition/C` are supported.
+??? Failure "Issue: Only partition/L and partition/C are currently fully supported"
+    Note that in the initial versions of the software stack, only `partition/L`
+    and `partition/C` are supported. The `partition/EAP` module is for the Early
+    Access Platform based on the MI100 GPUs. This early access platform is meant for
+    developers and the LUMI User Support Team does not do any software installations 
+    there beyond the basic build tools provided there. 
+    The `partition/G` module is for all MI250X nodes, wether in the regular LUMI-G
+    partition or in the temporary second early access platform, snd similarly is only
+    meant for users who install their own software and not supported by the LUMI
+    User Support Team except for basic build tools until after the LUMI-G pilot phase.
 
 Though it is technically possible to cross-compile software for a different partition,
 it may not be without problems as not all install scripts that come with software
@@ -106,20 +113,22 @@ eb --show-config
 Now an EasyBuild build recipe is a file with a name that consists of different
 components. Consider, e.g., the build recipe
 ```
-GROMACS-2021-cpeGNU-21.08-PLUMED-2.7.2-CPU.eb
+GROMACS-2021.4-cpeGNU-22.06-PLUMED-2.7.4-CPU.eb
 ```
 The first part of the name, `GROMACS`, is the name of the package. The second
-part of the name, `2021` is the version of GROMACS, in this case the initial
-2021 release. The next part, `cpeGNU-21.08`, denotes the so-called * toolchain*
+part of the name, `2021.4` is the version of GROMACS, in this case the initial
+2021 release. The next part, `cpeGNU-22.06`, denotes the so-called *toolchain*
 used for the build. The `cpeGNU` toolchain uses the `PrgEnv-gnu` programming
-environment, the `cpeCray` toolchain the `PrgEnv-cray` PE and the `cpeAOCC`
-toolchain the `PrgEnv-aocc` environment. The version of the toolchain should
+environment, the `cpeCray` toolchain the `PrgEnv-cray` PE, the `cpeAOCC`
+toolchain the `PrgEnv-aocc` environment and the `cpeAMD` toolchain the
+`PrgEnv-amd` environment. 
+The version of the toolchain should
 match the version of the LUMI software stack or the installation will fail.
 (In fact, it is not just the version in the file name that should match but
 the version of the toolchain that is used in the recipe file.) The next part
-of the name, `-PLUMED-21.7.2-CPU`, is called the version suffix. Version suffixes
+of the name, `-PLUMED-2.7.4-CPU`, is called the version suffix. Version suffixes
 are typically used to distinguish different builds of the same version of the
-package. In this case, it indicates that it is a build of the 2021 version
+package. In this case, it indicates that it is a build of the 2021.4 version
 purely for CPU and also includes PLUMED as we have also builds without
 PLUMED (which is not compatible with every GROMACS version).
 
@@ -133,7 +142,7 @@ If all needed EasyBuild
 recipes are in one of those repository or in the current
 directory, all you need to do to install the package is to run
 ```bash
-eb -r . GROMACS-2021-cpeGNU-21.08-PLUMED-2.7.2-CPU.eb
+eb -r . GROMACS-2021.4-cpeGNU-22.06-PLUMED-2.7.4-CPU.eb
 ```
 The `-r` tells EasyBuild to also install dependencies that may not yet be installed,
 and with the dot added to it, to also add the current directory to the front of the
@@ -143,7 +152,7 @@ before installing the package (which may be very useful if building right away f
 
 If you now type `module avail` you should see the
 ```
-GROMACS/2021-cpeGNU-21.08-PLUMED-2.7.2-CPU
+GROMACS/2021.4-cpeGNU-22.06-PLUMED-2.7.4-CPU
 ```
 module in the list. Note the relation between the name of the EasyBuild recipe and
 the module name and version of the module. This is only the case though if the EasyBuild
@@ -170,13 +179,14 @@ Three toolchains are currently implemented
   - `cpeGNU` is the equivalent of the Cray `PrgEnv-gnu` programming environment
   - `cpeCray` is the equivalent of the Cray `PrgEnv-cray` programming environment
   - `cpeAOCC` is the equivalent of the Cray `PrgEnv-aocc` programming environment
+  - `cpeAMD` is the equivalent of the Cray `PrgEnv-amd` programming environment
 
-All three toolchains use `cray-mpich` over the Open Fabric Interface library
+All four toolchains use `cray-mpich` over the Open Fabric Interface library
 (`craype-network-ofi`) and Cray LibSci for the mathematical libraries, with the
 releases taken from the Cray PE release that corresponds to the version number of the
 `cpeGNU`, `cpeCray` or `cpeAOCC` module.
 
-??? note "cpeGNU/Cray/AOCC and PrgEnv-gnu/cray/aocc"
+??? note "cpeGNU/Cray/AOCC/AMD and PrgEnv-gnu/cray/aocc/amd"
     Currently the `cpeGNU`, `cpeCray` and `cpeAOCC` modules don't load the corresponding
     `PrgEnv-*` modules nor the `cpe/<version>` modules. This is because in the current
     setup of LUMI both modules have their problems and the result of loading those
@@ -218,7 +228,7 @@ particular the page ["Adding an existing project to GitHub using the command lin
 
 Technical documentation on the toolchains on LUMI and the directory structure of EasyBuild
 can be found in
-[the documentation of the LUMI-SoftwareStack GitHub repository](https://github.com/Lumi-supercomputer/LUMI-SoftwareStack/tree/main/docs).
+[the documentation of the LUMI-SoftwareStack GitHub repository](https://lumi-supercomputer.github.io/LUMI-SoftwareStack/).
 
 
 ## Further reading
@@ -236,7 +246,7 @@ we suggest the following sources of information:
       - [Part 2: Using EasyBuild](https://www.youtube.com/watch?v=C3S8aCXrIMQ)
       - [Part 3: Advanced topics](https://www.youtube.com/watch?v=KbcvHa4uO1Y)
       - [Part 4: EasyBuild on Cray systems](https://www.youtube.com/watch?v=uRu7X_fJotA)
-  - [Technical documentation on our setup for developers](https://github.com/Lumi-supercomputer/LUMI-SoftwareStack/tree/main/docs)
+  - [Technical documentation on our setup for developers](https://lumi-supercomputer.github.io/LUMI-SoftwareStack/)
   - LUMI EasyBuild recipes
       - [Main LUMI software stack GitHub repository](https://github.com/Lumi-supercomputer/LUMI-SoftwareStack)
         contains the full EasyBuild setup for LUMI, including the EasyBuild recipes
