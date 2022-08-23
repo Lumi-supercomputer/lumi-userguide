@@ -25,19 +25,22 @@
 To start using the LUMI supercomputer, please follow the steps 1-5:
 
 <ol>
-<b><li> Get <a href="../accessLUMI">a user account</a>
+<b>
+<li> Get <a href="../accessLUMI">a user account</a>
 </li>
 <br />
 <li> Set up an <a href="../SSH-keys">SSH key pair</a>
 </li>
 <br />
-<li> Log in with one of your choice:
+<!-- <li> Log in with one of your choice:
   <ul> 
     <li> <a href="../loggingin">SSH client</a></li> 
-    <!-- <li> <a href="../openondemand">Web interface</a></li> -->
     <li>Web interface (available later this year)</li>
   </ul>
-</li>
+</li> -->
+
+<li> <a href="../loggingin">Log in</a></li> 
+
 <br />
 <li> If applicable, <a href="../../storage/moving/scp-rsync">move your data</a> to/from LUMI
 </li>

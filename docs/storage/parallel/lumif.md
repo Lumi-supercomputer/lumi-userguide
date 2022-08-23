@@ -1,6 +1,7 @@
 # Flash based Scratch Space
 
 [lustre]: lustre.md
+[lumi-p]: lumip.md
 
 !!! failure "LUMI-F unavailable until summer 2022"
 
@@ -9,7 +10,9 @@
 
 ## Description
 
-The LUMI flash based scratch [Lustre][lustre] file system has a storage capacity
+Note that the information provided on the LUMI-P page about the [Lustre](lumip.md#lustre) file system also applies on LUMI-F.
+
+The LUMI flash based scratch Lustre file system has a storage capacity
 of 7 PB and an aggregate bandwidth of 1 740 GB/s. It is composed of 2 MDSs 
 (metadata servers) and 58 Object Storage Targets (OSTs).
 
@@ -24,8 +27,7 @@ million files. If you need more space, this quota can be pushed up to 100 TB
 upon request. However, if you are limited by the quota on the number of files, 
 we invite you to reconsider your data workflow. Having a large number of small
 files can creates contention at the metadata servers and may limit the 
-performance due to limited striping (more explanation is provided on the 
-[Lustre][lustre] page).
+performance due to limited striping (more explanation is provided on the LUMI-P page in the [Lustre](lumip.md#lustre) section).
 
 !!! warning "Flash is billed at a 10x rate"
 

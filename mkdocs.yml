@@ -24,13 +24,13 @@ nav:
       - Data analytics nodes - LUMI-D: computing/systems/lumid.md
       - Early access platform: eap/index.md
     - Storage:
-      - Lustre file system: storage/parallel/lustre.md
+      # - Lustre file system: storage/parallel/lustre.md
       - Main storage - LUMI-P: storage/parallel/lumip.md
       - Flash storage - LUMI-F: storage/parallel/lumif.md
-      # - Object storage - LUMI-O: storage/parallel/lumio.md
-    - Interconnect: computing/interconnect.md
-    # - Auxiliary platforms:
-    #   - Container Orchestration Platform - LUMI-K: computing/auxiliary/lumik.md
+      - Object storage - LUMI-O: storage/object/index.md
+    # - Interconnect: computing/interconnect.md
+    - Auxiliary platforms:
+      - Container Orchestration Platform - LUMI-K: computing/auxiliary/lumik.md
   - Software:
     - Overview: software/index.md
     - Setup your Environment:
@@ -38,7 +38,7 @@ nav:
       - Software stacks: computing/softwarestacks.md
     - Installing software:
       - EasyBuild: software/installing/easybuild.md
-      - Python: software/installing/python.md
+      # - Python: software/installing/python.md
       - Container wrapper: software/containers/wrapper.md
     - Containers: 
       - Singularity/Apptainer containers: computing/containers.md
@@ -55,7 +55,7 @@ nav:
         - Interactive Slurm jobs: computing/jobs/interactive.md
         - Container jobs: software/containers/cray_mpich.md
         - Distribution & binding options: computing/jobs/distribution-binding.md
-        - Python scheduled jobs: computing/jobs/python-jobs.md
+        # - Python scheduled jobs: computing/jobs/python-jobs.md
         - Julia scheduled jobs: software/containers/julia.md
         # - Kubernetes as a scheculed job: computing/jobs/kubernetes-jobs.md
       # - Interactive jobs (via Open Ondemand):
@@ -69,7 +69,7 @@ nav:
     - Compiling:
       - Programming environment: development/compiling/prgenv.md
       - Cray compilers: development/compiling/cce.md
-      - AMD compilers: development/compiling/amd.md
+      # - AMD compilers: development/compiling/amd.md
       - GNU compilers: development/compiling/gnu.md
     - High performance libraries: 
       - Cray libraries: development/compiling/libraries.md
@@ -82,8 +82,8 @@ nav:
     - Performance analysis:
       - Performance analysis strategies: development/profiling/index.md
       - CrayPat: development/profiling/perftools.md
-      - Arm Forge: development/profiling/armforge.md
-    - Monitoring jobs: development/monitoring/index.md
+      # - Arm Forge: development/profiling/armforge.md
+    # - Monitoring jobs: development/monitoring/index.md
   - App guides:
     - Overview: app_guides/overview.md
     - Scientific applications:
@@ -91,12 +91,12 @@ nav:
       - Quantum ESPRESSO: software/packages/quantumespresso.md
   - Help desk: 
     - Help desk: generic/helpdesk.md
-    - About LUST (LUMI User Support Team): generic/aboutLUST.md 
-    - Tech support FAQ: generic/FAQ.md
+    # - About LUST (LUMI User Support Team): generic/aboutLUST.md 
+    # - Tech support FAQ: generic/FAQ.md
     - Known issues: issues/index.md
-    - Training: generic/training.md
-    - Monthly coffee breaks: generic/coffeebreaks.md
-    - Service breaks: generic/service-breaks.md
+    # - Training: generic/training.md
+    # - Monthly coffee breaks: generic/coffeebreaks.md
+    # - Service breaks: generic/service-breaks.md
     
  
 theme:
