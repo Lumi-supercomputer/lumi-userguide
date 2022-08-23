@@ -1,4 +1,4 @@
-[terms-of-use]: https://www.lumi-supercomputer.eu/lumi-general-terms-of-use_1-0/
+<!-- [terms-of-use]: https://www.lumi-supercomputer.eu/lumi-general-terms-of-use_1-0/
 [support-account]: https://lumi-supercomputer.eu/user-support/need-help/account/
 [myaccessid-profile]: https://mms.myaccessid.org/profile/
 [mycsc-profile]: https://my.csc.fi/
@@ -8,59 +8,28 @@
 [connecting]: ../connecting/connecting_.md
 [website-getstarted]: https://lumi-supercomputer.eu/get-started/
 [jump-ssh-key]: #logging-in
-[eidas-eduid]: https://puhuri.neic.no/user_guides/myaccessid_registration/
+[eidas-eduid]: https://puhuri.neic.no/user_guides/myaccessid_registration/ -->
+
+[helpdesk]: ../generic/helpdesk.md
+
 
 # How to log in
 
-This page contains info for how to connect to LUMI with an ssh client. The page also contains some additional tips&tricks on how to setup your machine to access LUMI and for troubleshooting in case of connecting problems.
 
-## Connecting
-
-Connect using an ssh client:
-
-```
-ssh -i<path-to-private-key> <username>@lumi.csc.fi
-```
-
-where you need to replace `username` with your own username, which you received
-via email when you account is created in the identity manager. There may be a
-10-15 minute delay before your account is before your account is actually
-created on LUMI, be patient. If after this delay you cannot connect, please
-contact the [support][support-account].
-
-Your username can also be retrieved via the different portals, depending on 
-your resource allocator:
-
-- the Puhuri Portal by clicking on the **Remote accounts** in the left menu
-- myCSC by clicking on **My Profile** in the left menu
-- the SUPR portal under **Account > Existing Accounts**
-
-## More information on how to setup SSH for LUMI 
-
-[getstarted]: ./firststeps/getstarted.md
-[account-support]: https://lumi-supercomputer.eu/user-support/need-help/account/
-
-
-The rest of this page contains some more details on how to configure your machine to access 
-LUMI. You can do additional setup, like adding your key to an agent or setting up a shortcut for LUMI in your SSH configuration.
-
-<!-- However, it does not cover the first necessary steps to connect to LUMI
-like how to generate a key pair and setup your public SSH key on your MyAccessID
-profile. Instruction on how to do that can be found [here][getstarted].  -->
-
-### From the command line
+<!-- ## Connecting -->
 
 Connecting to LUMI via the command line is possible from all major OS. Once you 
 have generated your key pair and setup your public SSH key on your 
-MyAccessID profile, you can connect with
+MyAccessID profile, you can connect using an ssh client:
 
 ```
 ssh -i<path-to-private-key> <username>@lumi.csc.fi
 ```
 
-where you have to replace `<path-to-private-key>` and `<username>` with the 
-appropriate values. You should have received your user name via email. If not, 
-please [contact the support][account-support].
+where you need to replace `<path-to-private-key>` with the path to the file which contains your private key and `<username>` with with your own username.
+<!-- the appropriate values.  -->
+You should have received your user name via email when your account is created in the identity manager. There may be a 10-15 minute delay before your account is actually created on LUMI, be patient. If after this delay you cannot connect, please contact the [support][helpdesk].
+
 
 You will be prompted for the passphrase of the SSH key 
 which is the one you entered when you generated the key. When you connect for 
@@ -74,6 +43,18 @@ login nodes are listed in the table below.
 | SHA256    | `hY4mnRCYb8bRchTnVcFo7SqoHHHEsUh9Ym38F4sHN1Y`     |
 
 
+Your username can also be retrieved via the different portals, depending on 
+your resource allocator:
+
+- the Puhuri Portal by clicking on the **Remote accounts** in the left menu
+- myCSC by clicking on **My Profile** in the left menu
+- the SUPR portal under **Account > Existing Accounts**
+
+
+
+<!-- ## More information on how to setup SSH for LUMI  -->
+
+<!-- 
 ### Add your key to your agent
 
 If you chose a strong passphrase for your key, what you should have done, it 
@@ -117,9 +98,11 @@ ssh lumi
 ```
 
 This configuration will also influence the behaviour of any program that uses 
-SSH git, scp, and rsync.
+SSH git, scp, and rsync. -->
 
-### Troubleshooting
+<br />
+
+# Troubleshooting
 
 If you have trouble connecting to LUMI, you can run the SSH client with verbose
 output enabled.

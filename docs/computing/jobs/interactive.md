@@ -1,4 +1,6 @@
-# Interactive Usage
+<!-- # Interactive Usage -->
+
+# Interactive Slurm jobs
 
 [sbatch-options]: ./batch-job.md#common-slurm-options
 
