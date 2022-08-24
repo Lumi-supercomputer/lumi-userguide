@@ -1,79 +1,49 @@
-
-
-[terms-of-use]: https://www.lumi-supercomputer.eu/lumi-general-terms-of-use_1-0/
-[support-account]: https://lumi-supercomputer.eu/user-support/need-help/account/
-[myaccessid-profile]: https://mms.myaccessid.org/profile/
-[mycsc-profile]: https://my.csc.fi/
-[puttygen]: https://www.puttygen.com/#How_to_use_PuTTYgen
-[support]: https://lumi-supercomputer.eu/user-support/need-help/
-[registration]: ../accounts/registration.md
-[connecting]: ../connecting/connecting_.md
-[website-getstarted]: https://lumi-supercomputer.eu/get-started/
-[jump-ssh-key]: #setting-up-ssh-key-pair
-[eidas-eduid]: https://puhuri.neic.no/user_guides/myaccessid_registration/
+---
+hide:
+# - navigation
+  - toc
+---
 
 [running-jobs]: ../runjobs/overview.md
 [Hardware]: ../overview/overview.md
-[storing-data]: ../storage/storing-data.md
-[billing]: ../computing/jobs/billing.md
-[lustre]: ../storage/parallel/lustre.md
-[module-env]: ../computing/Lmod_modules.md
-[software]: ../computing/softwarestacks.md
-[app-guides]: ../app_guides/overview.md
 [helpdesk]: ../generic/helpdesk.md
-[LUST]: ../generic/aboutLUST.md
-[tFAQ]: ../generic/FAQ.md
-[training]: ../generic/training.md
-[service-breaks]: ../generic/service-breaks.md
-[eap]: ../eap/index.md
-
-
+[software]: ../software/index.md
+[development]: ../development/index.md
 
 
 # Next steps
 
 
 
-<!-- Great! Reaching this page hopefully means that you can now log in to LUMI environment and know your way around with moving data to/from LUMI. -->
-
-This page helps you to start navigating the different sections in this documentation with listing some key points in each topic:
+<!-- Great! Reaching this page hopefully means that you can now log in to LUMI environment and know your way around with moving data to/from LUMI. 
 
 
-<!-- Below is a short listing what you can find from each section: -->
+-->
+
+<!-- This page helps you to start navigating the different sections in this documentation with listing some key points in each topic: -->
+
+<!-- Great! Now you are ready to start learning about the LUMI environment and how to work in it. On this page are given short descriptions of each menu topic of this documenation. -->
+
+This is a short introduction to the other menu topics in this documentation:
 
 
-
-## Hardware:        
-- The [Lustre file system][lustre]
-- Info about the [LUMI partitions][Hardware]
-- Info about the [Early access platform][eap]
-
-## Software: 
-- How to set up your [module environment][module-env]
-- Learn about [LUMI software stacks][software] and installing software on LUMI
-
-## Run jobs:
-- How to [run jobs on LUMI][running-jobs]
-- [Where to store data][storing-data]
-- [Billing of jobs and storage space][billing]
+- To get to know the LUMI system architecture and different partitions available on LUMI, continue to the [**Hardware**][Hardware] section.
 
 
-## Developing:
-- [Programming environments on LUMI](../development/compiling/prgenv.md)
-- [Tools for debugging](../development/debugging/gdb4hpc.md)
-- [Profile your code for better performance](../development/profiling/index.md)
-- Monitoring jobs
+- To learn how to work in LUMI module environment and how to run jobs on LUMI, read more in the [**Run jobs**][running-jobs] section. Under this menu topic you can also find information about billing and data storage options.  
 
+- To find out about the LUMI software stacks and how to install software on LUMI, go to the [**Software**][software] section. Under this menu topic there are also some tutorials for scientific applications.
 
-## App guides:
-- A specific application to run on LUMI? Check the [App guides][app-guides] section 
+- For compiling, developing and optimizing your code on LUMI, read more in the [**Developing**][development] section. 
 
-## Help desk:
-- How to [get help][helpdesk] with using LUMI
-- [Learn about the LUMI user support team][LUST] and what we give support for
+- For getting in contact with the LUMI user support team, visit the [**Helpdesk**][helpdesk] page
+
+<!-- - How to [get help][helpdesk] with using LUMI -->
+
+<!-- - [Learn about the LUMI user support team][LUST] and what we give support for
 - See the most requently asked questions about connecting to LUMI and using the LUMI comuting environment from our [tech support FAQ][tFAQ]
 - Learn about [training courses and material][training] about LUMI
-- Keep updated about [service breaks][service-breaks]
+- Keep updated about [service breaks][service-breaks] -->
 
 
 </br>

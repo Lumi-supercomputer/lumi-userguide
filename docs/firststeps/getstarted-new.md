@@ -35,7 +35,9 @@ To start using the LUMI supercomputer, please follow the steps 1-5:
 
 4. If applicable, [move your data][move-data] to/from LUMI
 
-5. Check the [Next steps][nextsteps] for getting most out of this documentation
+5. Check the [Next steps][nextsteps] for a short introduction to the other menu topics
+
+<!-- for getting most out of this documentation -->
 
 
 

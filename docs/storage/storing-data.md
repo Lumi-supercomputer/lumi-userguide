@@ -11,8 +11,8 @@
 
 ## LUMI disk areas
 
-On LUMI, there are several disk areas: home, projects, scratch (LUMI-P) and fast 
-flash-backed scratch (LUMI-F). Please familiarize yourself with the areas and 
+On LUMI, there are several disk areas: home, projects, scratch ([LUMI-P][lumip]) and fast 
+flash-backed scratch ([LUMI-F][lumif]). Please familiarize yourself with the areas and 
 their specific purposes.
 
 |              | Path                       | Description                                                                            |
@@ -57,8 +57,9 @@ more space if needed.
     checkpoint data of your application. LUMI offers 2 types of scratch storage
     solution: LUMI-P with spinning disks and LUMI-F based on flash storage.
 
-- [Learn more about Lustre][lustre]
-- [Learn more about the Project Scratch storage][lumip]
+<!-- - [Learn more about Lustre][lustre] -->
+
+- [Learn more about the Project Scratch storage and Lustre][lumip]
 - [Learn more about the Project Fast storage][lumif]
 
 !!! failure "LUMI-F unavailable until summer 2022"

@@ -30,7 +30,8 @@
 }
 </style>
 
-# LUMI Hardware
+<!-- # LUMI Hardware -->
+# Overview
 
 [lumi-c]: ../computing/systems/lumic.md
 [lumi-g]: ../computing/systems/lumig.md
@@ -84,13 +85,14 @@ visualization. Besides partitions dedicated to computation, LUMI also offer seve
     <a href="../../computing/systems/lumic">LUMI-C : The CPU computing partition</a><br>
     <a href="../../computing/systems/lumig">LUMI-G : The GPU computing partition</a><br>
     <a href="../../computing/systems/lumid">LUMI-D : Data analytics and visualization</a><br>
-    <a href="../../storage/parallel/lumif">LUMI-F : The flash-based storage</a><br>
     <a href="../../storage/parallel/lumip">LUMI-P : The parallel filesystem</a><br>
-    <!-- <a href="../../storage/parallel/lumio">LUMI-O : The object storage</a><br> -->
-    LUMI-O : The object storage
+    <a href="../../storage/parallel/lumif">LUMI-F : The flash-based storage</a><br>
+    <a href="../../storage/object">LUMI-O : The object storage</a><br>
+    <a href="../../computing/auxiliary/lumik">LUMI-K : Container orchestration platform</a><br>
+    <!-- LUMI-O : The object storage
     <br />
     LUMI-K : Container orchestration platform
-    <br />
+    <br /> -->
     <br />
     <a href="../../eap">LUMI-EAP : The GPU early Access Platform</a>
   
@@ -104,26 +106,6 @@ visualization. Besides partitions dedicated to computation, LUMI also offer seve
     >
   </figure>  
 </div>
-
-<!-- 
-[lumi-c]: ../computing/systems/lumic.md
-[lumi-d]: ../computing/systems/lumid.md
-[lumi-f]: ../storage/parallel/lumif.md
-[lumi-p]: ../storage/parallel/lumip.md
-[eap]: ../eap/index.md -->
-
-
-<!-- # LUMI Structure -->
-<!-- 
-[LUMI-C : The CPU computing partition][lumi-c]
-
-[LUMI-D : Data analytics and visualization on LUMI][lumi-d]
-
-[LUMI-F : The flash-based storage of LUMI][lumi-f]
-
-[LUMI-P : The parallel filesystem of LUMI][lumi-p]
-
-[LUMI-EAP : The GPU early Access Platform LUMI][eap] -->
 
 
 

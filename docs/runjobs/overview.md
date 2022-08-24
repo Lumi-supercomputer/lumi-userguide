@@ -1,4 +1,4 @@
-# Overview of Running Jobs on LUMI
+# Overview
 
 When you log in to LUMI, you end up on one of the login nodes. These login nodes
 are shared by all users and they are not intended for heavy computing.
