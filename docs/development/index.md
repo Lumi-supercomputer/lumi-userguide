@@ -4,7 +4,7 @@ title: Development - Overview
 
 # Overview
 
-This section of the documentation aims to help the users that wants to compile, 
+This part of the documentation aims to help the users who want to compile, 
 develop and optimize their code on LUMI. It contains information on how to 
 compile, debug and profile your application. 
 

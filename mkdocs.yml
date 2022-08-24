@@ -17,7 +17,7 @@ nav:
     - Moving data to/from LUMI: storage/moving/scp-rsync.md
     - Next steps: firststeps/nextsteps.md
   - Hardware:
-    - Hardware overview: overview/overview.md
+    - Overview: overview/overview.md
     - Compute nodes:
       - CPU nodes - LUMI-C: computing/systems/lumic.md
       - GPU nodes - LUMI-G: computing/systems/lumig.md
@@ -31,22 +31,13 @@ nav:
     # - Interconnect: computing/interconnect.md
     - Auxiliary platforms:
       - Container Orchestration Platform - LUMI-K: computing/auxiliary/lumik.md
-  - Software:
-    - Overview: software/index.md
-    - Setup your Environment:
-      - Module Environment: computing/Lmod_modules.md
-      - Software stacks: computing/softwarestacks.md
-    - Installing software:
-      - EasyBuild: software/installing/easybuild.md
-      # - Python: software/installing/python.md
-      - Container wrapper: software/containers/wrapper.md
-    - Containers: 
-      - Singularity/Apptainer containers: computing/containers.md
-    # - License server: computing/license-server.md
   - Run jobs:
       - Overview: runjobs/overview.md
-      - Data storage options: storage/storing-data.md
       - Billing: computing/jobs/billing.md
+      - Setup your Environment:
+        - Data storage options: storage/storing-data.md
+        - Module Environment: computing/Lmod_modules.md
+        - Software stacks: computing/softwarestacks.md
       - Scheduled jobs - SLURM jobs:      
         - Slurm Quickstart: computing/jobs/slurm-quickstart.md
         - Available partitions: computing/jobs/partitions.md
@@ -63,9 +54,23 @@ nav:
       #   - RStudio: computing/via-openondemand/rstudio.md
   #     - Serving containers: 
   #       - Something about using LUMI-K: computing/serving_containers/using-lumik.md
+  - Software:
+    - Overview: software/index.md
+    - Installing software:
+      - EasyBuild: software/installing/easybuild.md
+      # - Python: software/installing/python.md
+      - Container wrapper: software/containers/wrapper.md
+    - Containers: 
+      - Singularity/Apptainer containers: computing/containers.md
+    # - License server: computing/license-server.md
+    - Software guides:
+      # - Overview: app_guides/overview.md
+      # - Scientific applications:
+      - VASP: software/packages/vasp.md
+      - Quantum ESPRESSO: software/packages/quantumespresso.md
   - Developing:
-    - Developing and Monitoring:
-      - Overview: development/index.md
+    # - Developing and Monitoring:
+    - Overview: development/index.md
     - Compiling:
       - Programming environment: development/compiling/prgenv.md
       - Cray compilers: development/compiling/cce.md
@@ -84,11 +89,7 @@ nav:
       - CrayPat: development/profiling/perftools.md
       # - Arm Forge: development/profiling/armforge.md
     # - Monitoring jobs: development/monitoring/index.md
-  - App guides:
-    - Overview: app_guides/overview.md
-    - Scientific applications:
-      - VASP: software/packages/vasp.md
-      - Quantum ESPRESSO: software/packages/quantumespresso.md
+  
   - Help desk: 
     - Help desk: generic/helpdesk.md
     # - About LUST (LUMI User Support Team): generic/aboutLUST.md 
