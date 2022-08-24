@@ -82,19 +82,19 @@ visualization. Besides partitions dedicated to computation, LUMI also offer seve
 <div class="lumi-overview">
   <p>
     <br>
-    <a href="../../computing/systems/lumic">LUMI-C : The CPU computing partition</a><br>
-    <a href="../../computing/systems/lumig">LUMI-G : The GPU computing partition</a><br>
-    <a href="../../computing/systems/lumid">LUMI-D : Data analytics and visualization</a><br>
-    <a href="../../storage/parallel/lumip">LUMI-P : The parallel filesystem</a><br>
-    <a href="../../storage/parallel/lumif">LUMI-F : The flash-based storage</a><br>
-    <a href="../../storage/object">LUMI-O : The object storage</a><br>
-    <a href="../../computing/auxiliary/lumik">LUMI-K : Container orchestration platform</a><br>
+    <a href="../../computing/systems/lumic/">LUMI-C : The CPU computing partition</a><br>
+    <a href="../../computing/systems/lumig/">LUMI-G : The GPU computing partition</a><br>
+    <a href="../../computing/systems/lumid/">LUMI-D : Data analytics and visualization</a><br>
+    <a href="../../storage/parallel/lumip/">LUMI-P : The parallel filesystem</a><br>
+    <a href="../../storage/parallel/lumif/">LUMI-F : The flash-based storage</a><br>
+    <a href="../../storage/object/">LUMI-O : The object storage</a><br>
+    <a href="../../computing/auxiliary/lumik/">LUMI-K : Container orchestration platform</a><br>
     <!-- LUMI-O : The object storage
     <br />
     LUMI-K : Container orchestration platform
     <br /> -->
     <br />
-    <a href="../../eap">LUMI-EAP : The GPU early Access Platform</a>
+    <a href="../../eap/">LUMI-EAP : The GPU early Access Platform</a>
   
   </p>
     <figure>
