@@ -4,9 +4,12 @@ title: Development - Overview
 
 # Overview
 
+---
 This part of the documentation aims to help the users who want to compile, 
 develop and optimize their code on LUMI. It contains information on how to 
 compile, debug and profile your application. 
+
+---
 
 LUMI comes with multiple programming environments: Cray, GNU, and AOCC. 
 In addition, the most common libraries used in an HPC environment tuned for LUMI

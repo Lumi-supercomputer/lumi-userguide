@@ -1,6 +1,7 @@
 # Software stacks
 
 [easybuild]: https://easybuild.io/
+[eb-in-docs]: ../software/installing/easybuild.md
 [repodoc]: https://github.com/Lumi-supercomputer/LUMI-SoftwareStack/tree/main/docs
 
 [containerwrapper]: ../software/containers/wrapper.md
@@ -19,7 +20,7 @@ On LUMI, two types of software stacks are currently offered:
     need a richer environment, you should use our other software stacks.
 
   - LUMI is an extensible software stack that is mostly managed through
-    [EasyBuild][easybuild]. Each version of the LUMI software stack is based on
+    [EasyBuild][easybuild]. (Read more about EasyBuild from LUMI documentation [here][eb-in-docs].) Each version of the LUMI software stack is based on
     the version of the Cray Programming Environment with the same version
     number.
 

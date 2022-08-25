@@ -5,6 +5,10 @@ title: Software - Overview
 [easybuild]: ./installing/easybuild.md
 [contwrapper]: ./containers/wrapper.md
 
+---
+This part of the documentation gives you an introduction on how to install software on LUMI. Here you can also find guides for some scientific applications supported on LUMI.
+
+---
 
 ## Learn more about installing software on LUMI
 

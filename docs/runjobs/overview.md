@@ -1,5 +1,11 @@
 # Overview
 
+---
+This part of the documentation first introduces you how to use the LUMI environment. It presents the LUMI disk areas meant for different purposes, setting up the LUMI module environment, and the billing policy of computing and storage space. 
+In this part you can also find specific guidelines for running different kinds of jobs on LUMI.
+
+---
+
 When you log in to LUMI, you end up on one of the login nodes. These login nodes
 are shared by all users and they are not intended for heavy computing.
 
@@ -15,7 +21,9 @@ jobs or as interactive batch jobs. Programs not adhering to these rules will be
 terminated without warning.
 
 Compute intensive jobs must be submitted to the job scheduling system. LUMI uses
-Slurm as the job scheduler. In order to run, you need a project allocation. 
+Slurm as the job scheduler. 
+
+In order to run, you need a project allocation. 
 You need to specify your project ID in your job script (or via the command line
 when submitting your job) in order for your job to be submitted to the queue. 
 
@@ -26,7 +34,7 @@ when submitting your job) in order for your job to be submitted to the queue.
     project ID when connected to LUMI: you should see that you are part of a 
     group named `project_xxxxxxxxx`.
 
-Here is a typical batch script for Slurm. This script runs an application
+<!-- Here is a typical batch script for Slurm. This script runs an application
 on 2 compute nodes with 16 MPI ranks on each node (32 total) and 8 OpenMP 
 threads per rank.
 
@@ -44,8 +52,9 @@ $ cat batch_script.slurm
 
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 srun ./application
-```
+``` -->
 
 
+<br />
 
 

@@ -44,7 +44,7 @@ To start using the LUMI supercomputer, please follow the steps 1-5:
 <br />
 **Need help?**
 
-You can always contact the [user support team][support] in case any problems appear.
+You can always contact the [user support team][support] in case of any problems.
 
 
 <!-- Plese check out our [tech support FAQ][tech-FAQ] for the most frequently asked questions about getting connected to LUMI and using the computing environment. You can also contact the [support team][support]. -->
