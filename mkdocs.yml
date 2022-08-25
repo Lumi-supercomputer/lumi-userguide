@@ -33,11 +33,12 @@ nav:
       - Container Orchestration Platform - LUMI-K: computing/auxiliary/lumik.md
   - Run jobs:
       - Overview: runjobs/overview.md
-      - Billing: computing/jobs/billing.md
-      - Setup your Environment:
+      # - Setup your Environment:
+      - LUMI Environment:
         - Data storage options: storage/storing-data.md
         - Module Environment: computing/Lmod_modules.md
         - Software stacks: computing/softwarestacks.md
+        - Billing: computing/jobs/billing.md
       - Scheduled jobs - SLURM jobs:      
         - Slurm Quickstart: computing/jobs/slurm-quickstart.md
         - Available partitions: computing/jobs/partitions.md

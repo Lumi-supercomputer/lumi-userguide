@@ -30,7 +30,7 @@ This is a short introduction to the other menu topics in this documentation:
 - To get to know the LUMI system architecture and different partitions available on LUMI, continue to the [**Hardware**][Hardware] section.
 
 
-- To learn how to work in LUMI module environment and how to run jobs on LUMI, read more in the [**Run jobs**][running-jobs] section. Under this menu topic you can also find information about billing and data storage options.  
+- To work in LUMI environment and run jobs on LUMI, please read more in the [**Run jobs**][running-jobs] section. Under this menu topic you can also find information about data storage options and billing policy.
 
 - To find out about the LUMI software stacks and how to install software on LUMI, go to the [**Software**][software] section. Under this menu topic there are also some tutorials for scientific applications.
 
