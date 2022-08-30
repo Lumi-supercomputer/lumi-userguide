@@ -66,3 +66,5 @@ The LUMI helpdesk is open Monday to Friday:
 
 <!-- Please also check our [tech support FAQ][tech-faq] for the most frequently asked questions about the usage of LUMI.  -->
 
+<!-- Check here for [LUMI related training and events](https://www.lumi-supercomputer.eu/events/) -->
+
