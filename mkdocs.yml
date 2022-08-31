@@ -52,6 +52,7 @@ nav:
     - Overview: software/index.md
     - Installing software:
       - EasyBuild: software/installing/easybuild.md
+      - Spack: software/installing/spack.md
     - Containers:
       - Container Wrapper: software/containers/wrapper.md
       - MPI Container: software/containers/cray_mpich.md
