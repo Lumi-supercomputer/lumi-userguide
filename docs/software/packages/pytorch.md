@@ -12,9 +12,13 @@ module load LUMI/22.08 partition/G
 module load EasyBuild-user
 eb PyTorch-1.12.1-cpeGNU-22.08.eb -r
 ```
-Together with PyTorch, this will install [`aws-ofi-rccl`](https://github.com/ROCmSoftwarePlatform/aws-ofi-rccl), which is a plugin for RCCL to improve the communication over libfabric.
+We also have prepared a recipe for [`aws-ofi-rccl`](https://github.com/ROCmSoftwarePlatform/aws-ofi-rccl), which is a plugin for RCCL to improve the communication over libfabric. If needed, it can be installed with
+```bash
+eb aws-ofi-rccl-66b3b31-cpeGNU-22.08.eb -r
+```
+Once installed, when loading the module `aws-ofi-rccl`, RCCL will find the plugin.
 
-!!! Issues with the `aws-ofi-rccl` plugin has been observed when running with mixed precision. In case of hanging or failing after initializing the distributed environment, please add a `module unload aws-ofi-rccl` after loading the PyTorch module.
+!!! Issues with the `aws-ofi-rccl` plugin has been observed when running with mixed precision.
 
 Once installed, a PyTorch script can be run like this
 ```bash
