@@ -25,17 +25,17 @@
 # Get Started
 
 
-To start using the LUMI supercomputer, please follow the steps 1-5:
+To start using the LUMI supercomputer, use must:
 
 1. Get [a user account][regular-access]
 
 2. Set up an [SSH key pair][SSH-keys]
 
-3. [Log in][logging-in]
+3. [Log in to LUMI][logging-in]
 
-4. If applicable, [move your data][move-data] to/from LUMI
+4. If applicable, [move your data][move-data] to LUMI
 
-5. Check the [Next steps][nextsteps] for a short introduction to the other menu topics
+5. [Explore your options][nextsteps] for using LUMI
 
 <!-- for getting most out of this documentation -->
 

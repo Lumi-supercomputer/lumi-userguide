@@ -28,7 +28,8 @@ nav:
       - Main storage - LUMI-P: storage/parallel/lumip.md
       - Flash storage - LUMI-F: storage/parallel/lumif.md
       - Object storage - LUMI-O: storage/object/index.md
-    # - Interconnect: computing/interconnect.md
+    - Interconnect:
+      - Slingshot 11: computing/interconnect.md
     - Auxiliary platforms:
       - Container Orchestration Platform - LUMI-K: computing/auxiliary/lumik.md
   - Run jobs:

@@ -1,4 +1,3 @@
- 
+[slingshot11-technical-white-paper]: https://www.hpe.com/us/en/collaterals/collateral.a50002368.HPE-Slingshot-E2-80-93-The-Interconnect-for-the-Exascale-Era-technical-white-paper.html?rpv=cpf&parentPage=/us/en/products/compute/hpc/slingshot-interconnect.html
 
- A technical description of the Slingshot 11 interconnect
-
+The interconnected used in LUMI is the HPE Slingshot 11. More details about the HPE Slingshot 11 may be found in this [HPE technical white paper][slingshot11-technical-white-paper].
