@@ -59,6 +59,7 @@ nav:
     - Overview: software/index.md
     - Installing software:
       - EasyBuild: software/installing/easybuild.md
+      - Spack: software/installing/spack.md
       # - Python: software/installing/python.md
       - Container wrapper: software/containers/wrapper.md
     - Containers: 
