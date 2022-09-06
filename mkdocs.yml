@@ -18,31 +18,30 @@ nav:
     - Next steps: firststeps/nextsteps.md
   - Hardware:
     - Overview: overview/overview.md
+    - Interconnect: computing/interconnect.md
     - Compute nodes:
       - CPU nodes - LUMI-C: computing/systems/lumic.md
       - GPU nodes - LUMI-G: computing/systems/lumig.md
       - Data analytics nodes - LUMI-D: computing/systems/lumid.md
-      - Early access platform: eap/index.md
+      - GPU Early Access Platform: eap/index.md
     - Storage:
       # - Lustre file system: storage/parallel/lustre.md
       - Main storage - LUMI-P: storage/parallel/lumip.md
       - Flash storage - LUMI-F: storage/parallel/lumif.md
       - Object storage - LUMI-O: storage/object/index.md
-    - Interconnect:
-      - Slingshot 11: computing/interconnect.md
     - Auxiliary platforms:
       - Container Orchestration Platform - LUMI-K: computing/auxiliary/lumik.md
   - Run jobs:
       - Overview: runjobs/overview.md
       # - Setup your Environment:
       - LUMI Environment:
-        - Data storage options: storage/storing-data.md
-        - Module Environment: computing/Lmod_modules.md
+        - Module environment: computing/Lmod_modules.md
         - Software stacks: computing/softwarestacks.md
-        - Billing: computing/jobs/billing.md
+        - Data storage options: storage/storing-data.md
+        - Billing policy: computing/jobs/billing.md
       - Scheduled jobs - SLURM jobs:      
-        - Slurm Quickstart: computing/jobs/slurm-quickstart.md
-        - Available partitions: computing/jobs/partitions.md
+        - Slurm quickstart: computing/jobs/slurm-quickstart.md
+        - Slurm partitions: computing/jobs/partitions.md
         - Batch jobs: computing/jobs/batch-job.md
         - Array jobs: computing/jobs/throughput.md
         - Interactive Slurm jobs: computing/jobs/interactive.md

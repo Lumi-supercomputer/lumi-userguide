@@ -1,60 +1,45 @@
 # Overview
 
----
-This part of the documentation first introduces you how to use the LUMI environment. It presents the LUMI disk areas meant for different purposes, setting up the LUMI module environment, and the billing policy of computing and storage space. 
-In this part you can also find specific guidelines for running different kinds of jobs on LUMI.
+[software-overview]: ../software/index.md
+[firststeps-loggingin]: ../firststeps/loggingin.md
+[lumi-c]: ../computing/systems/lumic.md
+[lumi-g]: ../computing/systems/lumig.md
+[lumi-d]: ../computing/systems/lumid.md
+[slurm-quickstart]: ../computing/jobs/slurm-quickstart.md
+[module-environment]: ../computing/Lmod_modules.md
+[software-stacks]: ../computing/softwarestacks.md
+[data-storage-options]: ../storage/storing-data.md
+[billing-policy]: ../computing/jobs/billing.md
+
 
 ---
+Here you find general descriptions of how to run jobs on LUMI, i.e. how to run
+your scientific software using the job scheduler on LUMI. If you are looking
+for ways to install your software on LUMI or advice for runing a specific
+application, consult the [software section][software-overview] instead.
 
-When you log in to LUMI, you end up on one of the login nodes. These login nodes
-are shared by all users and they are not intended for heavy computing.
+---
 
-The login nodes should be used only for:
+When you [log in to LUMI][firststeps-loggingin], you get access to one of the
+login nodes. These login nodes are shared by all users and are only intended
+for simple management tasks, e.g.
 
-- compiling (but consider allocating a compute for large build jobs)
-- managing batch jobs
+- compiling software (but consider allocating a compute node for large build
+  jobs)
+- submitting and managing scheduled jobs
 - moving data
 - light pre- and postprocessing (a few cores / a few GB of memory)
 
-All the other tasks should be done on the compute nodes either as normal batch
-jobs or as interactive batch jobs. Programs not adhering to these rules will be
-terminated without warning.
+All compute heavy tasks must be submitted through the job scheduler such that
+they are run on the compute nodes in
+[LUMI-G][lumi-g]/[LUMI-C][lumi-c]/[LUMI-D][lumi-d]. The job scheduler used on
+LUMI is Slurm. To get started using Slurm on LUMI read the [Slurm quickstart
+guide][slurm-quickstart]. Also, you may want to familiarize yourself with the
+LUMI Environment, i.e. the [module environment][module-environment] and
+[software stacks][software-stacks] as well as the [data storage
+options][data-storage-options] and [billing policy][billing-policy].
 
-Compute intensive jobs must be submitted to the job scheduling system. LUMI uses
-Slurm as the job scheduler. 
+!!! warning
 
-In order to run, you need a project allocation. 
-You need to specify your project ID in your job script (or via the command line
-when submitting your job) in order for your job to be submitted to the queue. 
-
-!!! missing
-
-    Commands to gather information about the project and quota are not
-    available yet. However, you can use the `groups` command to retrieve your 
-    project ID when connected to LUMI: you should see that you are part of a 
-    group named `project_xxxxxxxxx`.
-
-<!-- Here is a typical batch script for Slurm. This script runs an application
-on 2 compute nodes with 16 MPI ranks on each node (32 total) and 8 OpenMP 
-threads per rank.
-
-```
-$ cat batch_script.slurm
-#!/bin/bash -l
-#SBATCH --job-name=test-job
-#SBATCH --account=<project_xxxxxxxxx>
-#SBATCH --time=01:00:00
-#SBATCH --nodes=2
-#SBATCH --ntasks=32
-#SBATCH --ntasks-per-node=16
-#SBATCH --cpus-per-task=8
-#SBATCH --partition=standard
-
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
-srun ./application
-``` -->
-
-
-<br />
-
-
+    All tasks not adhering to the above fair use rules for the login nodes will
+    be terminated without warning.
