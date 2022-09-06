@@ -26,15 +26,15 @@ hide:
 
 In order to continue your endeavour into the use of LUMI, you may take a look at:
 
-- The [**Hardware**][Hardware] section to get to know the LUMI system architecture and the different partitions available on LUMI.
+- The [**Hardware**][Hardware] section to get to know the LUMI system architecture and the different hardware partitions available on LUMI.
 
 - The [**Run jobs**][running-jobs] section to identify ways to run computations on LUMI.
 
-- The [**Software**][software] section to figure out how to get your favorite peace of scientific software available on LUMI.
+- The [**Software**][software] section to figure out how to get your favorite piece of scientific software available on LUMI.
 
-- The [**Developing**][development] section to learn more about compiling, developing and optimizing your code on LUMI.
+- The [**Developing**][development] section to learn more about compiling, developing, optimizing, and debugging code for use with LUMI.
 
-- The [**Helpdesk**][helpdesk] section to get in contact with the LUMI user support team, in case you need further help using LUMI.
+- The [**Helpdesk**][helpdesk] section to get in contact with the LUMI User Support Team (LUST), in case you need further help using LUMI.
 
 <!-- - How to [get help][helpdesk] with using LUMI -->
 

@@ -10,6 +10,42 @@ through the submission of jobs by the user. A job describes the computing
 resources required to run application(s) and how to run it. LUMI uses Slurm
 as the batch scheduler and resource manager.
 
+
+In order to run, you need a project allocation. 
+You need to specify your project ID in your job script (or via the command line
+when submitting your job) in order for your job to be submitted to the queue. 
+
+!!! missing
+
+    Commands to gather information about the project and quota are not
+    available yet. However, you can use the `groups` command to retrieve your 
+    project ID when connected to LUMI: you should see that you are part of a 
+    group named `project_xxxxxxxxx`.
+
+
+
+Here is a typical batch script for Slurm. This script runs an application
+on 2 compute nodes with 16 MPI ranks on each node (32 total) and 8 OpenMP 
+threads per rank.
+
+```
+$ cat batch_script.slurm
+#!/bin/bash -l
+#SBATCH --job-name=test-job
+#SBATCH --account=<project_xxxxxxxxx>
+#SBATCH --time=01:00:00
+#SBATCH --nodes=2
+#SBATCH --ntasks=32
+#SBATCH --ntasks-per-node=16
+#SBATCH --cpus-per-task=8
+#SBATCH --partition=standard
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+srun ./application
+```
+
+
+
 ## Slurm commands overview
 
 In the following, you will learn how to submit your job using the

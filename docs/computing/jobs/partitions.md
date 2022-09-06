@@ -1,12 +1,22 @@
 # Available Partitions
 
-[lumid]: ..//systems/lumid.md
+[lumi-c]: ../../computing/systems/lumic.md
+[lumi-g]: ../../computing/systems/lumig.md
+[lumi-d]: ../../computing/systems/lumid.md
 
-The partition setup of LUMI prioritizes jobs that aim to scale out. As a
+The Slurm partition setup of LUMI prioritizes jobs that aim to scale out. As a
 consequence most nodes are reserved for jobs that use all available resources.
 However, some nodes are reserved for smaller allocations and debugging. 
 
-## Partitions allocatable by node
+!!! info
+
+    Note that even though there is a close relationship between the Slurm partition setup
+    and the LUMI compute hardware partitions
+    ([LUMI-G][lumi-g]/[LUMI-C][lumi-c]/[LUMI-D][lumi-d]), it is not a
+    one-to-one mapping.
+
+
+## Slurm partitions allocatable by node
 
 The following partitions are available for allocation by nodes. When using
 these partitions, your jobs use all resources available on the node and won't
@@ -14,27 +24,27 @@ share the node with other jobs. Therefore, make sure that
 your application can take advantage of all the resources on the node as you
 will be billed for the complete node regardless of the resource actually used.
 
-| Name     | Max walltime | Max jobs          | Max resources/job  |
-| -------- | ------------ | ----------------- | ------------------ |
-| standard | 2 days       | 120 (100 running) | 512 nodes          |
-| bench    | 1 day        | n/a               | All nodes          |
+| Name     | Max walltime | Max jobs          | Max resources/job  | Compute partition used |
+| -------- | ------------ | ----------------- | ------------------ | ---------------------- |
+| standard | 2 days       | 120 (100 running) | 512 nodes          | [LUMI-C][lumi-c]       |
+| bench    | 1 day        | n/a               | All nodes          | [LUMI-C][lumi-c]       |
 
 The `bench` partition is not available by default and is reserved for 
 large-scale runs. Projects wishing to have access to this partition must send a 
 request to the support.
 
-## Partitions allocatable by resources
+## Slurm partitions allocatable by resources
 
 The following partitions are available for allocation by resources. This means
 that you can request a sub-node allocation: you can request only part of the 
 resources (cores and memory) available on the compute node. This also means 
 that your job may share the node with other jobs.
 
-| Name     | Max walltime | Max jobs                | Max resources/job  |
-| -------- | ------------ | ----------------------- | ------------------ |
-| debug    | 30 minutes   |   1 (1 running)         | 4 nodes            |
-| small    | 3 days       | 220 (200 running)       | 4 nodes            |
-| largemem | 1 day        |  30 (20 running)        | 1 nodes            |
+| Name     | Max walltime | Max jobs                | Max resources/job  | Compute partition used |
+| -------- | ------------ | ----------------------- | ------------------ | ---------------------- |
+| debug    | 30 minutes   |   1 (1 running)         | 4 nodes            | [LUMI-C][lumi-c]       |
+| small    | 3 days       | 220 (200 running)       | 4 nodes            | [LUMI-C][lumi-c]       |
+| largemem | 1 day        |  30 (20 running)        | 1 nodes            | [LUMI-C][lumi-c]       |
 
 !!! info "Large Memory Nodes"
     Some of the large memory nodes (512GB and 1TB) are located in the `small` 
@@ -46,7 +56,7 @@ that your job may share the node with other jobs.
     [data analytics][lumid] part of LUMI and have 4TB of memory. Another 
     difference is that the CPUs architecture of these nodes is Zen2.
 
-## Getting information about partitions
+## Getting information about Slurm partitions
 
 A list of the available partitions can be obtained using the `sinfo` command.
 If you want more precise information about a particular partition, you can use
