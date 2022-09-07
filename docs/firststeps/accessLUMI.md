@@ -32,7 +32,6 @@ page.
 Please note that when using LUMI, you must accept and adhere to the [LUMI Terms
 of Use][terms-of-use].
 
- 
 === "For regular users"
 
     Once you have received an invitation to a project on LUMI, you need to register to MyAccessID and accept the terms of use as instructed in the invitation. The procedure for registering to MyAccessID differs between the LUMI consortium countries. In general, the recommended authentication method is to use your home organization's identity provider. You should find it by typing your organization into the *Choose Your Identity Provider* search field. If you found your organization, but you got an error, please [contact the support team][support-account]. You may also contact your identity provider directly. Alternative registration options are available for some countries. Please see the [Puhuri documentation][eidas-eduid] for information about these alternatives.

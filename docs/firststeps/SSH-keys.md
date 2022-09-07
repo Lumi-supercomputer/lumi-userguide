@@ -10,7 +10,6 @@
 [jump-register-keys]: #register-your-public-key
 [eidas-eduid]: https://puhuri.neic.no/user_guides/myaccessid_registration/
 
-
 # Setting up SSH key pair
 
 Before connecting to LUMI, you need to register an SSH key pair. **You can only
@@ -19,7 +18,7 @@ log in to LUMI using SSH keys**. There is no option for using passwords.
 LUMI only accepts SSH keys based on the RSA (4096 bit) or ed25519 algorithms.
 If possible, we recommend to use ed25519.
 
-### Generate your SSH keys
+## Generate your SSH keys
 
 If you already have an appropriate SSH key pair that you want to use with LUMI,
 you may skip to [registering your public key][jump-register-keys]. If not,
@@ -97,8 +96,8 @@ start by generating an SSH key pair as detailed below.
     password! Otherwise, anyone with access to the file system can steal your
     SSH key.
 
-### Register your public key
- 
+## Register your public key
+
 === "For regular users"
 
     Now that you have generated your key pair, you need to register your **public** key
