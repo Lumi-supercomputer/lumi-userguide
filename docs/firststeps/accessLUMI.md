@@ -23,9 +23,11 @@ Supercomputer Get Started][website-getstarted] page.
 
 In general, a Resource Allocator (RA) must create a project and invite the
 Principal Investigator (PI), i.e. the lead researcher, to the project. The
-project PI can then invite other project members based on email addresses. If
-you have been granted access to LUMI but didn't receive an invitation to a
-project, please contact your PI or your local HPC center.
+project PI can then invite other project members. If you have been granted
+access to LUMI but didn't receive an invitation to a project, please contact
+your PI or your local organization. You may find contact information for your
+local organization on the [LUMI Supercomputer Get Started][website-getstarted]
+page.
 
 Please note that when using LUMI, you must accept and adhere to the [LUMI Terms
 of Use][terms-of-use].
@@ -33,7 +35,7 @@ of Use][terms-of-use].
  
 === "For regular users"
 
-    In order to access the portal, you need to register to MyAccessID. The procedure depends on the country. The recommended authentication method is to use your home organization's identity provider. You should find it by typing your organization into the *Choose Your Identity Provider* search field. If you found your organization, but you got an error, please [contact the support team][support-account]. You may also contact your identity provider directly. Alternative  registration options are available for some countries. Please see [here][eidas-eduid] for information about these alternatives.
+    Once you have received an invitation to a project on LUMI, you need to register to MyAccessID and accept the terms of use as instructed in the invitation. The procedure for registering to MyAccessID differs between the LUMI consortium countries. In general, the recommended authentication method is to use your home organization's identity provider. You should find it by typing your organization into the *Choose Your Identity Provider* search field. If you found your organization, but you got an error, please [contact the support team][support-account]. You may also contact your identity provider directly. Alternative registration options are available for some countries. Please see the [Puhuri documentation][eidas-eduid] for information about these alternatives.
 
     For the next step, you will be directed to the registration page, where you have to accept the Acceptable Use Policy and LUMI Terms of Use document, which is linked there. Please read it carefully! 
 
@@ -46,4 +48,4 @@ of Use][terms-of-use].
 
 === "For users with a Finnish allocation"
 
-    The users with a Finnish allocation (via [MyCSC](https://my.csc.fi/welcome)) are invited to follow the instructions starting from the next section [Setting up SSH key pair][SSH-keys]. See also [here how to create a Finnish LUMI project](https://docs.csc.fi/accounts/how-to-create-new-project/#creating-a-lumi-project-and-applying-for-resources).
+    Users with a Finnish allocation (via [MyCSC](https://my.csc.fi/welcome)) must follow the instructions given in the [CSC documentation for creating a Finnish LUMI project](https://docs.csc.fi/accounts/how-to-create-new-project/#creating-a-lumi-project-and-applying-for-resources).
