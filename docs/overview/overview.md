@@ -64,8 +64,8 @@ partition that features AMD EPYC "Milan" CPUs as well as a small
 [LUMI-D][lumi-d] data analytics hardware partition featuring large memory nodes
 (4 TB) and some NVIDIA A40 GPUs for data visualization.
 
-Data storage on LUMI is provided by the [LUMI-P][lumi-p] parallel filesystem
-hardware partition, the [LUMI-F][lumi-f] flash based parallel filesystem
+Data storage on LUMI is provided by the [LUMI-P][lumi-p] parallel file system
+hardware partition, the [LUMI-F][lumi-f] flash based parallel file system
 hardware partition, and the [LUMI-O][lumi-o] object storage hardware partition
 for a total of 117 PB of storage space.
 
@@ -79,8 +79,8 @@ orchestration platform for use with LUMI.
     <a href="../../computing/systems/lumic/">LUMI-C : CPU compute</a><br>
     <a href="../../computing/systems/lumig/">LUMI-G : GPU compute</a><br>
     <a href="../../computing/systems/lumid/">LUMI-D : Data analytics</a><br>
-    <a href="../../storage/parallel/lumip/">LUMI-P : Parallel filesystem</a><br>
-    <a href="../../storage/parallel/lumif/">LUMI-F : Flash-based parallel filesystem</a><br>
+    <a href="../../storage/parallel/lumip/">LUMI-P : Parallel file system</a><br>
+    <a href="../../storage/parallel/lumif/">LUMI-F : Flash-based parallel file system</a><br>
     <a href="../../storage/object/">LUMI-O : Object storage</a><br>
     <a href="../../computing/auxiliary/lumik/">LUMI-K : Container orchestration platform</a><br>
     <br>

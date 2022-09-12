@@ -44,7 +44,7 @@
 
 [LUMI-F : The flash-based storage of LUMI][lumi-f]
 
-[LUMI-P : The parallel filesystem of LUMI][lumi-p]
+[LUMI-P : The parallel file system of LUMI][lumi-p]
 
 [LUMI-EAP : The GPU early Access Platform LUMI][eap]
 
@@ -89,7 +89,7 @@
 
 [LUMI-F : The flash-based storage of LUMI][lumi-f]
 
-[LUMI-P : The parallel filesystem of LUMI][lumi-p]
+[LUMI-P : The parallel file system of LUMI][lumi-p]
 
 [LUMI-EAP : The GPU early Access Platform LUMI][eap] -->
 
@@ -114,7 +114,7 @@ with 64 cores each running at 2.25 GHz for a total of 128 cores per node.
 
 - [More information about LUMI-D][lumi-d]
 
-## LUMI-P and F: Parallel Filesystems
+## LUMI-P and F: Parallel file systems
 
 LUMI has two Lustre parallel file systems consisting of:
 

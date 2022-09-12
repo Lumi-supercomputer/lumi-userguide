@@ -1,22 +1,31 @@
-# Billing
+[lumi-c]: ../../computing/systems/lumic.md
 
-Running jobs and storing data on the parallel filesystem consume the billing 
-units allocated to your project:
+# Billing policy
 
-- for computing, your project is allocated CPU-core-hours 
-- for storage, your project is allocated GB-hours.
+Running jobs on the compute nodes and storing data on the storage will consume
+the billing units allocated to your project:
+
+- Compute is billed in units of CPU-core-hours for CPU-nodes and GPU-hours for GPU-nodes.
+- Storage is billed in units of TB-hours.
 
 ## Compute billing
 
-For compute, your project is allocated CPU-core-hours that are consumed when 
-running jobs. Depending on the partition, the way this billing is carried out 
+### CPU billing
+
+For compute, your project is allocated CPU-core-hours that are consumed when
+running jobs. Depending on the partition, the way this billing is carried out
 differs.
 
-### Standard partition
+### Slurm partition billing details
 
-The standard partition is operated in exclusive mode: the entire node will always 
-be allocated. In practice, 128 core-hours are billed for every allocated 
-node and per hour even if your job has requested less than 128 cores per node.
+For some [slurm partitions][slurm-partitions] special billing rules apply.
+
+#### Standard and bench partitions
+
+The `standard` and `bench` partitions are operated in exclusive mode: the
+entire node will always be allocated. In practice, 128 core-hours are billed
+for every allocated node and per hour even if your job has requested less than
+128 cores per node.
 
 For example, 16 nodes for 12 hours: 
 
@@ -24,21 +33,23 @@ For example, 16 nodes for 12 hours:
 16 nodes x 12 hours x 128 core-hour = 24576 core-hours
 ```
 
-### Small partition
+#### Small partition
 
-When using the small partition you are billed per allocated core or if you are 
-above a certain threshold per chunk of 2GB of memory. Here is the formula that 
-is used for billing:
+When using the small partition you are billed per allocated core. However, if
+you are above a certain threshold of memory allocated per core, i.e. you use
+the high memory nodes in [LUMI-C][lumic], you are billed in slices of 2GB of
+memory. Specifically, the formula that is used for billing is:
 
 ```
 corehours = max(ncore, ceil(mem/2GB)) x time
 ```
 
+Thus,
 - if you use less than 2GB of memory per core, you are charged per allocated
   cores
 - if you use more than 2GB of memory per core, you are charged per 2GB slice
   of memory
-- if you are using the large memory nodes you will be billed per 2GB slice
+- if you are using the large memory nodes in [LUMI-C][lumic] you will be billed per 2GB slice
   of memory
 
 For example, 4 cores, 4GB of memory for 1 day:
@@ -77,12 +88,13 @@ The top row is summary for all project members. Please note that SLURM counts us
 
 ## Storage billing
 
-Storage is billed by volume as well as time. The billing units are GB-hours.
+Storage is billed by volume used over time. The billing units are TB-hours,
+i.e. using one TB of storage for one hour will be billed as one TB-hour.
 
-### Regular Lustre filesystem
+### Regular Lustre file system
 
-On the regular (spinning disk) Lustre filesystem, 1GB of data consume 1GB-hour
-out of your storage allocation for every hour it stays on the filesystem.
+On the regular (spinning disk) Lustre file system, 1GB of data consume 1GB-hour
+out of your storage allocation for every hour it stays on the file system.
 
 For example, 375GB for 4 days:
 
@@ -90,12 +102,12 @@ For example, 375GB for 4 days:
 375 GB x 4 days x 24 hours = 36000 GB-hours
 ```
 
-### Flash Lustre filesystem
+### Flash Lustre file system
 
 The flash based filesytem is billed at a 10x rate: 1GB of data consume 10GB-hour
-out of your storage allocation for every hour it stays on the filesystem. As
+out of your storage allocation for every hour it stays on the file system. As
 a consequence, if you don't want to consume your storage allocation too quickly,
-it's recommended to remove your data from the flash filesystem as soon as possible.
+it's recommended to remove your data from the flash file system as soon as possible.
 
 For example, 150GB for 2 days:
 

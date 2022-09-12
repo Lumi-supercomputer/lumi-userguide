@@ -11,11 +11,11 @@ In an object-based storage, data are managed as objects instead of being
 organized as files in a directory hierarchy.
 
 Within your object storage project space, you can create buckets. These buckets
-will store objects with metadata associated to these objects. 
+will store objects with metadata associated to these objects.
 
 <figure>
-  <img 
-    src="../../assets/images/object-storage-component.svg" 
+  <img
+    src="../../assets/images/object-storage-component.svg"
     width="450"
     alt="Object storage components"
   >
