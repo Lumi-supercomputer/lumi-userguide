@@ -25,7 +25,7 @@ Once installed, a PyTorch script can be run like this
 #!/bin/bash
 #SBATCH --job-name=cnn-pytorch
 #SBATCH --ntasks=4
-#SBATCH --ntasks-per-node=1
+#SBATCH --ntasks-per-node=8
 #SBATCH --gpus-per-node=8
 #SBATCH --time=0:10:0
 #SBATCH --partition gpu
@@ -88,7 +88,7 @@ Let's now run the [example](https://github.com/Lumi-supercomputer/ml-examples/bl
 #!/bin/bash
 #SBATCH --job-name=cnn-pytorch-singularity
 #SBATCH --ntasks=4
-#SBATCH --ntasks-per-node=1
+#SBATCH --ntasks-per-node=8
 #SBATCH --gpus-per-node=8
 #SBATCH --time=0:10:0
 #SBATCH --partition gpu
@@ -96,10 +96,12 @@ Let's now run the [example](https://github.com/Lumi-supercomputer/ml-examples/bl
 
 module load LUMI/22.08
 module load partition/G
+module load OpenMPI
+
 export NCCL_SOCKET_IFNAME=hsn0
 export NCCL_NET_GDR_LEVEL=3
 
-srun singularity exec deepspeed_rocm5.0.1_ubuntu18.04_py3.7_pytorch_1.10.0.sif \
+mpirun singularity exec deepspeed_rocm5.0.1_ubuntu18.04_py3.7_pytorch_1.10.0.sif \
                  bash -c '
                  . deepspeed_rocm5.0.1_env/bin/activate;
                  python cnn_distr.py'
@@ -120,7 +122,7 @@ It's possible to use the `aws-ofi-rccl` plugin with this container as well:
 #!/bin/bash
 #SBATCH --job-name=cnn-pytorch-singularity
 #SBATCH --ntasks=4
-#SBATCH --ntasks-per-node=1
+#SBATCH --ntasks-per-node=8
 #SBATCH --gpus-per-node=8
 #SBATCH --time=0:10:0
 #SBATCH --partition gpu
@@ -131,12 +133,13 @@ module load partition/G
 module load singularity-bindings
 module load rccl
 module load aws-ofi-rccl
+module load OpenMPI
 
 export NCCL_SOCKET_IFNAME=hsn0
 export NCCL_NET_GDR_LEVEL=3
 export SINGULARITYENV_LD_LIBRARY_PATH=/opt/ompi/lib:/opt/rocm-5.0.1/lib:$EBROOTAWSMINOFIMINRCCL/lib:/opt/cray/xpmem/2.4.4-2.3_9.1__gff0e1d9.shasta/lib64:$SINGULARITYENV_LD_LIBRARY_PATH
 
-srun singularity exec \
+mpirun singularity exec \
                  -B"/appl:/appl" 
                  -B"$EBROOTRCCL/lib/librccl.so.1.0:/opt/rocm-5.0.1/rccl/lib/librccl.so.1.0.50001" \
                  deepspeed_rocm5.0.1_ubuntu18.04_py3.7_pytorch_1.10.0.sif \
