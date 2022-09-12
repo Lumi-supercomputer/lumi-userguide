@@ -2,7 +2,7 @@
 # LUMI-O: The Object Storage
 
 !!! warning
-    This page is about a partition that is not yet available.
+    This page is about a hardware partition that is not yet available.
 
 The LUMI-O object store offers a total of 30 PB storage for storing, sharing,
 and staging of data.

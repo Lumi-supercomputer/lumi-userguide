@@ -14,7 +14,7 @@ hide:
 
 !!! warning
 
-    This page is a preliminary of the guide documenting the use of the GPU
+    This page is a preliminary to the guide documenting the use of the GPU
     Early Access Platform (EAP). It contains information specific to the latter, 
     but does not stand on its own. Users of the EAP are also invited to read 
     other sections of the LUMI documentation. In particular, you are invited to
@@ -25,6 +25,12 @@ The Early Access Platform consists of nodes with MI250x GPUs with the intended
 use case being to give users access to the software stack so that they can work
 on preparing their software for the [LUMI-G][lumig] hardware partition when it
 reaches general availability.
+
+!!! warning
+
+    The GPU Early Access Platform (EAP) is highly experimental - your mileage
+    may vary. Things may change without warning while we are testing LUMI-G.
+    The EAP will be removed once LUMI-G enters general availability.
 
 | Nodes | CPUs             |  CPU cores         | Memory | GPUs            | Disk | Network         |
 | :---: | :--------------: | :----------------: | -----: | :-------------: | :--: | :-------------: |

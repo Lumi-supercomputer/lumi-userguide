@@ -83,13 +83,7 @@ orchestration platform for use with LUMI.
     <a href="../../storage/parallel/lumif/">LUMI-F : Flash-based parallel filesystem</a><br>
     <a href="../../storage/object/">LUMI-O : Object storage</a><br>
     <a href="../../computing/auxiliary/lumik/">LUMI-K : Container orchestration platform</a><br>
-    <!-- LUMI-O : The object storage
-    <br />
-    LUMI-K : Container orchestration platform
-    <br /> -->
-    <br />
-    <a href="../../eap/">LUMI-EAP : GPU Early Access Platform</a>
-  
+    <br>
   </p>
     <figure>
     <img 
