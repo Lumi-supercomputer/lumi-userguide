@@ -30,7 +30,7 @@ You have two options for bringing your scientific software to LUMI:
 !!! warning
 
     The home and project directories reside on the Lustre based parallel
-    filesystem on [LUMI-P][lumi-p] which does not perform well with
+    file system on [LUMI-P][lumi-p] which does not perform well with
     installations of software containing a lot of small files, e.g. Python or
     R environments installed via Conda or pip. For such software a container
     based approach must be used.

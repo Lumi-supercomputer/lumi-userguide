@@ -2,11 +2,11 @@
 
 The LUMI container wrapper is a set of tools which wrap installations inside 
 a Apptainer/Singularity container to improve startup times, 
-reduce IO load, and lessen the number of files on large parallel filesystems. 
+reduce IO load, and lessen the number of files on large parallel file systems. 
 
 Additionally, the LUMI container wrapper will generate wrappers so that installed
 software can be used (almost) as if it were not containerized. Depending
-on tool selection and settings, either the whole host filesystem or
+on tool selection and settings, either the whole host file system or
 a limited subset is visible during execution and installation. This means that
 it's possible to wrap installation using e.g., mpi4py relying on the host provided
 mpi installation. 
@@ -117,7 +117,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 As the LUMI container wrapper installed software resides in a container, it cannot be directly modified.
 Small python packages can be added normally using `pip`, but then the python packages are
-sitting on the parallel filesystem so not recommended for any larger installations.  
+sitting on the parallel file system so not recommended for any larger installations.  
 
 To actually modify the installation we can use the `update` keyword
 together with the `--post-install <file>` option which specifies a bash script
