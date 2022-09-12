@@ -29,11 +29,10 @@ LUMI-D with good performance.
 
 ## GPU
 
-The interactive GPU nodes have 8 NVIDIA A40 GPUs each with 10 752 CUDA
-cores, 336 Tensor cores, 84 RT cores and 48 GiB GDDR6 Memory. The CUDA Toolkit 
-for GPU development is also installed so that it is possible to run and test 
-CUDA code, but the main purpose of these GPUs is visualization,
-not GPU computing.
+The visualization GPU nodes have 8 NVIDIA A40 GPUs each with 10 752 CUDA cores,
+336 Tensor cores, 84 RT cores and 48 GiB GDDR6 Memory. The CUDA Toolkit for GPU
+development is also installed so that it is possible to run and test CUDA code,
+but the main purpose of these GPUs is visualization, not GPU computing.
 
 * [Nvidia A40 Product Page][a40-product]
 * [Nvidia A40 Data Sheet][a40-specs]
@@ -45,5 +44,5 @@ interconnect][interconnect].
 
 ## Disk storage
 
-The LUMI-D node provide some local disk storage. Additionally, you have
+The LUMI-D nodes provide some local disk storage. Additionally, you have
 access to all the [network based storage options][storage].
