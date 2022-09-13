@@ -1,5 +1,5 @@
 
-# LUMI-O: The Object Storage
+# Object storage - LUMI-O
 
 !!! warning
     This page is about a hardware partition that is not yet available.
