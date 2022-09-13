@@ -1,17 +1,26 @@
+[containers-install]: ../../computing/containers.md
+[data-storage-options]: ../../storage/storing-data.md
+
 # Container jobs
+
+Software containers can be easily run on the compute nodes in LUMI using the
+`singularity` runtime that may be used with Slurm. See the
+[Apptainer/Singularity containers][containers-install] overview page for
+details about creating LUMI compatible software containers.
 
 ## Running a container
 
-Here, for instance, we check the version of Ubuntu running in the container
+Software in a container may be run by combining `srun` with `singularity`. For
+instance, to the version of Ubuntu running in a container stored as
+"ubuntu_21.04.sif":
 
 ```bash
-srun --partition=<partition> --account=<account> singularity exec \
-     ubuntu_21.04.sif cat /etc/os-release
+$ srun --partition=<partition> --account=<account> singularity exec ubuntu_21.04.sif cat /etc/os-release
 ```
 
-This prints
+which prints
 
-```
+```text
 NAME="Ubuntu"
 VERSION="21.04 (Hirsute Hippo)"
 ID=ubuntu
@@ -26,20 +35,17 @@ VERSION_CODENAME=hirsute
 UBUNTU_CODENAME=hirsute
 ```
 
-By default, some file system partitions, such as `/scratch`,`/project` are not
-accessible from the container. To make them available, they need to be
-explicitly bound by passing the `-B/--bind` command line option to 
-`singularity exec/run`. For instance
+### Binding network file systems in the container
+
+By default, some [file system partitions][data-storage-options], such as
+`/scratch`,`/project` are not accessible from the container. To make them
+available, they need to be explicitly bound by passing the `-B/--bind` command
+line option to `singularity exec/run`. For instance
 
 ```bash
 srun --partition=<partition> --account=<account> singularity exec \
      -B /scratch/<account> ubuntu_21.04.sif ls /scratch/<account>
 ```
-
-<!-- ## Application-specific container
-
- * [Running MPI applications within the container][cray_mpich] -->
-
 
 ## Running containerized MPI applications
 
@@ -48,15 +54,19 @@ srun --partition=<partition> --account=<account> singularity exec \
 [permedcoe-mpi]: https://permedcoe.github.io/mpi-in-container
 [osu-benchmark]: https://mvapich.cse.ohio-state.edu/benchmarks/
 
+Running MPI applications in a container requires that you either bind the host
+MPI (the MPI stack provided as part of the software stack available on the
+compute node) or include a LUMI compatible MPI stack in the container.
+
 ### Using the host MPI
 
 #### Binding to the host
 
-Containerized MPI applications can be run with Singularity. However, in order to
-properly make use of LUMI's high-speed network, it is necessary to mount a few
-host system directories inside the container and set `LD_LIBRARY_PATH` so that
-the necessary dynamic libraries are available at run time. Doing that, the MPI
-installed in the container image is replaced by the host's.
+Containerized MPI applications can be run with `singularity`. However, in order
+to properly make use of LUMI's high-speed network, it is necessary to mount a
+few host system directories inside the container and set `LD_LIBRARY_PATH` so
+that the necessary dynamic libraries are available at run time. Doing that, the
+MPI installed in the container image is replaced by the host's.
 
 We have put together all the necessary setup in a module that can be installed
 by the user with EasyBuild:

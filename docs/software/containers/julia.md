@@ -1,16 +1,15 @@
-# Running Julia within a container
+[lumi-c]: ../../computing/systems/lumic.md
+[container-jobs]: ../../software/containers/cray_mpich.md
 
-Generic application containers can be easily run on the compute nodes. Here we
-use [Julia](http://julialang.org/) container, `julia` in the DockerHub, as an
-example of interactive run and batch submission. Julia can execute as both
-multithreaded and parallel application. It can be pulled with the command:
+# Julia scheduled jobs
 
-```bash
-singularity pull docker://julia
-```
+Here we present examples of running scheduled
+[Julia](http://julialang.org/) jobs as a [container jobs][container-jobs].
 
-Singularity file `julia_latest.sif` will be created. Julia can be executed
-interactively on a single LUMI-C node with N threads allocating N cpu cores:
+Assuming you have a Julia singularity image file `julia_latest.sif` (e.g.
+created using `singularity pull docker://julia`), Julia can be executed
+interactively on a single [LUMI-C][lumi-c] node with N threads by allocating N
+CPU cores:
 
 ```bash
 srun --pty --nodes=1 --ntasks-per-node=1 \
@@ -19,21 +18,21 @@ srun --pty --nodes=1 --ntasks-per-node=1 \
       singularity run --env JULIA_NUM_THREADS=<N> julia_latest.sif
 ```
 
-Running with parallel (multiprocess) execution model requires specific Julia
-code, say in `my_parallel_script.jl` file. It can be executed with a batch
-submission on a single node with N parallel processes:
+Running a parallel (multi process) Julia script, e.g. `my_parallel_script.jl`,
+can be done on a single node with N parallel processes using:
 
 ```bash
 srun --nodes=1 --ntasks-per-node=<N> \
      --cpus-per-task=1 --time=30 \
      --partition=<partition> --account=<account> \
-     singularity exec julia_latest.sif julia -p 20 my_parallel_script.jl
+     singularity exec julia_latest.sif julia -p <N> my_parallel_script.jl
 ```
 
-Both multithreading and multiprocessing can be combined with `--ntasks-per-node`
-(for a number of processes) and `--cpus-per-task` (for a number of threads)
-SLURM options.
+Both multithreading and multiprocessing can be combined in the Slurm job
+submission using the `--ntasks-per-node` (for a number of processes) and
+`--cpus-per-task` (for a number of threads) options.
 
-Multinode, distributed execution would require custom "ClusterManager" plugin
-for integration with SLURM which will require a specific version of the container.
-The same applies to GPU enabled execution on the LUMI-G compute nodes.
+Multi node distributed execution requires a custom "ClusterManager" plugin for
+integration with Slurm which requires a specific version of the Julia
+container. The same applies to GPU enabled execution on the LUMI-G compute
+nodes.
