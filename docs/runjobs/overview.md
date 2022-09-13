@@ -11,7 +11,6 @@
 [data-storage-options]: ../storage/storing-data.md
 [billing-policy]: ../computing/jobs/billing.md
 
-
 ---
 Here you find general descriptions of how to run jobs on LUMI, i.e. how to run
 your scientific software using the job scheduler on LUMI. If you are looking
@@ -34,12 +33,21 @@ All compute heavy tasks must be submitted through the job scheduler such that
 they are run on the compute nodes in
 [LUMI-G][lumi-g]/[LUMI-C][lumi-c]/[LUMI-D][lumi-d]. The job scheduler used on
 LUMI is Slurm. To get started using Slurm on LUMI read the [Slurm quickstart
-guide][slurm-quickstart]. Also, you may want to familiarize yourself with the
-LUMI Environment, i.e. the [module environment][module-environment] and
-[software stacks][software-stacks] as well as the [data storage
-options][data-storage-options] and [billing policy][billing-policy].
+guide][slurm-quickstart].
 
 !!! warning
 
     All tasks not adhering to the above fair use rules for the login nodes will
     be terminated without warning.
+
+Also, you may want to familiarize yourself with the LUMI Environment:
+
+- Read the [module environment][module-environment] page to learn more about
+how to use the module system on LUMI to find already installed software and to
+manage your own software installations.
+- Read the [software stacks][software-stacks] page to learn more about the
+  software is already centrally installed on LUMI.
+- Read the [data storage options][data-storage-options] page to learn more
+  about where to store your data.
+- Read the [billing policy][billing-policy] page to learn more about how you
+  are billed for your use of LUMI.

@@ -6,7 +6,6 @@
 
 [softwarestacks]: ./softwarestacks.md
 
-
 !!! tip
     If you are already somewhat familiar with modules from your home system,
     you may get more from this page if you first read our
@@ -24,11 +23,11 @@ in your environment. Modules contain the necessary information to allow you to
 run a particular application or provide you access to a particular library so
 that
 
-- different versions of a software package can be provided
+- different versions of a software package can be provided.
 - you can easily switch to different versions without having to explicitly
-  specify different paths
+  specify different paths.
 - you don't have to deal with dependent modules, they are loaded at the same
-  time as the software
+  time as the software.
 
 Almost all compute clusters use software modules. Currently there are three
 competing implementations, so you may not be familiar with Lmod already. And
@@ -45,10 +44,10 @@ features.
      - [Environment Modules version 4.X and 5.X](http://modules.sourceforge.net/)
        which is a continuation of the Tcl modules but now entirely written
        in Tcl itself. It is developed at CEA in France.
-     - [Lmod](https://lmod.readthedocs.io/en/latest/) uses module files written
-       in Lua and itself is also written in Lua. It is compatible with many
-       Tcl module files (from both versions of Environment Modules) through an
-       automatic translation layer. Lmod is developed at TACC.
+     - [Lmod][lmod] uses module files written in Lua and itself is also written
+       in Lua. It is compatible with many Tcl module files (from both versions
+       of Environment Modules) through an automatic translation layer. Lmod is
+       developed at TACC.
 
     You can see which version of modules your home cluster is using by executing
     ```bash
@@ -65,7 +64,7 @@ features.
 Modules are managed by the `module` command:
 
 ```bash
-module <sub-command> <module-name>
+$ module <sub-command> <module-name>
 ```
 
 where the _sub-command_ indicates the operation you want to perform. The
@@ -85,7 +84,6 @@ the operation.
 | `purge`          | Unload all modules from your environment             |
 | `show`           | Show the commands in the module's definition file    |
 
-
 ## Finding modules
 
 Lmod is a hierarchical module system. It distinguishes between installed modules
@@ -97,7 +95,7 @@ installed module what steps you must take to also make it available so that
 you can load it. Therefore, the commands for finding modules are so important.
 
 Some modules may also provide multiple software packages or extensions. Lmod can
-also search for these but this feature.
+also search for these.
 
 ??? failure "Not fully supported on LUMI"
     The LMOD feature to search for, e.g., Python packages inside a module or
@@ -128,13 +126,15 @@ It has three levels, producing different outputs:
 
  2. `module spider <name of package>` will search for the specific package. This
     can be the name of a module, but it will also search some other information
-    that can be included in the modules. The search is also case-insensitive.
-    E.g.,
+    that can be included in the modules. The search is case-insensitive, e.g.
+
     ```bash
-    module spider GNUplot
+    $ module spider GNUplot
     ```
+
     will show something along the lines of
-    ```
+
+    ```text
     ----------------------------------------------------------------
       gnuplot:
     ----------------------------------------------------------------
@@ -148,21 +148,25 @@ It has three levels, producing different outputs:
             gnuplot/5.4.3-cpeCray-21.12
             gnuplot/5.4.3-cpeCray-22.06
             gnuplot/5.4.3-cpeGNU-21.12
-            gnuplot/5.4.3-cpeGNU-22.06    ```
+            gnuplot/5.4.3-cpeGNU-22.06
     ```
+
     so even though the capitalisation of the name was wrong, it can tell us that
     there are six versions of gnuplot. The `cpeGNU-22.06` and `cpeCray-22.06`
     tell that the difference is the compiler that was used to install gnuplot,
-    being the GNU compiler (PrgEnv-gnu) and the Cray compiler (PrgEnv-cray)
+    being the GNU compiler (PrgEnv-gnu) and the Cray compiler (PrgEnv-cray),
     respectively. This is somewhat important as it is risky to combine modules
     compiled with different compilers.
 
     Similarly,
+
     ```bash
-    module spider CMake
+    $ module spider CMake
     ```
-    returns output similar to
-    ```
+
+    returns an output along the lines of
+
+    ```text
     ----------------------------------------------------------------
       CMake:
     ----------------------------------------------------------------
@@ -173,7 +177,8 @@ It has three levels, producing different outputs:
     Names marked by a trailing (E) are extensions provided by 
     another module.
     ```
-    This tells that there is no `CMake` module on the system but that two 
+
+    This tells that there is no `CMake` module on the system but that two
     versions of `CMake` (3.22.2 and 3.23.2) are available on the system as
     extensions of another module.
 
@@ -186,7 +191,7 @@ It has three levels, producing different outputs:
         by the non-standard way in which the Cray programming environment uses
         Lmod and also by the way the software stack needs to be installed
         next to the programming environment rather than integrated with it
-        due to the way the Cray programming environment has to be installed 
+        due to the way the Cray programming environment has to be installed
         on the system.
 
     In some cases, if there is no ambiguity, `module spider` will
@@ -194,12 +199,15 @@ It has three levels, producing different outputs:
 
  3. `module spider <module name>/<version>` will show more help information
     about the package, including information on which other modules need to be
-    loaded to be able to load the package. E.g.,
+    loaded to be able to load the package, e.g.
+
     ```bash
-    module spider git/2.37.0
+    $ module spider git/2.37.0
     ```
+
     will return
-    ```
+
+    ```text
     ----------------------------------------------------------------
       git: git/2.37.0
     ----------------------------------------------------------------
@@ -217,6 +225,7 @@ It has three levels, producing different outputs:
           LUMI/22.06  partition/G
           LUMI/22.06  partition/L
     ```
+
     (abbreviated output). Note that it also tells you which other modules need
     to be loaded. You need to choose the line which is appropriate for you and
     load all modules on that line, not the whole list of in this case 11
@@ -226,11 +235,14 @@ It has three levels, producing different outputs:
     as an extension by another module can be made available. E.g., in a previous 
     example we we've seen that `CMake/3.23.2` is available via another module.
     Now
+
+    ```bash
+    $ module spider CMake/3.23.2
     ```
-    module spider CMake/3.23.2
-    ```
+
     will return output similar to
-    ```
+
+    ```text
     ----------------------------------------------------------------
       CMake: CMake/3.23.2 (E)
     ----------------------------------------------------------------
@@ -260,11 +272,14 @@ complete since not all modules may have a complete enough short description.
 
 Consider we are looking for a library or package that supports MP3 audio
 encoding.
+
 ```bash
-module keyword mp3
+$ module keyword mp3
 ```
+
 will return something along the lines of
-```
+
+```text
 ----------------------------------------------------------------
 
 The following modules match your search criteria: "mp3"
@@ -273,6 +288,7 @@ The following modules match your search criteria: "mp3"
   LAME: LAME/3.100-cpeAOCC-21.12, LAME/3.100-cpeAOCC-22.06, LAME/3.100-cpeCray-21.12, LAME/3.100-cpeCray-22.06, ...
     LAME is a high quality MPEG Audio Layer III (mp3) encoder
 ```
+
 though the output will depend on the version of Lmod. This may not be the most
 useful example on a supercomputer, but the library is in fact needed to be able
 to install some other packages even though the sound function is not immediately
@@ -281,8 +297,7 @@ useful.
 ??? failure "Know issue: Irrelevant output"
     At the moment of writing of this documentation page, this command actually
     returns a lot more output, referring to completely irrelevant extensions.
-    This is a bug in the HPE-Cray-provided version of Lmod
-
+    This is a bug in the HPE-Cray-provided version of Lmod.
 
 ### module avail
 
@@ -297,11 +312,14 @@ in two ways:
 
  2. With the name of a module (or a part of the name) it will show all modules
     that match that (part of) a name. E.g., when `LUMI/22.06` is loaded,
+
     ```bash
-    module avail gnuplot
+    $ module avail gnuplot
     ```
+
     will show something along the lines of
-    ```
+
+    ```text
     ----- EasyBuild managed software for software stack LUMI/22.06 on LUMI-L -----
        gnuplot/5.4.3-cpeAOCC-22.06    gnuplot/5.4.3-cpeGNU-22.06 (D)
        gnuplot/5.4.3-cpeCray-22.06
@@ -309,13 +327,15 @@ in two ways:
       Where:
        D:  Default Module
     ```
+
     but
+
     ```bash
-    module avail gnu
+    $ module avail gnu
     ```
+
     will show you an often lengthy list that contains all packages with gnu
     (case insensitive) in their name or version.
-
 
 ## Getting help
 
@@ -336,7 +356,6 @@ some brief help about the module command. However, when used as `module help
 default version of the package (if the version is not specified) or the
 indicated version.
 
-
 ## Loading and unloading modules
 
 Loading and unloading modules in Lmod is very similar to other module systems.
@@ -344,7 +363,7 @@ Also node that only *available*  modules can be loaded with the commands below.
 Some *installed*  modules may only become *available* after first loading other
 modules as discussed above.
 
-To load a module, use the module load command. For example, to load the Cray
+To load a module, use the `module load` command. For example, to load the Cray
 FFTW library, use:
 
 ```bash
@@ -388,20 +407,25 @@ when you try to unload them with `module unload`. On LUMI this is the case for
 the modules that activate a software stack so that it is possible to unload all
 modules that are loaded in the stack without deactivating the stack. Sticky
 modules can still be unloaded or purged by adding the `--force` option, e.g.,
+
 ```bash
-module --force unload LUMI
-module --force purge
+$ module --force unload LUMI
+$ module --force purge
 ```
+
 Note the position of the `--force` argument.
 
 It is also possible to see the Lmod commands that are executed when loading a
 module using `module show`. E.g.,
+
 ```bash
-module load CrayEnv
-module show cray-fftw
+$ module load CrayEnv
+$ module show cray-fftw
 ```
+
 will show
-```
+
+```text
 ---------------------------------------------------------------------------------------------------------------------------
    /opt/cray/pe/lmod/modulefiles/cpu/x86-rome/1.0/cray-fftw/3.3.10.1.lua:
 ---------------------------------------------------------------------------------------------------------------------------
@@ -423,48 +447,47 @@ prepend_path("MANPATH","/opt/cray/pe/fftw/3.3.10.1/share/man")
 prepend_path("CRAY_LD_LIBRARY_PATH","/opt/cray/pe/fftw/3.3.10.1/x86_rome/lib")
 prepend_path("PE_PKGCONFIG_PRODUCTS","PE_FFTW")
 ```
+
 The interesting lines are the `setenv` lines which tell which environment
 variables will be set and the `prepend_path` lines which tell which directories
 will be added to certain PATH-style variables.
-
 
 ## Saving your environment
 
 Sometimes, if you frequently use multiple modules together, it might be useful
 to save your environment as a module collection. However, you should do so only
 if you fully understand how Lmod works and what is saved as saving environments
-is rather fragile in Lmod. E.g., in the LUMI software stack, saving a collection
-on the login nodes may not give you the right binaries when working on one of
-the types of compute nodes, even though the application modules have the same
-name and version. Also, when saving a collection of modules, the full pathname
-to each of the module files is saved so *the stored collection will break if
-modules have to be moved*.
+is rather fragile in Lmod. E.g., in the LUMI software stack, saving a
+collection on the login nodes may not give you the right binaries when working
+on one of the types of compute nodes, even though the application modules have
+the same name and version. Also, when saving a collection of modules, the full
+pathname to each of the module files is saved so *the stored collection will
+break if modules have to be moved*.
 
 A collection can be created using `save` sub-command.
 
-```
-module save <collection-name>
+```bash
+$ module save <collection-name>
 ```
 
 Your saved collections can be listed using the `savelist` sub-command.
 
-```
-module savelist
+```bash
+$ module savelist
 ```
 
 But, of course, the main interest of a collection is that you can load all the
 modules it contains in one command. This is done using the `restore`
 sub-command.
 
-```
-module restore <collection-name>
+```bash
+$ module restore <collection-name>
 ```
 
 More options to manage collections of modules can be found by running `module
 help` or in the [Lmod User Manual][lmod_collection]. Note, however, that the
 latter may contain options or commands that do not yet work on the version of
 Lmod supported on LUMI.
-
 
 ## Creating and using your own modules
 
@@ -486,13 +509,17 @@ Lmod that is installed on LUMI.
     will also show you where to find the module file.
 
 Adding directories to the search path for modules is done with
+
 ```bash
-module use <directory>
+$ module use <directory>
 ```
+
 Conversely, removing a directory is done with
+
 ```bash
-module unuse <directory>
+$ module unuse <directory>
 ```
+
 Removing a directory from the module search path will also unload the modules
 that are loaded from that directory.
 
@@ -502,13 +529,14 @@ that are loaded from that directory.
     `MODULEPATH` is possible. However overwriting the variable and removing
     directories can have nasty side effects and bring the internal data
     structures of Lmod in an inconsistent state, e.g., because there may now be
-    modules loaded from directories that are not in the ``MODULEPATH``.
+    modules loaded from directories that are not in the `MODULEPATH`.
 
-    If you want to overwrite ``MODULEPATH``, e.g., to build your own private environment
+    If you want to overwrite `MODULEPATH`, e.g., to build your own private environment
     fully independent from those that LUMI offers, you also need to re-initialise Lmod
     by running
+
     ```bash
-    source /usr/share/lmod/lmod/init/bash
+    $ source /usr/share/lmod/lmod/init/bash
     ```
 
 ## Further reading
@@ -518,7 +546,5 @@ programming environment. The version of Lmod is way behind the most recent
 version. This implies that not all information that can be found on the internet
 is also correct for LUMI.
 
-  * [Official Lmod documentation on readthedocs](https://lmod.readthedocs.io/), but
-    this is always for the latest version.
-
-
+- [Official Lmod documentation on readthedocs][lmod], but this is always for
+  the latest version.
