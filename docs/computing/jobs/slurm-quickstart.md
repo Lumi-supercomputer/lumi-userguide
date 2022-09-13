@@ -1,50 +1,26 @@
-# Slurm Quickstart
-
 [slurm]: https://slurm.schedmd.com/
 [partitions]: ./partitions.md
+[batch-jobs]: batch-job.md
+[accesslumi]: ../../firststeps/accessLUMI.md
+
+# Slurm quickstart
 
 An HPC cluster is made up of a number of compute nodes, which consist of one or
 more processors, memory and in the case of the GPU nodes, GPUs. These computing
 resources are allocated to the user by the resource manager. This is achieved
 through the submission of jobs by the user. A job describes the computing
-resources required to run application(s) and how to run it. LUMI uses Slurm
-as the batch scheduler and resource manager.
+resources required to run application(s) and how to run it. LUMI uses
+[Slurm][slurm] as job scheduler and resource manager.
 
+In order to run jobs, you need a [project allocation][accesslumi]. You need to
+specify your project ID in your job script (or via the command line when
+submitting your job) in order for your job to be accepted by the job scheduler.
 
-In order to run, you need a project allocation. 
-You need to specify your project ID in your job script (or via the command line
-when submitting your job) in order for your job to be submitted to the queue. 
+!!! info
 
-!!! missing
-
-    Commands to gather information about the project and quota are not
-    available yet. However, you can use the `groups` command to retrieve your 
+    You may use the `groups` command to retrieve your 
     project ID when connected to LUMI: you should see that you are part of a 
     group named `project_xxxxxxxxx`.
-
-
-
-Here is a typical batch script for Slurm. This script runs an application
-on 2 compute nodes with 16 MPI ranks on each node (32 total) and 8 OpenMP 
-threads per rank.
-
-```
-$ cat batch_script.slurm
-#!/bin/bash -l
-#SBATCH --job-name=test-job
-#SBATCH --account=<project_xxxxxxxxx>
-#SBATCH --time=01:00:00
-#SBATCH --nodes=2
-#SBATCH --ntasks=32
-#SBATCH --ntasks-per-node=16
-#SBATCH --cpus-per-task=8
-#SBATCH --partition=standard
-
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
-srun ./application
-```
-
-
 
 ## Slurm commands overview
 
@@ -63,8 +39,7 @@ The main commands for using Slurm are summarized in the table below.
 | `scancel` | Signal or cancel jobs, job arrays or job steps              |
 | `sinfo`   | View information about nodes and partitions                 |
 
-
-### Batch script
+### Creating a batch script
 
 The most common type of jobs are batch jobs which are submitted to the 
 scheduler using a batch job script and the `sbatch` command. 
@@ -79,9 +54,9 @@ A batch script is summarized by the following steps:
 - setting up the environment: prepare input, environment variables, ...
 - run the application(s)
 
-As an example let's look at this simple batch job script:
+As an example, let's look at this simple batch job script:
 
-```
+```bash
 #!/bin/bash
 #SBATCH --job-name=exampleJob
 #SBATCH --account=myAmazingProject
@@ -103,21 +78,21 @@ should be interpreted as a bash script.
 The lines starting with `#SBATCH` are directives for the workload manager.
 These have the general syntax
 
-```
+```bash
 #SBATCH option_name=argument
 ```
 
 Now that we have introduced this syntax, we can go through the directives one
 by one. The first directive is
 
-```
+```bash
 #SBATCH --job-name=exampleJob
 ```
 
 which sets the name of the job. It can be used to identify a job in the queue
 and other listings. The second directive sets the billing project for the job
 
-```
+```bash
 #SBATCH --account=myAmazingProject
 ```
 
@@ -135,7 +110,7 @@ The remaining lines specify the resources needed for the job.
 The first one is the **maximum** time your job can run. If your job exceeds
 the time limit, it is terminated regardless of whether it has finished or not. 
 
-```
+```bash
 #SBATCH --time=02:00:00
 ```
 
@@ -145,7 +120,7 @@ days). Therefore, in our example, the time limit is 2 hours.
 The next four lines of the script describe the computing resources that the job
 will need to run
 
-```
+```bash
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
@@ -157,13 +132,12 @@ corresponds to a process (or an MPI rank). One CPU thread (used, for example, wi
 OpenMP) is requested for the one task as well as 2 GiB of memory should
 be allocated to the whole job.
 
-The next line defines the partition to which the job will be submitted.
-Partitions are (possibly overlapping) groups of nodes with similar resources or
-associated limits. In our example, the job doesn't use a lot of resources and
-will fit perfectly onto the `small` partition. More informations about the 
-available partitions can be [found here][partitions].
+The next line defines the [Slurm partition][partitions] to which the job will
+be submitted. Slurm partitions are (possibly overlapping) groups of nodes with
+similar resources or associated limits. In our example, the job doesn't use a
+lot of resources and will fit perfectly onto the `small` partition.
 
-```
+```bash
 #SBATCH --partition=small
 ```
 
@@ -171,7 +145,7 @@ Now that the needed resources for the job have been defined, the next step is
 to set up the environment. For example, copy input data from your home
 directory to the scratch file system or export environment variables.
 
-```
+```bash
 module load MyApp/1.2.3
 ```
 
@@ -179,23 +153,25 @@ In our example, we load a module so that the `MyApp` application is available
 to the batch job. Finally, with everything set up, we can launch our program
 using the `srun` command.
 
-```
+```bash
 srun myapp -i input -o output
 ```
 
-### Submit a batch job 
+More details may be found on the dedicated [batch jobs][batch-jobs] page.
+
+### Submit a batch job
 
 To submit the job script we just created we use the `sbatch` command. The
 general syntax can be condensed as
 
-```
-sbatch [options] job_script [job_script_arguments ...]
+```bash
+$ sbatch [options] job_script [job_script_arguments ...]
 ```
 
 The available options are the same as the one you use in the batch script:
 `sbatch --nodes=2` in the command line and `#SBATCH --nodes=2` in a batch
 script are equivalent. The command line value takes precedence if the same
-option is present both on the command line and as a directive in a script. 
+option is present both on the command line and as a directive in a script.
 
 For the moment let's limit ourselves to the most common way to use the
 `sbatch`: passing the name of the batch script which contains the submission
@@ -209,14 +185,16 @@ Submitted batch job 123456
 The `sbatch` command returns immediately and if the job is successfully
 submitted, the command prints out the ID number of the job.
 
+More details may be found on the dedicated [batch jobs][batch-jobs] page.
+
 ### Examine the queue
 
 Once you have submitted your batch script it won't necessarily run immediately.
 It may wait in the queue of pending jobs for some time before its required
 resources become available. In order to view your jobs in the queue, use the
-`squeue`.
+`squeue` command.
 
-```
+```bash
 $ squeue
   JOBID PARTITION     NAME     USER  ST       TIME  NODES NODELIST(REASON)
  123456     small exampleJ lumi_usr  PD       0:00      1 (Priority)
@@ -231,46 +209,46 @@ will be `Resources`.
 
 Let's look at the information that will be shown if your job is running:
 
-```
+```bash
 $ squeue
   JOBID PARTITION     NAME     USER  ST       TIME  NODES NODELIST(REASON)
  123456     small exampleJ lumi_usr   R      35:00      1 node-0123
 ```
 
 The `ST` column will now display a `R` value (for `RUNNING`). The `TIME` column
-will represent the time your job is running and the list of nodes on which your
-job is executing will be given in the last column of the output.
+will represent the time your job has been running. The list of nodes on which
+your job is executing is given in the last column of the output.
 
-In practice the list of jobs printed by this command will be much longer,
-since all jobs, including those belonging to other users, will be visible.
-In order to see only the jobs that belong to you use the `squeue` command with
-the `--me` flag.
+In practice the list of jobs printed by this command will be much longer since
+all jobs, including those belonging to other users, will be visible. In order
+to see only the jobs that belong to you use the `squeue` command with the
+`--me` flag.
 
-```
+```bash
 squeue --me
 ```
 
 The `squeue` command can also be used to determine when your pending job will
 start.
 
-```
+```bash
 squeue --me --start
  JOBID PARTITION     NAME     USER ST          START_TIME  NODES SCHEDNODES           NODELIST(REASON)
 123456     batch Computat   vananh PD 2021-06-01T16:10:28      1 node0012             (Priority)
 123457     batch Computat   vananh PD 2021-06-01T18:21:28      1 (null)               (Priority)
 ```
 
-In our example, both jobs listed will start June 1 at different time. You will
-also notice that for the first the scheduler plan to run the job on `node0012`
-while for the second no node has been chosen yet.
+In our example, both jobs listed will start June 1 at different times. You will
+also notice that for the first job, the scheduler plan to run the job on
+`node0012` while for the second job, no node has been chosen yet.
 
 ### Cancelling a job
 
-Sometimes things just don't go as planned. If your job
-doesn't run as expected, you may need to cancel your job. This can be achieved
-using the `scancel` command which takes the job ID of the job to cancel. 
+Sometimes things just don't go as planned. If your job doesn't run as expected,
+you may need to cancel your job. This can be achieved using the `scancel`
+command which takes the job ID of the job to cancel.
 
-```
+```bash
 scancel <jobid>
 ```
 

@@ -1,9 +1,8 @@
-# Available Partitions
+# Slurm partitions
 
 [lumi-c]: ../../computing/systems/lumic.md
 [lumi-g]: ../../computing/systems/lumig.md
 [lumi-d]: ../../computing/systems/lumid.md
-[billing-policy]: ../../computing/jobs/billing.md
 [helpdesk]: ../../generic/helpdesk.md
 
 The Slurm partition setup of LUMI prioritizes jobs that aim to scale out. As a
@@ -13,12 +12,12 @@ debugging.
 
 ## Slurm partitions allocatable by node
 
-The following partitions are available for allocation by nodes. When using
+The following partitions are available for allocation by node. When using
 these partitions, your jobs use all resources available on the node and won't
 share the node with other jobs. Therefore, make sure that your application can
 take advantage of all the resources on the node as you will be billed for the
 complete node regardless of the resource actually used as detailed in the
-[billing policy][billing-policy].
+[billing policy](../../computing/jobs/billing.md#standard-and-bench-partitions).
 
 | Name     | Max walltime | Max jobs          | Max resources/job  | Hardware partition used |
 | -------- | ------------ | ----------------- | ------------------ | ----------------------- |
@@ -42,16 +41,15 @@ that your job may share the node with other jobs.
 | small    | 3 days       | 220 (200 running)       | 4 nodes            | [LUMI-C][lumi-c]        |
 | largemem | 1 day        |  30 (20 running)        | 1 nodes            | [LUMI-D][lumi-d]        |
 
-!!! info "Large Memory Nodes"
-    Some of the large memory nodes (512GB and 1TB)
-    are located in the `small` partition. Therefore, in order to use these
-    nodes, you need to select the `small` partition (`--partion=small`). Then,
-    the large memory nodes will be allocated if you request more memory than
-    the standard compute nodes.
+!!! info "LUMI-C/LUMI-D Large Memory Nodes"
+    The [LUMI-C][lumi-c] large memory nodes (512GB and 1TB) are located in the
+    `small` partition. Therefore, in order to use these nodes, you need to
+    select the `small` partition (`--partion=small`). Then the LUMI-C large
+    memory nodes will be allocated if you request more memory than is available
+    in the LUMI-C standard compute nodes.
 
-    The nodes in the `largemem` partition are part of LUMI-D, the 
-    [data analytics][lumid] part of LUMI and have 4TB of memory. Another 
-    difference is that the CPUs architecture of these nodes is Zen2.
+    The nodes in the `largemem` partition are part of [LUMI-D][lumi-d] and have
+    4TB of memory per node.
 
 ## Getting information about Slurm partitions
 
