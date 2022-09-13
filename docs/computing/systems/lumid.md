@@ -1,4 +1,4 @@
-# Data Analytics Nodes
+# Data Analytics Nodes - LUMI-D
 
 [lumic]: lumic.md
 [storage]: ../../storage/storing-data.md
