@@ -14,7 +14,9 @@
 
 On LUMI you have access to network file system storage based on the
 [LUMI-P][lumip] and [LUMI-F][lumif] hardware partitions. At a later point,
-object storage based on [LUMI-O][lumio] will also become available.
+object storage based on [LUMI-O][lumio] will also become available. The use of
+storage is billed according to the [billing
+policy](../computing/jobs/billing.md#storage-billing).
 
 ## Where to store data?
 
@@ -56,7 +58,9 @@ object storage based on [LUMI-O][lumio] will also become available.
 ## LUMI network file system disk storage areas
 
 On LUMI there are several network based disk storage areas. An overview is
-provided in the tables below.
+provided in the tables below. Please familiarize yourself with the
+characteristics of the hardware partitions before using the different storage
+areas.
 
 |                            | Path                       | Intended use                                                     | Hardware partition used |
 |----------------------------|----------------------------|------------------------------------------------------------------|-------------------------|

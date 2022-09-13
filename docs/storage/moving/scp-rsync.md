@@ -1,4 +1,10 @@
+[data-storage-options]: ../../storage/storing-data.md
+
 # Moving data to/from LUMI
+
+For moving data to/from LUMI, we recommend the use of the `scp` and `rsync`
+tools. See the [data storage options][data-storage-options] page for an
+overview of where to store your data on LUMI.
 
 ## Copying files with `scp`
 
