@@ -7,12 +7,12 @@
 
 # Billing policy
 
-Running jobs on the compute nodes and storing data on the storage will consume
+Running jobs on the compute nodes and storing data in storage space will consume
 the billing units allocated to your project:
 
 - Compute is billed in units of CPU-core-hours for CPU nodes and GPU-hours for
   GPU nodes.
-- Storage is billed in units of TB-hours.
+- Storage space is billed in units of TB-hours.
 
 ## Compute billing
 

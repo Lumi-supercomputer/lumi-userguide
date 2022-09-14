@@ -96,7 +96,7 @@ to request more storage space.
 
 !!! failure "Don't circumvent the retention policy"
 
-    Deliberately modifying file access times to bypass the the retention policy is
+    Deliberately modifying file access times to bypass the retention policy is
     prohibited. It's an anti-social behavior that may impact other users negatively.
 
 ### About the number of files quota
@@ -104,7 +104,7 @@ to request more storage space.
 For reasons related to performance, we are particularly attentive to the number
 of files present on the parallel file system. A lot of small files negatively
 impact all users by stressing the file system metadata servers. Therefore, any
-requests to increase the number of files will be evaluated carefully by the
+requests to increase the number of files quota will be evaluated carefully by the
 User Support Team and must be fully justified to be granted.
 
 Examples of requests that will be *rejected* include:
