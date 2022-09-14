@@ -1,4 +1,5 @@
 [slurm]: https://slurm.schedmd.com/
+[slurmlearning]: http://slurmlearning.deic.dk/
 [partitions]: ./partitions.md
 [batch-jobs]: batch-job.md
 [accesslumi]: ../../firststeps/accessLUMI.md
@@ -24,10 +25,12 @@ submitting your job) in order for your job to be accepted by the job scheduler.
 
 ## Slurm commands overview
 
-In the following, you will learn how to submit your job using the
-[Slurm Workload Manager][slurm]. If you're familiar with Slurm, you
-probably won't learn much. However, If you aren't acquainted with Slurm, 
-the following will introduce you to the basics.
+In the following, you will learn how to submit your job using the [Slurm
+Workload Manager][slurm]. If you're familiar with Slurm, you probably won't
+learn much. However, If you aren't acquainted with Slurm, the following will
+introduce you to the basics. If you would like to play around with Slurm in a
+sandboxed environment before submitting real jobs on LUMI, we highly recommend
+that you try the interactive [SlurmLearning tutorial][slurmlearning].
 
 The main commands for using Slurm are summarized in the table below.
 
@@ -41,8 +44,8 @@ The main commands for using Slurm are summarized in the table below.
 
 ### Creating a batch script
 
-The most common type of jobs are batch jobs which are submitted to the 
-scheduler using a batch job script and the `sbatch` command. 
+The most common type of jobs are batch jobs which are submitted to the
+scheduler using a batch job script and the `sbatch` command.
 
 A batch job script is a text file containing information about the job
 to be run: the amount of computing resource and the tasks that must be executed.
@@ -106,16 +109,16 @@ and other listings. The second directive sets the billing project for the job
     (job submit limit, user's size and/or time limits)
     ```
 
-The remaining lines specify the resources needed for the job. 
-The first one is the **maximum** time your job can run. If your job exceeds
-the time limit, it is terminated regardless of whether it has finished or not. 
+The remaining lines specify the resources needed for the job. The first one is
+the **maximum** time your job can run. If your job exceeds the time limit, it
+is terminated regardless of whether it has finished or not.
 
 ```bash
 #SBATCH --time=02:00:00
 ```
 
 The time format is ``hh:mm:ss`` (or `d-hh:mm:ss` where `d` is the number of
-days). Therefore, in our example, the time limit is 2 hours. 
+days). Therefore, in our example, the time limit is 2 hours.
 
 The next four lines of the script describe the computing resources that the job
 will need to run
@@ -128,9 +131,9 @@ will need to run
 ```
 
 In this instance we request one task (process) to be run on one node. A task
-corresponds to a process (or an MPI rank). One CPU thread (used, for example, with
-OpenMP) is requested for the one task as well as 2 GiB of memory should
-be allocated to the whole job.
+corresponds to a process (or an MPI rank). One CPU thread (used, for example,
+with OpenMP) is requested for the one task as well as 2 GiB of memory should be
+allocated to the whole job.
 
 The next line defines the [Slurm partition][partitions] to which the job will
 be submitted. Slurm partitions are (possibly overlapping) groups of nodes with
@@ -200,8 +203,8 @@ $ squeue
  123456     small exampleJ lumi_usr  PD       0:00      1 (Priority)
 ```
 
-The output shows the state of your job in the `ST` column. In our case, the
-job is pending (`PD`). The last column indicates the reason why the job isn't
+The output shows the state of your job in the `ST` column. In our case, the job
+is pending (`PD`). The last column indicates the reason why the job isn't
 running: `Priority`. This indicates that your job is queued behind a higher
 priority job. One other possible reason can be that your job is waiting for
 resources to become available. In such a case, the value in the `REASON` column
