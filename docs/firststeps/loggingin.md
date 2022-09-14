@@ -29,7 +29,7 @@ which contains your **private** key and `<username>` with with your own
 username.
 
 You should have received your username via email when your account was created.
-There may be a delay of up to a couple hours from registering your SSH key
+There may be a delay of up to a couple of hours from registering your SSH key
 until your account is created on LUMI, please be patient. If you are still not
 able to connect, please contact the [user support team][helpdesk].
 

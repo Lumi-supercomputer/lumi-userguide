@@ -33,7 +33,7 @@ After the execution of your application ended, the allocation can be terminated
 by exiting the shell (`exit`).
 
 When using `salloc`, a shell is spawned on the login node. If you want to
-obtain a shell on the first allocated compute node you can use  `srun --pty`.
+obtain a shell on the first allocated compute node you can use `srun --pty`.
 
 ```bash
 $ srun --cpu_bind=none --nodes=2 --pty bash -i
