@@ -14,7 +14,9 @@ hide:
 
 The LUMI User Support Team (LUST) is here to help!
 
-If you have any questions or problems using LUMI, please do not hesitate to contact us.
+If you have any questions or problems using LUMI, please do not hesitate to
+contact us. You may find our contact forms for different issues by clicking the
+'Contact us' button:
 
  <!DOCTYPE html>
 <html>

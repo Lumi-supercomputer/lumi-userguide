@@ -286,9 +286,9 @@ srun <executable> # (9)
 
 8. If your code needs a GPU-aware MPI
 
-9. Launch your application with `srun`. They are no `mpirun`/`mpiexec` on LUMI.
-   You should always use `srun` to launch your application. If your application
-   doesn't use MPI you can omit it.
+9. Launch your application with `srun`. There are no `mpirun`/`mpiexec` on
+   LUMI. You should always use `srun` to launch your application. If your
+   application doesn't use MPI you can omit it.
 
 Once your job script is ready, you can submit your job using the `sbatch`
 command.
