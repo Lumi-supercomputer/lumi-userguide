@@ -36,11 +36,11 @@ For example, allocating 32 CPU cores in a job running for 2 hours consumes:
 
 ### Slurm partition billing details
 
-For some [slurm partitions][slurm-partitions] special billing rules apply.
+For some [Slurm partitions][slurm-partitions] special billing rules apply.
 
-#### Standard and bench partitions
+#### Standard and bench Slurm partitions
 
-The `standard` and `bench` partitions are operated in exclusive mode: the
+The `standard` and `bench` Slurm partitions are operated in exclusive mode: the
 entire node will always be allocated. Thus, 128 CPU-core-hours are billed for
 every allocated node and per hour even if your job has requested less than 128
 cores per node.
@@ -51,13 +51,13 @@ For example, allocating 16 nodes in a job running for 12 hours consumes:
 16 nodes x 128 CPU-cores/node x 12 hours = 24576 CPU-core-hours
 ```
 
-#### Small partition
+#### Small Slurm partition
 
-When using the small partition you are billed per allocated core. However, if
-you are above a certain threshold of memory allocated per core, i.e. you use
-the high memory nodes in [LUMI-C][lumi-c], you are billed per slice of 2GB
-memory (which is still billed in units of CPU-core-hours). Specifically, the
-formula that is used for billing is:
+When using the small Slurm partition you are billed per allocated core.
+However, if you are above a certain threshold of memory allocated per core,
+i.e. you use the high memory nodes in [LUMI-C][lumi-c], you are billed per
+slice of 2GB memory (which is still billed in units of CPU-core-hours).
+Specifically, the formula that is used for billing is:
 
 ```text
 CPU-core-hours-billed = max(

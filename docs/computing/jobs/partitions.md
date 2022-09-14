@@ -10,6 +10,9 @@ consequence most nodes are reserved for jobs that use all available resources
 within a node. However, some nodes are reserved for smaller allocations and
 debugging.
 
+A list of the available partitions can be obtained using the `sinfo` command.
+To get a shorter summary, use `sinfo -s`.
+
 ## Slurm partitions allocatable by node
 
 The following partitions are available for allocation by node. When using
@@ -53,7 +56,6 @@ that your job may share the node with other jobs.
 
 ## Getting information about Slurm partitions
 
-A list of the available partitions can be obtained using the `sinfo` command.
 If you want more precise information about a particular partition, you can use
 the following command:
 

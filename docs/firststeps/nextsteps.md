@@ -28,7 +28,7 @@ In order to continue your endeavour into the use of LUMI, you may take a look at
 
 - The [**Hardware**][Hardware] section to get to know the LUMI system architecture and the different hardware partitions available on LUMI.
 
-- The [**Run jobs**][running-jobs] section to identify ways to run computations on LUMI.
+- The [**Run jobs**][running-jobs] section to identify ways to run computations on LUMI, including details about data storage options and billing policy.
 
 - The [**Software**][software] section to figure out how to get your favorite piece of scientific software available on LUMI.
 
