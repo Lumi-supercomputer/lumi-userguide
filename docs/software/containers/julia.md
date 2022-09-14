@@ -6,7 +6,7 @@
 Here we present examples of running scheduled
 [Julia](http://julialang.org/) jobs as a [container jobs][container-jobs].
 
-Assuming you have a Julia singularity image file `julia_latest.sif` (e.g.
+Assuming you have a Julia Singularity image file `julia_latest.sif` (e.g.
 created using `singularity pull docker://julia`), Julia can be executed
 interactively on a single [LUMI-C][lumi-c] node with N threads by allocating N
 CPU cores:
