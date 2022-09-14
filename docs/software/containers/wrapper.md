@@ -1,22 +1,23 @@
-# LUMI container wrapper
+# Container wrapper
 
-The LUMI container wrapper is a set of tools which wrap installations inside 
-a Apptainer/Singularity container to improve startup times, 
-reduce IO load, and lessen the number of files on large parallel file systems. 
+The container wrapper is a set of tools which wrap installations inside a
+Apptainer/Singularity container to improve startup times, reduce IO load, and
+lessen the number of files on large parallel file systems.
 
-Additionally, the LUMI container wrapper will generate wrappers so that installed
-software can be used (almost) as if it were not containerized. Depending
-on tool selection and settings, either the whole host file system or
-a limited subset is visible during execution and installation. This means that
-it's possible to wrap installation using e.g., mpi4py relying on the host provided
-mpi installation. 
+Additionally, the container wrapper will generate wrappers so that installed
+software can be used (almost) as if it were not containerized. Depending on
+tool selection and settings, either the whole host file system or a limited
+subset is visible during execution and installation. This means that it's
+possible to wrap installation using e.g., mpi4py relying on the host provided
+mpi installation.
 
 This documentation covers a subset of the functionality and focuses on
 conda and Python, a large part of the advanced use cases
 are not covered here yet.
 
-!!! Warning
-    As the LUMI container wrapper is still under development, some of the more advanced features might change in exact usage and API.
+!!! The container wrapper is very experimental
+    As the container wrapper is still under development, some of the more
+    advanced features might change in exact usage and API.
 
 ## Basic conda installation
 
