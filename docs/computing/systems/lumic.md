@@ -55,7 +55,7 @@ controller. There are 8 memory channels with a peak theoretical bandwidth of
 204.8 GB/s per socket.
 
 The LUMI-C compute nodes are configured with 4 NUMA zones ("quadrant mode")
-with 2 CCDs per quadrant. The figure below, gives you an overview of the
+with 2 CCDs per quadrant. The figure below gives you an overview of the
 distances between the NUMA nodes.
 
 <figure>

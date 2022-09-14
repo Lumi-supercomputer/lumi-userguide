@@ -87,7 +87,7 @@ where `<count>` sets the number of stripes, i.e. the number of OSTs and
 is a path to a directory or a file:
 
 - if a directory is used, it sets the default layout for new files created in
-  the directory. This default layout can be then be changed for individual
+  the directory. This default layout can then be changed for individual
   files inside the directory by creating them with the `lfs setstripe` command.
 - if a file is used, a new file with the specified layout will be created.
 
@@ -131,7 +131,7 @@ files. The following section describes general considerations.
 
 In theory, a larger number of stripes increase the I/O bandwidth and thus
 performance. In particular, applications that write to a single file from
-hundreds of nodes, may benefit from stripping over as many OSTs. Moreover,
+hundreds of nodes, may benefit from striping over as many OSTs. Moreover,
 striping is needed if you write a huge amount of data as a single OST may not
 have enough free space to store all the data. For applications creating a large
 number of small files as with a file per process scheme, large stripe counts
