@@ -7,10 +7,10 @@
 The LUMI-O object store offers a total of 30 PB storage for storing, sharing,
 and staging of data.
 
-In an object-based storage, data are managed as objects instead of being
+In an object-based storage, data is managed as objects instead of being
 organized as files in a directory hierarchy.
 
-Within your object storage project space, you can create buckets. These buckets
+Within your object storage project space you can create buckets. These buckets
 will store objects with metadata associated to these objects.
 
 <figure>
@@ -21,10 +21,10 @@ will store objects with metadata associated to these objects.
   >
 </figure>
 
-- **Buckets**: Containers used to store one or more objects. You can see a
-  bucket as a directory. However, object storage use a flat structure with only
+- **Buckets**: Containers used to store one or more objects.
+  Object storage use a flat structure with only
   one level which means that buckets cannot contain other buckets.
 - **Objects**: Any type of data. An object is stored in a bucket.
-- **Metadata**: Key value pairs associated with an object. While traditional
+- **Metadata**: Both buckets and objects have metadata specific to them. The metadata of a bucket specifies e.g. the access rights to the bucket. While traditional
   file systems have fixed metadata (filename, creation date, type, etc.), an
   object storage allows you to add custom metadata.

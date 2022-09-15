@@ -49,8 +49,8 @@ export EBU_USER_PREFIX=/project/project_465000000/EasyBuild
 
 ??? Tip "Tip for users with multiple projects"
     If you participate in multiple projects, you'll have to either have only
-    a very personal software setup in your home directory which noone else can
-    use, or a setup in each of the project directories as sharing of project
+    a very personal software setup in your home directory which no one else can
+    use, or a setup in each of the project directories, as sharing of project
     directories across projects is not possible. Our modules can also support
     only one user software setup at a time. However, you can always switch to
     a different setup by changing the value of the `EBU_USER_PREFIX`
@@ -85,8 +85,8 @@ $ module load LUMI/22.06
 ```
 
 This should also automatically load the right `partition module` for the part
-of LUMI you are on, as further detailed in [page on the software
-stacks][softwarestacks].
+of LUMI you are on, as further detailed on the [software
+stacks][softwarestacks] page.
 
 ??? Failure "Issue: Only partition/L and partition/C are currently fully supported"
     Note that in the initial versions of the software stack, only `partition/L`
@@ -109,7 +109,7 @@ to load the `EasyBuild-user` module:
 $ module load EasyBuild-user
 ```
 
-This will print a line on the screen indicating were software will be installed
+This will print a line on the screen indicating where software will be installed
 as a confirmation. It will also create the directory structure for the user
 software installation if it does not yet exist, including the structure of the
 user repository discussed below in the ["Advanced
@@ -147,7 +147,7 @@ purely for CPU and also includes PLUMED as we have also builds without PLUMED
 EasyBuild is configured so that it searches in the user repository and two
 repositories on the system. The current directory is not part of the default
 search path but can be easily added with a command line option. By default,
-EasyBuild will not install dependencies of a package and fail instead if one or
+EasyBuild will not install dependencies of a package and fail instead, if one or
 more of the dependencies cannot be found, but that is also easily changed on
 the command line. If all needed EasyBuild recipes are in one of those
 repository or in the current directory, all you need to do to install the
@@ -179,7 +179,7 @@ dependency of another package, EasyBuild will fail to locate the build recipe.
 
 ### Toolchains on Cray
 
-Toolchains in EasyBuild contains at least a compiler, but can also contains an
+Toolchains in EasyBuild contain at least a compiler, but can also contain an
 MPI library and a number of mathematical libraries (BLAS, LAPACK, ScaLAPACK and
 a FFT library). Programs compiled with different toolchains cannot be loaded
 together (though the module system will not always prevent this on LUMI).
