@@ -88,7 +88,7 @@ nav:
       - Crash or deadlock: development/debugging/stat-atp.md
     - Performance analysis:
       - Performance analysis strategies: development/profiling/index.md
-      - CrayPat: development/profiling/perftools.md
+      - Cray Performance Analysis Tool: development/profiling/perftools.md
       # - Arm Forge: development/profiling/armforge.md
     # - Monitoring jobs: development/monitoring/index.md
   
