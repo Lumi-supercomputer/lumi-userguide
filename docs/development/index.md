@@ -10,8 +10,8 @@ software on LUMI, consult the [software section][software-overview] instead.
 
 ---
 
-LUMI provides multiple programming environments for compiling code using the
-most common compilers. To get started you may want to familiarize yourself with
-the [Cray programming environment][programming-environment]. In addition,
-common scientific libraries tuned for LUMI are also available. Finally,
-parallel debugger and profiling tools are provided for use with LUMI as well.
+LUMI provides multiple compiler suites for compiling code using the most common
+compilers. To get started you may want to familiarize yourself with the
+[programming environment][programming-environment]. In addition, common
+scientific libraries tuned for LUMI are also available. Finally, parallel
+debugger and profiling tools are provided for use with LUMI as well.
