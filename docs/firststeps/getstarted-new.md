@@ -6,6 +6,7 @@
 [logging-in]: ./loggingin.md
 [move-data]: ../storage/moving/scp-rsync.md
 [nextsteps]: ./nextsteps.md
+[website-getstarted]: https://lumi-supercomputer.eu/get-started/
 
 # Get Started
 
@@ -23,4 +24,7 @@ To start using the LUMI supercomputer, you must:
 
 **Need help?**
 
-You can always contact the [user support team][support] in case of any problems.
+If you need help getting a user account, please contact your local organization
+as detailed on the [LUMI Supercomputer Get Started][website-getstarted] page.
+For all other problems, you can always contact the [LUMI user support
+team][support].
