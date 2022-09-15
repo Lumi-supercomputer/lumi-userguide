@@ -30,7 +30,7 @@ You have two options for bringing your scientific software to LUMI:
    provided by LUMI.
 
 Consult the [module environment page][module-env] for instructions on
-identifying already installed software on LUMI. Furthermore, you may want to
+identifying the already available software on LUMI. Furthermore, you may want to
 consult the [EasyBuild][easybuild] and [Spack][spack] pages for information
 about applications for which we already provide recipes that make them very
 easy to install yourself.

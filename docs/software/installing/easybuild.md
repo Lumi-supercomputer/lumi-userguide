@@ -11,15 +11,15 @@ installed through [EasyBuild](https://easybuild.io/). The central software
 stack is kept as compact as possible to ease maintenance and to avoid user
 confusion. E.g., packages for which users request special customisations will
 never be installed in the central software stack. Moreover, due to the
-technical implementation of the software stack on a system the size of LUMI,
-installing software can be disruptive so new software is mostly made available
+technical implementation of a software stack on a system the size of LUMI,
+installing software can be disruptive, so new software is mostly made available
 during maintenance intervals.
 
-This however does not mean that you may have to wait for weeks before you can
-get the software you need for your project on LUMI. We made it very easy to
+This, however, does not mean that you may have to wait for weeks before you can
+get the software you need for your project on LUMI. We have made it very easy to
 install additional software in your home or project directories (where the
-latter is the better choice as you can then share with the other people in your
-project) and use that software. It requires not much more than loading a module
+latter is a better choice as you can then share it with the other people in your
+project). After installing, using the software requires not much more than loading a module
 that configures EasyBuild for local installations and running EasyBuild with a
 few recipes that can be supplied by the [User Support Team][helpdesk] or your
 national support team or that you may write yourself. And this software is then
@@ -121,8 +121,8 @@ more information about the full configuration of EasyBuild, you can execute
 $ eb --show-config
 ```
 
-Now an EasyBuild build recipe is a file with a name that consists of different
-components. Consider, e.g., the build recipe
+Now, an EasyBuild build recipe is a file with a name that consists of different
+components and ends with '.eb'. Consider, e.g., a build recipe for the software GROMACS
 
 ```text
 GROMACS-2021.4-cpeGNU-22.06-PLUMED-2.7.4-CPU.eb
@@ -133,7 +133,7 @@ part of the name, `2021.4` is the version of GROMACS, in this case the initial
 2021 release. The next part, `cpeGNU-22.06`, denotes the so-called *toolchain*
 used for the build. The `cpeGNU` toolchain uses the `PrgEnv-gnu` programming
 environment, the `cpeCray` toolchain the `PrgEnv-cray` PE, the `cpeAOCC`
-toolchain the `PrgEnv-aocc` environment and the `cpeAMD` toolchain the
+toolchain the `PrgEnv-aocc` programming environment, and the `cpeAMD` toolchain the
 `PrgEnv-amd` environment. The version of the toolchain should match the version
 of the LUMI software stack or the installation will fail. (In fact, it is not
 just the version in the file name that should match but the version of the
@@ -146,7 +146,7 @@ purely for CPU and also includes PLUMED as we have also builds without PLUMED
 
 EasyBuild is configured so that it searches in the user repository and two
 repositories on the system. The current directory is not part of the default
-search path but is easily added with a command line option. By default,
+search path but can be easily added with a command line option. By default,
 EasyBuild will not install dependencies of a package and fail instead if one or
 more of the dependencies cannot be found, but that is also easily changed on
 the command line. If all needed EasyBuild recipes are in one of those
