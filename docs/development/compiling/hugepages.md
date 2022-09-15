@@ -8,7 +8,7 @@ hardware instruction can be found in the TLB, the mapping can be determined
 quickly. If not, a TLB miss occurs, and the system falls back to slower,
 software-based address translation, resulting in performance issues.
 
-## Why use hugepages
+## Reasons to use hugepages
 
 Since the size of the TLB is fixed in the hardware, a way to reduce the chance
 of a TLB miss is to increase the page size. Using very large page sizes can
