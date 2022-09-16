@@ -9,11 +9,10 @@ nav:
   - Intro: 
     - Welcome: index.md
   - First steps: 
-    - Get Started: firststeps/getstarted-new.md
+    - Get Started: firststeps/getstarted.md
     - Access to LUMI: firststeps/accessLUMI.md
     - Setting up SSH key pair: firststeps/SSH-keys.md
     - Logging in (with SSH client): firststeps/loggingin.md
-    # - LUMI web interface: firststeps/openondemand.md
     - Moving data to/from LUMI: storage/moving/scp-rsync.md
     - Next steps: firststeps/nextsteps.md
   - Hardware:
@@ -25,7 +24,6 @@ nav:
       - Data analytics nodes - LUMI-D: computing/systems/lumid.md
       - GPU Early Access Platform: eap/index.md
     - Storage:
-      # - Lustre file system: storage/parallel/lustre.md
       - Main storage - LUMI-P: storage/parallel/lumip.md
       - Flash storage - LUMI-F: storage/parallel/lumif.md
       - Object storage - LUMI-O: storage/object/index.md
@@ -33,7 +31,6 @@ nav:
       - Container Orchestration Platform - LUMI-K: computing/auxiliary/lumik.md
   - Run jobs:
       - Overview: runjobs/overview.md
-      # - Setup your Environment:
       - LUMI Environment:
         - Module environment: computing/Lmod_modules.md
         - Software stacks: computing/softwarestacks.md
@@ -47,36 +44,23 @@ nav:
         - Interactive Slurm jobs: computing/jobs/interactive.md
         - Container jobs: software/containers/cray_mpich.md
         - Distribution & binding options: computing/jobs/distribution-binding.md
-        # - Python scheduled jobs: computing/jobs/python-jobs.md
         - Julia scheduled jobs: software/containers/julia.md
-        # - Kubernetes as a scheculed job: computing/jobs/kubernetes-jobs.md
-      # - Interactive jobs (via Open Ondemand):
-      #   - Jupyterlab: computing/via-openondemand/jupyterlab.md
-      #   - RStudio: computing/via-openondemand/rstudio.md
-  #     - Serving containers: 
-  #       - Something about using LUMI-K: computing/serving_containers/using-lumik.md
   - Software:
     - Overview: software/index.md
     - Installing software:
       - EasyBuild: software/installing/easybuild.md
       - Spack: software/installing/spack.md
-      # - Python: software/installing/python.md
       - Container wrapper: software/containers/wrapper.md
     - Containers: 
       - Singularity/Apptainer containers: computing/containers.md
-    # - License server: computing/license-server.md
     - Software guides:
-      # - Overview: app_guides/overview.md
-      # - Scientific applications:
       - VASP: software/packages/vasp.md
       - Quantum ESPRESSO: software/packages/quantumespresso.md
   - Developing:
-    # - Developing and Monitoring:
     - Overview: development/index.md
     - Compiling:
       - Programming environment: development/compiling/prgenv.md
       - Cray compilers: development/compiling/cce.md
-      # - AMD compilers: development/compiling/amd.md
       - GNU compilers: development/compiling/gnu.md
     - High performance libraries: 
       - Cray libraries: development/compiling/libraries.md
@@ -89,17 +73,10 @@ nav:
     - Performance analysis:
       - Performance analysis strategies: development/profiling/index.md
       - Cray Performance Analysis Tool: development/profiling/perftools.md
-      # - Arm Forge: development/profiling/armforge.md
-    # - Monitoring jobs: development/monitoring/index.md
-  
   - Help desk: 
     - Help desk: generic/helpdesk.md
-    # - About LUST (LUMI User Support Team): generic/aboutLUST.md 
-    # - Tech support FAQ: generic/FAQ.md
     - Training and events: generic/training.md
-    # - Monthly coffee breaks: generic/coffeebreaks.md
     - Known issues: issues/index.md
-    # - Service breaks: generic/service-breaks.md
     
  
 theme:
