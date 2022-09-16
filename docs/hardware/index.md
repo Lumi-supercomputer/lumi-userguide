@@ -87,7 +87,7 @@ orchestration platform for use with LUMI.
   </p>
     <figure>
     <img 
-      src="../../assets/images/lumi-snowflake.svg" 
+      src="../assets/images/lumi-snowflake.svg" 
       width="100%" 
       style="margin: 0 auto;"
       alt="LUMI from 3000 feets"
