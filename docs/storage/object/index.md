@@ -22,7 +22,7 @@ will store objects with metadata associated to these objects.
 </figure>
 
 - **Buckets**: Containers used to store one or more objects.
-  Object storage use a flat structure with only
+  Object storage uses a flat structure with only
   one level which means that buckets cannot contain other buckets.
 - **Objects**: Any type of data. An object is stored in a bucket.
 - **Metadata**: Both buckets and objects have metadata specific to them. The metadata of a bucket specifies e.g. the access rights to the bucket. While traditional
