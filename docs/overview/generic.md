@@ -15,6 +15,6 @@
 
 [LUMI-F : The flash-based storage of LUMI][lumi-f]
 
-[LUMI-P : The parallel filesystem of LUMI][lumi-p]
+[LUMI-P : The parallel file system of LUMI][lumi-p]
 
 [LUMI-EAP : The GPU early Access Platform LUMI][eap]

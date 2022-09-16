@@ -1,32 +1,22 @@
-# Batch Jobs
-
-[1]: #example-batch-scripts
-[2]: #common-slurm-options
-[3]: #pipelining-with-dependencies
+# Batch jobs
 
 [slurm-quickstart]: ./slurm-quickstart.md
-[interactive]: ./interactive.md
 [slurm-doc]: https://slurm.schedmd.com/documentation.html
 [slurm-man]: https://slurm.schedmd.com/man_index.html
 [slurm-sbatch]: https://slurm.schedmd.com/sbatch.html
-[slurm-srun]: https://slurm.schedmd.com/srun.html
 
-This page aims to allow the user to submit a job using the Slurm resource 
-manager and scheduler which is responsible for allocating resources. **Resource 
-intensive applications should always be run via Slurm**.
-
-It is assumed that you are already familiar with Slurm. If not, you can read the
-[Slurm quickstart][slurm-quickstart] which cover the basics. You can also refer
-to the Slurm [documentation][slurm-doc] or [manual pages][slurm-man] and in 
+This pages covers advanced topics related to running Slurm batch jobs on LUMI.
+If you are not already familiar with Slurm, you should read the [Slurm
+quickstart][slurm-quickstart] guide which covers the basics. You can also refer
+to the Slurm [documentation][slurm-doc] or [manual pages][slurm-man], in
 particular the page about [sbatch][slurm-sbatch].
-
 
 ## Specifying the account
 
-The account option (`--account=project_<id>`) is mandatory. Failing to set 
+The account option (`--account=project_<id>`) is mandatory. Failing to set
 it will cause the following error:
 
-```
+```text
 Unable to allocate resources: Job violates accounting/QOS policy 
 (job submit limit, user's size and/or time limits)
 ```
@@ -34,19 +24,22 @@ Unable to allocate resources: Job violates accounting/QOS policy
 If you don't want to specify the account to use every time you submit a job, you
 can add the following lines to your `.bashrc` file.
 
-```
+```bash
 export SBATCH_ACCOUNT=project_<id>
 export SALLOC_ACCOUNT=project_<id>
 ```
 
-Where you have to replace `project_<id>` with the project name that has been 
-assigned to you.
+where you have to replace `project_<id>` with the ID of the project you have
+been granted.
 
-## Example Batch Scripts
+## Example batch scripts
+
+Here we give examples of batch scripts for typical workflows on LUMI. You may
+use these as templates for your own project batch scripts.
 
 ### Shared memory jobs
 
-```
+```bash
 #!/bin/bash -l
 #SBATCH --job-name=examplejob   # Job name
 #SBATCH --output=examplejob.o%j # Name of stdout output file
@@ -70,11 +63,11 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 ### MPI-based jobs
 
 !!! Failure "Fortan MPI program fails to start"
-    If Fortran based program with MPI fails to start with large number of nodes
-    (512 nodes for instance), add `export PMI_NO_PREINITIALIZE=y` to your batch
-    script.  
+    If a Fortran based program with MPI fails to start when utilizing a large
+    number of nodes (512 nodes for instance), add
+    `export PMI_NO_PREINITIALIZE=y` to your batch script.  
 
-```
+```bash
 #!/bin/bash -l
 #SBATCH --job-name=examplejob   # Job name
 #SBATCH --output=examplejob.o%j # Name of stdout output file
@@ -95,7 +88,7 @@ srun ./your_application # Use srun instead of mpirun or mpiexec
 
 ### Hybrid MPI+OpenMP jobs
 
-```
+```bash
 #!/bin/bash -l
 #SBATCH --job-name=examplejob   # Job name
 #SBATCH --output=examplejob.o%j # Name of stdout output file
@@ -120,7 +113,7 @@ srun ./your_application # Use srun instead of mpirun or mpiexec
 
 ### Serial Job
 
-```
+```bash
 #!/bin/bash -l
 #SBATCH --job-name=examplejob   # Job name
 #SBATCH --output=examplejob.o%j # Name of stdout output file
@@ -137,64 +130,68 @@ srun ./your_application # Use srun instead of mpirun or mpiexec
 
 ## Automatic requeuing
 
-The LUMI Slurm configuration has **automatic requeuing** of jobs upon node 
-failure **enabled**. It means that if a node fails, your job will be 
-automatically resubmitted to the queue and will have the same job ID and 
-possibly truncate the previous output. Here are some important parameters you 
+The LUMI Slurm configuration has **automatic requeuing** of jobs upon node
+failure **enabled**. It means that if a node fails, your job will be
+automatically resubmitted to the queue and will have the same job ID and
+possibly truncate the previous output. Here are some important parameters you
 can use to alter the default behavior.
 
 - you can disable automatic requeuing using the `--no-requeue` option
 - you can avoid your output file being truncated in case of requeuing by using
   the `--open-mode=append` option
 
-You can apply these two options permanently by exporting the following 
+You can apply these two options permanently by exporting the following
 environment variables in your `.bashrc`:
 
 - `SBATCH_NO_REQUEUE=1` to disable requeuing
 - `SBATCH_OPEN_MODE=append` to avoid output truncating after requeuing
 
-If you want to perform specific operations in your batch script when a job has 
-been requeued you can check the value of the `SLURM_RESTART_COUNT` variable. The
-value of this variable will be `0` if it's the first time the job is run. If the 
-job has been restarted then the value will be the number of times the job has 
-been restarted.
+If you want to perform specific operations in your batch script when a job has
+been requeued you can check the value of the `SLURM_RESTART_COUNT` variable.
+The value of this variable will be `0` if it's the first time the job is run.
+If the job has been restarted then the value will be the number of times the
+job has been restarted.
 
 ## Common error messages
 
-Below are common error messages you may get when the job submission fails.
+Below are some common error messages you may get when your job submission
+fails.
 
 ### Invalid account or account/partition combination specified
 
-The complete error message is as shown below:
+The complete error message is:
 
-```
+```text
 sbatch: error: Batch job submission failed: Invalid account or account/partition combination specified
 ```
 
-This error message refers to Slurm options `--account=<project>` and
-`--partition`. The most common causes are:
+This error message relates to improper use of the Slurm options
+`--account=<project>` and `--partition`. The most common causes are:
 
-- project does not exist.
-- project exists, but you are not a member of it
-- partition does not exist
+- the project does not exist.
+- the project exists, but you are not a member of it.
+- the partition does not exist.
 
 ### Job violates accounting/QOS policy
 
-The complete error message is as shown below:
+The complete error message is:
 
-```
+```text
 sbatch: error: AssocMaxSubmitJobLimit
 sbatch: error: Batch job submission failed: Job violates accounting/QOS policy (job submit limit, user's size and/or time limits)
 ```
 
 The most common causes are:
 
-- your allocation has no compute time left
+- your project has already used all of its allocated compute resources.
 - job script is missing the `--account` parameter.
-- your project has too many jobs in the system, either running or queuing.
-  Slurm counts each job within an array job as a separate job.
+- your project has exceeded the limit for number of simultaneous jobs, either
+  running or queuing. Note that Slurm counts each job within an array job as a
+  separate job.
 
 ## Common Slurm options
+
+Here is an overview of some of the most commonly used Slurm options.
 
 ### Basic job specification
 
@@ -230,25 +227,23 @@ The most common causes are:
 | `--gpus-per-node` | Set the number of GPUs per node                          |
 | `--gpus-per-task` | Set the number of GPUs per task                          |
 
-
 ### Request memory
- 
+
 | Option            | Description                            |
 | ------------------|----------------------------------------|
 | `--mem`           | Set the memory per node                |
 | `--mem-per-cpu`   | Set the memory per allocated CPU cores |
-| `--mem-per-gpu`   | Set the memory per allocated GPU       | 
+| `--mem-per-gpu`   | Set the memory per allocated GPU       |
 
-!!! info                                                                              
-    The `/tmp` directory on the compute nodes resides in memory and is included in    
-    the job memory request. This means that your job can run of memory if you write to
-    much data to `/tmp`                                                               
-
+!!! info
+    The `/tmp` directory on the compute nodes resides in memory. The memory
+    used for `/tmp` is included in the job memory allocation. If you use
+    `/tmp`, you must allocate memory for it in order to avoid running out of
+    memory.
 
 ### Receive email notifications
 
 !!! warning
-    
     The email notification feature is not yet configured and does not work at
     the moment.
 
@@ -267,14 +262,14 @@ dependencies have been satisfied. Dependencies can be defined in a batch script
 with the `--dependency` directive or be passed as a command-line argument to
 `sbatch`.
 
-```
-sbatch --dependency=<type:job_id[:job_id]>
+```bash
+$ sbatch --dependency=<type:job_id[:job_id]>
 ```
 
-The `type` defines the condition that the job with ID `job_id` must fulfil so
-that, the job on which it depends can start. For example
+The `type` defines the condition that the job with ID `job_id` must fulfil
+before the job which depends on it can start. For example,
 
-```
+```bash
 $ sbatch job1.sh
 Submitted batch job 123456
 
@@ -282,7 +277,7 @@ $ sbatch --dependency=afterany:123456 job2.sh
 Submitted batch job 123458
 ```
 
-Will only start execution of `job2.sh` if, `job1.sh` has finished. The available
+will only start execution of `job2.sh` when `job1.sh` has finished. The available
 types and their description are presented in the table below.
 
 | Dependency type               | Description                                           |
@@ -292,11 +287,9 @@ types and their description are presented in the table below.
 | `afternotok:jobid[:jobid...]` | Begin after the specified jobs have failed            |
 | `afterok:jobid[:jobid...]`    | Begin after the specified jobs have run to completion |
 
-### Example
-
-The example below demonstrate the submission of jobs with dependencies with a
-bash script. It also shows you an example of a helper function that extracts 
-the job ID from the output of the `sbatch` command.  
+The example below demonstrates a bash script for submission of multiple Slurm
+batch jobs with dependencies. It also shows an example of a helper function
+that extracts the job ID from the output of the `sbatch` command.  
 
 ``` bash
 #!/bin/bash
@@ -321,9 +314,3 @@ id3=$(submit_job --dependency=afterany:$id1 job3.sh)
 # One job that depends on both the second and the third jobs
 id4=$(submit_job  --dependency=afterany:$id2:$id3 job4.sh)
 ```
-
-!!! warning
-    The example above is not a Slurm batch script. It should be used where the
-    `sbatch`is available. Typically from a login node as the command is not 
-    available on the compute node.
-

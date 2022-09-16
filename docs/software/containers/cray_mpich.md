@@ -1,141 +1,111 @@
+[singularityce]: https://docs.sylabs.io/guides/latest/user-guide/
+[apptainer]: http://apptainer.org/docs/user/main/index.html
+[mpich-abi]: https://www.mpich.org/abi/
+[permedcoe-mpi]: https://permedcoe.github.io/mpi-in-container
+[easybuild-install]: ../../software/installing/easybuild.md
+[containers-install]: ../../computing/containers.md
+[data-storage-options]: ../../storage/storing-data.md
+
 # Container jobs
 
-## Running a container
+LUMI provides access to a `singularity` runtime for running applications in
+software containers. Currently, there are two major providers of the
+`singularity` runtime, namely [Singularity CE][singularityce] and
+[Apptainer][apptainer], with the latter being a fork of the former. For most
+cases these should be fully compatible. LUMI provides the `singularity` runtime
+included in the HPE Cray Operating System (a SUSE Linux based OS) running on
+LUMI - no modules need to be loaded to use `singularity` on LUMI. You can
+always check the version of singularity using the command `singularity
+--version`.
 
-Here, for instance, we check the version of Ubuntu running in the container
+See the [Apptainer/Singularity containers install page][containers-install] for
+details about creating LUMI compatible software containers.
+
+## The basics of running a container on LUMI
+
+Applications in a container may be run by combining Slurm commands with
+Singularity commands, e.g. to get the version of Ubuntu running in a container
+stored as "ubuntu_22.04.sif", we may use `srun` to execute the `singularity`
+container
 
 ```bash
-srun --partition=<partition> --account=<account> singularity exec \
-     ubuntu_21.04.sif cat /etc/os-release
+$ srun --partition=<partition> --account=<account> singularity exec ubuntu_21.04.sif cat /etc/os-release
 ```
 
-This prints
+which prints something along the lines of
 
-```
+```text
+PRETTY_NAME="Ubuntu 22.04.1 LTS"
 NAME="Ubuntu"
-VERSION="21.04 (Hirsute Hippo)"
+VERSION_ID="22.04"
+VERSION="22.04.1 LTS (Jammy Jellyfish)"
+VERSION_CODENAME=jammy
 ID=ubuntu
 ID_LIKE=debian
-PRETTY_NAME="Ubuntu 21.04"
-VERSION_ID="21.04"
 HOME_URL="https://www.ubuntu.com/"
 SUPPORT_URL="https://help.ubuntu.com/"
 BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
 PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
-VERSION_CODENAME=hirsute
-UBUNTU_CODENAME=hirsute
+UBUNTU_CODENAME=jammy
 ```
 
-By default, some file system partitions, such as `/scratch`,`/project` are not
-accessible from the container. To make them available, they need to be
-explicitly bound by passing the `-B/--bind` command line option to 
-`singularity exec/run`. For instance
+### Binding network file systems in the container
+
+By default, the [network file system partitions][data-storage-options], such as
+`/scratch` or `/project` are not accessible from the within the container. To
+make them available, they need to be explicitly bound by passing the
+`-B/--bind` command line option to `singularity exec/run`. For instance
 
 ```bash
-srun --partition=<partition> --account=<account> singularity exec \
-     -B /scratch/<account> ubuntu_21.04.sif ls /scratch/<account>
+$ srun --partition=<partition> --account=<project_name> singularity exec -B /scratch/<project_name> ubuntu_21.04.sif ls /scratch/<account>
 ```
 
-<!-- ## Application-specific container
-
- * [Running MPI applications within the container][cray_mpich] -->
-
+!!! warning
+    Since project folder paths like `/scratch/<project_name>` and
+    `/project/<project_name>` are symlinks on LUMI, you must bind these full
+    paths to make them available in the container. Simply binding `/scratch` or
+    `/project` will not work.
 
 ## Running containerized MPI applications
 
-[software_installing]: ../../software/installing/easybuild.md
-[mpich-abi]: https://www.mpich.org/abi/
-[permedcoe-mpi]: https://permedcoe.github.io/mpi-in-container
-[osu-benchmark]: https://mvapich.cse.ohio-state.edu/benchmarks/
-
-### Using the host MPI
-
-#### Binding to the host
-
-Containerized MPI applications can be run with Singularity. However, in order to
-properly make use of LUMI's high-speed network, it is necessary to mount a few
-host system directories inside the container and set `LD_LIBRARY_PATH` so that
-the necessary dynamic libraries are available at run time. Doing that, the MPI
-installed in the container image is replaced by the host's.
-
-We have put together all the necessary setup in a module that can be installed
-by the user with EasyBuild:
-
-```bash
-module load LUMI partition/<lumi-partition> EasyBuild-user
-eb singularity-bindings-system-cpeGNU-<toolchain-version>.eb -r
-```
-
-That will create the module `singularity-bindings/system-cpeGNU-<toolchain-version>`.
-More information on installing software with EasyBuild can be found
-[here][software_installing].
-
-#### Create a container compatible with LUMI
-
-Let's consider a simple example to see how to use the `singularity-bindings` to
-run a containerized MPI application. 
+Running MPI applications in a container requires that you either bind the host
+MPI (the MPI stack provided as part of the software stack available on the
+compute node) or install a LUMI compatible MPI stack in the container.
 
 !!! warning
     For MPI-enabled containers, the application inside the container must be
     dynamically linked to an MPI version that is [ABI-compatible][mpich-abi]
     with the host MPI.
 
-First we are going to prepare an image. The
-following Singularity definition file `mpi_osu.def`, installs MPICH-3.1.4, which
-is ABI-compatible with the Cray-MPICH found on LUMI. That MPICH will be used to
-compile the [OSU microbenchmarks][osu-benchmark]. Finally, the OSU point to
-point bandwidth test is set as the runscript of the image.
+### Using the host MPI
 
-```
-bootstrap: docker
-from: ubuntu:21.04
+In order to properly make use of LUMI's high-speed network, it is necessary to
+mount a few host system directories inside the container and set
+`LD_LIBRARY_PATH` so that the necessary dynamic libraries are available at run
+time. This way, the MPI installed in the container image is replaced by the
+host's MPI stack.
 
-%post
-    # Install software
-    apt-get update
-    apt-get install -y file g++ gcc gfortran make gdb strace wget ca-certificates --no-install-recommends
-
-    # Install mpich
-    wget -q http://www.mpich.org/static/downloads/3.1.4/mpich-3.1.4.tar.gz
-    tar xf mpich-3.1.4.tar.gz
-    cd mpich-3.1.4
-    ./configure --disable-fortran --enable-fast=all,O3 --prefix=/usr
-    make -j$(nproc)
-    make install
-    ldconfig
-
-    # Build osu benchmarks
-    wget -q http://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-5.3.2.tar.gz
-    tar xf osu-micro-benchmarks-5.3.2.tar.gz
-    cd osu-micro-benchmarks-5.3.2
-    ./configure --prefix=/usr/local CC=$(which mpicc) CFLAGS=-O3
-    make
-    make install
-    cd ..
-    rm -rf osu-micro-benchmarks-5.3.2
-    rm osu-micro-benchmarks-5.3.2.tar.gz
-
-%runscript
-    /usr/local/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_bw
-```
-
-The image can be built **outside of LUMI** with 
+All the necessary components are available in a module that can be installed
+by the user via [EasyBuild][easybuild-install]
 
 ```bash
-sudo singularity build mpi_osu.sif mpi_osu.def
+$ module load LUMI partition/<lumi-partition> EasyBuild-user
+$ eb singularity-bindings-system-cpeGNU-<toolchain-version>.eb -r
 ```
 
-The OSU point-to-point bandwidth test can be run with
+Running e.g. the [OSU point-to-point bandwidth test
+container](../../computing/containers.md#building-lumi-mpi-compatible-containers)
+can then be done using
 
 ```bash
-module load singularity-bindings
-srun --partition=<partition> --account=<account> \
-     --nodes=2 singularity run mpi_osu.sif
+$ module load singularity-bindings
+$ srun --partition=<partition> --account=<account> --nodes=2 singularity run mpi_osu.sif
 ```
 
-which gives the bandwidth measured for different message sizes
+which gives the bandwidth measured for different message sizes, i.e. something
+along the lines of
 
-```
+```text
 # OSU MPI Bandwidth Test v5.3.2
 # Size      Bandwidth (MB/s)
 1                       3.00
@@ -165,18 +135,17 @@ which gives the bandwidth measured for different message sizes
 
 ### Using the container MPI
 
-MPI applications can be run without replacing the container's MPI. To do so,
-Slurm needs to be instructed to use the PMI-2 process management interface by
-passing `--mpi=pmi2` to `srun`
+MPI applications can also be run using an MPI stack installed in the container.
+To do so, Slurm needs to be instructed to use the PMI-2 process management
+interface by passing `--mpi=pmi2` to `srun`, e.g.
 
 ```bash
-srun --partition=<partition> --account=<account> \
-     --mpi=pmi2 --nodes=2 singularity run mpi_osu.sif
+$ srun --partition=<partition> --account=<account> --mpi=pmi2 --nodes=2 singularity run mpi_osu.sif
 ```
 
-This gives lower bandwidths, especially for the larger message sizes
+which produces an output along the lines of
 
-```
+```text
 # OSU MPI Bandwidth Test v5.3.2
 # Size      Bandwidth (MB/s)
 1                       0.50
@@ -204,10 +173,9 @@ This gives lower bandwidths, especially for the larger message sizes
 4194304              2380.51
 ```
 
-Like in this example, the performance obtained doing this might be quite low
-compared to the results obtained when using the host's MPI.
-
-For a higher-level overview, you can read a [tutorial on MPI in
-containers][permedcoe-mpi].
-
-
+Note that this approach gives lower bandwidths, especially for the larger
+message sizes, than is the case when using the host MPI. In general, the
+performance obtained from using the container MPI might be quite low compared
+to the results obtained when using the host's MPI. For a more in-depth
+discussion of the topic of MPI in containers, we suggest that you read this
+[introduction to MPI in containers][permedcoe-mpi].

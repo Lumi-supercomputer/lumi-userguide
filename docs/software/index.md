@@ -1,33 +1,44 @@
----
-title: Software - Overview
----
+# Overview
 
+[developing-overview]: ../development/index.md
+[lumi-p]: ../storage/parallel/lumip.md
 [easybuild]: ./installing/easybuild.md
+[spack]: ./installing/spack.md
 [contwrapper]: ./containers/wrapper.md
+[singularity-container]: ../computing/containers.md
+[singularity-jobs]: ../software/containers/cray_mpich.md
+[software-stacks]: ../computing/softwarestacks.md
+[module-env]: ../computing/Lmod_modules.md
 
 ---
-This part of the documentation gives you an introduction on how to install software on LUMI. Here you can also find guides for some scientific applications supported on LUMI.
+Here you find guidance on ways to install software on LUMI as well as guides on
+using some specific software packages on LUMI. If you are looking for ways to
+optimize your software for use on LUMI, consult the [developing
+section][developing-overview] instead.
 
 ---
 
-## Learn more about installing software on LUMI
+You have two options for bringing your scientific software to LUMI:
 
-On LUMI we support various ways to install software
+1. Install your scientific software in your home or project directory. For this
+   we recommend using the [EasyBuild][easybuild] package manager as it is used
+   to manage the [central software stack][software-stacks] on LUMI and makes it
+   easy to install additional software that extends it. Alternatively, you may
+   use [Spack][spack] or the [container wrapper][contwrapper].
+2. Bring a [Singularity/Apptainer software container][singularity-container]
+   and run it using the [Singularity container runtime][singularity-jobs]
+   provided by LUMI.
 
- - [EasyBuild][easybuild] is our primary tool to manage the central software
-   stack and we made it easy to install additional software in your home or
-   project directory that extends that stack.
- - [Container wrapper][contwrapper] is a set of tools which wrap installations
-   inside a Apptainer/Singularity container. These tools are recommended to 
-   install Conda and pip packages on LUMI.
+Consult the [module environment page][module-env] for instructions on
+identifying the already available software on LUMI. Furthermore, you may want to
+consult the [EasyBuild][easybuild] and [Spack][spack] pages for information
+about applications for which we already provide recipes that make them very
+easy to install yourself.
 
+!!! warning
 
-## Learn more about the LUMI software Policy
-
-If you want to learn more about the LUMI software policy, you can watch this
-recording from the last Easybuild User Meeting.
-
-<iframe width="620" height="348" style="display: block; margin: 50px auto;"
-src="https://www.youtube.com/embed/hZezVG6lJNk">
-</iframe>
-
+    The home and project directories reside on the Lustre based parallel
+    file system on [LUMI-P][lumi-p] which does not perform well with
+    installations of software containing a lot of small files, e.g. Python or
+    R environments installed via Conda or pip. For such software a container
+    based approach must be used.

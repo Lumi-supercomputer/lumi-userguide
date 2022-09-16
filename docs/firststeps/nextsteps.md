@@ -24,19 +24,17 @@ hide:
 
 <!-- Great! Now you are ready to start learning about the LUMI environment and how to work in it. On this page are given short descriptions of each menu topic of this documenation. -->
 
-This is a short introduction to the other menu topics in this documentation:
+In order to continue your endeavour into the use of LUMI, you may want to take a look at:
 
+- The [**Hardware**][Hardware] section to get to know the LUMI system architecture and the different hardware partitions available on LUMI.
 
-- To get to know the LUMI system architecture and different partitions available on LUMI, continue to the [**Hardware**][Hardware] section.
+- The [**Run jobs**][running-jobs] section to identify ways to run computations on LUMI, including details about data storage options and billing policy.
 
+- The [**Software**][software] section to figure out how to get your favorite piece of scientific software available on LUMI.
 
-- To work in LUMI environment and run jobs on LUMI, please read more in the [**Run jobs**][running-jobs] section. Under this menu topic you can also find information about data storage options and billing policy.
+- The [**Developing**][development] section to learn more about compiling, developing, optimizing, and debugging code for use with LUMI.
 
-- To find out about the LUMI software stacks and how to install software on LUMI, go to the [**Software**][software] section. Under this menu topic there are also some tutorials for scientific applications.
-
-- For compiling, developing and optimizing your code on LUMI, read more in the [**Developing**][development] section. 
-
-- For getting in contact with the LUMI user support team, visit the [**Helpdesk**][helpdesk] page
+- The [**Helpdesk**][helpdesk] section to get in contact with the LUMI User Support Team (LUST), in case you need further help using LUMI.
 
 <!-- - How to [get help][helpdesk] with using LUMI -->
 
