@@ -105,7 +105,7 @@ theme:
   
   home_primary:
     title: Get Started
-    page: firststeps/getstarted-new/
+    page: firststeps/getstarted/
   home_secondary:
     title: To LUMI Main Page
     page: https://lumi-supercomputer.eu/

@@ -15,7 +15,7 @@ will store objects with metadata associated to these objects.
 
 <figure>
   <img
-    src="../../assets/images/object-storage-component.svg"
+    src="../../../assets/images/object-storage-component.svg"
     width="450"
     alt="Object storage components"
   >
