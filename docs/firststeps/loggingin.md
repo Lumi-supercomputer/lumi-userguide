@@ -10,7 +10,7 @@
 [jump-ssh-key]: #logging-in
 [eidas-eduid]: https://puhuri.neic.no/user_guides/myaccessid_registration/ -->
 
-[helpdesk]: ../generic/helpdesk.md
+[helpdesk]: ../helpdesk/index.md
 [setup-ssh-key]: ../firststeps/SSH-keys.md
 
 # Logging in (with SSH client)

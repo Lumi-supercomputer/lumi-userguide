@@ -3,7 +3,7 @@
 [1]: #choose-the-cce-version
 [2]: #cce-fortran-compiler
 
-[wrappers]: prgenv.md#compiler-wrappers
+[wrappers]: ../../development/compiling/prgenv.md#compiler-wrappers
 
 The Cray Compiling Environment (CCE) provides the Cray Fortran and Cray C/C++
 compilers. The Cray Fortran compiler supports the Fortran 2018 standard while

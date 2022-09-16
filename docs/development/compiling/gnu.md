@@ -9,7 +9,7 @@ The GNU Compiler Collection (GCC) includes front ends for the C (`gcc`), C++
 compilers is done through the `ftn`, `cc` and `CC` [compilers
 wrappers][wrappers].
 
-[wrappers]: prgenv.md#compiler-wrappers
+[wrappers]: ../../development/compiling/prgenv.md#compiler-wrappers
 
 ## Choose a version
 

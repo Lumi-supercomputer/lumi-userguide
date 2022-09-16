@@ -11,17 +11,16 @@
 [4]: #compile-an-openmp-program
 [5]: #accessing-the-programming-environment-on-lumi
 
-[modules]: ../../computing/Lmod_modules.md
-[softwarestacks]: ../../computing/softwarestacks.md
+[modules]: ../../runjobs/lumi_env/Lmod_modules.md
+[softwarestacks]: ../../runjobs/lumi_env/softwarestacks.md
 [easybuild]: ../../software/installing/easybuild.md
-[libraries]: libraries.md
-[cray-libraries]: libraries.md#cray-libraries
+[libraries]: ../../development/libraries/cray-libraries.md
 [cce]: cce.md
 [gnu]: gnu.md
-[lumi-c]: ../../computing/systems/lumic.md
-[lumi-d]: ../../computing/systems/lumid.md
-[lumi-g]: ../../computing/systems/lumig.md
-[eap]: ../../eap/index.md
+[lumi-c]: ../../hardware/compute/lumic.md
+[lumi-d]: ../../hardware/compute/lumid.md
+[lumi-g]: ../../hardware/compute/lumig.md
+[eap]: ../../hardware/compute/eap.md
 
 This page will give you an overview of the Cray programming environment that is
 available on LUMI. It starts with a presentation of the [compiler suites][1]
@@ -201,7 +200,7 @@ The table below summarize the available modules.
 
 The wrapper will pass the appropriate linking information to the compiler and
 linker for libraries accessible via [modules prefixed by
-`cray-`][cray-libraries]. These libraries don't require user-provided options
+`cray-`][libraries]. These libraries don't require user-provided options
 in order to be linked. For other libraries, the user should provide the
 appropriate include (`-I`) and library (`-L`) search paths as well as linking
 command (`-l`).
@@ -288,7 +287,7 @@ different compilers.
 | Fortran  | `-h omp`   | `-fopenmp` | n.a.       |
 
 When using the OpenMP compiler flag, the wrapper will link to the
-[multithreaded version of the Cray libraries][cray-libraries].
+[multithreaded version of the Cray libraries][libraries].
 
 ## Accessing the programming environment on LUMI
 

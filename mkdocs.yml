@@ -13,49 +13,49 @@ nav:
     - Access to LUMI: firststeps/accessLUMI.md
     - Setting up SSH key pair: firststeps/SSH-keys.md
     - Logging in (with SSH client): firststeps/loggingin.md
-    - Moving data to/from LUMI: storage/moving/scp-rsync.md
+    - Moving data to/from LUMI: firststeps/movingdata.md
     - Next steps: firststeps/nextsteps.md
   - Hardware:
-    - Overview: overview/overview.md
-    - Interconnect: computing/interconnect.md
+    - Overview: hardware/index.md
+    - Interconnect: hardware/interconnect.md
     - Compute nodes:
-      - CPU nodes - LUMI-C: computing/systems/lumic.md
-      - GPU nodes - LUMI-G: computing/systems/lumig.md
-      - Data analytics nodes - LUMI-D: computing/systems/lumid.md
-      - GPU Early Access Platform: eap/index.md
+      - CPU nodes - LUMI-C: hardware/compute/lumic.md
+      - GPU nodes - LUMI-G: hardware/compute/lumig.md
+      - Data analytics nodes - LUMI-D: hardware/compute/lumid.md
+      - GPU Early Access Platform: hardware/compute/eap.md
     - Storage:
-      - Main storage - LUMI-P: storage/parallel/lumip.md
-      - Flash storage - LUMI-F: storage/parallel/lumif.md
-      - Object storage - LUMI-O: storage/object/index.md
+      - Main storage - LUMI-P: hardware/storage/lumip.md
+      - Flash storage - LUMI-F: hardware/storage/lumif.md
+      - Object storage - LUMI-O: hardware/storage/lumio.md
     - Auxiliary platforms:
-      - Container Orchestration Platform - LUMI-K: computing/auxiliary/lumik.md
+      - Container Orchestration Platform - LUMI-K: hardware/auxiliary/lumik.md
   - Run jobs:
-      - Overview: runjobs/overview.md
+      - Overview: runjobs/index.md
       - LUMI Environment:
-        - Module environment: computing/Lmod_modules.md
-        - Software stacks: computing/softwarestacks.md
-        - Data storage options: storage/storing-data.md
-        - Billing policy: computing/jobs/billing.md
+        - Module environment: runjobs/lumi_env/Lmod_modules.md
+        - Software stacks: runjobs/lumi_env/softwarestacks.md
+        - Data storage options: runjobs/lumi_env/storing-data.md
+        - Billing policy: runjobs/lumi_env/billing.md
       - Scheduled jobs - SLURM jobs:      
-        - Slurm quickstart: computing/jobs/slurm-quickstart.md
-        - Slurm partitions: computing/jobs/partitions.md
-        - Batch jobs: computing/jobs/batch-job.md
-        - Array jobs: computing/jobs/throughput.md
-        - Interactive Slurm jobs: computing/jobs/interactive.md
-        - Container jobs: software/containers/cray_mpich.md
-        - Distribution & binding options: computing/jobs/distribution-binding.md
-        - Julia scheduled jobs: software/containers/julia.md
+        - Slurm quickstart: runjobs/scheduled-jobs/slurm-quickstart.md
+        - Slurm partitions: runjobs/scheduled-jobs/partitions.md
+        - Batch jobs: runjobs/scheduled-jobs/batch-job.md
+        - Array jobs: runjobs/scheduled-jobs/throughput.md
+        - Interactive Slurm jobs: runjobs/scheduled-jobs/interactive.md
+        - Container jobs: runjobs/scheduled-jobs/container-jobs.md
+        - Distribution & binding options: runjobs/scheduled-jobs/distribution-binding.md
+        - Julia scheduled jobs: runjobs/scheduled-jobs/julia.md
   - Software:
     - Overview: software/index.md
     - Installing software:
       - EasyBuild: software/installing/easybuild.md
       - Spack: software/installing/spack.md
-      - Container wrapper: software/containers/wrapper.md
+      - Container wrapper: software/installing/container-wrapper.md
     - Containers: 
-      - Singularity/Apptainer containers: computing/containers.md
+      - Singularity/Apptainer containers: software/containers/singularity.md
     - Software guides:
-      - VASP: software/packages/vasp.md
-      - Quantum ESPRESSO: software/packages/quantumespresso.md
+      - VASP: software/guides/vasp.md
+      - Quantum ESPRESSO: software/guides/quantumespresso.md
   - Developing:
     - Overview: development/index.md
     - Compiling:
@@ -63,20 +63,20 @@ nav:
       - Cray compilers: development/compiling/cce.md
       - GNU compilers: development/compiling/gnu.md
     - High performance libraries: 
-      - Cray libraries: development/compiling/libraries.md
+      - Cray libraries: development/libraries/cray-libraries.md
     - Optimizing for LUMI:
-      - Using hugepages: development/compiling/hugepages.md
+      - Using hugepages: development/optimizing/hugepages.md
     - Debugging:
       - Parallel debugging: development/debugging/gdb4hpc.md
       - Memory debugging: development/debugging/valgrind4hpc.md
       - Crash or deadlock: development/debugging/stat-atp.md
     - Performance analysis:
-      - Performance analysis strategies: development/profiling/index.md
+      - Performance analysis strategies: development/profiling/strategies.md
       - Cray Performance Analysis Tool: development/profiling/perftools.md
   - Help desk: 
-    - Help desk: generic/helpdesk.md
-    - Training and events: generic/training.md
-    - Known issues: issues/index.md
+    - Help desk: helpdesk/index.md
+    - Training and events: helpdesk/training.md
+    - Known issues: helpdesk/issues.md
     
  
 theme:

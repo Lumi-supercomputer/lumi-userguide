@@ -4,9 +4,9 @@ hide:
   - toc
 ---
 
-[running-jobs]: ../runjobs/overview.md
-[Hardware]: ../overview/overview.md
-[helpdesk]: ../generic/helpdesk.md
+[running-jobs]: ../runjobs/index.md
+[Hardware]: ../hardware/index.md
+[helpdesk]: ../helpdesk/index.md
 [software]: ../software/index.md
 [development]: ../development/index.md
 

@@ -1,10 +1,10 @@
 # EasyBuild
 
-[Lmod_modules]: ../../computing/Lmod_modules.md
-[softwarestacks]: ../../computing/softwarestacks.md
-[helpdesk]: ../../generic/helpdesk.md
-[lumi-g]: ../../computing/systems/lumig.md
-[eap]: ../../eap/index.md
+[Lmod_modules]: ../../runjobs/lumi_env/Lmod_modules.md
+[softwarestacks]: ../../runjobs/lumi_env/Lmod_modules.md
+[helpdesk]: ../../helpdesk/index.md
+[lumi-g]: ../../hardware/compute/lumig.md
+[eap]: ../../hardware/compute/eap.md
 
 Most software in the central LUMI [software stacks][softwarestacks] is
 installed through [EasyBuild](https://easybuild.io/). The central software
