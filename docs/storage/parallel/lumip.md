@@ -1,85 +1,60 @@
-# Scratch Space
-
+[data-storage-options]: ../../storage/storing-data.md
 [lustre]: lustre.md
 
-## Description
+# Main storage - LUMI-P
 
-The LUMI scratch is composed of 4 independent [Lustre](#lustre) file systems each
-with a storage capacity of 20 PB (80 PB total). The aggregate bandwidth of 960 
-GB/s, 240 GB/s per filesystem. Each of these file systems are is composed of 1 
-MDS (metadata server) and 32 Object Storage Targets (OSTs).
+The LUMI-P hardware partition provides 4 independent [Lustre][lustre] file
+systems. Each of these provides a storage capacity of 20 PB with an aggregate
+bandwidth of 240 GB/s. Each Lustre file system is composed of 1 MDS (metadata
+server) and 32 Object Storage Targets (OSTs). Hard disk drives (spinning disks)
+are used in LUMI-P.
 
-## Usage
+Before using LUMI-P, users should familiarize themselves with the performance
+characteristics of the [Lustre][lustre] file system and adjust their data
+workflows accordingly. In particular, having a large number of small files may
+put stress on the metadata servers and may limit the performance due to limited
+striping as explained in the [Lustre][lustre] section below.
 
-The scratch storage is located at `/scratch/project_<project-number>`
-
-## Billing and Quota
-
-The quota is enforced on a per project basis. The default quota is 50 TB and 2 
-million files. If you need more space, this quota can be pushed up to 500 TB 
-upon request. However, if you are limited by the quota on the number of files, 
-we invite you to reconsider your data workflow. Having a large number of small
-files can creates contention at the metadata servers and may limit the 
-performance due to limited striping (more explanation is provided on the 
-[Lustre][lustre] page).
-
-Scratch storage is billed by volume as well as time. The billing units are 
-TB-hours. In practice, 1TB that stays for 1 hour on the filesystem will consume
-1TB-hour of your storage allocation.
-
-## Purge Policy
-
-!!! failure "Data rentention policies not active"
-
-    Scratch automatic cleaning is not active at the moment. Please remove the 
-    files that are no longer needed by your project on a regular basis if you 
-    don't want to run out of TB-hours.
-
-You are not supposed to use the scratch space a long-term storage. The 
-scratch file system is a temporary storage space. Files that have not been
-accessed will be **purged after 90 days**.
-
-Deliberately modifying file access time to bypass the purge is prohibited. It's 
-an anti-social behaviour that may impact other users negatively.
+For an overview of options for using LUMI-P, see the [data storage
+options][data-storage-options] page.
 
 ## Lustre
 
-Lustre is a parallel distributed high performance file system for clusters 
-ranging from small to large-scale as well as multi-site systems. The 
-role of Lustre is to chunks up files into data blocks and spreads file data 
-across multiple storage servers, which can be written to and read from in 
-parallel.
+Lustre is a parallel distributed high performance file system for clusters
+ranging from small to large-scale as well as multi-site systems. The role of
+Lustre is to chunk up files into data blocks and spread file data across
+multiple storage servers, which can be written to and read from in parallel.
 
 ### Lustre Building Blocks
 
-A Lustre file system has three major functional units that provided as a 
-simplified diagram below.
+A Lustre file system is composed of three major functional units as shown in
+the simplified diagram below.
 
 <figure>
   <img 
-    src="../../../assets/images/lustre-overview.svg" 
+    src="../../../assets/images/lustre-overview.svg"
     width="600px"
     alt="Overview of the building blocks of a Lustre file system"
   >
   <figcaption>Overview of the building blocks of a Lustre file system</figcaption>
 </figure>
 
-- One or more **metadata servers (MDS)** that has one or more **metadata targets 
-  (MDT)** per Lustre file system that stores namespace metadata, such as 
-  filenames, directories, access permissions, and file layout
-- One or more **object storage servers (OSS)** that store file data on one or 
+- One or more **metadata servers (MDS)** that has one or more **metadata
+  targets (MDT)** per Lustre file system that stores namespace metadata, such
+  as filenames, directories, access permissions, and file layout
+- One or more **object storage servers (OSS)** that store file data on one or
   more **object storage targets (OST)**
-- **Clients**  are compute, visualisation or login nodes that access and use the
-  data
+- **Clients** are compute-, visualization- or login nodes that access and use
+  the data
 
 ### File Striping
 
-One of the main factors leading to the high performance of Lustre file systems 
-is the ability to stripe data across multiple storage targets (OSTs). This means
-that files are split into chunks which are then distributed among the OSTs. Read
-and write operations on striped files will access multiple OSTs concurrently. 
-As a result, I/O performance is improved since writing or reading from multiple
-OSTs simultaneously increases the available I/O bandwidth. 
+One of the main factors leading to the high performance of Lustre file systems
+is the ability to stripe data across multiple storage targets (OSTs). This
+means that files are split into chunks which are then distributed among the
+OSTs. Read and write operations on striped files will access multiple OSTs
+concurrently. As a result, I/O performance is improved since writing or reading
+from multiple OSTs simultaneously increases the available I/O bandwidth.
 
 <figure>
   <img 
@@ -88,43 +63,42 @@ OSTs simultaneously increases the available I/O bandwidth.
     alt="Sriping of a 8MB file over 4 OSTs"
   >
   <figcaption>
-    striping of a 8MB file over 4 OSTs (stripe count = 4). Each stripe is 1MB 
+    striping of a 8MB file over 4 OSTs (stripe count = 4). Each stripe is 1MB
     (stripe size = 1m) in size. Each OST store 2 stripes.
   </figcaption>
 </figure>
 
-File striping will predominantly improve performance for applications doing 
-serial I/O from a single node or parallel I/O to a single shared file from 
-multiple nodes. This behaviour is usually found in application using MPI-I/O, 
+File striping will predominantly improve performance for applications doing
+serial I/O from a single node or parallel I/O to a single shared file from
+multiple nodes. This behaviour is usually found in application using MPI-I/O,
 parallel HDF5 and parallel NetCDF.
 
-#### Set the Striping Pattern 
+#### Set the Striping Pattern
 
-The striping for a file or directory can be set using the command 
-`lfs setstripe`.
+The striping for a file or directory can be set using the command `lfs
+setstripe`.
 
+```bash
+$ lfs setstripe --stripe-count <count> --stripe-size <size> <dir|file>
 ```
-lfs setstripe --stripe-count <count> --stripe-size <size> <dir|file>
-```
 
-where `<count>` set the number of stripes, i.e. the number of OSTs and `<size>`
-the size of the stripes. The argument of the `lfs setstripe` command is path to 
-a directory or a file:
+where `<count>` sets the number of stripes, i.e. the number of OSTs and
+`<size>` the size of the stripes. The argument of the `lfs setstripe` command
+is a path to a directory or a file:
 
-- if a directory is used, it sets the default layout for new files created in 
-  the directory. This default layout can be then be changed for individual files
-  inside the directory by creating them with the `lfs setstripe` command
-- a new file with the specified layout will be created if a file is passed to 
-  the command
+- if a directory is used, it sets the default layout for new files created in
+  the directory. This default layout can then be changed for individual
+  files inside the directory by creating them with the `lfs setstripe` command.
+- if a file is used, a new file with the specified layout will be created.
 
 Maximal striping can be achieved by setting the stripe count to `-1`.
 
-#### Get the Striping Pattern 
+#### Get the Striping Pattern
 
 Information about the striping of a directory or a file can be retrieved using
 the `lfs getstripe` command.
 
-```
+```bash
 $ lfs setstripe --stripe-count=4 --stripe-size=2m /scratch/user/test
 $ touch /scratch/user/test/file.txt
 $ lfs getstripe /scratch/user/test/
@@ -145,8 +119,8 @@ lmm_stripe_offset: 14
              5        46052767      0x2beb59f                0
 ```
 
-In the example above, you can see that `file.txt` inherited the layout of its
-parent directory and that the file is striped on 4 OSTs (14, 1, 3 and 5).
+In the example above, we see that `file.txt` inherited the layout of its parent
+directory and that the file is striped on 4 OSTs (14, 1, 3 and 5).
 
 ### Performance Considerations
 
@@ -156,29 +130,30 @@ files. The following section describes general considerations.
 #### Stripe count
 
 In theory, a larger number of stripes increase the I/O bandwidth and thus
-performance. In particular, application that writes to a single file from 
-hundreds of nodes, may benefit from stripping over as many OSTs. Moreover, 
-striping is needed if you write a huge amount of data as a single OST may not 
+performance. In particular, applications that write to a single file from
+hundreds of nodes, may benefit from striping over as many OSTs. Moreover,
+striping is needed if you write a huge amount of data as a single OST may not
 have enough free space to store all the data. For applications creating a large
-number of small files as with a file per process scheme, large stripe counts can
-cause overhead and damage the performance.
+number of small files as with a file per process scheme, large stripe counts
+can cause overhead and impede the performance.
 
-- when multiple processes access the same large file in parallel set a stripe 
-  count >1 andan integral factor of the number of processes
-- with a file-per-process I/O pattern, avoid striping (stripe count of 1) in 
+- when multiple processes access the same large file in parallel set a stripe
+  count >1 and an integral factor of the number of processes.
+- with a file-per-process I/O pattern, avoid striping (stripe count of 1) in
   order to limit OST contention.
 
 #### Stripe size
 
-Stripe size has less of an impact on performance than the stripe count and no 
+Stripe size has less of an impact on performance than the stripe count and no
 impact at all if the stripe count is 1. However, when dealing with large files,
 the stripe size may influence the performance:
 
-- the smallest recommended stripe size is 512 KB
-- a good stripe size is between 1 MB and 4 MB in most situations
+- the smallest recommended stripe size is 512 KB.
+- a good stripe size is between 1 MB and 4 MB in most situations.
 - the maximum stripe size is 4 GB but you should only use this value for very
-  large file
+  large files.
 
-If your application write to the file in a consistent and aligned way, make the
-stripe size a multiple of the `write()` size. The goal is perform write 
-operations that go entirely to one server instead of crossing object boundary. 
+If your application writes to the file in a consistent and aligned way, make
+the stripe size a multiple of the `write()` size. The goal is to perform write
+operations that go entirely to one server instead of crossing object
+boundaries.

@@ -7,38 +7,37 @@
 [registration]: ../accounts/registration.md
 [connecting]: ../connecting/connecting_.md
 [website-getstarted]: https://lumi-supercomputer.eu/get-started/
-[jump-ssh-key]: #setting-up-ssh-key-pair
+[jump-register-keys]: #register-your-public-key
 [eidas-eduid]: https://puhuri.neic.no/user_guides/myaccessid_registration/
-
 
 # Setting up SSH key pair
 
-Before connecting to LUMI, you need to generate an SSH key pair. **You can only log in to LUMI using SSH keys**. There are no passwords. 
+Before connecting to LUMI, you need to register an SSH key pair. **You can only
+log in to LUMI using SSH keys**. There is no option for using passwords. 
 
- - If you have a Finnish allocation, then, you have to add your public key to your MyCSC profile.
+LUMI only accepts SSH keys based on the RSA (4096 bit) or ed25519 algorithms.
+If possible, we recommend to use ed25519.
 
- - For regular users (other allocations), you need to register your public key to MyAccessID, from where LUMI will fetch it. The portal is the only way to add an SSH key. 
+## Generate your SSH keys
 
-### Generate your SSH keys
-
-After registration, you need to register a **public** key (**Note! Key must be RSA
-4K bits or ed25519**). In order to do that
-you need to generate an SSH key pair.
+If you already have an appropriate SSH key pair that you want to use with LUMI,
+you may skip to [registering your public key][jump-register-keys]. If not,
+start by generating an SSH key pair as detailed below.
 
 === "From a terminal (all OS)"
 
-    An SSH key pair can be generated in the Linux, macOS, Windows PowerShell and 
-    MobaXterm terminal. It is important to create a long enough key length. For
-    example, you can use the following command to generate a 4096 bits RSA key:
-
-    ```bash
-    ssh-keygen -t rsa -b 4096
-    ```
-
-    or for a ed25519 key:
+    An SSH key pair can be generated using a Linux, macOS, Windows PowerShell
+    terminal. For example, you can use the following command to generate
+    an ed25519 key:
 
     ```bash
     ssh-keygen -t ed25519
+    ```
+
+    or, alternative, use the following command to generate a 4096 bit RSA key:
+
+    ```bash
+    ssh-keygen -t rsa -b 4096
     ```
 
     You will be prompted for a file name and location where to save the
@@ -47,13 +46,14 @@ you need to generate an SSH key pair.
     `/home/username/.ssh/id_rsa_lumi`.
 
     Next, you will be asked for a passphrase. Please choose a secure
-    passphrase. It should be at least 8 characters long and should contain
-    numbers, letters and special characters. **Do not leave the passphrase 
-    empty**.
+    passphrase. It should be at least 8 (preferably 12) characters long and
+    should contain numbers, letters and special characters. **Do not leave the
+    passphrase empty**.
 
-    After that a SSH key pair is created. If you choose the name given as an
-    example, you should have files named `id_rsa_lumi` and `id_rsa_lumi.pub` in
-    your `.ssh` directory.
+    After that an SSH key pair is created, i.e. a pair of files containing
+    the public and private keys, e.g. files named `id_rsa_lumi`
+    (the **private** key) and `id_rsa_lumi.pub` (the **public** key) in your
+    `/home/username/.ssh/` directory.
 
 === "With MobaXTerm or PuTTY (Windows)"
 
@@ -75,9 +75,9 @@ you need to generate an SSH key pair.
     </figure>
 
     After that, enter a comment in the Key comment field and a strong
-    passphrase. Please choose a secure passphrase. It should be at least 8 
-    characters long and should contain numbers, letters and special characters.
-    **Do not leave the passphrase empty**.
+    passphrase. Please choose a secure passphrase. It should be at least 8
+    (preferably 12) characters long and should contain numbers, letters and
+    special characters. **Do not leave the passphrase empty**.
 
     <figure>
       <img src="../../assets/images/win-keygen-step3.png" width="400" alt="Create SSH key pair with windows - step 3">
@@ -89,22 +89,23 @@ you need to generate an SSH key pair.
     on the *Save private key* button and save it to the desired location (for 
     example, with `id_rsa_lumi` as a name).
 
-!!! warning "Note"
-    The private key should never be shared with anyone, not even with
-    LUMI staff. It should also be stored only in the local computer (public key
-    can be safely stored in cloud services). Protect it with a good password! Otherwise, anyone with access to the file system can steal your SSH key.
+!!! warning
+    The private key should never be shared with anyone, not even
+    with LUMI staff. It should also be stored only on your local computer
+    (public key can be safely stored in cloud services). Protect it with a good
+    password! Otherwise, anyone with access to the file system can steal your
+    SSH key.
 
-### Upload your public key 
- 
+## Register your public key
+
 === "For regular users"
 
-    Now that you have generated your key pair, you need to set up your **public** key
-    in your [:material-account: **user profile**][myaccessid-profile]. From there, the public key will be 
-    copied to LUMI with some delay according to the synchronization schedule.
+    Now that you have generated your key pair, you need to register your **public** key
+    in your [:material-account: **MyAccessID user profile**][myaccessid-profile]. From there, the public key will be 
+    copied to LUMI.
 
     To register your key, click on the *Settings* item of the menu on the left
-    as shown in the figure below. Then select *Ssh keys*. From here you can add a new public key
-    or remove an old one. **Note:** SSH key structure is *algorithm, key, comment*. 
+    as shown in the figure below. Then select *SSH keys* and click the *New key* button. Now copy and paste the content of your **public** key file in the text area and click the *Add SSH key* button.
 
     <figure>
       <img src="../../assets/images/MyAccessID_ssh-key.png" width="480" alt="Screenshot of user profile settings to setup ssh public key">
@@ -113,15 +114,13 @@ you need to generate an SSH key pair.
 
 === "For users with a Finnish allocation"
 
-    Now that you have generated your key pair, you need to set up your 
-    **public** key in your [:material-account: **user profile**][mycsc-profile]. From there, the 
-    public key will be copied to LUMI with some delay according to the 
-    synchronization schedule.
+    Now that you have generated your key pair, you need register your 
+    **public** key in your MyCSC [:material-account: **user profile**][mycsc-profile].
 
     To register your key with [MyCSC][mycsc-profile], click on *My Profile* item
     of the menu on the left as shown in the figure below. Then scroll to the end 
     and in the *SSH PUBLIC KEYS* panel click the *Modify* button. From here,
-    click the *Add new* button and paste your new public key in the text area 
+    click the *Add new* button and paste the content of your **public** key in the text area 
     and click *Add*.
 
     <figure>
@@ -129,6 +128,6 @@ you need to generate an SSH key pair.
       <figcaption>MyCSC profile information to add ssh public key.</figcaption>
     </figure>
 
-After registering the key, there can be a couple of hours delay until it is
-synchronized. **You will receive your username via email once your account is 
-created**.
+After registering your SSH key, there can be a couple of hours delay until it
+is synchronized to LUMI and your account is created. **You will receive your
+username via email once your account has been created**.

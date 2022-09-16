@@ -7,52 +7,59 @@ hide:
 [prgenv]: ../development/compiling/prgenv.md
 [batch]: ../computing/jobs/batch-job.md
 [slurm]: ../computing/jobs/slurm-quickstart.md
+[lumig]: ../computing/systems/lumig.md
 [MI250X]: https://www.amd.com/en/products/server-accelerators/instinct-mi250x
 
-# LUMI-G Early Access Platform
+# GPU Early Access Platform
 
 !!! warning
-    
-    This page is a preliminary of the guide documenting the use of the LUMI-G
+
+    This page is a preliminary to the guide documenting the use of the GPU
     Early Access Platform (EAP). It contains information specific to the latter, 
     but does not stand on its own. Users of the EAP are also invited to read 
     other sections of the LUMI documentation. In particular, you are invited to
     read the section on the [module system][lmod] and the 
     [programming environment][prgenv].
 
-The LUMI early access platform consists of nodes with MI250x GPUs with the 
-intended use case being to give users access to the software stack so 
-that they can work on preparing their software for the LUMI-G nodes when they 
-the full system is available.
+The Early Access Platform consists of nodes with MI250x GPUs with the intended
+use case being to give users access to the software stack so that they can work
+on preparing their software for the [LUMI-G][lumig] hardware partition when it
+reaches general availability.
 
+!!! warning
 
-| Nodes | CPUs                             | Memory | GPUs            |  Network        |
-| :---: | :------------------------------: | -----: | :-------------: | :-------------: | 
-| 4     | 1x 64 cores AMD EPYC 7A53        | 512GB  | 4x AMD MI250x   | 4x 200 Gb/s     |
+    The GPU Early Access Platform (EAP) is highly experimental - your mileage
+    may vary. Things may change without warning while we are testing LUMI-G.
+    The EAP will be removed once LUMI-G enters general availability.
+
+| Nodes | CPUs             |  CPU cores         | Memory | GPUs            | Disk | Network         |
+| :---: | :--------------: | :----------------: | -----: | :-------------: | :--: | :-------------: |
+| 4     | 1x AMD EPYC 7A53 | 64 cores           | 512GiB | 4x AMD MI250x   | none | 4x 200 Gb/s     |
 
 !!! note
-    
+
     Even if each nodes has 4 MI250x, 8 GPUs will be available throught Slurm
     as the MI250x card features 2 GPU dies (GCDs).
 
 ## About the programming environment
 
-The programming environment of the EAP is still experimental and do not entirely
-reflect the final environment or performance of the progrmming environment that 
-when LUMI-G will be available. Here is a list of the characteristics of the 
-current platform that will be available once LUMI-G is available:
+The programming environment of the EAP is still experimental and do not
+entirely reflect the final environment or performance of the progrmming
+environment that when LUMI-G will be available. Here is a list of the
+characteristics of the current platform that will be available once LUMI-G is
+available:
 
 - OpenMP offload support will be available for C/C++ and Fortran with the Cray
-  compilers (PrgEnv-cray). The same is true for the AMD compilers. Currently the
-  AMD compilers are available by loading the `rocm` module. On the final 
+  compilers (PrgEnv-cray). The same is true for the AMD compilers. Currently
+  the AMD compilers are available by loading the `rocm` module. On the final
   system, they will be a `PrgEnv-amd` module.
 - HIP code can be compiled with the Cray C++ compiler wrapper (`CC`) or with
   the AMD `hipcc` compiler wrappper.
-- A GPU-aware MPI implementation is available (loading the `cray-mpich` 
+- A GPU-aware MPI implementation is available (loading the `cray-mpich`
   module). You can use this MPI library with the Cray and AMD environment.
 
 !!! failure
-    
+
     Search path definition for the HIP libraries is incomplete at the moment
     in the `rocm` module. If you experience issue at link time or runtime with
     either missing HIP functions or libraries, please export:
@@ -93,7 +100,7 @@ or the Cray compiler.
     ```
 
 === "Using the hipcc wrapper"
-    
+
     To compile HIP code with the `hipcc` compiler wrapper, load the following
     modules in your environment.
 
@@ -195,7 +202,7 @@ The MPI implementation available on LUMI is GPU-aware. It means that you can
 pass a pointer to memory allocated on the GPU to the MPI calls. This MPI 
 implementation can be used by loading the `cray-mpich` module loaded.
 
-```
+```bash
 module load CrayEnv
 module load craype-accel-amd-gfx90a
 module load cray-mpich
@@ -212,7 +219,7 @@ export MPICH_GPU_SUPPORT_ENABLED=1
     [previous section](#compiling-hip-code) in order to compile HIP code.
 
 === "Using the hipcc compiler wrapper"
-    
+
     When using the `hipcc` compiler wrapper, you need the explicitly link your
     application with the MPI and GPU transfer libraries using the following 
     flags:
@@ -258,7 +265,7 @@ srun <executable> # (9)
 
 1. Select the Early Access Partition
 
-2. Change this value to match your project number. If you don't know your 
+2. Change this value to match your project number. If you don't know your
    project number use the `groups` command. You should see that you are a
    member of a group looking like this: `project_XXXXXXXXX`.
 
@@ -268,31 +275,30 @@ srun <executable> # (9)
 4. Request 2 tasks. A task in Slurm speaks is a process. If your application
    use MPI, it corresponds to the number of MPI ranks.
 
-5. Request 8 threads per task. If your application is multithreaded (for 
+5. Request 8 threads per task. If your application is multithreaded (for
    example, using OpenMP) this is how you control the number of threads.
 
-6. Request 2 GPUs for this job, one for each task. Most of the time the number 
+6. Request 2 GPUs for this job, one for each task. Most of the time the number
    of GPUs is the same as the number of tasks (MPI ranks).
 
-7. If your application is multithreaded with OpenMP, set the value of 
+7. If your application is multithreaded with OpenMP, set the value of
    `OMP_NUM_THREADS` to the value set with `--cpus-per-task`
 
 8. If your code needs a GPU-aware MPI
 
-9. Launch your application with `srun`. They are no `mpirun`/`mpiexec` on LUMI. 
-   You should always use `srun` to launch your application. If your application 
-   doesn't use MPI you can omit it. 
+9. Launch your application with `srun`. There are no `mpirun`/`mpiexec` on
+   LUMI. You should always use `srun` to launch your application. If your
+   application doesn't use MPI you can omit it.
 
-Once your job script is ready, you can submit your job using the `sbatch` 
+Once your job script is ready, you can submit your job using the `sbatch`
 command.
 
-```
+```bash
 sbatch eap.job
 ```
 
-More information about available batch script parameters is available 
+More information about available batch script parameters is available
 [here][batch]. The table below summarizes the GPU-specific options.
-
 
 | Option             | Description                                        |
 |--------------------|----------------------------------------------------|

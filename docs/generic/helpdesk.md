@@ -12,9 +12,11 @@ hide:
 
 # Help Desk
 
-The LUMI User Support Team is here to help if you have any questions or problems
-regarding to your use of LUMI. You can find the contact forms to reach us with different issues by clicking the 'Contact us' button:
+The LUMI User Support Team (LUST) is here to help!
 
+If you have any questions or problems using LUMI, please do not hesitate to
+contact us. You may find our contact forms for different issues by clicking the
+'Contact us' button:
 
  <!DOCTYPE html>
 <html>

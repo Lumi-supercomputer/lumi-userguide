@@ -65,15 +65,15 @@ to much data to `/tmp`
 ## Billing
 
 Storage is billed by volume as well as time. The billing units are TB-hours. For
-the regular scratch file system, 1TB that stays for 1 hour on the filesystem, 
+the regular scratch file system, 1TB that stays for 1 hour on the file system, 
 consumes 1TB-hour. For the flash based filesytem 1TB for 1 hour consumes 
 10 TB-hours.
 
 ## About the number of files quota
 
 For reasons related to performance, we are particularly attentive to the number
-of files present on the parallel filesystem. A lot of small files negatively
-impact all users by stressing the filesystem metadata servers. Therefore, any 
+of files present on the parallel file system. A lot of small files negatively
+impact all users by stressing the file system metadata servers. Therefore, any 
 requests to increase the number of files will be evaluated carefully by the 
 Support Team and must be fully justified.
 

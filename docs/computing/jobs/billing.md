@@ -1,104 +1,153 @@
-# Billing
+[lumi-c]: ../../computing/systems/lumic.md
+[lumi-f]: ../../storage/parallel/lumif.md
+[lumi-p]: ../../storage/parallel/lumip.md
+[slurm-quickstart]: slurm-quickstart.md
+[slurm-partitions]: partitions.md
+[data-storage-options]: ../../storage/storing-data.md
 
-Running jobs and storing data on the parallel filesystem consume the billing 
-units allocated to your project:
+# Billing policy
 
-- for computing, your project is allocated CPU-core-hours 
-- for storage, your project is allocated GB-hours.
+Running jobs on the compute nodes and storing data in storage space will consume
+the billing units allocated to your project:
+
+- Compute is billed in units of CPU-core-hours for CPU nodes and GPU-hours for
+  GPU nodes.
+- Storage space is billed in units of TB-hours.
 
 ## Compute billing
 
-For compute, your project is allocated CPU-core-hours that are consumed when 
-running jobs. Depending on the partition, the way this billing is carried out 
-differs.
+Compute is billed whenever you submit a job to the [Slurm job
+scheduler][slurm-quickstart].
 
-### Standard partition
+### CPU billing
 
-The standard partition is operated in exclusive mode: the entire node will always 
-be allocated. In practice, 128 core-hours are billed for every allocated 
-node and per hour even if your job has requested less than 128 cores per node.
+For CPU compute, your project is allocated CPU-core-hours that are consumed
+when running jobs on the CPU nodes. The CPU-core-hours are billed as:
 
-For example, 16 nodes for 12 hours: 
-
-```
-16 nodes x 12 hours x 128 core-hour = 24576 core-hours
+```text
+cpu-core-hours-billed = cpu-cores-allocated x runtime-of-job
 ```
 
-### Small partition
+For example, allocating 32 CPU cores in a job running for 2 hours consumes:
 
-When using the small partition you are billed per allocated core or if you are 
-above a certain threshold per chunk of 2GB of memory. Here is the formula that 
-is used for billing:
-
-```
-corehours = max(ncore, ceil(mem/2GB)) x time
+```text
+32 CPU-cores x 2 hours = 64 CPU-core-hours
 ```
 
-- if you use less than 2GB of memory per core, you are charged per allocated
-  cores
+### Slurm partition billing details
+
+For some [Slurm partitions][slurm-partitions] special billing rules apply.
+
+#### Standard and bench Slurm partitions
+
+The `standard` and `bench` Slurm partitions are operated in exclusive mode: the
+entire node will always be allocated. Thus, 128 CPU-core-hours are billed for
+every allocated node and per hour even if your job has requested less than 128
+cores per node.
+
+For example, allocating 16 nodes in a job running for 12 hours consumes:
+
+```text
+16 nodes x 128 CPU-cores/node x 12 hours = 24576 CPU-core-hours
+```
+
+#### Small Slurm partition
+
+When using the small Slurm partition you are billed per allocated core.
+However, if you are above a certain threshold of memory allocated per core,
+i.e. you use the high memory nodes in [LUMI-C][lumi-c], you are billed per
+slice of 2GB memory (which is still billed in units of CPU-core-hours).
+Specifically, the formula that is used for billing is:
+
+```text
+CPU-core-hours-billed = max(
+  CPU-cores-allocated, ceil(memory-allocated / 2GB)
+  ) x runtime-of-job
+```
+
+Thus,
+
+- if you use 2GB or less of memory per core, you are charged per allocated
+  cores.
 - if you use more than 2GB of memory per core, you are charged per 2GB slice
-  of memory
-- if you are using the large memory nodes you will be billed per 2GB slice
-  of memory
+  of memory.
 
-For example, 4 cores, 4GB of memory for 1 day:
+For example, allocating 4 CPU-cores and 4GB of memory in a job running for 1 day
+consumes:
 
-```
-4 cores x 24 hours = 96 core-hours
-```
-
-For example, 4 cores, 32GB of memory for 1 day:
-
-```
-32GB / 2GB x 24 hours = 384 core-hours
+```text
+4 CPU-cores x 24 hours = 96 CPU-core-hours
 ```
 
-### Checking core hours used
+Allocating 4 CPU-cores and 32GB of memory in a job running for 1 day consumes:
 
-You can use the commands `sreport` and `sacct` to see how many core hours your project has consumed so far. These commands query the accounting database used by SLURM and are always up to date. For example, to get a summary of a how much a certain project has run start from the start of a certain date up until now, you can write:
-
+```text
+(32GB / 2GB) CPU-cores x 24 hours = 384 CPU-core-hours
 ```
-sreport -t hours cluster AccountUtilization account=project_465000XXX start=2022-01-01 end=now
 
+### Checking CPU-core-hours used
+
+You can use the commands `sreport` and `sacct` to see how many CPU-core-hours
+your project has consumed so far. These commands query the accounting database
+used by Slurm and are always up to date. For example, to get a summary of a how
+much a certain project has run starting from a certain date up until now, you
+can write:
+
+```bash
+$ sreport -t hours cluster AccountUtilization account=project_465000XXX start=2022-01-01 end=now
 ```
 
 Example output:
 
-    --------------------------------------------------------------------------------
-      Cluster         Account     Login     Proper Name       Used   Energy 
-    --------- --------------- --------- --------------- ---------- -------- 
-         lumi project_465000+                               739228        0 
-         lumi project_465000+     spock           Spock     120228        0 
-         lumi project_465000+      data            Data     300000        0 
-         lumi project_465000+      tpol           T'Pol     319000        0 
+```text
+--------------------------------------------------------------------------------
+  Cluster         Account     Login     Proper Name       Used   Energy 
+--------- --------------- --------- --------------- ---------- -------- 
+      lumi project_465000+                               739228        0 
+      lumi project_465000+     spock           Spock     120228        0 
+      lumi project_465000+      data            Data     300000        0 
+      lumi project_465000+      tpol           T'Pol     319000        0 
+```
 
-
-The top row is summary for all project members. Please note that SLURM counts usage in CPU thread hours, so the numbers need to be divided by 2 to get the corresponding CPU core hours.
+The top row is summary for all project members. Please note that Slurm counts
+usage in CPU-thread-hours, so the numbers need to be divided by 2 to get the
+corresponding CPU-core-hours as there are 2 threads per core in the CPU-nodes.
 
 ## Storage billing
 
-Storage is billed by volume as well as time. The billing units are GB-hours.
+For storage, your project is allocated TB-hours. Storage is billed whenever you
+store data in your project folders. Storage is billed by volume used over time.
+The billing units are TB-hours.
 
-### Regular Lustre filesystem
+The amount of TB-hours billed depends on the type of storage you are using. See
+the [data storage options][data-storage-options] page for an overview of the
+type of storage used in the different storage options.
 
-On the regular (spinning disk) Lustre filesystem, 1GB of data consume 1GB-hour
-out of your storage allocation for every hour it stays on the filesystem.
+### Main storage (LUMI-P) billing
 
-For example, 375GB for 4 days:
+The main storage backed by [LUMI-P][lumi-p] is billed directly as:
 
+```text
+TB-hours-billed = storage-volume x time-used
 ```
-375 GB x 4 days x 24 hours = 36000 GB-hours
+
+For example, storing 1.2 TB data for 4 days consumes:
+
+```text
+1.2 TB x 24 hours/day x 4 days = 115.2 TB-hours
 ```
 
-### Flash Lustre filesystem
+### Flash storage (LUMI-F) billing
 
-The flash based filesytem is billed at a 10x rate: 1GB of data consume 10GB-hour
-out of your storage allocation for every hour it stays on the filesystem. As
-a consequence, if you don't want to consume your storage allocation too quickly,
-it's recommended to remove your data from the flash filesystem as soon as possible.
+The flash storage backed by [LUMI-F][lumi-f] is billed at a 10x rate compared
+to the main storage:
 
-For example, 150GB for 2 days:
-
+```text
+TB-hours-billed = 10 x storage-volume x time-used
 ```
-150 GB x 2 days x 24 hours x 10 = 72000 GB-hours
+
+For example, storing 1.2 TB data for 4 days consumes:
+
+```text
+10 x 1.2 TB x 24 hours/day x 4 days = 1152 TB-hours
 ```
