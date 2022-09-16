@@ -1,14 +1,14 @@
 # Overview
 
 [developing-overview]: ../development/index.md
-[lumi-p]: ../storage/parallel/lumip.md
+[lumi-p]: ../hardware/storage/lumip.md
 [easybuild]: ./installing/easybuild.md
 [spack]: ./installing/spack.md
-[contwrapper]: ./containers/wrapper.md
-[singularity-container]: ../computing/containers.md
-[singularity-jobs]: ../software/containers/cray_mpich.md
-[software-stacks]: ../computing/softwarestacks.md
-[module-env]: ../computing/Lmod_modules.md
+[contwrapper]: ../software/installing/container-wrapper.md
+[singularity-container]: ../software/containers/singularity.md
+[singularity-jobs]: ../runjobs/scheduled-jobs/container-jobs.md
+[software-stacks]: ../runjobs/lumi_env/softwarestacks.md
+[module-env]: ../runjobs/lumi_env/Lmod_modules.md
 
 ---
 Here you find guidance on ways to install software on LUMI as well as guides on
