@@ -228,14 +228,14 @@ to see only the jobs that belong to you use the `squeue` command with the
 `--me` flag.
 
 ```bash
-squeue --me
+$ squeue --me
 ```
 
 The `squeue` command can also be used to determine when your pending job will
 start.
 
 ```bash
-squeue --me --start
+$ squeue --me --start
  JOBID PARTITION     NAME     USER ST          START_TIME  NODES SCHEDNODES           NODELIST(REASON)
 123456     batch Computat   vananh PD 2021-06-01T16:10:28      1 node0012             (Priority)
 123457     batch Computat   vananh PD 2021-06-01T18:21:28      1 (null)               (Priority)
@@ -252,7 +252,7 @@ you may need to cancel your job. This can be achieved using the `scancel`
 command which takes the job ID of the job to cancel.
 
 ```bash
-scancel <jobid>
+$ scancel <jobid>
 ```
 
 The job ID can be obtained from the output of the `sbatch` command when

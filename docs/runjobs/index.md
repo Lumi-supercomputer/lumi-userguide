@@ -40,7 +40,7 @@ guide][slurm-quickstart].
     All tasks not adhering to the above fair use rules for the login nodes will
     be terminated without warning.
 
-Also, you may want to familiarize yourself with the LUMI Environment:
+Also, you may want to familiarize yourself with the LUMI environment:
 
 - Read the [module environment][module-environment] page to learn more about
 how to use the module system on LUMI to find already installed software and to

@@ -31,7 +31,7 @@ nav:
       - Container Orchestration Platform - LUMI-K: hardware/auxiliary/lumik.md
   - Run jobs:
       - Overview: runjobs/index.md
-      - LUMI Environment:
+      - LUMI environment:
         - Module environment: runjobs/lumi_env/Lmod_modules.md
         - Software stacks: runjobs/lumi_env/softwarestacks.md
         - Data storage options: runjobs/lumi_env/storing-data.md
