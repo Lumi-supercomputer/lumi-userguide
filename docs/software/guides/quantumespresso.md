@@ -123,7 +123,7 @@ processor cores.
 
 <figure>
   <img
-    src="/software/guides/gab128-qe-intranode.png"
+    src="../../../assets/images/gab128-qe-intranode.png"
     width="560"
     alt="Intra-node scaling of GaAs 128 supercell in Quantum Espresso on LUMI-C"
   >
