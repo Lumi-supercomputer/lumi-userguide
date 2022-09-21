@@ -8,7 +8,7 @@
 [prgenv]: ../../development/compiling/prgenv.md
 
 The LUMI software stacks contain the software that is already installed on
-LUMIM. The software stacks are made available through the [LMOD module
+LUMI. The software stacks are made available through the [LMOD module
 environment][module-environment].
 
 ## Overview
