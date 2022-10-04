@@ -114,10 +114,10 @@ start by generating an SSH key pair as detailed below.
 
 === "For users with a Finnish allocation"
 
-    Now that you have generated your key pair, you need register your 
+    Now that you have generated your key pair, you need to register your
     **public** key in your MyCSC [:material-account: **user profile**][mycsc-profile].
 
-    To register your key with [MyCSC][mycsc-profile], click on *My Profile* item
+    To register your key with [MyCSC][mycsc-profile], click on the *My Profile* item
     of the menu on the left as shown in the figure below. Then scroll to the end 
     and in the *SSH PUBLIC KEYS* panel click the *Modify* button. From here,
     click the *Add new* button and paste the content of your **public** key in the text area 
