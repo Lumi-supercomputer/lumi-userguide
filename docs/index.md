@@ -1,11 +1,26 @@
 ---
+
 template: home.html
 ---
 
-# About LUMI
+[User-support-main]: https://www.lumi-supercomputer.eu/user-support/
 
-- [LUMI-C : The CPU computing partition](computing/systems/lumic.md)
-- [LUMI-D : Data analytics and visualization on LUMI](computing/systems/lumid.md)
-- [LUMI-F : The flash-based storage of LUMI](storage/parallel/lumif.md)
-- [LUMI-P : The parallel filesystem of LUMI](storage/parallel/lumip.md)
-- [LUMI-EAP : The GPU early Access Platform LUMI](eap/index.md)
+
+[website-LUMI-mainpage]: https://lumi-supercomputer.eu/
+[LUMI-docs-home]: https://docs.lumi-supercomputer.eu/
+
+
+
+<!-- A link to the LUMI main page. Same style than from LUMI-main/User_Support &rarr; FAQ,Need_help?,Service_breaks:
+-->
+
+<br />
+
+<!-- 
+<a href="https://www.lumi-supercomputer.eu/user-support/" style="color: black"><b>User support</b></a> &rarr; <a href="https://docs.lumi-supercomputer.eu/" style="color: black"><b>LUMI Documentation</b></a> -->
+
+
+
+
+
+
