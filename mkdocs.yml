@@ -117,9 +117,6 @@ extra:
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/LUMIhpc
 
-extra_css:
-  - stylesheets/extra.css
-
 markdown_extensions:
   - toc:
       toc_depth: 3
