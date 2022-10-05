@@ -6,63 +6,78 @@ site_description: >-
   Instructions, user guides and tutorials for the use of the LUMI supercomputer
 copyright: Copyright &copy; 2021 LUMI User Support Team
 nav:
-  - Home: index.md
-  - First Steps: 
+  - Intro: 
+    - Welcome: index.md
+  - First steps: 
     - Get Started: firststeps/getstarted.md
-  - Computing:
-    - Overview: computing/index.md
-    - Connecting: computing/connecting.md
-    - Moving data: storage/moving/scp-rsync.md
-    - Module environment: computing/Lmod_modules.md
-    - Software stacks: computing/softwarestacks.md
-    - Containers: computing/containers.md
-    - Hardware:
-      - CPU nodes: computing/systems/lumic.md
-      - GPU nodes: computing/systems/lumig.md
-      - Data analytics nodes: computing/systems/lumid.md
-    - Running jobs:
-      - Slurm Quickstart: computing/jobs/slurm-quickstart.md
-      - Available partitions: computing/jobs/partitions.md
-      - Billing: computing/jobs/billing.md
-      - Batch jobs: computing/jobs/batch-job.md
-      - Distribution and binding: computing/jobs/distribution-binding.md
-      - High throughput: computing/jobs/throughput.md
-      - Interactive usage: computing/jobs/interactive.md
+    - Access to LUMI: firststeps/accessLUMI.md
+    - Setting up SSH key pair: firststeps/SSH-keys.md
+    - Logging in (with SSH client): firststeps/loggingin.md
+    - Moving data to/from LUMI: firststeps/movingdata.md
+    - Next steps: firststeps/nextsteps.md
+  - Hardware:
+    - Overview: hardware/index.md
+    - Interconnect: hardware/interconnect.md
+    - Compute nodes:
+      - CPU nodes - LUMI-C: hardware/compute/lumic.md
+      - GPU nodes - LUMI-G: hardware/compute/lumig.md
+      - Data analytics nodes - LUMI-D: hardware/compute/lumid.md
+      - GPU Early Access Platform: hardware/compute/eap.md
     - Storage:
-      - Overview: storage/index.md
-      - Lustre: storage/parallel/lustre.md
-      - Project scratch: storage/parallel/lumip.md
-      - Project fast scratch: storage/parallel/lumif.md
+      - Main storage - LUMI-P: hardware/storage/lumip.md
+      - Flash storage - LUMI-F: hardware/storage/lumif.md
+      - Object storage - LUMI-O: hardware/storage/lumio.md
+    - Auxiliary platforms:
+      - Container Orchestration Platform - LUMI-K: hardware/auxiliary/lumik.md
+  - Run jobs:
+      - Overview: runjobs/index.md
+      - LUMI environment:
+        - Module environment: runjobs/lumi_env/Lmod_modules.md
+        - Software stacks: runjobs/lumi_env/softwarestacks.md
+        - Data storage options: runjobs/lumi_env/storing-data.md
+        - Billing policy: runjobs/lumi_env/billing.md
+      - Scheduled jobs - SLURM jobs:      
+        - Slurm quickstart: runjobs/scheduled-jobs/slurm-quickstart.md
+        - Slurm partitions: runjobs/scheduled-jobs/partitions.md
+        - Batch jobs: runjobs/scheduled-jobs/batch-job.md
+        - Array jobs: runjobs/scheduled-jobs/throughput.md
+        - Interactive Slurm jobs: runjobs/scheduled-jobs/interactive.md
+        - Container jobs: runjobs/scheduled-jobs/container-jobs.md
+        - Distribution & binding options: runjobs/scheduled-jobs/distribution-binding.md
+        - Julia scheduled jobs: runjobs/scheduled-jobs/julia.md
+  - Software:
+    - Overview: software/index.md
+    - Installing software:
+      - EasyBuild: software/installing/easybuild.md
+      - Spack: software/installing/spack.md
+      - Container wrapper: software/installing/container-wrapper.md
+    - Containers: 
+      - Singularity/Apptainer containers: software/containers/singularity.md
+    - Software guides:
+      - VASP: software/guides/vasp.md
+      - Quantum ESPRESSO: software/guides/quantumespresso.md
   - Developing:
     - Overview: development/index.md
     - Compiling:
       - Programming environment: development/compiling/prgenv.md
       - Cray compilers: development/compiling/cce.md
       - GNU compilers: development/compiling/gnu.md
-      - High performance libraries: development/compiling/libraries.md
-      - Using hugepages: development/compiling/hugepages.md
+    - High performance libraries: 
+      - Cray libraries: development/libraries/cray-libraries.md
+    - Optimizing for LUMI:
+      - Using hugepages: development/optimizing/hugepages.md
     - Debugging:
-      - Debugging: development/debugging/gdb4hpc.md
+      - Parallel debugging: development/debugging/gdb4hpc.md
       - Memory debugging: development/debugging/valgrind4hpc.md
       - Crash or deadlock: development/debugging/stat-atp.md
     - Performance analysis:
-      - Overview: development/profiling/index.md
-      - CrayPat: development/profiling/perftools.md
-  - Software:
-    - Overview: software/index.md
-    - Installing software:
-      - EasyBuild: software/installing/easybuild.md
-      - Spack: software/installing/spack.md
-    - Containers:
-      - Container Wrapper: software/containers/wrapper.md
-      - MPI Container: software/containers/cray_mpich.md
-      - Julia Container: software/containers/julia.md
-    - Scientific Applications:
-      - VASP: software/packages/vasp.md
-      - Quantum ESPRESSO: software/packages/quantumespresso.md
-  - Early Access Platform: eap/index.md
+      - Performance analysis strategies: development/profiling/strategies.md
+      - Cray Performance Analysis Tool: development/profiling/perftools.md
   - Help desk: 
-    - Help desk: generic/helpdesk.md
+    - Help desk: helpdesk/index.md
+    - Training and events: helpdesk/training.md
+    - Known issues: helpdesk/issues.md
+    
  
 theme:
   name: material
@@ -92,8 +107,8 @@ theme:
     title: Get Started
     page: firststeps/getstarted/
   home_secondary:
-    title: LUMI Overview
-    page: generic/overview/
+    title: To LUMI Main Page
+    page: https://lumi-supercomputer.eu/
 
 extra:
   social:
