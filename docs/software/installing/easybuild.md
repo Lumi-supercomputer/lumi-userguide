@@ -1,7 +1,7 @@
 # EasyBuild
 
 [Lmod_modules]: ../../runjobs/lumi_env/Lmod_modules.md
-[softwarestacks]: ../../runjobs/lumi_env/Lmod_modules.md
+[softwarestacks]: ../../runjobs/lumi_env/softwarestacks.md
 [helpdesk]: ../../helpdesk/index.md
 [lumi-g]: ../../hardware/compute/lumig.md
 [eap]: ../../hardware/compute/eap.md
