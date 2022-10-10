@@ -1,4 +1,4 @@
-[heldesk]: ../../helpdesk/index.md
+[helpdesk]: ../../helpdesk/index.md
 
 # Spack
 
