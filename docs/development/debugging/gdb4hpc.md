@@ -29,13 +29,30 @@ $ gdb4hpc
 
 ### Launching your application from gdb4hpc
 
+!!! failure "gdb4hpc application launch fails"
+    
+    There is an ongoing issue with `gdb4hpc` that causes the launch to fail with
+    the following error:
+
+    ```
+    Failed to launch CTI app.
+    CTI error: cti_launchAppBarrier: mpiexec was not found in PATH. (tried SSH)
+    ```
+
+    Please export the following environment variable as temporatu workaround:
+
+    ```
+    export CTI_WLM_IMPL=slurm
+    export CTI_LAUNCHER_NAME=srun
+
+    module load gdb4hpc
+    ```
+
 You can launch your application from the debugger command line interface using
 the `launch` command.
 
 ```bash
 $ dbg all> launch --launcher-args="<launch-args>" 
-                  --args="<args>" 
-                --args="<args>" 
                   --args="<args>" 
                   --env="<name=value>" <handle> <application>
 ```
