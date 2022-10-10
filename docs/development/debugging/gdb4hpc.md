@@ -39,7 +39,7 @@ $ gdb4hpc
     CTI error: cti_launchAppBarrier: mpiexec was not found in PATH. (tried SSH)
     ```
 
-    Please export the following environment variable as temporatu workaround:
+    Please export the following environment variable as temporary workaround:
 
     ```
     export CTI_WLM_IMPL=slurm
