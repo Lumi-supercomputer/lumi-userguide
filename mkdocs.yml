@@ -146,3 +146,4 @@ plugins:
   - redirects:
       redirect_maps:
         'computing/Lmod_modules.md': 'runjobs/lumi_env/Lmod_modules.md'
+  - search
