@@ -91,7 +91,7 @@ GPU support and activate extra array bounds checking for debugging.
 4. When you're satisfied with what Spack plans to do, install it:
 
     ```console
-    $ spack install kokkos+rocm~debug_bounds_check amdgpu_target=gfx90a %gcc@11.2.0
+    $ spack install kokkos+rocm+debug_bounds_check amdgpu_target=gfx90a %gcc@11.2.0
     [+] /appl/lumi/spack/22.08/0.18.1/opt/spack/pkgconf-1.8.0-apn2qzk
     [+] /usr (external openssl-1.1.0i-fips-soismtrmvprzovi2ffmjtxaqkzrylnyf)
     [+] /opt/rocm-5.0.2/hip (external hip-5.0.2-mllffq3vq4ekxrdmemc5wqznzs3joyd2)
