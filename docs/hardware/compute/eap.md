@@ -253,12 +253,13 @@ launch an application with 2 MPI ranks with 8 threads and 1 GPU per rank.
 #SBATCH --partition=eap (1)
 #SBATCH --account=<project_XXXXXXXXX> (2)
 #SBATCH --time=10:00 (3)
-#SBATCH --ntasks=2 (4)
-#SBATCH --cpus-per-task=8 (5)
-#SBATCH --gpus-per-task=1 (6)
+#SBATCH --nodes=2 (4)
+#SBATCH --ntasks-per-node=8 (5)
+#SBATCH --cpus-per-task=8 (6)
+#SBATCH --gpus-per-node=8 (7)
 
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK # (7)
-export MPICH_GPU_SUPPORT_ENABLED=1 # (8)
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK # (8)
+export MPICH_GPU_SUPPORT_ENABLED=1 # (9)
 
 srun <executable> # (9)
 ```
@@ -271,22 +272,24 @@ srun <executable> # (9)
 
 3. The format for time is `dd-hh:mm:ss`. In this case, the requested time is
    10 minutes.
-
-4. Request 2 tasks. A task in Slurm speaks is a process. If your application
+   
+4. Request 2 nodes. 
+   
+5. Request 8 tasks per node. A task in Slurm speaks is a process. If your application
    use MPI, it corresponds to the number of MPI ranks.
 
-5. Request 8 threads per task. If your application is multithreaded (for
+6. Request 8 threads per task. If your application is multithreaded (for
    example, using OpenMP) this is how you control the number of threads.
 
-6. Request 2 GPUs for this job, one for each task. Most of the time the number
+7. Request 2 GPUs for this job, one for each task. Most of the time the number
    of GPUs is the same as the number of tasks (MPI ranks).
 
-7. If your application is multithreaded with OpenMP, set the value of
+8. If your application is multithreaded with OpenMP, set the value of
    `OMP_NUM_THREADS` to the value set with `--cpus-per-task`
 
-8. If your code needs a GPU-aware MPI
+9. If your code needs a GPU-aware MPI
 
-9. Launch your application with `srun`. There are no `mpirun`/`mpiexec` on
+10. Launch your application with `srun`. There are no `mpirun`/`mpiexec` on
    LUMI. You should always use `srun` to launch your application. If your
    application doesn't use MPI you can omit it.
 
@@ -303,6 +306,4 @@ More information about available batch script parameters is available
 | Option             | Description                                        |
 |--------------------|----------------------------------------------------|
 | `--gpus`           | Specify the total number of GPUs across all nodes  |
-| `--gpus-per-task`  | Specify the number of GPUs required for each task |
 | `--gpus-per-node`  | Specify the number of GPUs per node                |
-| `--ntasks-per-gpu` | Specify the number of tasks for every GPU          |
