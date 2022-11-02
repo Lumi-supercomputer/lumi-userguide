@@ -281,7 +281,7 @@ srun <executable> # (9)
 6. Request 8 threads per task. If your application is multithreaded (for
    example, using OpenMP) this is how you control the number of threads.
 
-7. Request 2 GPUs for this job, one for each task. Most of the time the number
+7. Request 8 GPUs for this job, one for each task. Most of the time the number
    of GPUs is the same as the number of tasks (MPI ranks).
 
 8. If your application is multithreaded with OpenMP, set the value of
