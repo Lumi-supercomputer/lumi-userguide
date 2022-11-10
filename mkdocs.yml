@@ -54,9 +54,10 @@ nav:
     - Containers: 
       - Singularity/Apptainer containers: software/containers/singularity.md
     - Software guides:
-      - VASP: software/guides/vasp.md
+      - Software library: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/
       - Quantum ESPRESSO: software/guides/quantumespresso.md
       - ParaView: software/guides/paraview.md
+      - VASP: software/guides/vasp.md
   - Developing:
     - Overview: development/index.md
     - Compiling:
