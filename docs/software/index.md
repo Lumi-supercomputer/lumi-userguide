@@ -11,8 +11,12 @@
 [module-env]: ../runjobs/lumi_env/Lmod_modules.md
 
 ---
-Here you find guidance on ways to install software on LUMI as well as guides on
-using some specific software packages on LUMI. If you are looking for ways to
+Here you find guidance on ways to install software on LUMI. 
+A full overview of software installed in the LUMI software
+stacks or available as a build recipe for the 
+[EasyBuild][easybuild] package manager is available in the
+[LUMI software library](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/).
+If you are looking for ways to
 optimize your software for use on LUMI, consult the [developing
 section][developing-overview] instead.
 
@@ -42,3 +46,20 @@ easy to install yourself.
     installations of software containing a lot of small files, e.g. Python or
     R environments installed via Conda or pip. For such software a container
     based approach must be used.
+
+---
+
+The [LUMI software library](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/)
+contains an overview with all software that is installed in the software stacks available
+through the LUMI modules and the CrayEnv module (apart from the documentation of the
+HPE Cray Programming Environment). For software installed on the system the first channel
+to get help on a specific module is through the `module help` command, but the LUMI
+Software Library pages sometimes contain more information on how to run the software,
+or more information about specific options that were chosen when installing the software
+on LUMI.
+
+Packages with considerable extra information in the LUMI software library:
+
+-   [QuantumESPRESSO](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/q/QuantumESPRESSO/)
+-   [VASP](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/v/VASP/)
+
