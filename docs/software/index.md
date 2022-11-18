@@ -36,12 +36,6 @@ section][developing-overview] instead.
 ## Installing software
 
 We offer three options to install software on LUMI, with varying levels of support.
-The preferred volume for software installations is your project directory, so that 
-a software installation can be shared with all users in your project. Software can be
-installed in your home directory also but it is not recommended and you will not get
-additional quota for it. Installing permanent software installations in your scratch
-or flash directory is not recommended as these will be cleaned automatically in the 
-future when the file system starts to fill up.
 
 The three options are:
 
@@ -72,6 +66,13 @@ The three options are:
      conda installations or large Python installations built with `pip` on top of the
      Cray Python distribution in a single file to reduce the load on the Lustre filesystem
      that these installations typically cause.
+
+The preferred volume for software installations is your project directory, so that 
+a software installation can be shared with all users in your project. Software can be
+installed in your home directory also but it is not recommended and you will not get
+additional quota for it. Installing permanent software installations in your scratch
+or flash directory is not recommended as these will be cleaned automatically in the 
+future when the file system starts to fill up.
 
 
 ## Singularity containers
