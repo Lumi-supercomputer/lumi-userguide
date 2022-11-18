@@ -44,23 +44,23 @@ not in CrayEnv.
 EasyBuild installs software through recipes that give instructions to create a single
 module that most of the time provides a single package. It will also tell EasyBuild on
 which other modules a package depends so that these can also be installed
-automatically if needed (through their own EasyBuild recipe).
+automatically if needed (through their own EasyBuild recipes).
 
 An EasyBuild build recipe is a file with a name that consists of different
-components and ends with '.eb'. Consider, e.g., a build recipe for the software GROMACS
+components and ends with '.eb'. Consider, e.g., a build recipe for the software GROMACS:
 
 ```text
 GROMACS-2021.4-cpeGNU-22.08-PLUMED-2.7.4-CPU.eb
 ```
 
 The first part of the name, `GROMACS`, is the name of the package. The second
-part of the name, `2021.4` is the version of GROMACS, in this case the initial
-2021 release. 
+part of the name, `2021.4` is the version of GROMACS, in this case the
+2021.4 release. 
 
 The next part, `cpeGNU-22.08`, denotes the so-called *toolchain*
 used for the build. Each toolchain corresponds to a particular HPE Cray Programming
 Environment, and the number (`22.08`in this example) denotes the version of this
-programming environment. The various toolchains on LUMI are:
+programming environment. The various EasyBuild toolchains on LUMI are:
 
 | EasyBuild toolchain | HPE Cray PE                                                    |
 |---------------------|----------------------------------------------------------------|
@@ -157,9 +157,9 @@ the selected version of the LUMI software stack and partition when you do
 `module avail`. Also, `module spider` will also search those directories.
 
 
-### Load the LUMI software stack
+### Step 1: Load the LUMI software stack
 
-The second step is to ensure that the right version of the software stack is
+The next step is to ensure that the right version of the software stack is
 loaded. Assume that we want to install software in the `LUMI/22.08` stack, then
 one needs to execute
 
@@ -182,10 +182,10 @@ stacks][softwarestacks] page.
 
 Though it is technically possible to cross-compile software for a different
 partition, it may not be without problems as not all install scripts that come
-with software support cross-compiling and as tests may fail when compiling for
+with software do support cross-compiling and as tests may fail when compiling for
 a CPU with instructions that the host CPU does not support.
 
-### Load EasyBuild
+### Step 2: Load EasyBuild
 
 The next step to install software in the directory you have just indicated, is
 to load the `EasyBuild-user` module:
@@ -213,13 +213,13 @@ EasyBuild will not install dependencies of a package and fail instead, if one or
 more of the dependencies cannot be found, but that is also easily changed on
 the command line. 
 
-### Install tha package
+### Step 3: Install tha package
 
 To show how to actually install a package, we continue with our
 `GROMACS-2021.4-cpeGNU-22.08-PLUMED-2.7.4-CPU.eb` example.
 
-If all needed EasyBuild recipes are in one of those
-repository or in the current directory, all you need to do to install the
+If all needed EasyBuild recipes are in one of the
+repositories, all you need to do to install the
 package is to run
 
 ```bash
@@ -231,7 +231,7 @@ installed.
 
 If the `GROMACS-2021.4-cpeGNU-22.08-PLUMED-2.7.4-CPU.eb` would not have been
 in a repository, but in the current directory or one of its subdirectories,
-you can use 
+you could use 
 
 ```bash
 $ eb GROMACS-2021.4-cpeGNU-22.08-PLUMED-2.7.4-CPU.eb -r .
@@ -287,10 +287,10 @@ module load GROMACS/2021.4-cpeGNU-22.08-PLUMED-2.7.4-CPU
         ```
 
     2.  If the problem occurs later on, e.g., while running a job, then a common cause is that
-        you have a different version of the `LUMI` and/or `partition` modules loaded then when
+        you have a different version of the `LUMI` and/or `partition` modules loaded than used when
         installing the software package.
 
-        Note that even the LUMI CPU compute nodes have a newer processor then the login nodes and
+        Note that even the LUMI CPU compute nodes have a newer processor than the login nodes and
         may benefit from processor-specific optimisations which is whey they use a different `partition`
         module. If you load one of the versions of the `LUMI` module on the login nodes, it will 
         automatically load `partition/L` while if you do the load on a regular LUMI-C compute node,
@@ -370,7 +370,7 @@ that go way beyond this page.
 To store this repository on GitHub, you can follow the GitHub documentation,
 and in particular the page ["Adding an existing project to GitHub using the
 command
-line](https://docs.github.com/en/github/importing-your-projects-to-github/importing-source-code-to-github/adding-an-existing-project-to-github-using-the-command-line).
+line"](https://docs.github.com/en/github/importing-your-projects-to-github/importing-source-code-to-github/adding-an-existing-project-to-github-using-the-command-line).
 
 Technical documentation on the toolchains on LUMI and the directory structure
 of EasyBuild can be found in [the documentation of the LUMI-SoftwareStack
@@ -387,36 +387,36 @@ recipes, we suggest the following sources of information:
   contains recordings of a four-session tutorial
   given for the LUMI User Support Team by Kenneth Hoste (UGent), the lead developer
   of EasyBuild and Luca Marsella (CSCS)
-  - [Part 1: Introduction](https://www.youtube.com/watch?v=JTRw8hqi6x0)
-  - [Part 2: Using EasyBuild](https://www.youtube.com/watch?v=C3S8aCXrIMQ)
-  - [Part 3: Advanced topics](https://www.youtube.com/watch?v=KbcvHa4uO1Y)
-  - [Part 4: EasyBuild on Cray systems](https://www.youtube.com/watch?v=uRu7X_fJotA)
+    - [Part 1: Introduction](https://www.youtube.com/watch?v=JTRw8hqi6x0)
+    - [Part 2: Using EasyBuild](https://www.youtube.com/watch?v=C3S8aCXrIMQ)
+    - [Part 3: Advanced topics](https://www.youtube.com/watch?v=KbcvHa4uO1Y)
+    - [Part 4: EasyBuild on Cray systems](https://www.youtube.com/watch?v=uRu7X_fJotA)
 - [Technical documentation on our setup for developers](https://lumi-supercomputer.github.io/LUMI-SoftwareStack/)
 - LUMI EasyBuild recipes
-  - [Main LUMI software stack GitHub repository](https://github.com/Lumi-supercomputer/LUMI-SoftwareStack)
-    contains the full EasyBuild setup for LUMI, including the EasyBuild recipes
-    that we use for the central software stack and many others that we fully support
-    and consider of good quality. The clone on the system is automatically searched
-    by the `EasyBuild-user` module.
-  - [LUMI contributed EasyBuild recipes GitHub repository](https://github.com/Lumi-supercomputer/LUMI-EasyBuild-contrib)
-    contains contributed EasyBuild recipes and other recipes developed by LUST
-    that haven't been as thoroughly checked or are deemed not appropriate for central
-    installation at this point. However, they are fully compatible with the setup
-    on LUMI, with correct dependency versions etc.
+    - [Main LUMI software stack GitHub repository](https://github.com/Lumi-supercomputer/LUMI-SoftwareStack)
+      contains the full EasyBuild setup for LUMI, including the EasyBuild recipes
+      that we use for the central software stack and many others that we fully support
+      and consider of good quality. The clone on the system is automatically searched
+      by the `EasyBuild-user` module.
+    - [LUMI contributed EasyBuild recipes GitHub repository](https://github.com/Lumi-supercomputer/LUMI-EasyBuild-contrib)
+      contains contributed EasyBuild recipes and other recipes developed by LUST
+      that haven't been as thoroughly checked or are deemed not appropriate for central
+      installation at this point. However, they are fully compatible with the setup
+      on LUMI, with correct dependency versions etc.
 - Other EasyBuild recipes for the Cray Programming Environment
-  - [CSCS GitHub repository](https://github.com/eth-cscs/production).
-    Most of the recipes are for Piz Daint which uses slightly different toolchains.
-    Moreover dependencies typically need updating as the software installation
-    on LUMI is not in sync with the CSCS installation. The repository is particularly
-    useful for CPU-only programs as the GPUs in their system are not compatible
-    with those in LUMI.
+    - [CSCS GitHub repository](https://github.com/eth-cscs/production).
+      Most of the recipes are for Piz Daint which uses slightly different toolchains.
+      Moreover dependencies typically need updating as the software installation
+      on LUMI is not in sync with the CSCS installation. The repository is particularly
+      useful for CPU-only programs as the GPUs in their system are not compatible
+      with those in LUMI.
 - EasyBuild recipes that are not compatible with the Cray Programming Environment but that
   may sometimes be a good source to start developing compatible ones (if you're an
   EasyBuild expert):
-  - [EasyBuilders repository](https://github.com/easybuilders/easybuild-easyconfigs/tree/develop/easybuild/easyconfigs),
-    the repository of EasyConfig files that also come with EasyBuild.
-  - [ComputeCanada repository](https://github.com/ComputeCanada/easybuild-easyconfigs)
-  - [IT4Innovations repository](https://code.it4i.cz/sccs/easyconfigs-it4i)
-  - [Fred Hutchinson Cancer Research Center repository](https://github.com/FredHutch/easybuild-life-sciences/tree/main/fh_easyconfigs)
-  - [University of Antwerpen repository](https://github.com/hpcuantwerpen/UAntwerpen-easyconfigs)
-  - [University of Leuven repository](https://github.com/hpcleuven/easybuild-easyconfigs/tree/master/easybuild/easyconfigs)
+    - [EasyBuilders repository](https://github.com/easybuilders/easybuild-easyconfigs/tree/develop/easybuild/easyconfigs),
+      the repository of EasyConfig files that also come with EasyBuild.
+    - [ComputeCanada repository](https://github.com/ComputeCanada/easybuild-easyconfigs)
+    - [IT4Innovations repository](https://code.it4i.cz/sccs/easyconfigs-it4i)
+    - [Fred Hutchinson Cancer Research Center repository](https://github.com/FredHutch/easybuild-life-sciences/tree/main/fh_easyconfigs)
+    - [University of Antwerpen repository](https://github.com/hpcuantwerpen/UAntwerpen-easyconfigs)
+    - [University of Leuven repository](https://github.com/hpcleuven/easybuild-easyconfigs/tree/master/easybuild/easyconfigs)
