@@ -144,11 +144,11 @@ GPU support and activate extra array bounds checking for debugging.
     clone to your own Spack instance and configure it using our configuration
     files.
 
-2. **Seek help:** you can check the [official Spack
-    documentation](https://spack.readthedocs.io), open a ticket at
-    <https://www.lumi-supercomputer.eu/user-support/need-help/> or ask the
-    Spack community via the [Spack Slack](http://spackpm.slack.com). (The Spack
-    Slack community can be very helpful.)
+2. **Seek help:** you can check the 
+    [official Spack documentation](https://spack.readthedocs.io), open a ticket 
+    at the [LUMI Helpdesk](https://www.lumi-supercomputer.eu/user-support/need-help/) 
+    or ask the Spack community via the [Spack Slack](http://spackpm.slack.com), 
+    the Spack Slack community can be very helpful.
 
 ## Spack on LUMI (advanced)
 
@@ -222,7 +222,7 @@ You just need to make sure that `$SPACK_USER_PREFIX` is set and that the
 
 ## Further reading
 
-- Spack documentation: [https://spack.readthedocs.io/en/latest/index.html](https://spack.readthedocs.io/en/latest/index.html)
-- Spack tutorial: [https://spack.readthedocs.io/en/latest/tutorial.html](https://spack.readthedocs.io/en/latest/tutorial.html)
-- Source code: [https://github.com/spack/spack](https://github.com/spack/spac) (especially the package definitions)
-- Spack Slack: [http://spackpm.slack.com/](https://github.com/spack/spac)
+- [Spack documentation](https://spack.readthedocs.io/en/latest/index.html)
+- [Spack tutorial](https://spack.readthedocs.io/en/latest/tutorial.html)
+- [Spack Source code](https://github.com/spack/spack) (especially the package definitions)
+- [Spack Slack](https://slack.spack.io/)
