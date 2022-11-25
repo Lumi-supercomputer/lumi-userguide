@@ -259,16 +259,17 @@ guidelines are not followed and if EasyBuild needs to install this module as a
 dependency of another package, EasyBuild will fail to locate the build recipe.
 
 The `GROMACS/2021.4-cpeGNU-22.08-PLUMED-2.7.4-CPU` module can now be used just like
-any other module on the system. To use the GROMACS module you don't need to load `EasyBuild-user`, 
-so all you need to do to use that module when running with this module (which we installed
-in `partition/C` of `LUMI/22.08` in this example) is
+any other module on the system. To *use* the GROMACS module you don't need to load `EasyBuild-user`.
+That was only required for *installing* the package. 
+All you need to do to use the GROMACS module that we just installed, is 
 
 ```bash
-module load LUMI/22.08 partition/C
+module load LUMI/22.08
 module load GROMACS/2021.4-cpeGNU-22.08-PLUMED-2.7.4-CPU
 ```
 
-(or you could even combine them all in a single `module load` command).
+(i.e., loading the software stack in which we installed GROMACS and the GROMACS module that 
+we installed).
 
 ### Some common problems
 
@@ -295,6 +296,13 @@ module load GROMACS/2021.4-cpeGNU-22.08-PLUMED-2.7.4-CPU
         module. If you load one of the versions of the `LUMI` module on the login nodes, it will 
         automatically load `partition/L` while if you do the load on a regular LUMI-C compute node,
         it will load `partition/C`, which is why we loaded `partition/C` explicitly in the example above.
+
+        In the example above, if the installation commands
+        were executed on the login node, the software would have been installed in `partition/L`,
+        but if we then do a `module load LUMI/22.08` on the compute nodes, `partition/C` would have been
+        selected. To get a GROMACS version in `partition/C` that EasyBuild would build with compiler settings
+        that are specific for the processors in the compute nodes, either do the compilation on a compute node
+        or use *cross-compiling* by loading `partition/C` after loading `LUMI/22.08` in step 1 above.
 
 2.  **EasyBuild complains that some modules are already loaded.**
 
