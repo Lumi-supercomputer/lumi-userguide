@@ -14,8 +14,8 @@
 ---
 On this page you find guidance on ways to install additional software on LUMI. 
 A full overview of software installed in the LUMI software
-stacks or available as a build recipe for the 
-[EasyBuild][easybuild] package manager is available in the
+stacks, or available as a build recipe for the 
+[EasyBuild][easybuild] package manager, is available in the
 [LUMI software library](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/).
 If you are looking for ways to
 optimize your software for use on LUMI, consult the [developing
@@ -67,7 +67,7 @@ The three options are:
      Cray Python distribution in a single file to reduce the load on the Lustre filesystem
      that these installations typically cause.
 
-The preferred volume for software installations is your project directory, so that 
+The preferred location for software installations is your project directory, so that 
 a software installation can be shared with all users in your project. Software can be
 installed in your home directory also but it is not recommended and you will not get
 additional quota for it. Installing permanent software installations in your scratch
