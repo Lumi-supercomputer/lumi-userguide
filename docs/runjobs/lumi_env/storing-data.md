@@ -82,12 +82,6 @@ project. When a storage space is marked as expandable, it means that you can
 request more space if needed. Please contact the [User Support Team][helpdesk]
 to request more storage space.
 
-!!! warning "Project fast storage currently not available"
-
-    To prepare for the installation of [LUMI-G][lumi-g], [LUMI-F][lumif] has
-    been taken offline. It will become available again once the [LUMI-G]
-    [lumi-g] installation is completed.
-
 !!! warning "Data retention policies are not active"
 
     Automatic cleaning of project scratch and fast storage is not active at the
