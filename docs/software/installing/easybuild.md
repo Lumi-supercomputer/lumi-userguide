@@ -69,7 +69,7 @@ programming environment. The various EasyBuild toolchains on LUMI are:
 | `cpeAMD`            | `PrgEnv-amd` (AMD compilers for AMD GPU systems, part of ROCm) |
 | `cpeAOCC`           | `PrgEnv-aocc` (AMD compilers for CPU-only systems)             |
 
-The version of the toolchain should match the version
+The version number of the toolchain should match the version
 of the LUMI software stack or the installation will fail. (In fact, it is not
 just the version in the file name that should match but the version of the
 toolchain that is used in the recipe file.) 
@@ -143,7 +143,7 @@ export EBU_USER_PREFIX=/project/project_465000000/EasyBuild
 ??? Failure "Do not change `EBU_USER_PREFIX` when a `LUMI` module is loaded"
     Changing the value of `EBU_USER_PREFIX` while one of the `LUMI` modules
     is loaded has side effects. When switching to a different version of the
-    `LUMI` module or relading the current module to enable the new installation
+    `LUMI` module or reloading the current module to enable the new installation
     directory, the module system will fail to first properly clean the
     old user installation directories from the module search path, even when
     using `module --force purge`. This is a side effect of how Lmod works when
@@ -213,7 +213,7 @@ EasyBuild will not install dependencies of a package and fail instead, if one or
 more of the dependencies cannot be found, but that is also easily changed on
 the command line. 
 
-### Step 3: Install tha package
+### Step 3: Install the package
 
 To show how to actually install a package, we continue with our
 `GROMACS-2021.4-cpeGNU-22.08-PLUMED-2.7.4-CPU.eb` example.
@@ -291,7 +291,7 @@ module load GROMACS/2021.4-cpeGNU-22.08-PLUMED-2.7.4-CPU
         installing the software package.
 
         Note that even the LUMI CPU compute nodes have a newer processor than the login nodes and
-        may benefit from processor-specific optimisations which is whey they use a different `partition`
+        may benefit from processor-specific optimisations which is why they use a different `partition`
         module. If you load one of the versions of the `LUMI` module on the login nodes, it will 
         automatically load `partition/L` while if you do the load on a regular LUMI-C compute node,
         it will load `partition/C`, which is why we loaded `partition/C` explicitly in the example above.
