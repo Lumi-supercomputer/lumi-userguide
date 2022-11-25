@@ -13,9 +13,9 @@
 
 ---
 On this page you find guidance on ways to install additional software on LUMI. 
-A full overview of software installed in the LUMI software
-stacks, or available as a build recipe for the 
-[EasyBuild][easybuild] package manager, is available in the
+A full overview of software that is either installed in the LUMI software
+stacks or available as a LUMI-specific build recipe for the 
+[EasyBuild][easybuild] package manager, can be found in the
 [LUMI software library](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/).
 If you are looking for ways to
 optimize your software for use on LUMI, consult the [developing
