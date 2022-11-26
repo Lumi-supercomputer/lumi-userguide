@@ -56,6 +56,7 @@ nav:
     - Software guides:
       - VASP: software/guides/vasp.md
       - Quantum ESPRESSO: software/guides/quantumespresso.md
+      - ParaView: software/guides/paraview.md
   - Developing:
     - Overview: development/index.md
     - Compiling:
