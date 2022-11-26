@@ -97,13 +97,13 @@ Compilation of ParaView takes a long time. We present two options:
 
     sbatch <<EOF
     #!/bin/bash
-    #SBATCH --partition small
+    #SBATCH --partition=small
     #SBATCH --account=${project}
-    #SBATCH --job-name paraview-build
-    #SBATCH --time 01:00:00
-    #SBATCH --nodes 1
-    #SBATCH --mem 0
-    #SBATCH --cpus-per-task 128
+    #SBATCH --job-name=paraview-build
+    #SBATCH --time=01:00:00
+    #SBATCH --nodes=1
+    #SBATCH --mem=0
+    #SBATCH --cpus-per-task=128
 
     module load LUMI/22.08
     module purge
