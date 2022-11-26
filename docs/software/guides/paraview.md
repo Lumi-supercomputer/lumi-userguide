@@ -22,6 +22,7 @@ several awards related to high performance computation.
 
 - [ParaView website](https://www.paraview.org/)
 - [ParaView tutorials](https://www.paraview.org/tutorials/)
+- [ParaView documentation](https://docs.paraview.org/en/v5.10.1/index.html)
 
 ## Installation
 
