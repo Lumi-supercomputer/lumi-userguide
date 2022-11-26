@@ -20,6 +20,9 @@ of petascale size as well as on laptops for smaller data, has become an integral
 tool in many national laboratories, universities and industry, and has won
 several awards related to high performance computation.
 
+- [ParaView website](https://www.paraview.org/)
+- [ParaView tutorials](https://www.paraview.org/tutorials/)
+
 ## Installation
 
 ParaView is available as a user-installable EasyBuild recipe. This recipe will 
