@@ -295,12 +295,19 @@ ssh -N -L 11111:nid002211:11111 lumi
 !!! failure "Potential connection failure"
 
     Sometimes connection to the server fails when the server is executed from a
-    login node. See the information at the end of this section for more 
-    information and a workaround.
+    login node. See the information 
+    [at the end of this section](#login-node-workaround)
+    for more information and a workaround.
 
 The last step is to connect the client running on your local machine to the 
-server running on LUMI. To this end, select *File* &#x2192; *Connect...* and
-click *Add Server*.
+server running on LUMI. To this end, select *File* &#x2192; *Connect...*. You 
+should already have a configuration suitable configuration by default, i.e.,
+a configuration to connect to a server at address `cs://localhost:11111`. If 
+indeed this is the case, and that `11111` is the port you use, select this 
+configuration and click *Connect*. The instruction that follow are here in case
+you need to create a new configuration.
+
+First, go to *File* &#x2192; *Connect...* and click *Add Server*.
 
 <figure>
   <img 
@@ -357,6 +364,8 @@ Disconnecting the client from the server is done via *File* &#x2192;
 *Disconnect...*. The server will exit when you disconnect, i.e., if you 
 submitted a job, it should end. However, we recommended you to check that this
 is indeed the case to avoid wasting your cpu-hours allocation. 
+
+<span id="login-node-workaround"></span>
 
 !!! failure "Potential connection failure"
     
