@@ -168,6 +168,14 @@ that you can download here:
 
 ### Start the server on LUMI
 
+!!! failure "Occasional failure on the small partition"
+
+    When submitting a job to the small partition, the MPI initialization may
+    fails with an "*Adress already in use*"" message. Workaround is to exclude 
+    the bad node when submitting the job with the `--exclude=nid00XXXX` option, 
+    where `nid00XXXX` is the node where the failure occur. You can exclude
+    multiple node with comma separated a list: `--exclude=nid00XXXX, nid00YYYY`.
+
 === "On a compute node"
 
     One option to start a ParaView server on a compute node is use an 
