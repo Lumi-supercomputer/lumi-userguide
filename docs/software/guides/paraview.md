@@ -75,7 +75,7 @@ Compilation of ParaView takes a long time. We present two options:
     # !!! CHANGE ME !!!
     project=project_46XXXXXXX
     
-    # Uncomment this export to install in your project directory
+    # Un-comment this export to install in your project directory
     # By default installation is done in $HOME/EasyBuild
     #export EBU_USER_PREFIX=/project/${project}/EasyBuild
 
@@ -150,7 +150,7 @@ Compilation of ParaView takes a long time. We present two options:
 
 The intended usage of ParaView on LUMI is in a client-server configuration:
 
-- the server runs on a login or compute node on LUMI
+- the server runs on a login or a compute node on LUMI
 - a matching client (same version) runs on your local machine
 - all data processing and rendering are handled by the server
 
@@ -171,10 +171,10 @@ that you can download here:
 !!! failure "Occasional failure on the small partition"
 
     When submitting a job to the small partition, the MPI initialization may
-    fails with an "*Adress already in use*"" message. Workaround is to exclude 
+    fail with a "*Adress already in use*" message. Workaround is to exclude 
     the bad node when submitting the job with the `--exclude=nid00XXXX` option, 
-    where `nid00XXXX` is the node where the failure occur. You can exclude
-    multiple node with comma separated a list: `--exclude=nid00XXXX, nid00YYYY`.
+    where `nid00XXXX` is the node where the failure occurs. You can exclude
+    multiple nodes with commas separated a list: `--exclude=nid00XXXX, nid00YYYY`.
 
 === "On a compute node"
 
@@ -192,9 +192,9 @@ that you can download here:
     ```
 
     Here we start a server on 8 processes and 16GB of memory. Don't forget to
-    change the vvalue `project_46XXXXXXX` to your project number. 
+    change the value `project_46XXXXXXX` to your project number. 
     
-    An other option is to start the server in a batch job. Here is an example
+    Another option is to start the server in a batch job. Here is an example
     job script:
 
     ```bash title="start-pvserver.job"
@@ -367,7 +367,7 @@ is indeed the case to avoid wasting your cpu-hours allocation.
     ```
 
     Contrary to what this message seems to indicate, it is not a version 
-    mismatch problem. The problem is that the hostname is not fully qualified 
+    mismatch problem. The problem is that the host name is not fully qualified 
     domain name (FQDN) of the login node. A workaround is to use a FQDN of the
     login node instead of `uanXX` when creating the SSH tunnel. The FQDN can be
     obtained with the `hostname -A` command. For example, for a server running 
