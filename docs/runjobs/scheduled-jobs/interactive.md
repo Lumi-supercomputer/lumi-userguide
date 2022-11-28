@@ -62,29 +62,17 @@ This starts a shell, where you can run any command, on the first allocated node
 in a specific job:
 
 ```bash
-$ srun --overlap --pty --jobid=<jobid> bash
+$ srun --interactive --pty --jobid=<jobid> $SHELL
 ```
 
 To check processor and memory usage quickly, you can run `top` directly:
 
 ```bash
-$ srun --overlap --pty --jobid=<jobid> top
+$ srun --interactive --pty --jobid=<jobid> top
 ```
 
 The `-w nid00XXXX` option can be added to select a specific compute node to view:
 
 ```bash
-$ srun --overlap --pty --jobid=<jobid> -w nid002217 top
-```
-
-You can see which compute node(s) your job is allocated to by running the
-`squeue` command and looking in the "NODELIST" column.
-
-If you want to do this on the Early Access Platform with GPUs, you need to give
-an extra flag: `--gpus-per-task=0`, otherwise your monitoring job will not run.
-For example, to run the `rocm-smi` command on an EAP node and check the GPU
-usage, do like this:
-
-```bash
-$ srun --gpus-per-task=0 --overlap --jobid=<jobid> --pty rocm-smi
+$ srun --interactive --pty --jobid=<jobid> -w nid002217 top
 ```
