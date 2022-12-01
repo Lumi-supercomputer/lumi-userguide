@@ -27,13 +27,14 @@ The tools provided by the container wrapper are accessible by loading the
 [software stacks][softwarestacks].
 
 ```bash
-$ module load LUMI lumi-container-wrapper
+module load LUMI/22.08 
+module load lumi-container-wrapper
 ```
 
 Then we can run the `conda-containerize` tool
 
 ```bash
-$ conda-containerize new --prefix <install_dir> env.yml
+conda-containerize new --prefix <install_dir> env.yml
 ```
 
 where **env.yml** is a conda environment file.
@@ -52,13 +53,13 @@ dependencies:
 or generated from an existing environment
 
 ```bash
-$ conda env export -n <target_env_name> > env.yaml 
+conda env export -n <target_env_name> > env.yaml 
 ```
 *Windows and MacOS will need to add the `--from-history` flag to the export command*
 
 or, alternatively,
 ```bash
-$ conda list -n <target_env_name> --explicit > env.txt
+conda list -n <target_env_name> --explicit > env.txt
 ```
 
 *Using the `--explicit` option only works if the existing environment is on a
@@ -69,7 +70,7 @@ After the installation is done, you simply need to add the bin directory
 `<install_dir>/bin` to your `PATH`.
 
 ```bash
-$ export PATH="<install_dir>/bin:$PATH"
+export PATH="<install_dir>/bin:$PATH"
 ```
 
 Then, you can call `python` and any other executables, conda has installed, in
@@ -79,7 +80,7 @@ If you also need to install some additional pip packages, you can do so by
 supplying the `-r <req_file>` argument e.g:
 
 ```bash
-$ conda-containerize new -r req.txt --prefix <install_dir> env.yml
+conda-containerize new -r req.txt --prefix <install_dir> env.yml
 ```
 
 The tool also supports using [mamba](https://github.com/mamba-org/mamba) for
@@ -98,18 +99,18 @@ well as any used conda channels before using the command.
 Using the previous `env.yml`
 
 ```bash
-$ mkdir MyEnv
-$ conda-containerize new --prefix MyEnv env.yml 
+mkdir MyEnv
+conda-containerize new --prefix MyEnv env.yml 
 ```
 
 After the installation finishes, we can add the installation directory to our
 `PATH` and use it like normal.
 
 ```bash
-$ export PATH="$PWD/MyEnv/bin:$PATH"
-$ python --version
+ $ export PATH="$PWD/MyEnv/bin:$PATH"
+ $ python --version
 3.8.8
-$ python3
+ $ python3
 Python 3.8.8 | packaged by conda-forge | (default, Feb 20 2021, 16:22:27) 
 [GCC 9.3.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
@@ -131,15 +132,15 @@ specifies a bash script with commands to run to update the installation. The
 commands are executed with the conda environment activated.
 
 ```bash
-$ conda-containerize update <existing installation> --post-install <file> 
+conda-containerize update <existing installation> --post-install <file> 
 ```
 
 where `<file>` could e.g. contain
 
 ```bash
-$ conda  install -y numpy
-$ conda  remove -y pyyaml
-$ pip install requests
+conda  install -y numpy
+conda  remove -y pyyaml
+pip install requests
 ```
 
 In this mode the whole host system is available including all software and modules.
@@ -151,7 +152,7 @@ manage your python installations using pip. For this case we can use the
 container wrapper via
 
 ```bash
-$ pip-containerize new --prefix <install_dir> req.txt
+pip-containerize new --prefix <install_dir> req.txt
 ```
 
 where `req.txt` is a standard pip requirements file. The above notes and
@@ -179,7 +180,7 @@ without the need for prepending `singularity exec ...`, or modify scripts if
 switching between containerized versions of tools.
 
 ```bash
-$ wrap-container -w </path/inside/container> <container> --prefix <install_dir> 
+wrap-container -w </path/inside/container> <container> --prefix <install_dir> 
 ```
 
 where `<container>` can be a filepath or any URL accepted by singularity (e.g
