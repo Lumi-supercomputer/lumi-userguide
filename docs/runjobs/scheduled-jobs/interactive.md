@@ -17,7 +17,7 @@ execute parallel tasks launched with `srun`. For example, you can allocate 2
 nodes for 30 minutes with the command
 
 ```bash
-$ salloc --nodes=2 --account=<project> --time=00:30:00
+$ salloc --nodes=2 --account=<project> --partition=<partition> --time=00:30:00
 salloc: Granted job allocation 123456
 salloc: Waiting for resource configuration
 ```
@@ -49,7 +49,7 @@ this scenario, `srun` will first create a resource allocation in which to run
 the job. For example, to allocate 1 node for 30 minutes and spawn a shell
 
 ```bash
-$ srun --account=<project> --time=00:30:00 --nodes=1 --pty bash
+$ srun --account=<project> --partition=<partition> --time=00:30:00 --nodes=1 --pty bash
 ```
 
 ## Using `srun` to check running jobs
