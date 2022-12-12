@@ -391,6 +391,7 @@ recipes, we suggest the following sources of information:
 
 - [EasyBuild manual on ReadtheDocs](https://docs.easybuild.io/)
 - [EasyBuild tutorials](https://easybuilders.github.io/easybuild-tutorial/)
+    - [Tutorial specific for LUMI](https://klust.github.io/easybuild-tutorial/2022-CSC_and_LO/)
 - The [EasyBuild YouTube channel](https://www.youtube.com/channel/UCqPyXwACj3sjtOho7m4haVA)
   contains recordings of a four-session tutorial
   given for the LUMI User Support Team by Kenneth Hoste (UGent), the lead developer
