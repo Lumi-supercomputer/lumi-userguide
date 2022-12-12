@@ -97,6 +97,7 @@ on LUMI.
 
 Packages with considerable extra information in the LUMI software library:
 
+-   [ParaView](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/p/ParaView/)
 -   [QuantumESPRESSO](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/q/QuantumESPRESSO/)
 -   [VASP](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/v/VASP/)
 
