@@ -56,7 +56,7 @@ The three options are:
 -   [Spack][spack]
 
     Spack is another popular package manager to install software mostly from sources for
-    optimal performance on HPC systems. We provide a spack configuration that is
+    optimal performance on HPC systems. We provide a Spack configuration that is
     configured for use of the compilers available on LUMI. However, we do no package
     development in Spack.
 

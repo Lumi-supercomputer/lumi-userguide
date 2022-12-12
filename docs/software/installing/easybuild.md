@@ -295,7 +295,7 @@ we installed).
         may benefit from processor-specific optimisations which is why they use a different `partition`
         module. If you load one of the versions of the `LUMI` module on the login nodes, it will 
         automatically load `partition/L` while if you do the load on a regular LUMI-C compute node,
-        it will load `partition/C`, which is why we loaded `partition/C` explicitly in the example above.
+        it will load `partition/C`.
 
         In the example above, if the installation commands
         were executed on the login node, the software would have been installed in `partition/L`,
