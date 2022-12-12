@@ -60,6 +60,7 @@ nav:
       - VASP: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/v/VASP/
       #- Quantum ESPRESSO: software/guides/quantumespresso.md
       #- ParaView: software/guides/paraview.md
+      #- Quantum ESPRESSO: software/guides/quantumespresso.md
       #- VASP: software/guides/vasp.md
   - Developing:
     - Overview: development/index.md
