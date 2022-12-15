@@ -11,6 +11,8 @@
 
 [sionlib]: https://www.fz-juelich.de/ias/jsc/EN/Expertise/Support/Software/SIONlib/_node.html
 [hdf5]: https://www.hdfgroup.org/solutions/hdf5/
+[adios2]: https://adios2.readthedocs.io
+[openpmd]: https://openpmd-api.readthedocs.io
 
 On LUMI you have access to network file system storage based on the
 [LUMI-P][lumip] and [LUMI-F][lumif] hardware partitions. At a later point,
@@ -113,7 +115,7 @@ Examples of requests that will be *rejected* include:
 
 In general, applications that generate a lot of small files per process are
 not well suited for LUMI. If you are the developer of such application, you
-should consider tools like [HDF5][hdf5] or [SIONlib][sionlib].
+should consider tools like [HDF5][hdf5], [ADIOS2][adios2], [SIONlib][sionlib] or implementations on top of these, such as [openPMD][openpmd].
 
 You can check the memory and file usage quotas of your projects with the
 following commands:
