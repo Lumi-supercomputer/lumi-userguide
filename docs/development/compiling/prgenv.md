@@ -49,6 +49,7 @@ available on LUMI. The default collection is Cray.
 |      | Description                   | Module collection |
 |------|-------------------------------|-------------------|
 | CCE  | Cray Compiling Environment    | `PrgEnv-cray`     |
+| AMD  | AMD ROCm compilers            | `PrgEnv-amd`      |
 | GCC  | GNU Compiler Collection       | `PrgEnv-gnu`      |
 | AOCC | AMD Optimizing C/C++ Compiler | `PrgEnv-aocc`     |
 
@@ -68,7 +69,7 @@ After you have loaded a programming environment, the [compiler wrappers][2]
     the 21.08 release) is broken since the compilers themselves are not
     installed. The ``aocc/3.1.0`` module has a bug in the code of the module.
     This has been fixed in later releases of the Crey programming environment
-    so that problem will be solved when those releases are installed. Due to
+    so that the problem will be solved when those releases are installed. Due to
     the way the installation of the Cray programming environment works, it is
     currently not possible for us to correct the module by hand.
 
@@ -153,7 +154,7 @@ Cray Fortran compiler.
 
 ### Wrapper and compiler options
 
-The following flags are a good starting point to achieved good performance:
+The following flags are a good starting point to achieve good performance:
 
 | Compilers    | Good performance                                  | Aggressive optimizations |
 |--------------|---------------------------------------------------|--------------------------|
@@ -180,21 +181,33 @@ in the table below.
 
 When using the Cray programming environment, there is no need to specify
 compiler flags to target specific CPU architecture, like `-march` and `-mtune`
-in gcc. Instead, you load an appropriate combination of modules to choose the
-target architecture when compiling. These modules influence the optimizations
-performed by the compiler, as well as the libraries (e.g. which BLAS routines
-are used in Cray LibSci) used. Therefore, we recommend that you compile with
-`craype-x86-milan` for [LUMI-C][lumi-c], even if the compiler optimizations for
-Zen 3 processors are immature at the moment.
+in GCC or `--offload-arch` for GPU compilation. Instead, you load an appropriate
+combination of modules to choose the target architecture when compiling. 
+These modules influence the optimizations performed by the compiler, as well as
+the libraries (e.g., which BLAS routines are used in Cray LibSci) used. Here is a
+list of the relevant CPU target module available on LUMI:
 
-The table below summarize the available modules.
+- `craype-x86-trento` : GPU partition GPUs (LUMI-G)
+- `craype-x86-milan`  : CPU partition CPUs (LUMI-C)
+- `craype-x86-rome`   : Login nodes and data analytics partition CPUs (LUMI-D)
 
-| Module                    | Target                                     |
-|---------------------------|--------------------------------------------|
-| `craype-x86-milan`        | [LUMI-C][lumi-c] CPUs                      |
-| `craype-x86-rome`         | [LUMI-D][lumi-d] CPUs, login nodes CPUs    |
-| `craype-accel-amd-gfx90a` | [LUMI-G][lumi-g] and [EAP][eap] GPUs       |
-| `craype-accel-nvidia75`   | [LUMI-D][lumi-d] GPUs                      |
+We recommend that you compile with `craype-x86-trento` for LUMI-G and 
+`craype-x86-milan` for LUMI-C, even if the compiler optimizations for these 
+processors are immature at the moment. **You have to load these module yourself
+when compiling your code from a login node** as the default module is 
+`craype-x86-rome`.
+
+In addition to the `craype-x86-*` modules for the CPUs, `craype-accel-*` modules 
+can be used to specify the target GPU architecture. Here is a list of the
+relevant modules:
+
+- `craype-accel-amd-gfx90a` : GPU partition GPUs (AMD MI250x, LUMI-G)
+- `craype-accel-nvidia80`   : data analytics and visualization GPUs (NVIDIA A40, LUMI-D)
+
+Loading one of these modules will instruct the compiler wrappers to add the
+necessary flags to optimize for the target GPU architecture. In addition, loading
+a  `craype-accel-*` module will enable the linking to the GPU transfer library
+(GTL) used for GPU-aware MPI as well as enabling OpenMP target offload.
 
 ### Libraries Linking
 
@@ -206,14 +219,14 @@ appropriate include (`-I`) and library (`-L`) search paths as well as linking
 command (`-l`).
 
 If you have used a Cray system in the past, you may be familiar with the legacy
-linking behaviour of the Cray compiler wrappers. Historically, the wrappers
+linking behavior of the Cray compiler wrappers. Historically, the wrappers
 built statically linked executables. In recent versions of the Cray programming
-environment, this not the case anymore, libraries are now **dynamically
-linked**. The following options are available to you to control the behaviour
+environment, this is not the case anymore, libraries are now **dynamically
+linked**. The following options are available to you to control the behavior
 of your application
 
 - Follow the default Linux policy and at runtime use the system default version
-  of the shared libraries (so may change as and when system is upgraded)
+  of the shared libraries (so may change as and when the system is upgraded)
 - Hard code the path of each library into the binary at compile time so that a
   specific version is loaded when the application start (as long as the library
   is still installed). Set `CRAY_ADD_RPATH=yes` at compile time to use this
@@ -221,13 +234,14 @@ of your application
 - Allow the currently loaded programming environment modules to select the
   library version at runtime. Applications must not be linked with
   `CRAY_ADD_RPATH=yes` and must add the following line to the Slurm script:
+  
   ```bash
   export LD_LIBRARY_PATH=${CRAY_LD_LIBRARY_PATH}:$LD_LIBRARY_PATH
   ```
 
 Static linking is unsupported by Cray at the moment.
 
-### Using the wrapper with a `configure` script
+### Using the wrappers with build systems
 
 In order to compile an application that uses a series of `./configure`, `make`,
 and `make install` commands, you can pass the compiler wrappers in the
@@ -236,6 +250,18 @@ step to succeed.
 
 ```bash
 $ ./configure CC=cc CXX=CC FC=ftn
+```
+
+CMake should automatically detect the Cray environment. If you want to be
+on the safe side, you can explicitly provide the compilers wrappers at configure
+time using the flags
+
+```bash
+cmake \
+  -DCMAKE_C_COMPILER=cc \
+  -DCMAKE_CXX_COMPILER=CC \
+  -DCMAKE_Fortran_COMPILER=ftn \
+  <other options>
 ```
 
 For other tools, you can try to export environment variables so that the tool
@@ -261,33 +287,176 @@ you are using is aware of the wrappers.
     export F90=ftn
     ```
 
+## Compile HIP Code
+
+## Using the compiler wrapper
+
+The `PrgEnv-cray` and `PrgEnv-amd` programming environments can compile HIP 
+code using the compiler wrapper. The advantage of using the wrapper is that the
+flags to use the Cray libraries (`cray-*` modules) are automatically added 
+(including MPI).
+
+=== "PrgEnv-cray"
+
+    ```
+    module load PrgEnv-cray
+    module load craype-accel-amd-gfx90a
+    module load rocm
+
+    CC -xhip -o <yourapp> <hip_source.cpp>
+    ```
+
+=== "PrgEnv-amd"
+
+    ```
+    module load PrgEnv-amd
+    module load craype-accel-amd-gfx90a
+    module load rocm
+
+    CC -xhip -o <yourapp> <hip_source.cpp>
+    ```
+
+### Using `hipcc`
+
+Unlike the compiler wrappers, `hipcc` do not add automatically the flags to use
+the Cray libraries (`cray-*` modules). Loading a `craype-accel-*` will have
+no effect as well, i.e., you need to specify the target GPU architecture 
+yourself with `--offload-arch`.
+
+Still, you can set the value of `HIPCC_COMPILE_FLAGS_APPEND` and 
+`HIPCC_LINK_FLAGS_APPEND` environment variables to make `hipcc` behave like the
+Cray compiler wrappers.
+
+```
+module load PrgEnv-amd
+
+export HIPCC_COMPILE_FLAGS_APPEND="--offload-arch=gfx90a $(CC --cray-print-opts=cflags)"
+export HIPCC_LINK_FLAGS_APPEND=$(CC --cray-print-opts=libs)
+
+hipcc -o <yourapp> <hip_source.cpp>
+```
+
 ## Compile an MPI Program
 
 When you load a programming environment, the appropriate MPI module is loaded in
-the environment (`cray-mpich`). In order to compile your MPI program, you
-should use the set of compiler wrappers (`cc`, `CC`, `ftn`). The wrappers
-will automatically link codes with the MPI libraries.
+the environment: `cray-mpich`. In addition the `craype-network-ofi` network 
+target module should be loaded. These two modules are loaded by default when you
+login to LUMI.
+
+Compiling an MPI application is done using the set of compiler wrappers
+(`cc`, `CC`, `ftn`). The wrappers will automatically link codes with the MPI
+libraries. You can see the compiler wrappers as the more the familiar `mpicc`, 
+`mpicxx` and `mpifort` wrappers.
 
 If you are using a build system that uses a `configure` script, you may need to
 provide the appropriate variables so that the correct wrapper is used.
-For example:
+For example
 
 ```bash
 $ ./configure MPICC=cc MPICXX=CC MPIF77=ftn MPIF90=ftn
 ```
 
-## Compile an OpenMP Program
+For CMake, if you already provided the compiler as described 
+[in the previous section](#using-the-wrappers-with-build-systems), CMake should
+correctly select the wrappers as the MPI compilers.
 
-The table below summarizes the compiler flags used to enable OpenMP for the
-different compilers.
+### GPU-aware MPI
 
-| Language | CCE        | GCC        | AOCC       |
-|----------|------------|------------|------------|
-| C/C++    | `-fopenmp` | `-fopenmp` | `-fopenmp` |
-| Fortran  | `-h omp`   | `-fopenmp` | n.a.       |
+If your application requires a GPU-aware MPI implementation, i.e., pass GPU 
+memory pointers directly to MPI without copy to the host first, then you need to
+link your code to the GPU Transfer Library (GTL). The compiler wrappers will
+link automatically to this library if a GPU target module (`craype-accel-*`) is
+loaded.
 
-When using the OpenMP compiler flag, the wrapper will link to the
-[multithreaded version of the Cray libraries][libraries].
+=== "PrgEnv-cray"
+
+    ```
+    module load module load PrgEnv-cray
+    module load craype-accel-amd-gfx90a
+    module load rocm
+    ```
+
+=== "PrgEnv-amd"
+
+    ```
+    module load module load PrgEnv-amd
+    module load craype-accel-amd-gfx90a
+    module load rocm
+    ```
+
+Then, for example, we can compile a simple MPI + HIP code with the following
+command
+
+```
+CC -xhip -o <yourapp> <mpi_and_hip_code.cpp>
+```
+
+and inspect the linking of the resulting executable. That will show that both
+the MPI and GPU transfer libraries are linked
+
+``` 
+$ ldd ./yourapp | grep libmpi
+    libmpi_cray.so.12 => /opt/cray/pe/lib64/libmpi_cray.so.12
+    libmpi_gtl_hsa.so.0 => /opt/cray/pe/lib64/libmpi_gtl_hsa.so.0
+```
+
+!!! warning "GPU support need to be enabled at run time"
+
+    When your application, you need to enable the GPU support. This is done by
+    setting the value of `MPICH_GPU_SUPPORT_ENABLED` to `1`:
+
+    ```bash
+    export MPICH_GPU_SUPPORT_ENABLED=1
+    ```
+
+## Compile an OpenMP Application
+
+For all programming environments, the compilation of OpenMP host code is possible by
+enabling OpenMP when invoking the compiler wrappers (`cc`, `CC`, `ftn`). The
+flag to enable OpenMP is `-fopenmp` for all programming environments and 
+compiler wrappers.
+
+!!! info
+
+    When using the OpenMP compiler flag, the wrapper will link to the
+    [multithreaded version of the Cray libraries][libraries].
+
+### Compile an application with OpenMP offloading
+
+Using the `PrgEnv-cray`, `PrgEnv-amd`, you can compile application using OpenMP
+target offloading. Like for OpenMP for the host (CPU), this is done by using the
+`-fopenmp` flag but first you need to load a `craype-accel-*` target module.
+
+=== "PrgEnv-cray"
+
+    ```bash
+    module load PrgEnv-cray
+    module load rocm
+    module load craype-accel-amd-gfx90a
+    ```
+
+=== "PrgEnv-amd"
+
+    ```bash
+    module load PrgEnv-amd
+    module load craype-accel-amd-gfx90a
+    ```
+
+The `craype-accel-amd-gfx90a` will instruct the compiler wrappers to 
+automatically add the appropriate flags for OpenMP offloading.
+
+## Compile an OpenACC application
+
+At the moment, the only compiler that supports OpenACC compilation on LUMI is the
+Cray Fortran compiler. OpenACC is enabled using the `-hacc` flag.
+
+```
+module load PrgEnv-cray
+module load craype-accel-amd-gfx90a
+module load load rocm
+
+ftn -hacc -o <yourapp> <openacc_source.f90>
+```
 
 ## Accessing the programming environment on LUMI
 

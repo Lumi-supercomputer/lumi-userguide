@@ -50,6 +50,8 @@ $ module swap cce cce/<version>
 
 ## OpenMP Support
 
+:material-help-circle-outline: `man intro_openmp`
+
 OpenMP **is turned off by default** which is the opposite of earlier version of
 the CCE compilers. It is turned on using the `-homp` or `-fopenmp` flag.
 
@@ -57,6 +59,13 @@ The CCE Fortran compiler allows to control the level of optimization of OpenMP
 directives with the `-hthreadN` (`N = 0...3`). A value `N = 0` being off and `N
 = 3` specifying the most aggressive optimization. **The default value is `N =
 2`**.
+
+## OpenACC Support
+
+:material-help-circle-outline: `man intro_openacc`
+
+OpenACC is supported only by the Cray Fortran compiler. **The C and C++ 
+compilers have no support for OpenACC**. It is turned on using the `-hacc` flag.
 
 ## Debugging
 
