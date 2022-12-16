@@ -18,6 +18,7 @@ integrated.
 
 | Feature                       | Fortran                   | C/C++           |
 |-------------------------------|---------------------------|-----------------|
+| HIP compilation               | Not available             | -xhip           |
 | Listing                       | -hlist=m                  | -fsave-loopmark |
 | Free format                   | -ffree                    | N/A             |
 | Vectorization                 | -O1 and above             | -O2 and above   |
@@ -26,6 +27,7 @@ integrated.
 | Suggested Optimization        | default                   | -O3             |
 | Aggressive Optimization       | -O3 -hfp3                 | -Ofast -ffp=3   |
 | OpenMP recognition            | -fopenmp                  | -fopenmp        |
+| OpenACC recognition           | -hacc                     | Not available   |
 | Variable sizes                | -s real64<br>-s integer64 | N/A             |
 | Debug                         | -g                        | -g              |
 
