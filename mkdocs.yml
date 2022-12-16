@@ -19,8 +19,8 @@ nav:
     - Overview: hardware/index.md
     - Interconnect: hardware/interconnect.md
     - Compute nodes:
-      - CPU nodes - LUMI-C: hardware/compute/lumic.md
       - GPU nodes - LUMI-G: hardware/compute/lumig.md
+      - CPU nodes - LUMI-C: hardware/compute/lumic.md
       - Data analytics nodes - LUMI-D: hardware/compute/lumid.md
       - GPU Early Access Platform: hardware/compute/eap.md
     - Storage:
