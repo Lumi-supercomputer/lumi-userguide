@@ -5,7 +5,7 @@
 [MI250x-amd]: https://www.amd.com/en/products/server-accelerators/instinct-mi250x
 [benchmarks]: https://www.amd.com/en/graphics/server-accelerators-benchmarks
 
-The LUMI-G hardware partition consists of 2560 GPU based nodes.
+The LUMI-G hardware partition consists of 2560 GPU-based nodes.
 
 | Nodes | CPUs                       | Memory  | GPUs                                  | Disk | Network     |
 | :---: | :------------------------: | :-----: | :-----------------------------------: | :--: | :---------: |
@@ -26,13 +26,13 @@ More information about the AMD MI250x can be found here:
 - [MI250X information on the AMD website][MI250x-amd]
 - [Applications performance and benchmarks][benchmarks]
 
-In addition to the GPU, LUMI-G nodes feature a single 64 cores AMD EPYC 7A53
+In addition to the GPU, LUMI-G nodes feature a single 64-core AMD EPYC 7A53
 "Trento" CPU configured as 4 NUMA nodes (NPS4). Each of these NUMA nodes have
 two links to one of the four MI250x modules: one link per GCD and a group of 8 
 cores + L3 cache with a peak bandwidth of 36 GB/s.
 
 The figure below gives a general overview of a LUMI-G node as well as the 
-topology the CPU-GPU and GPU-GPU links. 
+topology of the CPU-GPU and GPU-GPU links. 
 
 <figure>
   <img 
@@ -43,7 +43,7 @@ topology the CPU-GPU and GPU-GPU links.
   <figcaption>Overview of a LUMI-G compute node</figcaption>
 </figure>
 
-From the figure above you can see that there is no direct link between the GPU
+From the figure above, you can see that there is no direct link between the GPU
 (GCD) numbering and the NUMA node numbering. Keep this in mind as prober NUMA
 and GPU binding is critical to achieve good performance.
 
