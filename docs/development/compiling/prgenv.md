@@ -448,7 +448,8 @@ automatically add the appropriate flags for OpenMP offloading.
 ## Compile an OpenACC application
 
 At the moment, the only compiler that supports OpenACC compilation on LUMI is the
-Cray Fortran compiler. OpenACC is enabled using the `-hacc` flag.
+Cray Fortran compiler. OpenACC is enabled by default or using the `-hacc` flag 
+(`-hnoacc` to disable).
 
 ```
 module load PrgEnv-cray
