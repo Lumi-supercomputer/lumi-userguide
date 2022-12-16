@@ -65,7 +65,8 @@ directives with the `-hthreadN` (`N = 0...3`). A value `N = 0` being off and `N
 :material-help-circle-outline: `man intro_openacc`
 
 OpenACC is supported only by the Cray Fortran compiler. **The C and C++ 
-compilers have no support for OpenACC**. It is turned on using the `-hacc` flag.
+compilers have no support for OpenACC**. It's turned on by default and can be 
+disabled using the `-hnoacc` flag.
 
 ## Debugging
 
