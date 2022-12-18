@@ -18,6 +18,7 @@ integrated.
 
 | Feature                       | Fortran                   | C/C++           |
 |-------------------------------|---------------------------|-----------------|
+| HIP compilation               | Not available             | -xhip           |
 | Listing                       | -hlist=m                  | -fsave-loopmark |
 | Free format                   | -ffree                    | N/A             |
 | Vectorization                 | -O1 and above             | -O2 and above   |
@@ -26,6 +27,7 @@ integrated.
 | Suggested Optimization        | default                   | -O3             |
 | Aggressive Optimization       | -O3 -hfp3                 | -Ofast -ffp=3   |
 | OpenMP recognition            | -fopenmp                  | -fopenmp        |
+| OpenACC recognition           | -hacc                     | Not available   |
 | Variable sizes                | -s real64<br>-s integer64 | N/A             |
 | Debug                         | -g                        | -g              |
 
@@ -48,6 +50,8 @@ $ module swap cce cce/<version>
 
 ## OpenMP Support
 
+:material-help-circle-outline: `man intro_openmp`
+
 OpenMP **is turned off by default** which is the opposite of earlier version of
 the CCE compilers. It is turned on using the `-homp` or `-fopenmp` flag.
 
@@ -55,6 +59,14 @@ The CCE Fortran compiler allows to control the level of optimization of OpenMP
 directives with the `-hthreadN` (`N = 0...3`). A value `N = 0` being off and `N
 = 3` specifying the most aggressive optimization. **The default value is `N =
 2`**.
+
+## OpenACC Support
+
+:material-help-circle-outline: `man intro_openacc`
+
+OpenACC is supported only by the Cray Fortran compiler. **The C and C++ 
+compilers have no support for OpenACC**. It's turned on by default and can be 
+disabled using the `-hnoacc` flag.
 
 ## Debugging
 

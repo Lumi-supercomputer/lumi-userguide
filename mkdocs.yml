@@ -19,8 +19,8 @@ nav:
     - Overview: hardware/index.md
     - Interconnect: hardware/interconnect.md
     - Compute nodes:
-      - CPU nodes - LUMI-C: hardware/compute/lumic.md
       - GPU nodes - LUMI-G: hardware/compute/lumig.md
+      - CPU nodes - LUMI-C: hardware/compute/lumic.md
       - Data analytics nodes - LUMI-D: hardware/compute/lumid.md
       - GPU Early Access Platform: hardware/compute/eap.md
     - Storage:
@@ -36,14 +36,16 @@ nav:
         - Software stacks: runjobs/lumi_env/softwarestacks.md
         - Data storage options: runjobs/lumi_env/storing-data.md
         - Billing policy: runjobs/lumi_env/billing.md
-      - Scheduled jobs - SLURM jobs:      
+      - Batch jobs:      
         - Slurm quickstart: runjobs/scheduled-jobs/slurm-quickstart.md
         - Slurm partitions: runjobs/scheduled-jobs/partitions.md
         - Batch jobs: runjobs/scheduled-jobs/batch-job.md
-        - Array jobs: runjobs/scheduled-jobs/throughput.md
-        - Interactive Slurm jobs: runjobs/scheduled-jobs/interactive.md
+        - GPU examples: runjobs/scheduled-jobs/lumig-job.md
+        - CPU examples: runjobs/scheduled-jobs/lumic-job.md
+        - Distribution and binding: runjobs/scheduled-jobs/distribution-binding.md
+        - Job array: runjobs/scheduled-jobs/throughput.md
+        - Interactive jobs: runjobs/scheduled-jobs/interactive.md
         - Container jobs: runjobs/scheduled-jobs/container-jobs.md
-        - Distribution & binding options: runjobs/scheduled-jobs/distribution-binding.md
         - Julia scheduled jobs: runjobs/scheduled-jobs/julia.md
   - Software:
     - Overview: software/index.md
