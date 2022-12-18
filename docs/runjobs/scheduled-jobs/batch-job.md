@@ -1,15 +1,28 @@
 # Batch jobs
 
 [slurm-quickstart]: ../../runjobs/scheduled-jobs/slurm-quickstart.md
+[lumic-examples]: ../../runjobs/scheduled-jobs/lumic-job.md
+[lumig-examples]: ../../runjobs/scheduled-jobs/lumig-job.md
 [slurm-doc]: https://slurm.schedmd.com/documentation.html
 [slurm-man]: https://slurm.schedmd.com/man_index.html
 [slurm-sbatch]: https://slurm.schedmd.com/sbatch.html
+
+!!! warning "Only 63 cores available on LUMI-G"
+
+    The LUMI-G compute nodes have the low-noise mode activated. This mode
+    reserve 1 core to the operating system. As a consequence only 63 cores
+    are available to the jobs. Jobs requesting 64 cores/node will never run.
 
 This pages covers advanced topics related to running Slurm batch jobs on LUMI.
 If you are not already familiar with Slurm, you should read the [Slurm
 quickstart][slurm-quickstart] guide which covers the basics. You can also refer
 to the Slurm [documentation][slurm-doc] or [manual pages][slurm-man], in
 particular the page about [sbatch][slurm-sbatch].
+
+For example, job scripts please see here:
+
+- [GPU job examples scripts][lumig-examples]
+- [CPU job examples job scripts][lumic-examples]
 
 ## Specifying the account
 
@@ -31,102 +44,6 @@ export SALLOC_ACCOUNT=project_<id>
 
 where you have to replace `project_<id>` with the ID of the project you have
 been granted.
-
-## Example batch scripts
-
-Here we give examples of batch scripts for typical workflows on LUMI. You may
-use these as templates for your own project batch scripts.
-
-### Shared memory jobs
-
-```bash
-#!/bin/bash -l
-#SBATCH --job-name=examplejob   # Job name
-#SBATCH --output=examplejob.o%j # Name of stdout output file
-#SBATCH --error=examplejob.e%j  # Name of stderr error file
-#SBATCH --partition=small       # Partition (queue) name
-#SBATCH --ntasks=1              # One task (process)
-#SBATCH --cpus-per-task=128     # Number of cores (threads)
-#SBATCH --time=12:00:00         # Run time (hh:mm:ss)
-#SBATCH --mail-type=all         # Send email at begin and end of job
-#SBATCH --account=project_<id>  # Project for billing
-#SBATCH --mail-user=username@domain.com
-
-# Any other commands must follow the #SBATCH directives
-
-# Set the number of threads based on --cpus-per-task
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
- 
-./your_application
-```
-
-### MPI-based jobs
-
-!!! Failure "Fortan MPI program fails to start"
-    If a Fortran based program with MPI fails to start when utilizing a large
-    number of nodes (512 nodes for instance), add
-    `export PMI_NO_PREINITIALIZE=y` to your batch script.  
-
-```bash
-#!/bin/bash -l
-#SBATCH --job-name=examplejob   # Job name
-#SBATCH --output=examplejob.o%j # Name of stdout output file
-#SBATCH --error=examplejob.e%j  # Name of stderr error file
-#SBATCH --partition=standard    # Partition (queue) name
-#SBATCH --nodes=50              # Total number of nodes 
-#SBATCH --ntasks=6400           # Total number of mpi tasks
-#SBATCH --time= 1-12:00:00      # Run time (d-hh:mm:ss)
-#SBATCH --mail-type=all         # Send email at begin and end of job
-#SBATCH --account=project_<id>  # Project for billing
-#SBATCH --mail-user=username@domain.com
-
-# Any other commands must follow the #SBATCH directives
-
-# Launch MPI code 
-srun ./your_application # Use srun instead of mpirun or mpiexec
-```
-
-### Hybrid MPI+OpenMP jobs
-
-```bash
-#!/bin/bash -l
-#SBATCH --job-name=examplejob   # Job name
-#SBATCH --output=examplejob.o%j # Name of stdout output file
-#SBATCH --error=examplejob.e%j  # Name of stderr error file
-#SBATCH --partition=standard    # Partition (queue) name
-#SBATCH --nodes=50              # Total number of nodes 
-#SBATCH --ntasks-per-node=16    # Number of mpi tasks per node
-#SBATCH --cpus-per-task=8       # Number of cores (threads) per task
-#SBATCH --time=1-12:00:00       # Run time (d-hh:mm:ss)
-#SBATCH --mail-type=all         # Send email at begin and end of job
-#SBATCH --account=project_<id>  # Project for billing
-#SBATCH --mail-user=username@domain.com
-
-# Any other commands must follow the #SBATCH directives
-
-# Set the number of threads based on --cpus-per-task
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
-
-# Launch MPI code 
-srun ./your_application # Use srun instead of mpirun or mpiexec
-```
-
-### Serial Job
-
-```bash
-#!/bin/bash -l
-#SBATCH --job-name=examplejob   # Job name
-#SBATCH --output=examplejob.o%j # Name of stdout output file
-#SBATCH --error=examplejob.e%j  # Name of stderr error file
-#SBATCH --partition=debug       # Partition (queue) name
-#SBATCH --ntasks=1              # One task (process)
-#SBATCH --time=00:15:00         # Run time (hh:mm:ss)
-#SBATCH --mail-type=all         # Send email at begin and end of job
-#SBATCH --account=project_id    # Project ID
-#SBATCH --mail-user=username@domain.com
- 
-./your_application
-```
 
 ## Automatic requeuing
 
