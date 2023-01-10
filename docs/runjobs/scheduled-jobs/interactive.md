@@ -71,6 +71,12 @@ To check processor and memory usage quickly, you can run `top` directly:
 $ srun --interactive --pty --jobid=<jobid> top
 ```
 
+!!! warning
+	Due to a recently discovered bug, the `-w NODE` option to `srun` is ignored.
+	Instead you will always get a shell on the first node of the allocation.
+	We are working fixing that.
+
+
 The `-w nid00XXXX` option can be added to select a specific compute node to view:
 
 ```bash
