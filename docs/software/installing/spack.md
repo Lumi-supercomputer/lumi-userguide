@@ -35,7 +35,7 @@ GPU support and activate extra array bounds checking for debugging.
 
     ```bash
     $ export SPACK_USER_PREFIX=/project/project_465000XYZ/spack 
-    $ module load spack/22.08
+    $ module load spack/22.08-2
     ```
 
     We recommend that you set `$SPACK_USER_PREFIX` in e.g. your `.bash_profile`
@@ -57,29 +57,32 @@ GPU support and activate extra array bounds checking for debugging.
 
     The flag `+rocm` activates GPU support, and `+debug_bounds_check` adds the
     array bounds checking. We also need to specify the type of GPU:
-    `amdgpu_target=gfx90a`, and finally which compiler to use, we use GCC
-    11.2.0 for compiling `%gcc@11.2.0`.
-
+    `amdgpu_target==gfx90a` (note the double equal signs which has the special meaning of propagating the GPU target to all dependencies). In this case, we give no explicit specification of a compiler, which means that Spack will choose gcc 11.2.0 for us when compiling.
+    
 3. Before installing, it is good practice to check the dependencies that Spack
    will install. Sometimes this can be many, many, packages! Running this
    command can take some time (up to a few minutes):
 
     ```console
-    $ spack spec -I kokkos+rocm+debug_bounds_check amdgpu_target=gfx90a %gcc@11.2.0
-    Input spec
+    $ spack spec -I kokkos+rocm+debug_bounds_check amdgpu_target==gfx90a
+        Input spec
     --------------------------------
-    -   kokkos%gcc@11.2.0+debug_bounds_check+rocm amdgpu_target=gfx90a
+    -   kokkos+debug_bounds_check+rocm amdgpu_target==gfx90a
 
     Concretized
     --------------------------------
-    -   kokkos@3.6.00%gcc@11.2.0~aggressive_vectorization~compiler_warnings~cuda~cuda_constexpr~cuda_lambda~cuda_ldg_intrinsic~cuda_relocatable_device_code~cuda_uvm~debug+debug_bounds_check~debug_dualview_modify_check~deprecated_code~examples~explicit_instantiation~hpx~hpx_async_dispatch~hwloc~ipo~memkind~numactl~openmp~openmptarget~pic+profiling~profiling_load_print~pthread~qthread+rocm+serial+shared~sycl~tests~tuning~wrapper amdgpu_target=gfx90a build_type=RelWithDebInfo std=14 arch=cray-sles15-zen2
-    [^]      ^cmake@3.23.1%gcc@11.2.0~doc+ncurses+ownlibs~qt build_type=Release arch=cray-sles15-zen2
-    [^]          ^ncurses@6.2%gcc@11.2.0~symlinks+termlib abi=none arch=cray-sles15-zen2
-    [^]              ^pkgconf@1.8.0%gcc@11.2.0 arch=cray-sles15-zen2
-    [^]          ^openssl@1.1.0i-fips%gcc@11.2.0~docs~shared certs=system arch=cray-sles15-zen2
-    [^]      ^hip@5.0.2%gcc@11.2.0~ipo build_type=Release patches=3b25db8 arch=cray-sles15-zen2
-    [^]      ^hsa-rocr-dev@5.0.2%gcc@11.2.0+image~ipo+shared build_type=Release patches=71e6851 arch=cray-sles15-zen2
-    [^]      ^llvm-amdgpu@5.0.2%gcc@11.2.0~ipo~link_llvm_dylib~llvm_dylib~openmp+rocm-device-libs build_type=Release arch=cray-sles15-zen2
+    -   kokkos@3.7.00%gcc@11.2.0~aggressive_vectorization~compiler_warnings~cuda~cuda_constexpr~cuda_lambda~cuda_ldg_intrinsic~cuda_relocatable_device_code~cuda_uvm~debug+debug_bounds_check~debug_dualview_modify_check~deprecated_code~examples~explicit_instantiation~hpx~hpx_async_dispatch~hwloc~ipo~memkind~numactl~openmp~openmptarget~pic+profiling~profiling_load_print~pthread~qthread+rocm+serial+shared~sycl~tests~tuning~wrapper amdgpu_target=gfx90a build_system=cmake build_type=RelWithDebInfo intel_gpu_arch=none std=14 arch=linux-sles15-zen2
+    [^]      ^cmake@3.24.3%gcc@11.2.0~doc+ncurses+ownlibs~qt build_system=generic build_type=Release arch=linux-sles15-zen2
+    [^]          ^ncurses@6.3%gcc@11.2.0~symlinks+termlib abi=none build_system=autotools arch=linux-sles15-zen2
+    [^]              ^pkgconf@1.8.0%gcc@11.2.0 build_system=autotools arch=linux-sles15-zen2
+    [^]          ^openssl@1.1.0i-fips%gcc@11.2.0~docs~shared build_system=generic certs=mozilla arch=linux-sles15-zen2
+    [^]      ^hip@5.2.3%gcc@11.2.0~ipo build_system=cmake build_type=Release patches=7ed1232 arch=linux-sles15-zen2
+    [^]          ^comgr@5.2.3%gcc@11.2.0~ipo build_system=cmake build_type=Release arch=linux-sles15-zen2
+    [^]              ^rocm-cmake@5.2.3%gcc@11.2.0~ipo build_system=cmake build_type=Release arch=linux-sles15-zen2
+    [^]          ^glx@1.4%gcc@11.2.0 build_system=bundle arch=linux-sles15-zen2
+    [^]              ^mesa@22.1.2%gcc@11.2.0+glx+llvm+opengl~opengles+osmesa~strip build_system=meson buildtype=release default_library=shared patches=ee737d1 arch=linux-sles15-zen2
+    ...
+
     ```
 
     The packages that are already installed in your own Spack instance will
@@ -91,33 +94,34 @@ GPU support and activate extra array bounds checking for debugging.
 4. When you're satisfied with what Spack plans to do, install it:
 
     ```console
-    $ spack install kokkos+rocm+debug_bounds_check amdgpu_target=gfx90a %gcc@11.2.0
-    [+] /appl/lumi/spack/22.08/0.18.1/opt/spack/pkgconf-1.8.0-apn2qzk
-    [+] /usr (external openssl-1.1.0i-fips-soismtrmvprzovi2ffmjtxaqkzrylnyf)
-    [+] /opt/rocm-5.0.2/hip (external hip-5.0.2-mllffq3vq4ekxrdmemc5wqznzs3joyd2)
-    [+] /opt/rocm-5.0.2 (external hsa-rocr-dev-5.0.2-lwaljc5o3ub42qhdngqvvx4ctwimljqx)
-    [+] /opt/rocm-5.0.2/llvm (external llvm-amdgpu-5.0.2-ibpzic7bpcjuwtotmfb475kv246vqez7)
-    [+] /appl/lumi/spack/22.08/0.18.1/opt/spack/ncurses-6.2-z7aq5no
-    [+] /appl/lumi/spack/22.08/0.18.1/opt/spack/cmake-3.23.1-h7o6o5t
-    ==> Installing kokkos-3.6.00-gelwcamn56d7u5lszavhjbmvrskkxkbl
-    ==> No binary for kokkos-3.6.00-gelwcamn56d7u5lszavhjbmvrskkxkbl found: installing from source
-    ==> Fetching https://mirror.spack.io/_source-cache/archive/53/53b11fffb53c5d48da5418893ac7bc814ca2fde9c86074bdfeaa967598c918f4.tar.gz
+    $ spack install kokkos+rocm+debug_bounds_check amdgpu_target==gfx90a
+    [+] /appl/lumi/spack/22.08/0.19.0/opt/spack/pkgconf-1.8.0-vvar5d2
+    [+] /usr (external openssl-1.1.0i-fips-kjnvpofxvream6prmex4f2t73xrrwuzu)
+    [+] /appl/lumi/spack/22.08/0.19.0/opt/spack/libiconv-1.16-kcfqnf5
+    [+] /appl/lumi/spack/22.08/0.19.0/opt/spack/libmd-1.0.4-hihpx7d
+    [+] /appl/lumi/spack/22.08/0.19.0/opt/spack/xz-5.2.7-3x3rucn
+    [+] /appl/lumi/spack/22.08/0.19.0/opt/spack/zlib-1.2.13-m4ntfr4
+    ...
+    ==> Installing kokkos-3.7.00-nioell5q7dkrdfu6meerk3o33gzlb7tj
+    ==> kokkos exists in binary cache but with different hash
+    ==> No binary for kokkos-3.7.00-nioell5q7dkrdfu6meerk3o33gzlb7tj found: installing from source
+    ==> Fetching https://mirror.spack.io/_source-cache/archive/62/62e3f9f51c798998f6493ed36463f66e49723966286ef70a9dcba329b8443040.tar.gz
     ==> No patches needed for kokkos
     ==> kokkos: Executing phase: 'cmake'
     ==> kokkos: Executing phase: 'build'
     ==> kokkos: Executing phase: 'install'
-    ==> kokkos: Successfully installed kokkos-3.6.00-gelwcamn56d7u5lszavhjbmvrskkxkbl
-      Fetch: 0.85s.  Build: 27.08s.  Total: 27.94s.
-    [+] /project/project_465000XYZ/spack/22.08/0.18.1/kokkos-3.6.00-gelwcam
+    ==> kokkos: Successfully installed kokkos-3.7.00-nioell5q7dkrdfu6meerk3o33gzlb7tj
+      Stage: 0.59s.  Cmake: 33.02s.  Build: 28.89s.  Install: 7.03s.  Total: 1m 18.93s
+    [+] /project/project_465000XYZ/spack/22.08/0.19.0/kokkos-3.7.00-nioell5
     ```
 
     The final line shows where the software is installed on disk. A module will
     also be generated automatically and added to your `$MODULEPATH`. The
-    modules are generated with a short hash code (5 characters "gelwc" here) to
+    modules are generated with a short hash code (5 characters "nioel" here) to
     prevent naming collisions.
 
     ```bash
-    $ module load kokkos/3.6.00-gcc-gelwc
+    $ module load kokkos/3.7.00-gcc-nioel
     ```
 
 ## What to do when a Spack install fails
@@ -149,6 +153,12 @@ GPU support and activate extra array bounds checking for debugging.
     at the [LUMI Helpdesk](https://www.lumi-supercomputer.eu/user-support/need-help/) 
     or ask the Spack community via the [Spack Slack](http://spackpm.slack.com), 
     the Spack Slack community can be very helpful.
+
+## Description of the different Spack modules
+
+* Module `spack/22.08`: This is Spack release version 0.18.1 based on the Cray Programming Environment 22.08. The ROCM packages are external and comes from the HPE provided ROCM 5.0.2 in `/opt/rocm` (which is rather old).
+* Module `spack/22.08-2`: This is Spack release version 0.19.0 based on the Cray Programming Environment 22.08. The ROCM packages are built from source by Spack and corresponds to ROCM release version 5.2.3. Testing has indicated that it should be possible to run ROCM 5.2.3-based software using the older drivers from ROCM 5.1.3, which is installed on the LUMI-G compute nodes.
+
 
 ## Spack on LUMI (advanced)
 
