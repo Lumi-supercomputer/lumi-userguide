@@ -478,12 +478,12 @@ The Cray programming environment can be accessed in three different ways on LUMI
    a reload of ``CrayEnv``, unless the ``--force`` option is used to unload the
    module.
 
-   The ``CrayEnv`` stack also provides an updated set of build tools and some
+     The ``CrayEnv`` stack also provides an updated set of build tools and some
    other tools useful to programmers in a way that they cannot conflict with
    tools in the ``LUMI`` software stacks (which is why they are not offered in
    the bare environment).
 
-   We advise users who want to use the Cray programming environment but do not
+     We advise users who want to use the Cray programming environment but do not
    need any of the libraries etc. installed in the ``LUMI`` software stacks to
    use the ``CrayEnv`` stack rather than the bare environment.
 
@@ -493,7 +493,7 @@ The Cray programming environment can be accessed in three different ways on LUMI
    of those stacks using EasyBuild, and use those libraries and tools to
    compile or develop other software outside the EasyBuild environment.
 
-   Each ``LUMI`` stack corresponds to a particular release of the Cray
+     Each ``LUMI`` stack corresponds to a particular release of the Cray
    programming environment. It is possible to use the ``PrgEnv`` modules in
    this environment. However, EasyBuild requires its own set of modules to
    integrate with the Cray programming environment and we advise users to use
