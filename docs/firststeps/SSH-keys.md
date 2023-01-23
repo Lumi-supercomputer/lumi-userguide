@@ -117,16 +117,7 @@ start by generating an SSH key pair as detailed below.
     Now that you have generated your key pair, you need to register your
     **public** key in your MyCSC [:material-account: **user profile**][mycsc-profile].
 
-    To register your key with [MyCSC][mycsc-profile], click on the *My Profile* item
-    of the menu on the left as shown in the figure below. Then scroll to the end 
-    and in the *SSH PUBLIC KEYS* panel click the *Modify* button. From here,
-    click the *Add new* button and paste the content of your **public** key in the text area 
-    and click *Add*.
-
-    <figure>
-      <img src="../../assets/images/csc-profile.png" width="700" alt="Screenshot of user profile settings to setup ssh public key">
-      <figcaption>MyCSC profile information to add ssh public key.</figcaption>
-    </figure>
+    To register your key with [MyCSC][mycsc-profile], click on the *Profile* item of the menu on the left side of the screen. In the lower right corner there is a box which reads *SSH PUBLIC KEYS*. Click the *Add key* button. Paste the content of you **public** key in the text area which reads *Key* and click *Add*. 
 
 After registering your SSH key, there can be a couple of hours delay until it
 is synchronized to LUMI and your account is created. **You will receive your
