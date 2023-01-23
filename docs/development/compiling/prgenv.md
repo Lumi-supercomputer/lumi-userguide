@@ -454,7 +454,7 @@ Cray Fortran compiler. OpenACC is enabled by default or using the `-hacc` flag
 ```
 module load PrgEnv-cray
 module load craype-accel-amd-gfx90a
-module load load rocm
+module load rocm
 
 ftn -hacc -o <yourapp> <openacc_source.f90>
 ```
