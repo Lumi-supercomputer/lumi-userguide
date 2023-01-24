@@ -19,7 +19,8 @@ RUN echo "[nginx-mainline]"                                             > /etc/y
 RUN yum -y install nginx python3 python3-pip git httpd-tools && \
     yum clean all
 
-RUN chgrp -R root ${ROOT_GROUP_DIRS} &&\
+RUN mkdir -p ${ROOT_GROUP_DIRS} && \
+    chgrp -R root ${ROOT_GROUP_DIRS} &&\
     chmod -R g+rwx ${ROOT_GROUP_DIRS}
 
 COPY . .
