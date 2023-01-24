@@ -3,7 +3,7 @@ FROM rockylinux:8.5
 LABEL maintainer="CSC Service Desk <servicedesk@csc.fi>"
 
 # These need to be owned and writable by the root group in OpenShift
-ENV ROOT_GROUP_DIRS='/var/run /var/log/nginx /var/lib/nginx'
+ENV ROOT_GROUP_DIRS='/var/run /var/log/nginx /var/cache/nginx'
 
 RUN yum -y install epel-release && yum -y install yum-utils
 # This was introduced after doc failed to build with error: "missing groups or modules: nginx:mainline"
@@ -19,8 +19,7 @@ RUN echo "[nginx-mainline]"                                             > /etc/y
 RUN yum -y install nginx python3 python3-pip git httpd-tools && \
     yum clean all
 
-RUN mkdir -p ${ROOT_GROUP_DIRS} && \
-    chgrp -R root ${ROOT_GROUP_DIRS} &&\
+RUN chgrp -R root ${ROOT_GROUP_DIRS} &&\
     chmod -R g+rwx ${ROOT_GROUP_DIRS}
 
 COPY . .
