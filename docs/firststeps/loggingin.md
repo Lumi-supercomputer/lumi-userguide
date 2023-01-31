@@ -40,10 +40,10 @@ type `yes` in order to accept it. The fingerprint of the LUMI login nodes are
 listed in the table below. Please make sure that the host key fingerprint
 matches one of these.
 
-| Hash type | Fingerprint                                       |
-|-----------|---------------------------------------------------|
-| MD5       | `28:2a:38:71:b0:a6:6b:90:0e:1b:a1:9d:ca:ec:94:20` |
-| SHA256    | `hY4mnRCYb8bRchTnVcFo7SqoHHHEsUh9Ym38F4sHN1Y`     |
+| Key type   | Fingerprint                                              |
+|--------- --|----------------------------------------------------------|
+| ED25519    | `SHA256:qCFZThjRw8nf0CiZ9rU7b6Zirjq8slAIl5r0xWaVoD0`     |
+| RSA        | `SHA256:ypbqdMWtk9ZdXEROkeEpv+3PCEXWjPLGI79IXGHe9ac`     |
 
 ## Troubleshooting
 
