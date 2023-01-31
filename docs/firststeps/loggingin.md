@@ -64,3 +64,18 @@ portals, depending on your resource allocator:
 - the Puhuri Portal by clicking on the **Remote accounts** in the left menu
 - myCSC by clicking on **My Profile** in the left menu
 - the SUPR portal under **Account > Existing Accounts**
+
+## LUMI login nodes (advanced)
+
+LUMI has several login nodes, for reliability and for sharing the interactive workload. The name `lumi.csc.fi` points automatically to one of the login nodes - the IP address to which it resolves will belong to one of:
+
+| Login node name     | IP Address          |
+|--------- -----------|---------------------|
+| `lumi-uan01.csc.fi` | 193.167.209.163     |
+| `lumi-uan02.csc.fi` | 193.167.209.164     |
+| `lumi-uan03.csc.fi` | 193.167.209.165     |
+| `lumi-uan04.csc.fi` | 193.167.209.166     |
+
+We recommend that you connect to `lumi.csc.fi` and not directly to a specific login node, but it is possible to do, and it may be necessary for certain advanced use cases.
+
+The IP number block that is used for external connections from LUMI is `193.167.209.128/26`. It contains these login nodes and also the NAT gateways for the compute nodes. You may need to open up your firewall for access from these IP numbers if you want to connect to your own servers from inside LUMI.
