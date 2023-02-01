@@ -60,6 +60,8 @@ nav:
       - ParaView: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/p/ParaView
       - QuantumESPRESSO: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/q/QuantumESPRESSO/
       - VASP: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/v/VASP/
+    - Local software collections:
+      - CSC: software/local/csc.md
       #- Quantum ESPRESSO: software/guides/quantumespresso.md
       #- ParaView: software/guides/paraview.md
       #- Quantum ESPRESSO: software/guides/quantumespresso.md
