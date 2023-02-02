@@ -83,6 +83,8 @@ supplying the `-r <req_file>` argument e.g:
 conda-containerize new -r req.txt --prefix <install_dir> env.yml
 ```
 
+where `req.txt` is a [standard pip requirements file](https://pip.pypa.io/en/latest/reference/requirements-file-format/).
+
 The tool also supports using [mamba](https://github.com/mamba-org/mamba) for
 installing packages. Enable this feature by adding the `--mamba` flag, e.g.
 `conda-containerize new --mamba ...`
