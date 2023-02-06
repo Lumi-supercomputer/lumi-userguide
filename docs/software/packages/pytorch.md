@@ -2,10 +2,10 @@
 
 [PyTorch](https://pytorch.org) is an open source Python package that provides tensor computation, like NumPy, with GPU acceleration and deep neural networks built on a tape-based autograd system.
 
-PyTorch can be installed by the users following the code's [instructions](https://pytorch.org/get-started/locally/). The options to choose for LUMI in the interactive instructions are `Linux`, `Pip` and `ROCm5.X`. For installing with `pip`, the `cray-python` module should be loaded. PyTorch comes with ROCm binaries needed for the GPU support. Even if a particular version of ROCm is not avilable on LUMI, PyTorch may still be able to use the GPUs.
+PyTorch can be installed by the users following the code's [instructions](https://pytorch.org/get-started/locally/). The options to choose for LUMI in the interactive instructions are `Linux`, `Pip` and `ROCm5.X`. For installing with `pip`, the `cray-python` module should be loaded. PyTorch comes with ROCm binaries needed for the GPU support. Even if a particular version of ROCm is not available on LUMI, PyTorch may still be able to use the GPUs.
 
 PyTorch can be run within containers as well. In particular, containers from the images provided by [AMD on DockerHub](https://hub.docker.com/u/rocm).
-Those images are updated frequently and make possible to try PyTorch with recent ROCm versions. 
+Those images are updated frequently and make it possible to try PyTorch with recent ROCm versions. 
 Another point in favor of using containers, is that PyTorch's installation directory can be quite large both in terms of storage size and number of files.
 
 ## Running PyTorch within containers
@@ -34,7 +34,7 @@ Now when running the container, the virtual environment must be activated before
 
 ## Multi-GPU training
 
-The communication between LUMI's GPUs during training with Pytorch is done via [RCCL](https://github.com/ROCmSoftwarePlatform/rccl), which is a library of  collective communication routines for GPUs. RCCL works out of the box on LUMI's, however, a special plugin is required so it can take advantadge of the [Slingshot interconnect](https://www.hpe.com/emea_europe/en/compute/hpc/slingshot-interconnect.html). That's the [`aws-ofi-rccl`](https://github.com/ROCmSoftwarePlatform/aws-ofi-rccl) plugin, which is library that can be used as backend for RCCL to interact with the interconnect via libfabric.
+The communication between LUMI's GPUs during training with Pytorch is done via [RCCL](https://github.com/ROCmSoftwarePlatform/rccl), which is a library of  collective communication routines for GPUs. RCCL works out of the box on LUMI's, however, a special plugin is required so it can take advantage of the [Slingshot interconnect](https://www.hpe.com/emea_europe/en/compute/hpc/slingshot-interconnect.html). That's the [`aws-ofi-rccl`](https://github.com/ROCmSoftwarePlatform/aws-ofi-rccl) plugin, which is a library that can be used as a back-end for RCCL to interact with the interconnect via libfabric.
 
 The `aws-ofi-rccl` plugin can be installed by the user with EasyBuild:
 ```bash
@@ -79,7 +79,7 @@ srun singularity exec -B"/appl:/appl" \
                       -B"$SCRATCH:$SCRATCH" \
                       $SCRATCH/pytorch_rocm5.4.1_ubuntu20.04_py3.7_pytorch_1.12.1.sif python cnn_distr.py
 ```
-Here we have used a few environment variables. The ones starting with `NCCL_` and `CXI_`, as well as `FI_CXI_DISABLE_CQ_HUGETLB` are used by RCCL for the communication over Slingshopt. The `MIOPEN_` ones are needed to make [MIOpen](https://rocmsoftwareplatform.github.io/MIOpen/doc/html/index.html) create it's caches on `/tmp`. Finally, with `SINGULARITYENV_LD_LIBRARY_PATH` some directories are included in the container's `LD_LIBRARY_PATH`. This is important for RCCL to find the `aws-ofi-rccl` plugin. In addition, `NCCL_DEBUG=INFO`, can be used to increase RCCL's logging level to make sure that the `aws-ofi-rccl` plugin is being used: The lines
+Here we have used a few environment variables. The ones starting with `NCCL_` and `CXI_`, as well as `FI_CXI_DISABLE_CQ_HUGETLB` are used by RCCL for the communication over Slingshopt. The `MIOPEN_` ones are needed to make [MIOpen](https://rocmsoftwareplatform.github.io/MIOpen/doc/html/index.html) create its caches on `/tmp`. Finally, with `SINGULARITYENV_LD_LIBRARY_PATH` some directories are included in the container's `LD_LIBRARY_PATH`. This is important for RCCL to find the `aws-ofi-rccl` plugin. In addition, `NCCL_DEBUG=INFO`, can be used to increase RCCL's logging level to make sure that the `aws-ofi-rccl` plugin is being used: The lines
 ```bash
 NCCL INFO NET/OFI Using aws-ofi-rccl 1.4.0
 ```
