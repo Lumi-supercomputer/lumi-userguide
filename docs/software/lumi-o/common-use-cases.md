@@ -23,12 +23,12 @@ The command above lists available data buckets in LUMI-O. To list data objects i
 a-list bucket_name
 ```
 
-**Copy data from Allas to a supercomputer (Puhti or Mahti) (stage in):** For downloading we recommend a-get:
+**Copy data from LUMI-O to a supercomputer (stage in):** For downloading we recommend a-get:
 ```text
 a-get bucket/object_name
 ```
 
-**Copy data from a Supercomputer to Allas (stage out):** For uploading we recommend a-put:
+**Copy data from a Supercomputer to LUMI-O (stage out):** For uploading we recommend a-put:
 ```text
 a-put filename
 ```
@@ -47,7 +47,7 @@ The data can be accessed and shared in a variety of ways:
 
 ## Static web content
 
-A common way to use the object storage is storing static web content, such as images, videos, audio, pdfs or other downloadable content, and adding links to it on a web page, which can run either inside Allas or somewhere else, [like this example](https://a3s.fi/my_fishbucket/my_fish).
+A common way to use the object storage is storing static web content, such as images, videos, audio, pdfs or other downloadable content, and adding links to it on a web page, which can run either inside LUMI or somewhere else, [like this example](https://a3s.fi/my_fishbucket/my_fish).
 
 Uploading data to LUMI-O can be done with any of the following clients: a-commands, rclone, Swift or S3.
 
@@ -80,7 +80,7 @@ After upload, in case of swift based uploads (a-put, rclone , swift) the large f
 
 ## Viewing
 
-In CSC supercomputers you can check the number of objects and the amount of stored data in your current Allas project with command:
+In LUMI you can check the number of objects and the amount of stored data in your current project with the following command:
 ```text
 a-info
 ```
