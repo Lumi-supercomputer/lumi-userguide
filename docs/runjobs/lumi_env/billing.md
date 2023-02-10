@@ -14,6 +14,20 @@ the billing units allocated to your project:
   GPU nodes.
 - Storage space is billed in units of TB-hours.
 
+## How to check your billing units
+
+In order to check how many billing units you have used, you can use the 
+following command:
+
+```
+lumi-allocations
+```
+
+It will report the CPU and GPU-hours allocated and consumed for all the project
+you are a part of. The tool also reports the storage billing units.
+
+A description of how the jobs are billed is provided in the next sections.  
+
 ## Compute billing
 
 Compute is billed whenever you submit a job to the [Slurm job
