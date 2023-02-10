@@ -42,8 +42,8 @@ start by generating an SSH key pair as detailed below.
 
     You will be prompted for a file name and location where to save the
     key. Accept the defaults by pressing ++enter++. Alternatively, you can 
-    choose a custom name and location. For example 
-    `/home/username/.ssh/id_rsa_lumi`.
+    choose a custom name and location and add it interactively or as a
+    command line argument with for example `-f /home/username/.ssh/id_rsa_lumi`.
 
     Next, you will be asked for a passphrase. Please choose a secure
     passphrase. It should be at least 8 (preferably 12) characters long and
