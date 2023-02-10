@@ -115,7 +115,8 @@ Examples of requests that will be *rejected* include:
 
 In general, applications that generate a lot of small files per process are
 not well suited for LUMI. If you are the developer of such application, you
-should consider tools like [HDF5][hdf5], [ADIOS2][adios2], [SIONlib][sionlib] or implementations on top of these, such as [openPMD][openpmd].
+should consider tools like [HDF5][hdf5], [ADIOS2][adios2], [SIONlib][sionlib]
+or implementations on top of these, such as [openPMD][openpmd].
 
 You can check the memory and file usage quotas of your projects with the
 following commands:
