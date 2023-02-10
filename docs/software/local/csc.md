@@ -15,6 +15,7 @@ Available software:
 * Amber
 * Elmer
 * OpenFOAM
+* PALM
 * PyTorch
 * TensorFlow
 
