@@ -3,6 +3,7 @@
 [partitions]: ../../runjobs/scheduled-jobs/partitions.md
 [batch-jobs]: ../../runjobs/scheduled-jobs/batch-job.md
 [accesslumi]: ../../firststeps/accessLUMI.md
+[billing]: ../../runjobs/lumi_env/billing.md
 
 # Slurm quickstart
 
@@ -19,9 +20,12 @@ submitting your job) in order for your job to be accepted by the job scheduler.
 
 !!! info
 
-    You may use the `groups` command to retrieve your 
-    project ID when connected to LUMI: you should see that you are part of a 
-    group named `project_xxxxxxxxx`.
+    You can use the `lumi-allocations` command to list the projects of which you
+    are a member. This command will also list your allocated and used compute 
+    and storage [billing units][billing].
+    
+    Alternative is to use the `groups` command: you should see that you are
+    part of a group named `project_xxxxxxxxx`.
 
 ## Slurm commands overview
 
