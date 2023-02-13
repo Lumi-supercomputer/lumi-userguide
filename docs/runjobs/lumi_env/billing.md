@@ -99,34 +99,6 @@ Allocating 4 CPU-cores and 32GB of memory in a job running for 1 day consumes:
 (32GB / 2GB) CPU-cores x 24 hours = 384 CPU-core-hours
 ```
 
-### Checking CPU-core-hours used
-
-You can use the commands `sreport` and `sacct` to see how many CPU-core-hours
-your project has consumed so far. These commands query the accounting database
-used by Slurm and are always up to date. For example, to get a summary of a how
-much a certain project has run starting from a certain date up until now, you
-can write:
-
-```bash
-$ sreport -t hours cluster AccountUtilization account=project_465000XXX start=2022-01-01 end=now
-```
-
-Example output:
-
-```text
---------------------------------------------------------------------------------
-  Cluster         Account     Login     Proper Name       Used   Energy 
---------- --------------- --------- --------------- ---------- -------- 
-      lumi project_465000+                               739228        0 
-      lumi project_465000+     spock           Spock     120228        0 
-      lumi project_465000+      data            Data     300000        0 
-      lumi project_465000+      tpol           T'Pol     319000        0 
-```
-
-The top row is summary for all project members. Please note that Slurm counts
-usage in CPU-thread-hours, so the numbers need to be divided by 2 to get the
-corresponding CPU-core-hours as there are 2 threads per core in the CPU-nodes.
-
 ## Storage billing
 
 For storage, your project is allocated TB-hours. Storage is billed whenever you
