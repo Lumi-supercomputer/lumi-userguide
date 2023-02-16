@@ -54,9 +54,9 @@ Uploading data to LUMI-O can be done with any of the following clients: lo-comma
 
 There are several cases where you need to access data in several locations. In these cases, the practice of staging in the data to individual servers or computers from the object storage can be used instead of a shared file storage.
 
-## Accessing the same data via multiple CSC platforms
+## Accessing the same data via multiple  platforms
 
-Since the data in the object storage is available anywhere, you can access the data via both the LUMI partitions and upcoming cloud services. This makes the object storage a good place to store data as well as intermediate and final results in cases where the workflow requires the use of e.g. both LUMI-C and LUMI-O.
+Since the data in the object storage is available via Internet, you can access the data via both the LUMI partitions and upcoming cloud services. This makes the object storage a good place to store data as well as intermediate and final results in cases where the workflow requires the use of e.g. both LUMI-C and LUMI-O.
 
 ## Collecting data from different sources
 
@@ -67,12 +67,6 @@ For example, several data collectors may push data to be processed, e.g. scienti
 ## Self-service backups of data
 
 The object storage is also often used as a location for storing backups. It is a convenient place to push copies of database dumps.
-
-## Files larger than 5 GB
-
-Files larger than 5 GB are divided into smaller segments during upload.
-
-* *lo-put* and *rclone*  split large files automatically: lo-put
 
 ## Viewing
 
