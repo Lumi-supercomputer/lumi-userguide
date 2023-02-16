@@ -1,15 +1,14 @@
 # Using Lumi-O from LUMI supercomputer
 
 
-At the moment the tools for using object storage services are not by default installed in LUMI. 
-In this document we describe how you can install commonly used object storage clients 
-to LUMI and how to configure connection to LUMI-O object storage services. 
-In this document, you will come across the allas a lot, this is because, Allas is CSC's object storage system and this guide borrows its software.
+At the moment the tools for using object storage services are not by default installed in LUMI.
+In this document we describe how you can install commonly used object storage clients
+to LUMI and how to configure connection to LUMI-O object storage services.
 
 ## Installing Object Storage tools for Lumi-O
 
-In this example we do the installation to the _/project_ area in Lumi so that 
-all project members can utilize these tools. In this example we use example project _462000008_. 
+In this example we do the installation to the _/project_ area in Lumi so that
+all project members can utilize these tools. In this example we use example project _462000008_.
 Please use your own project number when installing these tools for your own use.
 
 Once you have logged in to Lumi, move to the _/project_ disk area and make there a directory called _lumi-o_.
@@ -19,29 +18,29 @@ cd /project/project_462000008
 mkdir lumi-o
 cd lumi-o
 ```
-Then, clone _allas-cli-utils_ repository to this location and continue to the cloned directory:
- 
+Then, clone _lumio-cli-utils_ repository to this location and continue to the cloned directory:
+
 ```text
-git clone https://github.com/CSCfi/allas-cli-utils  
-cd allas-cli-utils
+git clone https://github.com/CSCfi/lumio-cli-utils  
+cd lumio-cli-utils
 ```
-      
-Allas-cli-utils has a list of software dependencies that needs to be be installed. We use here the 
-_lumi-container-wrapper_ tool to install most of them (s3cmd, Python OpenStack clinet, Python swift client,
+
+Lumio-cli-utils has a list of software dependencies that needs to be be installed. We use here the
+_lumi-container-wrapper_ tool to install most of them (s3cmd,
 zstdmt and crypt4gh). The installation is done with commands:
 
 ```text
 module load LUMI lumi-container-wrapper
-conda-containerize new --prefix /project/project_462000008/lumi-o allas-dependencies.yaml
+conda-containerize new --prefix /project/project_462000008/lumi-o lumio-dependencies.yaml
 ```
-The command above will install the dependencies to a singularity container and make command-like 
+The command above will install the dependencies to a singularity container and make command-like
 execution scripts to a _bin_ directory that locates in the directory defined with the _--prefix_ option.
 (in this case _/project/project_462000008/lumi-o/bin_).
 
-Finally we need to modify _a_env_conf_ file a bit so that _a-tools_ works smoothly.
+Finally we need to modify _lo_env_conf_ file a bit so that _lo-tools_ works smoothly.
 Open the file:
 ```text
-nano a_env_conf
+nano lo_env_conf
 ```
 
 In this file do following modifications (remember to use your own project number instead of
@@ -49,49 +48,49 @@ In this file do following modifications (remember to use your own project number
 
 ```text
 local_host=”lumi”
-allas_conf_path="/project/project_462000008/lumi-o/allas-cli-utils/allas_conf"
+lumio_conf_path="/project/project_462000008/lumi-o/lumio-cli-utils/lumio_conf"
 tmp_root="/scratch/project_462000008"
 ```
 
-Next move to the allas directory and create a set up file _allas_setup.sh_ 
-which will be use to simplify the setup process of Allas tools
+Next move to the lumio directory and create a set up file _lumio_setup.sh_
+which will be use to simplify the setup process of LUMO-O cli tools
 
 ```text
-cd /project/project_462000008/lumi-o 
+cd /project/project_462000008/lumi-o
 nano lumi-o_setup.sh
 ```
-In the setup file will be used to add the installation directories to a-tools and object storage software 
-your command path . In addition you create alias 'allas-conf' that runs source command for the 
-connection setup script _allas_conf_. (remember here too to replace the project number with your own project)
+In the setup file will be used to add the installation directories to lo-tools and object storage software
+your command path . In addition you create alias 'lumio-conf' that runs source command for the
+connection setup script _lumio_conf_. (remember here too to replace the project number with your own project)
 
 
 ```text
-export PATH=/project/project_462000008/lumi-o/allas-cli-utils:/project/project_462000008/lumi-o/bin:$PATH
-alias allas-conf="source /project/project_462000008/lumi-o/allas-cli-utils/allas_conf"
+export PATH=/project/project_462000008/lumi-o/lumio-cli-utils:/project/project_462000008/lumi-o/bin:$PATH
+alias lumio-conf="source /project/project_462000008/lumi-o/lumio-cli-utils/lumio_conf"
 ```
 
-Now the installation is ready. In the future you and your group members need to only 
+Now the installation is ready. In the future you and your group members need to only
 run the setup commands described below, to enable object storage tools and to open connection to Lumi-O
 
 ## Using Lumi-O
 
-Once the object storage tools have been installed to the project directory as described above, then 
+Once the object storage tools have been installed to the project directory as described above, then
 opening connection to Lumi-O requires first setting up the environment with command:
 
 ```text
-source /project/project_462000008/lumi-o/allas_setup.sh
+source /project/project_462000008/lumi-o/lumio_setup.sh
 ```
 
-After this commands like _allas-conf_, _rclone_, _swift_ or _a-put_ should work in the same way as in Puhti and Mahti.
+After this commands like _lumio-conf_, _rclone_ or _lo-put_ should work in the same way as in Puhti and Mahti.
 
-Running command _allas-conf_ starts normal configuration process for a swift based connetion to LUMI-O. Read every configuration step carefully.
+Running command _lumio-conf_ starts normal configuration process for a swift based connetion to LUMI-O. Read every configuration step carefully.
 
 If you want to configure connetion Lumi-O, run command:
 ```text
-allas-conf --lumi
+lumio-conf
 ```
-This command asks you to connect with your browser to Lumi-O configuration sever, create credentials there and the copy the project nunber 
-and keys for the setup tool, for authentication use **MyAccessID**. The setup process for Lumi-O will create environment variables needed for _S3_ command and confuguration files for _s3cmd_ and _rclone_. In addition you can define that _a-commands_ will use by default Lumi-O storage server in stead of Allas. After that commands like _a-list_, _a-put_ or _a-get_ will use your Lumi-O storage. If you don't set Lumi-O as the default storage serice, you can add option _--lumi_ to a-commands to use Lumi-O instead of Allas. 
+This command asks you to connect with your browser to Lumi-O configuration sever, create credentials there and the copy the project nunber
+and keys for the setup tool, for authentication use **MyAccessID**. The setup process for Lumi-O will create environment variables needed for _S3_ command and confuguration files for _s3cmd_ and _rclone_. In addition you can define that _lo-commands_ will use by default Lumi-O storage server. After that commands like _lo-list_, _lo-put_ or _lo-get_ will use your Lumi-O storage.
 
 For _rclone_,  Lumi-o configuration provides two _rclone remotes_: _lumi-o:_ and _lumi-pub:_ . The buckets used by _lumi-pub_ will be publicly visible in URL: https://_project-number_.lumidata.eu/_bucket_name_.
 
@@ -102,37 +101,36 @@ be able to access Allas.
 For example, if you would first open Allas connection with command:
 
 ```text
-source /project/project_your-project-number/allas/allas_setup.sh
-allas-conf
+source /project/project_your-project-number/lumio/lumio_setup.sh
+lumio-conf
 ```
 And then open Lumi-O connection with:
 ```text
-allas-conf --lumi
+lumio-conf --lumi
 ```
-(when running the latter command we accept that Lumi-O will be the default erver for a-commands)
+(when running the latter command we accept that Lumi-O will be the default erver for lo-commands)
 Now you can list the buckets available in Lumi-O with commands:
 
 ```text
-a-list
+lo-list
 ```
-or 
+or
 ```text
 rclone lsd lumi-o:
 ```
 And in the same time you can list your buckets in Allas with commands:
 
 ```text
-a-list --allas
+lo-list --lumio
 ```
-or 
+or
 ```text
-rclone lsd allas:
+rclone lsd lumio:
 ```
 
 Copying data from Allas to Lumi-O could now be done with command:
 
 ```text
-rclone copyto -P allas:bucket-in-allas/object lumi-o:bucket-in-lumi-o/object
+rclone copyto -P lumio:bucket-in-lumio/object lumi-o:bucket-in-lumi-o/object
 ```
 The command above will work only for files smaller than 5 GB.
-
