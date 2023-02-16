@@ -94,43 +94,4 @@ and keys for the setup tool, for authentication use **MyAccessID**. The setup pr
 
 For _rclone_,  Lumi-o configuration provides two _rclone remotes_: _lumi-o:_ and _lumi-pub:_ . The buckets used by _lumi-pub_ will be publicly visible in URL: https://_project-number_.lumidata.eu/_bucket_name_.
 
-Note, that you can have active connection to both Lumi-O and Allas in the same time.
-But this expects the user to have CSC account and LUMI account! Otherwise you will not
-be able to access Allas.
-
-For example, if you would first open Allas connection with command:
-
-```text
-source /project/project_your-project-number/lumio/lumio_setup.sh
-lumio-conf
-```
-And then open Lumi-O connection with:
-```text
-lumio-conf --lumi
-```
-(when running the latter command we accept that Lumi-O will be the default erver for lo-commands)
-Now you can list the buckets available in Lumi-O with commands:
-
-```text
-lo-list
-```
-or
-```text
-rclone lsd lumi-o:
-```
-And in the same time you can list your buckets in Allas with commands:
-
-```text
-lo-list --lumio
-```
-or
-```text
-rclone lsd lumio:
-```
-
-Copying data from Allas to Lumi-O could now be done with command:
-
-```text
-rclone copyto -P lumio:bucket-in-lumio/object lumi-o:bucket-in-lumi-o/object
-```
-The command above will work only for files smaller than 5 GB.
+Note, that you can have active connection to both Lumi-O and other object storage systms like Allas in the same time.
