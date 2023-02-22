@@ -123,7 +123,7 @@ start by generating an SSH key pair as detailed below.
     ssh-ed25519 AAAAC3NzaC1lZDI....I3J
     ```
 
-Add a title, e.g., *lumi*, and then click *Add*. 
+    Add a title, e.g., *lumi*, and then click *Add*. 
 
 After registering your SSH key, there can be a couple of hours delay until it
 is synchronized to LUMI and your account is created. **You will receive your
