@@ -32,7 +32,7 @@ page.
 Please note that when using LUMI, you must accept and adhere to the [LUMI Terms
 of Use][terms-of-use].
 
-=== "For regular users"
+=== "For regular users (with a non-Finnish allocation)"
 
     Once you have received an invitation to a project on LUMI, you need to register to MyAccessID and accept the terms of use as instructed in the invitation. The procedure for registering to MyAccessID differs between the LUMI consortium countries. In general, the recommended authentication method is to use your home organization's identity provider. You should find it by typing your organization into the *Choose Your Identity Provider* search field. If you found your organization, but you got an error, please contact your identity provider for assistance. Alternative registration options are available for some countries. Please see the [Puhuri documentation][eidas-eduid] for information about these alternatives.
 
@@ -50,6 +50,6 @@ of Use][terms-of-use].
     
     <iframe id="kaltura_player" src="https://api.kaltura.nordu.net/p/191/sp/19100/embedIframeJs/uiconf_id/14971191/partner_id/191?iframeembed=true&playerId=kaltura_player&entry_id=0_qb2xq6e9&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=0_zexcx6xb" width="100%" height="400" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="LUMI Getting Started: Account via MyAccessID"></iframe>
 
-=== "For users with a Finnish allocation"
+=== "With a Finnish allocation"
 
     Users with a Finnish allocation (via [MyCSC](https://my.csc.fi/welcome)) must follow the instructions given in the [CSC documentation for creating a Finnish LUMI project](https://docs.csc.fi/accounts/how-to-create-new-project/#creating-a-lumi-project-and-applying-for-resources).
