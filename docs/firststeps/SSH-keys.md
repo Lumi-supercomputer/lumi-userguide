@@ -117,7 +117,7 @@ start by generating an SSH key pair as detailed below.
     Now that you have generated your key pair, you need to register your
     **public** key in your MyCSC [:material-account: **user profile**][mycsc-profile].
 
-    To register your key with [MyCSC][mycsc-profile], click on the *Profile* item of the menu on the top right (or left, depending on your device) corner of the page. When you scroll down, you will see a text box on the right-hand side which reads *SSH PUBLIC KEYS*. Click the *Add key* button. Paste the content of you **public** key in the text area which reads *Key*. Omit the ending of the key file that has your local username and the name of your computer. It should look e.g. like
+   To register your key with [MyCSC][mycsc-profile], click on the *Profile* item of the menu on the left side of the screen. If your browser window is narrow, the navigation might be hidden, in which case you need to open it from the top-right button. In the lower right corner of the *Profile* page there is a box which reads *SSH PUBLIC KEYS*. Click the *Add key* button (you may need to re-login). Paste the content of your **public** key in the text area which reads *Key*. Omit the ending of the key file that has your local username and the name of your computer. It should look like
     
     `ssh-ed25519 AAAAC3NzaC1lZDI....I3J`
     
