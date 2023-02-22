@@ -126,7 +126,7 @@ theme:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/Lumi-supercomputer
+      link: https://github.com/Lumi-supercomputer/lumi-userguide/
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/LUMIhpc
 
