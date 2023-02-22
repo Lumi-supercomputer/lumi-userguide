@@ -98,7 +98,7 @@ start by generating an SSH key pair as detailed below.
 
 ## Register your public key
 
-=== "For regular users"
+=== "For regular users (with a non-Finnish allocation)"
 
     Now that you have generated your key pair, you need to register your **public** key
     in your [:material-account: **MyAccessID user profile**][myaccessid-profile]. From there, the public key will be 
@@ -112,7 +112,7 @@ start by generating an SSH key pair as detailed below.
       <figcaption>MyAccessID Own profile information to add ssh public key.</figcaption>
     </figure>
 
-=== "For users with a Finnish allocation"
+=== "With a Finnish allocation"
 
     Now that you have generated your key pair, you need to register your
     **public** key in your MyCSC [:material-account: **user profile**][mycsc-profile].
