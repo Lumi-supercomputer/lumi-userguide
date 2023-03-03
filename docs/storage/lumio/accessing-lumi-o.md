@@ -2,8 +2,6 @@
 
 [auth.lumidata.eu]: https://auth.lumidata.eu
 
-The LUMI-O object store offers a total of 30 PB storage for storing, sharing, and staging of data.
-In an object-based storage, data is managed as objects instead of being organized as files in a directory hierarchy.
 
 To use LUMI-O you will need to generate authentication credentials, which you can then use 
 with different tools to connect to LUMI-O

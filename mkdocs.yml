@@ -84,10 +84,15 @@ nav:
       - Performance analysis strategies: development/profiling/strategies.md
       - Cray Performance Analysis Tool: development/profiling/perftools.md
   - Storage:
-    - Welcome: storage/index.md
-    - Accesing LUMI-O: storage/accessing-lumi-o.md
-    - Error messages: storage/error-messages.md
-    - Authentication for LUMI-O: storage/auth-lumidata-eu.md
+    - Overview: storage/index.md
+    - Main storage - LUMI-P: storage/lumip.md
+    - Flash storage - LUMI-F: storage/lumif.md
+    - Object storage - LUMI-O:
+      - Introduction to - LUMI-O: storage/lumio/lumio.md
+      - Accesing LUMI-O: storage/lumio/accessing-lumi-o.md
+      - Authentication for LUMI-O: storage/lumio/auth-lumidata-eu.md
+      - Error messages: storage/lumio/error-messages.md
+
   - Help desk: 
     - Help desk: helpdesk/index.md
     - Training and events: helpdesk/training.md
@@ -162,5 +167,4 @@ plugins:
   - redirects:
       redirect_maps:
         'computing/Lmod_modules.md': 'runjobs/lumi_env/Lmod_modules.md'
-        'storage/index.md': 'runjobs/lumi_env/storing-data.md'
   - search
