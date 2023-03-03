@@ -1,7 +1,5 @@
 # LUMI-O
 
-[auth.lumidata.eu]: https://auth.lumidata.eu
-
 The LUMI-O object store offers a total of 30 PB storage for storing, sharing, and staging of data.
 In an object-based storage, data is managed as objects instead of being organized as files in a directory hierarchy.
 
@@ -23,12 +21,12 @@ To configure a connection to LUMI-O, run the command:
 lumio-conf
 ```
 
-This command asks you to connect with your browser to the [LUMI-O credentials management service](auth.lumidata.eu), create credentials there and the copy the project nunber
+This command asks you to connect with your browser to the [LUMI-O credentials management service](https://auth.lumidata.eu), create credentials there and the copy the project nunber
 and keys for the setup tool, for authentication use **MyAccessID**. The setup process will create configuration files for _s3cmd_ and _rclone_.
 
 For a step by step description, read the [Creating LUMI-O credentials](auth-lumidata-eu.md) instructions.
 
-Using the [LUMI-O credentials management service](auth.lumidata.eu) you can also generate configuration for different object storage clients like 
+Using the [LUMI-O credentials management service](https://auth.lumidata.eu) you can also generate configuration for different object storage clients like 
 shell, boto3, rlcone, s3cmd and aws. This is useful for using LUMI-O from somewhere else than LUMI, where the `lumio-conf` command is not available ( The tool can be downloaded from the [LUMI-O git repository](https://github.com/Lumi-supercomputer/LUMI-O-tools), but we only officially support the tool on LUMI  ) 
 
 ## Tools to transfer data
