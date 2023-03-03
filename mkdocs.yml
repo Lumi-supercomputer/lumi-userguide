@@ -83,6 +83,11 @@ nav:
     - Performance analysis:
       - Performance analysis strategies: development/profiling/strategies.md
       - Cray Performance Analysis Tool: development/profiling/perftools.md
+  - Storage:
+    - Welcome: storage/index.md
+    - Accesing LUMI-O: storage/accessing-lumi-o.md
+    - Error messages: storage/error-messages.md
+    - Authentication for LUMI-O: storage/auth-lumidata-eu.md
   - Help desk: 
     - Help desk: helpdesk/index.md
     - Training and events: helpdesk/training.md
