@@ -57,6 +57,7 @@ nav:
       - Singularity/Apptainer containers: software/containers/singularity.md
     - Software guides:
       - Software library: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/
+      - CP2K: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/c/CP2K/
       - PyTorch: software/packages/pytorch.md
       - ParaView: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/p/ParaView
       - QuantumESPRESSO: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/q/QuantumESPRESSO/
