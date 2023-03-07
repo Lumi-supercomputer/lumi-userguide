@@ -14,12 +14,11 @@
 ---
 On this page you find guidance on ways to install additional software on LUMI. 
 A full overview of software that is either installed in the LUMI software
-stacks or available as a LUMI-specific build recipe for the 
+stacks, or available as a LUMI-specific build recipe for the 
 [EasyBuild][easybuild] package manager, can be found in the
 [LUMI software library](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/).
-If you are looking for ways to
-optimize your software for use on LUMI, consult the [developing
-section][developing-overview] instead.
+If you are looking for information on how to develop your own software on LUMI, consult the [developing
+section][developing-overview] instead. Please note that the LUMI user support team can only offer limited help with installing scientific software. This is further explained on the [Install policy](/software/policy/) page.
 
 ---
 
@@ -57,8 +56,7 @@ The three options are:
 
     Spack is another popular package manager to install software mostly from sources for
     optimal performance on HPC systems. We provide a Spack configuration that is
-    configured for use of the compilers available on LUMI. However, we do no package
-    development in Spack.
+    configured to use of the compilers available on LUMI and which can install packages in the upstream Spack repository. However, we do no package development ourselves in Spack.
 
 -   [Container wrapper][contwrapper]
 
@@ -97,6 +95,7 @@ on LUMI.
 
 Packages with considerable extra information in the LUMI software library:
 
+-   [CP2K](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/c/CP2K/)
 -   [ParaView](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/p/ParaView/)
 -   [QuantumESPRESSO](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/q/QuantumESPRESSO/)
 -   [VASP](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/v/VASP/)
