@@ -116,10 +116,9 @@ not well suited for LUMI. If you are the developer of such application, you
 should consider tools like [HDF5][hdf5] or [SIONlib][sionlib].
 
 You can check the memory and file usage quotas of your projects with the
-following commands:
+following command:
 
 ```bash
-$ module load lumi-workspaces
 $ lumi-workspaces
 ```
 
