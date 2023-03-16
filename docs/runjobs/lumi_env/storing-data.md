@@ -72,7 +72,7 @@ areas.
 
 |                           | Quota | Max files | Expandable            | Backup | Retention        |
 |---------------------------|-------|-----------|-----------------------|--------|------------------|
-| **User<br>home**          | 20 GB | 100k      | No                    | Yes    | User lifetime    |
+| **User<br>home**          | 20 GB | 100k      | No                    | No     | User lifetime    |
 | **Project<br>persistent** | 50 GB | 100k      | Yes,<br> up to 500GB  | No     | Project lifetime |
 | **Project<br>scratch**    | 50 TB | 2000k     | Yes,<br> up to 500TB  | No     | 90 days          |
 | **Project<br>fast**       |  2 TB | 1000k     | Yes,<br> up to 100TB  | No     | 30 days          |
