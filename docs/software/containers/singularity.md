@@ -54,7 +54,17 @@ $ singularity pull docker://ubuntu:22.04
 ```
 
 This will create the Singularity image file `ubuntu_22.04.sif` in the directory
-where the command was run. Once the image has been pulled, the container can be
+where the command was run. 
+
+If pulling a private image or from a private registry, one needs to set the authentication information. Most simply this is achieved by adding `--docker-login` in the command:
+
+```bash
+$ singularity pull --docker-login docker://<location>
+```
+
+More detailed information and examples about pulling from private registries and a possibility of setting authentication information with environment variables is found in [Singularity user guide](https://docs.sylabs.io/guides/3.0/user-guide/singularity_and_docker.html#making-use-of-private-images-from-private-registries).
+
+Once the image has been pulled, the container can be
 run. Instructions for running the container may be found on the [container jobs
 page][container-jobs].
 
