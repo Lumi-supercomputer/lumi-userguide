@@ -39,7 +39,6 @@
 [lumi-f]: ../hardware/storage/lumif.md
 [lumi-p]: ../hardware/storage/lumip.md
 [lumi-o]: ../hardware/storage/lumio.md
-[lumi-k]: ../hardware/auxiliary/lumik.md
 [lumi-interconnect]: ../hardware/interconnect.md
 [eap]: ../hardware/compute/eap.md
 [lumi-top500]: https://www.top500.org/system/180048/
@@ -69,10 +68,6 @@ hardware partition, the [LUMI-F][lumi-f] flash based parallel file system
 hardware partition, and the [LUMI-O][lumi-o] object storage hardware partition
 for a total of 117 PB of storage space.
 
-Additionally, the [LUMI-K][lumi-k] hardware partition provides a container
-orchestration platform for use with LUMI.
-
-
 <div class="lumi-overview">
   <p>
     <br>
@@ -82,7 +77,6 @@ orchestration platform for use with LUMI.
     <a href="../hardware/storage/lumip/">LUMI-P : Parallel file system</a><br>
     <a href="../hardware/storage/lumif/">LUMI-F : Flash-based parallel file system</a><br>
     <a href="../hardware/storage/lumio/">LUMI-O : Object storage</a><br>
-    <a href="../hardware/auxiliary/lumik/">LUMI-K : Container orchestration platform</a><br>
     <br>
   </p>
     <figure>

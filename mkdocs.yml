@@ -27,7 +27,6 @@ nav:
       - Main storage - LUMI-P: hardware/storage/lumip.md
       - Flash storage - LUMI-F: hardware/storage/lumif.md
       - Object storage - LUMI-O: hardware/storage/lumio.md
-      - Container Orchestration Platform - LUMI-K: hardware/auxiliary/lumik.md
   - Run jobs:
       - Overview: runjobs/index.md
       - LUMI environment:
