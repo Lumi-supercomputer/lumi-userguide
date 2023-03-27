@@ -22,7 +22,6 @@ nav:
       - GPU nodes - LUMI-G: hardware/compute/lumig.md
       - CPU nodes - LUMI-C: hardware/compute/lumic.md
       - Data analytics nodes - LUMI-D: hardware/compute/lumid.md
-      - GPU Early Access Platform: hardware/compute/eap.md
     - Storage:
       - Main storage - LUMI-P: hardware/storage/lumip.md
       - Flash storage - LUMI-F: hardware/storage/lumif.md
