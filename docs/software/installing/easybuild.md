@@ -171,15 +171,6 @@ This should also automatically load the right `partition module` for the part
 of LUMI you are on, as further detailed on the [software
 stacks][softwarestacks] page.
 
-??? Failure "Issue: Only partition/L and partition/C are currently fully supported"
-    Note that in the initial versions of the software stack, only `partition/L`
-    and `partition/C` are supported. The `partition/G` module is for all MI250X
-    GPU nodes, whether in the regular [LUMI-G][lumi-g] partition or in the
-    temporary [Early Access Platform][eap], and is only meant for users who
-    install their own software and not supported by the
-    [User Support Team][helpdesk] except for basic build tools until after
-    the LUMI-G pilot phase.
-
 Though it is technically possible to cross-compile software for a different
 partition, it may not be without problems as not all install scripts that come
 with software do support cross-compiling and as tests may fail when compiling for
