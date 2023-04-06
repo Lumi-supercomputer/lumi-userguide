@@ -40,7 +40,8 @@ requesting 128 cores on a compute node of the LUMI-C `small` partition.
 
 # Set the number of threads based on --cpus-per-task
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
-export OMP_
+# Since Slurm 22.05 srun do not read in SLURM_CPUS_PER_TASK
+export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
  
 ./your_application
 ```
@@ -100,6 +101,8 @@ LUMI-C `standard` partition.
 
 # Set the number of threads based on --cpus-per-task
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+# Since Slurm 22.05 srun do not read in SLURM_CPUS_PER_TASK
+export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
 # Launch MPI code 
 srun ./your_application # Use srun instead of mpirun or mpiexec
