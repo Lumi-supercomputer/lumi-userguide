@@ -16,5 +16,3 @@ striping as explained in the Lustre section below.
 
 For an overview of options for using LUMI-P, see the [data storage
 options][data-storage-options] page.
-
-## Lustre
