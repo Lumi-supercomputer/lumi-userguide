@@ -16,10 +16,20 @@ hide:
     the search function.
 
     You have not connected to LUMI yet? Please visit the first steps section to
-    learn how to setup an SSH key in order to be able to connect.
+    learn how to setup an SSH key.
 
     [:octicons-arrow-right-24: First steps](firststeps/getstarted.md)
 
+-  
+
+    ---
+    
+    <center>
+        [:octicons-link-24: LUMI helpdesk](https://lumi-supercomputer.eu/user-support/need-help/) &nbsp;&nbsp;&nbsp;&nbsp;
+        [:octicons-link-24: LUMI status](https://lumi-supercomputer.eu/user-support/need-help/) &nbsp;&nbsp;&nbsp;&nbsp;
+        [:octicons-link-24: LUMI events](https://lumi-supercomputer.eu/lumi-service-status/) &nbsp;&nbsp;&nbsp;&nbsp;
+        [:octicons-link-24: LUMI training materials](https://lumi-supercomputer.github.io/LUMI-training-materials/)
+    </center>
 </div>
 
 <div class="grid cards" markdown>
@@ -28,9 +38,9 @@ hide:
 
     ---
 
-    [:octicons-arrow-right-24: CPU partition](hardware/compute/lumig.md)<br>
-    [:octicons-arrow-right-24: GPU partition](hardware/compute/lumic.md)<br>
-    [:octicons-arrow-right-24: Visualization partition](hardware/compute/lumid.md)
+    [:octicons-arrow-right-24: CPU partition](hardware/lumig.md)<br>
+    [:octicons-arrow-right-24: GPU partition](hardware/lumic.md)<br>
+    [:octicons-arrow-right-24: Visualization partition](hardware/lumid.md)
 
 -   **Submitting a Job**
 
@@ -44,11 +54,11 @@ hide:
 
     ---
 
-    [:octicons-arrow-right-24: Data storage options](runjobs/lumi_env/storing-data.md)<br>
-    [:octicons-arrow-right-24: Using Lustre efficiently](hardware/storage/lumip.md)<br>
-    [:octicons-arrow-right-24: Object storage](#)
+    [:octicons-arrow-right-24: Data storage options](storage/index.md)<br>
+    [:octicons-arrow-right-24: Using Lustre efficiently](storage/parallel-filesystems/lumip.md)<br>
+    [:octicons-arrow-right-24: Object storage](storage/lumio/index.md)
 
--   **Softwares**
+-   **Software**
 
     ---
 
@@ -67,7 +77,7 @@ hide:
 
     ---
 
-    [:octicons-arrow-right-24: Cray performance analysis tool](http://127.0.0.1:8000/development/profiling/perftools.md)<br>
+    [:octicons-arrow-right-24: Cray performance analysis tool](development/profiling/perftools.md)<br>
     [:octicons-arrow-right-24: Parallel debugging](development/debugging/gdb4hpc.md)
 
 </div>

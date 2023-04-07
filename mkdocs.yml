@@ -17,21 +17,16 @@ nav:
     - Next steps: firststeps/nextsteps.md
   - Hardware:
     - Overview: hardware/index.md
-    - Interconnect: hardware/interconnect.md
-    - Compute nodes:
-      - GPU nodes - LUMI-G: hardware/compute/lumig.md
-      - CPU nodes - LUMI-C: hardware/compute/lumic.md
-      - Data analytics nodes - LUMI-D: hardware/compute/lumid.md
-    - Storage:
-      - Main storage - LUMI-P: hardware/storage/lumip.md
-      - Flash storage - LUMI-F: hardware/storage/lumif.md
-      - Object storage - LUMI-O: hardware/storage/lumio.md
+    - GPU nodes - LUMI-G: hardware/lumig.md
+    - CPU nodes - LUMI-C: hardware/lumic.md
+    - Data analytics nodes - LUMI-D: hardware/lumid.md
+    - Network and interconnect: hardware/network.md
   - Run jobs:
       - Overview: runjobs/index.md
       - LUMI environment:
         - Module environment: runjobs/lumi_env/Lmod_modules.md
         - Software stacks: runjobs/lumi_env/softwarestacks.md
-        - Data storage options: runjobs/lumi_env/storing-data.md
+        - Data storage options: /storage/
         - Billing policy: runjobs/lumi_env/billing.md
       - Batch jobs:      
         - Slurm quickstart: runjobs/scheduled-jobs/slurm-quickstart.md
@@ -84,14 +79,14 @@ nav:
       - Cray Performance Analysis Tool: development/profiling/perftools.md
   - Storage:
     - Overview: storage/index.md
-    - Main storage - LUMI-P: storage/lumip.md
-    - Flash storage - LUMI-F: storage/lumif.md
-    - Object storage - LUMI-O:
-      - Introduction to - LUMI-O: storage/lumio/lumio.md
-      - Accesing LUMI-O: storage/lumio/accessing-lumi-o.md
+    - Parallel filesystems:
+      - Lustre: storage/parallel-filesystems/lustre.md
+      - Main storage - LUMI-P: storage/parallel-filesystems/lumip.md
+      - Flash storage - LUMI-F: storage/parallel-filesystems/lumif.md
+    - Object storage:
+      - LUMI-O usage: storage/lumio/index.md
       - Authentication for LUMI-O: storage/lumio/auth-lumidata-eu.md
       - Error messages: storage/lumio/error-messages.md
-
   - Help desk: 
     - Help desk: helpdesk/index.md
     - Training and events: helpdesk/training.md

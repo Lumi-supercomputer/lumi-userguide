@@ -2,13 +2,13 @@
 
 [software-overview]: ../software/index.md
 [firststeps-loggingin]: ../firststeps/loggingin.md
-[lumi-c]: ../hardware/compute/lumic.md
-[lumi-g]: ../hardware/compute/lumig.md
-[lumi-d]: ../hardware/compute/lumid.md
+[lumi-c]: ../hardware/lumic.md
+[lumi-g]: ../hardware/lumig.md
+[lumi-d]: ../hardware/lumid.md
 [slurm-quickstart]: ../runjobs/scheduled-jobs/slurm-quickstart.md
 [module-environment]: ../runjobs/lumi_env/Lmod_modules.md
 [software-stacks]: ../runjobs/lumi_env/softwarestacks.md
-[data-storage-options]: ../runjobs/lumi_env/storing-data.md
+[data-storage-options]: ../storage/index.md
 [billing-policy]: ../runjobs/lumi_env/billing.md
 
 ---

@@ -2,22 +2,30 @@
 
 [auth.lumisade.eu]: https://auth.lumisade.eu
 
-Go to [LUMI-O credentials management service page][auth.lumisade.eu].
-And click on "-> Go to login".
+Go to [LUMI-O credentials management service page][auth.lumisade.eu]. And click
+on "-> Go to login".
+
 <figure>
-  <img src="../../../assets/images/auth.lumidata.eu-landingpage.png" width="720" alt="Screenshot of auth.lumidata.eu landing page">
+  <img src="../../../assets/images/auth.lumidata.eu-landingpage.png"     
+       width="720" alt="Screenshot of auth.lumidata.eu landing page"
+  >
   <figcaption>auth.lumidata.eu landing page</figcaption>
 </figure>
 
-Choose the correct authentication provider which for LUMI is "MyAccessID" and follow the authentication procedure.
+Choose the correct authentication provider which for LUMI is "MyAccessID" and
+follow the authentication procedure.
+
 <figure>
   <img src="../../../assets/images/auth.lumidata.eu-authentication-provider.png" width="720" alt="Screenshot of auth.lumidata.eu authentication providers">
   <figcaption>Authentication provider selection</figcaption>
 </figure>
 
 This page displays all of the projects that are associated with user's account.
-It shows the project number, Project description, set storage quota, in GB, for a specific project and how much of said quota is used up.
-Additionally this page allows to create the necessary authentication keys, which are required for accessing the object storage.
+It shows the project number, Project description, set storage quota, in GB, for
+a specific project and how much of said quota is used up. Additionally this page
+allows to create the necessary authentication keys, which are required for
+accessing the object storage.
+
 <figure>
   <img src="../../../assets/images/auth.lumidata.eu-main-page.png" width="720" alt="Screenshot of auth.lumidata.eu main page">
   <figcaption>LUMI-O credential management main page</figcaption>
