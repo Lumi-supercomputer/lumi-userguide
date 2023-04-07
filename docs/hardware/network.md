@@ -23,7 +23,7 @@ of a dragonfly topology.
 
 <figure>
   <img 
-    src="../../../assets/images/dragonfly-overview.svg" 
+    src="../../assets/images/dragonfly-overview.svg" 
     width="750"
     alt="Example dragonfly topology"
   >
@@ -43,7 +43,7 @@ hop inside the destination group.
 
 <figure>
   <img 
-    src="../../../assets/images/network-hops.svg" 
+    src="../../assets/images/network-hops.svg" 
     width="700"
     alt="Communication switch hops"
   >
@@ -58,7 +58,7 @@ to each of the switches.
 
 <figure>
   <img 
-    src="../../../assets/images/lumic-network-overview.svg" 
+    src="../../assets/images/lumic-network-overview.svg" 
     width="600"
     alt="LUMI-C network overview"
   >
@@ -75,7 +75,7 @@ per nodes, each endpoints connected to different swiches.
 
 <figure>
   <img 
-    src="../../../assets/images/lumig-network-overview.svg" 
+    src="../../assets/images/lumig-network-overview.svg" 
     width="800"
     alt="LUMI-G network overview"
   >
