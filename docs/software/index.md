@@ -1,7 +1,7 @@
 # Overview
 
 [developing-overview]: ../development/index.md
-[lumi-p]: ../hardware/storage/lumip.md
+[lumi-p]: ../storage/parallel-filesystems/lumip.md
 [easybuild]: ./installing/easybuild.md
 [spack]: ./installing/spack.md
 [contwrapper]: ../software/installing/container-wrapper.md

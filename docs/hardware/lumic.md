@@ -1,8 +1,8 @@
 # CPU nodes - LUMI-C
 
-[storage]: ../../runjobs/lumi_env/storing-data.md
-[interconnect]: ../../hardware/interconnect.md
-[slurm-partitions]: ../../runjobs/scheduled-jobs/partitions.md
+[storage]: ../storage/index.md
+[interconnect]: network.md
+[slurm-partitions]: ../runjobs/scheduled-jobs/partitions.md
 [zen3-wiki]: https://en.wikipedia.org/wiki/Zen_3
 
 The LUMI-C hardware partition consists of 1536 CPU based compute nodes with an
@@ -34,7 +34,7 @@ of L2 cache.
 
 <figure>
   <img 
-    src="../../../assets/images/milan-overview.svg" 
+    src="../../assets/images/milan-overview.svg" 
     width="560"
     alt="Overview of an AMD EPYC 7763 CPU"
   >
@@ -61,7 +61,7 @@ distances between the NUMA nodes.
 <figure>
   <img 
     align="left" 
-    src="../../../assets/images/numa-lumic.svg" 
+    src="../../assets/images/numa-lumic.svg" 
     width="400"
     alt="Distances between NUMA nodes"
   >

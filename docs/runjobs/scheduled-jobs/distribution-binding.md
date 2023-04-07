@@ -9,7 +9,7 @@ tasks via Slurm on LUMI.
 
 [srun]: https://slurm.schedmd.com/srun.html
 [numa]: https://en.wikipedia.org/wiki/Non-uniform_memory_access
-[lumi-c]: ../../hardware/compute/lumic.md
+[lumi-c]: ../../hardware/lumic.md
 
 A compute node consists of a hierarchy of building blocks: one or more sockets
 (processors), consisting of multiple physical cores each with one or more

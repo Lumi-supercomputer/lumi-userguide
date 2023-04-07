@@ -1,9 +1,9 @@
-[lumi-c]: ../../hardware/compute/lumic.md
-[lumi-f]: ../../hardware/storage/lumif.md
-[lumi-p]: ../../hardware/storage/lumip.md
+[lumi-c]: ../../hardware/lumic.md
+[lumi-f]: ../../storage/parallel-filesystems/lumif.md
+[lumi-p]: ../../storage/parallel-filesystems/lumip.md
 [slurm-quickstart]: ../../runjobs/scheduled-jobs/slurm-quickstart.md
 [slurm-partitions]: ../../runjobs/scheduled-jobs/partitions.md
-[data-storage-options]: ../../runjobs/lumi_env/storing-data.md
+[data-storage-options]: ../../storage/index.md
 
 # Billing policy
 

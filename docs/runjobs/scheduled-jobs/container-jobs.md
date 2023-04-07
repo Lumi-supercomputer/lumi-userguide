@@ -4,7 +4,7 @@
 [permedcoe-mpi]: https://permedcoe.github.io/mpi-in-container
 [easybuild-install]: ../../software/installing/easybuild.md
 [containers-install]: ../../software/containers/singularity.md
-[data-storage-options]: ../../runjobs/lumi_env/storing-data.md
+[data-storage-options]: ../../storage/index.md
 
 # Container jobs
 

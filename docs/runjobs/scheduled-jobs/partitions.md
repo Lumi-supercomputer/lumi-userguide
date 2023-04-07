@@ -1,8 +1,8 @@
 # Slurm partitions
 
-[lumi-c]: ../../hardware/compute/lumic.md
-[lumi-g]: ../../hardware/compute/lumig.md
-[lumi-d]: ../../hardware/compute/lumid.md
+[lumi-c]: ../../hardware/lumic.md
+[lumi-g]: ../../hardware/lumig.md
+[lumi-d]: ../../hardware/lumid.md
 [helpdesk]: ../../helpdesk/index.md
 
 The Slurm partition setup of LUMI prioritizes jobs that aim to scale out. As a

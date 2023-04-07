@@ -1,22 +1,29 @@
-# Data storage options
-
-[lumif]: ../../hardware/storage/lumif.md
-[lumip]: ../../hardware/storage/lumip.md
-[lumio]: ../../hardware/storage/lumio.md
-[lumi-g]: ../../hardware/compute/lumig.md
-[billing]: ../../runjobs/lumi_env/billing.md
-[contwrapper]: ../../software/installing/container-wrapper.md
-[containers]: ../../software/containers/singularity.md
-[helpdesk]: ../../helpdesk/index.md
+[lumif]: ./parallel-filesystems/lumif.md
+[lumip]: ./parallel-filesystems/lumip.md
+[lumio]: ./lumio/index.md
+[lumi-g]: ../hardware/lumig.md
+[billing]: ../runjobs/lumi_env/billing.md
+[contwrapper]: ../software/installing/container-wrapper.md
+[containers]: ../software/containers/singularity.md
+[helpdesk]: ../helpdesk/index.md
 
 [sionlib]: https://www.fz-juelich.de/ias/jsc/EN/Expertise/Support/Software/SIONlib/_node.html
 [hdf5]: https://www.hdfgroup.org/solutions/hdf5/
 
+# Overview
+
+---
+
+Here you find a description of available LUMI storage systems, what kind of
+systems they are and on what hardware partitions they are located at.
+
+---
+
 On LUMI you have access to network file system storage based on the
 [LUMI-P][lumip] and [LUMI-F][lumif] hardware partitions. At a later point,
 object storage based on [LUMI-O][lumio] will also become available. The use of
-storage is billed according to the [billing
-policy](../../runjobs/lumi_env/billing.md#storage-billing).
+storage is billed according to the
+[billing policy](../runjobs/lumi_env/billing.md#storage-billing).
 
 ## Where to store data?
 
@@ -127,3 +134,8 @@ $ lumi-workspaces
 The `/tmp` directory on the compute nodes resides in memory. The memory used
 for `/tmp` is included in the job memory allocation. If you use `/tmp`, you
 must allocate memory for it in order to avoid running out of memory.
+
+Data storage on LUMI is provided by the [LUMI-P][lumi-p] parallel file system
+hardware partition, the [LUMI-F][lumi-f] flash based parallel file system
+hardware partition, and the [LUMI-O][lumi-o] object storage hardware partition
+for a total of 117 PB of storage space.

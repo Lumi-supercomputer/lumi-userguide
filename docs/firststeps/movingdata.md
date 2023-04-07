@@ -1,4 +1,4 @@
-[data-storage-options]: ../runjobs/lumi_env/storing-data.md
+[data-storage-options]: ../storage/index.md
 
 # Moving data to/from LUMI
 

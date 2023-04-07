@@ -1,4 +1,4 @@
-[lumi-c]: ../../hardware/compute/lumic.md
+[lumi-c]: ../../hardware/lumic.md
 [container-jobs]: ../../runjobs/scheduled-jobs/container-jobs.md
 
 # Julia scheduled jobs
