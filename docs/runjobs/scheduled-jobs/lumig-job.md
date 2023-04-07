@@ -110,7 +110,7 @@ CPU_BIND="${CPU_BIND},7e00000000,7e0000000000"
 export OMP_NUM_THREADS=6
 export MPICH_GPU_SUPPORT_ENABLED=1
 
-# for Slurm version >22.05: cpus-per-task has to be set again for srun
+# Since Slurm 22.05 srun do not read in SLURM_CPUS_PER_TASK
 export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
 srun --cpu-bind=${CPU_BIND} ./select_gpu <executable> <args>
