@@ -1,30 +1,11 @@
-[data-storage-options]: ../../runjobs/lumi_env/storing-data.md
-
-# Main storage - LUMI-P
-
-The LUMI-P hardware partition provides 4 independent [Lustre](#lustre) file
-systems. Each of these provides a storage capacity of 20 PB with an aggregate
-bandwidth of 240 GB/s. Each Lustre file system is composed of 1 MDS (metadata
-server) and 32 Object Storage Targets (OSTs). Hard disk drives (spinning disks)
-are used in LUMI-P.
-
-Before using LUMI-P, users should familiarize themselves with the performance
-characteristics of the Lustre file system and adjust their data
-workflows accordingly. In particular, having a large number of small files may
-put stress on the metadata servers and may limit the performance due to limited
-striping as explained in the Lustre section below.
-
-For an overview of options for using LUMI-P, see the [data storage
-options][data-storage-options] page.
-
-## Lustre
+# Lustre
 
 Lustre is a parallel distributed high performance file system for clusters
 ranging from small to large-scale as well as multi-site systems. The role of
 Lustre is to chunk up files into data blocks and spread file data across
 multiple storage servers, which can be written to and read from in parallel.
 
-### Lustre Building Blocks
+## Lustre Building Blocks
 
 A Lustre file system is composed of three major functional units as shown in
 the simplified diagram below.
@@ -46,7 +27,7 @@ the simplified diagram below.
 - **Clients** are compute-, visualization- or login nodes that access and use
   the data
 
-### File Striping
+## File Striping
 
 One of the main factors leading to the high performance of Lustre file systems
 is the ability to stripe data across multiple storage targets (OSTs). This
@@ -72,7 +53,7 @@ serial I/O from a single node or parallel I/O to a single shared file from
 multiple nodes. This behaviour is usually found in application using MPI-I/O,
 parallel HDF5 and parallel NetCDF.
 
-#### Set the Striping Pattern
+### Set the Striping Pattern
 
 The striping for a file or directory can be set using the command `lfs
 setstripe`.
@@ -92,7 +73,7 @@ is a path to a directory or a file:
 
 Maximal striping can be achieved by setting the stripe count to `-1`.
 
-#### Get the Striping Pattern
+### Get the Striping Pattern
 
 Information about the striping of a directory or a file can be retrieved using
 the `lfs getstripe` command.
@@ -121,12 +102,12 @@ lmm_stripe_offset: 14
 In the example above, we see that `file.txt` inherited the layout of its parent
 directory and that the file is striped on 4 OSTs (14, 1, 3 and 5).
 
-### Performance Considerations
+## Performance Considerations
 
 Striping should be adapted to your application I/O pattern and the size of your
 files. The following section describes general considerations.
 
-#### Stripe count
+### Stripe count
 
 In theory, a larger number of stripes increase the I/O bandwidth and thus
 performance. In particular, applications that write to a single file from
@@ -141,7 +122,7 @@ can cause overhead and impede the performance.
 - with a file-per-process I/O pattern, avoid striping (stripe count of 1) in
   order to limit OST contention.
 
-#### Stripe size
+### Stripe size
 
 Stripe size has less of an impact on performance than the stripe count and no
 impact at all if the stripe count is 1. However, when dealing with large files,

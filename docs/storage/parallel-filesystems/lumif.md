@@ -1,6 +1,6 @@
-[lumi-p]: ../../hardware/storage/lumip.md
-[lumi-g]: ../../hardware/compute/lumig.md
-[data-storage-options]: ../../runjobs/lumi_env/storing-data.md
+[lumi-p]: ./lumip.md
+[lumi-g]: ../hardware/lumig.md
+[data-storage-options]: ../index.md
 
 # Flash storage - LUMI-F
 
