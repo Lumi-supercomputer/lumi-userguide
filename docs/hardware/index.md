@@ -3,7 +3,7 @@
 [lumi-c]: ../hardware/lumic.md
 [lumi-g]: ../hardware/lumig.md
 [lumi-d]: ../hardware/lumid.md
-[lumi-interconnect]: ../hardware/network.md
+[network]: ../hardware/network.md
 [lumi-top500]: https://www.top500.org/system/180048/
 
 ---
