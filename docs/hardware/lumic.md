@@ -1,8 +1,8 @@
 # CPU nodes - LUMI-C
 
-[storage]: ../../runjobs/lumi_env/storing-data.md
-[interconnect]: ../../hardware/interconnect.md
-[slurm-partitions]: ../../runjobs/scheduled-jobs/partitions.md
+[storage]: ../storage/index.md
+[interconnect]: network.md
+[slurm-partitions]: ../runjobs/scheduled-jobs/partitions.md
 [zen3-wiki]: https://en.wikipedia.org/wiki/Zen_3
 
 The LUMI-C hardware partition consists of 1536 CPU based compute nodes with an

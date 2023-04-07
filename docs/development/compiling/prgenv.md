@@ -17,9 +17,9 @@
 [libraries]: ../../development/libraries/cray-libraries.md
 [cce]: cce.md
 [gnu]: gnu.md
-[lumi-c]: ../../hardware/compute/lumic.md
-[lumi-d]: ../../hardware/compute/lumid.md
-[lumi-g]: ../../hardware/compute/lumig.md
+[lumi-c]: ../../hardware/lumic.md
+[lumi-d]: ../../hardware/lumid.md
+[lumi-g]: ../../hardware/lumig.md
 [eap]: ../../hardware/compute/eap.md
 
 This page will give you an overview of the Cray programming environment that is
@@ -448,8 +448,7 @@ automatically add the appropriate flags for OpenMP offloading.
 ## Compile an OpenACC application
 
 At the moment, the only compiler that supports OpenACC compilation on LUMI is the
-Cray Fortran compiler. OpenACC is enabled by default or using the `-hacc` flag 
-(`-hnoacc` to disable).
+Cray Fortran compiler. OpenACC can enabled by the `-hacc` flag.
 
 ```
 module load PrgEnv-cray
