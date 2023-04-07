@@ -16,7 +16,7 @@ a single AMD EPYC "Trento" CPU.
 
 <figure>
   <img 
-    src="../../../assets/images/lumig-overview.svg" 
+    src="../../assets/images/lumig-overview.svg" 
     width="800"
     alt="LUMI-G overview"
   >
@@ -55,7 +55,7 @@ topology of the CPU-GPU and GPU-GPU links.
 
 <figure>
   <img 
-    src="../../../assets/images/lumig-node-overview.svg" 
+    src="../../assets/images/lumig-node-overview.svg" 
     width="990"
     alt="LUMI-G compute node overview"
   >
@@ -76,7 +76,7 @@ illustrates these links from both the CPU and GPU perspectives.
 
 <figure>
   <img 
-    src="../../../assets/images/lumig-cpu-gpu-links.svg" 
+    src="../../assets/images/lumig-cpu-gpu-links.svg" 
     width="900"
     alt="LUMI-G CPU-GPU links"
   >
@@ -106,7 +106,7 @@ atomic operations executed close to the memory in the L2 cache.
 
 <figure>
   <img 
-    src="../../../assets/images/mi250x-gcd.svg" 
+    src="../../assets/images/mi250x-gcd.svg" 
     width="800"
     alt="MI250x Graphics Compute Die (GCD)"
   >
@@ -139,7 +139,7 @@ The figure below present a schematic view of a MI250x compute unit.
 
 <figure>
   <img 
-    src="../../../assets/images/mi250x-compute-unit.svg" 
+    src="../../assets/images/mi250x-compute-unit.svg" 
     width="800"
     alt="MI250x Compute Unit (CU)"
   >

@@ -34,7 +34,7 @@ of L2 cache.
 
 <figure>
   <img 
-    src="../../../assets/images/milan-overview.svg" 
+    src="../../assets/images/milan-overview.svg" 
     width="560"
     alt="Overview of an AMD EPYC 7763 CPU"
   >
@@ -61,7 +61,7 @@ distances between the NUMA nodes.
 <figure>
   <img 
     align="left" 
-    src="../../../assets/images/numa-lumic.svg" 
+    src="../../assets/images/numa-lumic.svg" 
     width="400"
     alt="Distances between NUMA nodes"
   >
