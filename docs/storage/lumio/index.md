@@ -10,7 +10,7 @@ and staging of data.
 In an object-based storage, data is managed as objects instead of being
 organized as files in a directory hierarchy.
 
-Within your object storage project space you can create buckets. These buckets
+Within your object storage project space, you can create buckets. These buckets
 will store objects with metadata associated to these objects.
 
 - **Buckets**: Containers used to store one or more objects.
@@ -18,7 +18,7 @@ will store objects with metadata associated to these objects.
   one level which means that buckets cannot contain other buckets.
 - **Objects**: Any type of data. An object is stored in a bucket.
 - **Metadata**: Both buckets and objects have metadata specific to them. The 
-  metadata of a bucket specifies e.g. the access rights to the bucket. While
+  metadata of a bucket specifies e.g., the access rights to the bucket. While
   traditional file systems have fixed metadata (filename, creation date, type,
   etc.), an object storage allows you to add custom metadata.
 
@@ -41,14 +41,14 @@ lumio-conf
 
 This command asks you to connect with your browser to the [LUMI-O credentials
 management service](auth-lumidata-eu.md), create credentials there and the copy
-the project nunber and keys for the setup tool, for authentication use
+the project number and keys for the setup tool, for authentication use
 **MyAccessID**. The setup process will create configuration files for `s3cmd`
 and `rclone`.
 
-For a step by step description, read the [Creating LUMI-O
+For a step-by-step description, read the [Creating LUMI-O
 credentials](auth-lumidata-eu.md) instructions.
 
-Using the [LUMI-O credentials management service](auth-lumidata-eu.md) you can
+Using the [LUMI-O credentials management service,](auth-lumidata-eu.md) you can
 also generate configuration for different object storage clients like shell,
 boto3, rlcone, s3cmd and aws. This is useful for using LUMI-O from somewhere
 else than LUMI, where the `lumio-conf` command is not available (The tool can be
@@ -87,14 +87,14 @@ The most common commands for `s3cmd` and `rclone` to
 
 For `rclone`, the LUMI-O configuration provides two remotes endpoints: 
 
-- **lumi-o**: The private endpoint. The buckets and objects uploded to this
+- **lumi-o**: The private endpoint. The buckets and objects uploaded to this
               endpoint will not be publicly accessible.
-- **lumi-pub**: The public endpoint. The buckets and objects uploded to this
+- **lumi-pub**: The public endpoint. The buckets and objects uploaded to this
                 endpoint will publicly accessible using the URL:
                 ```
                 https://<project-number>.lumidata.eu/<bucket_name>`
                 ```
-                Be carefull to not upload data that cannot be public to this
+                Be careful to not upload data that cannot be public to this
                 endpoint.
 
 
@@ -169,7 +169,8 @@ s3cmd -h
 
 ### restic
 
-`restic` is a slightly different from `rclone` and `s3cmd` and is mainly used for doing backups. 
+`restic` is a slightly different from `rclone` and `s3cmd` and is mainly used
+for doing backups. 
 
 **Setup the restic repository**
 
@@ -179,9 +180,9 @@ $ export AWS_SECRET_ACCESS_KEY=<MY_SECRET_ACCESS_KEY>
 $ restic -r s3:https://lumidata.eu/<bucket> init
 ```
 
-After this we can run commands like `restic restore` and `restic backup`. 
-the  `-r` flag with the correct bucket and the KEY environment variables are always needed
-when running `restic` commands.
+After this we can run commands like `restic restore` and `restic backup`. the
+`-r` flag with the correct bucket and the KEY environment variables are always
+needed when running `restic` commands.
 
 For more information see the [Restic documentation](https://restic.readthedocs.io/en/stable/index.html)
 
