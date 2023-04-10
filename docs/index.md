@@ -55,16 +55,16 @@ hide:
     ---
 
     [:octicons-arrow-right-24: Data storage options](storage/index.md)<br>
-    [:octicons-arrow-right-24: Using Lustre efficiently](storage/parallel-filesystems/lumip.md)<br>
+    [:octicons-arrow-right-24: Using Lustre efficiently](storage/parallel-filesystems/lustre.md)<br>
     [:octicons-arrow-right-24: Object storage](storage/lumio/index.md)
 
 -   **Software**
 
     ---
 
-    [:octicons-arrow-right-24: The software stacks](#)<br>
-    [:octicons-arrow-right-24: Installing software using EasyBuild](#)<br>
-    [:octicons-arrow-right-24: Spack on LUMI](#)
+    [:octicons-arrow-right-24: The software stacks](runjobs/lumi_env/softwarestacks.md)<br>
+    [:octicons-arrow-right-24: Installing software using EasyBuild](software/installing/easybuild.md)<br>
+    [:octicons-arrow-right-24: Spack on LUMI](software/installing/spack.md)
 
 -   **Programming Environments**
 
