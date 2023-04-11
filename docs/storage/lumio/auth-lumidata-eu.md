@@ -1,8 +1,8 @@
 # Create LUMI-O credentials
 
-[auth.lumisade.eu]: https://auth.lumisade.eu
+[auth.lumidata.eu]: https://auth.lumidata.eu
 
-Go to [LUMI-O credentials management service page][auth.lumisade.eu]. And click
+Go to [LUMI-O credentials management service page][auth.lumidata.eu]. And click
 on "-> Go to login".
 
 <figure>
