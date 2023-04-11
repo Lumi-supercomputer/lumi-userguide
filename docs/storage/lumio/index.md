@@ -69,9 +69,9 @@ The most common commands for `s3cmd` and `rclone` to
     |--------------------------------------------|--------------------------------------|
     | List buckets                               | `rclone lsd lumi-o:`                 |
     | Create bucket *mybuck*                     | `rclone mkdir lumi-o:mybuck`         |
-    | List objects in bucket *mybuck*            | `rclone copy file1 lumi-o:mybuck/`   |
+    | List objects in bucket *mybuck*            | `rclone ls lumi-o:mybuck/`           |
     | Upload file *file1* to bucket *mybuck*     | `rclone copy file1 lumi-o:mybuck/`   |
-    | Download file *file1* from bucket *mybuck* | `rclone copy lumi-o:mybuck/file1 .` |
+    | Download file *file1* from bucket *mybuck* | `rclone copy lumi-o:mybuck/file1 .`  |
 
 === "s3cmd"
 
