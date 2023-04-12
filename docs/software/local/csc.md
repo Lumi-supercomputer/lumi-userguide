@@ -13,9 +13,13 @@ module use /appl/local/csc/modulefiles
 Available software:
 
 * Amber
+* CP2K
 * Elmer
+* GROMACS
+* JAX
 * OpenFOAM
 * PALM
+* PLUMED
 * PyTorch
 * TensorFlow
 
