@@ -32,6 +32,7 @@ nav:
         - Slurm quickstart: runjobs/scheduled-jobs/slurm-quickstart.md
         - Slurm partitions: runjobs/scheduled-jobs/partitions.md
         - Batch jobs: runjobs/scheduled-jobs/batch-job.md
+        - Full machine runs: runjobs/scheduled-jobs/hero-runs.md
         - GPU examples: runjobs/scheduled-jobs/lumig-job.md
         - CPU examples: runjobs/scheduled-jobs/lumic-job.md
         - Distribution and binding: runjobs/scheduled-jobs/distribution-binding.md
