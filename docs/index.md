@@ -38,8 +38,8 @@ hide:
 
     ---
 
-    [:octicons-arrow-right-24: CPU partition](hardware/lumig.md)<br>
-    [:octicons-arrow-right-24: GPU partition](hardware/lumic.md)<br>
+    [:octicons-arrow-right-24: GPU partition](hardware/lumig.md)<br>
+    [:octicons-arrow-right-24: CPU partition](hardware/lumic.md)<br>
     [:octicons-arrow-right-24: Visualization partition](hardware/lumid.md)
 
 -   **Submitting a Job**
