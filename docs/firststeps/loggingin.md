@@ -44,6 +44,7 @@ matches one of these.
 |--------- --|----------------------------------------------------------|
 | ED25519    | `SHA256:qCFZThjRw8nf0CiZ9rU7b6Zirjq8slAIl5r0xWaVoD0`     |
 | RSA        | `SHA256:ypbqdMWtk9ZdXEROkeEpv+3PCEXWjPLGI79IXGHe9ac`     |
+| ECDSA      | `SHA256:hY4mnRCYb8bRchTnVcFo7SqoHHHEsUh9Ym38F4sHN1Y`     |
 
 ## Troubleshooting
 
