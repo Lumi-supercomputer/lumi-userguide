@@ -12,8 +12,9 @@
 Running jobs on the compute nodes and storing data in storage space will consume
 the billing units allocated to your project:
 
-- Compute is billed in units of CPU-core-hours for CPU nodes and GPU-hours for
-  GPU nodes.
+- Compute is billed in units of CPU-core-hours for CPU nodes and GPU-hours for GPU nodes.
+- The smallest time unit of billing is one second. This is reflected by the `ElapsedRaw` field in `sacct` and `sreport`.
+
 - Storage space is billed in units of TB-hours.
 
 ## How to check your billing units
@@ -106,7 +107,7 @@ Allocating 4 CPU-cores and 32GB of memory in a job running for 1 day consumes:
 
 For the `standard-g` Slurm partition, the billing formula is:
 ```text
-GPU-core-hours-billed = 4 * runtime-of-job
+GPU-hours-billed = 4 * runtime-of-job
 ```
 
 ### GPU Slurm partition billing details
@@ -115,7 +116,7 @@ GPU-core-hours-billed = 4 * runtime-of-job
 
 For the `small-g` and `dev-g` Slurm partitions, the billing formula is:
 ```text
-GPU-core-hours-billed = (
+GPU-hours-billed = (
     max(
         ceil(CPU-cores-allocated/8),
         ceil(memory-allocated / 64GB),
