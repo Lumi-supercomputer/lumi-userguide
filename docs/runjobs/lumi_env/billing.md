@@ -32,6 +32,7 @@ A description of how the jobs are billed is provided in the next sections.
 
 Compute is billed whenever you submit a job to the [Slurm job
 scheduler][slurm-quickstart].
+For compute billing there is [CPU billing][cpu-billing] and [GPU billing][gpu-billing] to consider.
 
 ### CPU billing
 
@@ -48,11 +49,11 @@ For example, allocating 32 CPU cores in a job running for 2 hours consumes:
 32 CPU-cores x 2 hours = 64 CPU-core-hours
 ```
 
-### Slurm partition billing details
+### CPU Slurm partition billing details
 
 For some [Slurm partitions][slurm-partitions] special billing rules apply.
 
-#### Standard and bench Slurm partitions
+#### CPU Standard and bench Slurm partitions
 
 The `standard` and `bench` Slurm partitions are operated in exclusive mode: the
 entire node will always be allocated. Thus, 128 CPU-core-hours are billed for
@@ -65,7 +66,7 @@ For example, allocating 16 nodes in a job running for 12 hours consumes:
 16 nodes x 128 CPU-cores/node x 12 hours = 24576 CPU-core-hours
 ```
 
-#### Small Slurm partition
+#### CPU Small Slurm partition
 
 When using the small Slurm partition you are billed per allocated core.
 However, if you are above a certain threshold of memory allocated per core,
@@ -97,6 +98,22 @@ Allocating 4 CPU-cores and 32GB of memory in a job running for 1 day consumes:
 
 ```text
 (32GB / 2GB) CPU-cores x 24 hours = 384 CPU-core-hours
+```
+
+### GPU billing
+
+For the `standard-g` Slurm partition, the billing formula is:
+```text
+GPU-core-hours-billed = 4 * runtime-of-job
+```
+
+### GPU Slurm partition billing details
+
+#### GPU Small and Dev Slurm partition
+
+For the `small-g` and `dev-g` Slurm partitions, the billing formula is:
+```text
+GPU-core-hours-billed = (max( ceil(CPU-cores-allocated/8), ceil(memory-allocated / 64GB), GCDs-llocated ) * runtime-of-job) * 0.5
 ```
 
 ## Storage billing
