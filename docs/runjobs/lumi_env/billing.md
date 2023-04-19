@@ -1,5 +1,3 @@
-[cpu-billing]: #cpu-billing
-[gpu-billing]: #gpu-billing
 [lumi-c]: ../../hardware/lumic.md
 [lumi-f]: ../../storage/parallel-filesystems/lumif.md
 [lumi-p]: ../../storage/parallel-filesystems/lumip.md
@@ -13,8 +11,6 @@ Running jobs on the compute nodes and storing data in storage space will consume
 the billing units allocated to your project:
 
 - Compute is billed in units of CPU-core-hours for CPU nodes and GPU-hours for GPU nodes.
-- The smallest time unit of billing is one second. This is reflected by the `ElapsedRaw` field in `sacct` and `sreport`.
-
 - Storage space is billed in units of TB-hours.
 
 ## How to check your billing units
@@ -33,9 +29,7 @@ A description of how the jobs are billed is provided in the next sections.
 
 ## Compute billing
 
-Compute is billed whenever you submit a job to the [Slurm job
-scheduler][slurm-quickstart].
-For compute billing there is [CPU billing][cpu-billing] and [GPU billing][gpu-billing] to consider.
+Compute is billed whenever you submit a job to the [Slurm job scheduler][slurm-quickstart].
 
 ### CPU billing
 
@@ -71,7 +65,7 @@ For example, allocating 16 nodes in a job running for 12 hours consumes:
 
 #### CPU Small Slurm partition
 
-When using the small Slurm partition you are billed per allocated core.
+When using the `small` Slurm partition you are billed per allocated core.
 However, if you are above a certain threshold of memory allocated per core,
 i.e. you use the high memory nodes in [LUMI-C][lumi-c], you are billed per
 slice of 2GB memory (which is still billed in units of CPU-core-hours).
@@ -105,23 +99,52 @@ Allocating 4 CPU-cores and 32GB of memory in a job running for 1 day consumes:
 
 ### GPU billing
 
-For the `standard-g` Slurm partition, the billing formula is:
+For GPU compute, your project is allocated GPU-core-hours that are consumed
+when running jobs on the GPU nodes. A GPU hours corresponds to the allocation
+of a full MI250x module (2 GCDs) for one hour.
+
+For the `standard-g` partition, where full nodes are allocated, the 4 GPUs
+modules are billed
+
 ```text
 GPU-hours-billed = 4 * runtime-of-job
 ```
 
-### GPU Slurm partition billing details
+i.e., one node hours correspond to 4 GPU-hours. If you allocate 4 nodes in the
+`standard-g` partition and that your job runs for 24 hours, you will consume
 
-#### GPU Small and Dev Slurm partition
+```text
+4 * 4 * 24 = 384 GPU-hours
+```
 
-For the `small-g` and `dev-g` Slurm partitions, the billing formula is:
+For the `small-g` and `dev-g` Slurm partitions, where allocation can be done at 
+the level of Graphics Compute Dies (GCD), you will be billed at a 0.5 rate per
+GCD allocated. However, if you allocate more than 8 CPU cores or more than 64 GB
+of memory per GCD you will be billed per slice of 8 cores or 64 GB of memory.
+
+The billing formula is:
+
 ```text
 GPU-hours-billed = (
     max(
-        ceil(CPU-cores-allocated/8),
+        ceil(CPU-cores-allocated / 8),
         ceil(memory-allocated / 64GB),
-        GCDs-llocated )
+        GCDs-allocated )
     * runtime-of-job) * 0.5
+```
+
+For example, for a job allocating 2 GCDs and running for 24 hours, you will 
+consume
+
+```text
+(2 * 24 ) * 0.5 = 24 GPU-hours
+```
+
+If you allocate 1 GCD for 24 hours but allocate 128 GB of memory, then you will
+be billed for this memory:
+
+```
+ceil(128 / 64) * 24 * 0.5 = 24 GPU-hours
 ```
 
 ## Storage billing
