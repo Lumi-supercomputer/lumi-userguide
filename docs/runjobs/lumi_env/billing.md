@@ -1,3 +1,5 @@
+[cpu-billing]: #cpu-billing
+[gpu-billing]: #gpu-billing
 [lumi-c]: ../../hardware/lumic.md
 [lumi-f]: ../../storage/parallel-filesystems/lumif.md
 [lumi-p]: ../../storage/parallel-filesystems/lumip.md
