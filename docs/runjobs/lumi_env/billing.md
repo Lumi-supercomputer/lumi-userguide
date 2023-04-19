@@ -115,7 +115,12 @@ GPU-core-hours-billed = 4 * runtime-of-job
 
 For the `small-g` and `dev-g` Slurm partitions, the billing formula is:
 ```text
-GPU-core-hours-billed = (max( ceil(CPU-cores-allocated/8), ceil(memory-allocated / 64GB), GCDs-llocated ) * runtime-of-job) * 0.5
+GPU-core-hours-billed = (
+    max(
+        ceil(CPU-cores-allocated/8),
+        ceil(memory-allocated / 64GB),
+        GCDs-llocated )
+    * runtime-of-job) * 0.5
 ```
 
 ## Storage billing
