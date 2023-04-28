@@ -39,8 +39,7 @@ accessing the object storage.
 </figure>
 
 !!! warning
-	The **Usage** column does not display correct data as the feature is still a
-  work in progress 
+	The **Usage** column does not display correct data as the feature is still being implemented 
 
 
 To create an authentication access key pair. Open up the side menu from the
