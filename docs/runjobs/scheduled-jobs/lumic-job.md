@@ -61,8 +61,8 @@ LUMI-C `standard` partition.
 #SBATCH --output=examplejob.o%j # Name of stdout output file
 #SBATCH --error=examplejob.e%j  # Name of stderr error file
 #SBATCH --partition=standard    # Partition (queue) name
-#SBATCH --nodes=50              # Total number of nodes 
-#SBATCH --ntasks=6400           # Total number of mpi tasks
+#SBATCH --nodes=2               # Total number of nodes 
+#SBATCH --ntasks=256            # Total number of mpi tasks
 #SBATCH --mem=0                 # Allocate all the memory on the node
 #SBATCH --time=1-12:00:00       # Run time (d-hh:mm:ss)
 #SBATCH --mail-type=all         # Send email at begin and end of job
@@ -87,7 +87,7 @@ LUMI-C `standard` partition.
 #SBATCH --output=examplejob.o%j # Name of stdout output file
 #SBATCH --error=examplejob.e%j  # Name of stderr error file
 #SBATCH --partition=standard    # Partition (queue) name
-#SBATCH --nodes=50              # Total number of nodes 
+#SBATCH --nodes=2               # Total number of nodes 
 #SBATCH --ntasks-per-node=16    # Number of mpi tasks per node
 #SBATCH --cpus-per-task=8       # Number of cores (threads) per task
 #SBATCH --time=1-12:00:00       # Run time (d-hh:mm:ss)
