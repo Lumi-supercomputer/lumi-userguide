@@ -8,13 +8,16 @@
     reserve 1 core to the operating system. As a consequence only 63 cores
     are available to the jobs. Jobs requesting 64 cores/node will never run.
 
-## MPI-based job
-
 !!! note "GPU Binding"
 
     It is recommended to read the section about [GPU Binding][gpu-binding] for
     more details about the motivation for the binding exemplified is this
-    section.
+    section. Binding only applies if you have a full-node allocation. This is
+    the case if you submit to the `standard` and `standard-g` partitions. For
+    other partitions, it will apply if you use the `--exclusive` sbatch 
+    directive.
+
+## MPI-based job
 
 Below, a job script to launch an application with one MPI rank per GPU (GCD). 
 
@@ -58,12 +61,6 @@ rm -rf ./select_gpu
 ```
 
 ## Hybrid MPI+OpenMP job
-
-!!! note "GPU Binding"
-
-    It is recommended to read the section about [GPU Binding][gpu-binding] for
-    more details about the motivation for the binding exemplified is this
-    section.
 
 Below, a job script to launch an application with one MPI ranks and 6 threads
 per GPU (GCD).

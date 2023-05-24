@@ -3,6 +3,13 @@
 This section is a deep dive into the advanced topic of binding and distributing
 tasks via Slurm on LUMI.
 
+!!! Warning "For full node allocation only"
+
+    This section of the documentation only applies if you have a full-node 
+    allocation. This is the case if you submit to the `standard` and `standard-g`
+    partitions. For other partitions, it will apply if you use the `--exclusive`
+    sbatch directive.
+
 ## Background
 
 [distribution]: #distribution
