@@ -57,7 +57,7 @@ support the tool on LUMI)
 
 ## Tools to transfer data
 
-The `lumi-o` module provides some pre-installed tools to interact with LUMI-O:
+The `lumio` module provides some pre-installed tools to interact with LUMI-O:
 `rclone`, `s3cmd` and `restic` This is not a comprehensive documentation of
 these tools, for that you can refer to the official documentation for the tools. 
 
