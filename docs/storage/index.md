@@ -135,7 +135,7 @@ The `/tmp` directory on the compute nodes resides in memory. The memory used
 for `/tmp` is included in the job memory allocation. If you use `/tmp`, you
 must allocate memory for it in order to avoid running out of memory.
 
-Data storage on LUMI is provided by the [LUMI-P][lumi-p] parallel file system
-hardware partition, the [LUMI-F][lumi-f] flash based parallel file system
-hardware partition, and the [LUMI-O][lumi-o] object storage hardware partition
+Data storage on LUMI is provided by the [LUMI-P][lumip] parallel file system
+hardware partition, the [LUMI-F][lumif] flash based parallel file system
+hardware partition, and the [LUMI-O][lumio] object storage hardware partition
 for a total of 117 PB of storage space.
