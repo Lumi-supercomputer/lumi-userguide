@@ -15,12 +15,17 @@ Available software:
 * Amber
 * CP2K
 * Elmer
+* GDAL
+* GRASS GIS
 * GROMACS
 * JAX
 * OpenFOAM
 * PALM
+* PDAL
 * PLUMED
 * PyTorch
+* QGIS
+* SAGA GIS
 * TensorFlow
 
 See more details in [Docs CSC](https://docs.csc.fi/apps/by_system/#lumi).
