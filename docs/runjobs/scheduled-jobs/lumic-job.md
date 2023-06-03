@@ -13,7 +13,7 @@ use these as templates for your own project batch scripts.
     - If you submit to the `standard` partition, were the node are in exclusive
       mode we recommend to use the `--mem=0` option, i.e., all  the memory on 
       the node.
-    - If you use the small partition, we recommend you use `--mem-per-cpu=1750`
+    - If you use the small partition, we recommend you to use `--mem-per-cpu=1750`
       or a lower value. If you request more than 2GB/core then you will be 
       billed for the memory according to the [billing policy][billing].
     
@@ -49,10 +49,10 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 !!! Failure "Fortan MPI program fails to start"
     If a Fortran based program with MPI fails to start when utilizing a large
     number of nodes (512 nodes for instance), add
-    `export PMI_NO_PREINITIALIZE=y` to your batch script.  
+    `export PMI_NO_PREINITIALIZE=y` to your batch script before running `srun`.  
 
-Below is an example job script for 50 nodes run of a MPI application running 
-128 ranks per node, i.e., 6400 ranks total. This job will be submitted to the 
+Below is an example job script for a 2 nodes run of an MPI application running 
+128 ranks per node, i.e., 256 ranks in total. This job will be submitted to the 
 LUMI-C `standard` partition.
 
 ```bash
@@ -63,13 +63,13 @@ LUMI-C `standard` partition.
 #SBATCH --partition=standard    # Partition (queue) name
 #SBATCH --nodes=2               # Total number of nodes 
 #SBATCH --ntasks=256            # Total number of mpi tasks
-#SBATCH --mem=0                 # Allocate all the memory on the node
+#SBATCH --mem=0                 # Allocate all the memory on each node
 #SBATCH --time=1-12:00:00       # Run time (d-hh:mm:ss)
 #SBATCH --mail-type=all         # Send email at begin and end of job
 #SBATCH --account=project_<id>  # Project for billing
 #SBATCH --mail-user=username@domain.com
 
-# Any other commands must follow the #SBATCH directives
+# All commands must follow the #SBATCH directives
 
 # Launch MPI code 
 srun ./your_application # Use srun instead of mpirun or mpiexec
@@ -77,8 +77,9 @@ srun ./your_application # Use srun instead of mpirun or mpiexec
 
 ## Hybrid MPI+OpenMP jobs
 
-Below is an example job script for 50 nodes run of a MPI application running 
-16 ranks per node. Each rank use 8 threads. This job will be submitted to the 
+Below is an example job script for a 2 nodes run of an MPI application running 
+16 ranks per node, i.e., 32 ranks in total. Each rank uses 8 threads, i.e., the
+job will run 256 threads in total. This job will be submitted to the 
 LUMI-C `standard` partition.
 
 ```bash
@@ -95,7 +96,7 @@ LUMI-C `standard` partition.
 #SBATCH --account=project_<id>  # Project for billing
 #SBATCH --mail-user=username@domain.com
 
-# Any other commands must follow the #SBATCH directives
+# All commands must follow the #SBATCH directives
 
 # Set the number of threads based on --cpus-per-task
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
@@ -106,7 +107,7 @@ srun ./your_application # Use srun instead of mpirun or mpiexec
 
 ## Serial Job
 
-Below is an example job script for a serial application. It requests 1 tasks in
+Below is an example job script for a serial application. It requests 1 task in
 the LUMI-C `small` partition and thus will be allocated 1 core.
 
 ```bash
@@ -118,7 +119,7 @@ the LUMI-C `small` partition and thus will be allocated 1 core.
 #SBATCH --ntasks=1              # One task (process)
 #SBATCH --time=00:15:00         # Run time (hh:mm:ss)
 #SBATCH --mail-type=all         # Send email at begin and end of job
-#SBATCH --account=project_id    # Project ID
+#SBATCH --account=project_<id>  # Project for billing
 #SBATCH --mail-user=username@domain.com
  
 ./your_application
