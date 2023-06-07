@@ -18,7 +18,7 @@ hide:
     You have not connected to LUMI yet? Please visit the first steps section to
     learn how to setup an SSH key.
 
-    [:octicons-arrow-right-24: First steps](firststeps/getstarted.md)
+    [:octicons-arrow-right-24: First steps](firststeps/index.md)
 
 -  
 

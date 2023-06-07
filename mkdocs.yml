@@ -9,7 +9,7 @@ nav:
   - Home: 
     - Welcome: index.md
   - First steps: 
-    - Get Started: firststeps/getstarted.md
+    - Get Started: firststeps/index.md
     - Access to LUMI: firststeps/accessLUMI.md
     - Setting up SSH key pair: firststeps/SSH-keys.md
     - Logging in (with SSH client): firststeps/loggingin.md
@@ -165,4 +165,5 @@ plugins:
   - redirects:
       redirect_maps:
         'computing/Lmod_modules.md': 'runjobs/lumi_env/Lmod_modules.md'
+        'firststeps/getstarted.md': 'firststeps/index.md'
   - search
