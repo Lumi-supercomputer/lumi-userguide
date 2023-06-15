@@ -100,3 +100,7 @@ Packages with considerable extra information in the LUMI software library:
 -   [QuantumESPRESSO](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/q/QuantumESPRESSO/)
 -   [VASP](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/v/VASP/)
 
+## Local software collections 
+
+There are also [software collections available on LUMI that are installed by local LUMI organizations](https://docs.lumi-supercomputer.eu/software/local/csc/). These software are available for all LUMI users. The software are updated and supported by the local LUMI organizations themselves, not by LUST.
+
