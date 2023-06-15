@@ -22,7 +22,7 @@
 [lumi-g]: ../../hardware/lumig.md
 [eap]: ../../hardware/compute/eap.md
 
-This page will give you an overview of the Cray programming environment that is
+This page will give you an overview of the [Cray programming environment](https://cpe.ext.hpe.com/docs/) that is
 available on LUMI. It starts with a presentation of the [compiler suites][1]
 and [compiler wrappers][2] that you can use to compile your C, C++ or Fortran
 code. Finally, some basic information on how to compile an [MPI][3] or
