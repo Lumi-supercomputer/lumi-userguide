@@ -111,7 +111,7 @@ modules that can be used to change the way the module tree is displayed:
 
 ### CrayEnv
 
-Loading `CrayEnv` will essentially give you the default Cray environment
+Loading `CrayEnv` will essentially give you the default [Cray environment](https://cpe.ext.hpe.com/docs/#hpe-cray-user-environment)
 enriched with several additional tools. The `CrayEnv` module will try to detect
 the node type of LUMI it is running on and load an appropriate set of target
 architecture modules to configure the Cray PE (see the documentation page on
