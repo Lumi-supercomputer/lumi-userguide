@@ -9,7 +9,7 @@
 [doc-openblas]: https://github.com/xianyi/OpenBLAS/wiki/User-Manual
 [doc-blis]: https://github.com/flame/blis/wiki
 
-For libraries that are available as a modules prefixed by `cray-`, the compiler
+For the [Cray libraries](https://cpe.ext.hpe.com/docs/#hpe-cray-scientific-and-math-libraries) that are available as a modules prefixed by `cray-`, the compiler
 wrappers will automatically take care of adding the search paths for the
 include files and the libraries and provide the linker with the appropriate
 options. This means that, as a user, you don't need to provide such information
