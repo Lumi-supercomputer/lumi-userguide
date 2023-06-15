@@ -1,7 +1,7 @@
 # Parallel debugging
 
 [gdb]: https://www.gnu.org/software/gdb/
-[gdb-manual]: https://sourceware.org/gdb/current/onlinedocs/gdb/
+[gdb-manual]: https://sourceware.org/gdb/current/onlinedocs/gdb.html/
 
 gdb4hpc is a [GDB-based][gdb] parallel debugger used to debug applications. It
 allows programmers to either launch an application or attach to an
