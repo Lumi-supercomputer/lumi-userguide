@@ -10,6 +10,7 @@ already-running application.
 This page is not a GDB tutorial, but simply an explanation on how to launch
 your application with the debugger or attach the debugger to your application.
 If you want to know more about GBD, see its [manual][gdb-manual].
+See also the page in Cray documentation about [debugging tools in Cray Programming Environment](https://cpe.ext.hpe.com/docs/#debugging-tools).
 
 !!! note
     In order to efficiently debug your application, it's recommended to compile
