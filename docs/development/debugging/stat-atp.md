@@ -9,6 +9,7 @@ diagnose a program that hangs. In the following, two tools are presented: the
 Processing][2] (ATP). Both tools rely on the analysis of the stack backtrace to
 determine where the application is stalled or view where the application was at
 the time of the crash.
+See also the Cray documentation page about [debugging tools in Cray Programming Environment](https://cpe.ext.hpe.com/docs/#debugging-tools).
 
 ## STAT: The Stack Trace Analysis Tool
 
