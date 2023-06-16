@@ -5,7 +5,7 @@
 
 [wrappers]: ../../development/compiling/prgenv.md#compiler-wrappers
 
-The Cray Compiling Environment (CCE) provides the Cray Fortran and Cray C/C++
+[The Cray Compiling Environment (CCE)](https://cpe.ext.hpe.com/docs/#hpe-cray-compiling-environment) provides the Cray Fortran and Cray C/C++
 compilers. The Cray Fortran compiler supports the Fortran 2018 standard while
 the C/C++ compiler is C17 and C++17 compliant. Invoking these compilers is done
 through the `ftn`, `cc` and `CC` [compilers wrappers][wrappers].
