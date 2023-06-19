@@ -1,5 +1,9 @@
 # Full machine runs
 
+!!! warning "No full machine runs in July and August"
+
+    They will be no large-scale runs during the summer months of July and August      due to the difficulty to schedules such large scale runs with reduced      personnel.
+
 We provide the opportunity to perform runs on the entirety of LUMI the last
 Sunday every month (subject to change over time). This can either be all the CPU
 nodes, all GPU nodes or even a combination of CPU and GPU nodes if needed. For
