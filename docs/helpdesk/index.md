@@ -66,6 +66,12 @@ The LUMI helpdesk is open Monday to Friday:
 
 <br />
 
+
+Exception to the LUMI Helpdesk opening hours are the [Finnish bank holidays](https://www.suomenpankki.fi/en/money-and-payments/bank-holidays/), during which LUMI Helpdesk is closed. 
+
+
+
+
 <!-- Please also check our [tech support FAQ][tech-faq] for the most frequently asked questions about the usage of LUMI.  -->
 
 <!-- Check here for [LUMI related training and events](https://www.lumi-supercomputer.eu/events/) -->
