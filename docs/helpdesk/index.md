@@ -56,7 +56,7 @@ contact us. You may find our contact forms for different issues by clicking the
 </html> 
 
 
-The LUMI helpdesk is open Monday to Friday:
+The LUMI helpdesk is open every weekday from Monday to Friday except during [Finnish bank holidays](https://www.suomenpankki.fi/en/money-and-payments/bank-holidays/):
 
 |       | CE(S)T  | EE(S)T  | UTC (Summer)      |
 |-------|---------|---------|-------------------|
@@ -65,11 +65,6 @@ The LUMI helpdesk is open Monday to Friday:
 
 
 <br />
-
-
-Exception to the LUMI Helpdesk opening hours are the [Finnish bank holidays](https://www.suomenpankki.fi/en/money-and-payments/bank-holidays/), during which LUMI Helpdesk is closed. 
-
-
 
 
 <!-- Please also check our [tech support FAQ][tech-faq] for the most frequently asked questions about the usage of LUMI.  -->
