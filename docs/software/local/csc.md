@@ -19,6 +19,7 @@ Available software:
 * GRASS GIS
 * GROMACS
 * JAX
+* Julia
 * OpenFOAM
 * PALM
 * PDAL
