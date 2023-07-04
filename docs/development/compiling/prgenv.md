@@ -371,7 +371,7 @@ loaded.
 === "PrgEnv-cray"
 
     ```
-    module load module load PrgEnv-cray
+    module load PrgEnv-cray
     module load craype-accel-amd-gfx90a
     module load rocm
     ```
@@ -379,7 +379,7 @@ loaded.
 === "PrgEnv-amd"
 
     ```
-    module load module load PrgEnv-amd
+    module load PrgEnv-amd
     module load craype-accel-amd-gfx90a
     module load rocm
     ```
