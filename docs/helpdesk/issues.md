@@ -29,6 +29,7 @@ Some nodes of standard partition are leaking memory over time. A fix to detect t
 ## Job crashes becasue of a faulty node
 
 When you run into an issue with a job crash on LUMI that you suspect is caused by a faulty node:
+
 - Check whether the node health check procedure has caught the crash and drained the node with the command:
   ```
   sinfo -R --nodes=$(sacct -n -j <jobid> --format=nodelist --json | jq -r ".jobs[0].steps[1].nodes.list | .[]" | paste -sd ',')
