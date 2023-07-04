@@ -24,6 +24,6 @@ To avoid job startup failures with `[unset]:_pmi_set_af_in_use:PMI ERROR`, add
 
 ## Job out-of-memory issues in `standard` partition
 
-Some nodes of standard partition have been losing memory over time. A fix to detect these nodes (to restart/clean them) is on its way, but meanwhile one can use a workaround to specify the memory required per node close to the theoretical max value of memory of the nodes. Use e.g. `--mem=225G` in your slurm script.
+Some nodes of standard partition are losing memory over time. A fix to detect these nodes (to restart/clean them) is on its way, but meanwhile one can use a workaround to specify the memory required per node to something that should be available. Use e.g. `--mem=225G` in your slurm script.
 
 
