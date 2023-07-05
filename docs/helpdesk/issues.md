@@ -28,7 +28,9 @@ Some nodes of standard partition are leaking memory over time. A fix to detect t
 
 ## Job crashes becasue of a faulty node
 
-When you run into an issue with a job crash on LUMI that you suspect is caused by a faulty node:
+_When you run into an issue that a job crash on LUMI could have caused by a faulty node, please don't forget first to question your code and the libraries that it uses. Out-of-memory messages do not always result from a system error. Also, note that segmentation violations are usually application or library errors that will not be solved by rebooting a node._
+
+If you suspect that the job has crashed because of a faulty node:
 
 - Check whether the node health check procedure has caught the crash and drained the node with the command:
   ```
