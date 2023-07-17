@@ -1,5 +1,6 @@
 # Daily management
 
+
 On LUMI the following commands are available to check information of your project allocations and quota:
 
 
@@ -11,6 +12,7 @@ Usage:
 ```
 lumi-workspaces
 ```
+
 
 ## lumi-quota
 
@@ -31,6 +33,7 @@ Detailed output, including soft and hard quota (columns Quota and Limit respecti
 lumi-quota -v
 ```
 
+
 ## lumi-allocations
 
 Shows active allocations and remaining billing units of your projects. The information from this command is gathered in the background on the system on a periodic basis and is not instantaneous.  
@@ -47,6 +50,7 @@ Usage:
   lumi-allocations --project project_46XXXXXXX
   ```
 
+
 ## lumi-check-quota
 
 Running this command shows warnings when running out of quota or allocations. If none of your projects is about to run out of quota or allocations, no output is shown.
@@ -56,6 +60,7 @@ Usage:
 lumi-check-quota
 ```
 
+
 ## lumi-ldap-userinfo
 
 Shows your user information kept in the LDAP directory. This command also gives more information about the quota of your projects, but is not as up-to-date as the information from `lumi-quota` command, as the information for this command is only gathered in the background on a periodic basis. 
@@ -64,6 +69,7 @@ Usage:
 ```
 lumi-ldap-userinfo
 ```
+
 
 ## lumi-ldap-projectinfo
 
