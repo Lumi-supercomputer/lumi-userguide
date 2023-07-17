@@ -41,8 +41,7 @@ lumio-conf
 
 This command asks you to connect with your browser to the [LUMI-O credentials
 management service](auth-lumidata-eu.md), create credentials there and the copy
-the project number and keys for the setup tool, for authentication use
-**MyAccessID**. The setup process will create configuration files for `s3cmd`
+the project number and keys for the setup tool. The setup process will create configuration files for `s3cmd`
 and `rclone`.
 
 For a step-by-step description, read the [Creating LUMI-O

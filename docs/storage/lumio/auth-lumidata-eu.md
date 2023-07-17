@@ -12,8 +12,7 @@ on "-> Go to login".
   <figcaption>auth.lumidata.eu landing page</figcaption>
 </figure>
 
-Choose the correct authentication provider which for LUMI is "MyAccessID" and
-follow the authentication procedure.
+Choose the correct authentication provider which for most LUMI users is "MyAccessID" (users with a Finnish allocation can also use "CSC" or "HAKA"), and follow the authentication procedure.
 
 <figure>
   <img
