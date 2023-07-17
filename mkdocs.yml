@@ -26,6 +26,7 @@ nav:
       - LUMI environment:
         - Module environment: runjobs/lumi_env/Lmod_modules.md
         - Software stacks: runjobs/lumi_env/softwarestacks.md
+        - Daily management: runjobs/lumi_env/dailymanagement.md
         - Data storage options: /storage/
         - Billing policy: runjobs/lumi_env/billing.md
       - Batch jobs:      
