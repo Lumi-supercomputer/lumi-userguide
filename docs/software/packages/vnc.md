@@ -1,6 +1,6 @@
 # VNC
 
-VNC (Virtual Network Computing) is a client application that can be used for interacting with graphical applications. 
+VNC (Virtual Network Computing) is a type of client application that can be used for interacting with graphical applications. 
 
 The lumi-VNC modules that are pre-installed on LUMI as EasyBuild recipes provide containerized versions of the [TurboVNC](https://turbovnc.org/About/Introduction) server. These can be used for remote graphics until the OpenOnDemand graphical user interface is available on LUMI.
 
@@ -13,8 +13,7 @@ Don't expect a full-featured desktop envitonment: The X server runs the fluxbox.
 
 See the versions of VNC available and more detailed information [on the page in the software guides](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/l/lumi-vnc/)
 
-Install a chosen version as any other EasyBuild recipe. After loading the module into use, follow the instructions in next chapter on how to use VNC on LUMI. 
-
+Check which modules are available on the system an get usage information with `module spider lumi-vnc`.
 
 ## Using lumi-VNC
 
