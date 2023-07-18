@@ -11,7 +11,7 @@ Don't expect a full-featured desktop environment: The X server runs the fluxbox.
 
 ## Available VNC modules on LUMI
 
-See the versions of VNC available and more detailed information [on the page in the software guides](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/l/lumi-vnc/)
+See the versions of VNC available and more detailed information [on the page in the software library](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/l/lumi-vnc/)
 
 Check which modules are available on the system and get usage information with `module spider lumi-vnc`.
 
