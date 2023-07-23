@@ -1,5 +1,7 @@
 # Distribution and binding options
 
+[interactive]: ./interactive.md#using-salloc
+
 This section is a deep dive into the advanced topic of binding and distributing
 tasks via Slurm on LUMI.
 
@@ -9,6 +11,10 @@ tasks via Slurm on LUMI.
     allocation. This is the case if you submit to the `standard` and `standard-g`
     partitions. For other partitions, it will apply if you use the `--exclusive`
     sbatch directive.
+
+    Similarly, binding cannot by applied for interactive jobs if you run `srun` 
+    outside of an allocation, meaning you directly call `srun` on a login node.
+    You have to [create an allocation with `salloc`][interactive] first.
 
 ## Background
 
