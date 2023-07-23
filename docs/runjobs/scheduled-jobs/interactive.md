@@ -62,17 +62,48 @@ This starts a shell, where you can run any command, on the first allocated node
 in a specific job:
 
 ```bash
-$ srun --interactive --pty --jobid=<jobid> $SHELL
+$ srun --overlap --pty --jobid=<jobid> $SHELL
 ```
 
-To check processor and memory usage quickly, you can run `top` directly:
+By default you will be connected to the master node of your job which is the 
+first node in your allocation and the one on which your batch script is executed. 
+In cases where your job spans multiple nodes and you need to connect to a
+specific compute node, you can achieve this by adding the `-w nid00XXXX` option.
 
 ```bash
-$ srun --interactive --pty --jobid=<jobid> top
+$ srun --overlap --pty --jobid=<jobid> -w nid00XXXX $SHELL
 ```
 
-The `-w nid00XXXX` option can be added to select a specific compute node to view:
+where `nid00XXXX` is the hostname of the node you wish to access. To obtain the
+list of allocated nodes for a specific job with ID `<jobid>`, you can utilize 
+the following command:
 
 ```bash
-$ srun --interactive --pty --jobid=<jobid> -w nid002217 top
+$ sacct --noheader -X -P -oNodeList --jobs=<jobid>
 ```
+
+!!! note "GPUs ressource specification"
+
+    Depending on how you have specified the GPU resources allocated to your job, 
+    you may encounter the following error when attempting to attach to a running
+    job:
+
+    ```bash
+    srun: error: Unable to create step for job 4203072: Invalid generic 
+                  resource (gres) specification
+    ```
+
+    This error arises when you specify the number of GPUs using the
+    `--gpus=<numgpus>` option, i.e., the total number of GPUs to allocate to
+    your job. This value is inherited from the job and when creating the 
+    interactive job step and lead to an error if there are fewer available GPUs
+    on the node you try to access than what you specified with `--gpus`.
+
+    If you encounter the aforementioned error message, you have to specify a
+    number  of GPUs corresponding to the actual number of GPUs allocated on the
+    node you try to access:
+    
+    ```bash
+    srun --overlap --pty --jobid=<jobid> --gpus=<numgpus> $SHELL
+    ```
+
