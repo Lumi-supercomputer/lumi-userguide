@@ -11,7 +11,7 @@ hide:
 
     ---
 
-    Welcome to the LUMI supercomper user guide. In order to navigate this guide
+    Welcome to the LUMI supercomputer user guide. In order to navigate this guide
     select a category from the navigation bar at the top of the page or use 
     the search function.
 
