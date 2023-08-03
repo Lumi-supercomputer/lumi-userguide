@@ -72,6 +72,21 @@
       href="https://use.typekit.net/nlo5lta.css?ver=5.5.3"
       type="text/css" media="all"
     />
+
+    <script>
+      const modifyExternalLinksToOpenInNewTab = () => {
+        const anchorElements = Array.from(document.getElementsByTagName("a"))
+  
+        const anchorElementsWithHrefPointingOutside = anchorElements
+          .filter(a => a.host && a.host !== window.location.host && !a.hasAttribute("target"))
+  
+        anchorElementsWithHrefPointingOutside
+          .forEach(a => a.setAttribute("target", "_blank"))
+      }
+  
+      window.addEventListener("load", modifyExternalLinksToOpenInNewTab, false)
+    </script>
+
 {% endblock %}
 
 
