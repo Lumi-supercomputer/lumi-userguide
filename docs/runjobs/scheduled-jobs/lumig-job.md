@@ -38,6 +38,8 @@ Below, a job script to launch an application with one MPI rank per GPU (GCD).
 #SBATCH --nodes=2               # Total number of nodes 
 #SBATCH --ntasks-per-node=8     # 8 MPI ranks per node, 128 total (16x8)
 #SBATCH --gpus-per-node=8       # Allocate one gpu per MPI rank
+#SBATCH --exclusive             # Allocate the full node. Not necessary on `standard-g`
+#SBATCH --mem=0                 # Allocate all available memory
 #SBATCH --time=1-12:00:00       # Run time (d-hh:mm:ss)
 #SBATCH --mail-type=all         # Send email at begin and end of job
 #SBATCH --account=project_<id>  # Project for billing
@@ -84,6 +86,8 @@ per GPU (GCD).
 #SBATCH --nodes=2               # Total number of nodes 
 #SBATCH --ntasks-per-node=8     # 8 MPI ranks per node, 128 total (16x8)
 #SBATCH --gpus-per-node=8       # Allocate one gpu per MPI rank
+#SBATCH --exclusive             # Allocate the full node. Not necessary on `standard-g`
+#SBATCH --mem=0                 # Allocate all available memory
 #SBATCH --time=1-12:00:00       # Run time (d-hh:mm:ss)
 #SBATCH --mail-type=all         # Send email at begin and end of job
 #SBATCH --account=project_<id>  # Project for billing
