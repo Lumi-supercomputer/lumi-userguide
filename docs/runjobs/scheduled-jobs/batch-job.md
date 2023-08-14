@@ -7,11 +7,13 @@
 [slurm-man]: https://slurm.schedmd.com/man_index.html
 [slurm-sbatch]: https://slurm.schedmd.com/sbatch.html
 
-!!! warning "Only 63 cores available on LUMI-G"
+!!! warning "Only 56 cores available on LUMI-G"
 
     The LUMI-G compute nodes have the low-noise mode activated. This mode
-    reserve 1 core to the operating system. As a consequence only 63 cores
-    are available to the jobs. Jobs requesting 64 cores/node will never run.
+    reserve 1 core to the operating system. In order to get a more balanced 
+    layout, we also disabled the first core in each of the 8 L3 region. As a
+    consequence only 56 cores are available to the jobs. Jobs requesting 64 
+    cores/node will never run.
 
 This pages covers advanced topics related to running Slurm batch jobs on LUMI.
 If you are not already familiar with Slurm, you should read the [Slurm
