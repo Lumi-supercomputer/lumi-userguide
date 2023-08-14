@@ -225,11 +225,13 @@ the manpage: `man srun`.
 
 ### GPU Binding
 
-!!! warning "Only 63 cores available on LUMI-G"
+!!! warning "Only 56 cores available on LUMI-G"
 
     The LUMI-G compute nodes have the low-noise mode activated. This mode
-    reserve 1 core to the operating system. As a consequence only 63 cores
-    are available to the jobs. Jobs requesting 64 cores/node will never run.
+    reserve 1 core to the operating system. In order to get a more balanced 
+    layout, we also disabled the first core in each of the 8 L3 region. As a
+    consequence only 56 cores are available to the jobs. Jobs requesting 64 
+    cores/node will never run.
 
 Correct CPU and GPU binding is important to get the best performance out of the
 GPU nodes. The reason is that each of the 4 NUMA nodes is directly linked to 
@@ -287,10 +289,10 @@ For a hybrid MPI+OpenMP application, the binding can be achieved by launching
 the application using the following command
 
 ```
-CPU_BIND="mask_cpu:ff000000000000,ff00000000000000"
-CPU_BIND="${CPU_BIND},ff0000,ff000000"
-CPU_BIND="${CPU_BIND},fe,ff00"
-CPU_BIND="${CPU_BIND},ff00000000,ff0000000000"
+CPU_BIND="mask_cpu:fe000000000000,fe00000000000000"
+CPU_BIND="${CPU_BIND},fe0000,fe000000"
+CPU_BIND="${CPU_BIND},fe,fe00"
+CPU_BIND="${CPU_BIND},fe00000000,fe0000000000"
 
 srun --cpu-bind=${CPU_BIND} <app> <args>
 ```

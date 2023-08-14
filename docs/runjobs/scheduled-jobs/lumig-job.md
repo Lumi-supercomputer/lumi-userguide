@@ -2,11 +2,13 @@
 
 [gpu-binding]: ../../runjobs/scheduled-jobs/distribution-binding.md#gpu-binding
 
-!!! warning "Only 63 cores available on LUMI-G"
+!!! warning "Only 56 cores available on LUMI-G"
 
     The LUMI-G compute nodes have the low-noise mode activated. This mode
-    reserve 1 core to the operating system. As a consequence only 63 cores
-    are available to the jobs. Jobs requesting 64 cores/node will never run.
+    reserve 1 core to the operating system. In order to get a more balanced 
+    layout, we also disabled the first core in each of the 8 L3 region. As a
+    consequence only 56 cores are available to the jobs. Jobs requesting 64 
+    cores/node will never run.
 
 !!! note "GPU Binding"
 
@@ -52,7 +54,7 @@ EOF
 
 chmod +x ./select_gpu
 
-CPU_BIND="map_cpu:48,56,16,24,1,8,32,40"
+CPU_BIND="map_cpu:49,57,17,25,1,9,33,41"
 
 export MPICH_GPU_SUPPORT_ENABLED=1
 
