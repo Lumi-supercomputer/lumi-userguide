@@ -2,11 +2,13 @@
 
 [gpu-binding]: ../../runjobs/scheduled-jobs/distribution-binding.md#gpu-binding
 
-!!! warning "Only 63 cores available on LUMI-G"
+!!! warning "Only 56 cores available on LUMI-G"
 
     The LUMI-G compute nodes have the low-noise mode activated. This mode
-    reserve 1 core to the operating system. As a consequence only 63 cores
-    are available to the jobs. Jobs requesting 64 cores/node will never run.
+    reserve 1 core to the operating system. In order to get a more balanced 
+    layout, we also disabled the first core in each of the 8 L3 region. As a
+    consequence only 56 cores are available to the jobs. Jobs requesting 64 
+    cores/node will never run.
 
 !!! note "GPU Binding"
 
@@ -36,7 +38,7 @@ Below, a job script to launch an application with one MPI rank per GPU (GCD).
 #SBATCH --error=examplejob.e%j  # Name of stderr error file
 #SBATCH --partition=standard-g  # Partition (queue) name
 #SBATCH --nodes=2               # Total number of nodes 
-#SBATCH --ntasks-per-node=8     # 8 MPI ranks per node, 128 total (16x8)
+#SBATCH --ntasks-per-node=8     # 8 MPI ranks per node, 16 total (2x8)
 #SBATCH --gpus-per-node=8       # Allocate one gpu per MPI rank
 #SBATCH --time=1-12:00:00       # Run time (d-hh:mm:ss)
 #SBATCH --mail-type=all         # Send email at begin and end of job
@@ -52,7 +54,7 @@ EOF
 
 chmod +x ./select_gpu
 
-CPU_BIND="map_cpu:48,56,16,24,1,8,32,40"
+CPU_BIND="map_cpu:49,57,17,25,1,9,33,41"
 
 export MPICH_GPU_SUPPORT_ENABLED=1
 
@@ -82,7 +84,7 @@ per GPU (GCD).
 #SBATCH --error=examplejob.e%j  # Name of stderr error file
 #SBATCH --partition=standard-g  # Partition (queue) name
 #SBATCH --nodes=2               # Total number of nodes 
-#SBATCH --ntasks-per-node=8     # 8 MPI ranks per node, 128 total (16x8)
+#SBATCH --ntasks-per-node=8     # 8 MPI ranks per node, 16 total (2x8)
 #SBATCH --gpus-per-node=8       # Allocate one gpu per MPI rank
 #SBATCH --time=1-12:00:00       # Run time (d-hh:mm:ss)
 #SBATCH --mail-type=all         # Send email at begin and end of job
