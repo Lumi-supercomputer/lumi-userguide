@@ -1,6 +1,6 @@
 [softwarestacks]: ../../runjobs/lumi_env/softwarestacks.md
 
-# Container wrapper
+# Tykky installation wrapper
 
 The container wrapper is a set of tools which wrap software installations
 inside a Apptainer/Singularity container to improve startup times, reduce I/O

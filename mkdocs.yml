@@ -47,9 +47,10 @@ nav:
     - Installing software:
       - EasyBuild: software/installing/easybuild.md
       - Spack: software/installing/spack.md
-      - Container wrapper: software/installing/container-wrapper.md
+      - Python packages: software/installing/python.md
+      - Tykky installation wrapper: software/installing/container-wrapper.md
     - Containers: 
-      - Singularity/Apptainer containers: software/containers/singularity.md
+      - Singularity/Apptainer: software/containers/singularity.md
     - Software guides:
       - Software library: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/
       - CP2K: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/c/CP2K/
