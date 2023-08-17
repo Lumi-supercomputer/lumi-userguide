@@ -1,16 +1,28 @@
-# Singularity/Apptainer containers
+# Singularity/Apptainer
 
-[singularityce]: https://docs.sylabs.io/guides/latest/user-guide/
 [apptainer]: http://apptainer.org/docs/user/main/index.html
+[conda-env]: https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment
+[cotainr]: https://cotainr.readthedocs.io/en/stable/
+[cotainr-conda-env]: https://cotainr.readthedocs.io/en/stable/user_guide/conda_env.html#conda-environments
+[cotainr-lumi-examples]: https://github.com/DeiC-HPC/cotainr/tree/main/examples/LUM
+[cotainr-usecases]: https://cotainr.readthedocs.io/en/stable/user_guide/index.html#use-cases
 [dockerhub]: https://hub.docker.com/
+[docker-wiki]: https://en.wikipedia.org/wiki/Docker_(software)
 [infinity-hub]: https://www.amd.com/en/technologies/infinity-hub
 [mpich-abi]: https://www.mpich.org/abi/
 [osu-benchmark]: https://mvapich.cse.ohio-state.edu/benchmarks/
-[docker-wiki]: https://en.wikipedia.org/wiki/Docker_(software)
+[singularityce]: https://docs.sylabs.io/guides/latest/user-guide/
+[singularity-def-file]: https://docs.sylabs.io/guides/latest/user-guide/definition_files.html
+[tykky-cotainr-diff]: https://github.com/DeiC-HPC/cotainr/issues/37
+
 [container-jobs]: ../../runjobs/scheduled-jobs/container-jobs.md
-[easybuild]: ../../software/installing/easybuild.md
-[spack]: ../../software/installing/spack.md
+[container-wrapper]: ../installing/container-wrapper.md
 [copying-files]: ../../firststeps/movingdata.md
+[easybuild]: ../../software/installing/easybuild.md
+[lumi-g]: ../../hardware/lumig.md
+[lumi-software-stack]: ../../runjobs/lumi_env/softwarestacks.md
+[python-packages]: ../installing/python.md
+[spack]: ../../software/installing/spack.md
 
 We support [Singularity][singularityce]/[Apptainer][apptainer] containers as an
 alternative way to bring your scientific application to LUMI instead of
@@ -30,24 +42,15 @@ guidance on running your container on LUMI.
     There are two major providers of the `singularity` runtime, namely
     [Singularity CE][singularityce] and [Apptainer][apptainer], with the latter
     being a fork of the former. For most cases these should be fully compatible.
+    LUMI provides a Singularity CE runtime.
 
-## Building containers for LUMI
+## Pulling container images from a registry
 
-Building containers on LUMI is, unfortunately, not an option; The `singularity
-build` command requires some level of root privileges, e.g. `sudo` or
-`fakeroot`, which are disabled on LUMI for security reasons. Thus, in order to
-prepare a Singularity/Apptainer container for LUMI, you have two options:
-
-1. Pull an existing container image (Singularity or Docker) from a registry.
-2. Build your own container on your local hardware, e.g. your laptop.
-
-### Pulling container images from a registry
-
-Singularity allows pulling images (Singularity or Docker) from container
-registries such as [DockerHub][dockerhub] or [AMD Infinity Hub][infinity-hub].
-Pulling container images from registries can be done on LUMI. For instance, the
-Ubuntu image `ubuntu:22.04` can be pulled from DockerHub with the following
-command:
+Singularity allows pulling existing container images (Singularity or Docker)
+from container registries such as [DockerHub][dockerhub] or [AMD Infinity
+Hub][infinity-hub]. Pulling container images from registries can be done on
+LUMI. For instance, the Ubuntu image `ubuntu:22.04` can be pulled from
+DockerHub with the following command:
 
 ```bash
 $ singularity pull docker://ubuntu:22.04
@@ -58,7 +61,7 @@ where the command was run. Once the image has been pulled, the container can be
 run. Instructions for running the container may be found on the [container jobs
 page][container-jobs].
 
-!!! warning Take care when pulling container images
+!!! warning "Take care when pulling container images"
     Please take care to only use images uploaded from reputable sources as
     these images can easily be a source of security vulnerabilities or even
     contain malicious code.
@@ -69,7 +72,7 @@ page][container-jobs].
     ([or transferred to LUMI][copying-files]).
 
 !!! hint
-    When pulling docker containers using singularity, the conversion can be
+    When pulling docker containers using `singularity`, the conversion can be
     quite heavy. Speed up the conversion and avoid leaving behind temporary
     files by using the in-memory filesystem on `/tmp` as the Singularity cache
     directory, i.e.
@@ -80,9 +83,82 @@ page][container-jobs].
     $ export SINGULARITY_CACHEDIR=/tmp/$USER
     ```
 
-### Building LUMI MPI compatible containers
+## Building Apptainer/Singularity SIF containers
 
-Here we provide an example of building a container that is compatible with the
+Building our own container on LUMI is, unfortunately, not in general possible.
+The `singularity build` command, in general, requires some level of root
+privileges, e.g. `sudo` or `fakeroot`, which are disabled on LUMI for security
+reasons. Thus, in order to build our own Singularity/Apptainer container for
+LUMI, you have two options:
+
+1. Use [cotainr][cotainr] to build containers on LUMI (only for certain [use
+   cases][cotainr-usecases]).
+2. Build your own container on your local hardware, e.g. your laptop.
+
+### Building containers using cotainr
+[Cotainr][cotainr] is **not** a general purpose container building tool. It is
+a tool that makes it easy to build Singularity/Apptainer containers on LUMI for
+certain [use cases][cotainr-usecases].
+
+On LUMI, `cotainr` is available in the [LUMI central software stack][lumi-software-stack]
+and may be loaded using
+
+```bash
+$ module load LUMI
+$ module load cotainr
+```
+
+When building containers using `cotainr build`, you may either specify a base
+image for the container yourself (using the `--base-image` option) or you may
+use the `--system` option to use the recommended base images for LUMI. To list
+the available systems, run
+
+```bash
+$ cotainr info
+...
+
+System info
+-------------------------------------------------------------------------------
+Available system configurations:
+    - lumi-g
+    - lumi-c
+```
+
+You may then use `cotainr build` to create, e.g. a container for [LUMI-G][lumi-g]
+containing a conda/pip environment using
+
+```bash
+$ cotainr build my_container.sif --system=lumi-g --conda-env=my_conda_env.yml
+```
+
+where `my_conda_env.yml` is a file containing an [exported conda
+environment][conda-env]. See the [cotainr conda environment
+docs][cotainr-conda-env] and the [cotainr LUMI examples][cotainr-lumi-examples]
+for more details.
+
+!!! warning "Make sure your conda environment supports the hardware in LUMI"
+    In order to take advantage of e.g. the GPUs in [LUMI-G][lumi-g], the packages
+    you specify in your conda environement must be compatible with LUMI-G, i.e.
+    built against ROCm. Cotainr does **not** do any magic conversion of the
+    packages specified in the conda environment to make sure they fit the
+    hardware in LUMI. It simply installs the packages exactly as listed in the
+    `my_conda_env.yml` file.
+
+!!! note
+    Using `cotainr` to build a container from a conda/pip environment is
+    different from wrapping a conda/pip environment using the [Tykky
+    installation wrapper][container-wrapper]. Each serve their own purpose. See
+    the [Python installation guide][python-packages] for an overview of
+    differences and [this GitHub issue][tykky-cotainr-diff] for a detailed
+    discussion of the differences.
+
+See the [cotainr documentation][cotainr] for more details about `cotainr`.
+
+### Building containers on local hardware
+You may also build a Singularity/Apptainer container for LUMI on your local
+hardware and [transfer it to LUMI][copying-files].
+
+As an example, consider building a container that is compatible with the
 MPI stack on LUMI.
 
 !!! warning
@@ -90,10 +166,11 @@ MPI stack on LUMI.
     dynamically linked to an MPI version that is [ABI-compatible][mpich-abi]
     with the host MPI.
 
-The following Singularity definition file `mpi_osu.def`, installs MPICH-3.1.4,
-which is ABI-compatible with the Cray-MPICH found on LUMI. That MPICH will be
-used to compile the [OSU microbenchmarks][osu-benchmark]. Finally, the OSU
-point to point bandwidth test is set as the runscript of the image.
+The following [Singularity definition file][singularity-def-file]
+`mpi_osu.def`, installs MPICH-3.1.4, which is ABI-compatible with the
+Cray-MPICH found on LUMI. That MPICH will be used to compile the [OSU
+microbenchmarks][osu-benchmark]. Finally, the OSU point to point bandwidth test
+is set as the "runscript" of the image.
 
 ```bash
 bootstrap: docker
@@ -128,7 +205,7 @@ from: ubuntu:21.04
     /usr/local/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_bw
 ```
 
-The image can be built **on your local hardware (not LUMI)** with
+The image can be built **on your local hardware (not on LUMI)** with
 
 ```bash
 $ sudo singularity build mpi_osu.sif mpi_osu.def
