@@ -282,7 +282,7 @@ For an MPI application, not using OpenMP, the binding can be achieved by
 launching the application using the following command
 
 ```
-srun --cpu-bind=map_cpu:48,56,16,24,1,8,32,40 <app> <args>
+srun --cpu-bind=map_cpu:49,57,17,25,1,9,33,41 <app> <args>
 ```
 
 For a hybrid MPI+OpenMP application, the binding can be achieved by launching
