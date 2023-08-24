@@ -19,6 +19,7 @@
 [container-wrapper]: ../installing/container-wrapper.md
 [copying-files]: ../../firststeps/movingdata.md
 [easybuild]: ../../software/installing/easybuild.md
+[interconnect]: ../../hardware/network.md
 [lumi-g]: ../../hardware/lumig.md
 [lumi-software-stack]: ../../runjobs/lumi_env/softwarestacks.md
 [python-packages]: ../installing/python.md
@@ -85,7 +86,7 @@ page][container-jobs].
 
 ## Building Apptainer/Singularity SIF containers
 
-Building our own container on LUMI is, unfortunately, not in general possible.
+Building your own container on LUMI is, unfortunately, not in general possible.
 The `singularity build` command, in general, requires some level of root
 privileges, e.g. `sudo` or `fakeroot`, which are disabled on LUMI for security
 reasons. Thus, in order to build our own Singularity/Apptainer container for
@@ -96,12 +97,13 @@ LUMI, you have two options:
 2. Build your own container on your local hardware, e.g. your laptop.
 
 ### Building containers using cotainr
-[Cotainr][cotainr] is **not** a general purpose container building tool. It is
-a tool that makes it easy to build Singularity/Apptainer containers on LUMI for
-certain [use cases][cotainr-usecases].
 
-On LUMI, `cotainr` is available in the [LUMI central software stack][lumi-software-stack]
-and may be loaded using
+[Cotainr][cotainr] is a tool that makes it easy to build Singularity/Apptainer
+containers on LUMI for certain [use cases][cotainr-usecases]. It is **not** a
+general purpose container building tool.
+
+On LUMI, `cotainr` is available in the [LUMI central software
+stack][lumi-software-stack] and may be loaded using
 
 ```bash
 $ module load LUMI
@@ -124,25 +126,29 @@ Available system configurations:
     - lumi-c
 ```
 
-You may then use `cotainr build` to create, e.g. a container for [LUMI-G][lumi-g]
-containing a conda/pip environment using
+As an example, you may then use `cotainr build` to create a container for
+[LUMI-G][lumi-g] containing a conda/pip environment by running
 
 ```bash
 $ cotainr build my_container.sif --system=lumi-g --conda-env=my_conda_env.yml
 ```
 
 where `my_conda_env.yml` is a file containing an [exported conda
-environment][conda-env]. See the [cotainr conda environment
-docs][cotainr-conda-env] and the [cotainr LUMI examples][cotainr-lumi-examples]
-for more details.
+environment][conda-env]. The resulting `my_container.sif` container may be run
+like any other [container job][container-jobs] on LUMI. It automatically
+activates the installed Conda environment when you run it. See the [cotainr
+conda environment docs][cotainr-conda-env] and the [cotainr LUMI
+examples][cotainr-lumi-examples] for more details.
 
 !!! warning "Make sure your conda environment supports the hardware in LUMI"
-    In order to take advantage of e.g. the GPUs in [LUMI-G][lumi-g], the packages
-    you specify in your conda environement must be compatible with LUMI-G, i.e.
-    built against ROCm. Cotainr does **not** do any magic conversion of the
-    packages specified in the conda environment to make sure they fit the
-    hardware in LUMI. It simply installs the packages exactly as listed in the
-    `my_conda_env.yml` file.
+    In order to take advantage of e.g. the GPUs in [LUMI-G][lumi-g], the
+    packages you specify in your conda environment must be compatible with
+    LUMI-G, i.e. built against ROCm. Similarly, in order to take full advantage
+    of the [Slingshot 11 interconnect][interconnect] when running MPI jobs, you
+    must make sure your packages are built against Cray MPICH. Cotainr does
+    **not** do any magic conversion of the packages specified in the conda
+    environment to make sure they fit the hardware in LUMI. It simply installs
+    the packages exactly as listed in the `my_conda_env.yml` file.
 
 !!! note
     Using `cotainr` to build a container from a conda/pip environment is
