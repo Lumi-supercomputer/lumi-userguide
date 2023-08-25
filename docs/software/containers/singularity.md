@@ -67,16 +67,11 @@ page][container-jobs].
     these images can easily be a source of security vulnerabilities or even
     contain malicious code.
 
-!!! note
-    The compute nodes are currently not connected to the internet. As a
-    consequence, the container images need to be pulled in on the login nodes
-    ([or transferred to LUMI][copying-files]).
-
-!!! hint
-    When pulling docker containers using `singularity`, the conversion can be
-    quite heavy. Speed up the conversion and avoid leaving behind temporary
-    files by using the in-memory filesystem on `/tmp` as the Singularity cache
-    directory, i.e.
+!!! hint "Set cache directories when using Docker containers"
+    When pulling or building from Docker containers using `singularity`, the
+    conversion can be quite heavy. Speed up the conversion and avoid leaving
+    behind temporary files by using the in-memory filesystem on `/tmp` as the
+    Singularity cache directory, i.e.
 
     ```bash
     $ mkdir -p /tmp/$USER
@@ -127,22 +122,22 @@ Available system configurations:
 ```
 
 As an example, you may then use `cotainr build` to create a container for
-[LUMI-G][lumi-g] containing a conda/pip environment by running
+[LUMI-G][lumi-g] containing a Conda/pip environment by running
 
 ```bash
 $ cotainr build my_container.sif --system=lumi-g --conda-env=my_conda_env.yml
 ```
 
-where `my_conda_env.yml` is a file containing an [exported conda
+where `my_conda_env.yml` is a file containing an [exported Conda
 environment][conda-env]. The resulting `my_container.sif` container may be run
 like any other [container job][container-jobs] on LUMI. It automatically
 activates the installed Conda environment when you run it. See the [cotainr
-conda environment docs][cotainr-conda-env] and the [cotainr LUMI
+Conda environment docs][cotainr-conda-env] and the [cotainr LUMI
 examples][cotainr-lumi-examples] for more details.
 
-!!! warning "Make sure your conda environment supports the hardware in LUMI"
+!!! warning "Make sure your Conda environment supports the hardware in LUMI"
     In order to take advantage of e.g. the GPUs in [LUMI-G][lumi-g], the
-    packages you specify in your conda environment must be compatible with
+    packages you specify in your Conda environment must be compatible with
     LUMI-G, i.e. built against ROCm. Similarly, in order to take full advantage
     of the [Slingshot 11 interconnect][interconnect] when running MPI jobs, you
     must make sure your packages are built against Cray MPICH. Cotainr does
@@ -151,8 +146,8 @@ examples][cotainr-lumi-examples] for more details.
     the packages exactly as listed in the `my_conda_env.yml` file.
 
 !!! note
-    Using `cotainr` to build a container from a conda/pip environment is
-    different from wrapping a conda/pip environment using the [Tykky
+    Using `cotainr` to build a container from a Conda/pip environment is
+    different from wrapping a Conda/pip environment using the [Tykky
     installation wrapper][container-wrapper]. Each serve their own purpose. See
     the [Python installation guide][python-packages] for an overview of
     differences and [this GitHub issue][tykky-cotainr-diff] for a detailed
