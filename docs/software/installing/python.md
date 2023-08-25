@@ -52,7 +52,7 @@ case. Below we provide an overview of recommended ways to get access to Python
 installations on LUMI.
 
 !!! warning "The default Python is the OS Python"
-    When you log into LUMI, running `python` without loading a module or using
+    When you log into LUMI, running `python3` without loading a module or using
     a container will result in using the operating system Python installation.
     This is a Python installation without any Scientific Python packages - which
     is likely not what you want.
@@ -87,10 +87,10 @@ Python packages, you may:
 - **Use the cray-python module**: As part of the [LUMI software
   stack][lumi-software-stack], we provide the `cray-python` module which
   contains some basic Scientific Python packages like NumPy and SciPy (built
-  against Cray LibSci), mpi4py (built against Cray MPICH), and Dask. If what
-  you need is such a basic Cray optimized Scientific Python environment and,
-  possibly, a few extra packages, you may load the `cray-python` module and
-  install the few extra packages on the file systems in a [pip virtual
+  against Cray LibSci), mpi4py (built against Cray MPICH), Pandas, and Dask. If
+  what you need is such a basic Cray optimized Scientific Python environment
+  and, possibly, a few extra packages, you may load the `cray-python` module
+  and install the few extra packages on the file systems in a [pip virtual
   environment][pip-virt-env].
 - **Use an existing container with a pip virtual environment**: If you have an
   existing container but need a few extra packages, you may install such
