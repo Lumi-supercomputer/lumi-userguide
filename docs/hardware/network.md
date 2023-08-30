@@ -3,12 +3,14 @@ hide:
   - toc
 ---
 
-All LUMI compute nodes uses HPE Cray Slingshot-11 200 Gbps network interconnect
-(NIC). The LUMI-C (CPU nodes) are equipped with a single endpoints while the
-LUMI-G nodes (GPU nodes) have 4 endpoints - one for each AMD MI250x GPU modules.
-Each endpoints provide up to 50 GB/s of bidirectional bandwidth. The HPE Cray
-Slingshot NIC features high performance RDMA and hardware acceleration for MPI
-and SHMEM based software.
+[slingshot-11-hpe-page]: https://www.hpe.com/emea_europe/en/compute/hpc/slingshot-interconnect.html
+
+All LUMI compute nodes use the [HPE Cray Slingshot-11][slingshot-11-hpe-page]
+200 Gbps network interconnect (NIC). The LUMI-C (CPU nodes) are equipped with a
+single endpoints while the LUMI-G nodes (GPU nodes) have 4 endpoints - one for
+each AMD MI250x GPU modules. Each endpoints provide up to 50 GB/s of
+bidirectional bandwidth. The HPE Cray Slingshot NIC features high performance
+RDMA and hardware acceleration for MPI and SHMEM based software.
 
 ## Topology
 

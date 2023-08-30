@@ -4,7 +4,7 @@
 [conda-env]: https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment
 [cotainr]: https://cotainr.readthedocs.io/en/stable/
 [cotainr-conda-env]: https://cotainr.readthedocs.io/en/stable/user_guide/conda_env.html#conda-environments
-[cotainr-lumi-examples]: https://github.com/DeiC-HPC/cotainr/tree/main/examples/LUM
+[cotainr-lumi-examples]: https://github.com/DeiC-HPC/cotainr/tree/main/examples/LUMI
 [cotainr-usecases]: https://cotainr.readthedocs.io/en/stable/user_guide/index.html#use-cases
 [dockerhub]: https://hub.docker.com/
 [docker-wiki]: https://en.wikipedia.org/wiki/Docker_(software)
@@ -24,9 +24,6 @@
 [lumi-software-stack]: ../../runjobs/lumi_env/softwarestacks.md
 [python-packages]: ../installing/python.md
 [spack]: ../../software/installing/spack.md
-[cotainr-chapter]: ./singularity.md#building-containers-using-cotainr
-[building-local]: ./singularity.md#building-containers-on-local-hardware
-
 
 We support [Singularity][singularityce]/[Apptainer][apptainer] containers as an
 alternative way to bring your scientific application to LUMI instead of
@@ -36,7 +33,7 @@ If you are familiar with [Docker containers][docker-wiki],
 Singularity/Apptainer containers are essentially the same thing, but are better
 suited for multi-user HPC systems such as LUMI. The main benefit of using a
 container is that it provides an isolated software environment for each
-application, which makes it easier to install complex applications.
+application, which makes it easier to install and manage complex applications.
 
 This page provides guidance on preparing your Singularity/Apptainer containers
 for use with LUMI. Please consult the [container jobs page][container-jobs] for
@@ -87,13 +84,15 @@ page][container-jobs].
 Building your own container on LUMI is, unfortunately, not in general possible.
 The `singularity build` command, in general, requires some level of root
 privileges, e.g. `sudo` or `fakeroot`, which are disabled on LUMI for security
-reasons. Thus, in order to build our own Singularity/Apptainer container for
+reasons. Thus, in order to build your own Singularity/Apptainer container for
 LUMI, you have two options:
 
-**1. Use [cotainr][cotainr-chapter] tool to build containers on LUMI (only for certain use cases).**
-**2. [Build your own container][building-local] on your local hardware, e.g. your laptop.**
+1. Use the [cotainr](#building-containers-using-the-cotainr-tool) tool to build
+   containers on LUMI (only for certain use cases).
+2. [Build your own container](#building-containers-on-local-hardware) on your
+   local hardware, e.g. your laptop.
 
-### Building containers using cotainr tool
+### Building containers using the cotainr tool
 
 [Cotainr][cotainr] is a tool that makes it easy to build Singularity/Apptainer
 containers on LUMI for certain [use cases][cotainr-usecases]. It is **not** a
@@ -143,7 +142,7 @@ examples][cotainr-lumi-examples] for more details.
     LUMI-G, i.e. built against ROCm. Similarly, in order to take full advantage
     of the [Slingshot 11 interconnect][interconnect] when running MPI jobs, you
     must make sure your packages are built against Cray MPICH. Cotainr does
-    **not** do any magic conversion of the packages specified in the conda
+    **not** do any magic conversion of the packages specified in the Conda
     environment to make sure they fit the hardware in LUMI. It simply installs
     the packages exactly as listed in the `my_conda_env.yml` file.
 
@@ -158,6 +157,7 @@ examples][cotainr-lumi-examples] for more details.
 See the [cotainr documentation][cotainr] for more details about `cotainr`.
 
 ### Building containers on local hardware
+
 You may also build a Singularity/Apptainer container for LUMI on your local
 hardware and [transfer it to LUMI][copying-files].
 
