@@ -15,18 +15,14 @@
 [install-policy]: ./policy.md
 
 ---
-On this page you find information of the pre-installed software on LUMI, and guidance on ways to install additional software yourself.
-A full overview of software that is either installed in the LUMI software
-stacks, or available as a LUMI-specific build recipe for the
-[EasyBuild][easybuild] package manager, can be found in the [LUMI software
-library](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/). If you are
+On this page you find information about pre-installed software on LUMI as well
+guidance on ways to install additional software yourself. If you are
 looking for information on how to develop your own software on LUMI, consult
-the [developing section][developing-overview] instead. Please note that the
-LUMI User Support Team can only offer limited help with installing scientific
-software. This is further explained on the [Install policy][install-policy]
-page.
+the [developing section][developing-overview] instead.
 
----
+Please note that the LUMI User Support Team can only offer limited help with
+installing scientific software as is further explained in the [Install
+policy][install-policy].
 
 !!! warning "Avoid installing a lot of small files"
 
@@ -38,16 +34,41 @@ page.
     ][python-install] for en overview of options for installing Conda/pip
     environments.
 
-## Installing software
+---
 
-We offer three options to install software on LUMI, with varying levels of support.
+## Pre-installed software
 
-The three options are:
+On LUMI, we provide some pre-installed software in both central software stacks (managed by the LUMI User Support Team) and local software collections (managed by local organizations in the LUMI consortium):
 
--   Using [EasyBuild][easybuild]:
+- Central LUMI software stacks
+
+    A full overview of software, that is either installed in the [LUMI software
+    stacks][software-stacks], or available as a LUMI-specific build recipe for the
+    [EasyBuild][easybuild] package manager, can be found in the [LUMI software
+    library][software-library]. For software installed in the
+    [central LUMI software stacks][software-stacks], the first channel to get
+    help on a specific module is through the `module help` command, but the LUMI
+    [Software Library pages][software-library] sometimes contain more information
+    on how to run the software, or more information about specific options that
+    were chosen when installing the software on LUMI.
+
+- Local software collections
+
+    There is also pre-installed software available on LUMI provided by local LUMI
+    consortium organizations. These software collections are available for all LUMI
+    users, but are updated and supported by the local LUMI consortium organizations
+    themselves, not by the LUMI User Support Team.
+
+       - [CSC installed software collection](https://docs.lumi-supercomputer.eu/software/local/csc/)
+
+## Installing additional software
+
+We offer two package management systems to install software on LUMI, with varying levels of support:
+
+- [EasyBuild][easybuild]:
 
     EasyBuild is the primary software installation tool on LUMI. It is used to install
-    most software in the [central software stack][software-stacks] on LUMI, but it 
+    most software in the [central software stack][software-stacks] on LUMI, but it
     is also extremely easy to install additional software in your personal or project
     space and have it integrate fully with the software stacks.
 
@@ -56,35 +77,38 @@ The three options are:
     can be found in the [LUMI Software Library][software-library].
 
     Consult the [module environment page][module-env] for instructions on
-    identifying the already available software on LUMI through the module system instead. 
+    identifying the already available software on LUMI through the module system instead.
 
--   [Spack][spack]
+- [Spack][spack]
 
     Spack is another popular package manager to install software mostly from sources for
     optimal performance on HPC systems. We provide a Spack configuration that is
-    configured to use of the compilers available on LUMI and which can install packages in the upstream Spack repository. However, we do no package development ourselves in Spack.
+    configured to use of the compilers available on LUMI and which can install packages
+    in the upstream Spack repository. However, we do no package development ourselves in Spack.
 
--   [Tykky installation wrapper][contwrapper]
-
-     The Tykky installation wrapper is a piece of software developed at CSC
-     which wraps software installations inside an Apptainer/Singularity container
-     to improve startup times, reduce I/O load, and lessen the number of files on
-     large parallel file systems.
-
-The preferred location for software installations is your project directory, so
-that a software installation can be shared with all users in your project.
+The preferred location for software installations is your `/project` directory,
+so that a software installation can be shared with all users in your project.
 Software can be installed in your home directory also but it is not recommended
-and you will not get additional quota for it. Installing permanent software
-installations in your scratch or flash directory is not recommended as these
-will be cleaned automatically in the future when the file system starts to fill
-up.
+and you will not get additional quota for it. Creating permanent software
+installations in your `/scratch` or `/flash` directories is not recommended as
+these will be cleaned automatically in the future when the file system starts
+to fill up.
+
+If you intend to install Python packages, please consult the [Python packages
+installation guide ][python-install] for en overview of your options.
 
 ## Alternatives to installing software yourself
 
-As an alternative to installing software yourself, you may:
+As alternatives to installing software, you may:
 
-- **Use an Apptainer/Singularity container**: You can bring a
-[Singularity/Apptainer software container][singularity-container] and run it
-using the [Singularity container runtime][singularity-jobs] provided by LUMI.
+- Use an Apptainer/Singularity container
 
+    You can bring a [Singularity/Apptainer software container][singularity-container]
+    and run it using the [Singularity container runtime][singularity-jobs] provided by LUMI.
 
+- Use the [Tykky installation wrapper][contwrapper]
+
+    The Tykky installation wrapper is a piece of software developed at CSC
+    which wraps software installations inside an Apptainer/Singularity container
+    to improve startup times, reduce I/O load, and lessen the number of files on
+    large parallel file systems.
