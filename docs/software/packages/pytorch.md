@@ -1,5 +1,6 @@
-[containers]: ./containers/singularity.md
-[python-install]: ./installing/python.md
+[containers]: ../containers/singularity.md
+[interconnect]: ../../hardware/network.md
+[python-install]: ../installing/python.md
 
 # PyTorch on LUMI
 
@@ -39,7 +40,7 @@ Now when running the container, the virtual environment must be activated before
 
 ## Multi-GPU training
 
-The communication between LUMI's GPUs during training with Pytorch is done via [RCCL](https://github.com/ROCmSoftwarePlatform/rccl), which is a library of  collective communication routines for AMD GPUs. RCCL works out of the box on LUMI, however, a special plugin is required so it can take advantage of the [Slingshot 11 interconnect](https://www.hpe.com/emea_europe/en/compute/hpc/slingshot-interconnect.html). That's the [`aws-ofi-rccl`](https://github.com/ROCmSoftwarePlatform/aws-ofi-rccl) plugin, which is a library that can be used as a back-end for RCCL to interact with the interconnect via libfabric.
+The communication between LUMI's GPUs during training with Pytorch is done via [RCCL](https://github.com/ROCmSoftwarePlatform/rccl), which is a library of  collective communication routines for AMD GPUs. RCCL works out of the box on LUMI, however, a special plugin is required so it can take advantage of the [Slingshot 11 interconnect][interconnect]. That's the [`aws-ofi-rccl`](https://github.com/ROCmSoftwarePlatform/aws-ofi-rccl) plugin, which is a library that can be used as a back-end for RCCL to interact with the interconnect via libfabric.
 
 The `aws-ofi-rccl` plugin can be installed by the user with EasyBuild:
 ```bash
