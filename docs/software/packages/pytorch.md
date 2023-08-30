@@ -1,11 +1,11 @@
-[containers]: ./singularity.md
-[python-install]: ./python.md
+[containers]: ./containers/singularity.md
+[python-install]: ./installing/python.md
 
 # PyTorch on LUMI
 
 [PyTorch](https://pytorch.org) is an open source Python package that provides tensor computation, like NumPy, with GPU acceleration and deep neural networks built on a tape-based autograd system.
 
-PyTorch can be installed by following the [official instructions](https://pytorch.org/get-started/locally/) for installing a ROCm compatible PyTorch via pip. Please consults the [Python packages installation guide][python-install] for an overview of recommended ways to manage pip installations on LUMI. Alternatively, the container images provided by [AMD on DockerHub](https://hub.docker.com/u/rocm) may be used on LUMI.
+PyTorch can be installed by following the [official instructions](https://pytorch.org/get-started/locally/) for installing a ROCm compatible PyTorch via pip. Please consult the [Python packages installation guide][python-install] for an overview of recommended ways to manage pip installations on LUMI. Alternatively, the container images provided by [AMD on DockerHub](https://hub.docker.com/u/rocm) may be used on LUMI.
 
 ## Running PyTorch within containers
 

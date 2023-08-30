@@ -12,9 +12,10 @@
 [software-stacks]: ../runjobs/lumi_env/softwarestacks.md
 [module-env]: ../runjobs/lumi_env/Lmod_modules.md
 [software-library]: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs
+[install-policy]: ./policy.md
 
 ---
-On this page you find guidance on ways to install additional software on LUMI.
+On this page you find information of the pre-installed software on LUMI, and guidance on ways to install additional software yourself.
 A full overview of software that is either installed in the LUMI software
 stacks, or available as a LUMI-specific build recipe for the
 [EasyBuild][easybuild] package manager, can be found in the [LUMI software
@@ -22,7 +23,7 @@ library](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/). If you are
 looking for information on how to develop your own software on LUMI, consult
 the [developing section][developing-overview] instead. Please note that the
 LUMI User Support Team can only offer limited help with installing scientific
-software. This is further explained on the [Install policy](/software/policy/)
+software. This is further explained on the [Install policy][install-policy]
 page.
 
 ---
@@ -80,21 +81,10 @@ up.
 
 ## Alternatives to installing software yourself
 
-As an alternative to installing software yourself using one of the methods
-mentioned above, you may:
+As an alternative to installing software yourself, you may:
 
 - **Use an Apptainer/Singularity container**: You can bring a
 [Singularity/Apptainer software container][singularity-container] and run it
 using the [Singularity container runtime][singularity-jobs] provided by LUMI.
-- **Use software already installed in the LUMI Software Library**: The [LUMI
-software library](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/)
-contains an overview with all software that is installed in the software stacks
-available through the LUMI modules and the CrayEnv module (apart from the
-documentation of the HPE Cray Programming Environment). For software installed
-on the system the first channel to get help on a specific module is through the
-`module help` command, but the LUMI Software Library pages sometimes contain
-more information on how to run the software, or more information about specific
-options that were chosen when installing the software on LUMI.
-- **Use local software collections**: There are also software available on LUMI installed by local LUMI organizations. These are available for all LUMI users and are updated and supported by the local LUMI organizations themselves, not by LUST.
 
-    * [CSC installed software collection](https://docs.lumi-supercomputer.eu/software/local/csc/)
+
