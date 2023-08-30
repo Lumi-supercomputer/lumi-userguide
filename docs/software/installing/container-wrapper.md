@@ -11,7 +11,7 @@
 
 # Tykky installation wrapper
 
-The [Tykky][tykky-github] installation wrapper (formerly the "LUMI container
+The [Tykky][tykky-github] installation wrapper (formerly called the "LUMI container
 wrapper") is a set of tools which wrap software installations inside an
 Apptainer/Singularity container to improve startup times, reduce I/O load, and
 lessen the number of files on large parallel file systems.
@@ -36,7 +36,7 @@ Tykky is a general purpose installation wrapper that supports wrapping:
   [requirements.txt file][pip-req].
 
 !!! warning "Tykky is NOT generally recommended for managing Conda/pip installations"
-    For some use cases, Tykky is an excellent tools for managing Conda/pip
+    For some use cases, Tykky is an excellent tool for managing Conda/pip
     installations. For other use cases, there are better alternatives. See the
     [installing Python packages][python-install] guide for an overview the
     recommended ways to manage Python installations, including Conda/pip

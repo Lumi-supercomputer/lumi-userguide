@@ -24,6 +24,9 @@
 [lumi-software-stack]: ../../runjobs/lumi_env/softwarestacks.md
 [python-packages]: ../installing/python.md
 [spack]: ../../software/installing/spack.md
+[cotainr-chapter]: ./singularity.md#building-containers-using-cotainr
+[building-local]: ./singularity.md#building-containers-on-local-hardware
+
 
 We support [Singularity][singularityce]/[Apptainer][apptainer] containers as an
 alternative way to bring your scientific application to LUMI instead of
@@ -87,11 +90,10 @@ privileges, e.g. `sudo` or `fakeroot`, which are disabled on LUMI for security
 reasons. Thus, in order to build our own Singularity/Apptainer container for
 LUMI, you have two options:
 
-1. Use [cotainr][cotainr] to build containers on LUMI (only for certain [use
-   cases][cotainr-usecases]).
-2. Build your own container on your local hardware, e.g. your laptop.
+**1. Use [cotainr][cotainr-chapter] tool to build containers on LUMI (only for certain use cases).**
+**2. [Build your own container][building-local] on your local hardware, e.g. your laptop.**
 
-### Building containers using cotainr
+### Building containers using cotainr tool
 
 [Cotainr][cotainr] is a tool that makes it easy to build Singularity/Apptainer
 containers on LUMI for certain [use cases][cotainr-usecases]. It is **not** a

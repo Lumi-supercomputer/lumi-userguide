@@ -33,7 +33,7 @@ support using Scientific Python packages on LUMI, however care must be taken to
 A Python installation usually consists of the Python interpreter, the Python
 standard library and one or more third party Python packages. Such Python
 packages may include both compiled code and a lot of so-called Python modules,
-i.e. of a lot of small files containing Python code, e.g. a typical
+i.e. a lot of small files containing Python code. A typical
 [Conda][conda] environment tends to contain tens to hundreds of thousands of
 relatively small files.
 
@@ -76,7 +76,7 @@ Python environments at the same time. Your options are:
   build a container based on a [Conda environment][conda-env] file for use on
   LUMI.
 
-### Conditionally recommended
+### Recommended in certain use cases
 
 For certain use cases, there may be better and/or easier alternatives to using
 a container.
@@ -124,10 +124,7 @@ Python installation from such a local organization software stack:
 
 ### Not recommended
 
-Finally, for the sake of completeness, you can technically also install Python
-packages directly to the file systems using one of the methods listed below.
-However, as already discussed previously on this page, **these methods are
-strongly discouraged**.
+**We strongly discourage using these methods on LUMI**.
 
 - **Don't install conda/pip environments directly to the file systems**.
 - **Don't install pip virtual environments directly to the file systems using
