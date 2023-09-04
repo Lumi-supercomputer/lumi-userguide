@@ -6,7 +6,7 @@
 [scientific-python]: https://scientific-python.org/
 
 [container-virt-env-example]: ../../software/packages/pytorch.md#installing-other-packages-along-the-containers-pytorch-installation
-[cotainr]: ../containers/singularity.md#building-containers-using-cotainr
+[cotainr]: ../containers/singularity.md#building-containers-using-the-cotainr-tool
 [csc-software-stack]: ../local/csc.md
 [lumi-software-stack]: ../../runjobs/lumi_env/softwarestacks.md
 [lustre]: ../../storage/parallel-filesystems/lustre.md
@@ -54,8 +54,8 @@ installations on LUMI.
 !!! warning "The default Python is the OS Python"
     When you log into LUMI, running `python3` without loading a module or using
     a container will result in using the operating system Python installation.
-    This is a Python installation without any Scientific Python packages - which
-    is likely not what you want.
+    This is an quite old Python installation (version 3.6) without any Scientific
+    Python packages - which is likely not what you want.
 
 ## Generally recommended installation methods
 
