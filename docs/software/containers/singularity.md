@@ -131,9 +131,14 @@ $ cotainr build my_container.sif --system=lumi-g --conda-env=my_conda_env.yml
 
 where `my_conda_env.yml` is a file containing an [exported Conda
 environment][conda-env]. The resulting `my_container.sif` container may be run
-like any other [container job][container-jobs] on LUMI. It automatically
-activates the installed Conda environment when you run it. See the [cotainr
-Conda environment docs][cotainr-conda-env] and the [cotainr LUMI
+like any other [container job][container-jobs] on LUMI. For example:
+
+```bash
+$ singularity exec my_container.sif python3 --version
+```
+
+It automatically activates the installed Conda environment when you run it. See
+the [cotainr Conda environment docs][cotainr-conda-env] and the [cotainr LUMI
 examples][cotainr-lumi-examples] for more details.
 
 !!! warning "Make sure your Conda environment supports the hardware in LUMI"
