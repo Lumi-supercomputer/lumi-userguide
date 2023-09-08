@@ -67,7 +67,7 @@ Once the module has been loaded, you can use one of the front-end tools
 
 ### Wrapping a basic Conda installation
 
-In order to wrap a basic [Conda][conda] installation, create an `<install_dir>`
+In order to wrap a basic [Conda][conda] installation, create an installation directory
 and run the `conda-containerize` tool
 
 ```bash
