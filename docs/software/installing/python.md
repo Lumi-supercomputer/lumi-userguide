@@ -40,7 +40,7 @@ relatively small files.
 Installing such a large number of small files to the user home folder or shared
 locations like `/scratch`, `/project`, or even `/flash`, and trying to load
 them from multiple processes at the same time, puts a lot of strain on the
-[Lustre file system][lustre] serving these storage locations. Lustre simple
+[Lustre file system][lustre] serving these storage locations. Lustre simply
 isn't designed for such use cases. Thus, in order to maintain good file system
 performance for all users (it is a shared file system), care must be taken when
 installing Python packages on LUMI.
@@ -54,16 +54,15 @@ installations on LUMI.
 !!! warning "The default Python is the OS Python"
     When you log into LUMI, running `python3` without loading a module or using
     a container will result in using the operating system Python installation.
-    This is an quite old Python installation (version 3.6) without any Scientific
+    This is quite an old Python installation (version 3.6) without any Scientific
     Python packages - which is likely not what you want.
 
 ## Generally recommended installation methods
 
 In general, we recommend using [Singularity/Apptainer
-containers][singularity-containers] for managing Python installations instead
-of installing directly to the file systems. Using a container solves the "many
+containers][singularity-containers] for managing Python installations. Using a container solves the "many
 small files" performance problem and makes it easy to manage multiple different
-Python environments at the same time. You may either [use an existing
+Python environments at the same time. To use a container, you may either [use an existing
 container](#use-an-existing-container) or [build a container taylored to your
 needs](#use-a-container-you-build-specifically-tailored-to-your-needs).
 
@@ -129,8 +128,8 @@ directly.
 
 ### Use the CSC software stack
 
-[CSC provides a software stack][csc-software-stack] on LUMI, similar to the
-software stacks provided on the Finish HPC systems, which contains some Python
+[CSC provides a small additional software stack][csc-software-stack] on LUMI, similar to the
+software stacks provided on the Finnish HPC systems, which contains some Python
 packages. Please note that this software stack is only supported by CSC, not
 the LUMI User Support Team (LUST).
 
