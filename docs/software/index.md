@@ -50,7 +50,7 @@ On LUMI, we provide some pre-installed software in both central software stacks 
     [Software Library pages][software-library] sometimes contain more information
     on how to run the software, or more information about specific options that
     were chosen when installing the software on LUMI. Consult the [module environment page][module-env] for instructions on identifying the pre-installed software on LUMI through the module system instead.
-    Read more about the user-installable software with EasyBuild in the [next section](#installing-additional-software). 
+    Read more about the user-installable software with EasyBuild in the [next section](#installing-additional-software).
 
 - Software collections by local organizations
 
@@ -72,9 +72,10 @@ We offer two package management systems to install software on LUMI, with varyin
     is also extremely easy to install additional software in your personal or project
     space and have it integrate fully with the software stacks.
 
-    An overview of (almost) all software that we provide in the central software stack
-    or for which we provide ready-to-use EasyBuild build recipes for a user installation
-    can be found in the [LUMI Software Library][software-library].
+    An overview of (almost) all software that we provide pre-installed in the
+    central software stack or for which we provide ready-to-use EasyBuild build
+    recipes for a user installation can be found in the [LUMI Software
+    Library][software-library].
 
 - [Spack][spack]
 
@@ -92,7 +93,7 @@ these will be cleaned automatically in the future when the file system starts
 to fill up.
 
 If you intend to install Python packages, please consult the [Python packages
-installation guide ][python-install] for en overview of your options.
+installation guide][python-install] for an overview of your options.
 
 ## Alternatives to installing software yourself
 
