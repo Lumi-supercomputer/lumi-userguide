@@ -134,12 +134,14 @@ environment][conda-env]. The resulting `my_container.sif` container may be run
 like any other [container job][container-jobs] on LUMI. For example:
 
 ```bash
-$ singularity exec my_container.sif python3 --version
+$ srun --partition=<partition> --account=<account> singularity exec my_container.sif python3 my_script.py
 ```
 
-It automatically activates the installed Conda environment when you run it. See
-the [cotainr Conda environment docs][cotainr-conda-env] and the [cotainr LUMI
-examples][cotainr-lumi-examples] for more details.
+where `my_script.py` is your Python script.
+
+The installed Conda environment is automatically activated when you run the
+container. See the [cotainr Conda environment docs][cotainr-conda-env] and the
+[cotainr LUMI examples][cotainr-lumi-examples] for more details.
 
 !!! warning "Make sure your Conda environment supports the hardware in LUMI"
     In order to take advantage of e.g. the GPUs in [LUMI-G][lumi-g], the
