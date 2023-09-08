@@ -15,12 +15,11 @@
 [install-policy]: ./policy.md
 
 ---
-On this page you find information about pre-installed software on LUMI as well
-guidance on ways to install additional software yourself. If you are
+On this page you find information about pre-installed software on LUMI as well as guidance on ways to install additional software yourself. If you are
 looking for information on how to develop your own software on LUMI, consult
 the [developing section][developing-overview] instead.
 
-Please note that the LUMI User Support Team can only offer limited help with
+Please note that LUMI User Support Team can only offer limited help with
 installing scientific software as is further explained in the [Install
 policy][install-policy].
 
@@ -31,7 +30,7 @@ policy][install-policy].
     installations of software containing a lot of small files, e.g. Python or
     R environments installed via Conda or pip. For such software a container
     based approach must be used. See the [Python packages installation guide
-    ][python-install] for en overview of options for installing Conda/pip
+    ][python-install] for an overview of options for installing Conda/pip
     environments.
 
 ---
@@ -42,19 +41,20 @@ On LUMI, we provide some pre-installed software in both central software stacks 
 
 - Central LUMI software stacks
 
-    A full overview of software, that is either installed in the [LUMI software
-    stacks][software-stacks], or available as a LUMI-specific build recipe for the
+    A full overview of software, that is either pre-installed in the [LUMI software
+    stacks][software-stacks], or available as a user-installable LUMI-specific build recipe for the
     [EasyBuild][easybuild] package manager, can be found in the [LUMI software
-    library][software-library]. For software installed in the
+    library][software-library]. The information, if a software is pre-installed or user-installable, can be found when you open the page of the specific software. For software installed in the
     [central LUMI software stacks][software-stacks], the first channel to get
     help on a specific module is through the `module help` command, but the LUMI
     [Software Library pages][software-library] sometimes contain more information
     on how to run the software, or more information about specific options that
-    were chosen when installing the software on LUMI.
+    were chosen when installing the software on LUMI. Consult the [module environment page][module-env] for instructions on identifying the pre-installed software on LUMI through the module system instead.
+    Read more about the user-installable software with EasyBuild in the [next section](#installing-additional-software). 
 
-- Local software collections
+- Software collections by local organizations
 
-    There is also pre-installed software available on LUMI provided by local LUMI
+    There is also pre-installed software available provided by local LUMI
     consortium organizations. These software collections are available for all LUMI
     users, but are updated and supported by the local LUMI consortium organizations
     themselves, not by the LUMI User Support Team.
@@ -75,9 +75,6 @@ We offer two package management systems to install software on LUMI, with varyin
     An overview of (almost) all software that we provide in the central software stack
     or for which we provide ready-to-use EasyBuild build recipes for a user installation
     can be found in the [LUMI Software Library][software-library].
-
-    Consult the [module environment page][module-env] for instructions on
-    identifying the already available software on LUMI through the module system instead.
 
 - [Spack][spack]
 

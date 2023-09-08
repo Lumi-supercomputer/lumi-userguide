@@ -148,7 +148,7 @@ examples][cotainr-lumi-examples] for more details.
     of the [Slingshot 11 interconnect][interconnect] when running MPI jobs, you
     must make sure your packages are built against Cray MPICH. Cotainr does
     **not** do any magic conversion of the packages specified in the Conda
-    environment to make sure they fit the hardware in LUMI. It simply installs
+    environment to make sure they fit the hardware of LUMI. It simply installs
     the packages exactly as listed in the `my_conda_env.yml` file.
 
 !!! note
