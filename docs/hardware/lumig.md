@@ -16,7 +16,7 @@ a single AMD EPYC "Trento" CPU.
 
 <figure>
   <img 
-    src="../../assets/images/lumig-overview.svg" 
+    src="../../assets/images/lumig-overview-2928nodes.svg" 
     width="800"
     alt="LUMI-G overview"
   >
