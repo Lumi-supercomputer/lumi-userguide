@@ -8,22 +8,22 @@
 [python-install]: ./python.md
 [softwarestacks]: ../../runjobs/lumi_env/softwarestacks.md
 
+# LUMI container wrapper
 
-# Tykky installation wrapper
+The [LUMI container wrapper][tykky-github] is a set of tools which wrap
+software installations inside an Apptainer/Singularity container to improve
+startup times, reduce I/O load, and lessen the number of files on large
+parallel file systems.
 
-The [Tykky][tykky-github] installation wrapper (formerly called the "LUMI container
-wrapper") is a set of tools which wrap software installations inside an
-Apptainer/Singularity container to improve startup times, reduce I/O load, and
-lessen the number of files on large parallel file systems.
-
-Additionally, the Tykky installation wrapper will generate wrappers so that
+Additionally, the LUMI container wrapper will generate wrappers so that
 installed software can be used (almost) as if it was not containerized.
 Depending on tool selection and settings, either the whole host file system or
 a limited subset is visible during execution and installation. This means that
 it is possible to wrap installations using e.g. mpi4py while still relying on
 the host provided MPI installation.
 
-Tykky is a general purpose installation wrapper that supports wrapping:
+The LUMI container wrapper is a general purpose installation wrapper that
+supports wrapping:
 
 - **Existing installations on the filesystem**: Mainly to reduce the I/O load
   and improve startup times, but may also be used to containerize existing
@@ -35,25 +35,25 @@ Tykky is a general purpose installation wrapper that supports wrapping:
 - **Pip installations**: Directly wrap a [pip][pip] installation based on a
   [requirements.txt file][pip-req].
 
-!!! warning "Tykky is NOT generally recommended for managing Conda/pip installations"
-    For some use cases, Tykky is an excellent tool for managing Conda/pip
-    installations. For other use cases, there are better alternatives. See the
-    [installing Python packages][python-install] guide for an overview the
-    recommended ways to manage Python installations, including Conda/pip
-    installations.
+!!! warning "The LUMI container wrapper is NOT generally recommended for managing Conda/pip installations"
+    For some use cases, the LUMI container wrapper is an excellent tool for
+    managing Conda/pip installations. For other use cases, there are better
+    alternatives. See the [installing Python packages][python-install] guide
+    for an overview the recommended ways to manage Python installations,
+    including Conda/pip installations.
 
-!!! warning "Tykky has some limitations"
-    Please be aware of the [limitations when using Tykky
-    ](https://github.com/CSCfi/hpc-container-wrapper#limitations) before 
+!!! warning "The LUMI container wrapper has some limitations"
+    Please be aware of the [limitations when using the LUMI container wrapper
+    ](https://github.com/CSCfi/hpc-container-wrapper#limitations) before
     wrapping your installations.
 
-!!! warning "Tykky is experimental software"
-    As the Tykky installation wrapper is still under development, some of the
+!!! warning "The LUMI container wrapper is experimental software"
+    As the LUMI container wrapper is still under development, some of the
     more advanced features might change in exact usage and API.
 
-## Examples of using Tykky
+## Examples of using the LUMI container wrapper
 
-The tools provided by Tykky are accessible by loading the
+The tools provided by the LUMI container wrapper are accessible by loading the
 `lumi-container-wrapper` module that is available in the `LUMI` and `CrayEnv`
 [software stacks][softwarestacks].
 
@@ -216,10 +216,10 @@ container.
 
 ### Wrapping existing containers
 
-Tykky also provides a tool to generate wrappers for existing
-Apptainer/Singularity containers, so that they can be used transparently
-without the need for prepending `singularity exec ...`, or modify scripts if
-switching between containerized versions of tools.
+The LUMI container wrapper also provides a tool to generate wrappers for
+existing Apptainer/Singularity containers, so that they can be used
+transparently without the need for prepending `singularity exec ...`, or modify
+scripts if switching between containerized versions of tools.
 
 ```bash
 wrap-container -w </path/inside/container> <container> --prefix <install_dir> 
@@ -233,8 +233,14 @@ target path.
 
 ### Additional examples
 
-More examples may be found in the [Tykky GitHub repository examples](https://github.com/CSCfi/hpc-container-wrapper/blob/master/examples/).
+More examples may be found in the [LUMI container wrapper GitHub repository
+examples](https://github.com/CSCfi/hpc-container-wrapper/blob/master/examples/).
 
 ## How it works
 
-A description of how Tykky works may be found in the [Tykky GitHub repository README file](https://github.com/CSCfi/hpc-container-wrapper/blob/master/README.md). A short discussion of how Tykky works from the user perspective may be found in [this GitHub issue](https://github.com/Lumi-supercomputer/lumi-userguide/issues/110#issuecomment-1619599189).
+A description of how LUMI container wrapper works may be found in the [LUMI
+container wrapper GitHub repository README
+file](https://github.com/CSCfi/hpc-container-wrapper/blob/master/README.md). A
+short discussion of how LUMI container wrapper works from the user perspective
+may be found in [this GitHub
+issue](https://github.com/Lumi-supercomputer/lumi-userguide/issues/110#issuecomment-1619599189).

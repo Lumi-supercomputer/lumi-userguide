@@ -155,8 +155,8 @@ container. See the [cotainr Conda environment docs][cotainr-conda-env] and the
 
 !!! note
     Using `cotainr` to build a container from a Conda/pip environment is
-    different from wrapping a Conda/pip environment using the [Tykky
-    installation wrapper][container-wrapper]. Each serve their own purpose. See
+    different from wrapping a Conda/pip environment using the [LUMI container
+    wrapper][container-wrapper]. Each serve their own purpose. See
     the [Python installation guide][python-packages] for an overview of
     differences and [this GitHub issue][tykky-cotainr-diff] for a detailed
     discussion of the differences.
