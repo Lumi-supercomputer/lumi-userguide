@@ -91,8 +91,7 @@ cray-python](#use-the-cray-python-module) or [install a pip environment for use
 with a container](#use-an-existing-container-with-a-pip-virtual-environment).
 - If your workflow relies on a fixed environment in which you run a single
 binary/script and/or need intertwining with the host software environment, you
-may [wrap it using the Tykky installation
-wrapper](#use-the-tykky-installation-wrapper).
+may [wrap it using the LUMI container wrapper](#use-the-LUMI-container-wrapper).
 - If you are used to the managed software stacks on the CSC HPC systems, you may
 prefer to [use pre-installed Python packages in the CSC software
 stack](#use-the-csc-software-stack).
@@ -114,9 +113,9 @@ install such packages on the file systems in [pip virtual
 environment][pip-virt-env] and use them with the container. [An example of this
 approach is given in the LUMI PyTorch guide][container-virt-env-example].
 
-### Use the Tykky installation wrapper
+### Use the LUMI container wrapper
 
-We provide the [Tykky installation wrapper][tykky] which may be used to solve
+We provide the [LUMI container wrapper][tykky] which may be used to solve
 the "many small files" performance problem by wrapping a
 [Conda][conda]/[pip][pip] installation. This is a convenient way to get access
 to a performant Python installation if you only run a single binary/script

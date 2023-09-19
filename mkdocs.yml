@@ -48,7 +48,7 @@ nav:
       - EasyBuild: software/installing/easybuild.md
       - Spack: software/installing/spack.md
       - Python packages: software/installing/python.md
-      - Tykky installation wrapper: software/installing/container-wrapper.md
+      - LUMI container wrapper: software/installing/container-wrapper.md
     - Containers: 
       - Singularity/Apptainer: software/containers/singularity.md
     - Software guides:

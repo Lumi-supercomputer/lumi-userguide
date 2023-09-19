@@ -104,9 +104,9 @@ As alternatives to installing software, you may:
     You can bring a [Singularity/Apptainer software container][singularity-container]
     and run it using the [Singularity container runtime][singularity-jobs] provided by LUMI.
 
-- Use the [Tykky installation wrapper][contwrapper]
+- Use the [LUMI container wrapper][contwrapper]
 
-    The Tykky installation wrapper is a piece of software developed at CSC
+    The LUMI container wrapper is a piece of software developed at CSC
     which wraps software installations inside an Apptainer/Singularity container
     to improve startup times, reduce I/O load, and lessen the number of files on
     large parallel file systems.
