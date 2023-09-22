@@ -1,10 +1,11 @@
 [lumif]: ./parallel-filesystems/lumif.md
 [lumip]: ./parallel-filesystems/lumip.md
 [lumio]: ./lumio/index.md
-[lumi-g]: ../hardware/lumig.md
 [billing]: ../runjobs/lumi_env/billing.md
 [contwrapper]: ../software/installing/container-wrapper.md
-[containers]: ../software/containers/singularity.md
+
+[python-install]: ../software/installing/python.md
+
 [helpdesk]: ../helpdesk/index.md
 
 [sionlib]: https://www.fz-juelich.de/ias/jsc/EN/Expertise/Support/Software/SIONlib/_node.html
@@ -114,8 +115,9 @@ User Support Team and must be fully justified to be granted.
 
 Examples of requests that will be *rejected* include:
 
-- You are installing a lot of small files, e.g. using Conda. Please use a
-  [container][containers] or the [container wrapper][contwrapper] tool instead.
+- You are installing a lot of small files, e.g. using Conda. Please see the
+  [Python pacakges installation guide][python-install] for an overview of
+  better alternatives.
 - The compilation of your application is generating too many files for your home
   or project directory: you should compile your application from the scratch and
   then install it in your home or project directory. Exceptions can be made if
