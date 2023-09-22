@@ -5,7 +5,7 @@
 # Flash storage - LUMI-F
 
 The LUMI-F hardware partition provides a Lustre file system with a storage
-capacity of 7 PB and an aggregate bandwidth of 1 740 GB/s. It is composed of 2
+capacity of 8 PB and an aggregate bandwidth of 1 740 GB/s. It is composed of 2
 MDSs (metadata servers) and 58 Object Storage Targets (OSTs). Solid state
 drives (SSDs) are used in LUMI-F.
 
