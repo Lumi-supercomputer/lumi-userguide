@@ -23,6 +23,7 @@ nav:
     - Network and interconnect: hardware/network.md
   - Run jobs:
       - Overview: runjobs/index.md
+      - Web interface: runjobs/webui/index.md
       - LUMI environment:
         - Module environment: runjobs/lumi_env/Lmod_modules.md
         - Software stacks: runjobs/lumi_env/softwarestacks.md
