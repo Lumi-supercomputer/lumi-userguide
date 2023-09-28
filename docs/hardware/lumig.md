@@ -11,12 +11,12 @@ hide:
 [benchmarks]: https://www.amd.com/en/graphics/server-accelerators-benchmarks
 [zen3-wiki]: https://en.wikipedia.org/wiki/Zen_3
 
-The LUMI-G hardware partition consists of 2560 nodes with 4 AMD MI250x GPUs and 
+The LUMI-G hardware partition consists of 2928 nodes with 4 AMD MI250x GPUs and 
 a single AMD EPYC "Trento" CPU.
 
 <figure>
   <img 
-    src="../../assets/images/lumig-overview.svg" 
+    src="../../assets/images/lumig-overview-2928nodes.svg" 
     width="800"
     alt="LUMI-G overview"
   >
