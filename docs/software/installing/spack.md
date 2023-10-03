@@ -8,13 +8,7 @@ useful for building and maintaining installations of many different versions of
 the same software. It also comes with a virtual environment feature that is
 useful when developing software.
 
-LUMI provides a module to load a pre-configured Spack instance: `module load
-spack`. When you load this module, you will use a Spack instance configured to
-compile software with the Cray programming environment. The software will be
-installed in a location determined by you in `$SPACK_USER_PREFIX`. This Spack
-instance is "chained" to the upstream one in `/appl/lumi/spack`, which means
-that you can build new packages on top of the already installed ones by the
-LUMI User Support Team (similar to how our EasyBuild setup works).
+LUMI provides a module to load a pre-configured Spack instance: `module load spack`. When you load this module, you will use a Spack instance configured to compile software with the Cray programming environment. The software will be installed in a location determined by you in the environmental variable `$SPACK_USER_PREFIX`. This Spack instance is "chained" to the upstream instance in `/appl/lumi/spack`, which means that you can build new packages on top of the already installed ones by the LUMI User Support Team (similar to how the LUMI EasyBuild setup works).
 
 !!! important "The software installed with Spack in /appl/lumi/spack/ is provided as is."
     It may not have received any testing after installation! We also build the
@@ -118,8 +112,8 @@ GPU support and activate extra array bounds checking for debugging.
 
     The final line shows where the software is installed on disk. A module will
     also be generated automatically and added to your `$MODULEPATH`. The
-    modules are generated with a short hash code (5 characters "nioel" here) to
-    prevent naming collisions.
+    modules are generated with a short hash code (3 characters `hcn` here) to
+    prevent name collisions.
 
     ```bash
     $ module load kokkos/4.0.01-gcc-hcn
@@ -145,9 +139,9 @@ GPU support and activate extra array bounds checking for debugging.
 
     In some cases, changes have to made to the `package.py` file of a package.
     Unfortunately, this is not straightforward as the package repository is
-    located in `/appl/lumi`, which is read-only. In such cases, you have to
-    clone to your own Spack instance and configure it using our configuration
-    files.
+    located in `/appl/lumi`, which is read-only. In such cases, you have to either
+    make your own Spack instance and configure it using our configuration
+    files, or set up a custom Spack package repository and override the default Spack settings (see more below).
 
 2. **Seek help:** you can check the 
     [official Spack documentation](https://spack.readthedocs.io), open a ticket 
@@ -230,6 +224,31 @@ $ source /appl/lumi/spack/22.08/0.18.1-user/share/spack/setup-env.sh
 
 You just need to make sure that `$SPACK_USER_PREFIX` is set and that the
 `cache` and `modules/tcl` subdirectories exist within that directory.
+
+### Overriding the default settings in the Spack module
+
+The `spack` modules read the configuration files from the `/appl/lumi/spack/.../etc/` directory, which is read-only for users. In order to change the configuration files, you need to override the default settings by placing new configuration files (like `compilers.yaml` and `packages.yaml`) in the `$HOME/.spack/` directory and then unset the environment variable `$SPACK_DISABLE_LOCAL_CONFIG`. It will not work otherwise, because the Spack module on LUMI sets this variable to prevent accidental interference between any user-local Spack configuration and the system configuration.
+
+### Making a custom package repository
+
+Adding your own package repository can be done in a similar way to changing the configuration files. You can add your own `repos.yaml` file in the `~/.spack/` directory and then configure the path to your custom package directory inside that file:
+
+```
+$ cat ~/.spack/repos.yaml
+repos:
+- /users/username/spack-packages
+```
+
+When `$SPACK_DISABLE_LOCAL_CONFIG` is unset, Spack will read this configuration file and pick up your private Spack repository. You can verify that Spack is seeing the new package repository by running the `spack repo list` command:
+
+```
+ $ spack repo list
+==> 2 package repositories.
+custom     /users/username/spack-packages
+builtin    /pfs/lustrep3/appl/lumi/spack/23.03/0.20.0-user/var/spack/repos/builtin
+```
+
+More information about creating package repositories is available in the [Spack documentation](https://spack.readthedocs.io/en/latest/repositories.html).
 
 ## Further reading
 
