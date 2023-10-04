@@ -20,6 +20,7 @@ Available software:
 * GROMACS
 * JAX
 * Julia
+* Nextflow
 * OpenFOAM
 * PALM
 * PDAL
@@ -27,6 +28,7 @@ Available software:
 * PyTorch
 * QGIS
 * SAGA GIS
+* STAR-CCM+
 * TensorFlow
 
 See more details in [Docs CSC](https://docs.csc.fi/apps/by_system/#lumi).
