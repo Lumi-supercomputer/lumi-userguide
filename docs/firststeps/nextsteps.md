@@ -36,6 +36,8 @@ In order to continue your endeavour into the use of LUMI, you may want to take a
 
 - The [**Helpdesk**][helpdesk] section to get in contact with the LUMI User Support Team (LUST), in case you need further help using LUMI.
 
+- The [**Training material archive**](https://lumi-supercomputer.github.io/LUMI-training-materials/) to check out the slides, recordings and self-learn exercises (including solutions) for our [1-day intro courses](https://lumi-supercomputer.github.io/LUMI-training-materials/intro-latest). Additionally, some material and recordings from our [advanced-level, general 4-day course](https://lumi-supercomputer.github.io/LUMI-training-materials/comprehensive-latest) are available.
+
 <!-- - How to [get help][helpdesk] with using LUMI -->
 
 <!-- - [Learn about the LUMI user support team][LUST] and what we give support for
