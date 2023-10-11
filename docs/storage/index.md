@@ -21,10 +21,9 @@ systems they are and on what hardware partitions they are located at.
 ---
 
 On LUMI you have access to network file system storage based on the
-[LUMI-P][lumip] and [LUMI-F][lumif] hardware partitions. At a later point,
-object storage based on [LUMI-O][lumio] will also become available. The use of
-storage is billed according to the
-[billing policy](../runjobs/lumi_env/billing.md#storage-billing).
+[LUMI-P][lumip] and [LUMI-F][lumif] hardware partitions, as well as to the object storage on [LUMI-O][lumio]. 
+The use of storage is billed according to the [billing policy](../runjobs/lumi_env/billing.md#storage-billing).
+
 
 ## Where to store data?
 
