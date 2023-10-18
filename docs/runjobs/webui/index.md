@@ -27,17 +27,17 @@ Features available in the web interfaces:
 
 Using a web browser navigate to [www.lumi.csc.fi](https://www.lumi.csc.fi). 
 
-![Image of welcome page for the lumi web interface](../../../assets/images/wwwLumiWelcome.png)
+![Image of welcome page for the lumi web interface](../../assets/images/wwwLumiWelcome.png)
 
 Click the `Go to login` button to proceed.
 
-![Image of authentication page for lumi web interface ](../../../assets/images/wwwLumiAuth.png)
+![Image of authentication page for lumi web interface ](../../assets/images/wwwLumiAuth.png)
 
 Choose the correct authentication provider which for most LUMI users is "MyAccessID" (users with a Finnish allocation can also use "CSC" or "HAKA"), and follow the authentication procedure.
 
 After successful authentication, you will see the dashboard.
 
-![Dashboard for the lumi web interface](../../../assets/images/wwwLumiDash.png)
+![Dashboard for the lumi web interface](../../assets/images/wwwLumiDash.png)
 
 From here you can browse your files on the supercomputer, start a shell, view running jobs or start one of the many available applications. The dashboard also contains some important system information.
 
@@ -52,7 +52,7 @@ The _Login node shell_ launches a normal Linux shell on one of the login nodes.
 Any command that is running when the login shell browser tab is closed will stop.
 Note that the same rules apply here as during a normal ssh session.
 **Login nodes are only for light pre/postprocessing**. 
-![Interactive login shell](../../../assets/images/wwwLumiShell.png)
+![Interactive login shell](../../assets/images/wwwLumiShell.png)
 
 The _Compute node shell_ launches a persistent shell on a compute node for heavier commands that should not be run on login nodes.
 The persistent shell will keep running even if you close your browser or lose internet connection.
@@ -67,7 +67,7 @@ you can upload/download files, create new files and directories, or open a shell
     Uploaded files will overwrite existing files with the same name without prompting.
     Currently the maximum size for individual file uploads is 10GB
 
-![File browser view](../../../assets/images/wwwLumiFiles.png)
+![File browser view](../../assets/images/wwwLumiFiles.png)
 
 Clicking on a file will open it in view only mode, for more options like editing, renaming and deleting, use the button with three dots next to the filename.   
 
