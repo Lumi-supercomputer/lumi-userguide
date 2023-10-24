@@ -21,7 +21,7 @@ In the basic settings, the following settings are available:
 - **Python**: Two Python modules are provided: `Cray-python`, and `pytorch 2.0`, which has limited support available.
     You can also select _Custom_ to provide a full path to the Python interpreter you want to use.
 - **Virtual environment path:** If the provided path does not exist, a new virtual environment using the module, or Python interpreter, selected will be created.
-    If an existing path is provided, that virtual environment will be created.
+    If an existing path is provided, that virtual environment will be used.
     Note that virtual environments created outside of the web interface are not guaranteed to work, so creating your virtual environments in the web interface is recommended.
     If the field is left empty, no virtual environment is created or used.
 - **Enable system installed packages on venv creation:** If you are basing your Python environment on an existing Python module, you should enable this setting to ensure that you are able to use the Python packages provided by the module.
