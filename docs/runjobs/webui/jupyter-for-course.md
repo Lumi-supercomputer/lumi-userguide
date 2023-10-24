@@ -43,15 +43,11 @@ setenv("_COURSE_GIT_REF","")
 -- lab / notebook / empty (defaults to jupyter)
 setenv("_COURSE_NOTEBOOK_TYPE","notebook")
 ```
-Resources (`/projappl/project_1234567/www_puhti_modules/some-course-resources.yml`):
+Resources (`/projappl/project_1234567/www_lumi_modules/some-course-resources.yml`):
 ```
 cores: 4
 time: "02:00:00"
 partition: "interactive"
-local_disk: 32
 mem: "16GB"
 ```
-### Tutorials
-[Tutorial example for course organizers](https://github.com/CSCfi/Jupyter_www_puhti): This tutorial is useful for course organizers
-who want to provide custom Jupyter notebooks *via* the web interfaces. 
 

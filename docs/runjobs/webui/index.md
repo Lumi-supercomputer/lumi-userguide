@@ -77,9 +77,13 @@ The file browser comes with a basic text editor. Some important notes on that:
 - There is no _save-as_ feature
 - If a read-only file is opened no indication will be given to the user but no changes will be applied
 
-### Applications
+### Interactive applications
 
-- Jupuyter notebook
+For instructions on how interactive applications work,
+see the [generic instructions on interactive applications](./interactive-apps.md),
+or the applications specific instructions:
+
+- [Jupuyter notebook](./jupyter.md)
 - Vscode 
 - VNC Desktop 
 - TensorBoard
