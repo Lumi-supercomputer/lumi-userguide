@@ -32,7 +32,7 @@ storage is billed according to the
 
     Each user has a home directory (`$HOME`) that can contain up to
     20 GB of data. It is intended to store user configuration files and personal
-    data. The user home directory is purged once the user account expires.
+    data. The user home directory is purged once the user account expires. However, LUMI, and therefore the user home directory, is not accessible if the user is not a member of an active project, even though the user has still a valid account on LUMI.
 
 === "Project persistent"
 
