@@ -160,20 +160,6 @@ Here is an overview of some of the most commonly used Slurm options.
     `/tmp`, you must allocate memory for it in order to avoid running out of
     memory.
 
-### Receive email notifications
-
-!!! warning
-    The email notification feature is not yet configured and does not work at
-    the moment.
-
-Email notifications from Slurm can be requested when certain events occur (job
-starts, fails, ...).
-
-| Email Type    | Send email when                                            |
-| --------------|------------------------------------------------------------|
-| `--mail-user` | Used to specify the email that should receive notification |
-| `--mail-type` | When to send an email: `BEGIN`, `END`, `FAIL`, `ALL`       |
-
 ## Pipelining with dependencies
 
 Job dependencies allow you to defer the start of a job until the specified
