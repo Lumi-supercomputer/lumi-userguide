@@ -3,7 +3,7 @@
 
 ## Intro
 
-The web interfaces for Lumi at [www.lumi.csc.fi](https://www.lumi.csc.fi) can be used to access the supercomputers using only a web browser.
+The web interfaces for LUMI at [www.lumi.csc.fi](https://www.lumi.csc.fi) can be used to access the supercomputers using only a web browser.
 
 Features available in the web interfaces:
 
@@ -12,7 +12,7 @@ Features available in the web interfaces:
 - Open a persistent shell on a compute node
 - View running batch jobs
 - Launch interactive apps and connect to them directly from the browser:
-    - Desktop with support for gpu acceleration 
+    - Desktop with support for GPU acceleration
     - Julia-Jupyter
     - Jupyter
     - Jupyter for courses: An interactive Jupyter session specifically for courses
@@ -83,7 +83,9 @@ For instructions on how interactive applications work,
 see the [generic instructions on interactive applications](./interactive-apps.md),
 or the applications specific instructions:
 
-- [Jupuyter notebook](./jupyter.md)
-- Vscode 
-- VNC Desktop 
-- TensorBoard
+- [Julia-Jupyter](./julia-jupyter.md)
+- [Jupyter](./jupyter.md)
+- [Jupyter for courses](./jupyter-for-courses.md)
+- [TensorBoard](./tensorboard.md)
+- [VNC Desktop](./desktop.md)
+- [Visual Studio Code](./vscode.md)
