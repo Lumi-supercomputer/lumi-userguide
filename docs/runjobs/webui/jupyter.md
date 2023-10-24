@@ -1,4 +1,4 @@
-The Jupyter app launches a Jupyter Lab on a LUMI compute node, which you can access from the web interface.
+The Jupyter app launches Jupyter Lab on a LUMI compute node, which you can access from the web interface.
 
 ![](../../assets/images/wwwLumiJupyterResources.png)
 
