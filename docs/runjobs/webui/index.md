@@ -3,7 +3,7 @@
 
 ## Intro
 
-The web interfaces for Lumi at [lumi.csc.fi](https://lumi.csc.fi) can be used to access the supercomputers using only a web browser.
+The web interfaces for Lumi at [www.lumi.csc.fi](https://www.lumi.csc.fi) can be used to access the supercomputers using only a web browser.
 
 Features available in the web interfaces:
 
@@ -25,7 +25,7 @@ Features available in the web interfaces:
 
 ## Connecting 
 
-Using a web browser navigate to [lumi.csc.fi](https://lumi.csc.fi). 
+Using a web browser navigate to [www.lumi.csc.fi](https://www.lumi.csc.fi). 
 
 ![Image of welcome page for the lumi web interface](../../../assets/images/wwwLumiWelcome.png)
 
@@ -52,20 +52,22 @@ The _Login node shell_ launches a normal linux shell on one of the login nodes.
 Any command that is running when the login shell browser tab is closed will stop.
 Note that the same rules apply here as during a normal ssh session.
 **Login nodes are only for light pre/postprocessing**. 
+![Interactive login shell](../../../assets/images/wwwLumiShell.png)
 
 The _Compute node shell_ launches a persistent shell on a compute node for heavier commands that should not be run on login nodes.
 The persistent shell will keep running even if you close your browser or lose internet connection.
 
-
 ### Files
 
 The file browser can be opened using the _Files_ section on the top navbar (this displays a list of all project disk areas), or using 
-the shortcut to the home folder at the bottom of the front page. In the file browser
+the shortcut to the home folder on the front page. In the file browser
 you can upload/download files, create new files and directories, or open a shell in the current directory. 
 
 !!! note
     Uploaded files will overwrite existing files with the same name without prompting.
     Currently the maximum size for individual file uploads is 10GB
+
+![File browser view](../../../assets/images/wwwLumiFiles.png)
 
 Clicking on a file will open it in view only mode, for more options like editing, renaming and deleting, use the button with three dots next to the filename.   
 
@@ -74,3 +76,10 @@ The file browser comes with a basic text editor. Some important notes on that:
 - If no changes have been made, the _save_ button is grayed out.
 - There is no _save-as_ feature
 - If a read-only file is opened no indication will be given to the user but no changes will be applied
+
+### Applications
+
+- Jupuyter notebook
+- Vscode 
+- VNC Desktop 
+- TensorBoard
