@@ -1,5 +1,8 @@
 The interactive applications run on compute nodes, but are accessed though the web interface.
 You will find a list of applications on the front page after logging in, and in the navigation menu.
+
+Currently running and past interactive app sessions can be found on the _My Interactive Sessions_ page, which you will find in the navbar in the center.
+
 Each application has a form with settings for launching, where you can select the project for billing, the partition, resources, and app-specific settings.
 
 ![](../../assets/images/wwwLumiDesktop.png)

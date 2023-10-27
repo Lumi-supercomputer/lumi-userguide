@@ -26,7 +26,7 @@ In the basic settings, the following settings are available:
     If the field is left empty, no virtual environment is created or used.
 - **Enable system installed packages on venv creation:** If you are basing your Python environment on an existing Python module, you should enable this setting to ensure that you are able to use the Python packages provided by the module.
     If you are creating a Python environment, and only using the modules to provide a specific Python version, you can disable this setting.
-- **Enable packages under ~/.local/lib on venv start** Enables using packages installed using `pip --user install` in virtual environments.
+- **Enable packages under ~/.local/lib on venv start**: Enables using packages installed using `pip --user install` in virtual environments.
     It is recommended to leave this disabled to avoid conflicts in package versions.
 
 

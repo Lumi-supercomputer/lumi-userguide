@@ -48,7 +48,7 @@ From here you can browse your files on the supercomputer, start a shell, view ru
 The shell apps can be found under Pinned apps or on the top navbar under the _Tools_ section.
 There are two different shells.
 
-The _Login node shell_ launches a normal linux shell on one of the login nodes.
+The _Login node shell_ launches a normal Linux shell on one of the login nodes.
 Any command that is running when the login shell browser tab is closed will stop.
 Note that the same rules apply here as during a normal ssh session.
 **Login nodes are only for light pre/postprocessing**. 
@@ -76,6 +76,13 @@ The file browser comes with a basic text editor. Some important notes on that:
 - If no changes have been made, the _save_ button is grayed out.
 - There is no _save-as_ feature
 - If a read-only file is opened no indication will be given to the user but no changes will be applied
+
+### Active Jobs
+
+The _Active Jobs_ app can be found under the _Jobs_ section in the top navbar.
+In the app you will be able to see your currently running and recently completed Slurm jobs.
+By expanding the row for the job using the arrow on the left side more details about the job will be visible.
+
 
 ### Interactive applications
 
