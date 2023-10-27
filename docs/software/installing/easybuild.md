@@ -262,21 +262,69 @@ module load GROMACS/2021.4-cpeGNU-22.08-PLUMED-2.7.4-CPU
 (i.e., loading the software stack in which we installed GROMACS and the GROMACS module that 
 we installed).
 
+
+### A special case: Modules for singularity containers
+
+We provide some EasyConfigs to build modules for singularity containers that we provide 
+elsewhere on the system. These are marked in the [LUMI Software Library][software-library]
+with a "C" on a purple background in the list and a "singularity container" label on the
+page for the specific package. 
+
+These EasyConfigs will copy the container to a safe place in your user installation so that
+you can keep it if reproducibility is a concern for you. They will also install modules that
+define some standard variables that make it easy to locate the container and that set the
+appropriate bindings for the singularity command. In many cases the singularity container file
+in your own directory space can be removed and the module will automatically pick up the central
+one (but check the documentation for the package in the [LUMI Software Library][software-library],
+it will tell you if you can do so). 
+Do keep in mind though that the centrally stored container file will be removed if we figure out that there are 
+problems with it, while the container may still be perfectly fine for you. E.g., some containers
+provide the RCCL communication library which is popular in AI applications but requires a 
+specific plugin to work well with the Slingshot 11 interconnect of LUMI. These containers often
+need to be rebuilt after a system upgrade, but they may still be perfectly fine for users who use
+only a single GPU or a single GPU node. If you want to keep using the older version though, it has 
+to be installed in your own file space.
+
+In some cases the EasyConfig will also install some wrapper commands that make it easier
+to work with the container.
+
+The containers we provide do in general not depend on any specific version of the Cray 
+Programming Environment and hence also not on a specific version of the LUMI software stack.
+Hence LUMI provides a mechanism to install the container modules in a place where they will 
+be found by all partitions of all LUMI stacks and by the CrayEnv stack. To this end, you can 
+install in the dummy partition `partition/container`, e.g.,
+
+```
+module load LUMI partition/container EasyBuild-user
+eb <container-easyconfig.eb>
+```
+
+Note that to subsequently use the container you do not need to load `partition/common` or 
+`EasyBuild-user`.
+
+Many containers come with documentation about their use. We encourage you to check
+the documentation in the [LUMI Software Library][software-library] for the containers,
+and to check the help provided by the module after installation (with `module help`
+or `module spider`).
+
+
 ### Some common problems
 
 1.  **`module avail` does not show the module.**
 
     There are two possible causes for this.
 
-    1.  Lmod builds a cache of all modules on the system and sometimes doesn't note that the
-        cache needs to be updated (it will do so automatically once a day). If `module avail`
-        fails right after installing the package and in the same shell that you used to install
-        the package, then the Lmod cache is usually the problem. To clear the cache, remove
-        the `~/.lmod.d/.cache` subdirectory:
+    1.  Lmod builds a cache of all modules on the system. EasyBuild will clear the cache 
+        so that it will be rebuilt after installing a software package and hence the 
+        newly installed modules should be found. In rare cases Lmod may be in a corrupt
+        state. In those cases the best solution is to clear the cache (unless it happens
+        right after running the `eb` command to install a module): 
 
         ```bash
         rm -rf ~/.lmod.d/.cache
         ```
+
+        and to log out and log in again to start with a clean shell.
 
     2.  If the problem occurs later on, e.g., while running a job, then a common cause is that
         you have a different version of the `LUMI` and/or `partition` modules loaded than used when
