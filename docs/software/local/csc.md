@@ -13,6 +13,7 @@ module use /appl/local/csc/modulefiles
 Available software:
 
 * Amber
+* Allas (only for the Finnish national system users)
 * CP2K
 * Elmer
 * GDAL
