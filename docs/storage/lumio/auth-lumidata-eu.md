@@ -107,6 +107,11 @@ Creation and Expiry dates.
 
 From this side menu, it is also possible to extend the key.
 
+!!! info
+	When you initially create the key, the initial allowed maximum lifetime is 168h = 7 days.
+	This can then be extend by one hour for every hour since key creation, i.e you are always
+	able to extend the duration of the key to now + 7 days.
+
 Downloading a configuration template for different object storage clients like
 shell, boto3, rlcone, s3cmd and aws. Which after selecting the desired object
 storage client and clicking "Generate" opens the output in a new browser tab.
