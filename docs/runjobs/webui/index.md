@@ -77,6 +77,12 @@ The file browser comes with a basic text editor. Some important notes on that:
 - There is no _save-as_ feature
 - If a read-only file is opened no indication will be given to the user but no changes will be applied
 
+LUMI-O can also be accessed if you have [configured the connection](https://docs.lumi-supercomputer.eu/storage/lumio/#configuring-the-lumi-o-connection)
+using the _lumio-conf_ tool.
+After running the configuration tool, you may need to restart the web server using the _Restart the webserver_ link in the _Help_ menu in the top navbar.
+Shortcuts to the project storage spaces in LUMI-O that have valid authentication credentials will be visible in the file browser.
+
+
 ### Active Jobs
 
 The _Active Jobs_ app can be found under the _Jobs_ section in the top navbar.
