@@ -18,7 +18,7 @@
 
 !!! info
 	It is now also possible to log in using [the lumi webinterface](../runjobs/webui) available
-	at [lumi.csc.fi](https://lumi.csc.fi)
+	at [www.lumi.csc.fi](https://www.lumi.csc.fi)
 
 Connecting to LUMI via the command line is possible from all major OS. Once you
 have completed the steps to [setting up an SSH key pair][setup-ssh-key] and
