@@ -17,7 +17,7 @@
 # Logging in (with SSH client)
 
 !!! info
-	It is now also possible to log in using [the lumi webinterface](../runjobs/webui) available
+	It is now also possible to log in using [the lumi webinterface](../runjobs/webui/index.md) available
 	at [www.lumi.csc.fi](https://www.lumi.csc.fi)
 
 Connecting to LUMI via the command line is possible from all major OS. Once you
