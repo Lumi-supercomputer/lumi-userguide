@@ -4,9 +4,6 @@ The Jupyter app launches Jupyter Lab on a LUMI compute node, which you can acces
 
 In the form you will be able to select.
 
-- **Jupyter type:** The notebook type that will be launched, either Notebook or Lab.
-    It is recommended to use _Lab_ as _Notebook_ is being deprecated.
-    If you do want to use _Notebook_, ensure that the Python environment you are using has the `nbclassic` package installed.
 - **Working directory:** The directory where your notebook file is stored.
 - **Basic or Advanced:** The _Basic_ setting allows you so use a Python module provided by the system, with either a virtual environment or user-installed packages to extend the module.
     The _Advanced_ setting lets you set up the Python environment either using a script provided in the form, or a path to a script.
@@ -39,5 +36,4 @@ In the advanced settings, you can find the following settings:
 
 The script or path to script will be sourced by bash before starting Jupyter.
 To ensure that Jupyter launches correctly, ensure that `python` is available on the path, and the `jupyterlab` package has been installed.
-If you are using the classic notebook type, also ensure that the `nbclassic` has been installed.
-Jupyter will be launched using the command `python -m jupyter $jp_type`, where `jp_type` is either `notebook` or `lab`.
+Jupyter will be launched using the command `python -m jupyter lab`.
