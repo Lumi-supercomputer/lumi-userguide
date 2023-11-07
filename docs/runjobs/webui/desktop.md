@@ -10,3 +10,5 @@ Currently, the following graphical applications are available with GPU accelerat
 
 You can find the available applications in the apps dropdown in the taskbar, under the *Other* category.
 If you want to be able to access the apps easier, shortcuts to the applications can be created by dragging the icons to the desktop.
+
+![Apps available in the LUMI-D partition](../../../assets/images/wwwLumiDesktopApps.png)
