@@ -9,7 +9,7 @@ In the form you will be able to select:
 - **Compiler:** The compiler to use for compiling.
 - **Modules:** A list of the modules you want loaded, separated by spaces. Loading modules after VSCode has launched does not work for most functionality in VSCode, so ensure that you have listed all modules before launching the app.
 
-![](../../assets/images/wwwLumiVSCode.png)
+![VSCode options](../../assets/images/wwwLumiVSCode.png)
 
 ## Extensions
 Extensions for Python, C/C++ and Julia are installed by default and do not need to be manually installed.

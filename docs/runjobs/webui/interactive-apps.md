@@ -5,7 +5,7 @@ Currently running and past interactive app sessions can be found on the _My Inte
 
 Each application has a form with settings for launching, where you can select the project for billing, the partition, resources, and app-specific settings.
 
-![](../../assets/images/wwwLumiDesktop.png)
+![Interactive app form](../../assets/images/wwwLumiDesktop.png)
 
 The following settings available for most apps:
 
@@ -34,9 +34,9 @@ Once the app has started, the app card will become green, and you will see a but
 You can see the status of the application in the top-right corner of the app card, as well as other information about the app.
 If you no longer need the session, you should use the *Cancel* button in the app card, which will cancel the Slurm job.
 
-![](../../assets/images/wwwLumiCardQueue.png)
+![Interactive app queueing](../../assets/images/wwwLumiCardQueue.png)
 
 After the job completes, the reason for job completion will be visible.
 Usually this is due to reaching the time limit of the Slurm job, or manually cancelling the session, but some error messages may also be visible here, with additional details available in the log file linked.
 If you are sending a support ticket regarding your app session, please include the log file.
-![](../../assets/images/wwwLumiCardTimeout.png)
+![Interactive app completed](../../assets/images/wwwLumiCardTimeout.png)
