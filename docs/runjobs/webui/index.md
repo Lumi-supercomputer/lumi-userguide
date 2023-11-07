@@ -1,4 +1,4 @@
-# The Lumi web interface
+# The LUMI web interface
 
 
 ## Intro
