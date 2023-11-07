@@ -1,6 +1,6 @@
 The Jupyter app launches Jupyter Lab on a LUMI compute node, which you can access from the web interface.
 
-![](../../assets/images/wwwLumiJupyterResources.png)
+![Jupyter resource options](../../assets/images/wwwLumiJupyterResources.png)
 
 In the form you will be able to select.
 
@@ -8,7 +8,7 @@ In the form you will be able to select.
 - **Basic or Advanced:** The _Basic_ setting allows you so use a Python module provided by the system, with either a virtual environment or user-installed packages to extend the module.
     The _Advanced_ setting lets you set up the Python environment either using a script provided in the form, or a path to a script.
     For more details about these, see the sections below.
-![](../../assets/images/wwwLumiJupyterSettings.png)
+![Jupyter settings](../../assets/images/wwwLumiJupyterSettings.png)
 
 
 ## Basic
