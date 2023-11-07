@@ -1,7 +1,7 @@
 # Interactive applications
 
-The interactive applications run on compute nodes, but are accessed though the web interface.
-You will find a list of applications on the front page after logging in, and in the navigation menu.
+The interactive applications run on compute nodes, but are accessed through the web interface.
+You will find shortcuts for selected applications on the front page after logging in, and a complete list of applications in the top navbar under _Apps_.
 
 Currently running and past interactive app sessions can be found on the _My Interactive Sessions_ page, which you will find in the navbar in the center.
 
