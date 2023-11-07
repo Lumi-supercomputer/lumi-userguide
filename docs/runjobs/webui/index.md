@@ -29,11 +29,11 @@ Using a web browser navigate to [www.lumi.csc.fi](https://www.lumi.csc.fi).
 
 ![Image of welcome page for the lumi web interface](../../assets/images/wwwLumiWelcome.png)
 
-Click the `Go to login` button to proceed.
+Click the _Go to login_ button to proceed.
 
 ![Image of authentication page for lumi web interface ](../../assets/images/wwwLumiAuth.png)
 
-Choose the correct authentication provider which for most LUMI users is "MyAccessID" (users with a Finnish allocation can also use "CSC" or "HAKA"), and follow the authentication procedure.
+Choose the correct authentication provider which for most LUMI users is _MyAccessID_ (users with a Finnish allocation can also use _CSC_ or _HAKA_), and follow the authentication procedure.
 
 After successful authentication, you will see the dashboard.
 
@@ -96,9 +96,9 @@ For instructions on how interactive applications work,
 see the [generic instructions on interactive applications](./interactive-apps.md),
 or the applications specific instructions:
 
+- [Desktop](./desktop.md)
 - [Julia-Jupyter](./julia-jupyter.md)
 - [Jupyter](./jupyter.md)
 - [Jupyter for courses](./jupyter-for-courses.md)
 - [TensorBoard](./tensorboard.md)
-- [VNC Desktop](./desktop.md)
 - [Visual Studio Code](./vscode.md)
