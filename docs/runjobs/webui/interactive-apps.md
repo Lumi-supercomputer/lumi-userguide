@@ -1,7 +1,11 @@
+# Interactive applications
+
 The interactive applications run on compute nodes, but are accessed though the web interface.
 You will find a list of applications on the front page after logging in, and in the navigation menu.
 
 Currently running and past interactive app sessions can be found on the _My Interactive Sessions_ page, which you will find in the navbar in the center.
+
+## Launching an application
 
 Each application has a form with settings for launching, where you can select the project for billing, the partition, resources, and app-specific settings.
 
@@ -29,12 +33,16 @@ To ensure short queueing times, only request the amount of resources and time yo
 After filling in the form, you can launch the application using the *Launch* button at the bottom of the form.
 You will then be redirect to the interactive sessions page, where all of your current and past sessions will be visible.
 
+## Slurm queue
+
 The apps run as normal Slurm jobs, which means that they will queue until resources have been allocated for the Slurm job.
 Once the app has started, the app card will become green, and you will see a button to connect to the session.
 You can see the status of the application in the top-right corner of the app card, as well as other information about the app.
 If you no longer need the session, you should use the *Cancel* button in the app card, which will cancel the Slurm job.
 
 ![Interactive app queueing](../../assets/images/wwwLumiCardQueue.png)
+
+## Completion
 
 After the job completes, the reason for job completion will be visible.
 Usually this is due to reaching the time limit of the Slurm job, or manually cancelling the session, but some error messages may also be visible here, with additional details available in the log file linked.
