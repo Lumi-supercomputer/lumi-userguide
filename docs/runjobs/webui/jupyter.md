@@ -15,7 +15,7 @@ In the form you will be able to select.
 
 In the basic settings, the following settings are available:
 
-- **Python**: Two Python modules are provided: `Cray-python`, and `pytorch 2.0`, which has limited support available.
+- **Python**: Two Python modules are provided: `cray-python`, and `pytorch 2.0`, which has limited support available.
     You can also select _Custom_ to provide a full path to the Python interpreter you want to use.
 - **Virtual environment path:** If the provided path does not exist, a new virtual environment using the module, or Python interpreter, selected will be created.
     If an existing path is provided, that virtual environment will be used.
