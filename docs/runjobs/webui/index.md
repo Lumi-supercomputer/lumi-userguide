@@ -38,8 +38,9 @@ There are two different shells.
 
 The _Login node shell_ launches a normal Linux shell on one of the login nodes.
 Any command that is running when the login shell browser tab is closed will stop.
-Note that the same rules apply here as during a normal ssh session.
+Note that the same rules apply here as during a normal ssh session from a terminal.
 **Login nodes are only for light pre/postprocessing**. 
+
 ![Interactive login shell](../../assets/images/wwwLumiShell.png)
 
 The _Compute node shell_ launches a persistent shell on a compute node for heavier commands that should not be run on login nodes.
@@ -55,9 +56,10 @@ you can upload/download files, create new files and directories, or open a shell
     Uploaded files will overwrite existing files with the same name without prompting.
     Currently the maximum size for individual file uploads is 10GB
 
+
 ![File browser view](../../assets/images/wwwLumiFiles.png)
 
-Clicking on a file will open it in view only mode, for more options like editing, renaming and deleting, use the button with three dots next to the filename.   
+Clicking on a file will open it in a view-only mode. For more options like editing, renaming and deleting, use the button with three dots next to the filename.   
 
 The file browser comes with a basic text editor. Some important notes on that:
 
