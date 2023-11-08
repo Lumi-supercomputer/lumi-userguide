@@ -25,7 +25,7 @@ nav:
   - Run jobs:
     - Overview: runjobs/index.md
     - Web interface:
-      - Overview: runjobs/webui/index.md
+      - Introduction: runjobs/webui/index.md
       - Interactive applications:
         - Overview: runjobs/webui/interactive-apps.md
         - Desktop: runjobs/webui/desktop.md
