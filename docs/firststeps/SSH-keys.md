@@ -12,8 +12,7 @@
 
 # Setting up SSH key pair
 
-Before connecting to LUMI, you need to register an SSH key pair. **You can only
-log in to LUMI using SSH keys**. There is no option for using passwords. 
+If you want to use LUMI from a terminal, you need to register an SSH key pair. The SSH keys are the only way to connect to LUMI when using a Linux, macOS or Windows PowerShell terminal, or MobaXterm or PuTTY from Windows. There is no option for using passwords. 
 
 LUMI only accepts SSH keys based on the RSA (4096 bit) or ed25519 algorithms.
 If possible, we recommend to use ed25519.
