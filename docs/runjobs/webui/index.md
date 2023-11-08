@@ -27,17 +27,17 @@ Features available in the web interfaces:
 
 Using a web browser navigate to [www.lumi.csc.fi](https://www.lumi.csc.fi). 
 
-![Image of welcome page for the lumi web interface](../../assets/images/wwwLumiWelcome.png)
+![Image of welcome page for the LUMI web interface](../../assets/images/wwwLumiWelcome.png)
 
 Click the _Go to login_ button to proceed.
 
-![Image of authentication page for lumi web interface ](../../assets/images/wwwLumiAuth.png)
+![Image of authentication page for the LUMI web interface](../../assets/images/wwwLumiAuth.png)
 
 Choose the correct authentication provider which for most LUMI users is _MyAccessID_ (users with a Finnish allocation can also use _CSC_ or _HAKA_), and follow the authentication procedure.
 
 After successful authentication, you will see the dashboard.
 
-![Dashboard for the lumi web interface](../../assets/images/wwwLumiDash.png)
+![Dashboard for the LUMI web interface](../../assets/images/wwwLumiDash.png)
 
 From here you can browse your files on the supercomputer, start a shell, view running jobs or start one of the many available applications. The dashboard also contains some important system information.
 
