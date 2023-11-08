@@ -13,7 +13,7 @@ For both the GPU accelerated Desktop and the normal Desktop, you will find basic
 
 ## GPU accelerated applications
 
-Currently, the following graphical applications are available with GPU acceleration:
+Currently, the following graphical applications are available with GPU acceleration on LUMI-D:
 
 - Blender
 - ParaView
