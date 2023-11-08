@@ -13,6 +13,7 @@ nav:
     - Access to LUMI: firststeps/accessLUMI.md
     - Setting up SSH key pair: firststeps/SSH-keys.md
     - Logging in (with SSH client): firststeps/loggingin.md
+    - Logging in (with web interface): firststeps/loggingin-webui.md
     - Moving data to/from LUMI: firststeps/movingdata.md
     - Next steps: firststeps/nextsteps.md
   - Hardware:
@@ -22,25 +23,35 @@ nav:
     - Data analytics nodes - LUMI-D: hardware/lumid.md
     - Network and interconnect: hardware/network.md
   - Run jobs:
-      - Overview: runjobs/index.md
-      - LUMI environment:
-        - Module environment: runjobs/lumi_env/Lmod_modules.md
-        - Software stacks: runjobs/lumi_env/softwarestacks.md
-        - Daily management: runjobs/lumi_env/dailymanagement.md
-        - Data storage options: /storage/
-        - Billing policy: runjobs/lumi_env/billing.md
-      - Batch jobs:      
-        - Slurm quickstart: runjobs/scheduled-jobs/slurm-quickstart.md
-        - Slurm partitions: runjobs/scheduled-jobs/partitions.md
-        - Batch jobs: runjobs/scheduled-jobs/batch-job.md
-        - Full machine runs: runjobs/scheduled-jobs/hero-runs.md
-        - GPU examples: runjobs/scheduled-jobs/lumig-job.md
-        - CPU examples: runjobs/scheduled-jobs/lumic-job.md
-        - Distribution and binding: runjobs/scheduled-jobs/distribution-binding.md
-        - Job array: runjobs/scheduled-jobs/throughput.md
-        - Interactive jobs: runjobs/scheduled-jobs/interactive.md
-        - Container jobs: runjobs/scheduled-jobs/container-jobs.md
-        - Julia scheduled jobs: runjobs/scheduled-jobs/julia.md
+    - Overview: runjobs/index.md
+    - Web interface:
+      - Introduction: runjobs/webui/index.md
+      - Interactive applications:
+        - Overview: runjobs/webui/interactive-apps.md
+        - Desktop: runjobs/webui/desktop.md
+        - Julia-Jupyter: runjobs/webui/julia-jupyter.md
+        - Jupyter: runjobs/webui/jupyter.md
+        - Jupyter for courses: runjobs/webui/jupyter-for-courses.md
+        - TensorBoard: runjobs/webui/tensorboard.md
+        - Visual Studio Code: runjobs/webui/vscode.md
+    - LUMI environment:
+      - Module environment: runjobs/lumi_env/Lmod_modules.md
+      - Software stacks: runjobs/lumi_env/softwarestacks.md
+      - Daily management: runjobs/lumi_env/dailymanagement.md
+      - Data storage options: /storage/
+      - Billing policy: runjobs/lumi_env/billing.md
+    - Batch jobs:
+      - Slurm quickstart: runjobs/scheduled-jobs/slurm-quickstart.md
+      - Slurm partitions: runjobs/scheduled-jobs/partitions.md
+      - Batch jobs: runjobs/scheduled-jobs/batch-job.md
+      - Full machine runs: runjobs/scheduled-jobs/hero-runs.md
+      - GPU examples: runjobs/scheduled-jobs/lumig-job.md
+      - CPU examples: runjobs/scheduled-jobs/lumic-job.md
+      - Distribution and binding: runjobs/scheduled-jobs/distribution-binding.md
+      - Job array: runjobs/scheduled-jobs/throughput.md
+      - Interactive jobs: runjobs/scheduled-jobs/interactive.md
+      - Container jobs: runjobs/scheduled-jobs/container-jobs.md
+      - Julia scheduled jobs: runjobs/scheduled-jobs/julia.md
   - Software:
     - Overview: software/index.md
     - Install policy: software/policy.md

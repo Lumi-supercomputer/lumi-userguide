@@ -12,14 +12,12 @@
 [billing-policy]: ../runjobs/lumi_env/billing.md
 
 ---
-Here you find general descriptions of how to run jobs on LUMI, i.e. how to run
-your scientific software using the job scheduler on LUMI. If you are looking
-for ways to install your software on LUMI or advice for runing a specific
-application, consult the [software section][software-overview] instead.
+Here you find general descriptions of how to run jobs on LUMI, i.e. how to run your scientific software using the job scheduler on LUMI. In this section you also find general information about the LUMI environment, as well as the LUMI web interface that you can use to run your applications on LUMI instead of traditionally using a terminal. If you are looking
+for ways to install your software on LUMI or advice for a specific application, consult the [software section][software-overview] instead.
 
 ---
 
-When you [log in to LUMI][firststeps-loggingin], you get access to one of the
+When you log in to LUMI, you get access to one of the
 login nodes. These login nodes are shared by all users and are only intended
 for simple management tasks, e.g.
 
