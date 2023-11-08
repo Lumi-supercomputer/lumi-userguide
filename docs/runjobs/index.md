@@ -19,7 +19,7 @@ application, consult the [software section][software-overview] instead.
 
 ---
 
-When you [log in to LUMI][firststeps-loggingin], you get access to one of the
+When you log in to LUMI, you get access to one of the
 login nodes. These login nodes are shared by all users and are only intended
 for simple management tasks, e.g.
 
