@@ -13,8 +13,11 @@
 [helpdesk]: ../helpdesk/index.md
 [setup-ssh-key]: ../firststeps/SSH-keys.md
 
+
 # Logging in (with SSH client)
 
+!!! info
+	It is now also possible to [log in using the LUMI web interface](./loggingin-webui.md) 
 
 Connecting to LUMI via the command line is possible from all major OS. Once you
 have completed the steps to [setting up an SSH key pair][setup-ssh-key] and
@@ -65,6 +68,7 @@ portals, depending on your resource allocator:
 - the Puhuri Portal by clicking on the **Remote accounts** in the left menu
 - myCSC by clicking on **My Profile** in the left menu
 - the SUPR portal under **Account > Existing Accounts**
+
 
 ## LUMI login nodes (advanced)
 

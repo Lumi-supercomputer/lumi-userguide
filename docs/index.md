@@ -15,8 +15,7 @@ hide:
     select a category from the navigation bar at the top of the page or use 
     the search function.
 
-    You have not connected to LUMI yet? Please visit the first steps section to
-    learn how to setup an SSH key.
+    You have not connected to LUMI yet? Please visit the first steps section to get started. 
 
     [:octicons-arrow-right-24: First steps](firststeps/index.md)
 
