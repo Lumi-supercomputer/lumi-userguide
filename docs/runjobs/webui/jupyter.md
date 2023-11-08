@@ -2,7 +2,7 @@ The Jupyter app launches Jupyter Lab on a LUMI compute node, which you can acces
 
 ![Jupyter resource options](../../assets/images/wwwLumiJupyterResources.png)
 
-In the form you will be able to select.
+In the form you will be able to select:
 
 - **Working directory:** The directory where your notebook file is stored.
 - **Basic or Advanced:** The _Basic_ setting allows you so use a Python module provided by the system, with either a virtual environment or user-installed packages to extend the module.
