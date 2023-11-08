@@ -3,9 +3,9 @@
 
 ## Intro
 
-The web interfaces for LUMI at [www.lumi.csc.fi](https://www.lumi.csc.fi) can be used to access the supercomputers using only a web browser.
+The web interface for LUMI at [www.lumi.csc.fi](https://www.lumi.csc.fi) can be used to access the supercomputer using only a web browser.
 
-Features available in the web interfaces:
+Features available in the web interface:
 
 - View, download and upload files
 - Open a shell on the login node
