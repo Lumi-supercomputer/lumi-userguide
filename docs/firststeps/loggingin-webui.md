@@ -1,8 +1,8 @@
-# Logging in (with Web Interface)
+# Logging in (with web interface)
 
 !!! info
 	The web interface is still under development so expect 
-	additional features and further polishing. 
+	additional features and further polishing. Read more about the possibilities with the web interface in the [web interface](../runjobs/webui/index.md) section.
 
 
 Using a web browser navigate to [www.lumi.csc.fi](https://www.lumi.csc.fi). 
@@ -19,4 +19,4 @@ After successful authentication, you will see the dashboard.
 
 ![Dashboard for the LUMI web interface](../assets/images/wwwLumiDash.png)
 
-Please read more how to use LUMI via the Web interface from the [Web interface](../runjobs/webui/index.md) secion. 
+Please read more how to use LUMI via the Web interface from the [Web interface](../runjobs/webui/index.md) section. 
