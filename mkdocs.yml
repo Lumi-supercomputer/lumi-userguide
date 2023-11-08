@@ -13,6 +13,7 @@ nav:
     - Access to LUMI: firststeps/accessLUMI.md
     - Setting up SSH key pair: firststeps/SSH-keys.md
     - Logging in (with SSH client): firststeps/loggingin.md
+    - Logging in (with Web Interface): firststeps/loggingin-webui.md
     - Moving data to/from LUMI: firststeps/movingdata.md
     - Next steps: firststeps/nextsteps.md
   - Hardware:
