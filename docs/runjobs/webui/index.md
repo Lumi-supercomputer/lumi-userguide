@@ -74,8 +74,7 @@ Clicking on a file will open it in view only mode, for more options like editing
 The file browser comes with a basic text editor. Some important notes on that:
 
 - If no changes have been made, the _save_ button is grayed out.
-- There is no _save-as_ feature
-- If a read-only file is opened no indication will be given to the user but no changes will be applied
+- There is no _save-as_ feature, so read-only files can not be edited.
 
 LUMI-O can also be accessed if you have [configured the connection](../../storage/lumio/#configuring-the-lumi-o-connection)
 using the _lumio-conf_ tool.
