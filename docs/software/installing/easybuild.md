@@ -380,10 +380,10 @@ GitHub repository](https://lumi-supercomputer.github.io/LUMI-SoftwareStack/).
 If you want to get more familiar with EasyBuild and develop your own EasyBuild
 recipes, we suggest the following sources of information:
 
-- [EasyBuild manual on ReadtheDocs](https://docs.easybuild.io/)
-- [EasyBuild tutorials](https://easybuilders.github.io/easybuild-tutorial/)
+- [EasyBuild documentation](https://docs.easybuild.io/)
+- [EasyBuild tutorials](https://tutorial.easybuild.io)
     - [Tutorial specific for LUMI](https://klust.github.io/easybuild-tutorial/2022-CSC_and_LO/)
-- The [EasyBuild YouTube channel](https://www.youtube.com/channel/UCqPyXwACj3sjtOho7m4haVA)
+- The [EasyBuild YouTube channel](https://www.youtube.com/@easybuilders)
   contains recordings of a four-session tutorial
   given for the LUMI User Support Team by Kenneth Hoste (UGent), the lead developer
   of EasyBuild and Luca Marsella (CSCS)
