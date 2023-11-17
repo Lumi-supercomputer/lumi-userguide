@@ -273,20 +273,22 @@ page for the specific package.
 These EasyConfigs will copy the container to a safe place in your user installation so that
 you can keep it if reproducibility is a concern for you. They will also install modules that
 define some standard variables that make it easy to locate the container and that set the
-appropriate bindings for the singularity command. In many cases the singularity container file
+appropriate bindings for the 'singularity' command. 
+Some of the container modules also provide some wrapper scripts that make it easier to
+work with the container or can serve as an example for your own scripts to use the
+software in the container.
+
+In many cases the singularity container file
 in your own directory space can be removed and the module will automatically pick up the central
 one (but check the documentation for the package in the [LUMI Software Library][software-library],
 it will tell you if you can do so). 
-Do keep in mind though that the centrally stored container file will be removed if we figure out that there are 
-problems with it, while the container may still be perfectly fine for you. E.g., some containers
-provide the RCCL communication library which is popular in AI applications but requires a 
+Do keep in mind though that the centrally stored container file will be removed if we find problems
+ with it, while the container may still be perfectly fine for you. E.g., some containers
+provide the RCCL communication library which is popular in AI applications, but requires a 
 specific plugin to work well with the Slingshot 11 interconnect of LUMI. These containers often
 need to be rebuilt after a system upgrade, but they may still be perfectly fine for users who use
 only a single GPU or a single GPU node. If you want to keep using the older version though, it has 
 to be installed in your own file space.
-
-In some cases the EasyConfig will also install some wrapper commands that make it easier
-to work with the container.
 
 The containers we provide do in general not depend on any specific version of the Cray 
 Programming Environment and hence also not on a specific version of the LUMI software stack.
@@ -451,6 +453,8 @@ recipes, we suggest the following sources of information:
       that haven't been as thoroughly checked or are deemed not appropriate for central
       installation at this point. However, they are fully compatible with the setup
       on LUMI, with correct dependency versions etc.
+    - [LUMI EasyBuild container installation recipes GitHub repository](https://github.com/Lumi-supercomputer/LUMI-EasyBuild-containers)
+      contains the recipes that are used to ease access to the containers that are in `/appl/local/containers`.
 - Other EasyBuild recipes for the Cray Programming Environment
     - [CSCS GitHub repository](https://github.com/eth-cscs/production).
       Most of the recipes are for Piz Daint which uses slightly different toolchains.
