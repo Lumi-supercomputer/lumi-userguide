@@ -6,9 +6,9 @@ hide:
 [slingshot-11-hpe-page]: https://www.hpe.com/emea_europe/en/compute/hpc/slingshot-interconnect.html
 
 All LUMI compute nodes use the [HPE Cray Slingshot-11][slingshot-11-hpe-page]
-200 Gbps network interconnect (NIC). The LUMI-C (CPU nodes) are equipped with a
-single endpoints while the LUMI-G nodes (GPU nodes) have 4 endpoints - one for
-each AMD MI250x GPU modules. Each endpoints provide up to 50 GB/s of
+200 Gbps network interconnect (NIC). The LUMI-C nodes (CPU) are equipped with a
+single endpoint while the LUMI-G nodes (GPU nodes) have 4 endpoints - one for
+each AMD MI250x GPU modules. Each endpoint provide up to 50 GB/s of
 bidirectional bandwidth. The HPE Cray Slingshot NIC features high performance
 RDMA and hardware acceleration for MPI and SHMEM based software.
 
@@ -40,7 +40,7 @@ In summary the LUMI network dragonfly can be summarized as these three ranks:
 - **Rank 3:** multiple electrical groups all-to-all connected with optical cables
 
 The dragonfly topology allows for communication to be performed in a maximum of 
-3 switch hops: one hop inside the source group, one hop between group and one 
+3 switch hops: one hop inside the source group, one hop between the group and one 
 hop inside the destination group.
 
 <figure>
@@ -74,8 +74,8 @@ The different partitions presented in the table corresponds to
 
 ## LUMI-C
 
-LUMI-C, the CPU partition, has has 8 electrical groups of 256 nodes. The groups 
-are composed of 16 switches connected in all-to-all. There is 16 nodes connected
+LUMI-C, the CPU partition, has 8 electrical groups of 256 nodes. The groups 
+are composed of 16 switches connected in all-to-all. There are 16 nodes connected
 to each of the switches.
 
 <figure>
@@ -90,11 +90,11 @@ to each of the switches.
 
 ## LUMI-G
 
-LUMI-G, the GPU partition, has has 24 electrical groups of 124 nodes, with the
-exception of the last group which contains 126 node. The groups are composed of
-32 switches connected in all-to-all. There is 16 endpoints connected to each of
-the switches. The LUMI-G compute nodes have 4 enpoints per nodes, each endpoints
-connected to different swiches.
+LUMI-G, the GPU partition, has 24 electrical groups of 124 nodes, with the
+exception of the last group which contains 126 nodes. The groups are composed of
+32 switches connected in all-to-all. There are 16 endpoints connected to each of
+the switches. The LUMI-G compute nodes have 4 endpoints per nodes, each endpoint
+connected to different switches.
 
 <figure>
   <img 
