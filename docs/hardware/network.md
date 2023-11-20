@@ -52,9 +52,29 @@ hop inside the destination group.
   <figcaption>Switch hops from source to destination</figcaption>
 </figure>
 
+## Inter- and intra-partition bandwidth
+
+The table below provide an overview of the total available bandwidth for inter-
+and intra-partition communication.
+
+|        | LUMI-G   | LUMI-C    | LUMI-M   | LUMI-F   | LUMI-P   |
+|--------|----------|-----------|----------|----------|----------|
+| LUMI-G | 276 TB/s | 38.4 TB/s | 2.4 TB/s | 7.2 TB/s | 9.6 TB/s |
+| LUMI-C |          | 22.4 TB/s | 0.8 TB/s | 3.2 TB/s | 3.2 TB/s |
+| LUMI-M |          |           |          | 0.1 TB/s | 0.4 TB/s |
+| LUMI-F |          |           |          |          | 0.4 TB/s |
+
+The different partitions presented in the table corresponds to
+
+  - **LUMI-G:** the AMD MI250x GPU nodes
+  - **LUMI-C:** the CPU nodes
+  - **LUMI-M:** LUMI-D, the login nodes, the largemem nodes and the management racks
+  - **LUMI-P:** the four Lustre filesystems using mechanical disk
+  - **LUMI-F:** the Lustre filesystems using flasj based storage
+
 ## LUMI-C
 
-LUMI-C, the CPU partition, has has 6 electrical groups of 256 nodes. The groups 
+LUMI-C, the CPU partition, has has 8 electrical groups of 256 nodes. The groups 
 are composed of 16 switches connected in all-to-all. There is 16 nodes connected
 to each of the switches.
 
@@ -70,10 +90,11 @@ to each of the switches.
 
 ## LUMI-G
 
-LUMI-C, the GPU partition, has has 20 electrical groups of 128 nodes. The groups 
-are composed of 32 switches connected in all-to-all. There is 16 endpoints 
-connected to each of the switches. The LUMI-G compute nodes have 4 enpoints 
-per nodes, each endpoints connected to different swiches.
+LUMI-G, the GPU partition, has has 24 electrical groups of 124 nodes, with the
+exception of the last group which contains 126 node. The groups are composed of
+32 switches connected in all-to-all. There is 16 endpoints connected to each of
+the switches. The LUMI-G compute nodes have 4 enpoints per nodes, each endpoints
+connected to different swiches.
 
 <figure>
   <img 
