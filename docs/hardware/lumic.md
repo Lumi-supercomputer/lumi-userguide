@@ -5,13 +5,12 @@
 [slurm-partitions]: ../runjobs/scheduled-jobs/partitions.md
 [zen3-wiki]: https://en.wikipedia.org/wiki/Zen_3
 
-The LUMI-C hardware partition consists of 1536 CPU based compute nodes with an
-aggregated LINPACK performance of 5.63 petaflops. Some of these nodes contain
-more memory than others as specified in the table below.
+The LUMI-C hardware partition consists of 2048 CPU based compute nodes. Some of
+these nodes contain more memory than others as specified in the table below.
 
 | Nodes | CPUs                                               | CPU cores     | Memory   | Disk | Network     |
 | :---: | :------------------------------------------------: | :-----------: | :------: | :--: | :---------: |
-| 1376  | 2x AMD EPYC 7763<br>(2.45 GHz base, 3.5 GHz boost) | 128<br>(2x64) | 256 GiB  | none | 1x 200 Gb/s |
+| 1888  | 2x AMD EPYC 7763<br>(2.45 GHz base, 3.5 GHz boost) | 128<br>(2x64) | 256 GiB  | none | 1x 200 Gb/s |
 | 128   | 2x AMD EPYC 7763<br>(2.45 GHz base, 3.5 GHz boost) | 128<br>(2x64) | 512 GiB  | none | 1x 200 Gb/s |
 | 32    | 2x AMD EPYC 7763<br>(2.45 GHz base, 3.5 GHz boost) | 128<br>(2x64) | 1024 GiB | none | 1x 200 Gb/s |
 
