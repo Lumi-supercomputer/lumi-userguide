@@ -1,6 +1,7 @@
 [lumi-c]: ../../hardware/lumic.md
 [lumi-f]: ../../storage/parallel-filesystems/lumif.md
 [lumi-p]: ../../storage/parallel-filesystems/lumip.md
+[lumi-o]: ../../storage/lumio/index.md
 [slurm-quickstart]: ../../runjobs/scheduled-jobs/slurm-quickstart.md
 [slurm-partitions]: ../../runjobs/scheduled-jobs/partitions.md
 [data-storage-options]: ../../storage/index.md
@@ -165,7 +166,7 @@ The main storage backed by [LUMI-P][lumi-p] is billed directly as:
 TB-hours-billed = storage-volume x time-used
 ```
 
-For example, storing 1.2 TB data for 4 days consumes:
+For example, storing 1.2 TB of data for 4 days consumes:
 
 ```text
 1.2 TB x 24 hours/day x 4 days = 115.2 TB-hours
@@ -180,8 +181,23 @@ to the main storage:
 TB-hours-billed = 10 x storage-volume x time-used
 ```
 
-For example, storing 1.2 TB data for 4 days consumes:
+For example, storing 1.2 TB of data for 4 days consumes:
 
 ```text
 10 x 1.2 TB x 24 hours/day x 4 days = 1152 TB-hours
+```
+
+### Object storage (LUMI-O) billing
+
+The object storage backed by [LUMI-O][lumi-o] is billed at a 0.5x rate compared
+to the main storage:
+
+```text
+TB-hours-billed = 0.5 x storage-volume x time-used
+```
+
+For example, storing 1.2 TB of data for 4 days consumes:
+
+```text
+0.5 x 1.2 TB x 24 hours/day x 4 days = 57.6 TB-hours
 ```
