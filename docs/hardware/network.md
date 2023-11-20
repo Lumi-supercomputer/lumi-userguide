@@ -68,9 +68,9 @@ The different partitions presented in the table corresponds to
 
   - **LUMI-G:** the AMD MI250x GPU nodes
   - **LUMI-C:** the CPU nodes
-  - **LUMI-M:** LUMI-D, the login nodes, the largemem nodes and the management racks
+  - **LUMI-M:** the login nodes, LUMI-D, the largemem nodes and the management racks
   - **LUMI-P:** the four Lustre filesystems using mechanical disk
-  - **LUMI-F:** the Lustre filesystems using flasj based storage
+  - **LUMI-F:** the Lustre filesystem using flash based storage
 
 ## LUMI-C
 
