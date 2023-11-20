@@ -11,12 +11,13 @@ hide:
 [benchmarks]: https://www.amd.com/en/graphics/server-accelerators-benchmarks
 [zen3-wiki]: https://en.wikipedia.org/wiki/Zen_3
 
-The LUMI-G hardware partition consists of 2928 nodes with 4 AMD MI250x GPUs and 
-a single AMD EPYC "Trento" CPU.
+The LUMI-G hardware partition consists of 2978 nodes with 4 AMD MI250x GPUs and 
+a single 64 cores AMD EPYC "Trento" CPU. The aggregated HPL Linpack performance
+of LUMI-G is 379.70 PFlop/s.
 
 <figure>
   <img 
-    src="../../assets/images/lumig-overview-2928nodes.svg" 
+    src="../../assets/images/lumig-overview.svg" 
     width="800"
     alt="LUMI-G overview"
   >
