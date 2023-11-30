@@ -136,7 +136,6 @@ Here is an overview of some of the most commonly used Slurm options.
 | Option            | Description                              |
 | ------------------|------------------------------------------|
 | `--cpus-per-task` | Set the number of cores per tasks        |
-| `--cpus-per-gpu`  | Set the number of CPUs per allocated GPU |
 
 ### Request GPUs
 
