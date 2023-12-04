@@ -2,7 +2,7 @@
 
 !!! warning "No full machine runs in July, August and December"
 
-    They will be no large-scale runs during July, August and December      due to the difficulty to schedules such large scale runs with reduced      personnel during the holiday seasons.
+    There will be no large-scale runs during July, August and December      due to the difficulty to schedule such large scale runs with reduced      personnel during the holiday seasons.
 
 We provide the opportunity to perform runs on the entirety of LUMI the last
 Sunday every month (subject to change over time). This can either be all the CPU
