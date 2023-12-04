@@ -33,7 +33,6 @@ requesting 128 cores on a compute node of the LUMI-C `small` partition.
 #SBATCH --cpus-per-task=128     # Number of cores (threads)
 #SBATCH --time=12:00:00         # Run time (hh:mm:ss)
 #SBATCH --account=project_<id>  # Project for billing
-#SBATCH --mail-user=username@domain.com
 
 # Any other commands must follow the #SBATCH directives
 
@@ -65,7 +64,6 @@ LUMI-C `standard` partition.
 #SBATCH --mem=0                 # Allocate all the memory on each node
 #SBATCH --time=1-12:00:00       # Run time (d-hh:mm:ss)
 #SBATCH --account=project_<id>  # Project for billing
-#SBATCH --mail-user=username@domain.com
 
 # All commands must follow the #SBATCH directives
 
@@ -91,7 +89,6 @@ LUMI-C `standard` partition.
 #SBATCH --cpus-per-task=8       # Number of cores (threads) per task
 #SBATCH --time=1-12:00:00       # Run time (d-hh:mm:ss)
 #SBATCH --account=project_<id>  # Project for billing
-#SBATCH --mail-user=username@domain.com
 
 # All commands must follow the #SBATCH directives
 
@@ -116,7 +113,6 @@ the LUMI-C `small` partition and thus will be allocated 1 core.
 #SBATCH --ntasks=1              # One task (process)
 #SBATCH --time=00:15:00         # Run time (hh:mm:ss)
 #SBATCH --account=project_<id>  # Project for billing
-#SBATCH --mail-user=username@domain.com
  
 ./your_application
 ```
