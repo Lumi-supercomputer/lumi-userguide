@@ -12,26 +12,28 @@ module use /appl/local/csc/modulefiles
 
 Available software:
 
-* Amber
+* [Amber](https://docs.csc.fi/apps/amber/)
 * [Allas](https://docs.csc.fi/data/Allas/allas_lumi/) (only for the Finnish national system users)
-* CP2K
-* Elmer
-* GDAL
-* GRASS GIS
-* GROMACS
-* JAX
-* Julia
-* Nextflow
-* OpenFOAM
-* PALM
-* PDAL
-* PLUMED
-* PyTorch
-* QGIS
-* SAGA GIS
-* STAR-CCM+
-* TensorFlow
+* [CP2K](https://docs.csc.fi/apps/cp2k/)
+* [Elmer](https://docs.csc.fi/apps/elmer/)
+* [GDAL](https://docs.csc.fi/apps/gdal/)
+* [GRASS GIS](https://docs.csc.fi/apps/grass/)
+* [GROMACS](https://docs.csc.fi/apps/gromacs/)
+* [JAX](https://docs.csc.fi/apps/jax/)
+* [Julia](https://docs.csc.fi/apps/julia/)
+* [LAMMPS](https://docs.csc.fi/apps/lammps/)
+* [Nextflow](https://docs.csc.fi/apps/nextflow/)
+* [OpenFOAM](https://docs.csc.fi/apps/openfoam/)
+* [PALM](https://docs.csc.fi/apps/palm/)
+* [PDAL](https://docs.csc.fi/apps/pdal/)
+* [Pennylane](https://docs.csc.fi/apps/pennylane/)
+* [PLUMED](https://docs.csc.fi/apps/plumed/)
+* [PyTorch](https://docs.csc.fi/apps/pytorch/)
+* [QGIS](https://docs.csc.fi/apps/qgis/)
+* [SAGA GIS](https://docs.csc.fi/apps/saga-gis/)
+* [STAR-CCM+](https://docs.csc.fi/apps/starccm%2B/)
+* [TensorFlow](https://docs.csc.fi/apps/tensorflow/)
 
-See more details in [Docs CSC](https://docs.csc.fi/apps/by_system/#lumi).
+See more information in [Docs CSC](https://docs.csc.fi/apps/by_system/#lumi).
 If you encounter any issues, don't hesitate to contact [CSC Service
 Desk](https://docs.csc.fi/support/contact/).
