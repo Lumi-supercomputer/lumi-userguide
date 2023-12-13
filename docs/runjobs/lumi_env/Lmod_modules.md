@@ -97,14 +97,6 @@ you can load it. Therefore, the commands for finding modules are so important.
 Some modules may also provide multiple software packages or extensions. Lmod can
 also search for these.
 
-??? failure "Not fully supported on LUMI"
-    The LMOD feature to search for, e.g., Python packages inside a module or
-    other software in a module is not fully exploited on LUMI as the output of
-    some module commands becomes very long and ways to disabling that output do
-    not work properly in the current version of Lmod on LUMI. This is due to two
-    bugs in the version of Lmod that HPE Cray uses, one of which has only been
-    solved in very recent (early 2022) versions.
-
 
 ### module spider
 
