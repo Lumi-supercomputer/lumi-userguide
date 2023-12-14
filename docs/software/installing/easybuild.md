@@ -13,8 +13,9 @@ stack is kept as compact as possible to ease maintenance and to avoid user
 confusion. E.g., packages for which users request special customisations will
 never be installed in the central software stack. Moreover, due to the
 technical implementation of a software stack on a system the size of LUMI,
-installing software can be disruptive, so new software is mostly made available
-during maintenance intervals.
+some software maintenance operations in the stack can be disruptive and
+only be done during system maintenance intervals, making maintenance 
+difficult.
 
 This, however, does not mean that you may have to wait for weeks before you can
 get the software you need for your project on LUMI. We have made it very easy to
@@ -50,16 +51,16 @@ An EasyBuild build recipe is a file with a name that consists of different
 components and ends with '.eb'. Consider, e.g., a build recipe for the software GROMACS:
 
 ```text
-GROMACS-2021.4-cpeGNU-22.08-PLUMED-2.7.4-CPU.eb
+GROMACS-2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU.eb
 ```
 
 The first part of the name, `GROMACS`, is the name of the package. The second
-part of the name, `2021.4` is the version of GROMACS, in this case the
+part of the name, `2022.5` is the version of GROMACS, in this case the
 2021.4 release. 
 
-The next part, `cpeGNU-22.08`, denotes the so-called *toolchain*
+The next part, `cpeGNU-23.09`, denotes the so-called *toolchain*
 used for the build. Each toolchain corresponds to a particular HPE Cray Programming
-Environment, and the number (`22.08`in this example) denotes the version of this
+Environment, and the number (`23.09`in this example) denotes the version of this
 programming environment. The various EasyBuild toolchains on LUMI are:
 
 | EasyBuild toolchain | HPE Cray PE                                                    |
@@ -75,9 +76,9 @@ just the version in the file name that should match but the version of the
 toolchain that is used in the recipe file.) 
 
 The last part of the name,
-`-PLUMED-2.7.4-CPU`, is called the version suffix. Version suffixes are
+`-PLUMED-2.9.0-noPython-CPU`, is called the version suffix. Version suffixes are
 typically used to distinguish different builds of the same version of the
-package. In this case, it indicates that it is a build of the 2021.4 version
+package. In this case, it indicates that it is a build of the 2022.5 version
 purely for CPU and also includes PLUMED as we have also builds without PLUMED
 (which is not compatible with every GROMACS version).
 
@@ -164,7 +165,7 @@ loaded. Assume that we want to install software in the `LUMI/22.08` stack, then
 one needs to execute
 
 ``` bash
-$ module load LUMI/22.08
+$ module load LUMI/23.09
 ```
 
 This should also automatically load the right `partition module` for the part
@@ -174,7 +175,9 @@ stacks][softwarestacks] page.
 Though it is technically possible to cross-compile software for a different
 partition, it may not be without problems as not all install scripts that come
 with software do support cross-compiling and as tests may fail when compiling for
-a CPU with instructions that the host CPU does not support.
+a CPU with instructions that the host CPU does not support. Cross-compiling for 
+the GPU nodes is particularly troublesome as the configuration step will not be
+able to detect the correct GPU type should it try to do so.
 
 ### Step 2: Load EasyBuild
 
@@ -207,25 +210,25 @@ the command line.
 ### Step 3: Install the package
 
 To show how to actually install a package, we continue with our
-`GROMACS-2021.4-cpeGNU-22.08-PLUMED-2.7.4-CPU.eb` example.
+`GROMACS-2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU.eb` example.
 
 If all needed EasyBuild recipes are in one of the
 repositories, all you need to do to install the
 package is to run
 
 ```bash
-$ eb GROMACS-2021.4-cpeGNU-22.08-PLUMED-2.7.4-CPU.eb -r
+$ eb GROMACS-2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU.eb -r
 ```
 
 The `-r` tells EasyBuild to also install dependencies that may not yet be
 installed.
 
-If the `GROMACS-2021.4-cpeGNU-22.08-PLUMED-2.7.4-CPU.eb` would not have been
+If the `GROMACS-2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU.eb` would not have been
 in a repository, but in the current directory or one of its subdirectories,
 you could use 
 
 ```bash
-$ eb GROMACS-2021.4-cpeGNU-22.08-PLUMED-2.7.4-CPU.eb -r .
+$ eb GROMACS-2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU.eb -r .
 ```
 
 The only difference is the dot added to the `-r` flag. This adds the current directory to
@@ -240,7 +243,7 @@ package (which may be very useful if building right away fails).
 If you now type `module avail` you should see the
 
 ```text
-GROMACS/2021.4-cpeGNU-22.08-PLUMED-2.7.4-CPU
+GROMACS/2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU
 ```
 
 module in the list. Note the relation between the name of the EasyBuild recipe
@@ -249,14 +252,14 @@ the EasyBuild recipe follows the EasyBuild guidelines for naming. If the
 guidelines are not followed and if EasyBuild needs to install this module as a
 dependency of another package, EasyBuild will fail to locate the build recipe.
 
-The `GROMACS/2021.4-cpeGNU-22.08-PLUMED-2.7.4-CPU` module can now be used just like
+The `GROMACS/2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU` module can now be used just like
 any other module on the system. To *use* the GROMACS module you don't need to load `EasyBuild-user`.
 That was only required for *installing* the package. 
 All you need to do to use the GROMACS module that we just installed, is 
 
 ```bash
-module load LUMI/22.08
-module load GROMACS/2021.4-cpeGNU-22.08-PLUMED-2.7.4-CPU
+module load LUMI/23.09
+module load GROMACS/2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU
 ```
 
 (i.e., loading the software stack in which we installed GROMACS and the GROMACS module that 
@@ -340,7 +343,7 @@ or `module spider`).
 
         In the example above, if the installation commands
         were executed on the login node, the software would have been installed in `partition/L`,
-        but if we then do a `module load LUMI/22.08` on the compute nodes, `partition/C` would have been
+        but if we then do a `module load LUMI/23.09` on the compute nodes, `partition/C` would have been
         selected. To get a GROMACS version in `partition/C` that EasyBuild would build with compiler settings
         that are specific for the processors in the compute nodes, either do the compilation on a compute node
         or use *cross-compiling* by loading `partition/C` after loading `LUMI/22.08` in step 1 above.
@@ -455,6 +458,8 @@ recipes, we suggest the following sources of information:
       on LUMI, with correct dependency versions etc.
     - [LUMI EasyBuild container installation recipes GitHub repository](https://github.com/Lumi-supercomputer/LUMI-EasyBuild-containers)
       contains the recipes that are used to ease access to the containers that are in `/appl/local/containers`.
+    - But a more user-friendly overview of all those recipes is available in the
+      [LUMI Software Library][software-library].
 - Other EasyBuild recipes for the Cray Programming Environment
     - [CSCS GitHub repository](https://github.com/eth-cscs/production).
       Most of the recipes are for Piz Daint which uses slightly different toolchains.
