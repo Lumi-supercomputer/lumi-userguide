@@ -229,7 +229,7 @@ It has three levels, producing different outputs:
 
     This form of `module spider` can also be used to find out how a tool provided
     as an extension by another module can be made available. E.g., in a previous 
-    example we we've seen that `CMake/3.27.7` is available via another module.
+    example we've seen that `CMake/3.27.7` is available via another module.
     Now
 
     ```bash
