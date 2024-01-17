@@ -8,13 +8,7 @@ useful for building and maintaining installations of many different versions of
 the same software. It also comes with a virtual environment feature that is
 useful when developing software.
 
-LUMI provides a module to load a pre-configured Spack instance: `module load
-spack`. When you load this module, you will use a Spack instance configured to
-compile software with the Cray programming environment. The software will be
-installed in a location determined by you in `$SPACK_USER_PREFIX`. This Spack
-instance is "chained" to the upstream one in `/appl/lumi/spack`, which means
-that you can build new packages on top of the already installed ones by the
-LUMI User Support Team (similar to how our EasyBuild setup works).
+LUMI provides a module to load a pre-configured Spack instance: `module load spack`. When you load this module, you will use a Spack instance configured to compile software with the Cray programming environment. The software will be installed in a location determined by you in the environmental variable `$SPACK_USER_PREFIX`. This Spack instance is "chained" to the upstream instance in `/appl/lumi/spack`, which means that you can build new packages on top of the already installed ones by the LUMI User Support Team (similar to how the LUMI EasyBuild setup works).
 
 !!! important "The software installed with Spack in /appl/lumi/spack/ is provided as is."
     It may not have received any testing after installation! We also build the
@@ -35,7 +29,7 @@ GPU support and activate extra array bounds checking for debugging.
 
     ```bash
     $ export SPACK_USER_PREFIX=/project/project_465000XYZ/spack 
-    $ module load spack/23.03-2
+    $ module load spack/23.09
     ```
 
     We recommend that you set `$SPACK_USER_PREFIX` in e.g. your `.bash_profile`
@@ -71,14 +65,26 @@ GPU support and activate extra array bounds checking for debugging.
 
     Concretized
     --------------------------------
-    -   kokkos@4.0.01%gcc@12.2.0~aggressive_vectorization~compiler_warnings~cuda~cuda_constexpr~cuda_lambda~cuda_ldg_intrinsic~cuda_relocatable_device_code~cuda_uvm~debug+debug_bounds_check~debug_dualview_modify_check~deprecated_code~examples~explicit_instantiation~hpx~hpx_async_dispatch~hwloc~ipo~memkind~numactl~openmp~openmptarget~pic+profiling~profiling_load_print~pthread~qthread+rocm+serial+shared~sycl~tests~tuning~wrapper amdgpu_target=gfx90a build_system=cmake build_type=Release generator=make intel_gpu_arch=none std=17 arch=linux-sles15-zen2
-    [^]      ^cmake@3.26.3%gcc@11.2.0~doc+ncurses~ownlibs~qt build_system=generic build_type=Release arch=linux-sles15-zen2
-    [^]          ^curl@8.0.1%gcc@11.2.0~gssapi~ldap~libidn2~librtmp~libssh~libssh2~nghttp2 build_system=autotools libs=shared,static tls=mbedtls arch=linux-sles15-zen2
-    [^]              ^mbedtls@2.28.2%gcc@11.2.0+pic build_system=makefile build_type=Release libs=static arch=linux-sles15-zen2
-    [^]          ^expat@2.5.0%gcc@11.2.0+libbsd build_system=autotools arch=linux-sles15-zen2
-    [^]              ^libbsd@0.11.7%gcc@11.2.0 build_system=autotools arch=linux-sles15-zen2
-    [^]                  ^libmd@1.0.4%gcc@11.2.0 build_system=autotools arch=linux-sles15-zen2
-    [^]          ^libarchive@3.6.2%gcc@11.2.0+iconv build_system=autotools compression=bz2lib,lz4,lzma,lzo2,zlib,zstd crypto=mbedtls libs=shared,static programs=none xar=expat arch=linux-sles15-zen2
+    -   kokkos@4.1.00%gcc@12.2.0~aggressive_vectorization~compiler_warnings~cuda~debug+debug_bounds_check~debug_dualview_modify_check~deprecated_code~examples~hpx~hpx_async_dispatch~hwloc~ipo~memkind~numactl~openmp~openmptarget~pic+rocm+serial+shared~sycl~tests~threads~tuning~wrapper amdgpu_target=gfx90a build_system=cmake build_type=Release cxxstd=17 generator=make intel_gpu_arch=none arch=linux-sles15-zen2
+    [^]      ^cmake@3.27.7%gcc@12.2.0~doc+ncurses+ownlibs build_system=generic build_type=Release arch=linux-sles15-zen2
+    [^]          ^curl@8.4.0%gcc@12.2.0~gssapi~ldap~libidn2~librtmp~libssh~libssh2+nghttp2 build_system=autotools libs=shared,static tls=openssl arch=linux-sles15-zen2
+    [^]              ^nghttp2@1.57.0%gcc@12.2.0 build_system=autotools arch=linux-sles15-zen2
+    [^]              ^openssl@3.1.3%gcc@12.2.0~docs+shared build_system=generic certs=mozilla arch=linux-sles15-zen2
+    [^]                  ^ca-certificates-mozilla@2023-05-30%gcc@12.2.0 build_system=generic arch=linux-sles15-zen2
+    [^]                  ^perl@5.38.0%gcc@12.2.0+cpanm+opcode+open+shared+threads build_system=generic patches=714e4d1 arch=linux-sles15-zen2
+    [^]                      ^berkeley-db@18.1.40%gcc@12.2.0+cxx~docs+stl build_system=autotools patches=26090f4,b231fcc arch=linux-sles15-zen2
+    [^]                      ^bzip2@1.0.8%gcc@12.2.0~debug~pic+shared build_system=generic arch=linux-sles15-zen2
+    [^]                          ^diffutils@3.9%gcc@12.2.0 build_system=autotools arch=linux-sles15-zen2
+    [^]                              ^libiconv@1.17%gcc@12.2.0 build_system=autotools libs=shared,static arch=linux-sles15-zen2
+    [^]                      ^gdbm@1.23%gcc@12.2.0 build_system=autotools arch=linux-sles15-zen2
+    [^]                          ^readline@8.2%gcc@12.2.0 build_system=autotools patches=bbf97f1 arch=linux-sles15-zen2
+    [^]              ^pkgconf@1.9.5%gcc@12.2.0 build_system=autotools arch=linux-sles15-zen2
+    [^]          ^ncurses@6.4%gcc@12.2.0~symlinks+termlib abi=none build_system=autotools arch=linux-sles15-zen2
+    [^]          ^zlib-ng@2.1.4%gcc@12.2.0+compat+opt build_system=autotools arch=linux-sles15-zen2
+    [^]      ^gmake@4.4.1%gcc@12.2.0~guile build_system=generic arch=linux-sles15-zen2
+    [e]      ^hip@5.6.1%gcc@12.2.0~cuda+rocm build_system=cmake build_type=Release generator=make patches=aee7249,c2ee21c,e73e91b arch=linux-sles15-zen2
+    [e]      ^hsa-rocr-dev@5.6.1%gcc@12.2.0+image+shared build_system=cmake build_type=Release generator=make patches=9267179 arch=linux-sles15-zen2
+    [e]      ^llvm-amdgpu@5.6.1%gcc@12.2.0~link_llvm_dylib~llvm_dylib~openmp+rocm-device-libs build_system=cmake build_type=Release generator=ninja patches=a08bbe1,b66529f,d35aec9 arch=linux-sles15-zen2
 
     ...
 
@@ -87,42 +93,42 @@ GPU support and activate extra array bounds checking for debugging.
     The packages that are already installed in your own Spack instance will
     have a `[+]` in the first column, and the packages that Spack found
     installed upstream will have `[^]`. A `-` means Spack did not find the
-    package and will build it. In this case, all dependencies are already
+    package and will build it. External packages already installed in the operating system are marked with `[e]`. In this case, all dependencies are already
     installed so building a new kokkos package will be fast.
 
 4. When you're satisfied with what Spack plans to do, install it:
 
     ```console
     $ spack install kokkos+rocm+debug_bounds_check amdgpu_target==gfx90a %gcc@12.2.0
-    [+] /appl/lumi/spack/23.03/0.20.0/opt/spack/mbedtls-2.28.2-os2trz4
-    [+] /appl/lumi/spack/23.03/0.20.0/opt/spack/zlib-1.2.13-xnce3sf
-    [+] /appl/lumi/spack/23.03/0.20.0/opt/spack/libmd-1.0.4-hihpx7d
-    [+] /appl/lumi/spack/23.03/0.20.0/opt/spack/bzip2-1.0.8-xxbduxx
-    [+] /appl/lumi/spack/23.03/0.20.0/opt/spack/libiconv-1.17-sfn5bie
-    [+] /appl/lumi/spack/23.03/0.20.0/opt/spack/lz4-1.9.4-eelrsw7
-    [+] /appl/lumi/spack/23.03/0.20.0/opt/spack/lzo-2.10-52o446s
-    [+] /appl/lumi/spack/23.03/0.20.0/opt/spack/xz-5.4.1-wsj4v26
-    [+] /appl/lumi/spack/23.03/0.20.0/opt/spack/zstd-1.5.5-s3ym3jd
-    [+] /appl/lumi/spack/23.03/0.20.0/opt/spack/libuv-1.44.1-2m6sqkh
-    ==> Installing kokkos-4.0.01-hcnhccbgkddtgeq7wyqvtpvpj6wz76vu
-    ==> No binary for kokkos-4.0.01-hcnhccbgkddtgeq7wyqvtpvpj6wz76vu found: installing from source
-    ==> Fetching https://mirror.spack.io/_source-cache/archive/bb/bb942de8afdd519fd6d5d3974706bfc22b6585a62dd565c12e53bdb82cd154f0.tar.gz
+    [+] /appl/lumi/spack/23.09/0.21.0/opt/spack/nghttp2-1.57.0-eeoiirs
+    [+] /appl/lumi/spack/23.09/0.21.0/opt/spack/zlib-ng-2.1.4-lky5mdq
+    [+] /appl/lumi/spack/23.09/0.21.0/opt/spack/ncurses-6.4-bd4kmia
+    [+] /appl/lumi/spack/23.09/0.21.0/opt/spack/gmake-4.4.1-upexb7o
+    [+] /appl/lumi/SW/CrayEnv/EB/rocm/5.6.1/hip (external hip-5.6.1-6dfpgvow3wgluedg7dkolvju5tqikf4a)
+    [+] /appl/lumi/SW/CrayEnv/EB/rocm/5.6.1 (external hsa-rocr-dev-5.6.1-kdk4dmdpcit6od7zd4c4anpe67tjazvv)
+    [+] /appl/lumi/SW/CrayEnv/EB/rocm/5.6.1/llvm (external llvm-amdgpu-5.6.1-lox2s3th5j6gtobnulhreq2xfyflres7)
+    [+] /appl/lumi/spack/23.09/0.21.0/opt/spack/openssl-3.1.3-g2j3rdw
+    [+] /appl/lumi/spack/23.09/0.21.0/opt/spack/curl-8.4.0-utgotfg
+    [+] /appl/lumi/spack/23.09/0.21.0/opt/spack/cmake-3.27.7-4amcecb
+    ==> Installing kokkos-4.1.00-gnre4vg6quv7syzovboykanhz5k5fyd5 [11/11]
+    ==> No binary for kokkos-4.1.00-gnre4vg6quv7syzovboykanhz5k5fyd5 found: installing from source
+    ==> Fetching https://mirror.spack.io/_source-cache/archive/cf/cf725ea34ba766fdaf29c884cfe2daacfdc6dc2d6af84042d1c78d0f16866275.tar.gz
     ==> No patches needed for kokkos
     ==> kokkos: Executing phase: 'cmake'
     ==> kokkos: Executing phase: 'build'
     ==> kokkos: Executing phase: 'install'
-    ==> kokkos: Successfully installed kokkos-4.0.01-hcnhccbgkddtgeq7wyqvtpvpj6wz76vu
-      Stage: 2.03s.  Cmake: 23.47s.  Build: 17.93s.  Install: 6.86s.  Post-install: 2.54s.  Total: 1m 1.47s
-    [+] /project/project_465000XYZ/spack/23.03/0.20.0/kokkos-4.0.01-hcnhccb
+    ==> kokkos: Successfully installed kokkos-4.1.00-gnre4vg6quv7syzovboykanhz5k5fyd5
+      Stage: 0.73s.  Cmake: 22.42s.  Build: 17.69s.  Install: 6.34s.  Post-install: 2.22s.  Total: 51.52s
+    [+] /projappl/project_465000XYZ/spack/23.09/0.21.0/kokkos-4.1.00-gnre4vg
     ```
 
     The final line shows where the software is installed on disk. A module will
     also be generated automatically and added to your `$MODULEPATH`. The
-    modules are generated with a short hash code (5 characters "nioel" here) to
-    prevent naming collisions.
+    modules are generated with a short hash code (3 characters `hcn` here) to
+    prevent name collisions.
 
     ```bash
-    $ module load kokkos/4.0.01-gcc-hcn
+    $ module load kokkos/4.1.00-gcc-gnr
     ```
 
 ## What to do when a Spack install fails
@@ -145,9 +151,9 @@ GPU support and activate extra array bounds checking for debugging.
 
     In some cases, changes have to made to the `package.py` file of a package.
     Unfortunately, this is not straightforward as the package repository is
-    located in `/appl/lumi`, which is read-only. In such cases, you have to
-    clone to your own Spack instance and configure it using our configuration
-    files.
+    located in `/appl/lumi`, which is read-only. In such cases, you have to either
+    make your own Spack instance and configure it using our configuration
+    files, or set up a custom Spack package repository and override the default Spack settings (see more below).
 
 2. **Seek help:** you can check the 
     [official Spack documentation](https://spack.readthedocs.io), open a ticket 
@@ -157,9 +163,10 @@ GPU support and activate extra array bounds checking for debugging.
 
 ## Description of the different Spack modules
 
+* Module `spack/23.09`: This is Spack release version 0.21.0 (with some critical bug fixes for concretization backported from the 0.21.1 development branch) based on the Cray Programming Environment 23.09. The ROCM packages are ROCM release version 5.6.1 adapted by the LUMI User Support Team for CPE 23.09. Testing has indicated that it should be possible to run ROCM 5.6.1-based software using the older drivers from ROCM 5.2.3, which is installed on the LUMI-G compute nodes with only minor incompatibilites, e.g. the amount of GPU memory might reported incorrectly.
 * Module `spack/23.03-2`: This is Spack release version 0.20.0 based on the Cray Programming Environment 23.03. The ROCM packages are built from source by Spack and corresponds to ROCM release version 5.4.3. Testing has indicated that it should be possible to run ROCM 5.4.3-based software using the older drivers from ROCM 5.2.3, which is installed on the LUMI-G compute nodes.
 * Module `spack/23.03`: This is Spack release version 0.19.2 based on the Cray Programming Environment 23.03. The ROCM packages are external and comes from the HPE provided ROCM 5.2.3 in `/opt/rocm`.
-* Module `spack/22.08-2`: This is Spack release version 0.19.0 based on the Cray Programming Environment 22.08. The ROCM packages are built from source by Spack and corresponds to ROCM release version 5.2.3. Testing has indicated that it should be possible to run ROCM 5.2.3-based software using the older drivers from ROCM 5.1.3, which is installed on the LUMI-G compute nodes.
+* Module `spack/22.08-2`: This is Spack release version 0.19.0 based on the Cray Programming Environment 22.08. The ROCM packages are built from source by Spack and corresponds to ROCM release version 5.2.3. **This Spack module is deprecated and should not be used** Testing has indicated that it should be possible to run ROCM 5.2.3-based software using the older drivers from ROCM 5.1.3, which is installed on the LUMI-G compute nodes.
 * Module `spack/22.08`: This is Spack release version 0.18.1 based on the Cray Programming Environment 22.08. The ROCM packages are external and comes from the HPE provided ROCM 5.0.2 in `/opt/rocm` (which is rather old). **This Spack module is deprecated and should not be used**. MPI programs may not work and the linked ROCm is really old and does not exist on the system anymore.
 
 ## Spack on LUMI (advanced)
@@ -230,6 +237,31 @@ $ source /appl/lumi/spack/22.08/0.18.1-user/share/spack/setup-env.sh
 
 You just need to make sure that `$SPACK_USER_PREFIX` is set and that the
 `cache` and `modules/tcl` subdirectories exist within that directory.
+
+### Overriding the default settings in the Spack module
+
+The `spack` modules read the configuration files from the `/appl/lumi/spack/.../etc/` directory, which is read-only for users. In order to change the configuration files, you need to override the default settings by placing new configuration files (like `compilers.yaml` and `packages.yaml`) in the `$HOME/.spack/` directory and then unset the environment variable `$SPACK_DISABLE_LOCAL_CONFIG`. It will not work otherwise, because the Spack module on LUMI sets this variable to prevent accidental interference between any user-local Spack configuration and the system configuration.
+
+### Making a custom package repository
+
+Adding your own package repository can be done in a similar way to changing the configuration files. You can add your own `repos.yaml` file in the `~/.spack/` directory and then configure the path to your custom package directory inside that file:
+
+```
+$ cat ~/.spack/repos.yaml
+repos:
+- /users/username/spack-packages
+```
+
+When `$SPACK_DISABLE_LOCAL_CONFIG` is unset, Spack will read this configuration file and pick up your private Spack repository. You can verify that Spack is seeing the new package repository by running the `spack repo list` command:
+
+```
+ $ spack repo list
+==> 2 package repositories.
+custom     /users/username/spack-packages
+builtin    /pfs/lustrep3/appl/lumi/spack/23.03/0.20.0-user/var/spack/repos/builtin
+```
+
+More information about creating package repositories is available in the [Spack documentation](https://spack.readthedocs.io/en/latest/repositories.html).
 
 ## Further reading
 
