@@ -84,9 +84,9 @@ areas.
 | **Project<br>scratch**    | 50 TB | 2000k     | Yes,<br> up to 500TB  | No     | 90 days          |
 | **Project<br>fast**       |  2 TB | 1000k     | Yes,<br> up to 100TB  | No     | 30 days          |
 
-|                    | Quota | Max<br>buckets | Max<br>objects<br>per bucket     | Backup | Retention           |
-|--------------------|-------|----------------|----------------------------------|--------|---------------------|
-| **Object storage** | 10 TB | 1000           | 500 000                          | No     | project lifetime    |
+|                    | Quota  | Max<br>buckets | Max<br>objects<br>per bucket     | Backup | Retention           |
+|--------------------|--------|----------------|----------------------------------|--------|---------------------|
+| **Object storage** | 150 TB | 1000           | 500 000                          | No     | project lifetime    |
 
 Note that, except for the user home directory, data storage is allocated per
 project. When a storage space is marked as expandable, it means that you can
