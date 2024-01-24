@@ -166,6 +166,9 @@ complete list, visit the [s3cmd manual page](https://s3tools.org/usage) or type:
 s3cmd -h
 ```
 
+If you need to make uploaded objects or buckets public you can add the `-P, --acl-public` flag
+to `s3cmd put`. 
+
 ### restic
 
 `restic` is a slightly different from `rclone` and `s3cmd` and is mainly used
