@@ -102,7 +102,7 @@ nav:
       - LUMI-O usage: storage/lumio/index.md
       - Authentication for LUMI-O: storage/lumio/auth-lumidata-eu.md
       - Error messages: storage/lumio/error-messages.md
-      - Advanced usage of LUMI-O: /storage/lumio/advanced.md
+      - Advanced usage of LUMI-O: storage/lumio/advanced.md
   - Help desk: 
     - Help desk: helpdesk/index.md
     - Training and events: helpdesk/training.md
