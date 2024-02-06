@@ -82,7 +82,7 @@ the following command:
 $ sacct --noheader -X -P -oNodeList --jobs=<jobid>
 ```
 
-!!! note "GPUs ressource specification"
+!!! note "GPUs resource specification"
 
     Depending on how you have specified the GPU resources allocated to your job, 
     you may encounter the following error when attempting to attach to a running

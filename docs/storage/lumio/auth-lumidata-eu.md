@@ -89,7 +89,7 @@ When filling out the duration keep the previous advice in mind.
 
 After the necessary fields are created click on "Generate key". The generated
 key will appear in the side menu under "Available keys". The previously
-mentionned key "Description" field is visible there, that makes it easy to
+mentioned key "Description" field is visible there, that makes it easy to
 distinguish between several keys.
 
 <figure>

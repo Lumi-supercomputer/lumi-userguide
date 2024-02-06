@@ -22,7 +22,7 @@ hide:
 
 <!-- This page helps you to start navigating the different sections in this documentation with listing some key points in each topic: -->
 
-<!-- Great! Now you are ready to start learning about the LUMI environment and how to work in it. On this page are given short descriptions of each menu topic of this documenation. -->
+<!-- Great! Now you are ready to start learning about the LUMI environment and how to work in it. On this page are given short descriptions of each menu topic of this documentation. -->
 
 In order to continue your endeavour into the use of LUMI, you may want to take a look at:
 

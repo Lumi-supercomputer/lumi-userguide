@@ -84,7 +84,7 @@ illustrates these links from both the CPU and GPU perspectives.
   <figcaption>CPU-GPU links from a CPU centric or GPU centric point of view</figcaption>
 </figure>
 
-Each MI250x module is direclty connected to the slingshot 11 network providing
+Each MI250x module is directly connected to the slingshot 11 network providing
 up to up to 25+25 GB/s peak bandwidth. Details about the LUMI network is 
 provided [here][network].
 
@@ -157,7 +157,7 @@ The way the wavefronts are executed by a compute unit is the following:
   executed concurrently, the throughput remains constant at one instruction per
   wavefront per compute unit
 
-The compute units have 512 64-wide 4 bytes Vector General Purpose Regiters
+The compute units have 512 64-wide 4 bytes Vector General Purpose Registers
 (VGPRs).  In addition to these registers, the unit also provides access to low
 latency storage through a 64 kB Local Data Share (LDS). This shared memory is
 akin to NVIDIA's "shared memory" and is accessible to all threads within a block
