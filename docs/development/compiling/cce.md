@@ -52,8 +52,8 @@ $ module swap cce cce/<version>
 
 :material-help-circle-outline: `man intro_openmp`
 
-OpenMP **is turned off by default** which is the opposite of earlier version of
-the CCE compilers. It is turned on using the `-homp` or `-fopenmp` flag.
+OpenMP **is turned off by default** which is the opposite of how earlier versions the CCE compilers worked.
+It is turned on using the `-homp` or `-fopenmp` flag.
 
 The CCE Fortran compiler allows controlling the level of optimization of OpenMP
 directives with the `-hthreadN` (`N = 0...3`). A value `N = 0` being off and `N
@@ -70,7 +70,7 @@ flag.
 
 ## Debugging
 
-To ease a debugging process, it's useful to generate an executable containing
+To ease a debugging process, it is useful to generate an executable containing
 debugging information. For this purpose, you can use the `-g` option.
 
 Most of the time, the debug information works best at low levels of code

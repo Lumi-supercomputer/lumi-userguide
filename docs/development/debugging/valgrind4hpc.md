@@ -56,10 +56,10 @@ See also:
 
 Debugging serial applications with Valgrind is quite straightforward. However,
 for a parallel application with multiple ranks, the output can become messy.
-That's where Valgrind4hpc comes in handy.
+That is where Valgrind4hpc comes in handy.
 
 Valgrind4hpc aggregates any duplicate messages across ranks to help provide an
-understandable picture of program behaviour. Valgrind4hpc manages starting and
+understandable picture of program behavior. Valgrind4hpc manages starting and
 redirecting output from many copies of Valgrind, as well as deduplicating and
 filtering Valgrind messages.
 

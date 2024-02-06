@@ -84,7 +84,7 @@ page][container-jobs].
 Building your own container on LUMI is, unfortunately, not in general possible.
 The `singularity build` command, in general, requires some level of root
 privileges, e.g. `sudo` or `fakeroot`, which are disabled on LUMI for security
-reasons. Thus, in order to build your own Singularity/Apptainer container for
+reasons. Thus, to build your own Singularity/Apptainer container for
 LUMI, you have two options:
 
 1. Use the [cotainr](#building-containers-using-the-cotainr-tool) tool to build
@@ -144,9 +144,9 @@ container. See the [cotainr Conda environment docs][cotainr-conda-env] and the
 [cotainr LUMI examples][cotainr-lumi-examples] for more details.
 
 !!! warning "Make sure your Conda environment supports the hardware in LUMI"
-    In order to take advantage of e.g. the GPUs in [LUMI-G][lumi-g], the
+    To take advantage of e.g. the GPUs in [LUMI-G][lumi-g], the
     packages you specify in your Conda environment must be compatible with
-    LUMI-G, i.e. built against ROCm. Similarly, in order to take full advantage
+    LUMI-G, i.e. built against ROCm. Similarly, to take full advantage
     of the [Slingshot 11 interconnect][interconnect] when running MPI jobs, you
     must make sure your packages are built against Cray MPICH. Cotainr does
     **not** do any magic conversion of the packages specified in the Conda

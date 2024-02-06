@@ -12,7 +12,7 @@ Both of these commands take [options similar to `sbatch`][sbatch-options].
 
 ## Using `salloc`
 
-Using `salloc`, you allocate resources and spawn a shell that is then used to
+Using `salloc`, you allocate resources and spawn a shell used to
 execute parallel tasks launched with `srun`. For example, you can allocate 2
 nodes for 30 minutes with the command
 

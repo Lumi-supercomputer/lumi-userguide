@@ -116,7 +116,7 @@ In this section, we give a full example of running the same program with 1000
 different command line arguments, submitted as an array job.
 
 The parameters to use may be stored in a file, 1000 lines long and named
-`args.txt`. Each of the lines of this file contains two parameters to be passed
+`args.txt`. Each line in this file contains two parameters to be passed
 to our program as command-line arguments. As an example, the first 4 lines of
 this file may be
 

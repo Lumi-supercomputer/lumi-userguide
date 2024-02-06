@@ -13,7 +13,7 @@ If you want to know more about GBD, see its [manual][gdb-manual].
 See also the page in Cray documentation about [debugging tools in Cray Programming Environment](https://cpe.ext.hpe.com/docs/#debugging-tools).
 
 !!! note
-    To efficiently debug your application, it's recommended to compile
+    To efficiently debug your application, it is recommended to compile
     it with the debug flag (`-g`).
 
 To have access to `gdb4hpc`, load the corresponding module in your environment.
@@ -119,8 +119,8 @@ dbg all> attach <handle> <jobstep>
 ```
 
 The `<jobstep>` parameter will typically be `<jobid>.0` if only one `srun`
-command is present in your job script. If it's not the case, you can list your
-job steps with `sstat`.
+command is present in your job script.
+If that is not the case, you can list your job steps with `sstat`.
 
 ```bash
 $ sstat <jobid>

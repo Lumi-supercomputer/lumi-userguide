@@ -16,8 +16,8 @@ full-machine access (see template below). Do not request access before you have
 the code and cases well-prepared, as the time slot is fixed and cannot be moved.
 
 The deadline for the application is the Wednesday 11 days before the last Sunday every
-month, and acceptance notifications will be sent out on the Monday of the week of
-the runs. Resource usage for any runs during this window will be billed as
+month, and acceptance notifications will be sent out on the Monday of the run week.
+Resource usage for any runs during this window will be billed as
 usual, so make sure you have enough resources to complete any runs planned. The
 applications are submitted via the [LUMI helpdesk](https://lumi-supercomputer.eu/user-support/need-help/)
 through the general contact form, as the "large-scale runs" category.

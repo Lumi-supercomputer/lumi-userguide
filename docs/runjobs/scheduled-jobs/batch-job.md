@@ -67,7 +67,7 @@ environment variables in your `.bashrc`:
 
 If you want to perform specific operations in your batch script when a job has
 been requeued, you can check the value of the `SLURM_RESTART_COUNT` variable.
-The value of this variable will be `0` if it's the first time the job is run.
+The value of this variable will be `0` if it is the first time the job is run.
 If the job has been restarted, the value will be the number of times the
 job has been restarted.
 
@@ -156,7 +156,7 @@ Here is an overview of some of the most commonly used Slurm options.
 !!! info
     The `/tmp` directory on the compute nodes resides in memory. The memory
     used for `/tmp` is included in the job memory allocation. If you use
-    `/tmp`, you must allocate memory for it in order to avoid running out of
+    `/tmp`, you must allocate memory for it to avoid running out of
     memory.
 
 ## Pipelining with dependencies

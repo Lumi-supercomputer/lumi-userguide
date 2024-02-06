@@ -43,13 +43,13 @@ The performance difference is quite small, though (on average ca 1%, according t
 
 ## OpenMP Support
 
-OpenMP is turned off by default, it's turned on using the `-fopenmp` flag.
+OpenMP is turned off by default. You can turn it on using the `-fopenmp` flag.
 
 ## Optimization options
 
 :material-help-circle-outline: `man gcc` - `man gfortran`
 
-The default optimization level of the GNU compiler is `-O0`, it's therefore
+The default optimization level of the GNU compiler is `-O0`. It is therefore
 necessary to add additional optimization flags. A good starting point is
 
 ```bash
@@ -106,7 +106,7 @@ compiler can be obtained using the `-fopt-info` option.
 
 ## Debugging
 
-To ease a debugging process, it's useful to generate an executable containing
+To ease a debugging process, it is useful to generate an executable containing
 debugging information. For this purpose, you can use the `-g` option.
 
 Most of the time, the debug information works best at low levels of code

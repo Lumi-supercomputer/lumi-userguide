@@ -246,12 +246,14 @@ the Spack initialization scripts as usual. They can be found on disk in e.g.:
 $ source /appl/lumi/spack/22.08/0.18.1-user/share/spack/setup-env.sh
 ```
 
-You just need to make sure that `$SPACK_USER_PREFIX` is set and that the
+You need to make sure that `$SPACK_USER_PREFIX` is set and that the
 `cache` and `modules/tcl` subdirectories exist within that directory.
 
 ### Overriding the default settings in the Spack module
 
-The `spack` modules read the configuration files from the `/appl/lumi/spack/.../etc/` directory, which is read-only for users. In order to change the configuration files, you need to override the default settings by placing new configuration files (like `compilers.yaml` and `packages.yaml`) in the `$HOME/.spack/` directory and then unset the environment variable `$SPACK_DISABLE_LOCAL_CONFIG`. It will not work otherwise, because the Spack module on LUMI sets this variable to prevent accidental interference between any user-local Spack configuration and the system configuration.
+The `spack` modules read the configuration files from the `/appl/lumi/spack/.../etc/` directory, which is read-only for users.
+To change the configuration files, you need to override the default settings by placing new configuration files (like `compilers.yaml` and `packages.yaml`) in the `$HOME/.spack/` directory and then unset the environment variable `$SPACK_DISABLE_LOCAL_CONFIG`.
+It will not work otherwise, because the Spack module on LUMI sets this variable to prevent accidental interference between any user-local Spack configuration and the system configuration.
 
 ### Making a custom package repository
 

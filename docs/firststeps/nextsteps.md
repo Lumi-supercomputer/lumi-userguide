@@ -24,7 +24,7 @@ hide:
 
 <!-- Great! Now you are ready to start learning about the LUMI environment and how to work in it. On this page are given short descriptions of each menu topic of this documentation. -->
 
-In order to continue your endeavour into the use of LUMI, you may want to take a look at:
+To continue your endeavor into the use of LUMI, you may want to take a look at:
 
 - The [**Hardware**][Hardware] section to get to know the LUMI system architecture and the different hardware partitions available on LUMI.
 

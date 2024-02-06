@@ -162,7 +162,7 @@ The compute units have 512 64-wide 4 bytes Vector General Purpose Registers
 (VGPRs).  In addition to these registers, the unit also provides access to low
 latency storage through a 64 kB Local Data Share (LDS). This shared memory is
 akin to NVIDIA's "shared memory" and is accessible to all threads within a block
-(workgroup). The LDS allocation is managed by the programmer. Additionally,
+(workgroup). The programmer manages the LDS allocation. Additionally,
 each compute unit has access to 16 kB of L1 cache.
 
 The vector ALUs are completed by matrix cores optimized to execute Matrix Fused
