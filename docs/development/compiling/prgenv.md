@@ -31,7 +31,7 @@ code. Finally, some basic information on how to compile an [MPI][3] or
 ## Compiler Suites
 
 On LUMI, the different compiler suites are accessible using module collections.
-These collections load the appropriates modules to use one of the supported
+These collections load the appropriate modules to use one of the supported
 programming environments for LUMI.
 
 ### Switching compiler suites
@@ -102,7 +102,7 @@ example
 ## Compiler Wrappers
 
 The module collection provides wrappers to the C, C++ and Fortran compilers. The
-command used to invoke these wrappers are listed below.
+commands used to invoke these wrappers are listed below.
 
 - `cc`: C compiler
 - `CC`: C++ compiler
@@ -119,8 +119,7 @@ also be included. See [here][2.2] for more information.
     systems like the `mpicc`, `mpic++` and `mpif90` wrappers. You don't need to
     use these wrappers to compile an MPI code on LUMI. See [here][3].
 
-Below are examples on how to use the wrappers for the different programming
-languages.
+Below are examples how to use the wrappers for the different programming languages.
 
 === "C"
 
@@ -162,13 +161,13 @@ The following flags are a good starting point to achieve good performance:
 | Cray Fortran | Default                                           | `-O3 -hfp3`              |
 | GCC          | `-O2 -ftree-vectorize -funroll-loops -ffast-math` | `-Ofast -funroll-loops`  |
 
-Detailed information about the available compiler options are available here:
+Detailed information about the available compiler options is available here:
 
 - [Cray Compiling Environment][cce]
 - [The GNU Compilers][gnu]
 
 The man pages of the wrappers and of the underlying compilers are also a good
-place to explore the options. The command to access the man pages are presented
+place to explore the options. The commands to access the man pages are presented
 in the table below.
 
 | Language | Wrapper   | CCE           | GNU            |
@@ -193,7 +192,7 @@ list of the relevant CPU target module available on LUMI:
 
 We recommend that you compile with `craype-x86-trento` for LUMI-G and 
 `craype-x86-milan` for LUMI-C, even if the compiler optimizations for these 
-processors are immature at the moment. **You have to load these module yourself
+processors are immature at the moment. **You have to load these modules yourself
 when compiling your code from a login node** as the default module is 
 `craype-x86-rome`.
 
@@ -221,14 +220,14 @@ command (`-l`).
 If you have used a Cray system in the past, you may be familiar with the legacy
 linking behavior of the Cray compiler wrappers. Historically, the wrappers
 built statically linked executables. In recent versions of the Cray programming
-environment, this is not the case anymore, libraries are now **dynamically
+environment, this is not the case anymore: libraries are now **dynamically
 linked**. The following options are available to you to control the behavior
 of your application
 
 - Follow the default Linux policy and at runtime use the system default version
   of the shared libraries (so may change as and when the system is upgraded)
 - Hard code the path of each library into the binary at compile time so that a
-  specific version is loaded when the application start (as long as the library
+  specific version is loaded when the application starts (as long as the library
   is still installed). Set `CRAY_ADD_RPATH=yes` at compile time to use this
   mode.
 - Allow the currently loaded programming environment modules to select the
@@ -245,15 +244,15 @@ Static linking is unsupported by Cray at the moment.
 
 In order to compile an application that uses a series of `./configure`, `make`,
 and `make install` commands, you can pass the compiler wrappers in the
-appropriate environment variables. This should be sufficient for a configure
-step to succeed.
+appropriate environment variables.
+This should be sufficient for a `configure` step to succeed.
 
 ```bash
 $ ./configure CC=cc CXX=CC FC=ftn
 ```
 
 CMake should automatically detect the Cray environment. If you want to be
-on the safe side, you can explicitly provide the compilers wrappers at configure
+on the safe side, you can explicitly provide the compiler wrappers at configure
 time using the flags
 
 ```bash
@@ -339,9 +338,9 @@ hipcc -o <yourapp> <hip_source.cpp>
 ## Compile an MPI Program
 
 When you load a programming environment, the appropriate MPI module is loaded in
-the environment: `cray-mpich`. In addition the `craype-network-ofi` network 
+the environment: `cray-mpich`. In addition, the `craype-network-ofi` network 
 target module should be loaded. These two modules are loaded by default when you
-login to LUMI.
+log in to LUMI.
 
 Compiling an MPI application is done using the set of compiler wrappers
 (`cc`, `CC`, `ftn`). The wrappers will automatically link codes with the MPI
@@ -363,7 +362,7 @@ correctly select the wrappers as the MPI compilers.
 ### GPU-aware MPI
 
 If your application requires a GPU-aware MPI implementation, i.e., pass GPU 
-memory pointers directly to MPI without copy to the host first, then you need to
+memory pointers directly to MPI without copying to the host first, then you need to
 link your code to the GPU Transfer Library (GTL). The compiler wrappers will
 link automatically to this library if a GPU target module (`craype-accel-*`) is
 loaded.
@@ -397,12 +396,12 @@ the MPI and GPU transfer libraries are linked
 ``` 
 $ ldd ./yourapp | grep libmpi
     libmpi_cray.so.12 => /opt/cray/pe/lib64/libmpi_cray.so.12
-    libmpi_gtl_hsa.so.0 => /opt/cray/pe/lib64/libmpi_gtl_hsa.so.0
+    libmpi_gtl_has.so.0 => /opt/cray/pe/lib64/libmpi_gtl_hsa.so.0
 ```
 
-!!! warning "GPU support need to be enabled at run time"
+!!! warning "GPU support needs to be enabled at run time"
 
-    When your application, you need to enable the GPU support. This is done by
+    When running your application, you need to enable the GPU support. This is done by
     setting the value of `MPICH_GPU_SUPPORT_ENABLED` to `1`:
 
     ```bash
@@ -448,7 +447,7 @@ automatically add the appropriate flags for OpenMP offloading.
 ## Compile an OpenACC application
 
 At the moment, the only compiler that supports OpenACC compilation on LUMI is the
-Cray Fortran compiler. OpenACC can enabled by the `-hacc` flag.
+Cray Fortran compiler. OpenACC can be enabled by the `-hacc` flag.
 
 ```
 module load PrgEnv-cray
@@ -506,6 +505,6 @@ The Cray programming environment can be accessed in three different ways on LUMI
 
 !!! Remark "Workaround for ``PrgEnv/aocc`` bug in 21.12"
     The ``cpeAOCC/21.12`` in ``LUMI/21.12`` contains a workaround for the
-    problems with the ``aocc/3.1.0`` module. Hence it is possible to use
+    problems with the ``aocc/3.1.0`` module. Hence, it is possible to use
     the AOCC compilers bh working in the ``LUMI/21.12`` stack and using
     ``cpeAOCC/21.12`` rather than loading the ``PrgEnv-aocc`` module.

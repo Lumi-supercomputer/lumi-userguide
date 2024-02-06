@@ -37,9 +37,9 @@ As of April 2022, GCC versions 9.3.0, 10.3.0, and 11.2.0 are available on LUMI.
 We recommend using GCC 11, if possible, because it can optimize code
 specifically for the Zen 3 processors in LUMI (with the `craype-x86-milan`
 module or the compiler flag `-march=znver3`). GCC 9 and 10 can only optimize
-for Zen 2 processors. The performance difference is quite small, though, on
-average ca 1%, see for example [these tests from
-Phoronix](https://www.phoronix.com/scan.php?page=article&item=amd-znver3-gcc11&num=1).
+for Zen 2 processors.
+The performance difference is quite small, though (on average ca 1%, according to e.g.
+[these tests from Phoronix](https://www.phoronix.com/scan.php?page=article&item=amd-znver3-gcc11&num=1)).
 
 ## OpenMP Support
 
@@ -58,7 +58,7 @@ necessary to add additional optimization flags. A good starting point is
 
 - the `-O2` option performs nearly all supported optimizations
 - the `-ffast-math` relax the IEEE specifications for math functions. This option
-  can produce incorrect results, don't use this flag if you code is sensitive 
+  can produce incorrect results, don't use this flag if your code is sensitive 
   to floating-point optimizations.
 - the `-funroll-loops` option allows the compiler to unroll loops
 
@@ -112,6 +112,6 @@ debugging information. For this purpose, you can use the `-g` option.
 Most of the time, the debug information works best at low levels of code
 optimization, so consider using the `-O0` level. The `-g` options can be
 specified on a per-file basis so that only a small part of your application
-incur the debugging penalty.
+incurs the debugging penalty.
 
 - [GCC documentation about debug options][gcc-debug]

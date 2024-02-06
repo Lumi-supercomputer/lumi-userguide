@@ -18,8 +18,8 @@ information automatically, with minimum user interaction.
 
 ## Sampling
 
-Sampling consist in taking regular snapshots of the applications call stack to
-create a statistical profile. That's a good option for low overhead profiling.
+Sampling consists of taking regular snapshots of the application's call stack to
+create a statistical profile. This is a good option for low overhead profiling.
 
 - [See how to run a sampling experiment with CrayPat][sampling]
 

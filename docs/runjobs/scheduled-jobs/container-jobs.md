@@ -12,7 +12,7 @@ LUMI provides access to a `singularity` runtime for running applications in
 software containers. Currently, there are two major providers of the
 `singularity` runtime, namely [Singularity CE][singularityce] and
 [Apptainer][apptainer], with the latter being a fork of the former. For most
-cases these should be fully compatible. LUMI provides the `singularity` runtime
+cases, these should be fully compatible. LUMI provides the `singularity` runtime
 included in the HPE Cray Operating System (a SUSE Linux based OS) running on
 LUMI - no modules need to be loaded to use `singularity` on LUMI. You can
 always check the version of singularity using the command `singularity
@@ -24,7 +24,7 @@ details about creating LUMI compatible software containers.
 ## The basics of running a container on LUMI
 
 Applications in a container may be run by combining Slurm commands with
-Singularity commands, e.g. to get the version of Ubuntu running in a container
+Singularity commands, e.g., to get the version of Ubuntu running in a container
 stored as "ubuntu_22.04.sif", we may use `srun` to execute the `singularity`
 container
 
@@ -102,7 +102,7 @@ $ module load singularity-bindings
 $ srun --partition=<partition> --account=<account> --nodes=2 singularity run mpi_osu.sif
 ```
 
-which gives the bandwidth measured for different message sizes, i.e. something
+which gives the bandwidth measured for different message sizes, i.e., something
 along the lines of
 
 ```text

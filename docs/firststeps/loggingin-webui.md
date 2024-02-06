@@ -1,11 +1,11 @@
 # Logging in (with web interface)
 
 !!! info
-	The web interface is still under development so expect 
-	additional features and further polishing. Read more about the possibilities with the web interface in the [web interface](../runjobs/webui/index.md) section.
+	The web interface is still under development, so expect additional features and further polishing.
+	Read more about the possibilities with the web interface in the [web interface](../runjobs/webui/index.md) section.
 
 
-Using a web browser navigate to [www.lumi.csc.fi](https://www.lumi.csc.fi). 
+Using a web browser, navigate to [www.lumi.csc.fi](https://www.lumi.csc.fi). 
 
 ![Image of welcome page for the LUMI web interface](../assets/images/wwwLumiWelcome.png)
 

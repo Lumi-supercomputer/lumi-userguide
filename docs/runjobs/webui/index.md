@@ -20,7 +20,7 @@ Features available in the web interface:
     - Visual Studio Code
  
 !!! info
-	The web interface is still under development so expect 
+	The web interface is still under development, so expect 
 	additional features and further polishing. 
 
 ## Connecting
@@ -54,7 +54,7 @@ you can upload/download files, create new files and directories, or open a shell
 
 !!! note
     Uploaded files will overwrite existing files with the same name without prompting.
-    Currently the maximum size for individual file uploads is 10GB
+    Currently, the maximum size for individual file uploads is 10GB.
 
 
 ![File browser view](../../assets/images/wwwLumiFiles.png)
@@ -64,7 +64,7 @@ Clicking on a file will open it in a view-only mode. For more options like editi
 The file browser comes with a basic text editor. Some important notes on that:
 
 - If no changes have been made, the _save_ button is grayed out.
-- There is no _save-as_ feature, so read-only files can not be edited.
+- There is no _save-as_ feature, so read-only files cannot be edited.
 
 LUMI-O can also be accessed if you have [configured the connection](../../storage/lumio/#configuring-the-lumi-o-connection)
 using the _lumio-conf_ tool.

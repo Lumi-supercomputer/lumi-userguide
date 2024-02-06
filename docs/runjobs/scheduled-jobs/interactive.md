@@ -54,21 +54,22 @@ $ srun --account=<project> --partition=<partition> --time=00:30:00 --nodes=1 --p
 
 ## Using `srun` to check running jobs
 
-Currently, ssh'ing to compute nodes is not allowed, but the `srun` command can
+Currently, `ssh`'ing to compute nodes is not allowed, but the `srun` command can
 be used to check in on a running job in the cluster. In this case, you need to
 give the job ID and possibly also the specific name of a compute node to `srun`.
 
-This starts a shell, where you can run any command, on the first allocated node
+This starts a shell where you can run any command on the first allocated node
 in a specific job:
 
 ```bash
 $ srun --overlap --pty --jobid=<jobid> $SHELL
 ```
 
-By default you will be connected to the master node of your job which is the 
+By default, you will be connected to the master node of your job which is the 
 first node in your allocation and the one on which your batch script is executed. 
-In cases where your job spans multiple nodes and you need to connect to a
-specific compute node, you can achieve this by adding the `-w nid00XXXX` option.
+
+If your job spans multiple nodes and you need to connect to a specific compute node,
+you can achieve this by adding the `-w nid00XXXX` option.
 
 ```bash
 $ srun --overlap --pty --jobid=<jobid> -w nid00XXXX $SHELL

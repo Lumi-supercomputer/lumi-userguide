@@ -3,8 +3,8 @@
 [gdb]: https://www.gnu.org/software/gdb/
 [gdb-manual]: https://sourceware.org/gdb/current/onlinedocs/gdb.html/
 
-gdb4hpc is a [GDB-based][gdb] parallel debugger used to debug applications. It
-allows programmers to either launch an application or attach to an
+`gdb4hpc` is a [GDB-based][gdb] parallel debugger used to debug applications.
+It allows programmers to either launch an application or attach to an
 already-running application.
 
 This page is not a GDB tutorial, but simply an explanation on how to launch
@@ -13,7 +13,7 @@ If you want to know more about GBD, see its [manual][gdb-manual].
 See also the page in Cray documentation about [debugging tools in Cray Programming Environment](https://cpe.ext.hpe.com/docs/#debugging-tools).
 
 !!! note
-    In order to efficiently debug your application, it's recommended to compile
+    To efficiently debug your application, it's recommended to compile
     it with the debug flag (`-g`).
 
 To have access to `gdb4hpc`, load the corresponding module in your environment.
@@ -63,7 +63,7 @@ You can use this argument to specify the project to bill with
 `--account=<project>`. The parameters `--args` and `--env` allows you to pass
 parameters and define environment variables for your application. The handle is
 a debugger variable array specifying the number of ranks in the application.
-For example, an application with an handle of `$a{16}` will launch the
+For example, an application with a handle of `$a{16}` will launch the
 application with 16 ranks.
 
 ??? example "Example debug session"

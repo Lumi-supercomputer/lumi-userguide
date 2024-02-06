@@ -14,8 +14,8 @@ We contacted HPE and are waiting for the problem to be fixed.
 
 ## Fortran MPI program fails to start
 
-If Fortran based program with MPI fails to start with large number of node (512 
-nodes for instance), add `export PMI_NO_PREINITIALIZE=y` to your batch script.     
+If Fortran based program with MPI fails to start with large number of nodes
+(such as 512 nodes), add `export PMI_NO_PREINITIALIZE=y` to your batch script.     
 
 ## MPI job fails with `PMI ERROR`
 
@@ -41,9 +41,10 @@ If you suspect that the job has crashed because of a faulty node:
   sinfo -R --nodes=$(sacct -n -j 123456 --format=nodelist --json | jq -r ".jobs[0].steps[1].nodes.list | .[]"  | paste -sd ',')
   ```
 
-- Send a ticket to [LUMI service desk](https://lumi-supercomputer.eu/user-support/need-help/running/) identifying the job id, the error you got, and any other information you could provide to help finding the source of the fault.
+- Send a ticket to [LUMI service desk](https://lumi-supercomputer.eu/user-support/need-help/running/) identifying the job id, the error you got, and any other information you could provide to help find the source of the fault.
 
-- If you want to re-run the job and have list of excluded nodes, check the health status of these nodes to see if you could include them again, rather than having an ever-increasing list of nodes to be excluded. Command to check health of the nodes on your exclude list:
+- If you want to re-run a job and have a list of nodes to exclude, check the health status of these nodes to see if you could include them again, rather than having an ever-increasing list of nodes to exclude.
+  The command to check health of the nodes on your exclude list is:
   ```
   sinfo -R --nodes=<list_of_nodes>
   ```

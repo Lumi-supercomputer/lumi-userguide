@@ -37,7 +37,7 @@ $ valgrind --tool=memcheck --leak-check=yes ./my_app
 
 !!! warning
     When using Valgrind, your application will run much slower than normal and
-    use more memory. Take it into consideration when you setup your job.
+    use more memory. Take this into consideration when you set up your job.
 
 Valgrind also include a heap profiler named `massif`. This tool measures how
 much heap memory your program uses and can be invoked with the following
@@ -70,15 +70,14 @@ $ module load valgrind4hpc
 ```
 
 The next step is to launch your application with Valgrind4hpc. It will take care
-of running you application through Slurm. The general form of the command is the
-following
+of running your application through Slurm. The general form of the command is:
 
 ```bash
 $ valgrind4hpc <valgrind4hpc options> <program-name> -- arg1 arg2
 ```
 
 If your application does not take arguments, the `--` at the end is optional.
-The table below summarized the basic options that you can use with Valgrind4hpc.
+The table below summarizes the basic options that you can use with Valgrind4hpc.
 
 | Option                        | Description
 |-------------------------------|------------------------------------------------|
@@ -87,8 +86,7 @@ The table below summarized the basic options that you can use with Valgrind4hpc.
 | `--valgrind-args=<arguments>` | Specify Valgrind arguments                     |
 | `--from-ranks=<ranks>`        | Only show Valgrind output from certain ranks   |
 
-For example, to run your application on 16 rank on two nodes, the command will
-be
+For example, to run your application with rank 16 on two nodes, the command will be
 
 ```bash
 $ valgrind4hpc --num-ranks=16 \
