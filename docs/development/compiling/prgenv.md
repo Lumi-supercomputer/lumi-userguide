@@ -68,7 +68,7 @@ After you have loaded a programming environment, the [compiler wrappers][2]
     reasons. The ``aocc/3.0.0`` module (used as the default version of AOCC in
     the 21.08 release) is broken since the compilers themselves are not
     installed. The ``aocc/3.1.0`` module has a bug in the code of the module.
-    This has been fixed in later releases of the Crey programming environment
+    This has been fixed in later releases of the Cray programming environment
     so that the problem will be solved when those releases are installed. Due to
     the way the installation of the Cray programming environment works, it is
     currently not possible for us to correct the module by hand.

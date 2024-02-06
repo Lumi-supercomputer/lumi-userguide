@@ -179,7 +179,7 @@ MPI stack on LUMI.
 The following [Singularity definition file][singularity-def-file]
 `mpi_osu.def`, installs MPICH-3.1.4, which is ABI-compatible with the
 Cray-MPICH found on LUMI. That MPICH will be used to compile the [OSU
-microbenchmarks][osu-benchmark]. Finally, the OSU point to point bandwidth test
+micro-benchmarks][osu-benchmark]. Finally, the OSU point to point bandwidth test
 is set as the "runscript" of the image.
 
 ```bash
