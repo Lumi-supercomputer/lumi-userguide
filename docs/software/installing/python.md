@@ -25,8 +25,8 @@ We do support using Scientific Python packages on LUMI.
 However, care must be taken to *install* such packages in a way that *plays well with LUMI*.
 
 !!! warning "Please don't install Python packages directly"
-    In order to provide the best user experience, it is **strongly
-    discouraged** to install Python packages directly to the user home folder,
+    To to provide the best user experience, it is **strongly discouraged**
+    to install Python packages directly to the user home folder,
     `/scratch`, `/project`, etc. using [Conda][conda], [pip][pip], or similar
     package management tools. Please read this page carefully for better
     alternatives.
@@ -42,7 +42,7 @@ Installing such a large number of small files to the user home folder or shared
 locations like `/scratch`, `/project`, or even `/flash`, and trying to load
 them from multiple processes at the same time, puts a lot of strain on the
 [Lustre file system][lustre] serving these storage locations. Lustre simply
-isn't designed for such use cases. Thus, in order to maintain good file system
+isn't designed for such use cases. Thus, to maintain good file system
 performance for all users (it is a shared file system), care must be taken when
 installing Python packages on LUMI.
 

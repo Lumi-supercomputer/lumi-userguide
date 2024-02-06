@@ -64,7 +64,11 @@ lumi-check-quota
 
 ## lumi-ldap-userinfo
 
-Shows your user information kept in the LDAP directory. This command also gives more information about the quota of your projects, but is not as up to date as the information from `lumi-quota` command, as the information for this command is only gathered in the background on a periodic basis. 
+Shows your user information kept in the LDAP directory.
+
+This command also gives more information about the projects' quota,
+but it is not as up to date as the information from `lumi-quota` command,
+as the information for this command is only gathered in the background on a periodic basis. 
 
 Usage:
 ```

@@ -79,11 +79,10 @@ compute node) or install a LUMI compatible MPI stack in the container.
 
 ### Using the host MPI
 
-In order to properly make use of LUMI's high-speed network, it is necessary to
+To properly make use of LUMI's high-speed network, it is necessary to
 mount a few host system directories inside the container and set
 `LD_LIBRARY_PATH` so that the necessary dynamic libraries are available at run
-time. This way, the MPI installed in the container image is replaced by the
-host's MPI stack.
+time. This way, the host's MPI stack replaces the MPI installed in the container image.
 
 All the necessary components are available in a module that can be installed
 by the user via [EasyBuild][easybuild-install]
@@ -177,5 +176,5 @@ Note that this approach gives lower bandwidths, especially for the larger
 message sizes, than is the case when using the host MPI. In general, the
 performance obtained from using the container MPI might be quite low compared
 to the results obtained when using the host's MPI. For a more in-depth
-discussion of the topic of MPI in containers, we suggest that you read this
+discussion about MPI in containers, we suggest that you read this
 [introduction to MPI in containers][permedcoe-mpi].

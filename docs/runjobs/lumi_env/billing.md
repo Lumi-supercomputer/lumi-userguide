@@ -16,8 +16,7 @@ the billing units allocated to your project:
 
 ## How to check your billing units
 
-In order to check how many billing units you have used, you can use the 
-following command:
+To check how many billing units you have used, you can use the following command:
 
 ```
 lumi-allocations
@@ -70,7 +69,7 @@ When using the `small` Slurm partition you are billed per allocated core.
 However, if you are above a certain threshold of memory allocated per core,
 i.e. you use the high memory nodes in [LUMI-C][lumi-c], you are billed per
 slice of 2GB memory (which is still billed in units of CPU-core-hours).
-Specifically, the formula that is used for billing is:
+Specifically, the formula used for billing is:
 
 ```text
 CPU-core-hours-billed = max(
@@ -155,8 +154,8 @@ store data in your project folders. Storage is billed by volume used over time.
 The billing units are TB-hours.
 
 The number of TB-hours billed depends on the type of storage you are using. See
-the [data storage options][data-storage-options] page for an overview of the
-type of storage used in the different storage options.
+the [data storage options][data-storage-options] page for an overview storage types
+used in the different storage options.
 
 ### Main storage (LUMI-P) billing
 

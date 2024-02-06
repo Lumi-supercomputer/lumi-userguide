@@ -90,11 +90,10 @@ to each of the switches.
 
 ## LUMI-G
 
-LUMI-G, the GPU partition, has 24 electrical groups of 124 nodes, with the
-exception of the last group which contains 126 nodes. The groups are composed of
-32 switches connected in all-to-all. There are 16 endpoints connected to each of
-the switches. The LUMI-G compute nodes have 4 endpoints per nodes, each endpoint
-connected to different switches.
+LUMI-G, the GPU partition, has 24 electrical groups of 124 nodes, except the last group which contains 126 nodes.
+The groups are composed of 32 switches connected in all-to-all.
+There are 16 endpoints connected to each of the switches.
+The LUMI-G compute nodes have 4 endpoints per nodes, each endpoint connected to different switches.
 
 <figure>
   <img 

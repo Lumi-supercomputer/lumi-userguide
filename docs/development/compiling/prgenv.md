@@ -213,7 +213,7 @@ a  `craype-accel-*` module will enable the linking to the GPU transfer library
 The wrapper will pass the appropriate linking information to the compiler and
 linker for libraries accessible via [modules prefixed by
 `cray-`][libraries]. These libraries don't require user-provided options
-in order to be linked. For other libraries, the user should provide the
+to be linked. For other libraries, the user should provide the
 appropriate include (`-I`) and library (`-L`) search paths as well as linking
 command (`-l`).
 
@@ -242,7 +242,7 @@ Static linking is unsupported by Cray at the moment.
 
 ### Using the wrappers with build systems
 
-In order to compile an application that uses a series of `./configure`, `make`,
+To compile an application that uses a series of `./configure`, `make`,
 and `make install` commands, you can pass the compiler wrappers in the
 appropriate environment variables.
 This should be sufficient for a `configure` step to succeed.

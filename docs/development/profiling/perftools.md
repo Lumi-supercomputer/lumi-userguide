@@ -10,8 +10,8 @@ evaluate program behaviour on HPE Cray supercomputer systems like LUMI.
 
 The `perftools-lite` is a simplified and easy-to-use version of CrayPat that
 provides basic performance analysis information automatically, with minimum
-user interaction. In order to use `perftools-lite` you must first load the
-`perftools-base` module followed by `perftools-lite`.
+user interaction.
+To use `perftools-lite` you must first load the `perftools-base` module followed by `perftools-lite`.
 
 ```bash
 $ module load perftools-base
@@ -69,10 +69,10 @@ application spends most of its time.
   </figcaption>
 </figure>
 
-One of the main advantages of a sampling experiment is the low overhead that is
-fixed by the choice of sampling rate. On the other hand, sampling is
-non-deterministic and can only provide a statistical picture of the application
-behaviour.
+One of the main advantages of a sampling experiment is the low overhead
+fixed by the choice of sampling rate.
+On the other hand, sampling is non-deterministic and can only provide a
+statistical picture of the application behavior.
 
 The `pat_build` tool is used to instrument your application. The first step to
 use this tool is to load the `perftools-base` and `perftools` modules and build
@@ -151,8 +151,7 @@ $ pat_build -O <pertools-out-dir>/build-options.apa
 ```
 
 This will build a new executable whose name ends with `+apa`. You can then run
-this executable in order to get tracing data and generate a report with
-`pat_report `.
+this executable to get tracing data and generate a report with `pat_report`.
 
 #### Manual analysis
 

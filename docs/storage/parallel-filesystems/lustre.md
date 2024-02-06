@@ -50,7 +50,7 @@ from multiple OSTs simultaneously increases the available I/O bandwidth.
 
 File striping will predominantly improve performance for applications doing
 serial I/O from a single node or parallel I/O to a single shared file from
-multiple nodes. This behaviour is usually found in application using MPI-I/O,
+multiple nodes. This behavior is usually found in application using MPI-I/O,
 parallel HDF5 and parallel NetCDF.
 
 ### Set the Striping Pattern
@@ -119,8 +119,8 @@ can cause overhead and impede the performance.
 
 - when multiple processes access the same large file in parallel set a stripe
   count >1 and an integral factor of the number of processes.
-- with a file-per-process I/O pattern, avoid striping (stripe count of 1) in
-  order to limit OST contention.
+- with a file-per-process I/O pattern, avoid striping (stripe count of 1) to
+  limit OST contention.
 
 ### Stripe size
 
@@ -130,8 +130,7 @@ the stripe size may influence the performance:
 
 - the smallest recommended stripe size is 512 KB.
 - a good stripe size is between 1 MB and 4 MB in most situations.
-- the maximum stripe size is 4 GB, but you should only use this value for very
-  large files.
+- the maximum stripe size is 4 GB, but you should only use this value for huge files.
 
 If your application writes to the file in a consistent and aligned way, make
 the stripe size a multiple of the `write()` size. The goal is to perform write

@@ -77,8 +77,8 @@ toolchain that is used in the recipe file.)
 
 The last part of the name,
 `-PLUMED-2.9.0-noPython-CPU`, is called the version suffix. Version suffixes are
-typically used to distinguish different builds of the same version of the
-package. In this case, it indicates that it is a build of the 2022.5 version
+typically used to distinguish different builds of the same package version.
+In this case, it indicates that it is a build of the 2022.5 version
 purely for CPU and also includes PLUMED as we have also builds without PLUMED
 (which is not compatible with every GROMACS version).
 
@@ -107,7 +107,7 @@ However, this location can be changed by pointing the environment variable
 installation. In most cases a subdirectory in your `/project/project_*`
 directory is the best location to install software as that directory is both
 permanent for the duration of your project and shared with all users in your
-project so that everybody can use the software. It is a very good idea to set
+project so that everybody can use the software. It is a great idea to set
 this environment variable in your `.profile` or `.bashrc`file, e.g.
 
 ```bash
@@ -241,7 +241,7 @@ will all be searched for EasyBuild recipes.
 
 The `-r .` or `-r` flags should be omitted if you
 want full control and install dependency by dependency before installing the
-package (which may be very useful if building right away fails).
+package (which may be handy if building right away fails).
 
 If you now type `module avail` you should see the
 
@@ -339,7 +339,7 @@ or `module spider`).
         installing the software package.
 
         Note that even the LUMI CPU compute nodes have a newer processor than the login nodes and
-        may benefit from processor-specific optimisations which is why they use a different `partition`
+        may benefit from processor-specific optimizations which is why they use a different `partition`
         module. If you load one of the versions of the `LUMI` module on the login nodes, it will 
         automatically load `partition/L` while if you do the load on a regular LUMI-C compute node,
         it will load `partition/C`.

@@ -37,7 +37,7 @@ The shell apps can be found under Pinned apps or on the top navbar under the _To
 There are two different shells.
 
 The _Login node shell_ launches a normal Linux shell on one of the login nodes.
-Any command that is running when the login shell browser tab is closed will stop.
+Any command running when the login shell browser tab is closed will stop.
 Note that the same rules apply here as during a normal ssh session from a terminal.
 **Login nodes are only for light pre/postprocessing**. 
 

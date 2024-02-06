@@ -106,7 +106,7 @@ It has three levels, producing different outputs:
  1. `module spider` without further arguments will produce a list of all
     installed software and show some basic information about those packages.
     Some packages may have an `(E)` behind their name and will appear in blue
-    (in the default colour scheme) which means that they are part of a different
+    (in the default color scheme) which means that they are part of a different
     package. The following levels of `module spider` will then tell you how to
     find which module(s) to load.
 
@@ -144,7 +144,7 @@ It has three levels, producing different outputs:
             ...
     ```
 
-    (abbreviated output) so even though the capitalisation of the name was wrong, it can tell us that
+    (abbreviated output) so even though the capitalization of the name was wrong, it can tell us that
     there are multiple versions of gnuplot. The `cpeAOCC-22.08` and `cpeCray-22.06`
     tell that the difference is the compiler that was used to install gnuplot,
     being the AMD AOCC compiler (PrgEnv-aocc) and the Cray compiler (PrgEnv-cray),
@@ -369,7 +369,7 @@ of the module:
 $ module load cray-fftw/3.3.10.5
 ```
 
-In order to unload a module from your environment, use the `unload` sub-command
+To unload a module from your environment, use the `unload` sub-command
 followed by the name of the module you want to remove.
 
 ```
@@ -466,7 +466,7 @@ Your saved collections can be listed using the `savelist` sub-command.
 $ module savelist
 ```
 
-But, of course, the main interest of a collection is that you can load all the
+Of course, the main interest of a collection is that you can load all the
 modules it contains in one command. This is done using the `restore`
 sub-command.
 

@@ -22,7 +22,7 @@ Choose the correct authentication provider which for most LUMI users is "MyAcces
   <figcaption>Authentication provider selection</figcaption>
 </figure>
 
-This page displays all of the projects that are associated with your account.
+This page displays all the projects that are associated with your account.
 It shows the project number, project description, set storage quota, in GB, for
 a specific project, and how much of said quota is used up.
 Additionally, this page allows creating the necessary authentication keys,
@@ -119,7 +119,7 @@ After selecting the desired object storage client and clicking "Generate"
 opens the output in a new browser tab.
 
 Finally, by scrolling down in the menu this side menu allows you to delete the
-key. After deletion of a key, a new one needs to be created in order to resume
+key. After deletion of a key, a new one needs to be created to resume
 utilizing LUMI-O for a certain project. Keys are non-recoverable, but a new one
 can be created in its place.
 

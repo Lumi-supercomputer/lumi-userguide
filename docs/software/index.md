@@ -15,7 +15,7 @@
 [install-policy]: ./policy.md
 
 ---
-On this page, you'll find information about pre-installed software on LUMI as well
+On this page, you will find information about pre-installed software on LUMI as well
 as guidance on ways to install additional software yourself.
 
 If you are looking for information on how to develop your own software on LUMI,

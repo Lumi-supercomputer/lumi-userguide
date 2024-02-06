@@ -67,7 +67,7 @@ Once the module has been loaded, you can use one of the front-end tools
 
 ### Wrapping a basic Conda installation
 
-In order to wrap a basic [Conda][conda] installation, create an installation directory
+To wrap a basic [Conda][conda] installation, create an installation directory
 and run the `conda-containerize` tool
 
 ```bash
@@ -105,7 +105,7 @@ $ conda list -n <target_env_name> --explicit > env.txt
 Linux machine with x86 CPU architecture. Otherwise the result will not be
 transferable to LUMI.*
 
-After the installation is done, you simply need to add the bin directory
+After the installation is done, you need to add the bin directory
 `<install_dir>/bin` to your `PATH`.
 
 ```bash
@@ -200,8 +200,8 @@ where `req.txt` is a standard [pip requirements.txt file][pip-req]. The above
 notes and options for modifying a Conda installation apply to pip installations
 as well.
 
-Note that the python version used by `pip-containerize` is the first python
-executable found on the `PATH`, so it's affected by loading modules.
+Note that the Python version used by `pip-containerize` is the first Python
+executable found on the `PATH`, so it is affected by loading modules.
 
 !!! note
     This python used to installed pip packages cannot itself be container-based
