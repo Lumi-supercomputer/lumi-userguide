@@ -30,7 +30,7 @@ when writing guides or instructions.
 
 In some cases it might be required to read
 credentials from some other location then the default 
-locations under home. This can be achived using environment variables or command line flags.
+locations under home. This can be achieved using environment variables or command line flags.
 
 
 |      | rclone        | s3cmd                  | aws                                         |
