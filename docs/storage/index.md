@@ -115,7 +115,7 @@ User Support Team and must be fully justified to be granted.
 Examples of requests that will be *rejected* include:
 
 - You are installing a lot of small files, e.g. using Conda. Please see the
-  [Python pacakges installation guide][python-install] for an overview of
+  [Python packages installation guide][python-install] for an overview of
   better alternatives.
 - The compilation of your application is generating too many files for your home
   or project directory: you should compile your application from the scratch and

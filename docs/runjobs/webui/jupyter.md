@@ -32,7 +32,7 @@ In the basic settings, the following settings are available:
 In the advanced settings, you can find the following settings:
 
 - **Custom init _Text_ / Script to start:** Enter the full script for configuring up the environment to run Jupyter lab in the text box.
-- **Custon init _File_ / Path to script:** Enter the path to the script for configuring the environment to run Jupyter lab in the text box.
+- **Custom init _File_ / Path to script:** Enter the path to the script for configuring the environment to run Jupyter lab in the text box.
 
 The script or path to script will be sourced by bash before starting Jupyter.
 To ensure that Jupyter launches correctly, ensure that `python` is available on the path, and the `jupyterlab` package has been installed.

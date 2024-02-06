@@ -50,7 +50,7 @@ that your job may share the node with other jobs.
 !!! info "LUMI-C/LUMI-D Large Memory Nodes"
     The [LUMI-C][lumi-c] large memory nodes (512GB and 1TB) are located in the
     `small` partition. Therefore, in order to use these nodes, you need to
-    select the `small` partition (`--partion=small`). Then the LUMI-C large
+    select the `small` partition (`--partition=small`). Then the LUMI-C large
     memory nodes will be allocated if you request more memory than is available
     in the LUMI-C standard compute nodes.
 

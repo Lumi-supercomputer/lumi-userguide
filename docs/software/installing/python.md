@@ -63,13 +63,13 @@ In general, we recommend using [Singularity/Apptainer
 containers][singularity-containers] for managing Python installations. Using a container solves the "many
 small files" performance problem and makes it easy to manage multiple different
 Python environments at the same time. To use a container, you may either [use an existing
-container](#use-an-existing-container) or [build a container taylored to your
+container](#use-an-existing-container) or [build a container tailored to your
 needs](#use-a-container-you-build-specifically-tailored-to-your-needs).
 
 ### Use an existing container
 
 If somebody is already publishing a container which includes the Python
-pacakages you need, e.g. this [PyTorch ROCm
+packages you need, e.g. this [PyTorch ROCm
 container](https://hub.docker.com/r/rocm/pytorch), you may [pull and use that
 container][pull-container].
 

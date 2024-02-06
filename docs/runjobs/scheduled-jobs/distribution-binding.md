@@ -62,7 +62,7 @@ system.
 
 !!! warning "Correct binding only for full node allocation"
 
-    Binding anly make senses if your request a full node (user exclusive) 
+    Binding only makes sense if your request a full node (user exclusive) 
     allocation. This is the default for the `standard` and `standard-g`
     partitions
 
