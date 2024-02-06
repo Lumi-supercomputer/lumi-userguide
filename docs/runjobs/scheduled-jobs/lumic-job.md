@@ -45,7 +45,7 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 ### MPI-based jobs
 
 !!! Failure "Fortran MPI program fails to start"
-    If a Fortran based program with MPI fails to start when utilizing a large
+    If a Fortran-based program with MPI fails to start when utilizing a large
     number of nodes (512 nodes for instance), add
     `export PMI_NO_PREINITIALIZE=y` to your batch script before running `srun`.  
 

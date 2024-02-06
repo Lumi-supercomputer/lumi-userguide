@@ -8,19 +8,19 @@ hide:
 All LUMI compute nodes use the [HPE Cray Slingshot-11][slingshot-11-hpe-page]
 200 Gbps network interconnect (NIC). The LUMI-C nodes (CPU) are equipped with a
 single endpoint while the LUMI-G nodes (GPU nodes) have 4 endpoints - one for
-each AMD MI250x GPU modules. Each endpoint provide up to 50 GB/s of
-bidirectional bandwidth. The HPE Cray Slingshot NIC features high performance
+each AMD MI250x GPU modules. Each endpoint provides up to 50 GB/s of
+bidirectional bandwidth. The HPE Cray Slingshot NIC features high-performance
 RDMA and hardware acceleration for MPI and SHMEM based software.
 
 ## Topology
 
-LUMI use the dragonfly network topology. In this topology, a group of endpoints, 
-for example the compute nodes are connected to a switch. Multiple switches 
+LUMI uses the dragonfly network topology. In this topology, a group of endpoints, 
+for example the compute nodes, are connected to a switch. Multiple switches 
 connected in an all-to-all fashion to create a group. This group is sometimes 
 referred to as an electrical group as these switches can be connected by short 
 copper cables. The electrical groups are then connected to each other in an
 all-to-all fashion. Optical cables are used for group-to-group communication
-as distances are much larger. The figure below present a graphical representation
+as distances are much larger. The figure below presents a graphical representation
 of a dragonfly topology.
 
 <figure>
@@ -32,7 +32,7 @@ of a dragonfly topology.
   <figcaption>Example dragonfly topology.</figcaption>
 </figure>
 
-In summary the LUMI network dragonfly can be summarized as these three ranks:
+In summary, the LUMI network dragonfly can be summarized as these three ranks:
 
 - **Rank 1:** multiple compute nodes connected to a switch
 - **Rank 2:** multiple switches all-to-all connected with copper cables forming
@@ -54,7 +54,7 @@ hop inside the destination group.
 
 ## Inter- and intra-partition bandwidth
 
-The table below provide an overview of the total available bandwidth for inter-
+The table below provides an overview of the total available bandwidth for inter-
 and intra-partition communication.
 
 |        | LUMI-G   | LUMI-C    | LUMI-M   | LUMI-F   | LUMI-P   |
@@ -64,13 +64,13 @@ and intra-partition communication.
 | LUMI-M |          |           |          | 0.1 TB/s | 0.4 TB/s |
 | LUMI-F |          |           |          |          | 0.4 TB/s |
 
-The different partitions presented in the table corresponds to
+The different partitions presented in the table correspond to
 
   - **LUMI-G:** the AMD MI250x GPU nodes
   - **LUMI-C:** the CPU nodes
   - **LUMI-M:** the login nodes, LUMI-D, the largemem nodes and the management racks
   - **LUMI-P:** the four Lustre filesystems using mechanical disk
-  - **LUMI-F:** the Lustre filesystem using flash based storage
+  - **LUMI-F:** the Lustre filesystem using Flash-based storage
 
 ## LUMI-C
 

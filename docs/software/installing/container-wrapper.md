@@ -19,7 +19,7 @@ Additionally, the LUMI container wrapper will generate wrappers so that
 installed software can be used (almost) as if it was not containerized.
 Depending on tool selection and settings, either the whole host file system or
 a limited subset is visible during execution and installation. This means that
-it is possible to wrap installations using e.g. mpi4py while still relying on
+it is possible to wrap installations using e.g., mpi4py while still relying on
 the host provided MPI installation.
 
 The LUMI container wrapper is a general purpose installation wrapper that
@@ -77,7 +77,7 @@ $ conda-containerize new --prefix <install_dir> env.yml
 
 where `env.yml` is a [Conda environment file][conda-env].
 
-This file can be written manually, e.g:
+This file can be written manually, e.g.:
 
 ```yaml
 channels:
@@ -93,7 +93,7 @@ or generated from an existing environment
 $ conda env export -n <target_env_name> > env.yaml 
 ```
 
-*Windows and MacOS will need to add the `--from-history` flag to the export command*
+*Windows and macOS will need to add the `--from-history` flag to the export command*
 
 or, alternatively,
 
@@ -116,7 +116,7 @@ Then, you can call `python` or any other executables, Conda has installed, in
 the same way as if you had activated the environment.
 
 If you also need to install some additional pip packages, you can do so by
-supplying the `-r <req_file>` argument e.g:
+supplying the `-r <req_file>` argument e.g.:
 
 ```bash
 $ conda-containerize new -r req.txt --prefix <install_dir> env.yml
@@ -184,7 +184,7 @@ conda  remove -y pyyaml
 pip install requests
 ```
 
-In this mode the whole host system is available including all software and modules.
+In this mode, the whole host system is available including all software and modules.
 
 ### Wrapping a plain pip installation
 

@@ -5,7 +5,7 @@
 [slurm-partitions]: ../runjobs/scheduled-jobs/partitions.md
 [zen3-wiki]: https://en.wikipedia.org/wiki/Zen_3
 
-The LUMI-C hardware partition consists of 2048 CPU based compute nodes. Some of
+The LUMI-C hardware partition consists of 2048 CPU-based compute nodes. Some of
 these nodes contain more memory than others as specified in the table below.
 
 | Nodes | CPUs                                               | CPU cores     | Memory   | Disk | Network     |
@@ -44,7 +44,7 @@ The EPYC CPUs consist of multiple chiplets, so-called core complex dies (CCDs).
 There are 8 CCDs per processor with 8 cores each. The L3 cache is shared
 between the eight cores of a CCD and has a capacity of 32 MiB for a total 256
 MiB of L3 cache per processor. Note this differs from the earlier Zen 2 and
-EPYC 7002-series processors where 4 cores shared the L3 cache and there were
+EPYC 7002-series processors where 4 cores shared the L3 cache, and there were
 two groups of 4 cores (a "CCX") inside each CCD. This can improve the
 performance of certain workloads as a single core can have access to more L3
 cache.
@@ -67,9 +67,8 @@ distances between the NUMA nodes.
   <figcaption>Distances between NUMA nodes</figcaption>
 </figure>
 
-The two processors within a node are connected by four bi-directional and 16
-bit wide links operating at 16 Gbps each. This provides a peak bandwidth of 256
-GB/s.
+The two processors within a node are connected by four bidirectional and 16-bit
+wide links operating at 16 Gbps each. This provides a peak bandwidth of 256 GB/s.
 
 [1]: https://en.wikipedia.org/wiki/Zen_3
 
@@ -81,4 +80,4 @@ interconnect][interconnect].
 ## Disk storage
 
 There is no local storage on the compute nodes in LUMI-C. You have to use one of
-the [network based storage options][storage].
+the [network-based storage options][storage].

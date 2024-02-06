@@ -5,10 +5,10 @@
 [lumi-d]: ../../hardware/lumid.md
 [helpdesk]: ../../helpdesk/index.md
 
-The Slurm partition setup of LUMI prioritizes jobs that aim to scale out. As a
-consequence most nodes are reserved for jobs that use all available resources
-within a node. However, some nodes are reserved for smaller allocations and
-debugging.
+The Slurm partition setup of LUMI prioritizes jobs that aim to scale out.
+As a consequence, most nodes are reserved for jobs that use all available resources
+within a node.
+However, some nodes are reserved for smaller allocations and debugging.
 
 A list of the available partitions can be obtained using the `sinfo` command.
 To get a shorter summary, use `sinfo -s`.

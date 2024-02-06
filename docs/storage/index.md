@@ -64,7 +64,7 @@ The use of storage is billed according to the [billing policy](../runjobs/lumi_e
 
 ## LUMI network file system disk storage areas
 
-On LUMI there are several network based disk storage areas. An overview is
+On LUMI, there are several network-based disk storage areas. An overview is
 provided in the tables below. Please familiarize yourself with the
 characteristics of the hardware partitions before using the different storage
 areas.
@@ -102,14 +102,14 @@ to request more storage space.
 !!! failure "Don't circumvent the retention policy"
 
     Deliberately modifying file access times to bypass the retention policy is
-    prohibited. It's an anti-social behavior that may impact other users negatively.
+    prohibited. It's anti-social behavior that may impact other users negatively.
 
-### About the number of files quota
+### About the number-of-files quota
 
 For reasons related to performance, we are particularly attentive to the number
 of files present on the parallel file system. A lot of small files negatively
 impact all users by stressing the file system metadata servers. Therefore, any
-requests to increase the number of files quota will be evaluated carefully by the
+requests to increase the number-of-files quota will be evaluated carefully by the
 User Support Team and must be fully justified to be granted.
 
 Examples of requests that will be *rejected* include:
@@ -118,7 +118,7 @@ Examples of requests that will be *rejected* include:
   [Python packages installation guide][python-install] for an overview of
   better alternatives.
 - The compilation of your application is generating too many files for your home
-  or project directory: you should compile your application from the scratch and
+  or project directory: you should compile your application from scratch and
   then install it in your home or project directory. Exceptions can be made if
   you are developing an application on LUMI and you want to keep the source and
   object files in the long term.

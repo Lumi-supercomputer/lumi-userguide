@@ -20,7 +20,7 @@ $ SINGULARITY_TMPDIR=$SCRATCH/tmp-singularity singularity pull docker://rocm/pyt
 
 This will create an image file named `pytorch_rocm5.4.1_ubuntu20.04_py3.7_pytorch_1.12.1.sif` in the directory where the command was run. After the image has been pulled, the directory `$SCRATCH/tmp-singularity singularity` can be removed.
 
-Please consults the [Singularity containers page][containers] for more details about using Singularity/Apptainer containers on LUMI.
+Please consult the [Singularity containers page][containers] for more details about using Singularity/Apptainer containers on LUMI.
 
 ### Installing other packages along the container's PyTorch installation
 
@@ -36,11 +36,15 @@ Singularity> . pt_rocm5.4.1_env/bin/activate
 (pt_rocm5.4.1_env) Singularity> pip install python-hostlist
 ```
 
-Now when running the container, the virtual environment must be activated before calling python.
+When running the container, the virtual environment must be activated before calling python.
 
 ## Multi-GPU training
 
-The communication between LUMI's GPUs during training with Pytorch is done via [RCCL](https://github.com/ROCmSoftwarePlatform/rccl), which is a library of  collective communication routines for AMD GPUs. RCCL works out of the box on LUMI, however, a special plugin is required so it can take advantage of the [Slingshot 11 interconnect][interconnect]. That's the [`aws-ofi-rccl`](https://github.com/ROCmSoftwarePlatform/aws-ofi-rccl) plugin, which is a library that can be used as a back-end for RCCL to interact with the interconnect via libfabric.
+The communication between LUMI's GPUs during training with Pytorch is done via [RCCL](https://github.com/ROCmSoftwarePlatform/rccl),
+which is a library of collective communication routines for AMD GPUs.
+RCCL works out of the box on LUMI, but a special plugin is required to take advantage of the [Slingshot 11 interconnect][interconnect].
+That's the [`aws-ofi-rccl`](https://github.com/ROCmSoftwarePlatform/aws-ofi-rccl) plugin,
+which is a library that can be used as a back-end for RCCL to interact with the interconnect via `libfabric`.
 
 The `aws-ofi-rccl` plugin can be installed by the user with EasyBuild:
 ```bash
@@ -52,7 +56,12 @@ Once installed, loading the module `aws-ofi-rccl` will add the path to the libra
 
 ## Example
 
-Let's now consider an example to test the steps above. We will use the script [cnn_distr.py](https://github.com/Lumi-supercomputer/lumi-reframe-tests/blob/main/checks/apps/deeplearning/pytorch/src/cnn_distr.py) which uses the [pt_distr_env.py](https://github.com/Lumi-supercomputer/lumi-reframe-tests/blob/main/checks/apps/deeplearning/pytorch/src/pt_distr_env.py) module to setup PyTorch's distributed environment. That module is based on `python-hostlist`, which we installed earlier.
+Let's now consider an example to test the steps above.
+We will use the script [cnn_distr.py](https://github.com/Lumi-supercomputer/lumi-reframe-tests/blob/main/checks/apps/deeplearning/pytorch/src/cnn_distr.py) 
+which uses the [pt_distr_env.py](https://github.com/Lumi-supercomputer/lumi-reframe-tests/blob/main/checks/apps/deeplearning/pytorch/src/pt_distr_env.py) module 
+to setup PyTorch's distributed environment.
+
+That module is based on `python-hostlist`, which we installed earlier.
 
 The Slurm submission script can be something like this:
 ```bash

@@ -54,10 +54,10 @@ The `rsync` tool, which stands for *Remote Sync*, is a remote and local file
 synchronization tool. It has the advantage of minimizing the amount of data
 copied by only copying files that have changed. The advantages over `scp` are
 
-- it allows for synchronization. `scp` always copies and transfer everything,
+- It allows for synchronization. `scp` always copies and transfers everything,
   while `rsync` will only copy and transfer files that have changed.
-- better for the transfer of large files as `rsync` will save progress. If the
-  transfer is interrupted it can be resumed from the point of interruption.
+- Better for the transfer of large files as `rsync` can save progress.
+  If the transfer is interrupted it can be resumed from the point of interruption.
 
 The basic syntax of the `rsync` command is the following:
 

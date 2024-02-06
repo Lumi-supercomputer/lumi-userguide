@@ -55,7 +55,7 @@ CrayPat is the full-featured program analysis tool set. The typical workflow is
 
 Sampling is a statistical profiling. By taking regular snapshots of the
 applications call stack, we can create a statistical profile of where the
-application spends most of its  time.
+application spends most of its time.
 
 <figure>
   <img 
@@ -64,7 +64,7 @@ application spends most of its  time.
     alt="Sampling of an application"
   >
   <figcaption>
-    Sampling of an application. Snapshots of the applications call stack are
+    Sampling of an application. Snapshots of the application's call stack are
     captured at regular intervals to create a statistical profile.
   </figcaption>
 </figure>
@@ -74,7 +74,7 @@ fixed by the choice of sampling rate. On the other hand, sampling is
 non-deterministic and can only provide a statistical picture of the application
 behaviour.
 
-The `pat_build` tool is used to instruments your application. The first step to
+The `pat_build` tool is used to instrument your application. The first step to
 use this tool is to load the `perftools-base` and `perftools` modules and build
 your application as normal.
 
@@ -106,7 +106,7 @@ $ export PAT_RT_EXPDIR_NAME=apa_sample_exp.${SLURM_JOBID}
 $ srun ./app.x+pat
 ```
 
-You can use this directory to generate more detailed report with the
+You can use this directory to generate a more detailed report with the
 `pat_report` command.
 
 ```bash
@@ -117,9 +117,9 @@ $ pat_report <perftool-output-dir>
 
 Tracing revolves around specific program events like entering or exiting a
 function. This allows the collection of accurate information about specific
-areas of the code every time the event occurs. This allows for a more accurate
-and more detailed information as data are collected from every traced function
-call not a statistical average. Tracing may require the program to be
+areas of the code every time the event occurs. This allows for more accurate
+and detailed information as data is collected from every traced function
+call, not a statistical average. Tracing may require the program to be
 instrumented.
 
 <figure>
@@ -135,8 +135,8 @@ instrumented.
   </figcaption>
 </figure>
 
-The main downside it that the instrumentation code inserted will be run every
-time an instrumented function is called in order to record the information.
+The main downside is that the instrumentation code inserted will be run every
+time an instrumented function is called to record the information.
 This may introduce significant profiling overhead.
 
 #### Automatic program analysis (APA)

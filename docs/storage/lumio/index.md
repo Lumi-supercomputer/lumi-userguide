@@ -11,7 +11,7 @@ In an object-based storage, data is managed as objects instead of being
 organized as files in a directory hierarchy.
 
 Within your object storage project space, you can create buckets. These buckets
-will store objects with metadata associated to these objects.
+will store objects with metadata associated with these objects.
 
 - **Buckets**: Containers used to store one or more objects.
   Object storage uses a flat structure with only
@@ -22,8 +22,8 @@ will store objects with metadata associated to these objects.
   traditional file systems have fixed metadata (filename, creation date, type,
   etc.), an object storage allows you to add custom metadata.
 
-To use LUMI-O you will need to generate authentication credentials, which you
-can then use with different tools to connect to LUMI-O
+To use LUMI-O, you will need to generate authentication credentials, which you
+can then use with different tools to connect to LUMI-O.
 
 ## Configuring the LUMI-O connection
 
@@ -49,7 +49,7 @@ credentials](auth-lumidata-eu.md) instructions.
 
 Using the [LUMI-O credentials management service,](auth-lumidata-eu.md) you can
 also generate configuration for different object storage clients like shell,
-boto3, rlcone, s3cmd and aws. This is useful for using LUMI-O from somewhere
+boto3, rclone, s3cmd and aws. This is useful for using LUMI-O from somewhere
 else than LUMI, where the `lumio-conf` command is not available (The tool can be
 downloaded from the [LUMI-O repository][lumi-o-tools], but we only officially
 support the tool on LUMI) 
@@ -57,8 +57,9 @@ support the tool on LUMI)
 ## Tools to transfer data
 
 The `lumio` module provides some pre-installed tools to interact with LUMI-O:
-`rclone`, `s3cmd` and `restic` This is not a comprehensive documentation of
-these tools, for that you can refer to the official documentation for the tools. 
+`rclone`, `s3cmd` and `restic`.
+
+Please refer to the manuals of the respective tools for more detailed information.
 
 The most common commands for `s3cmd` and `rclone` to
 
@@ -171,7 +172,7 @@ s3cmd -h
 `restic` is a slightly different from `rclone` and `s3cmd` and is mainly used
 for doing backups. 
 
-**Setup the restic repository**
+**Set up the restic repository**
 
 ```bash
 $ export AWS_ACCESS_KEY_ID=<MY_ACCESS_KEY>
@@ -183,7 +184,7 @@ After this we can run commands like `restic restore` and `restic backup`. the
 `-r` flag with the correct bucket and the KEY environment variables are always
 needed when running `restic` commands.
 
-For more information see the [Restic documentation](https://restic.readthedocs.io/en/stable/index.html)
+For more information, see the [Restic documentation](https://restic.readthedocs.io/en/stable/index.html)
 
 ## Raw HTTP request 
 

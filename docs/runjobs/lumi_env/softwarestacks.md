@@ -182,7 +182,7 @@ on the compute nodes and data analysis and visualization nodes).
     may still contain useful pre- or postprocessing software that can be used
     on the login nodes.
 
-Once loaded you will be presented with a lot of modules in a flat naming scheme.
+Once loaded, you will be presented with a lot of modules in a flat naming scheme.
 This means that all software available in that version of the LUMI software
 stack will be shown by `module avail` (except for hidden modules for software that
 we deem most users may not directly load). However, not any combination of
@@ -197,7 +197,7 @@ modules:
 -   The module version contains `cpeCray-yy.mm`: The package is compiled with
     the `PrgEnv-cray` programming environment.
 
--   The module version contains `cpeAOCC-yy.mm`:  The package is compiled with
+-   The module version contains `cpeAOCC-yy.mm`: The package is compiled with
     the `PrgEnv-aocc` programming environment, the AMD compilers for CPU-only
     work (hence available only on LUMI-C, LUMI-D and the login nodes)
 
@@ -246,7 +246,7 @@ LUMI project (and instructions for some software that is unsuitable for installa
 through EasyBuild).
 
 The default location for user-installed software in `$HOME/EasyBuild`. However,
-we advise to install software in the `/project` directory of the project
+we advise installing software in the `/project` directory of the project
 instead so that a single software installation can be used by all members of the
 project. This is done by pointing the environment variable `EBU_USER_PREFIX` to
 the software installation directory, e.g.,

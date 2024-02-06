@@ -12,7 +12,7 @@ LUMI provides a module to load a pre-configured Spack instance: `module load spa
 
 !!! important "The software installed with Spack in /appl/lumi/spack/ is provided as is."
     It may not have received any testing after installation! We also build the
-    software there in a more fool-proof way with slightly less optimizations:
+    software there in a more fool-proof way with slightly less optimization:
     Zen2 architecture instead of Zen3, OpenBLAS instead of Cray LibSci, and
     Netlib Scalapack. This may have a small impact on performance, but is
     usually fine.
@@ -42,8 +42,7 @@ GPU support and activate extra array bounds checking for debugging.
     $ spack info kokkos
     ```
 
-    From reading the package information, it becomes clear that the install
-    command should be:
+    From reading the package information, it becomes clear that the install command should be:
 
     ```bash
     $ spack install kokkos+rocm+debug_bounds_check amdgpu_target==gfx90a %gcc@12.2.0
@@ -93,8 +92,8 @@ GPU support and activate extra array bounds checking for debugging.
     The packages that are already installed in your own Spack instance will
     have a `[+]` in the first column, and the packages that Spack found
     installed upstream will have `[^]`. A `-` means Spack did not find the
-    package and will build it. External packages already installed in the operating system are marked with `[e]`. In this case, all dependencies are already
-    installed so building a new kokkos package will be fast.
+    package and will build it. External packages already installed in the operating system are marked with `[e]`.
+    In this case, all dependencies are already installed so building a new `kokkos` package will be fast.
 
 4. When you're satisfied with what Spack plans to do, install it:
 
@@ -105,7 +104,7 @@ GPU support and activate extra array bounds checking for debugging.
     [+] /appl/lumi/spack/23.09/0.21.0/opt/spack/ncurses-6.4-bd4kmia
     [+] /appl/lumi/spack/23.09/0.21.0/opt/spack/gmake-4.4.1-upexb7o
     [+] /appl/lumi/SW/CrayEnv/EB/rocm/5.6.1/hip (external hip-5.6.1-6dfpgvow3wgluedg7dkolvju5tqikf4a)
-    [+] /appl/lumi/SW/CrayEnv/EB/rocm/5.6.1 (external hsa-rocr-dev-5.6.1-kdk4dmdpcit6od7zd4c4anpe67tjazvv)
+    [+] /appl/lumi/SW/CrayEnv/EB/rocm/5.6.1 (external has-rocr-dev-5.6.1-kdk4dmdpcit6od7zd4c4anpe67tjazvv)
     [+] /appl/lumi/SW/CrayEnv/EB/rocm/5.6.1/llvm (external llvm-amdgpu-5.6.1-lox2s3th5j6gtobnulhreq2xfyflres7)
     [+] /appl/lumi/spack/23.09/0.21.0/opt/spack/openssl-3.1.3-g2j3rdw
     [+] /appl/lumi/spack/23.09/0.21.0/opt/spack/curl-8.4.0-utgotfg
@@ -136,7 +135,7 @@ GPU support and activate extra array bounds checking for debugging.
 1. **Check if the error displayed suggests an easy solution.** If there is an
    error, Spack will point you to an installation log for the particular
    package. In the same directory, the full build directory can also be found
-   in `/tmp`. Inspecting the output logs from configure or cmake can sometimes
+   in `/tmp`. Inspecting the output logs from `configure` or `cmake` can sometimes
    be fruitful.
 
     Some failures can be avoided by:
@@ -149,7 +148,7 @@ GPU support and activate extra array bounds checking for debugging.
       Dependencies](https://spack.readthedocs.io/en/latest/basic_usage.html#specs-dependencies)
       in the official Spack documentation)
 
-    In some cases, changes have to made to the `package.py` file of a package.
+    In some cases, changes have to be made to the `package.py` file of a package.
     Unfortunately, this is not straightforward as the package repository is
     located in `/appl/lumi`, which is read-only. In such cases, you have to either
     make your own Spack instance and configure it using our configuration
@@ -163,11 +162,23 @@ GPU support and activate extra array bounds checking for debugging.
 
 ## Description of the different Spack modules
 
-* Module `spack/23.09`: This is Spack release version 0.21.0 (with some critical bug fixes for concretization backported from the 0.21.1 development branch) based on the Cray Programming Environment 23.09. The ROCM packages are ROCM release version 5.6.1 adapted by the LUMI User Support Team for CPE 23.09. Testing has indicated that it should be possible to run ROCM 5.6.1-based software using the older drivers from ROCM 5.2.3, which is installed on the LUMI-G compute nodes with only minor incompatibilites, e.g. the amount of GPU memory might reported incorrectly.
-* Module `spack/23.03-2`: This is Spack release version 0.20.0 based on the Cray Programming Environment 23.03. The ROCM packages are built from source by Spack and corresponds to ROCM release version 5.4.3. Testing has indicated that it should be possible to run ROCM 5.4.3-based software using the older drivers from ROCM 5.2.3, which is installed on the LUMI-G compute nodes.
-* Module `spack/23.03`: This is Spack release version 0.19.2 based on the Cray Programming Environment 23.03. The ROCM packages are external and comes from the HPE provided ROCM 5.2.3 in `/opt/rocm`.
-* Module `spack/22.08-2`: This is Spack release version 0.19.0 based on the Cray Programming Environment 22.08. The ROCM packages are built from source by Spack and corresponds to ROCM release version 5.2.3. **This Spack module is deprecated and should not be used** Testing has indicated that it should be possible to run ROCM 5.2.3-based software using the older drivers from ROCM 5.1.3, which is installed on the LUMI-G compute nodes.
-* Module `spack/22.08`: This is Spack release version 0.18.1 based on the Cray Programming Environment 22.08. The ROCM packages are external and comes from the HPE provided ROCM 5.0.2 in `/opt/rocm` (which is rather old). **This Spack module is deprecated and should not be used**. MPI programs may not work and the linked ROCm is really old and does not exist on the system anymore.
+* Module `spack/23.09`: This is Spack release version 0.21.0 (with some critical bug fixes for concretization backported from the 0.21.1 development branch) based on the Cray Programming Environment 23.09.
+  The ROCM packages are ROCM release version 5.6.1 adapted by the LUMI User Support Team for CPE 23.09.
+  Testing has indicated that it should be possible to run ROCM 5.6.1-based software using the older drivers from ROCM 5.2.3, which is installed on the LUMI-G compute nodes.
+  There are only minor incompatibilities, e.g. the amount of GPU memory might be reported incorrectly.
+* Module `spack/23.03-2`: This is Spack release version 0.20.0 based on the Cray Programming Environment 23.03.
+  The ROCM packages are built from source by Spack and corresponds to ROCM release version 5.4.3.
+  Testing has indicated that it should be possible to run ROCM 5.4.3-based software using the older drivers from ROCM 5.2.3, which is installed on the LUMI-G compute nodes.
+* Module `spack/23.03`: This is Spack release version 0.19.2 based on the Cray Programming Environment 23.03.
+  The ROCM packages are external and comes from the HPE provided ROCM 5.2.3 in `/opt/rocm`.
+* Module `spack/22.08-2`: This is Spack release version 0.19.0 based on the Cray Programming Environment 22.08.
+  The ROCM packages are built from source by Spack and corresponds to ROCM release version 5.2.3.
+  **This Spack module is deprecated and should not be used!**
+  Testing has indicated that it should be possible to run ROCM 5.2.3-based software using the older drivers from ROCM 5.1.3, which is installed on the LUMI-G compute nodes.
+* Module `spack/22.08`: This is Spack release version 0.18.1 based on the Cray Programming Environment 22.08.
+  The ROCM packages are external and comes from the HPE provided ROCM 5.0.2 in `/opt/rocm` (which is rather old).
+  **This Spack module is deprecated and should not be used!**
+  MPI programs may not work, and the linked ROCm is ancient and does not exist on the system anymore.
 
 ## Spack on LUMI (advanced)
 

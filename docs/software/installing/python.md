@@ -19,9 +19,10 @@
 
 Over the past decade, the [Python programming language][python] and [Scientific
 Python][scientific-python] packages like NumPy, SciPy, JAX, and PyTorch have
-gained a lot of popularity in the data science and HPC communities. We do
-support using Scientific Python packages on LUMI, however care must be taken to
-*install* such packages in a way that *plays well with LUMI*.
+gained a lot of popularity in the data science and HPC communities.
+
+We do support using Scientific Python packages on LUMI.
+However, care must be taken to *install* such packages in a way that *plays well with LUMI*.
 
 !!! warning "Please don't install Python packages directly"
     In order to provide the best user experience, it is **strongly
@@ -48,14 +49,14 @@ installing Python packages on LUMI.
 **Which installation method should I use then?**
 
 The best way to get access to a Python installation on LUMI depends on the use
-case. Below we provide an overview of recommended ways to get access to Python
+case. Below, we provide an overview of recommended ways to get access to Python
 installations on LUMI.
 
 !!! warning "The default Python is the OS Python"
     When you log into LUMI, running `python3` without loading a module or using
     a container will result in using the operating system Python installation.
     This is quite an old Python installation (version 3.6) without any Scientific
-    Python packages - which is likely not what you want.
+    Python packages, which is likely not what you want.
 
 ## Generally recommended installation methods
 
