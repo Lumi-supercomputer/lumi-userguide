@@ -35,18 +35,18 @@ depending of your resource allocator:
 
     | Name           | Max walltime | Max jobs          | Max resources/job | Hardware<br>partition<br>used         |
     | -------------- | ------------ | ----------------- | ----------------- | ------------------------------------- |
-    | ju-standard-g  | 2 days       | 210 (200 running) | 512 node          | [LUMI-G][lumi-g]                      |
-    | ju-standard    | 2 days       | 120 (100 running) | 256 node          | [LUMI-C][lumi-c]                      |
-    | ju-strategic-g | 7 days       | 210 (200 running) | 404 nodes         | [LUMI-G][lumi-g]                      |
-    | ju-strategic   | 2 days       | 120 (100 running) | 256 node          | [LUMI-C][lumi-c]                      |
+    | ju-standard-g  | 2 days       | 105 (100 running) | 512 node          | [LUMI-G][lumi-g]                      |
+    | ju-standard    | 2 days       |  60 ( 50 running) | 256 node          | [LUMI-C][lumi-c]                      |
+    | ju-strategic-g | 7 days       | 105 (100 running) | 404 nodes         | [LUMI-G][lumi-g]                      |
+    | ju-strategic   | 2 days       |  60 ( 50 running) | 256 node          | [LUMI-C][lumi-c]                      |
     | bench          | 1 day        | n/a               | All nodes         | [LUMI-C][lumi-c] and [LUMI-G][lumi-g] |
 
 === "LUMI consortium countries users"
 
     | Name           | Max walltime | Max jobs          | Max resources/job | Hardware<br>partition<br>used         |
     | -------------- | ------------ | ----------------- | ----------------- | --------------------------------------|
-    | standard-g     | 2 days       | 210 (200 running) | 512 nodes         | [LUMI-G][lumi-g]                      |
-    | standard       | 2 days       | 120 (100 running) | 256 nodes         | [LUMI-C][lumi-c]                      |
+    | standard-g     | 2 days       | 105 (100 running) | 512 nodes         | [LUMI-G][lumi-g]                      |
+    | standard       | 2 days       |  60 ( 50 running) | 256 nodes         | [LUMI-C][lumi-c]                      |
     | bench          | 1 day        | n/a               | All nodes         | [LUMI-C][lumi-c] and [LUMI-G][lumi-g] |
 
 
