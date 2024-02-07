@@ -22,11 +22,33 @@ take advantage of all the resources on the node as you will be billed for the
 complete node regardless of the resource actually used as detailed in the
 [billing policy](../../runjobs/lumi_env/billing.md#standard-and-bench-partitions).
 
-| Name       | Max walltime | Max jobs          | Max resources/job  | Hardware partition used |
-| ---------- | ------------ | ----------------- | ------------------ | ----------------------- |
-| standard-g | 2 days       | 210 (200 running) | 1024 nodes         | [LUMI-G][lumi-g]        |
-| standard   | 2 days       | 120 (100 running) |  512 nodes         | [LUMI-C][lumi-c]        |
-| bench      | 1 day        | n/a               |  All nodes         | [LUMI-C][lumi-c]        |
+The partitions you can use depend on who allocated your project. If your project
+was allocated by the EuroHPC-JU, you only have access to the partition whose
+names start with `ju`. If your project was allocated by one of the LUMI
+consortium countries, your access is limited to partition with a name that does
+not start with `ju`.
+
+The tables below provide details of the partitions you can have access to
+depending of your resource allocator:
+
+=== "EuroHPC-JU users"
+
+    | Name           | Max walltime | Max jobs          | Max resources/job | Hardware<br>partition<br>used         |
+    | -------------- | ------------ | ----------------- | ----------------- | ------------------------------------- |
+    | ju-standard-g  | 2 days       | 210 (200 running) | 512 node          | [LUMI-G][lumi-g]                      |
+    | ju-standard    | 2 days       | 120 (100 running) | 256 node          | [LUMI-C][lumi-c]                      |
+    | ju-strategic-g | 7 days       | 210 (200 running) | 404 nodes         | [LUMI-G][lumi-g]                      |
+    | ju-strategic   | 2 days       | 120 (100 running) | 256 node          | [LUMI-C][lumi-c]                      |
+    | bench          | 1 day        | n/a               | All nodes         | [LUMI-C][lumi-c] and [LUMI-G][lumi-g] |
+
+=== "LUMI consortium countries users"
+
+    | Name           | Max walltime | Max jobs          | Max resources/job | Hardware<br>partition<br>used         |
+    | -------------- | ------------ | ----------------- | ----------------- | --------------------------------------|
+    | standard-g     | 2 days       | 210 (200 running) | 512 nodes         | [LUMI-G][lumi-g]                      |
+    | standard       | 2 days       | 120 (100 running) | 256 nodes         | [LUMI-C][lumi-c]                      |
+    | bench          | 1 day        | n/a               | All nodes         | [LUMI-C][lumi-c] and [LUMI-G][lumi-g] |
+
 
 The `bench` partition is not available by default and is reserved for
 large-scale benchmark runs. Projects wishing to have access to this partition
