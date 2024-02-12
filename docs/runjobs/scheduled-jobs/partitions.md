@@ -41,7 +41,7 @@ depending of your resource allocator:
     | ju-strategic   | 2 days       |  60 ( 50 running) | 256 nodes         | [LUMI-C][lumi-c]                      |
     | bench          | 1 day        | n/a               | All nodes         | [LUMI-C][lumi-c] and [LUMI-G][lumi-g] |
 
-=== "LUMI consortium countries users"
+=== "LUMI consortium countries projects"
 
     | Name           | Max walltime | Max jobs          | Max resources/job | Hardware<br>partition<br>used         |
     | -------------- | ------------ | ----------------- | ----------------- | --------------------------------------|
