@@ -31,7 +31,7 @@ not start with `ju`.
 The tables below provide details of the partitions you can have access to
 depending of your resource allocator:
 
-=== "EuroHPC-JU users"
+=== "EuroHPC-JU projects"
 
     | Name           | Max walltime | Max jobs          | Max resources/job | Hardware<br>partition<br>used         |
     | -------------- | ------------ | ----------------- | ----------------- | ------------------------------------- |
