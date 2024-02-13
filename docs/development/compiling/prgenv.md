@@ -396,7 +396,7 @@ the MPI and GPU transfer libraries are linked
 ``` 
 $ ldd ./yourapp | grep libmpi
     libmpi_cray.so.12 => /opt/cray/pe/lib64/libmpi_cray.so.12
-    libmpi_gtl_has.so.0 => /opt/cray/pe/lib64/libmpi_gtl_hsa.so.0
+    libmpi_gtl_hsa.so.0 => /opt/cray/pe/lib64/libmpi_gtl_hsa.so.0
 ```
 
 !!! warning "GPU support needs to be enabled at run time"
