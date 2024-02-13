@@ -104,7 +104,7 @@ GPU support and activate extra array bounds checking for debugging.
     [+] /appl/lumi/spack/23.09/0.21.0/opt/spack/ncurses-6.4-bd4kmia
     [+] /appl/lumi/spack/23.09/0.21.0/opt/spack/gmake-4.4.1-upexb7o
     [+] /appl/lumi/SW/CrayEnv/EB/rocm/5.6.1/hip (external hip-5.6.1-6dfpgvow3wgluedg7dkolvju5tqikf4a)
-    [+] /appl/lumi/SW/CrayEnv/EB/rocm/5.6.1 (external has-rocr-dev-5.6.1-kdk4dmdpcit6od7zd4c4anpe67tjazvv)
+    [+] /appl/lumi/SW/CrayEnv/EB/rocm/5.6.1 (external hsa-rocr-dev-5.6.1-kdk4dmdpcit6od7zd4c4anpe67tjazvv)
     [+] /appl/lumi/SW/CrayEnv/EB/rocm/5.6.1/llvm (external llvm-amdgpu-5.6.1-lox2s3th5j6gtobnulhreq2xfyflres7)
     [+] /appl/lumi/spack/23.09/0.21.0/opt/spack/openssl-3.1.3-g2j3rdw
     [+] /appl/lumi/spack/23.09/0.21.0/opt/spack/curl-8.4.0-utgotfg
