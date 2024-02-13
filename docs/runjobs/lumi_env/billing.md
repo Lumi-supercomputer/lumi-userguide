@@ -154,8 +154,7 @@ store data in your project folders. Storage is billed by volume used over time.
 The billing units are TB-hours.
 
 The number of TB-hours billed depends on the type of storage you are using. See
-the [data storage options][data-storage-options] page for an overview storage types
-used in the different storage options.
+the [data storage options][data-storage-options] page for an overview of the different storage options.
 
 ### Main storage (LUMI-P) billing
 

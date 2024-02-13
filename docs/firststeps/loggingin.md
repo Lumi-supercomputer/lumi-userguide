@@ -84,6 +84,6 @@ LUMI has several login nodes, for reliability and for sharing the interactive wo
 We recommend that you connect to `lumi.csc.fi` and not directly to a specific login node, but it is possible to do, and it may be necessary for certain advanced use cases.
 
 The IP number block used for external connections from LUMI is `193.167.209.128/26`.
-It contains these login nodes and also the NAT gateways for the compute nodes.
+It contains the login nodes and also the NAT gateways for the compute nodes.
 You may need to open up your firewall for access from these IP addresses,
 if you want to connect to your own servers from inside LUMI.
