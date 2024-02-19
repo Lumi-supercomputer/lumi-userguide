@@ -271,14 +271,28 @@ You can apply ACL:s to buckets or individual objects
 	ACL:s are not inherited, e.g new objects created in a bucket with an ACL will not have any ACLs. 
 	By default created objects are private (unless you have created a policy changing this and applied it to a bucket ).
 
-
 ```bash
 s3cmd setacl --recursive --acl-public s3://<bucket_name>/
 ```
-Would make all the objects in the bucket readable by everyone.  
+Would make all the objects in the bucket readable by everyone.
+The corresponding operation using `aws s3api`: 
+
+```bash
+aws s3api put-bucket-acl  --acl public-read --bucket <bucket_name>
+aws s3api put-object-acl --acl public-read --bucket <bucket_name> --key <object_name> 
+```
+requires setting the acl separately for each object as there is no `--recursive` option.
+
+
+The commands: 
 
 ```bash
 s3cmd setacl --acl-public s3://<bucket_name>/
+```
+or 
+
+```bash
+aws s3api put-bucket-acl --acl public-read --bucket <bucket_name> 
 ```
 Would make the bucket but not the object readable for the world -> Only possible to list the objects
 but not download them. The inverse situation where the bucket is not readable but the objects are is
@@ -291,22 +305,42 @@ To remove the public access you would run:
 s3cmd setacl --recursive --acl-private s3://<bucket_name>
 ```
 
+or 
 
+```bash
+aws s3api put-bucket-acl  --acl private --bucket <bucket_name>
+aws s3api put-object-acl --acl  private --bucket <bucket_name> --key <object_name> 
+```
+Again `put-object-acl` has to be run separately for each object.
+
+while,
 ```bash
 s3cmd setacl --recursive --acl-grant=read:'<proj_id>$<proj_id>' s3://<bucket_name>/
 ```
 
 Would grant read access to all objects in the `<bucket_name>` bucket for the `<proj_id>` project. 
 The single quotes are important as otherwise the shell might interpret `$<proj_id>` as an (empty) variable
+The corresponding command for `aws s3api` would be:
 
-!!! info
-	The lumi-pub rlcone remotes configured by lumio-conf uses acl settings to make
-	created objects and buckets public, and the same goes for `s3cmd put -P`
-	So if you need to "unpublish" or "publish" some data you can use the above commands
+```bash
+aws s3api put-bucket-acl --bucket awscl --grant-read id='<proj_id>$<proj_id>'
+aws s3api put-object-acl --grant-read id='<proj_id>$<proj_id>' --bucket <bucket_name> --key <object_name> 
+```
+
+The lumi-pub rlcone remotes configured by lumio-conf uses acl settings to make
+created objects and buckets public, and the same goes for `s3cmd put -P`
+So if you need to "unpublish" or "publish" some data you can use the above commands
 
 !!! warning
 	Permissions granted with `--acl-grant` are not revoked automatically when running `--acl-private`
 	and they have to be explicitly removed with `--acl-revoke`
+
+!!! important
+	After modifying ACL:s, always verify that the intended effect was achieved.
+	I.e check that things which should be private are private and that public objects
+	and buckets are accessible without authentication. Public buckets / objects are available using the url  
+	`https://<proj_id>.lumidata.eu/<bucket>/<object>`, use e.g `wget`, `curl` or a browser to check the access permissions. 
+	
 
 The `aws` cli has a larger selection of acl settings than `s3cmd`, e.g
 
