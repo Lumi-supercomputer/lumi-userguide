@@ -8,7 +8,7 @@ Consult the manual pages of the tools for additional details.
 
 The examples here assume that you have properly configured the tools to use LUMI-O,
 otherwise they will usually default to using amazon aws s3. This is also the case for most other programs
-so if you wish to use LUMI-O with other software, you usually have to find some configuration option to set a non-default
+so if you wish to use LUMI-O with other software, you usually have to find some configuration option or environment variable to set a non-default
 host name. The correct hostname to use for LUMI-O is `https://lumidata.eu`
 
 LUMI-O is an S3 compatible storage solutions. However, this does not mean
@@ -323,7 +323,7 @@ The single quotes are important as otherwise the shell might interpret `$<proj_i
 The corresponding command for `aws s3api` would be:
 
 ```bash
-aws s3api put-bucket-acl --bucket awscl --grant-read id='<proj_id>$<proj_id>'
+aws s3api put-bucket-acl --bucket <bucket_name> --grant-read id='<proj_id>$<proj_id>'
 aws s3api put-object-acl --grant-read id='<proj_id>$<proj_id>' --bucket <bucket_name> --key <object_name> 
 ```
 
@@ -351,7 +351,7 @@ aws s3api put-bucket-acl --bucket fortheauthenticated --acl authenticated-read
 Can be used to grant read-only access to **all** authenticated users of LUMI-O.
 Usefully if data is semi-public but for some reason or another only
 persons with lumi access. Note here that we are only granting read access to the bucket itself
-not 
+not any of the objects. 
 
 To view existing ACL:s you can use 
 
