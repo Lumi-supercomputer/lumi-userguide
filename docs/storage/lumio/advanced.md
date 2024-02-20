@@ -404,16 +404,19 @@ s3cmd ls s3://<proj_id>:<bucket>/
 ```
 rclone ls lumi-465000001:"<proj_id>:<bucket>"
 ```
+Where `462000007` would be your own project you have configured authentication for
+and `<proj_id>` is the numerical project id for the other project. 
+
 
 **Curl**
 
-Don't use curl unless you have to. But if you do, the main
-point here is that the project id has to be included
+Don't use curl unless you have to, main
+point here is that the project id owning the bucket has to be included
 with the bucket and object name when generating the signature.
 
 ```
 object=README.md
-bucket=myBucket
+bucket=BucketName
 project=465000001
 resource="/$project:$bucket/$object"
 endPoint=https://lumidata.eu$resource
@@ -425,7 +428,6 @@ stringToSign="GET\n\n${contentType}\n${dateValue}\n${resource}"
 s3Key=$S3_ACCESS_KEY_ID
 s3Secret=$S3_SECRET_ACCESS_KEY
 signature=`echo -en ${stringToSign} | openssl sha1 -hmac ${s3Secret} -binary | base64`
-echo "Fetching object from $endPoint with authentication for 465000454"
 curl -X GET -s -o out.tmp -w "%{http_code}"  \
      -H "Host: https://lumidata.eu/" \
      -H "Date: ${dateValue}" \
