@@ -29,7 +29,7 @@ when writing guides or instructions.
 ### Moving tool configuration files
 
 In some cases it might be required to read
-credentials from some other location then the default 
+credentials from some other location than the default 
 locations under home. This can be achieved using environment variables or command line flags.
 
 
