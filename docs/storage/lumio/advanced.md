@@ -470,8 +470,8 @@ aws s3 presign s3://example-bucket/data.json --expires-in <seconds>
 
 
 There is no way to create presigned urls for `PUT` operations 
-using either `s3cmd` or `aws`, below is a short example script
-using boto3 to generate a valid url.
+using either `s3cmd` or `aws`. Below is a short example script
+using boto3 to generate a valid url that can be then used to add an object called `file.txt` to the defined bucket. 
 
 ``` bash
 python3 presign.py presign file.txt
