@@ -449,8 +449,8 @@ You can generate a presigned url using e.g s3cmd
 s3cmd signurl s3://example-bucket/file.txt <unix epoch time>
 ```
 
-To get the required unix epoch time, it's possible to use online calculators,
-e.g when one wants to grant access until a specific data, or then adding 
+That generates access link that is valid until the given unix epoch time. To get the required unix epoch time, it's possible to use online calculators,
+e.g when one wants to grant access until a specific date, or then adding 
 the desired duration to the current time.
 
 ```
