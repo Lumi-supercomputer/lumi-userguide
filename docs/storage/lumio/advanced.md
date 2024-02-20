@@ -125,7 +125,7 @@ There are two ways to manage access for data in LUMI-O:
 1. Policies
 2. Access control list
 
-While ACLs are simpler to configure, they are are an older
+While ACLs are simpler to configure, they are an older
 method for access control and offer much less granular control
 over permissions. **We recommend primarily using Policies**  
 
