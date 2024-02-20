@@ -11,10 +11,10 @@ otherwise they will usually default to using amazon aws s3. This is also the cas
 so if you wish to use LUMI-O with other software, you usually have to find some configuration option or environment variable to set a non-default
 host name. The correct hostname to use for LUMI-O is `https://lumidata.eu`
 
-LUMI-O is an S3 compatible storage solutions. However, this does not mean
+LUMI-O is an S3 compatible storage solution. However, this does not mean
 that the system is the same as the "Amazon S3 Cloud Storage". The interface for reading and writing data 
-is exactly the same, but AWS has a bunch of additional features like: self-service provisioning of IAM users,
-Life cycle configuration and write once, read many functionality, which are not really part of "just" s3 storage. 
+is exactly the same, but AWS has a bunch of additional features, like _self-service provisioning of IAM users_,
+_life cycle configuration_ and _write once, read many functionality_, which are not really part of "just" s3 storage. 
 
 It's worth keeping the above in mind, as many people use S3 and Amazon S3 interchangeably
 when writing guides or instructions.  
