@@ -85,8 +85,8 @@ s3_client = boto3.client('s3')
 boto3 uses the same configuration files and respects the same environment variables as the `aws` cli.
 
 !!! note 
-	You will need a sufficently new version (e.g 1.26 which is installed if using python3.6 is to old)  of boto3 for it
-	to understand a default profile set in ~/.aws/credentials and corresponding config file 
+	You will need a sufficiently new version of boto3 (e.g 1.26 which is installed if using python3.6 is to old) for it
+	to understand a default profile set in ~/.aws/credentials and corresponding config file, 
 	otherwise the tool will always default to aws s3 endpoint and you will need to specify the
 	profile/endpoint when constructing the client.
 
@@ -343,7 +343,7 @@ So if you need to "unpublish" or "publish" some data you can use the above comma
 The `aws` cli has a larger selection of acl settings than `s3cmd`, e.g
 
 ```bash
-aws s3api put-bucket-acl --bucket fortheauthenticated --acl authenticated-read
+aws s3api put-bucket-acl --bucket <bucket_name> --acl authenticated-read
 ```
 
 Can be used to grant read-only access to **all** authenticated users of LUMI-O.
