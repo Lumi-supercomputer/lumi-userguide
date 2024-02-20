@@ -142,7 +142,7 @@ Some other differences include:
 You can apply policies to a bucket using `s3cmd` or `aws` commands:
 
 ```
-s3cmd setpolicy policy.json  s3://<bucket_name>/
+s3cmd setpolicy policy.json s3://<bucket_name>/
 ```
 
 or
