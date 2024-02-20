@@ -347,8 +347,8 @@ aws s3api put-bucket-acl --bucket fortheauthenticated --acl authenticated-read
 ```
 
 Can be used to grant read-only access to **all** authenticated users of LUMI-O.
-Usefully if data is semi-public but for some reason or another only
-persons with lumi access. Note here that we are only granting read access to the bucket itself
+Useful if data is semi-public but for some reason or another only
+people with lumi access. Note here that we are only granting read access to the bucket itself
 not any of the objects. 
 
 To view existing ACL:s you can use 
