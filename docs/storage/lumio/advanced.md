@@ -366,6 +366,7 @@ aws s3api get-bucket-acl  --bucket bucket
 aws s3api get-object-acl  --bucket bucket --key object 
 ```
 
+See the [s3cmd documentation](https://s3tools.org/usage) and [aws s3api documentation](https://docs.aws.amazon.com/cli/latest/reference/s3api/put-object-acl.html#options) for a full list of ACLs.
 
 
 ### Sharing data with other projects.
