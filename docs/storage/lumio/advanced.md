@@ -65,7 +65,7 @@ The script
 ```python
 import boto3
 
-session = boto3.session.Session(profile_name='lumi-462000439')
+session = boto3.session.Session(profile_name='lumi-465000001')
 s3_client = session.client('s3')
 buckets=s3_client.list_buckets()
 ```
