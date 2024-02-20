@@ -2,9 +2,9 @@
 
 ## Introduction
 
-This is not a comprehensive tutorial, more of
-a list of example of the things which are possible using LUMI-O.
-Consult the manual pages of the tools for additional details.
+This is not a comprehensive tutorial, but more of
+a list of examples of things that are possible when using LUMI-O.
+Please consult the manual pages of the tools for additional details.
 
 The examples here assume that you have properly configured the tools to use LUMI-O,
 otherwise they will usually default to using amazon aws s3. This is also the case for most other programs
