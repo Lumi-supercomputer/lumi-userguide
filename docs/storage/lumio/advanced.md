@@ -102,9 +102,7 @@ explains how to apply more granular rules than a fully private/public content to
 - Restrict object access to specific IP:s
 - Allow external modification to only specific objects. 
 
-Projects in LUMI-O are single user tenants/accounts where the tenant/account
-names and project names are both the numerical id for the project, 
-i.e 465000001 . 
+Projects in LUMI-O are handled as "single user tenants/accounts", where the project numerical id (e.g. 465000001) corresponds both the tenant/account name and the project name.
 
 Subsequently, all members of a LUMI-O project have the exact same 
 rights and permissions, unlike on the LUMI filesystem where files have individual owners.
