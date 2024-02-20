@@ -100,7 +100,7 @@ explains how to apply more granular rules than fully private/public to e.g:
 
 - Share data with another lumi project.
 - Restrict object access to specific IP:s
-- Allow external modification to just specific objects. 
+- Allow external modification to only specific objects. 
 
 Projects in LUMI-O are single user tenants/accounts where the tenant/account
 names and project names are both the numerical id for the project, 
