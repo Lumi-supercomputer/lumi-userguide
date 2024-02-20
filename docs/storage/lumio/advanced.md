@@ -21,8 +21,8 @@ when writing guides or instructions.
 
 !!! warning 
 	Some advanced  operations which are supported by AWS will complete successfully when run against
-	LUMI-O, e.g object locks, but will actually have no effect. Unless it explicitly stated that a feature
-	is provided by LUMI-O assume that it will not work and be extra thorough in verifying correct functionality. 
+	LUMI-O, e.g object locks, but will actually have no effect. Unless it is explicitly stated that a feature
+	is provided by LUMI-O, assume that it will not work and be extra thorough in verifying correct functionality. 
 
 ## Credentials & Configuration
 
