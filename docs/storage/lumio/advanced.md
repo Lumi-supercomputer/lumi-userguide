@@ -123,7 +123,7 @@ LUMI project could accidentally delete it
 There are two ways to manage access for data in LUMI-O:
 
 1. Policies
-2. Access control list
+2. Access control list (ACL)
 
 While ACLs are simpler to configure, they are an older
 method for access control and offer much less granular control
