@@ -463,7 +463,7 @@ the access key used for the signing expires.
 It's also possible to use the `aws` command to presign:
 
 ```bash
-aws s3 presign s3://example-bucket/data.json --expires-in <seconds>
+aws s3 presign s3://<bucket_name>/<object_name> --expires-in <seconds>
 ```
 
 ### Writable presigned urls
