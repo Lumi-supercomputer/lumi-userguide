@@ -39,7 +39,7 @@ locations under home. This can be achieved using environment variables or comman
 | ENV  | `RCLONE_CONFIG` | `S3CMD_CONFIG`           | `AWS_SHARED_CREDENTIALS_FILE` and `AWS_CONFIG_FILE` |
 | FLAG | `--config FILE` | `-c FILE`, `--config=FILE` |                                             |
 
-The `aws` cli additionally has the concept of [profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html), you can specify 
+The `aws` cli additionally has the concept of [profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html), and you can specify 
 which one to use using the `--profile <name>` flag or the `AWS_PROFILE` environment variable.
 
 ### Environment
