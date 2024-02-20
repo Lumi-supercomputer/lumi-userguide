@@ -100,7 +100,7 @@ explains how to apply more granular rules than fully private/public to e.g:
 
 - Share data with another lumi project.
 - Restrict object access to specific IP:s
-- Allow external modification to just specific objects. 
+- Allow external modification to only specific objects. 
 
 Projects in LUMI-O are single user tenants/accounts where the tenant/account
 names and project names are both the numerical id for the project, 
@@ -123,9 +123,9 @@ LUMI project could accidentally delete it
 There are two ways to manage access for data in LUMI-O:
 
 1. Policies
-2. Access control list
+2. Access control list (ACL)
 
-While ACLs are simpler to configure, they are are an older
+While ACLs are simpler to configure, they are an older
 method for access control and offer much less granular control
 over permissions. **We recommend primarily using Policies**  
 
@@ -142,7 +142,7 @@ Some other differences include:
 You can apply policies to a bucket using `s3cmd` or `aws` commands:
 
 ```
-s3cmd setpolicy policy.json  s3://<bucket_name>/
+s3cmd setpolicy policy.json s3://<bucket_name>/
 ```
 
 or
