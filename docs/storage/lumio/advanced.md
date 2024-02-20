@@ -454,7 +454,7 @@ e.g when one wants to grant access until a specific date, or then adding
 the desired duration to the current time.
 
 ```
-s3cmd signurl s3://example-bucket/file.txt $(echo "`date +%s` + 3600 * <hours>" | bc)
+s3cmd signurl s3://<bucket_name>/<object_name> $(echo "`date +%s` + 3600 * <nbr_of_hours>" | bc)
 ```
 
 Irregardless of the set expiry time, presigned urls will become invalid when
