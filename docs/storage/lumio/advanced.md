@@ -104,10 +104,10 @@ explains how to apply more granular rules than a fully private/public content to
 
 Projects in LUMI-O are handled as "single user tenants/accounts", where the project numerical id (e.g. 465000001) corresponds both the tenant/account name and the project name.
 
-Subsequently, all members of a LUMI-O project have the exact same 
-rights and permissions, unlike on the LUMI filesystem where files have individual owners.
-Keep this mind if you have critical data in LUMI-O as any other member of your
-LUMI project could accidentally delete it 
+Subsequently, **all members of a LUMI-O project have the exact same 
+rights and permissions**, unlike on the LUMI filesystem, where files have individual owners.
+**Keep this mind if you have critical data in LUMI-O as any other member of your
+LUMI project could accidentally delete it** 
 
 !!! warning
 	Be very carefully when configuring and updating access to buckets and objects.   
