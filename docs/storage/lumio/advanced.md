@@ -110,10 +110,10 @@ rights and permissions**, unlike on the LUMI filesystem, where files have indivi
 LUMI project could accidentally delete it** 
 
 !!! warning
-	Be very carefully when configuring and updating access to buckets and objects.   
-	It's possible to lock yourself out from your own data. Or alternatively make
+	Be very careful when configuring and updating access to buckets and objects.   
+	**It's possible to lock yourself out from your own data**, or alternatively make
 	objects visible to the whole world. In the former case, data recovery might not be possible
-	and your data could be permanetly lost.
+	and your data could be permanently lost.
 
 
 ### ACLs vs Policies 
@@ -130,7 +130,7 @@ over permissions. **We recommend primarily using Policies**
 Some other differences include:
 
 - ACLs can only be used to allow more access, not restrict access from the defaults
-- ACLs can be applied to to buckets and objects while policies can only be applied to buckets
+- ACLs can be applied to buckets and objects while policies can only be applied to buckets
 	- You can create bucket policies which only affect specific objects in the bucket. 
 	- This also means that you will have to individually / recursively apply ACL changes to all objects in a bucket + the bucket itself.
 
@@ -162,7 +162,7 @@ aws s3api get-bucket-policy --bucket <bucket_name>
 ```
 
 
-The following example policy would allow the project `444000454` to:
+The following example policy would allow the project `465000002` to:
 
 - Download the object `out.json` from our bucket `fortheauthenticated`
 - List all objects in the `fortheauthenticated` bucket
@@ -187,7 +187,7 @@ _policy.json_
       "Resource": "arn:aws:s3:::fortheauthenticated/out.json",
       "Principal": {
                 "AWS": [ 
-                      "arn:aws:iam::444000454:user/444000454"
+                      "arn:aws:iam::465000002:user/465000002"
         ]
       }
     },
@@ -197,7 +197,7 @@ _policy.json_
       "Resource": "arn:aws:s3:::fortheauthenticated",
       "Principal": {
                 "AWS": [ 
-                      "arn:aws:iam::444000454:user/444000454"
+                      "arn:aws:iam::465000002:user/465000002"
         ]
       }
     },
@@ -207,7 +207,7 @@ _policy.json_
       "Resource": "arn:aws:s3:::fortheauthenticated/upload.json",
       "Principal": {
                 "AWS": [ 
-                      "arn:aws:iam::444000454:user/444000454"
+                      "arn:aws:iam::465000002:user/465000002"
         ]
       }
     }
@@ -235,7 +235,7 @@ Another potentially useful policy is a restriction on incoming  IP:s
 }
 ```
 
-This would allow any one connecting from "lumi-uan04.csc.fi" to upload
+This would allow any one connecting from "[lumi-uan04.csc.fi](https://docs.lumi-supercomputer.eu/firststeps/loggingin/#lumi-login-nodes-advanced)" to upload
 objects starting with `data` to the `almostpublic` bucket (but not download or list them).
 
 !!! warning
@@ -246,7 +246,7 @@ objects starting with `data` to the `almostpublic` bucket (but not download or l
 For a full list of Actions and resources see the 
 [AWS documentation](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazons3.html)
 
-**Don't use action which you do not understand**
+**Don't use an action which you do not understand**
 
 To remove policies you can do: 
 
@@ -292,7 +292,7 @@ or
 ```bash
 aws s3api put-bucket-acl --acl public-read --bucket <bucket_name> 
 ```
-Would make the bucket but not the object readable for the world -> Only possible to list the objects
+Would make the bucket but not the object readable for the world &rarr; Only possible to list the objects
 but not download them. The inverse situation where the bucket is not readable but the objects are is
 similar to a UNIX directory with only executable permissions and no read permissions. I.e
 files / object can be retrieved from the directory / bucket, but it's not possible to list the content.
@@ -354,14 +354,14 @@ not any of the objects.
 To view existing ACL:s you can use 
 
 ```
-s3cmd info s3://<bucket>/<optional object>
+s3cmd info s3://<bucket_name>/<optional_object_name>
 ```
 
 or
 
 ```
-aws s3api get-bucket-acl  --bucket bucket
-aws s3api get-object-acl  --bucket bucket --key object 
+aws s3api get-bucket-acl  --bucket <bucket_name>
+aws s3api get-object-acl  --bucket <bucket_name> --key <object_name> 
 ```
 
 See the [s3cmd documentation](https://s3tools.org/usage) and [aws s3api documentation](https://docs.aws.amazon.com/cli/latest/reference/s3api/put-object-acl.html#options) for a full list of ACLs.
@@ -389,7 +389,7 @@ Note that the authorization header of any request is checked before any access r
 verified -> using invalid credentials will lead to an access denied even for public objects. 
 
 
-Due to the format of the URL, currently there is no know way to use boto3 or `aws` cli
+Due to the format of the URL, currently there is no known way to use boto3 or `aws` cli
 to interact with data which is specifically shared with your project.  
 
 
@@ -398,16 +398,16 @@ to interact with data which is specifically shared with your project.
 To access buckets and subsequently objects not owned by the authenticated project:
 
 ```
-s3cmd ls s3://<proj_id>:bucket/
+s3cmd ls s3://<proj_id>:<bucket>/
 ```
 
 ```
-rclone ls lumi-462000007:"<proj_id>:bucket"
+rclone ls lumi-465000001:"<proj_id>:<bucket>"
 ```
 
 **Curl**
 
-Don't use curl unless you have to, main
+Don't use curl unless you have to. But if you do, the main
 point here is that the project id has to be included
 with the bucket and object name when generating the signature.
 
@@ -445,7 +445,7 @@ upload for a specific object (key) in a bucket.
 You can generate a presigned url using e.g s3cmd 
 
 ```bash
-s3cmd signurl s3://example-bucket/file.txt <unix epoch time>
+s3cmd signurl s3://<bucket_name>/<object_name> <unix_epoch_time>
 ```
 
 That generates access link that is valid until the given unix epoch time. To get the required unix epoch time, it's possible to use online calculators,
