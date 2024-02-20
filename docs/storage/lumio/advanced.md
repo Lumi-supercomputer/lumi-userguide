@@ -70,7 +70,7 @@ s3_client = session.client('s3')
 buckets=s3_client.list_buckets()
 ```
 
-Would fetch the buckets and return the information as a python dictionary. 
+Would fetch the buckets of project 465000001 and return the information as a python dictionary. 
 For the full list of available functions, see the [aws s3 client documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html)
 
 
