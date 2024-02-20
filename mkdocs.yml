@@ -65,7 +65,7 @@ nav:
     - Software guides:
       - Software library: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/
       - CP2K: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/c/CP2K/
-      - PyTorch: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/p/PyTorch/
+      - PyTorch: software/packages/pytorch.md
       - ParaView: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/p/ParaView
       - QuantumESPRESSO: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/q/QuantumESPRESSO/
       - VASP: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/v/VASP/
@@ -179,5 +179,4 @@ plugins:
       redirect_maps:
         'computing/Lmod_modules.md': 'runjobs/lumi_env/Lmod_modules.md'
         'firststeps/getstarted.md': 'firststeps/index.md'
-        'software/packages/pytorch.md': 'https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/p/PyTorch/'
   - search
