@@ -46,7 +46,7 @@ which one to use using the `--profile <name>` flag or the `AWS_PROFILE` environm
 
 Most programs will use the environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
 when trying to authenticate. So these can be set if one does not wish to save the credentials on disk.
-The environment variables do not always take precedent over values set in configuration files, as
+The environment variables do not always take precedence over values set in configuration files, as
 is the case for `s3cmd` and `rclone`. This means that invalid credentials in config files will
 lead to and access denied even if there are valid credentials in the environment. The `aws` command
 will use the environment variables instead of `~/.aws/credentials` if they are set. 
