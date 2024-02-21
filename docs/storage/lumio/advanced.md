@@ -164,7 +164,7 @@ aws s3api get-bucket-policy --bucket <bucket_name>
 
 The following example policy would allow the project `465000002` to:
 
-- Download the object `out.json` from our bucket `fortheauthenticated`
+- Download the object `out.json` from our bucket called `fortheauthenticated`
 - List all objects in the `fortheauthenticated` bucket
 - Create/modify (by overwriting) to the `upload.json` object in the `fortheauthenticated` bucket
 
@@ -236,7 +236,7 @@ Another potentially useful policy is a restriction on incoming  IP:s
 ```
 
 This would allow any one connecting from "[lumi-uan04.csc.fi](https://docs.lumi-supercomputer.eu/firststeps/loggingin/#lumi-login-nodes-advanced)" to upload
-objects starting with `data` to the `almostpublic` bucket (but not download or list them).
+objects starting with `data` to the bucket called `almostpublic` (but not download or list them).
 
 !!! warning
 	IP restrictions should never be the only measure to protect your data.
@@ -404,7 +404,7 @@ s3cmd ls s3://<proj_id>:<bucket>/
 ```
 rclone ls lumi-465000001:"<proj_id>:<bucket>"
 ```
-Where `462000007` would be your own project you have configured authentication for
+Where `465000001` would be your own project you have configured authentication for
 and `<proj_id>` is the numerical project id for the other project. 
 
 
