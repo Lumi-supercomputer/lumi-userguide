@@ -85,7 +85,7 @@ s3_client = boto3.client('s3')
 boto3 uses the same configuration files and respects the same environment variables as the `aws` cli.
 
 !!! note 
-	You will need a sufficiently new version of boto3 (e.g 1.26 which is installed if using python3.6 is to old) for it
+	You will need a sufficiently new version of boto3 (e.g version 1.26, which is installed if using python3.6, is too old) for it
 	to understand a default profile set in ~/.aws/credentials and corresponding config file, 
 	otherwise the tool will always default to aws s3 endpoint and you will need to specify the
 	profile/endpoint when constructing the client.
