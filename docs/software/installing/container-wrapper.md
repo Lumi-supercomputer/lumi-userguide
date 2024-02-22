@@ -84,7 +84,8 @@ channels:
   - conda-forge
 dependencies:
   - python=3.8.8
-  - scipy  - nglview
+  - scipy
+  - nglview
 ```
 
 or generated from an existing environment
