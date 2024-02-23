@@ -17,6 +17,15 @@ use these as templates for your own project batch scripts.
       or a lower value. If you request more than 2GB/core then you will be 
       billed for the memory according to the [billing policy][billing].
     
+!!! note "Choice of partition"
+
+    Projects allocated by EuroHPC must utilize the `ju-standard` partition
+    instead of the `standard` partition. The `ju-standard` partition is
+    reserved for EuroHPC projects, whereas the `standard` partition is
+    designated for projects allocated by one of the LUMI consortium countries. 
+    EuroHPC projects and projects from LUMI consortium countries share access to
+    the `small` and `debug` partitions.
+
 
 ## Shared memory jobs
 
@@ -58,7 +67,7 @@ LUMI-C `standard` partition.
 #SBATCH --job-name=examplejob   # Job name
 #SBATCH --output=examplejob.o%j # Name of stdout output file
 #SBATCH --error=examplejob.e%j  # Name of stderr error file
-#SBATCH --partition=standard    # Partition (queue) name
+#SBATCH --partition=standard    # or ju-standard, partition name
 #SBATCH --nodes=2               # Total number of nodes 
 #SBATCH --ntasks=256            # Total number of mpi tasks
 #SBATCH --mem=0                 # Allocate all the memory on each node
@@ -83,7 +92,7 @@ LUMI-C `standard` partition.
 #SBATCH --job-name=examplejob   # Job name
 #SBATCH --output=examplejob.o%j # Name of stdout output file
 #SBATCH --error=examplejob.e%j  # Name of stderr error file
-#SBATCH --partition=standard    # Partition (queue) name
+#SBATCH --partition=standard    # or ju-standard, partition name
 #SBATCH --nodes=2               # Total number of nodes 
 #SBATCH --ntasks-per-node=16    # Number of mpi tasks per node
 #SBATCH --cpus-per-task=8       # Number of cores (threads) per task
@@ -109,7 +118,7 @@ the LUMI-C `small` partition and thus will be allocated 1 core.
 #SBATCH --job-name=examplejob   # Job name
 #SBATCH --output=examplejob.o%j # Name of stdout output file
 #SBATCH --error=examplejob.e%j  # Name of stderr error file
-#SBATCH --partition=small       # Partition (queue) name
+#SBATCH --partition=small       # Partition name
 #SBATCH --ntasks=1              # One task (process)
 #SBATCH --time=00:15:00         # Run time (hh:mm:ss)
 #SBATCH --account=project_<id>  # Project for billing

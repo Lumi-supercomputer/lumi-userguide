@@ -15,9 +15,18 @@
     It is recommended to read the section about [GPU Binding][gpu-binding] for
     more details about the motivation for the binding exemplified is this
     section. Binding only applies if you have a full-node allocation. This is
-    the case if you submit to the `standard` and `standard-g` partitions. For
-    other partitions, it will apply if you use the `--exclusive` sbatch 
-    directive.
+    the case if you submit to the `standard`, `standard-g`, `ju-standard` and `ju-standard-g`partitions. For other partitions, it will apply if you use 
+    the `--exclusive` sbatch directive.
+
+!!! note "Choice of partition"
+
+    Projects allocated by EuroHPC must utilize the `ju-standard-g` partition
+    instead of the `standard-g` partition. The `ju-standard-g` partition is
+    reserved for EuroHPC projects, whereas the `standard-g` partition is
+    designated for projects allocated by one of the LUMI consortium countries. 
+    EuroHPC projects and projects from LUMI consortium countries share access to
+    the `small-g` and `dev-g` partitions.
+
 
 ## MPI-based job
 
@@ -36,7 +45,7 @@ Below, a job script to launch an application with one MPI rank per GPU (GCD).
 #SBATCH --job-name=examplejob   # Job name
 #SBATCH --output=examplejob.o%j # Name of stdout output file
 #SBATCH --error=examplejob.e%j  # Name of stderr error file
-#SBATCH --partition=standard-g  # Partition (queue) name
+#SBATCH --partition=standard-g  # or ju-standard-g, partition name
 #SBATCH --nodes=2               # Total number of nodes 
 #SBATCH --ntasks-per-node=8     # 8 MPI ranks per node, 16 total (2x8)
 #SBATCH --gpus-per-node=8       # Allocate one gpu per MPI rank
@@ -80,7 +89,7 @@ per GPU (GCD).
 #SBATCH --job-name=examplejob   # Job name
 #SBATCH --output=examplejob.o%j # Name of stdout output file
 #SBATCH --error=examplejob.e%j  # Name of stderr error file
-#SBATCH --partition=standard-g  # Partition (queue) name
+#SBATCH --partition=standard-g  # or ju-standard-g, partition name
 #SBATCH --nodes=2               # Total number of nodes 
 #SBATCH --ntasks-per-node=8     # 8 MPI ranks per node, 16 total (2x8)
 #SBATCH --gpus-per-node=8       # Allocate one gpu per MPI rank
