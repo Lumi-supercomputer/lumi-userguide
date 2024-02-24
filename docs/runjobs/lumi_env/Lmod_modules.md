@@ -9,8 +9,8 @@
 !!! tip
     If you are already somewhat familiar with modules from your home system,
     you may get more from this page if you first read our
-    [page on the available software stacks][softwarestacks]. However, if you
-    are not very familiar with modules it may be best to first read this
+    [page on the available software stacks][softwarestacks].
+    However, if you are not very familiar with modules, it may be best to first read this
     page, then the one on [the software stacks][softwarestacks] and then
     re-read this page as you will get more information out of it.
 
@@ -29,9 +29,9 @@ that
 - you don't have to deal with dependent modules, they are loaded at the same
   time as the software.
 
-Almost all compute clusters use software modules. Currently there are three
-competing implementations, so you may not be familiar with Lmod already. And
-even if you are already familiar with Lmod from your home cluster we still
+Almost all compute clusters use software modules. Currently, there are three
+competing implementations, so you may not be familiar with Lmod yet. And
+even if you are already familiar with Lmod in your home cluster, we still
 encourage you to read through this page as not all sites promote the same Lmod
 features.
 
@@ -106,7 +106,7 @@ It has three levels, producing different outputs:
  1. `module spider` without further arguments will produce a list of all
     installed software and show some basic information about those packages.
     Some packages may have an `(E)` behind their name and will appear in blue
-    (in the default colour scheme) which means that they are part of a different
+    (in the default color scheme) which means that they are part of a different
     package. The following levels of `module spider` will then tell you how to
     find which module(s) to load.
 
@@ -144,7 +144,7 @@ It has three levels, producing different outputs:
             ...
     ```
 
-    (abbreviated output) so even though the capitalisation of the name was wrong, it can tell us that
+    (abbreviated output) so even though the capitalization of the name was wrong, it can tell us that
     there are multiple versions of gnuplot. The `cpeAOCC-22.08` and `cpeCray-22.06`
     tell that the difference is the compiler that was used to install gnuplot,
     being the AMD AOCC compiler (PrgEnv-aocc) and the Cray compiler (PrgEnv-cray),
@@ -224,8 +224,7 @@ It has three levels, producing different outputs:
 
     (abbreviated output). Note that it also tells you which other modules need
     to be loaded. You need to choose the line which is appropriate for you and
-    load all modules on that line, not the whole list of in this case 7
-    modules.
+    load all modules on that line, not the whole list of e.g., 7 modules.
 
     This form of `module spider` can also be used to find out how a tool provided
     as an extension by another module can be made available. E.g., in a previous 
@@ -294,12 +293,12 @@ The `module avail` command is used to show only available modules, i.e., modules
 that can be loaded directly without first loading other modules. It can be used
 in two ways:
 
- 1. Without a further argument it will show an often lengthy list of all
+ 1. Without a further argument, it will show an often lengthy list of all
     available modules. Some modules will be marked with `(D)` which means that
     they are the default module that would be loaded should you load the module
     using only its name.
 
- 2. With the name of a module (or a part of the name) it will show all modules
+ 2. With the name of a module (or a part of the name), it will show all modules
     that match that (part of) a name. E.g., when `LUMI/22.12` is loaded,
 
     ```bash
@@ -324,7 +323,7 @@ in two ways:
     ```
 
     will show you an often lengthy list that contains all packages with gnu
-    (case insensitive) in their name or version.
+    (case-insensitive) in their name or version.
 
 ## Getting help
 
@@ -339,17 +338,17 @@ module. It will show the brief description of the module that is included in
 most modules on the system. If the full version of the module is not given, it
 will display the information for the default version of that module.
 
-The third command is `module help`. Without any further argument it will display
-some brief help about the module command. However, when used as `module help
-<name>` or `module help <name>/<version>` it will produce help for either the
-default version of the package (if the version is not specified) or the
-indicated version.
+The third command is `module help`. Without any further argument, it will display
+brief help about the module command.
+However, when used as `module help <name>` or `module help <name>/<version>`,
+it will produce help for either the default version of the package
+(if the version is not specified) or the indicated version.
 
 ## Loading and unloading modules
 
 Loading and unloading modules in Lmod is very similar to other module systems.
-Also node that only *available*  modules can be loaded with the commands below.
-Some *installed*  modules may only become *available* after first loading other
+Also, note that only *available* modules can be loaded with the commands below.
+Some *installed* modules may only become *available* after first loading other
 modules as discussed above.
 
 To load a module, use the `module load` command. For example, to load the Cray
@@ -363,14 +362,14 @@ This command will load the default version of the module. If the software you
 loaded has dependencies, they will be loaded in your environment at the same
 time.
 
-To load a specific version of the module you need to specify it after the name
-of the module.
+To load a specific version of the module, you need to specify it after the name
+of the module:
 
 ```bash
 $ module load cray-fftw/3.3.10.5
 ```
 
-In order to unload a module from your environment, use the `unload` sub-command
+To unload a module from your environment, use the `unload` sub-command
 followed by the name of the module you want to remove.
 
 ```
@@ -392,7 +391,7 @@ $ module purge
 
 In Lmod, some modules can be declared as sticky modules by the sysadmins. These
 modules will not be removed by `module purge` and will produce an error message
-when you try to unload them with `module unload`. On LUMI this is the case for
+when you try to unload them with `module unload`. On LUMI, this is the case for
 the modules that activate a software stack so that it is possible to unload all
 modules that are loaded in the stack without deactivating the stack. Sticky
 modules can still be unloaded or purged by adding the `--force` option, e.g.,
@@ -452,7 +451,7 @@ collection on the login nodes may not give you the right binaries when working
 on one of the types of compute nodes, even though the application modules have
 the same name and version. Also, when saving a collection of modules, the full
 pathname to each of the module files is saved so *the stored collection will
-break if modules have to be moved*. After a system maintenance interval 
+break if modules have to be moved*. Following a system maintenance interval, 
 the stored module configuration is often also broken.
 
 A collection can be created using `save` sub-command.
@@ -467,7 +466,7 @@ Your saved collections can be listed using the `savelist` sub-command.
 $ module savelist
 ```
 
-But, of course, the main interest of a collection is that you can load all the
+Of course, the main interest of a collection is that you can load all the
 modules it contains in one command. This is done using the `restore`
 sub-command.
 
@@ -517,9 +516,9 @@ that are loaded from that directory.
 ??? Tip "For advanced users: Resetting the MODULEPATH"
     The search path for modules is stored in the environment variable
     `MODULEPATH`. Adding directories to the search path by manipulating
-    `MODULEPATH` is possible. However overwriting the variable and removing
+    `MODULEPATH` is possible. However, overwriting the variable and removing
     directories can have nasty side effects and bring the internal data
-    structures of Lmod in an inconsistent state, e.g., because there may now be
+    structures of Lmod into an inconsistent state, e.g., because there may now be
     modules loaded from directories that are not in the `MODULEPATH`.
 
     If you want to overwrite `MODULEPATH`, e.g., to build your own private environment
@@ -532,7 +531,7 @@ that are loaded from that directory.
 
 ## Further reading
 
-On LUMI we use the Lmod implementation as provided by HPE Cray as part of the
+On LUMI, we use the Lmod implementation as provided by HPE Cray as part of the
 programming environment. The version of Lmod is way behind the most recent
 version. This implies that not all information that can be found on the internet
 is also correct for LUMI.

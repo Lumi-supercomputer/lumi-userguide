@@ -8,13 +8,13 @@
 # Slurm quickstart
 
 An HPC cluster is made up of a number of compute nodes, which consist of one or
-more processors, memory and in the case of the GPU nodes, GPUs. These computing
-resources are allocated to the user by the resource manager. This is achieved
+more processors, memory and in the case of the GPU nodes, GPUs.
+The resource manager allocates these computing resources to the user. This is achieved
 through the submission of jobs by the user. A job describes the computing
 resources required to run application(s) and how to run it. LUMI uses
 [Slurm][slurm] as job scheduler and resource manager.
 
-In order to run jobs, you need a [project allocation][accesslumi]. You need to
+To run jobs, you need a [project allocation][accesslumi]. You need to
 specify your project ID in your job script (or via the command line when
 submitting your job) in order for your job to be accepted by the job scheduler.
 
@@ -48,7 +48,7 @@ The main commands for using Slurm are summarized in the table below.
 
 ### Creating a batch script
 
-The most common type of jobs are batch jobs which are submitted to the
+The most common type of job is a batch job. They are submitted to the
 scheduler using a batch job script and the `sbatch` command.
 
 A batch job script is a text file containing information about the job
@@ -61,7 +61,7 @@ A batch script is summarized by the following steps:
 - setting up the environment: prepare input, environment variables, ...
 - run the application(s)
 
-As an example, let's look at this simple batch job script:
+As an example, let's look at this batch job script:
 
 ```bash
 #!/bin/bash
@@ -134,7 +134,7 @@ will need to run
 #SBATCH --mem=2G
 ```
 
-In this instance we request one task (process) to be run on one node. A task
+In this instance, we request one task (process) to be run on one node. A task
 corresponds to a process (or an MPI rank). One CPU thread (used, for example,
 with OpenMP) is requested for the one task as well as 2 GiB of memory should be
 allocated to the whole job.
@@ -168,8 +168,8 @@ More details may be found on the dedicated [batch jobs][batch-jobs] page.
 
 ### Submit a batch job
 
-To submit the job script we just created we use the `sbatch` command. The
-general syntax can be condensed as
+To submit the job script we just created, we use the `sbatch` command.
+The general syntax can be condensed as
 
 ```bash
 $ sbatch [options] job_script [job_script_arguments ...]
@@ -180,7 +180,7 @@ The available options are the same as the one you use in the batch script:
 script are equivalent. The command line value takes precedence if the same
 option is present both on the command line and as a directive in a script.
 
-For the moment let's limit ourselves to the most common way to use the
+For the moment, let's limit ourselves to the most common way to use the
 `sbatch`: passing the name of the batch script which contains the submission
 options.
 
@@ -189,17 +189,16 @@ $ sbatch myjob.sh
 Submitted batch job 123456
 ```
 
-The `sbatch` command returns immediately and if the job is successfully
+The `sbatch` command returns immediately. If the job is successfully
 submitted, the command prints out the ID number of the job.
 
 More details may be found on the dedicated [batch jobs][batch-jobs] page.
 
 ### Examine the queue
 
-Once you have submitted your batch script it won't necessarily run immediately.
+Once you have submitted your batch script, it won't necessarily run immediately.
 It may wait in the queue of pending jobs for some time before its required
-resources become available. In order to view your jobs in the queue, use the
-`squeue` command.
+resources become available. To view your jobs in the queue, use the `squeue` command.
 
 ```bash
 $ squeue
@@ -226,10 +225,9 @@ The `ST` column will now display a `R` value (for `RUNNING`). The `TIME` column
 will represent the time your job has been running. The list of nodes on which
 your job is executing is given in the last column of the output.
 
-In practice the list of jobs printed by this command will be much longer since
-all jobs, including those belonging to other users, will be visible. In order
-to see only the jobs that belong to you use the `squeue` command with the
-`--me` flag.
+In practice, the list of jobs printed by this command will be much longer since
+all jobs, including those belonging to other users, will be visible. To see only
+the jobs that belong to you, use the `squeue` command with the `--me` flag.
 
 ```bash
 $ squeue --me

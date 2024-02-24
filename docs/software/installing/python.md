@@ -19,13 +19,14 @@
 
 Over the past decade, the [Python programming language][python] and [Scientific
 Python][scientific-python] packages like NumPy, SciPy, JAX, and PyTorch have
-gained a lot of popularity in the data science and HPC communities. We do
-support using Scientific Python packages on LUMI, however care must be taken to
-*install* such packages in a way that *plays well with LUMI*.
+gained a lot of popularity in the data science and HPC communities.
+
+We do support using Scientific Python packages on LUMI.
+However, care must be taken to *install* such packages in a way that *plays well with LUMI*.
 
 !!! warning "Please don't install Python packages directly"
-    In order to provide the best user experience, it is **strongly
-    discouraged** to install Python packages directly to the user home folder,
+    To to provide the best user experience, it is **strongly discouraged**
+    to install Python packages directly to the user home folder,
     `/scratch`, `/project`, etc. using [Conda][conda], [pip][pip], or similar
     package management tools. Please read this page carefully for better
     alternatives.
@@ -41,21 +42,21 @@ Installing such a large number of small files to the user home folder or shared
 locations like `/scratch`, `/project`, or even `/flash`, and trying to load
 them from multiple processes at the same time, puts a lot of strain on the
 [Lustre file system][lustre] serving these storage locations. Lustre simply
-isn't designed for such use cases. Thus, in order to maintain good file system
+isn't designed for such use cases. Thus, to maintain good file system
 performance for all users (it is a shared file system), care must be taken when
 installing Python packages on LUMI.
 
 **Which installation method should I use then?**
 
 The best way to get access to a Python installation on LUMI depends on the use
-case. Below we provide an overview of recommended ways to get access to Python
+case. Below, we provide an overview of recommended ways to get access to Python
 installations on LUMI.
 
 !!! warning "The default Python is the OS Python"
     When you log into LUMI, running `python3` without loading a module or using
     a container will result in using the operating system Python installation.
     This is quite an old Python installation (version 3.6) without any Scientific
-    Python packages - which is likely not what you want.
+    Python packages, which is likely not what you want.
 
 ## Generally recommended installation methods
 
@@ -63,13 +64,13 @@ In general, we recommend using [Singularity/Apptainer
 containers][singularity-containers] for managing Python installations. Using a container solves the "many
 small files" performance problem and makes it easy to manage multiple different
 Python environments at the same time. To use a container, you may either [use an existing
-container](#use-an-existing-container) or [build a container taylored to your
+container](#use-an-existing-container) or [build a container tailored to your
 needs](#use-a-container-you-build-specifically-tailored-to-your-needs).
 
 ### Use an existing container
 
 If somebody is already publishing a container which includes the Python
-pacakages you need, e.g. this [PyTorch ROCm
+packages you need, e.g. this [PyTorch ROCm
 container](https://hub.docker.com/r/rocm/pytorch), you may [pull and use that
 container][pull-container].
 

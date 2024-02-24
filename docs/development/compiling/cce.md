@@ -10,7 +10,7 @@ compilers. The Cray Fortran compiler supports the Fortran 2018 standard while
 the C/C++ compiler is C17 and C++17 compliant. Invoking these compilers is done
 through the `ftn`, `cc` and `CC` [compilers wrappers][wrappers].
 
-CCE has supports for the full OpenMP 4.5 specification as well as partial
+CCE has support for the full OpenMP 4.5 specification as well as partial
 support for OpenMP 5.0. PGAS languages (UPC and Fortran coarrays) are also
 integrated.
 
@@ -34,7 +34,7 @@ integrated.
 ## Choose the CCE version
 
 The Cray Compiling Environment is available from the `PrgEnv-cray` module which
-is loaded by default. This module load the default version of the compilers. If
+is loaded by default. This module loads the default version of the compilers. If
 you wish to use an older or newer version, you can list the available version
 with
 
@@ -52,10 +52,10 @@ $ module swap cce cce/<version>
 
 :material-help-circle-outline: `man intro_openmp`
 
-OpenMP **is turned off by default** which is the opposite of earlier version of
-the CCE compilers. It is turned on using the `-homp` or `-fopenmp` flag.
+OpenMP **is turned off by default** which is the opposite of how earlier versions the CCE compilers worked.
+It is turned on using the `-homp` or `-fopenmp` flag.
 
-The CCE Fortran compiler allows to control the level of optimization of OpenMP
+The CCE Fortran compiler allows controlling the level of optimization of OpenMP
 directives with the `-hthreadN` (`N = 0...3`). A value `N = 0` being off and `N
 = 3` specifying the most aggressive optimization. **The default value is `N =
 2`**.
@@ -70,13 +70,13 @@ flag.
 
 ## Debugging
 
-To ease a debugging process, it's useful to generate an executable containing
+To ease a debugging process, it is useful to generate an executable containing
 debugging information. For this purpose, you can use the `-g` option.
 
 Most of the time, the debug information works best at low levels of code
 optimization, so consider using the `-O0` level. The `-g` options can be
 specified on a per-file basis so that only a small part of your application
-incur the debugging penalty.
+incurs the debugging penalty.
 
 ## Compiler feedback
 
@@ -216,7 +216,7 @@ compiler with the `cc` command. The C++ compiler may be invoked with the `CC`
 command. These compilers are based on Clang/LLVM with Cray improvements. The
 Cray improvements can be turned off with the `-fno-cray` flag.
 
-Clang does not apply optimizations unless they are requested. Most optimization
+Clang does not apply optimizations unless they are requested. Most optimizations
 are enabled using the `-O2` level. Recommended flags are
 
 - `-Ofast` to enable all the optimizations including aggressive optimizations
@@ -224,7 +224,7 @@ are enabled using the `-O2` level. Recommended flags are
 - `-flto` to enable aggressive link time optimizations
 
 For applications that are sensitive to floating−point optimizations, it may be
-recommended to use `-O3` instead of `-Ofast`. These floating−point optimization
+recommended to use `-O3` instead of `-Ofast`. These floating−point optimizations
 can also be controlled with the `−ffp=N` flag with `N = 0...4`.
 
 - using `−ffp=0`, will generate code with the highest precision and grants the

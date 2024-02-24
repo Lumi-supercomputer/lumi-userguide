@@ -44,7 +44,7 @@ A processor can also be partitioned in [Non-Uniform Memory Access (NUMA)][numa]
 domains. These domains divide the memory into multiple domains local to a group
 of cores. The memory in the local NUMA node can be accessed faster than the
 other NUMA nodes leading to better performance when a process/thread access
-memory on the local NUMA node. LUMI-C use 4 NUMA domains per socket (8 NUMA
+memory on the local NUMA node. LUMI-C uses 4 NUMA domains per socket (8 NUMA
 domains per node). Thread migration from one core to another poses a problem
 for a NUMA architecture by disconnecting a thread from its local memory
 allocations.
@@ -54,15 +54,15 @@ the running processes. As a result, processes are moved between thread, core, or
 socket within the compute node. However, the memory of a process doesn't
 necessarily move at the same time leading to slower memory accesses.
 
-Pinning, the binding of a process or thread to a specific core, can improve the
+Pinning (the binding of a process or thread to a specific core) can improve the
 performance of your code by increasing the percentage of local memory accesses.
 Once a process is pinned, it is bound to a specific set of cores and will only
-run on the cores in this set therefore preventing migration by the operating
+run on the cores in this set, therefore preventing migration by the operating
 system.
 
 !!! warning "Correct binding only for full node allocation"
 
-    Binding anly make senses if your request a full node (user exclusive) 
+    Binding only makes sense if your request a full node (user exclusive) 
     allocation. This is the default for the `standard` and `standard-g`
     partitions
 
@@ -264,14 +264,13 @@ GPU[7]          : (Topology) Numa Affinity: 2
 As you can see, there is no direct correspondence between the numbering of the 
 NUMA nodes and the numbering of the GPUs (GCDs). As a consequence, depending on
 how the rank and threads of your application choose the GPU to use, you may need
-to a the combination of CPU and GPU binding options.
+a combination of CPU and GPU binding options.
 
 ####  Application that can select GPU automatically
 
 If your application automatically selects the GPU to use by using the node local
-rank, i.e., the first rank on the node select GPU 0, the second, GPU 1, ...,
-then it is recommended to reorder the assignment of the rank to the NUMA node so
-that
+rank, i.e., the first rank on the node selects GPU 0, the second selects GPU 1, ...,
+then it is recommended to reorder the assignment of rank to NUMA node so that:
 
 - rank 0 and 1 are assigned to NUMA node 3, close to GPUs 0 and 1
 - rank 2 and 3 are assigned to NUMA node 1, close to GPUs 2 and 3
@@ -299,10 +298,11 @@ srun --cpu-bind=${CPU_BIND} <app> <args>
 
 ####  Application that cannot select GPU automatically
 
-For an application that cannot select GPU automatically, on top on the CPU binding
-described in the previous section, you can use a wrapper script in order to set
-the GPU binding. This script sets `ROCR_VISIBLE_DEVICES` to the value of the 
-Slurm defined `SLURM_LOCALID` environment variable so that
+For an application that cannot select a GPU automatically, in addition to CPU binding
+described in the previous section, you can use a wrapper script to set the GPU binding.
+
+This script sets `ROCR_VISIBLE_DEVICES` to the value of the Slurm-defined `SLURM_LOCALID`
+environment variable so that:
 
 - for node local rank 0, `ROCR_VISIBLE_DEVICES=0`
 - for node local rank 1, `ROCR_VISIBLE_DEVICES=1`
@@ -375,7 +375,7 @@ distribution describes how the tasks are distributed between the nodes.
     ```
 
 You can specify the distribution across sockets within a node by adding a second
-descriptor, with a colon (`:`) as a separator. In the example below the numbers
+descriptor, with a colon (`:`) as a separator. In the example below, the numbers
 represent the **rank of the tasks**.
 
 === "block:block"
@@ -483,7 +483,7 @@ to processors.
 
 ### OpenMP places
 
-OpenMP use the concept of places to define where the threads should be pinned.
+OpenMP uses the concept of places to define where the threads should be pinned.
 A place is a set of hardware execution environments where a thread can "float".
 The `OMP_PLACES` environment variable defines these places using either an
 abstract name or with a list of CPUIDs. The available abstract names are

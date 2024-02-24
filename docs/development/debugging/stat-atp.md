@@ -14,7 +14,7 @@ See also the Cray documentation page about [debugging tools in Cray Programming 
 ## STAT: The Stack Trace Analysis Tool
 
 The Stack Trace Analysis Tool (STAT) is a highly scalable, lightweight tool
-that gathers and merges stack traces[^1] from all of the processes of a
+that gathers and merges stack traces[^1] from all the processes of a
 parallel application. STAT is most effective for diagnosing parallel
 applications that are hung, i.e. suffers from a deadlock[^2] or livelock[^3].
 

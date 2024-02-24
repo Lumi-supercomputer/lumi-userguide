@@ -65,7 +65,7 @@ be limited to 4.
 ## Managing job array tasks
 
 Use the `squeue` command to examine the state of your job array. The still
-pending array task are shown as one entry while the running ones are shown as
+pending array tasks are shown as one entry while the running ones are shown as
 individual entries with their job IDs taking the form `<jobid>_<arrayindex>`.
 
 ```bash
@@ -116,7 +116,7 @@ In this section, we give a full example of running the same program with 1000
 different command line arguments, submitted as an array job.
 
 The parameters to use may be stored in a file, 1000 lines long and named
-`args.txt`. Each of the lines of this file contains two parameters to be passed
+`args.txt`. Each line in this file contains two parameters to be passed
 to our program as command-line arguments. As an example, the first 4 lines of
 this file may be
 
@@ -129,8 +129,8 @@ $ head -n 4 args.txt
 ```
 
 In the context of a job array, we can extract the parameters for each of the
-array task with the help of the `SLURM_ARRAY_TASK_ID` variable. For example,
-the first parameter can be obtained as
+array tasks with the help of the `SLURM_ARRAY_TASK_ID` variable.
+For example, the first parameter can be obtained as
 
 ```bash
 param_a=$(cat args.txt | \

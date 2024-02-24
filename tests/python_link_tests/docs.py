@@ -14,7 +14,7 @@ class Docs:
         self.input_files =4*[""]
         self.input_files[0]="links.txt"
         self.input_files[1]="files.txt"
-        self.input_files[2]="headders.txt"
+        self.input_files[2]="headers.txt"
         self.input_files[3]="nav.txt"
         self.input_files  = list(map(lambda x: self.working_dir+x,self.input_files))
         self.bash_script_name=self.working_dir+"get_all_data.sh"

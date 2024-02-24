@@ -10,12 +10,12 @@
 [jump-register-keys]: #register-your-public-key
 [eidas-eduid]: https://puhuri.neic.no/user_guides/myaccessid_registration/
 
-# Setting up SSH key pair
+# Setting up SSH keypair
 
 If you want to use LUMI from a terminal, you need to register an SSH key pair. The SSH keys are the only way to connect to LUMI when using a Linux, macOS or Windows PowerShell terminal, or MobaXterm or PuTTY from Windows. There is no option for using passwords. 
 
 LUMI only accepts SSH keys based on the RSA (4096 bit) or ed25519 algorithms.
-If possible, we recommend to use ed25519.
+If possible, we recommend using ed25519.
 
 ## Generate your SSH keys
 

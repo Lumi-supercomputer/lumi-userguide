@@ -10,7 +10,7 @@
     This page is about a hardware partition that has not yet reached
     general availability.
 
-The LUMI-D partition consists of a 16 nodes with large memory capacity, of
+The LUMI-D partition consists of 16 nodes with large memory capacity, of
 which 8 nodes also feature Nvidia visualization GPUs. LUMI-D is intended for
 interactive data analytics and visualization.
 
@@ -45,4 +45,4 @@ interconnect][interconnect].
 ## Disk storage
 
 The LUMI-D nodes provide some local disk storage. Additionally, you have
-access to all the [network based storage options][storage].
+access to all the [network-based storage options][storage].

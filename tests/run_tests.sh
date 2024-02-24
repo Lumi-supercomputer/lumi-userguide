@@ -1,7 +1,7 @@
 #run from top level 
 
 
-# Semi standard way of cheking
+# Semi standard way of checking
 # if the output is going to a terminal => enable colors
 
 # Or if it is being piped => no colors

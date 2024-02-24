@@ -13,5 +13,5 @@ In the form you will be able to select:
 
 ## Extensions
 Extensions for Python, C/C++ and Julia are installed by default and do not need to be manually installed.
-For other extensions, you can install them in the extensions tab in VSCode.
+For other extensions, you can install them in the Extensions tab in VSCode.
 Remember to load the correct modules for the extensions before launching the app.

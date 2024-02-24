@@ -12,7 +12,7 @@
 
 [lumi-software-library]: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs
 
-The LUMI software stacks contain the software that is already installed on
+The LUMI software stacks contain the software already installed on
 LUMI. The software stacks are made available through the [LMOD module
 environment][module-environment].
 
@@ -26,7 +26,7 @@ On LUMI, three types of software stacks are currently offered:
     what SUSE Linux, the basis of the Cray Linux environment, offers. If you
     need a richer environment, you should use our other software stacks.
 
--   `LUMI` is an extensible software stack that is mostly managed through
+-   `LUMI` is an extensible software stack mostly managed through
     [EasyBuild][easybuild]. You can read more about EasyBuild on LUMI on
     [the "Easybuild" page in the "Software" section][eb-in-docs]. 
     Each version of the LUMI software stack is based on the
@@ -104,13 +104,13 @@ stacks also with `LTS` next to their name which would then denote that this is
 a release that we will try to support long-term (ideally two years), but
 currently the system is changing too rapidly (as some of the hardware is new
 and not an evolution of previous hardware) so we cannot guarantee any level of
-longevity for any of the software stacks. In fact, past experience has shown
+longevity for any of the software stacks. In fact, experience has shown
 that we may have to remove a stack after a year or so.
 
 The next block, titled *Modify the module display style*, contains several
 modules that can be used to change the way the module tree is displayed:
 
--   `ModuleColour`: these modules can be used to turn the colour on or off in
+-   `ModuleColour`: these modules can be used to turn the color on or off in
     the module display.
 -   `ModuleLabel`: change the way the modules are subdivided in blocks and the
     way those blocks are presented.
@@ -176,13 +176,13 @@ on the compute nodes and data analysis and visualization nodes).
     installed in that partition. However, 
     software compiled in `partition/C` may offer better performance on the
     compute nodes of LUMI-C as software in that partition is specifically
-    optimised for the zen3 "Milan" CPUs in those nodes.
+    optimized for the zen3 "Milan" CPUs in those nodes.
 
     Running MPI programs is not supported on the login nodes, but those modules
     may still contain useful pre- or postprocessing software that can be used
     on the login nodes.
 
-Once loaded you will be presented with a lot of modules in a flat naming scheme.
+Once loaded, you will be presented with a lot of modules in a flat naming scheme.
 This means that all software available in that version of the LUMI software
 stack will be shown by `module avail` (except for hidden modules for software that
 we deem most users may not directly load). However, not any combination of
@@ -197,7 +197,7 @@ modules:
 -   The module version contains `cpeCray-yy.mm`: The package is compiled with
     the `PrgEnv-cray` programming environment.
 
--   The module version contains `cpeAOCC-yy.mm`:  The package is compiled with
+-   The module version contains `cpeAOCC-yy.mm`: The package is compiled with
     the `PrgEnv-aocc` programming environment, the AMD compilers for CPU-only
     work (hence available only on LUMI-C, LUMI-D and the login nodes)
 
@@ -232,7 +232,7 @@ However, software may fail to work properly.
 ## Adding additional software to the LUMI software stack
 
 The `LUMI` software stack itself cannot offer all software to all users as that
-would be both confusing (certainly as sometimes customisations are expected) and
+would be both confusing (certainly as sometimes customizations are expected) and
 impossible to maintain (as it would not be clear when software can be removed
 and no longer needs to be updated). Therefore, the `LUMI` software stack can be
 extended with software installed in the user's space through EasyBuild in a way
@@ -246,7 +246,7 @@ LUMI project (and instructions for some software that is unsuitable for installa
 through EasyBuild).
 
 The default location for user-installed software in `$HOME/EasyBuild`. However,
-we advise to install software in the `/project` directory of the project
+we advise installing software in the `/project` directory of the project
 instead so that a single software installation can be used by all members of the
 project. This is done by pointing the environment variable `EBU_USER_PREFIX` to
 the software installation directory, e.g.,

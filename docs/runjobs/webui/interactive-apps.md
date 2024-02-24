@@ -17,21 +17,21 @@ The following settings available for most apps:
 - **Partition:** The Slurm partition used.
     Some apps have a limited set of partitions available.
     The partition select may affect what other fields in the form are visible.
-    Selecting a GPU partition will allocate 1 A40 GPU in the `lumid` partition, and 1 MI250 GCD in the other GPU partitions.
+    Selecting a GPU partition will allocate one A40 GPU in the `lumid` partition, and one MI250 GCD in the other GPU partitions.
     For the majority of the apps, you should use the `interactive` partition.
 - **Reservation:** The Slurm reservation to use for the resource allocation.
     The reservation field is only visible if you have access to an active reservation.
-- **CPU cores:** The amount of physical CPU cores to allocate.
+- **CPU cores:** The number of physical CPU cores to allocate.
     As SMT is enabled, two threads per core will be allocated.
 - **Memory:** The amount of memory in GB to allocate.
     For some partitions, this is not visible as a certain amount of memory is allocated per CPU core instead.
 - **Local disk:** The amount of local disk storage in GB to allocate for apps on LUMI-D nodes.
-- **Time:** The duration the app will run.
+- **Time:** The wall-clock duration your app will run.
 
 To ensure short queueing times, only request the amount of resources and time you need.
 
 After filling in the form, you can launch the application using the *Launch* button at the bottom of the form.
-You will then be redirect to the interactive sessions page, where all of your current and past sessions will be visible.
+You will then be redirected to the interactive sessions page, where all of your current and past sessions will be visible.
 
 ## Slurm queue
 

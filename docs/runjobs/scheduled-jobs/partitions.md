@@ -5,10 +5,10 @@
 [lumi-d]: ../../hardware/lumid.md
 [helpdesk]: ../../helpdesk/index.md
 
-The Slurm partition setup of LUMI prioritizes jobs that aim to scale out. As a
-consequence most nodes are reserved for jobs that use all available resources
-within a node. However, some nodes are reserved for smaller allocations and
-debugging.
+The Slurm partition setup of LUMI prioritizes jobs that aim to scale out.
+As a consequence, most nodes are reserved for jobs that use all available resources
+within a node.
+However, some nodes are reserved for smaller allocations and debugging.
 
 A list of the available partitions can be obtained using the `sinfo` command.
 To get a shorter summary, use `sinfo -s`.
@@ -71,8 +71,8 @@ that your job may share the node with other jobs.
 
 !!! info "LUMI-C/LUMI-D Large Memory Nodes"
     The [LUMI-C][lumi-c] large memory nodes (512GB and 1TB) are located in the
-    `small` partition. Therefore, in order to use these nodes, you need to
-    select the `small` partition (`--partion=small`). Then the LUMI-C large
+    `small` partition. Therefore, to use these nodes, you need to
+    select the `small` partition (`--partition=small`). Then the LUMI-C large
     memory nodes will be allocated if you request more memory than is available
     in the LUMI-C standard compute nodes.
 
