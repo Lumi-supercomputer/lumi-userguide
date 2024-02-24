@@ -12,8 +12,10 @@
 [billing-policy]: ../runjobs/lumi_env/billing.md
 
 ---
-Here you find general descriptions of how to run jobs on LUMI, i.e. how to run your scientific software using the job scheduler on LUMI. In this section you also find general information about the LUMI environment, as well as the LUMI web interface that you can use to run your applications on LUMI instead of traditionally using a terminal. If you are looking
-for ways to install your software on LUMI or advice for a specific application, consult the [software section][software-overview] instead.
+
+Here you find general descriptions of how to run jobs on LUMI, i.e. how to run your scientific software using the job scheduler on LUMI.
+In this section, you also find general information about the LUMI environment, as well as the LUMI web interface that you can use to run your applications on LUMI instead of traditionally using a terminal.
+If you are looking for ways to install your software on LUMI or advice for a specific application, consult the [software section][software-overview] instead.
 
 ---
 
@@ -29,9 +31,10 @@ for simple management tasks, e.g.
 
 All compute heavy tasks must be submitted through the job scheduler such that
 they are run on the compute nodes in
-[LUMI-G][lumi-g]/[LUMI-C][lumi-c]/[LUMI-D][lumi-d]. The job scheduler used on
-LUMI is Slurm. To get started using Slurm on LUMI read the [Slurm quickstart
-guide][slurm-quickstart].
+[LUMI-G][lumi-g]/[LUMI-C][lumi-c]/[LUMI-D][lumi-d].
+
+The job scheduler used on LUMI is Slurm.
+To get started using Slurm on LUMI, read the [Slurm quickstart guide][slurm-quickstart].
 
 !!! warning
 

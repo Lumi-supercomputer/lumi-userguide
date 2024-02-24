@@ -14,7 +14,7 @@
 [setup-ssh-key]: ../firststeps/SSH-keys.md
 
 
-# Logging in (with SSH client)
+# Logging in (with an SSH client)
 
 !!! info
 	It is now also possible to [log in using the LUMI web interface](./loggingin-webui.md) 
@@ -28,7 +28,7 @@ ssh -i <path-to-private-key> <username>@lumi.csc.fi
 ```
 
 where you need to replace `<path-to-private-key>` with the path to the file
-which contains your **private** key and `<username>` with with your own
+which contains your **private** key and `<username>` with your own
 username.
 
 You should have received your username via email when your account was created.
@@ -39,7 +39,7 @@ able to connect, please contact the [user support team][helpdesk].
 You will be prompted for the passphrase of the SSH key which is the one you
 entered when you generated the key. When you connect for the first time, you
 will also be asked to check the host key fingerprint of the system and need to
-type `yes` in order to accept it. The fingerprint of the LUMI login nodes are
+type `yes` in order to accept it. The fingerprints of the LUMI login nodes are
 listed in the table below. Please make sure that the host key fingerprint
 matches one of these.
 
@@ -58,7 +58,7 @@ output enabled to get more information about what happens when you try to connec
 ssh -vvv -i <path-to-private-key> <username>@lumi.csc.fi
 ```
 
-If you are unable to connect and you contact the [user support team][helpdesk],
+If you are unable to connect, and you contact the [user support team][helpdesk],
 we recommend that you provide the output of this command as part of your
 support request.
 
@@ -83,4 +83,7 @@ LUMI has several login nodes, for reliability and for sharing the interactive wo
 
 We recommend that you connect to `lumi.csc.fi` and not directly to a specific login node, but it is possible to do, and it may be necessary for certain advanced use cases.
 
-The IP number block that is used for external connections from LUMI is `193.167.209.128/26`. It contains these login nodes and also the NAT gateways for the compute nodes. You may need to open up your firewall for access from these IP numbers if you want to connect to your own servers from inside LUMI.
+The IP number block used for external connections from LUMI is `193.167.209.128/26`.
+It contains the login nodes and also the NAT gateways for the compute nodes.
+You may need to open up your firewall for access from these IP addresses,
+if you want to connect to your own servers from inside LUMI.

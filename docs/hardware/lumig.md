@@ -27,7 +27,7 @@ of LUMI-G is 379.70 PFlop/s.
 The LUMI-G compute nodes are equipped with four AMD MI250X GPUs based on the
 2nd Gen AMD CDNA architecture. A MI250x GPU is a multi-chip module (MCM) with 
 two GPU dies named by AMD Graphics Compute Die (GCD). Each of these dies features 
-110 compute units (CU) and have access to a 64 GB slice of HBM memory for a total
+110 compute units (CU) and has access to a 64 GB slice of HBM memory for a total
 of 220 CUs and 128 GB total memory per MI250x module.
 
 !!! note "GCDs are GPUs for Slurm and the HIP runtime"
@@ -42,7 +42,7 @@ More information about the AMD MI250x can be found here:
 - [MI250X information on the AMD website][MI250x-amd]
 - [Applications performance and benchmarks][benchmarks]
 
-The LUMI-G nodes CPU is a single 64-cores AMD EPYC 7A53 "Trento" CPU. The cores
+The LUMI-G nodes CPU is a single 64-core AMD EPYC 7A53 "Trento" CPU. The cores
 of this CPU are ["Zen 3" compute cores][zen3-wiki] supporting AVX2 256-bit
 vector instructions for a maximum throughput of 16 double precision FLOP/clock
 (AVX2 FMA operations). The cores have 32 KiB of private L1 cache, a 32 KiB
@@ -84,9 +84,9 @@ illustrates these links from both the CPU and GPU perspectives.
   <figcaption>CPU-GPU links from a CPU centric or GPU centric point of view</figcaption>
 </figure>
 
-Each MI250x module is direclty connected to the slingshot 11 network providing
-up to up to 25+25 GB/s peak bandwidth. Details about the LUMI network is 
-provided [here][network].
+Each MI250x module is directly connected to the slingshot-11 network providing
+up to 25+25 GB/s peak bandwidth.
+Details about the LUMI network are provided [here][network].
 
 To summarize, each MI250x modules have 5 GPU-GPU links, 2 CPU-GPU links and 1 
 PCIe links to the slingshot-11 interconnect.
@@ -94,16 +94,17 @@ PCIe links to the slingshot-11 interconnect.
 
 ## The MI250x Graphics Compute Die
 
-As mentioned previously, the MI250x GPU modules have 2 Graphics Compute Dies
-(GCD). Each GCD has 112 physical compute units (CUs) but 2 of these are disabled
-which means that 110 CU can actually be used. In order to boost memory
-throughput, all CU share a L2 cache. This L2 cache has an 8 MB capacity and is
+As mentioned previously, the MI250x GPU modules have two Graphics Compute Dies (GCD).
+Each GCD has 112 physical compute units (CUs), but 2 of these are disabled
+which means that 110 CU can actually be used.
+To boost memory throughput, all CU share a L2 cache.
+This L2 cache has an 8 MB capacity and is
 divided in 32 slices capable of delivering 128 B/clock/slice for a total of 6.96
 TB/s peak theoretical bandwidth.
 
-The L2 cache also improve synchronization capabilities for algorithms that rely
+The L2 cache also improves synchronization capabilities for algorithms that rely
 on atomic operations to coordinate communication across an entire GPU. These 
-atomic operations executed close to the memory in the L2 cache.
+atomic operations are executed close to the memory in the L2 cache.
 
 <figure>
   <img 
@@ -136,7 +137,7 @@ scheduled in groups of 64 threads known as wavefronts. This is comparable to a
 warp on NVIDIA hardware, with the primary distinction being that a warp consists
 of 32 threads, while a wavefront comprises 64 threads.
 
-The figure below present a schematic view of a MI250x compute unit.
+The figure below presents a schematic view of a MI250x compute unit.
 
 <figure>
   <img 
@@ -151,20 +152,20 @@ The way the wavefronts are executed by a compute unit is the following:
 
 - a wavefront consisting of 64 work-items is assigned to one of the 16-wide
   SIMD units
-- the majority of instructions execute in a single cycle, with one instruction
+- the majority of the instructions execute in a single cycle, with one instruction
   necessitating four cycles per wavefront
 - as there are four SIMD units per compute unit, allowing four wavefronts to be
   executed concurrently, the throughput remains constant at one instruction per
   wavefront per compute unit
 
-The compute units have 512 64-wide 4 bytes Vector General Purpose Regiters
+The compute units have 512 64-wide 4 bytes Vector General Purpose Registers
 (VGPRs).  In addition to these registers, the unit also provides access to low
 latency storage through a 64 kB Local Data Share (LDS). This shared memory is
 akin to NVIDIA's "shared memory" and is accessible to all threads within a block
-(workgroup). The LDS allocation is managed by the programmer. Additionally,
+(workgroup). The programmer manages the LDS allocation. Additionally,
 each compute unit has access to 16 kB of L1 cache.
 
-The vector ALU are completed by matrix cores optimized to execute Matrix Fused
+The vector ALUs are completed by matrix cores optimized to execute Matrix Fused
 Multiply Add (MFMA) instructions. These matrix cores provide significant
 acceleration for Generalized Matrix Multiplication (GEMM) computations, which
 are essential for Linear Algebra that plays a key role in most High-Performance
@@ -174,4 +175,4 @@ cores, capable of achieving a throughput of 256 FP64 Flops/cycle/CU.
 ## Disk storage
 
 There is no local storage on the compute nodes in LUMI-G. You have to use one of
-the [network based storage options][storage]. 
+the [network-based storage options][storage]. 

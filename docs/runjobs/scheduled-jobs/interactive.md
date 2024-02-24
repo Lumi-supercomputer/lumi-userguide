@@ -12,7 +12,7 @@ Both of these commands take [options similar to `sbatch`][sbatch-options].
 
 ## Using `salloc`
 
-Using `salloc`, you allocate resources and spawn a shell that is then used to
+Using `salloc`, you allocate resources and spawn a shell used to
 execute parallel tasks launched with `srun`. For example, you can allocate 2
 nodes for 30 minutes with the command
 
@@ -54,21 +54,22 @@ $ srun --account=<project> --partition=<partition> --time=00:30:00 --nodes=1 --p
 
 ## Using `srun` to check running jobs
 
-Currently, ssh'ing to compute nodes is not allowed, but the `srun` command can
+Currently, `ssh`'ing to compute nodes is not allowed, but the `srun` command can
 be used to check in on a running job in the cluster. In this case, you need to
 give the job ID and possibly also the specific name of a compute node to `srun`.
 
-This starts a shell, where you can run any command, on the first allocated node
+This starts a shell where you can run any command on the first allocated node
 in a specific job:
 
 ```bash
 $ srun --overlap --pty --jobid=<jobid> $SHELL
 ```
 
-By default you will be connected to the master node of your job which is the 
+By default, you will be connected to the master node of your job which is the 
 first node in your allocation and the one on which your batch script is executed. 
-In cases where your job spans multiple nodes and you need to connect to a
-specific compute node, you can achieve this by adding the `-w nid00XXXX` option.
+
+If your job spans multiple nodes and you need to connect to a specific compute node,
+you can achieve this by adding the `-w nid00XXXX` option.
 
 ```bash
 $ srun --overlap --pty --jobid=<jobid> -w nid00XXXX $SHELL
@@ -82,7 +83,7 @@ the following command:
 $ sacct --noheader -X -P -oNodeList --jobs=<jobid>
 ```
 
-!!! note "GPUs ressource specification"
+!!! note "GPUs resource specification"
 
     Depending on how you have specified the GPU resources allocated to your job, 
     you may encounter the following error when attempting to attach to a running

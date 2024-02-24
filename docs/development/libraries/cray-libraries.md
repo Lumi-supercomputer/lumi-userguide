@@ -45,7 +45,7 @@ Two libraries unique to Cray are:
   provides solutions to linear systems using single‐precision factorizations
   while preserving accuracy through mixed‐precision iterative refinement.
 
-- CrayBLAS: a library of BLAS routines auto tuned for Cray EX series systems
+- CrayBLAS: a library of BLAS routines auto-tuned for Cray EX series systems
   through extensive optimization and runtime adaptation.
 
 !!! note "Multithreaded version"
@@ -86,7 +86,7 @@ analyzing data in the HDF5 format.
 :material-help-circle-outline: `man netcdf`
 
 NetCDF (network Common Data Form) is a set of interfaces for array-oriented
-data access and a freely-distributed collection of data access libraries for C,
+data access and a freely distributed collection of data access libraries for C,
 Fortran, C++, Java, and other languages. The netCDF libraries support a
 machine-independent format for representing scientific data. Together, the
 interfaces, libraries, and format support the creation, access, and sharing of

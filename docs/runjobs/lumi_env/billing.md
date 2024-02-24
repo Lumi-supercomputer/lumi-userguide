@@ -16,14 +16,13 @@ the billing units allocated to your project:
 
 ## How to check your billing units
 
-In order to check how many billing units you have used, you can use the 
-following command:
+To check how many billing units you have used, you can use the following command:
 
 ```
 lumi-allocations
 ```
 
-It will report the CPU and GPU-hours allocated and consumed for all the project
+It will report the CPU-hours and GPU-hours allocated and consumed for all the projects
 you are a part of. The tool also reports the storage billing units.
 
 A description of how the jobs are billed is provided in the next sections.  
@@ -70,7 +69,7 @@ When using the `small` Slurm partition you are billed per allocated core.
 However, if you are above a certain threshold of memory allocated per core,
 i.e. you use the high memory nodes in [LUMI-C][lumi-c], you are billed per
 slice of 2GB memory (which is still billed in units of CPU-core-hours).
-Specifically, the formula that is used for billing is:
+Specifically, the formula used for billing is:
 
 ```text
 CPU-core-hours-billed = max(
@@ -101,7 +100,7 @@ Allocating 4 CPU-cores and 32GB of memory in a job running for 1 day consumes:
 ### GPU billing
 
 For GPU compute, your project is allocated GPU-core-hours that are consumed
-when running jobs on the GPU nodes. A GPU hours corresponds to the allocation
+when running jobs on the GPU nodes. A GPU-hour corresponds to the allocation
 of a full MI250x module (2 GCDs) for one hour.
 
 For the `standard-g` partition, where full nodes are allocated, the 4 GPUs
@@ -121,7 +120,7 @@ i.e., one node hours correspond to 4 GPU-hours. If you allocate 4 nodes in the
 For the `small-g` and `dev-g` Slurm partitions, where allocation can be done at 
 the level of Graphics Compute Dies (GCD), you will be billed at a 0.5 rate per
 GCD allocated. However, if you allocate more than 8 CPU cores or more than 64 GB
-of memory per GCD you will be billed per slice of 8 cores or 64 GB of memory.
+of memory per GCD, you will be billed per slice of 8 cores or 64 GB of memory.
 
 The billing formula is:
 
@@ -154,9 +153,8 @@ For storage, your project is allocated TB-hours. Storage is billed whenever you
 store data in your project folders. Storage is billed by volume used over time.
 The billing units are TB-hours.
 
-The amount of TB-hours billed depends on the type of storage you are using. See
-the [data storage options][data-storage-options] page for an overview of the
-type of storage used in the different storage options.
+The number of TB-hours billed depends on the type of storage you are using. See
+the [data storage options][data-storage-options] page for an overview of the different storage options.
 
 ### Main storage (LUMI-P) billing
 

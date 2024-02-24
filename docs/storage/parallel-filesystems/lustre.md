@@ -1,11 +1,11 @@
 # Lustre
 
-Lustre is a parallel distributed high performance file system for clusters
+Lustre is a parallel distributed high-performance file system for clusters
 ranging from small to large-scale as well as multi-site systems. The role of
 Lustre is to chunk up files into data blocks and spread file data across
 multiple storage servers, which can be written to and read from in parallel.
 
-## Lustre Building Blocks
+## Lustre Building Blocks
 
 A Lustre file system is composed of three major functional units as shown in
 the simplified diagram below.
@@ -43,14 +43,14 @@ from multiple OSTs simultaneously increases the available I/O bandwidth.
     alt="Sriping of a 8MB file over 4 OSTs"
   >
   <figcaption>
-    striping of a 8MB file over 4 OSTs (stripe count = 4). Each stripe is 1MB
+    striping of an 8 MB file over 4 OSTs (stripe count = 4). Each stripe is 1 MB
     (stripe size = 1m) in size. Each OST store 2 stripes.
   </figcaption>
 </figure>
 
 File striping will predominantly improve performance for applications doing
 serial I/O from a single node or parallel I/O to a single shared file from
-multiple nodes. This behaviour is usually found in application using MPI-I/O,
+multiple nodes. This behavior is usually found in application using MPI-I/O,
 parallel HDF5 and parallel NetCDF.
 
 ### Set the Striping Pattern
@@ -109,8 +109,8 @@ files. The following section describes general considerations.
 
 ### Stripe count
 
-In theory, a larger number of stripes increase the I/O bandwidth and thus
-performance. In particular, applications that write to a single file from
+In theory, a larger number of stripes increases the I/O bandwidth and thus
+performance. In particular, applications which write to a single file from
 hundreds of nodes, may benefit from striping over as many OSTs. Moreover,
 striping is needed if you write a huge amount of data as a single OST may not
 have enough free space to store all the data. For applications creating a large
@@ -119,8 +119,8 @@ can cause overhead and impede the performance.
 
 - when multiple processes access the same large file in parallel set a stripe
   count >1 and an integral factor of the number of processes.
-- with a file-per-process I/O pattern, avoid striping (stripe count of 1) in
-  order to limit OST contention.
+- with a file-per-process I/O pattern, avoid striping (stripe count of 1) to
+  limit OST contention.
 
 ### Stripe size
 
@@ -130,8 +130,7 @@ the stripe size may influence the performance:
 
 - the smallest recommended stripe size is 512 KB.
 - a good stripe size is between 1 MB and 4 MB in most situations.
-- the maximum stripe size is 4 GB but you should only use this value for very
-  large files.
+- the maximum stripe size is 4 GB, but you should only use this value for huge files.
 
 If your application writes to the file in a consistent and aligned way, make
 the stripe size a multiple of the `write()` size. The goal is to perform write

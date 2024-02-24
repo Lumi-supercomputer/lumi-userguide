@@ -1,12 +1,13 @@
 # Jupyter for courses
 
-The Jupyter for courses app is an app which makes using a custom
+Jupyter for Courses is an app that makes using a custom
 Python environment simple when hosting or participating in courses.
 
 Python environments can be defined as modules in the project [persistent storage](../../../storage/#where-to-store-data).
 Default resources for the course Python environment can also be defined in the same directory.
 
 ## Using the app
+
 In the form for launching the application:
 
  - Select the project and reservation used for the course.

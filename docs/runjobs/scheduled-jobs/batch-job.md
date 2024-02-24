@@ -15,13 +15,13 @@
     consequence only 56 cores are available to the jobs. Jobs requesting 64 
     cores/node will never run.
 
-This pages covers advanced topics related to running Slurm batch jobs on LUMI.
+This page covers advanced topics related to running Slurm batch jobs on LUMI.
 If you are not already familiar with Slurm, you should read the [Slurm
 quickstart][slurm-quickstart] guide which covers the basics. You can also refer
 to the Slurm [documentation][slurm-doc] or [manual pages][slurm-man], in
 particular the page about [sbatch][slurm-sbatch].
 
-For example, job scripts please see here:
+For example job scripts, please see the following pages:
 
 - [GPU job examples scripts][lumig-examples]
 - [CPU job examples job scripts][lumic-examples]
@@ -66,9 +66,9 @@ environment variables in your `.bashrc`:
 - `SBATCH_OPEN_MODE=append` to avoid output truncating after requeuing
 
 If you want to perform specific operations in your batch script when a job has
-been requeued you can check the value of the `SLURM_RESTART_COUNT` variable.
-The value of this variable will be `0` if it's the first time the job is run.
-If the job has been restarted then the value will be the number of times the
+been requeued, you can check the value of the `SLURM_RESTART_COUNT` variable.
+The value of this variable will be `0` if it is the first time the job is run.
+If the job has been restarted, the value will be the number of times the
 job has been restarted.
 
 ## Common error messages
@@ -104,7 +104,7 @@ The most common causes are:
 
 - your project has already used all of its allocated compute resources.
 - job script is missing the `--account` parameter.
-- your project has exceeded the limit for number of simultaneous jobs, either
+- your project has exceeded the limit for the number of simultaneous jobs, either
   running or queuing. Note that Slurm counts each job within an array job as a
   separate job.
 
@@ -156,7 +156,7 @@ Here is an overview of some of the most commonly used Slurm options.
 !!! info
     The `/tmp` directory on the compute nodes resides in memory. The memory
     used for `/tmp` is included in the job memory allocation. If you use
-    `/tmp`, you must allocate memory for it in order to avoid running out of
+    `/tmp`, you must allocate memory for it to avoid running out of
     memory.
 
 ## Pipelining with dependencies

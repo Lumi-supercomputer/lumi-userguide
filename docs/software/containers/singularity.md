@@ -42,7 +42,7 @@ guidance on running your container on LUMI.
 !!! note
     There are two major providers of the `singularity` runtime, namely
     [Singularity CE][singularityce] and [Apptainer][apptainer], with the latter
-    being a fork of the former. For most cases these should be fully compatible.
+    being a fork of the former. For most cases, these should be fully compatible.
     LUMI provides a Singularity CE runtime.
 
 ## Pulling container images from a registry
@@ -84,7 +84,7 @@ page][container-jobs].
 Building your own container on LUMI is, unfortunately, not in general possible.
 The `singularity build` command, in general, requires some level of root
 privileges, e.g. `sudo` or `fakeroot`, which are disabled on LUMI for security
-reasons. Thus, in order to build your own Singularity/Apptainer container for
+reasons. Thus, to build your own Singularity/Apptainer container for
 LUMI, you have two options:
 
 1. Use the [cotainr](#building-containers-using-the-cotainr-tool) tool to build
@@ -144,9 +144,9 @@ container. See the [cotainr Conda environment docs][cotainr-conda-env] and the
 [cotainr LUMI examples][cotainr-lumi-examples] for more details.
 
 !!! warning "Make sure your Conda environment supports the hardware in LUMI"
-    In order to take advantage of e.g. the GPUs in [LUMI-G][lumi-g], the
+    To take advantage of e.g. the GPUs in [LUMI-G][lumi-g], the
     packages you specify in your Conda environment must be compatible with
-    LUMI-G, i.e. built against ROCm. Similarly, in order to take full advantage
+    LUMI-G, i.e. built against ROCm. Similarly, to take full advantage
     of the [Slingshot 11 interconnect][interconnect] when running MPI jobs, you
     must make sure your packages are built against Cray MPICH. Cotainr does
     **not** do any magic conversion of the packages specified in the Conda
@@ -156,7 +156,7 @@ container. See the [cotainr Conda environment docs][cotainr-conda-env] and the
 !!! note
     Using `cotainr` to build a container from a Conda/pip environment is
     different from wrapping a Conda/pip environment using the [LUMI container
-    wrapper][container-wrapper]. Each serve their own purpose. See
+    wrapper][container-wrapper]. Each serves their own purpose. See
     the [Python installation guide][python-packages] for an overview of
     differences and [this GitHub issue][tykky-cotainr-diff] for a detailed
     discussion of the differences.
@@ -179,7 +179,7 @@ MPI stack on LUMI.
 The following [Singularity definition file][singularity-def-file]
 `mpi_osu.def`, installs MPICH-3.1.4, which is ABI-compatible with the
 Cray-MPICH found on LUMI. That MPICH will be used to compile the [OSU
-microbenchmarks][osu-benchmark]. Finally, the OSU point to point bandwidth test
+micro-benchmarks][osu-benchmark]. Finally, the OSU point to point bandwidth test
 is set as the "runscript" of the image.
 
 ```bash

@@ -32,13 +32,13 @@ Hugepages can be beneficial
 ## How to use hugepages
 
 To use hugepages load the module corresponding to the page size you wish to
-use. For example to use a page size of 2MB
+use. For example, to use a page size of 2 megabytes:
 
 ```bash
 $ module load craype-hugepages2M
 ```
 
-For x86 processors, which is the architecture of the LUMI CPUs the supported
+For x86 processors, which is the architecture of the LUMI CPUs, the supported
 page sizes are 4KB, 2MB and 1GB. Once the module is loaded, you can compile
 your application as usual using the compiler wrappers.
 
