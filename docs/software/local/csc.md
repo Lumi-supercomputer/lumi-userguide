@@ -1,8 +1,8 @@
 # CSC installed software collection
 
 !!! info "Note"
-    Software installed under `/appl/local` are maintained and supported
-    by the respective local organizations.
+    Software installed under `/appl/local` are maintained by the respective
+    local organizations.
 
 Load the CSC module tree into use with:
 
@@ -35,5 +35,5 @@ Available software:
 * [TensorFlow](https://docs.csc.fi/apps/tensorflow/)
 
 See more information in [Docs CSC](https://docs.csc.fi/apps/by_system/#lumi).
-If you encounter any issues, don't hesitate to contact [CSC Service
-Desk](https://docs.csc.fi/support/contact/).
+If you encounter any issues, don't hesitate to contact the
+[LUMI User Support Team](https://lumi-supercomputer.eu/user-support/need-help/).
