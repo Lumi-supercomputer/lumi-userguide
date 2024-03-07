@@ -34,7 +34,7 @@ of Use][terms-of-use].
 
 === "For regular users (with a non-Finnish allocation)"
 
-    Once you have received an invitation to a project on LUMI, you need to register to MyAccessID and accept the terms of use as instructed in the invitation. The procedure for registering to MyAccessID differs between the LUMI consortium countries. In general, the recommended authentication method is to use your home organization's identity provider. You should find it by typing your organization into the *Choose Your Identity Provider* search field. If you found your organization, but you got an error, please contact your identity provider for assistance. Alternative registration options are available for some countries. Please see the [Puhuri documentation][eidas-eduid] for information about these alternatives.
+    Once you have received an invitation to a project on LUMI, you need to register to MyAccessID and accept the terms of use as instructed in the invitation. The procedure for registering to MyAccessID differs between the LUMI consortium countries. In general, the recommended authentication method is to use your home organization's identity provider. You should find it by typing your organization into the *Choose Your Identity Provider* search field. If you found your organization, but you got an error, please contact your identity provider for assistance. Alternative registration options are available for some countries. Please see the [Puhuri documentation][eidas-eduid] for information about these alternatives (the passport-based identity vetting is currently not available).
 
     For the next step, you will be directed to the registration page, where you have to accept the Acceptable Use Policy and LUMI Terms of Use document, which is linked there. Please read them carefully! 
 
@@ -43,7 +43,7 @@ of Use][terms-of-use].
       <figcaption>MyAccessID Registration portal</figcaption>
     </figure>
 
-    You may also modify the email address, but according to [LUMI Terms of Use][terms-of-use] you must use your institutional email address. For a more detailed description of how to register for MyAccessID, please consult the [Puhuri documentation][eidas-eduid].
+    You may also modify the email address, but according to [LUMI Terms of Use][terms-of-use] you must use your institutional email address. For a more detailed description of how to register for MyAccessID, please consult the [Puhuri documentation][eidas-eduid] (the passport-based identity vetting is currently not available).
     
     The following short video shows an example procedure from receiving the email invitation to accessing the project's puhuri page.
     This example uses a Czech consortium project. Note that the Puhuri portal might look slightly different for other countries.
