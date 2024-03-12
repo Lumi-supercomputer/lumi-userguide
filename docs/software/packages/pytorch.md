@@ -16,11 +16,7 @@ The LUMI software library includes EasyBuild recipes for [PyTorch containers](ht
 
 The container uses a miniconda environment in which Python and its packages are installed. That environment needs to be activated in the container when running, which can be done with the command that is available in the container as the environment variable `$WITH_CONDA` (which for this container it is `source /opt/miniconda3/bin/activate pytorch`).
 
-## Installing other packages along the container's PyTorch installation
-
-Often we may need to install other packages to be used along PyTorch. The recommended method for doing this currently is using cotainr. For this, we set the base image to one of the containers mentioned earlier, and tell cotainr which packages we want in the environment. In this case we will no longer need to call `$WITH_CONDA` in our job scripts, since the environment is activated automatically when working with the new image.
-
-If we define our environment specification as `py311_rocm542_pytorch.yml` then extending the container would look like this:
+The information about extending these containers can be found in the [Singularity/Apptainer section](../containers/singularity.md). Below you can find the conda environment that is used in the base container.
 
 ```bash
 name: py311_rocm542_pytorch
