@@ -48,6 +48,8 @@ dependencies:
     - torchvision==0.15.2+rocm5.4.2
 ```
 
+In short, the enviroment file can be used like this to create a new container with the described conda environment.
+
 ```bash
 module load LUMI
 module load cotainr
