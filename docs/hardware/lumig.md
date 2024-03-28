@@ -7,7 +7,7 @@ hide:
 
 [storage]: ../storage/index.md
 [network]: ./network.md
-[MI250x-amd]: https://www.amd.com/en/products/server-accelerators/instinct-mi250x
+[MI250x-amd]: https://www.amd.com/en/products/accelerators/instinct/mi200/mi250x.html
 [benchmarks]: https://www.amd.com/en/graphics/server-accelerators-benchmarks
 [zen3-wiki]: https://en.wikipedia.org/wiki/Zen_3
 
