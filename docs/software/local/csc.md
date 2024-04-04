@@ -22,6 +22,7 @@ Available software:
 * [JAX](https://docs.csc.fi/apps/jax/)
 * [Julia](https://docs.csc.fi/apps/julia/)
 * [LAMMPS](https://docs.csc.fi/apps/lammps/)
+* [MATLAB](https://docs.csc.fi/apps/matlab/)
 * [NAMD](https://docs.csc.fi/apps/namd/)
 * [Nextflow](https://docs.csc.fi/apps/nextflow/)
 * [OpenFOAM](https://docs.csc.fi/apps/openfoam/)
