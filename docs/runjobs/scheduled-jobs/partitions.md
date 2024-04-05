@@ -26,7 +26,7 @@ The partitions you can use depend on who allocated your project. If your project
 was allocated by the EuroHPC-JU, you only have access to the partition whose
 names start with `ju`. If your project was allocated by one of the LUMI
 consortium countries, your access is limited to partition with a name that does
-not start with `ju`.
+not start with `ju`. Separate partitions for the EuroHPC-JU projects have been set up as per EuroHPC-JU request.
 
 The tables below provide details of the partitions you can have access to
 depending of your resource allocator:
