@@ -60,7 +60,8 @@ ssh -vvv -i <path-to-private-key> <username>@lumi.csc.fi
 
 If you are unable to connect, and you contact the [user support team][helpdesk],
 we recommend that you provide the output of this command as part of your
-support request.
+support request. Please include the output as text (copy from terminal, paste
+into support request), not as pictures.
 
 In case you have forgotten your username, it can be retrieved via the different
 portals, depending on your resource allocator:
