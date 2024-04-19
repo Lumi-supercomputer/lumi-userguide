@@ -3,7 +3,7 @@
 [lumi-c]: ../../hardware/lumic.md
 [lumi-g]: ../../hardware/lumig.md
 [lumi-d]: ../../hardware/lumid.md
-[helpdesk]: ../../helpdesk/index.md
+[herorun]: ./hero-runs.md
 
 The Slurm partition setup of LUMI prioritizes jobs that aim to scale out.
 As a consequence, most nodes are reserved for jobs that use all available resources
@@ -26,11 +26,11 @@ complete node regardless of the resource actually used as detailed in the
 | -------------- | ------------ | ----------------- | ----------------- | --------------------------------------|
 | standard-g     | 2 days       | 210 (200 running) | 1024 nodes        | [LUMI-G][lumi-g]                      |
 | standard       | 2 days       | 120 (100 running) |  512 nodes        | [LUMI-C][lumi-c]                      |
-| bench          | 1 day        | n/a               |  All nodes        | [LUMI-C][lumi-c] and [LUMI-G][lumi-g] |
+| bench          | 6 hours      | n/a               |  All nodes        | [LUMI-C][lumi-c] and [LUMI-G][lumi-g] |
 
 The `bench` partition is not available by default and is reserved for
 large-scale benchmark runs. Projects wishing to have access to this partition
-must send a request to the [User Support Team][helpdesk].
+must send a [request for a full machine run][herorun].
 
 ## Slurm partitions allocatable by resources
 
