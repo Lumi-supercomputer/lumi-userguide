@@ -103,7 +103,7 @@ For GPU compute, your project is allocated GPU-core-hours that are consumed
 when running jobs on the GPU nodes. A GPU-hour corresponds to the allocation
 of a full MI250x module (2 GCDs) for one hour.
 
-For the `standard-g` and `ju-standard-g` partitions, where full nodes are
+For the `standard-g` partitions, where full nodes are
 allocated, the 4 GPUs modules are billed
 
 ```text
@@ -111,7 +111,7 @@ GPU-hours-billed = 4 * runtime-of-job
 ```
 
 i.e., one node hours correspond to 4 GPU-hours. If you allocate 4 nodes in the
-`standard-g` and `ju-standard-g` partition and that your job runs for 24 hours,
+`standard-g` partition and that your job runs for 24 hours,
 you will consume
 
 ```text

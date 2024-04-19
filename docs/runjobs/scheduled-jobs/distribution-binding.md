@@ -9,8 +9,8 @@ tasks via Slurm on LUMI.
 
     This section of the documentation only applies if you have a full-node 
     allocation. This is the case if you submit to the `standard`, `standard-g`,
-    `ju-standard` and `ju-standard-g` partitions. For other partitions, it will
-    apply if you use the `--exclusive` sbatch directive.
+    partitions. For other partitions, it will apply if you use the `--exclusive` 
+    sbatch directive.
 
     Similarly, binding cannot by applied for interactive jobs if you run `srun` 
     outside of an allocation, meaning you directly call `srun` on a login node.
@@ -64,7 +64,7 @@ system.
 
     Binding only makes sense if your request a full node (user exclusive) 
     allocation. This is the default for the `standard`, `standard-g`, 
-    `ju-standard` and `ju-standard-g` partitions
+    partitions
 
 ## Slurm binding options
 
