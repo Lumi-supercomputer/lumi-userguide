@@ -71,7 +71,7 @@ The Slurm submission script can be something like this:
 #SBATCH --ntasks-per-node=8
 #SBATCH --time=0:10:0
 #SBATCH --exclusive
-#SBATCH --partition standard-g # or ju-standard-g
+#SBATCH --partition=standard-g
 #SBATCH --account=<project>
 #SBATCH --gpus-per-node=8
 
