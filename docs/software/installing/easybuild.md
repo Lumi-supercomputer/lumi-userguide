@@ -161,7 +161,7 @@ the selected version of the LUMI software stack and partition when you do
 ### Step 1: Load the LUMI software stack
 
 The next step is to ensure that the right version of the software stack is
-loaded. Assume that we want to install software in the `LUMI/22.08` stack, then
+loaded. Assume that we want to install software in the `LUMI/23.09` stack, then
 one needs to execute
 
 ``` bash
@@ -349,7 +349,7 @@ or `module spider`).
         but if we then do a `module load LUMI/23.09` on the compute nodes, `partition/C` would have been
         selected. To get a GROMACS version in `partition/C` that EasyBuild would build with compiler settings
         that are specific for the processors in the compute nodes, either do the compilation on a compute node
-        or use *cross-compiling* by loading `partition/C` after loading `LUMI/22.08` in step 1 above.
+        or use *cross-compiling* by loading `partition/C` after loading `LUMI/23.09` in step 1 above.
 
 2.  **EasyBuild complains that some modules are already loaded.**
 
