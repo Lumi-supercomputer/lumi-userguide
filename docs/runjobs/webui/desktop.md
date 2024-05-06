@@ -31,6 +31,7 @@ Currently, the following graphical applications are available with GPU accelerat
 
 - Blender
 - ParaView
+- VisIt
 
 You can find the available applications in the Apps dropdown in the taskbar, under the *Other* category.
 If you want to be able to access the apps easier, shortcuts to the applications can be created by dragging the icons to the desktop.
