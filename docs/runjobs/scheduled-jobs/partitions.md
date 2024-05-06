@@ -46,6 +46,7 @@ that your job may share the node with other jobs.
 | small-g  | 3 days       | 210 (200 running)       |  4 nodes           | [LUMI-G][lumi-g]        |
 | small    | 3 days       | 220 (200 running)       |  4 nodes           | [LUMI-C][lumi-c]        |
 | largemem | 1 day        |  30 (20 running)        |  1 nodes           | [LUMI-D][lumi-d]        |
+| lumid    | 4 hours      |   1 (1 running)         |  1 GPU             | [LUMI-D][lumi-d]        |
 
 !!! info "LUMI-C/LUMI-D Large Memory Nodes"
     The [LUMI-C][lumi-c] large memory nodes (512GB and 1TB) are located in the

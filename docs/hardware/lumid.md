@@ -6,10 +6,6 @@
 [a40-product]: https://www.nvidia.com/en-us/data-center/a40/
 [a40-specs]: https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a40/proviz-print-nvidia-a40-datasheet-us-nvidia-1469711-r8-web.pdf
 
-!!! warning
-    This page is about a hardware partition that has not yet reached
-    general availability.
-
 The LUMI-D partition consists of 16 nodes with large memory capacity, of
 which 8 nodes also feature Nvidia visualization GPUs. LUMI-D is intended for
 interactive data analytics and visualization.
