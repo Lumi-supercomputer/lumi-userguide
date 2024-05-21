@@ -38,7 +38,7 @@ nav:
       - Module environment: runjobs/lumi_env/Lmod_modules.md
       - Software stacks: runjobs/lumi_env/softwarestacks.md
       - Daily management: runjobs/lumi_env/dailymanagement.md
-      - Data storage options: /storage/
+      - Data storage options: storage/index.md
       - Billing policy: runjobs/lumi_env/billing.md
     - Batch jobs:
       - Slurm quickstart: runjobs/scheduled-jobs/slurm-quickstart.md
@@ -172,8 +172,8 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.keys
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 plugins:
   - redirects:

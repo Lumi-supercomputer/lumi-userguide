@@ -8,7 +8,7 @@
   [2.2]: #libraries-linking
   [2.3]: #using-the-wrapper-with-a-configure-script
 [3]: #compile-an-mpi-program
-[4]: #compile-an-openmp-program
+[4]: #compile-an-openmp-application
 [5]: #accessing-the-programming-environment-on-lumi
 
 [modules]: ../../runjobs/lumi_env/Lmod_modules.md
