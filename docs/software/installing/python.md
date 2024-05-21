@@ -92,7 +92,7 @@ cray-python](#use-the-cray-python-module) or [install a pip environment for use
 with a container](#use-an-existing-container-with-a-pip-virtual-environment).
 - If your workflow relies on a fixed environment in which you run a single
 binary/script and/or need intertwining with the host software environment, you
-may [wrap it using the LUMI container wrapper](#use-the-LUMI-container-wrapper).
+may [wrap it using the LUMI container wrapper](#use-the-lumi-container-wrapper).
 - If you are used to the managed software stacks on the CSC HPC systems, you may
 prefer to [use pre-installed Python packages in the CSC software
 stack](#use-the-csc-software-stack).

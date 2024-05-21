@@ -93,7 +93,7 @@ $ eb singularity-bindings-system-cpeGNU-<toolchain-version>.eb -r
 ```
 
 Running e.g. the [OSU point-to-point bandwidth test
-container](../../software/containers/singularity.md#building-lumi-mpi-compatible-containers)
+container](../../software/containers/singularity.md#building-containers-on-local-hardware)
 can then be done using
 
 ```bash
