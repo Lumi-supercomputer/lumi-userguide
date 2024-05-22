@@ -3,7 +3,7 @@
 Jupyter for Courses is an app that makes using a custom
 Python environment simple when hosting or participating in courses.
 
-Python environments can be defined as modules in the project [persistent storage](../../../storage/#where-to-store-data).
+Python environments can be defined as modules in the project [persistent storage](../../storage/index.md#where-to-store-data).
 Default resources for the course Python environment can also be defined in the same directory.
 
 ## Using the app
@@ -26,9 +26,9 @@ environment is not visible in the form after creating the files and selecting th
 
 Two files are needed for the course modules to be visible in the web interface:
 
- - a `<course>.lua` file that defines the [module](../../lumi_env/Lmod_modules) that sets up the Python environment.
+ - a `<course>.lua` file that defines the [module](../lumi_env/Lmod_modules.md) that sets up the Python environment.
     Only files containing the text `Jupyter` will be visible in the app.
-    For more information about writing these module files, check the documentation for [creating and using your own modules](../../lumi_env/Lmod_modules/#creating-and-using-your-own-modules).
+    For more information about writing these module files, check the documentation for [creating and using your own modules](../lumi_env/Lmod_modules.md#creating-and-using-your-own-modules).
     This module file will be loaded using `module load` when launching Jupyter.
  - a `<course>-resources.yml` that defines the default resources used for Jupyter.
     If this file is omitted, the resources must explicitly be defined in the resource settings in the form.
@@ -57,5 +57,5 @@ mem: "16GB"
 ```
 
 The Python environment for the course also needs to be created.
-It is recommended that you use the [LUMI container wrapper](../../../software/installing/container-wrapper) for creating the Python environment.
+It is recommended that you use the [LUMI container wrapper](../../software/installing/container-wrapper.md) for creating the Python environment.
 After creating the environment using the LUMI container wrapper, the full path to the `bin` directory needs to be added inside the `prepend_path` in the Lua file for the course above.
