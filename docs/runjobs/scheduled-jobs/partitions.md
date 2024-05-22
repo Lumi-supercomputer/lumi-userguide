@@ -20,7 +20,7 @@ these partitions, your jobs use all resources available on the node and won't
 share the node with other jobs. Therefore, make sure that your application can
 take advantage of all the resources on the node as you will be billed for the
 complete node regardless of the resource actually used as detailed in the
-[billing policy](../../runjobs/lumi_env/billing.md#standard-and-bench-partitions).
+[billing policy](../../runjobs/lumi_env/billing.md).
 
 | Name           | Max walltime | Max jobs          | Max resources/job | Hardware<br>partition<br>used         |
 | -------------- | ------------ | ----------------- | ----------------- | --------------------------------------|
