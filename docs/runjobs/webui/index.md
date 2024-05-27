@@ -55,6 +55,7 @@ you can upload/download files, create new files and directories, or open a shell
 !!! note
     Uploaded files will overwrite existing files with the same name without prompting.
     Currently, the maximum size for individual file uploads is 10GB.
+    Keep the tab with the file browser open while file transfers are in progress to ensure that they complete successfully.
 
 
 ![File browser view](../../assets/images/wwwLumiFiles.png)
@@ -66,11 +67,31 @@ The file browser comes with a basic text editor. Some important notes on that:
 - If no changes have been made, the _save_ button is grayed out.
 - There is no _save-as_ feature, so read-only files cannot be edited.
 
-LUMI-O can also be accessed if you have [configured the connection](../../storage/lumio/index.md#configuring-the-lumi-o-connection)
-using the _lumio-conf_ tool.
-After running the configuration tool, you may need to restart the web server using the _Restart the webserver_ link in the _Help_ menu in the top navbar.
-Shortcuts to the project storage spaces in LUMI-O that have valid authentication credentials will be visible in the file browser.
+#### Accessing LUMI-O
+[LUMI-O](../../storage/lumio/#lumi-o) can also be accessed if you have
+configured the connection, which you can do using the Cloud storage
+configuration app, found in the _Pinned apps_ or the _Tools_ dropdown in the
+navbar. After configuring the connections, also known as remotes, you can find
+them in the _Files_ dropdown in the navbar or in the files browser.
 
+The Cloud storage configuration app will configure a private remote,
+`lumi-<project number>-private`, and a public remote, `<lumi-project
+number>-public>`, if you have enabled the option. Note that files uploaded to
+the public remote will be publicly accessible on the URL:
+```
+https://<project-number>.lumidata.eu/<bucket_name>
+```
+
+Only shortcuts to the project storage spaces in LUMI-O that have valid
+authentication credentials will be visible in the file browser, so once the
+authentication expires after 7 days, they will no longer be visible.
+If you no longer need a configured connection to LUMI-O, you can either delete
+the remote, which keeps the authentication credentials valid, or revoke the
+remote, which will revoke the authentication credentials.
+
+!!! note
+    Uploading from your local computer to LUMI-O directly is currently
+    recommended only for small files.
 
 ### Active Jobs
 
