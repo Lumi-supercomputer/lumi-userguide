@@ -90,7 +90,9 @@ remote, which will revoke the authentication credentials.
 
 !!! note
     Uploading from your local computer to LUMI-O directly is currently
-    recommended only for small files.
+    recommended only for small files that take less than a minute to upload.
+    For larger files, you can upload them to your project scratch directory and
+    then move them to LUMI-O.
 
 ### Active Jobs
 
