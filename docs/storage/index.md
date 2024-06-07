@@ -8,7 +8,7 @@
 
 [helpdesk]: ../helpdesk/index.md
 
-[sionlib]: https://www.fz-juelich.de/ias/jsc/EN/Expertise/Support/Software/SIONlib/_node.html
+[sionlib]: https://www.fz-juelich.de/en/ias/jsc/services/user-support/software-tools/sionlib
 [hdf5]: https://www.hdfgroup.org/solutions/hdf5/
 
 # Overview
