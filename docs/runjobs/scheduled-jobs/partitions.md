@@ -39,24 +39,24 @@ that you can request a sub-node allocation: you can request only part of the
 resources (cores, gpus, and memory) available on the compute node. This also means
 that your job may share the node with other jobs.
 
-| Name     | Max walltime | Max jobs                | Max resources/job  | Hardware partition | Purpose                                                     |
-| -------- | ------------ | ----------------------- | ------------------ | ------------------ | ----------------------------------------------------------- |
-| dev-g    | 3 hours      |   2 (1 running)         | 32 nodes           | [LUMI-G][lumi-g]   | Debugging[\*](#debugging-nodes)                             |
-| debug    | 30 minutes   |   2 (1 running)         |  4 nodes           | [LUMI-C][lumi-c]   | Debugging and testing[\*](#debugging-nodes)                 |
-| small-g  | 3 days       | 210 (200 running)       |  4 nodes           | [LUMI-G][lumi-g]   |                                                             | 
-| small    | 3 days       | 220 (200 running)       |  4 nodes           | [LUMI-C][lumi-c]   | Small or memory intense jobs[&dagger;](#large-memory-nodes) |
-| largemem | 1 day        |  30 (20 running)        |  1 nodes           | [LUMI-D][lumi-d]   | Memory intense jobs[&dagger;](#large-memory-nodes)          |
-| lumid    | 4 hours      |   1 (1 running)         |  1 GPU             | [LUMI-D][lumi-d]   | Visualisation[&Dagger;](#visualisation-nodes)               |
+| Name     | Max walltime | Max jobs                | Max resources/job  | Hardware partition | Purpose                                             |
+| -------- | ------------ | ----------------------- | ------------------ | ------------------ | --------------------------------------------------- |
+| dev-g    | 3 hours      |   2 (1 running)         | 32 nodes           | [LUMI-G][lumi-g]   | [Debugging](#debugging-nodes)                       |
+| debug    | 30 minutes   |   2 (1 running)         |  4 nodes           | [LUMI-C][lumi-c]   | [Debugging and testing](#debugging-nodes)           |
+| small-g  | 3 days       | 210 (200 running)       |  4 nodes           | [LUMI-G][lumi-g]   |                                                     | 
+| small    | 3 days       | 220 (200 running)       |  4 nodes           | [LUMI-C][lumi-c]   | [Small or memory intense jobs](#large-memory-nodes) |
+| largemem | 1 day        |  30 (20 running)        |  1 nodes           | [LUMI-D][lumi-d]   | [Memory intense jobs](#large-memory-nodes)          |
+| lumid    | 4 hours      |   1 (1 running)         |  1 GPU             | [LUMI-D][lumi-d]   | [Visualisation](#visualisation-nodes)               |
 
 !!! info "Notes about specific partitions"
 
     #### Debugging nodes
-    \* Nodes in the `debug` and `dev-g` partition are meant for debugging and
+    Nodes in the `debug` and `dev-g` partition are meant for debugging and
     quick testing purposes and not for production runs. Repeated abuse of these
     partitions might result in account suspension.
 
     #### Large memory nodes
-    &dagger; The [LUMI-C][lumi-c] large memory nodes (512GB and 1TB) are located in the
+    The [LUMI-C][lumi-c] large memory nodes (512GB and 1TB) are located in the
     `small` partition. Therefore, to use these nodes, you need to
     select the `small` partition (`--partition=small`). Then the LUMI-C large
     memory nodes will be allocated if you request more memory than is available
@@ -68,7 +68,7 @@ that your job may share the node with other jobs.
     project as there are only a limited number of those nodes.
 
     #### Visulation nodes
-    &Dagger; [LUMI-D](lumi-d) nodes are the only nodes in LUMI that have Nvidia GPUs.
+    [LUMI-D](lumi-d) nodes are the only nodes in LUMI that have Nvidia GPUs.
     They are only intended for visualisation purposes like Paraview. They are not a 
     source of CUDA-compatible compute power for regular computations. Regular computations
     should be done with codes suitable for the AMD GPUs of LUMI-G. Repeated abuse 
