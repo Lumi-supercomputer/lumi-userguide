@@ -63,12 +63,16 @@ that your job may share the node with other jobs.
     in the LUMI-C standard compute nodes.
  
     The nodes in the `largemem` partition are part of [LUMI-D][lumi-d] and have
-    4TB of memory per node.
+    4TB of memory per node. They are mostly meant for data-intensive pre- and 
+    postprocessing and should not be the only compute resource used by your
+    project as there are only a limited number of those nodes.
 
     #### Visulation nodes
     &Dagger; [LUMI-D](lumi-d) nodes are the only nodes in LUMI that have Nvidia GPUs.
-    They are only intended for visualisation purposes like Paraview. They should not be
-    used for calculations and production runs.
+    They are only intended for visualisation purposes like Paraview. They are not a 
+    source of CUDA-compatible compute power for regular computations. Regular computations
+    should be done with codes suitable for the AMD GPUs of LUMI-G. Repeated abuse 
+    may result in account suspension or project termination.
 
 
 ## Getting information about Slurm partitions
