@@ -103,6 +103,15 @@ nav:
       - Authentication for LUMI-O: storage/lumio/auth-lumidata-eu.md
       - Error messages: storage/lumio/error-messages.md
       - Advanced usage of LUMI-O: storage/lumio/advanced.md
+  - Tutorials:
+      - Overview: tutorials/index.md
+      - Machine learning guide:
+        - ML containers: tutorials/containers.md
+        - Data storage: tutorials/data_storage.md
+        - File formats: tutorials/file_formats.md
+        - Multi-GPU and Multi-node: tutorials/multi_gpu_and_node.md
+        - Profiling and debugging: tutorials/profiling_and_debugging.md
+        - TensorBoard visualization: tutorials/visualization.md
   - Help desk: 
     - Help desk: helpdesk/index.md
     - Training and events: helpdesk/training.md
