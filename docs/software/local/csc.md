@@ -19,6 +19,7 @@ Available software:
 * [GDAL](https://docs.csc.fi/apps/gdal/)
 * [GRASS GIS](https://docs.csc.fi/apps/grass/)
 * [GROMACS](https://docs.csc.fi/apps/gromacs/)
+* [HyperQueue](https://docs.csc.fi/apps/hyperqueue/)
 * [JAX](https://docs.csc.fi/apps/jax/)
 * [Julia](https://docs.csc.fi/apps/julia/)
 * [LAMMPS](https://docs.csc.fi/apps/lammps/)
