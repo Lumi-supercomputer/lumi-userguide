@@ -20,6 +20,21 @@ systems they are and on what hardware partitions they are located at.
 
 ---
 
+!!! note "Important information regarding data lifetime"
+
+    The data lifetime on LUMI is closely related to the project lifetime.
+    
+    When a project ends, it is deactivated for compute, meaning you will no
+    longer be able to submit jobs. However, you will still have access to LUMI
+    and the data stored on it for 90 days. You are responsible of the backup any
+    data you may still need within this 90-day period. After the 90 days, the
+    data will be deleted.
+
+    If you start a new project within 90 days of your previous project's end and
+    wish to reuse the data, you are responsible for transferring the data from
+    one project to the other.
+
+
 On LUMI you have access to network file system storage based on the
 [LUMI-P][lumip] and [LUMI-F][lumif] hardware partitions, as well as to the object storage on [LUMI-O][lumio]. 
 The use of storage is billed according to the [billing policy](../runjobs/lumi_env/billing.md#storage-billing).
