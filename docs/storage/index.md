@@ -92,16 +92,16 @@ areas.
 | **Project<br> flash**      | `/flash/<project>`         | High performance temporary<br> storage for input and output data | [LUMI-F][lumif]         |
 
 
-|                           | Quota | Max files | Expandable            | Backup | Retention        |
-|---------------------------|-------|-----------|-----------------------|--------|------------------|
-| **User<br>home**          | 20 GB | 100k      | No                    | No     | User lifetime    |
-| **Project<br>persistent** | 50 GB | 100k      | Yes,<br> up to 500GB  | No     | Project lifetime |
-| **Project<br>scratch**    | 50 TB | 2000k     | Yes,<br> up to 500TB  | No     | 90 days          |
-| **Project<br>fast**       |  2 TB | 1000k     | Yes,<br> up to 100TB  | No     | 30 days          |
+|                           | Quota | Max files | Expandable            | Retention        | Billing<br>rate |
+|---------------------------|-------|-----------|-----------------------| -----------------|-----------------|
+| **User<br>home**          | 20 GB | 100k      | No                    | User lifetime    | NA              |
+| **Project<br>persistent** | 50 GB | 100k      | Yes,<br> up to 500GB  | Project lifetime | 1x              |
+| **Project<br>scratch**    | 50 TB | 2000k     | Yes,<br> up to 500TB  | 90 days          | 1x              |
+| **Project<br>fast**       |  2 TB | 1000k     | Yes,<br> up to 100TB  | 30 days          | 10x             |
 
-|                    | Quota  | Max<br>buckets | Max<br>objects<br>per bucket     | Backup | Retention           |
-|--------------------|--------|----------------|----------------------------------|--------|---------------------|
-| **Object storage** | 150 TB | 1000           | 500 000                          | No     | project lifetime    |
+|                    | Quota  | Max<br>buckets | Max<br>objects<br>per bucket     | Retention           | Billing<br>rate |
+|--------------------|--------|----------------|----------------------------------|---------------------|-----------------|
+| **Object storage** | 150 TB | 1000           | 500 000                          | project lifetime    | 0.5x            |
 
 Note that, except for the user home directory, data storage is allocated per
 project. When a storage space is marked as expandable, it means that you can
