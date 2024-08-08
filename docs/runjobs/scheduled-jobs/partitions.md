@@ -46,7 +46,7 @@ that your job may share the node with other jobs.
 | small-g  | 3 days       | 210 (200 running)       |  4 nodes           | [LUMI-G][lumi-g]   | [Small GPU jobs](#small-partitions)                                      | 
 | small    | 3 days       | 220 (200 running)       |  4 nodes           | [LUMI-C][lumi-c]   | [Small](#small-partitions) or [memory intense](#large-memory-nodes) jobs |
 | largemem | 1 day        |  30 (20 running)        |  1 nodes           | [LUMI-D][lumi-d]   | [Memory intense jobs](#large-memory-nodes)                               |
-| lumid    | 4 hours      |   1 (1 running)         |  1 GPU             | [LUMI-D][lumi-d]   | [Visualisation](#visualisation-nodes)                                    |
+| lumid    | 4 hours      |   1 (1 running)         |  1 GPU             | [LUMI-D][lumi-d]   | [Visualisation](#visualization-nodes)                                    |
 
 !!! info "Notes about specific partitions"
 
@@ -78,7 +78,7 @@ that your job may share the node with other jobs.
     postprocessing and should not be the only compute resource used by your
     project as there are only a limited number of those nodes.
 
-    #### Visulation nodes
+    #### Visualization nodes
     [LUMI-D](lumi-d) nodes are the only nodes in LUMI that have Nvidia GPUs.
     They are only intended for visualisation purposes like Paraview. They are not a 
     source of CUDA-compatible compute power for regular computations. Regular computations
