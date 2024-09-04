@@ -102,7 +102,7 @@ On LUMI, `cotainr` is available in the [LUMI central software
 stack][lumi-software-stack] and may be loaded using
 
 ```bash
-$ module load LUMI
+$ module load CrayEnv
 $ module load cotainr
 ```
 
