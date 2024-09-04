@@ -98,8 +98,8 @@ LUMI, you have two options:
 containers on LUMI for certain [use cases][cotainr-usecases]. It is **not** a
 general purpose container building tool.
 
-On LUMI, `cotainr` is available in the [LUMI central software
-stack][lumi-software-stack] and may be loaded using
+On LUMI, `cotainr` is available in the 
+[Cray Programming Environment][lumi-software-stack] and may be loaded using
 
 ```bash
 $ module load CrayEnv
