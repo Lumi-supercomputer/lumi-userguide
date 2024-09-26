@@ -14,7 +14,7 @@ Available software:
 
 * [Allas](https://docs.csc.fi/data/Allas/allas_lumi/) (only for the Finnish national system users)
 * [Amber](https://docs.csc.fi/apps/amber/)
-* [Ansys](https://docs.csc.fi/apps/ansys/)
+* [ANSYS](https://docs.csc.fi/apps/ansys/)
 * [CP2K](https://docs.csc.fi/apps/cp2k/)
 * [Elmer](https://docs.csc.fi/apps/elmer/)
 * [GDAL](https://docs.csc.fi/apps/gdal/)
