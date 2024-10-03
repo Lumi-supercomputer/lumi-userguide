@@ -40,7 +40,7 @@ with [the Lmod module environment][Lmod_modules].*
 through this chapter once, and then start software installations.*
 
 We support installing software with EasyBuild only in the LUMI software stacks,
-not in CrayEnv.
+not in CrayEnv or any other stack.
 
 
 ### EasyBuild recipes
@@ -54,16 +54,16 @@ An EasyBuild build recipe is a file with a name that consists of different
 components and ends with '.eb'. Consider, e.g., a build recipe for the software GROMACS:
 
 ```text
-GROMACS-2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU.eb
+GROMACS-2024.3-cpeGNU-24.03-PLUMED-2.9.2-noPython-CPU.eb
 ```
 
 The first part of the name, `GROMACS`, is the name of the package. The second
-part of the name, `2022.5` is the version of GROMACS, in this case the
+part of the name, `2024.3` is the version of GROMACS, in this case the
 2021.4 release. 
 
-The next part, `cpeGNU-23.09`, denotes the so-called *toolchain*
+The next part, `cpeGNU-24.03`, denotes the so-called *toolchain*
 used for the build. Each toolchain corresponds to a particular HPE Cray Programming
-Environment, and the number (`23.09`in this example) denotes the version of this
+Environment, and the number (`24.03`in this example) denotes the version of this
 programming environment. The various EasyBuild toolchains on LUMI are:
 
 | EasyBuild toolchain | HPE Cray PE                                                    |
@@ -79,9 +79,9 @@ just the version in the file name that should match but the version of the
 toolchain that is used in the recipe file.) 
 
 The last part of the name,
-`-PLUMED-2.9.0-noPython-CPU`, is called the version suffix. Version suffixes are
+`-PLUMED-2.9.2-noPython-CPU`, is called the version suffix. Version suffixes are
 typically used to distinguish different builds of the same package version.
-In this case, it indicates that it is a build of the 2022.5 version
+In this case, it indicates that it is a build of the 2024.3 version
 purely for CPU and also includes PLUMED as we have also builds without PLUMED
 (which is not compatible with every GROMACS version).
 
@@ -216,25 +216,25 @@ the command line.
 ### Step 3: Install the package
 
 To show how to actually install a package, we continue with our
-`GROMACS-2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU.eb` example.
+`GROMACS-2024.3-cpeGNU-24.03-PLUMED-2.9.2-noPython-CPU.eb` example.
 
 If all required EasyBuild recipes are in one of the
 repositories, all you need to do to install the
 package is to run
 
 ```bash
-$ eb GROMACS-2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU.eb -r
+$ eb GROMACS-2024.3-cpeGNU-24.03-PLUMED-2.9.2-noPython-CPU.eb -r
 ```
 
 The `-r` tells EasyBuild to also install dependencies that may not yet be
 installed.
 
-If the `GROMACS-2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU.eb` would not have been
+If the `GROMACS-2024.3-cpeGNU-24.03-PLUMED-2.9.2-noPython-CPU.eb` would not have been
 in a repository, but in the current directory or one of its subdirectories,
 you could use 
 
 ```bash
-$ eb GROMACS-2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU.eb -r .
+$ eb GROMACS-2024.3-cpeGNU-24.03-PLUMED-2.9.2-noPython-CPU.eb -r .
 ```
 
 The only difference is the dot added to the `-r` flag. This adds the current directory to
@@ -249,7 +249,7 @@ package (which may be handy if building right away fails).
 If you now type `module avail` you should see the
 
 ```text
-GROMACS/2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU
+GROMACS/2024.3-cpeGNU-24.03-PLUMED-2.9.2-noPython-CPU
 ```
 
 module in the list. Note the relation between the name of the EasyBuild recipe
@@ -258,14 +258,14 @@ the EasyBuild recipe follows the EasyBuild guidelines for naming. If the
 guidelines are not followed and if EasyBuild needs to install this module as a
 dependency of another package, EasyBuild will fail to locate the build recipe.
 
-The `GROMACS/2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU` module can now be used just like
+The `GROMACS/2024.3-cpeGNU-24.03-PLUMED-2.9.2-noPython-CPU` module can now be used just like
 any other module on the system. To *use* the GROMACS module, you don't need to load `EasyBuild-user`.
 That was only required for *installing* the package. 
 All you need to do to use the GROMACS module we just installed is 
 
 ```bash
 module load LUMI/24.03
-module load GROMACS/2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU
+module load GROMACS/2024.3-cpeGNU-24.03-PLUMED-2.9.2-noPython-CPU
 ```
 
 (i.e., loading the software stack in which we installed GROMACS and the GROMACS module that 
@@ -423,7 +423,7 @@ EasyBuild recipes (`.eb` files) should be in a subdirectory
 then go in the `easybuild/easyblocks` subdirectory) and even personal
 configuration files that overwrite some system options. This setup also
 guarantees compatibility with some EasyBuild features for very advanced users
-that go way beyond this page.
+that go way beyond what we can cover in this page.
 
 To store this repository on GitHub, you can follow the GitHub documentation,
 and in particular the page ["Adding an existing project to GitHub using the
