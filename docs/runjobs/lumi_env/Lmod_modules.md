@@ -101,7 +101,12 @@ also search for these.
 ### module spider
 
 The basic command to search for software on LUMI is `module spider`.
-It has three levels, producing different outputs:
+It will search in the `CrayEnv` and `LUMI` stacks for modules, but will
+not always show all results in other stacks, unless the module enabling
+that stack is loaded. This may be a bit annoying, but we had to do this
+to keep the performance of `module spider` high enough.
+
+The `module spider` command has three levels, producing different outputs:
 
  1. `module spider` without further arguments will produce a list of all
     installed software and show some basic information about those packages.
@@ -185,15 +190,6 @@ It has three levels, producing different outputs:
         For more information on the software stacks on LUMI, head to the
         [Software stacks ][softwarestacks] page.
 
-    !!! failure "Known issue"
-        We have run into cases where the output of the `module spider` 
-        command is incomplete. This is caused
-        by the non-standard way in which the Cray programming environment uses
-        Lmod and also by the way the software stack needs to be installed
-        next to the programming environment rather than integrated with it
-        due to the way the Cray programming environment has to be installed
-        on the system.
-
     In some cases, if there is no ambiguity, `module spider` will
     already produce help about the package.
 
@@ -270,6 +266,21 @@ It has three levels, producing different outputs:
     ```
 
     (which you can of course also split in multiple `module load` commands).
+
+    !!! failure "Known issue"
+        We have run into cases where the output of the `module spider` 
+        command is incomplete and does not give you all possible combinations
+        of modules that can make the module available. This is caused
+        by the non-standard way in which the Cray programming environment uses
+        Lmod and also by the way the software stack needs to be installed
+        next to the programming environment rather than integrated with it
+        due to the way the Cray programming environment has to be installed
+        on the system.
+
+        Furthermore, if a module exists with the same name as an extension of
+        another module (but possibly different uppercase/lowercase sequence), 
+        the extension is not always shown unless the exact capitalisation of
+        the extension is used.
 
 
 ### module keyword
@@ -423,6 +434,12 @@ $ module --force purge
 ```
 
 Note the position of the `--force` argument.
+Note that using `module --force purge` will have consequences and may cause other
+modules on the system to fail as essential modules for configuring the system will
+also be unloaded (e.g., the `init-lumi` module which does much of the essential
+initialisation of the software stack). It is not recommended to use
+`module --force purge` unless you understand that it may break other commands that
+you use.
 
 It is also possible to see the Lmod commands that are executed when loading a
 module using `module show`. E.g.,
@@ -519,7 +536,9 @@ on LUMI is fairly close to the latest version at the moment.
 
 ??? Tip "Tip: Study an existing module file"
     If you want to study an existing module file then `module show <modulename>`
-    will also show you where to find the module file.
+    will also show you where to find the module file. It does not show the
+    whole contents of the module file though, but only the commands that have
+    an effect, so open the file with your favourite editor.
 
 Adding directories to the search path for modules is done with
 
@@ -557,8 +576,9 @@ that are loaded from that directory.
 On LUMI, we use the Lmod implementation as provided by HPE Cray as part of the
 programming environment. The version of Lmod is a little behind the most recent
 version. This implies that not all information that can be found on the internet
-is also correct for LUMI, though as Lmod development has slowed down, this is not
-that likely to happen anymore.
+is also correct for LUMI, though as Lmod development has slowed down, this is less
+likely to happen than used to be the case. There are however some extensions in 
+the planning of the Lmod maintainers that will not appear immediately on LUMI.
 
 - [Official Lmod documentation on readthedocs][lmod], but this is always for
   the latest version.
