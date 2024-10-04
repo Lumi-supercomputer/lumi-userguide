@@ -156,7 +156,7 @@ modules that can be used to change the way the module tree is displayed:
 -   `ModulePowerUser`: will also reveal several hidden modules, most of which
     are only important to sysadmins or users who really want to do EasyBuild
     development in a clone of the software stack.
-    (Or you could of course use the `--hidden` command line flag of `module avail`
+    (Or you could of course use the `--show_hidden` command line flag of `module avail`
     to show hidden modules also.)
 
 
