@@ -398,7 +398,7 @@ To load a specific version of the module, you need to specify it after the name
 of the module:
 
 ```bash
-$ module load cray-fftw/3.3.10.5
+$ module load cray-fftw/3.3.10.7
 ```
 
 To unload a module from your environment, use the `unload` sub-command
@@ -446,7 +446,7 @@ module using `module show`. E.g.,
 
 ```bash
 $ module load CrayEnv
-$ module show cray-fftw
+$ module show cray-fftw/3.3.10.7
 ```
 
 will show
