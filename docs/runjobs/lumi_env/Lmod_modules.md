@@ -18,8 +18,8 @@ Software on LUMI can be accessed through modules. With the help of the `module`
 command, you will be able to load and unload the desired compilers, tools and
 libraries.
 
-Software modules allow you to control which software and versions are available
-in your environment. Modules contain the necessary information to allow you to
+Software modules enable you to control which software and versions are available
+in your environment. Modules contain the necessary information to enable you to
 run a particular application or provide you access to a particular library so
 that
 
@@ -101,7 +101,12 @@ also search for these.
 ### module spider
 
 The basic command to search for software on LUMI is `module spider`.
-It has three levels, producing different outputs:
+It will search in the `CrayEnv` and `LUMI` stacks for modules, but will
+not always show all results in other stacks, unless the module enabling
+that stack is loaded. This may be a bit annoying, but we had to do this
+to keep the performance of `module spider` high enough.
+
+The `module spider` command has three levels, producing different outputs:
 
  1. `module spider` without further arguments will produce a list of all
     installed software and show some basic information about those packages.
@@ -130,17 +135,14 @@ It has three levels, producing different outputs:
     ----------------------------------------------------------------
       gnuplot:
     ----------------------------------------------------------------
-        Description:
-          Gnuplot is a portable command-line driven graphing
-          utility
-
-         Versions:
+        Versions:
             gnuplot/5.4.3-cpeAMD-22.08
-            gnuplot/5.4.3-cpeAOCC-21.12
             gnuplot/5.4.3-cpeAOCC-22.08
-            gnuplot/5.4.3-cpeCray-21.12
-            gnuplot/5.4.3-cpeCray-22.06
             gnuplot/5.4.3-cpeCray-22.08
+            gnuplot/5.4.3-cpeGNU-22.08
+            gnuplot/5.4.6-cpeAMD-22.12
+            gnuplot/5.4.6-cpeAOCC-22.12
+            gnuplot/5.4.6-cpeCray-22.12            
             ...
     ```
 
@@ -150,6 +152,9 @@ It has three levels, producing different outputs:
     being the AMD AOCC compiler (PrgEnv-aocc) and the Cray compiler (PrgEnv-cray),
     respectively. This is somewhat important as it is risky to combine modules
     compiled with different compilers.
+
+    You may see other modules also with some cryptic letters at the end.
+    They come from software installed with Spack.
 
     Similarly,
 
@@ -163,34 +168,27 @@ It has three levels, producing different outputs:
     ----------------------------------------------------------------
       CMake:
     ----------------------------------------------------------------
-         Versions:
-            CMake/3.22.2 (E)
-            CMake/3.23.2 (E)
+        Versions:
             CMake/3.24.0 (E)
             CMake/3.25.2 (E)
             CMake/3.27.7 (E)
+            CMake/3.29.3 (E)
+        Other possible modules matches:
+            cmake  cmake-3.26.3-gcc-7.5.0-3og5f6c  cmake-3.26.3-gcc-7.5.0-cl73x27  rocm-cmake
 
-    Names marked by a trailing (E) are extensions provided by 
-    another module.
+    Names marked by a trailing (E) are extensions provided by another module.
     ```
 
-    This tells that there is no `CMake` module on the system but that five
-    versions of `CMake` (3.22.2, 3.23.2, 3.24.0, 3.25.2 and 3.27.7) 
+    This tells that there is no `CMake` module on the system but that four
+    versions of `CMake` (3.24.0, 3.25.2, 3.27.7 and 3.29.3) 
     are available on the system as
     extensions of another module.
+    Then there are some more packages that are provided by Spack (again with
+    cryptic names).
 
     !!! info "Information on LUMI software stacks?"
         For more information on the software stacks on LUMI, head to the
         [Software stacks ][softwarestacks] page.
-
-    !!! failure "Known issue"
-        We have run into cases where the output of the `module spider` 
-        command is incomplete. This is caused
-        by the non-standard way in which the Cray programming environment uses
-        Lmod and also by the way the software stack needs to be installed
-        next to the programming environment rather than integrated with it
-        due to the way the Cray programming environment has to be installed
-        on the system.
 
     In some cases, if there is no ambiguity, `module spider` will
     already produce help about the package.
@@ -200,60 +198,89 @@ It has three levels, producing different outputs:
     loaded to be able to load the package, e.g.
 
     ```bash
-    $ module spider git/2.42.1
+    $ module spider git/2.45.1
     ```
 
     will return
 
     ```text
     ----------------------------------------------------------------
-      git: git/2.42.1
+      git: git/2.45.1
     ----------------------------------------------------------------
         Description:
           Git is a free and open source distributed version control
           system
 
-        You will need to load all module(s) on any one of the lines 
-        below before the "git/2.42.1" module is available to load.
+
+        You will need to load all module(s) on any one of the lines below before the "git/2.45.1" module is available to load.
 
           CrayEnv
-          LUMI/23.09  partition/C
-          LUMI/23.09  partition/G
-          LUMI/23.09  partition/L
+          LUMI/24.03  partition/C
+          LUMI/24.03  partition/G
+          LUMI/24.03  partition/L
+    ...
     ```
 
     (abbreviated output). Note that it also tells you which other modules need
     to be loaded. You need to choose the line which is appropriate for you and
-    load all modules on that line, not the whole list of e.g., 7 modules.
+    load all modules on that line, not the whole list of, e.g., 7 modules.
 
     This form of `module spider` can also be used to find out how a tool provided
     as an extension by another module can be made available. E.g., in a previous 
-    example we've seen that `CMake/3.27.7` is available via another module.
+    example we've seen that `CMake/3.29.3` is available via another module.
     Now
 
     ```bash
-    $ module spider CMake/3.27.7
+    $ module spider CMake/3.29.3
     ```
 
     will return output similar to
 
     ```text
     ----------------------------------------------------------------
-      CMake: CMake/3.27.7 (E)
+      CMake: CMake/3.29.3 (E)
     ----------------------------------------------------------------
-        This extension is provided by the following modules. To 
-        access the extension you must load one of the following 
-        modules. Note that any module names in parentheses show the 
-        module location in the software hierarchy.
+        This extension is provided by the following modules. To access the extension you must load one of the following modules. Note that any module names in parentheses show the module location in the software hierarchy.
 
-           buildtools/23.09 (LUMI/23.09 partition/L)
-           buildtools/23.09 (LUMI/23.09 partition/G)
-           buildtools/23.09 (LUMI/23.09 partition/C)
-           buildtools/23.09 (CrayEnv)
+
+          buildtools/24.03 (LUMI/24.03 partition/L)
+          buildtools/24.03 (LUMI/24.03 partition/G)
+          buildtools/24.03 (LUMI/24.03 partition/C)
+          buildtools/24.03 (CrayEnv)
+          buildtools/23.12 (LUMI/23.12 partition/L)
+          buildtools/23.12 (LUMI/23.12 partition/G)
+          buildtools/23.12 (LUMI/23.12 partition/C)
+          buildtools/23.12 (CrayEnv)
+
+
+    Names marked by a trailing (E) are extensions provided by another module.
     ```
-    This tells that `CMake` is provided by the `buildtools/23.09` module and also 
+    This tells that `CMake` is provided by the `buildtools/23.12` and
+    `buildtools/24.03` modules and also 
     indicates four possible combinations of software stack modules that can provide
-    that module.
+    that module. So you can load the selected `buildtools` module by first loading the 
+    modules between parentheses and then the corresponding buildtools module, e.g.,
+
+    ```bash
+    $ module load LUMI/24.03 partition/C buildtools/24.03
+    ```
+
+    (which you can of course also split in multiple `module load` commands).
+
+    !!! failure "Known issue"
+        We have run into cases where the output of the `module spider` 
+        command is incomplete and does not give you all possible combinations
+        of modules that can make the module available. This is caused
+        by the non-standard way in which the Cray programming environment uses
+        Lmod and also by the way the software stack needs to be installed
+        next to the programming environment rather than integrated with it
+        due to the way the Cray programming environment has to be installed
+        on the system.
+
+        Furthermore, if a module exists with the same name as an extension of
+        another module (but possibly different uppercase/lowercase sequence), 
+        the extension is not always shown unless the exact capitalisation of
+        the extension is used.
 
 
 ### module keyword
@@ -287,6 +314,7 @@ useful example on a supercomputer, but the library is in fact needed to be able
 to install some other packages even though the sound function is not immediately
 useful.
 
+
 ### module avail
 
 The `module avail` command is used to show only available modules, i.e., modules
@@ -299,7 +327,8 @@ in two ways:
     using only its name.
 
  2. With the name of a module (or a part of the name), it will show all modules
-    that match that (part of) a name. E.g., when `LUMI/22.12` is loaded,
+    that match that (part of) a name. E.g., when `LUMI/24.03` is loaded on the 
+    login nodes,
 
     ```bash
     $ module avail gnuplot
@@ -308,12 +337,13 @@ in two ways:
     will show something along the lines of
 
     ```text
-    ----- EasyBuild managed software for software stack LUMI/22.12 on LUMI-L -----
-       gnuplot/5.4.6-cpeAOCC-22.12    gnuplot/5.4.6-cpeGNU-22.12 (D)
-       gnuplot/5.4.6-cpeCray-22.12
+    ---- EasyBuild managed software for software stack LUMI/24.03 on LUMI-L ----
+       gnuplot/5.4.10-cpeAOCC-24.03    gnuplot/5.4.10-cpeGNU-24.03 (D)
+       gnuplot/5.4.10-cpeCray-24.03
 
       Where:
        D:  Default Module
+    ...
     ```
 
     but
@@ -324,6 +354,7 @@ in two ways:
 
     will show you an often lengthy list that contains all packages with gnu
     (case-insensitive) in their name or version.
+
 
 ## Getting help
 
@@ -343,6 +374,7 @@ brief help about the module command.
 However, when used as `module help <name>` or `module help <name>/<version>`,
 it will produce help for either the default version of the package
 (if the version is not specified) or the indicated version.
+
 
 ## Loading and unloading modules
 
@@ -366,7 +398,7 @@ To load a specific version of the module, you need to specify it after the name
 of the module:
 
 ```bash
-$ module load cray-fftw/3.3.10.5
+$ module load cray-fftw/3.3.10.7
 ```
 
 To unload a module from your environment, use the `unload` sub-command
@@ -402,38 +434,44 @@ $ module --force purge
 ```
 
 Note the position of the `--force` argument.
+Note that using `module --force purge` will have consequences and may cause other
+modules on the system to fail as essential modules for configuring the system will
+also be unloaded (e.g., the `init-lumi` module which does much of the essential
+initialisation of the software stack). It is not recommended to use
+`module --force purge` unless you understand that it may break other commands that
+you use.
 
 It is also possible to see the Lmod commands that are executed when loading a
 module using `module show`. E.g.,
 
 ```bash
 $ module load CrayEnv
-$ module show cray-fftw
+$ module show cray-fftw/3.3.10.7
 ```
 
 will show
 
 ```text
------------------------------------------------------------------------------------------------------
-   /opt/cray/pe/lmod/modulefiles/cpu/x86-rome/1.0/cray-fftw/3.3.10.5.lua:
------------------------------------------------------------------------------------------------------
-help([[Release info:  /opt/cray/pe/fftw/3.3.10.5/release_info]])
+---------------------------------------------------------------------------------------------------
+   /opt/cray/pe/lmod/modulefiles/cpu/x86-rome/1.0/cray-fftw/3.3.10.7.lua:
+---------------------------------------------------------------------------------------------------
+help([[Release info:  /opt/cray/pe/fftw/3.3.10.7/release_info]])
 help([[Documentation: `man intro_fftw3`]])
-whatis("FFTW 3.3.10.5 - Fastest Fourier Transform in the West")
-setenv("FFTW_VERSION","3.3.10.5")
-setenv("CRAY_FFTW_VERSION","3.3.10.5")
-setenv("CRAY_FFTW_PREFIX","/opt/cray/pe/fftw/3.3.10.5")
-setenv("FFTW_ROOT","/opt/cray/pe/fftw/3.3.10.5/x86_rome")
-setenv("FFTW_DIR","/opt/cray/pe/fftw/3.3.10.5/x86_rome/lib")
-setenv("FFTW_INC","/opt/cray/pe/fftw/3.3.10.5/x86_rome/include")
+whatis("FFTW 3.3.10.7 - Fastest Fourier Transform in the West")
+setenv("FFTW_VERSION","3.3.10.7")
+setenv("CRAY_FFTW_VERSION","3.3.10.7")
+setenv("CRAY_FFTW_PREFIX","/opt/cray/pe/fftw/3.3.10.7")
+setenv("FFTW_ROOT","/opt/cray/pe/fftw/3.3.10.7/x86_rome")
+setenv("FFTW_DIR","/opt/cray/pe/fftw/3.3.10.7/x86_rome/lib")
+setenv("FFTW_INC","/opt/cray/pe/fftw/3.3.10.7/x86_rome/include")
 setenv("PE_FFTW_PKGCONFIG_VARIABLES","PE_FFTW_OMP_REQUIRES_@openmp@")
 setenv("PE_FFTW_OMP_REQUIRES"," ")
 setenv("PE_FFTW_OMP_REQUIRES_openmp","_mp")
 setenv("PE_FFTW_PKGCONFIG_LIBS","fftw3f_mpi:libfftw3f_threads:fftw3f:fftw3_mpi:libfftw3_threads:fftw3")
-prepend_path("PKG_CONFIG_PATH","/opt/cray/pe/fftw/3.3.10.5/x86_rome/lib/pkgconfig")
-prepend_path("PATH","/opt/cray/pe/fftw/3.3.10.5/x86_rome/bin")
-prepend_path("MANPATH","/opt/cray/pe/fftw/3.3.10.5/share/man")
-prepend_path("CRAY_LD_LIBRARY_PATH","/opt/cray/pe/fftw/3.3.10.5/x86_rome/lib")
+prepend_path("PKG_CONFIG_PATH","/opt/cray/pe/fftw/3.3.10.7/x86_rome/lib/pkgconfig")
+prepend_path("PATH","/opt/cray/pe/fftw/3.3.10.7/x86_rome/bin")
+prepend_path("MANPATH","/opt/cray/pe/fftw/3.3.10.7/share/man")
+prepend_path("CRAY_LD_LIBRARY_PATH","/opt/cray/pe/fftw/3.3.10.7/x86_rome/lib")
 prepend_path("PE_PKGCONFIG_PRODUCTS","PE_FFTW")
 ```
 
@@ -477,7 +515,9 @@ $ module restore <collection-name>
 More options to manage collections of modules can be found by running `module
 help` or in the [Lmod User Manual][lmod_collection]. Note, however, that the
 latter may contain options or commands that do not yet work on the version of
-Lmod supported on LUMI.
+Lmod supported on LUMI (though currently the Lmod version of LUMI is very
+recent).
+
 
 ## Creating and using your own modules
 
@@ -496,7 +536,9 @@ on LUMI is fairly close to the latest version at the moment.
 
 ??? Tip "Tip: Study an existing module file"
     If you want to study an existing module file then `module show <modulename>`
-    will also show you where to find the module file.
+    will also show you where to find the module file. It does not show the
+    whole contents of the module file though, but only the commands that have
+    an effect, so open the file with your favourite editor.
 
 Adding directories to the search path for modules is done with
 
@@ -532,9 +574,11 @@ that are loaded from that directory.
 ## Further reading
 
 On LUMI, we use the Lmod implementation as provided by HPE Cray as part of the
-programming environment. The version of Lmod is way behind the most recent
+programming environment. The version of Lmod is a little behind the most recent
 version. This implies that not all information that can be found on the internet
-is also correct for LUMI.
+is also correct for LUMI, though as Lmod development has slowed down, this is less
+likely to happen than used to be the case. There are however some extensions in 
+the planning of the Lmod maintainers that will not appear immediately on LUMI.
 
 - [Official Lmod documentation on readthedocs][lmod], but this is always for
   the latest version.
