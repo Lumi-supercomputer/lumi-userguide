@@ -219,14 +219,23 @@ on the compute nodes and data analysis and visualization nodes).
 
 !!! warning "Versions of the LUMI module"
     It is advised to always load a specific version of the LUMI module to have
-    access to the versions of the software that you want. Newer versions of the
-    `LUMI` module typically contain newer versions of a package, and packages
-    for which we have a newer version are not installed in newer stacks, or new
-    versions are not backported to older LUMI stacks.
+    access to the versions of the software that you want. 
+    
+    Newer versions of the
+    `LUMI` module typically contain newer versions of a package.
+    Older versions of packages are rarely re-installed in newer versions of a
+    `LUMI` stack if a newer version is already available in that stack, and
+    newer versions of software are not backported to older LUMI stacks. So if 
+    you want to keep using a specific and older version of a package, you'll
+    have to stay with that older version of the stack.
 
-    After a system update, users should move to newer software stacks as soon
+    After a system update, users should move to newer software stacks 
+    and updated software as soon
     as possible. Older versions of the LUMI stacks may not be fully functional
-    anymore.
+    anymore because some of the programming environment libraries they use do
+    not function well on the updated system, or simply because the older versions
+    of software in those stacks may no longer be compatible with the new 
+    environment.
 
     Failing to specify a specific version of the LUMI module may cause problems
     when the default is changed on the system, and jobs already in the queue may
