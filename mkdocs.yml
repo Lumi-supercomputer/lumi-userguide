@@ -32,6 +32,7 @@ nav:
         - Julia-Jupyter: runjobs/webui/julia-jupyter.md
         - Jupyter: runjobs/webui/jupyter.md
         - Jupyter for courses: runjobs/webui/jupyter-for-courses.md
+        - MLflow: runjobs/webui/mlflow.md
         - TensorBoard: runjobs/webui/tensorboard.md
         - Visual Studio Code: runjobs/webui/vscode.md
     - LUMI environment:
