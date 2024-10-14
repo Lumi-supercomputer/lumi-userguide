@@ -10,9 +10,17 @@ Load the CSC module tree into use with:
 module use /appl/local/csc/modulefiles
 ```
 
-Available software:
+Alternatively, there is also a module that you can load to accomplish the
+same:
 
-* [Allas](https://docs.csc.fi/data/Allas/allas_lumi/) (only for the Finnish national system users)
+```bash
+module load Local-CSC
+```
+
+Available software and tools:
+
+* [Allas](https://docs.csc.fi/data/Allas/allas_lumi/)
+  (only for the Finnish national system users)
 * [Amber](https://docs.csc.fi/apps/amber/)
 * [ANSYS](https://docs.csc.fi/apps/ansys/)
 * [CP2K](https://docs.csc.fi/apps/cp2k/)
