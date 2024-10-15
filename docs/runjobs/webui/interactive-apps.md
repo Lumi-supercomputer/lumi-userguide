@@ -17,12 +17,14 @@ The following settings available for most apps:
 - **Partition:** The Slurm partition used.
     Some apps have a limited set of partitions available.
     The partition select may affect what other fields in the form are visible.
-    Selecting a GPU partition will allocate one A40 GPU in the `lumid` partition, and one MI250 GCD in the other GPU partitions.
+    Selecting a GPU partition will allocate A40 GPUs in the `lumid` partition, and MI250 GCDs in the other GPU partitions.
     For the majority of the apps, you should use the `interactive` partition.
 - **Reservation:** The Slurm reservation to use for the resource allocation.
     The reservation field is only visible if you have access to an active reservation.
 - **CPU cores:** The number of physical CPU cores to allocate.
     As SMT is enabled, two threads per core will be allocated.
+- **Number of GPUs:** The number of GPUs or GCDs to reserve.
+    This field will only be visible if a GPU partition is selected.
 - **Memory:** The amount of memory in GB to allocate.
     For some partitions, this is not visible as a certain amount of memory is allocated per CPU core instead.
 - **Local disk:** The amount of local disk storage in GB to allocate for apps on LUMI-D nodes.
