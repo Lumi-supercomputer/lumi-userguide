@@ -97,8 +97,7 @@ can then be done using
 
 ```bash
 $ module load singularity-bindings
-$ srun --partition=<partition> --account=<account> --nodes=2 singularity run mpi_osu.sif
-$ srun --time=5 --partition=<partition> --nodes=2 --ntasks-per-node=1 --account=<account> singularity run  ./mpi_osu3-4-3.sif
+$ srun --time=5 --partition=<partition> --nodes=2 --ntasks-per-node=1 --account=<account> singularity run  mpi_osu.sif
 ```
 
 which gives the bandwidth measured for different message sizes, i.e., something
