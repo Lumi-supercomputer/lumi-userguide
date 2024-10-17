@@ -191,7 +191,6 @@ From: ubuntu:24.04
   #3.4a2 on LUMI
   VERSION=3.4.3
   BENCHMARK=7.4
-  ACTUALLIBMPI=12:1:12
 
   # Install software
   apt-get update
