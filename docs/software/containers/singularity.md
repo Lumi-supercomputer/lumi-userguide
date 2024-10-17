@@ -183,36 +183,42 @@ micro-benchmarks][osu-benchmark]. Finally, the OSU point to point bandwidth test
 is set as the "runscript" of the image.
 
 ```bash
-bootstrap: docker
-from: ubuntu:21.04
+Bootstrap: docker
+From: ubuntu:24.04
 
 %post
-    # Install software
-    apt-get update
-    apt-get install -y file g++ gcc gfortran make gdb strace wget ca-certificates --no-install-recommends
+  #version values
+  #3.4a2 on LUMI
+  VERSION=3.4.3
+  BENCHMARK=7.4
 
-    # Install mpich
-    wget -q http://www.mpich.org/static/downloads/3.1.4/mpich-3.1.4.tar.gz
-    tar xf mpich-3.1.4.tar.gz
-    cd mpich-3.1.4
-    ./configure --disable-fortran --enable-fast=all,O3 --prefix=/usr
-    make -j$(nproc)
-    make install
-    ldconfig
+  # Install software
+  apt-get update
+  apt-get install -y file g++ gcc gfortran make gdb strace wget ca-certificates --no-install-recommends
 
-    # Build osu benchmarks
-    wget -q http://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-5.3.2.tar.gz
-    tar xf osu-micro-benchmarks-5.3.2.tar.gz
-    cd osu-micro-benchmarks-5.3.2
-    ./configure --prefix=/usr/local CC=$(which mpicc) CFLAGS=-O3
-    make
-    make install
-    cd ..
-    rm -rf osu-micro-benchmarks-5.3.2
-    rm osu-micro-benchmarks-5.3.2.tar.gz
+  # Install mpich
+  wget -q http://www.mpich.org/static/downloads/$VERSION/mpich-$VERSION.tar.gz
+  tar xf mpich-$VERSION.tar.gz
+  cd mpich-$VERSION
+
+  ./configure --disable-fortran --enable-fast=all,O3 --prefix=/usr --with-device=ch3
+  make -j$(nproc)
+  make install
+  ldconfig
+
+  # Build osu benchmarks
+  wget -q http://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-$BENCHMARK.tar.gz
+  tar xf osu-micro-benchmarks-$BENCHMARK.tar.gz
+  cd osu-micro-benchmarks-$BENCHMARK
+  ./configure --prefix=/usr/local CC=$(which mpicc) CFLAGS=-O3 --build=aarch64-unknown-linux-gnu
+  make
+  make install
+  cd ..
+  rm -rf osu-micro-benchmarks-$BENCHMARK
+  rm osu-micro-benchmarks-$BENCHMARK.tar.gz
 
 %runscript
-    /usr/local/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_bw
+  /usr/local/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_bw
 ```
 
 The image can be built **on your local hardware (not on LUMI)** with
