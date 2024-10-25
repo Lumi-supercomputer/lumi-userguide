@@ -1,4 +1,4 @@
-# Energy consumption of jobs 
+# Energy consumption
 
 ## For individual jobs
 
