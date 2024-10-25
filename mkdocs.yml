@@ -53,7 +53,7 @@ nav:
       - Interactive jobs: runjobs/scheduled-jobs/interactive.md
       - Container jobs: runjobs/scheduled-jobs/container-jobs.md
       - Julia scheduled jobs: runjobs/scheduled-jobs/julia.md
-      - Energy consumption of jobs: runjobs/scheduled-jobs/jobenergy.md
+      - Energy consumption: runjobs/scheduled-jobs/jobenergy.md
   - Software:
     - Overview: software/index.md
     - Install policy: software/policy.md
