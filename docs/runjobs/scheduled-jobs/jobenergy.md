@@ -1,4 +1,4 @@
-# Energy consumption of jobs 
+# Energy consumption
 
 ## For individual jobs
 
@@ -29,7 +29,7 @@ Getting the energy consumption for the whole project, is a bit more tricky. One 
 An example of a sacct command that sums up the results for job energies starting from 24th October 2023, taking account all users that have run jobs in the example project 465000001 and gives the result in Joules:
 
 ```bash
-(sacct -S2023-10-24 -Aproject_465000001 --allusers -X -oConsumedEnergyRaw | awk '{sum+=$1;} END{print sum;}') Joules"
+echo "Energy consumed by project: $(sacct -S2023-10-24 -Aproject_465000001 --allusers -X -oConsumedEnergyRaw | awk '{sum+=$1;} END{print sum;}') Joules"
 ```
 
 Please see, if the result makes sense. If you get something in the scale of 10^20 Joules, the result is clearly wrong. 
