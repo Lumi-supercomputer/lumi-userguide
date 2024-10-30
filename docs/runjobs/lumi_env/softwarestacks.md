@@ -18,7 +18,7 @@ environment][module-environment].
 
 ## Overview
 
-On LUMI, three types of software stacks are currently offered:
+On LUMI, four types of software stacks are currently offered:
 
 -   `CrayEnv` offers the Cray Programming Environment (PE) and allows one to use
     it completely in the way intended by HPE-Cray. The environment also offers a
@@ -50,6 +50,28 @@ On LUMI, three types of software stacks are currently offered:
     on the system. The LUMI User Support Team does not implement new Spack packages or
     debug build recipes for existing ones.
 
+-   The `Local-*` stacks are software stacks provided by partner organisations,
+    but not managed by the LUMI User Support Team. Some of those build on top of
+    software in the `LUMI` stacks. The example further down this page shows two
+    such modules:
+
+    -   `Local-CSC`: Enables software installed and maintained by CSC. Most of that
+        software is available to all users, though some packages are restricted or
+        only useful to users of other CSC services (e.g., the `allas` module).
+
+        Some of that software builds on software in the LUMI stacks, some is based
+        on containers with wrapper scripts, and some is compiled outside of any 
+        software management environment on LUMI.
+
+    -   `Local-quantum` contains some packages of general use, but also some packages
+        that are only relevant to Finnish researchers with an account on the Helmi
+        quantum computer. Helmi is not a EuroHPC-JU computer so being eligible for an
+        account on LUMI does not mean that you are also eligible for an account on
+        Helmi.
+
+    Other stacks may be introduced over time.
+
+
 ## Selecting the software stack
 
 Running `module avail` on a fresh shell will show a list like:
@@ -61,22 +83,26 @@ $ module avail
 
 -------------------------- HPE-Cray PE modules ----------------------------
    PrgEnv-amd/8.3.3
-   PrgEnv-amd/8.4.0              (D)
+   PrgEnv-amd/8.4.0   
+   PrgEnv-amd/8.5.0              (D)
    PrgEnv-aocc/8.3.3
 
 ... some lines removed here
 
 ----------------------------- Software stacks -----------------------------
-   CrayEnv    (S)      LUMI/23.03  (S)    spack/22.08-2
-   LUMI/22.08 (S,D)    LUMI/23.09  (S)    spack/23.03
-   LUMI/22.12 (S)      spack/22.08        spack/23.03-2 (D)
+   CrayEnv    (S)    LUMI/23.12            (S)      spack/22.08-2
+   LUMI/22.08 (S)    LUMI/24.03            (S,D)    spack/23.03
+   LUMI/22.12 (S)    Local-CSC/default     (S)      spack/23.03-2
+   LUMI/23.03 (S)    Local-quantum/default (S)      spack/23.09   (D)
+   LUMI/23.09 (S)    spack/22.08
 
 --------------------- Modify the module display style ---------------------
-   ModuleColour/off      (S)        ModuleLabel/PEhierarchy (S)
-   ModuleColour/on       (S,D)      ModuleLabel/system      (S)
-   ModuleExtensions/hide (S)        ModulePowerUser/LUMI    (S)
-   ModuleExtensions/show (S,D)      ModuleStyle/default
-   ModuleLabel/label     (S,L,D)    ModuleStyle/reset       (D)
+   ModuleColour/off      (S)      ModuleLabel/label       (S,L,D)
+   ModuleColour/on       (S,D)    ModuleLabel/PEhierarchy (S)
+   ModuleExtensions/hide (S)      ModuleLabel/system      (S)
+   ModuleExtensions/show (S,D)    ModulePowerUser/LUMI    (S)
+   ModuleFullSpider/off  (S)      ModuleStyle/default
+   ModuleFullSpider/on   (S,D)    ModuleStyle/reset       (D)
 
 -------------------------- System initialisation --------------------------
    init-lumi/0.2 (S,L)
@@ -95,41 +121,49 @@ The first block(s) in the output are the modules available through the default
 software stack.
 
 The *Software stacks* block in the output shows the available software stacks:
-`CrayEnv`, 4 versions of the `LUMI` stack and 
-4 versions of the `spack` stack in this example. The `(S)` besides the
+`CrayEnv`, 6 versions of the `LUMI` stack, 
+5 versions of the `spack` stack,
+and two stack modules whose name starts with `Local-` 
+in this example. The `(S)` besides the
 name shows that these are sticky modules that won't be removed by default by
 ``module purge``. This is done to enable you to quickly clean your environment
-without having to re-initialize from scratch. In the future we may mark some
-stacks also with `LTS` next to their name which would then denote that this is
-a release that we will try to support long-term (ideally two years), but
-currently the system is changing too rapidly (as some of the hardware is new
-and not an evolution of previous hardware) so we cannot guarantee any level of
-longevity for any of the software stacks. In fact, experience has shown
-that we may have to remove a stack after a year or so.
+without having to re-initialize from scratch.
 
 The next block, titled *Modify the module display style*, contains several
 modules that can be used to change the way the module tree is displayed:
 
 -   `ModuleColour`: these modules can be used to turn the color on or off in
     the module display.
+-  `ModuleExtensions`: Show modulefile extensions in the output of `module avail`
+    (`ModuleExtensions/show`) or hide them (`ModuleExtensions/hide`) to reduce
+    the amount of output of `module avail`.
 -   `ModuleLabel`: change the way the modules are subdivided in blocks and the
     way those blocks are presented.
--   `ModuleLabel/label` is the default and will collapse related groups
-    of modules in single blocks, including the Cray PE modules.
--   `ModuleLabel/PEhierarchy`: will still use the user-friendly style of
-    labeling but will show the complete hierarchy in the modules of the Cray
-    PE.
--   `ModuleLabel/system`: does not use the user-friendly label texts, but shows
-    the path of the module directory instead.
+    -   `ModuleLabel/label` is the default and will collapse related groups
+        of modules in single blocks, including the Cray PE modules.
+    -   `ModuleLabel/PEhierarchy`: will still use the user-friendly style of
+        labeling but will show the complete hierarchy in the modules of the Cray
+        PE.
+    -   `ModuleLabel/system`: does not use the user-friendly label texts, but shows
+        the path of the module directory instead.
+-   `ModuleFullSpider`: By default, the software in some stacks will not be indexed
+    by `module spider` unless the corresponding stack module is loaded when the
+    cache used by `module spider` is regenerated. This is done to reduce the time
+    of some module commands and reduce the pressure on the filesystems caused by
+    those commands. However, with `ModuleFullSpider/on` you can get the "regular"
+    `module spider` behaviour (or simply set `export LUMI_FULL_SPIDER=1` in your
+    `.profile` file).
 -   `ModulePowerUser`: will also reveal several hidden modules, most of which
     are only important to sysadmins or users who really want to do EasyBuild
     development in a clone of the software stack.
--   `ModuleExtensions/hide` and `ModuleExtensions/show` are used to hide or show
-    the module extensions at the end of the overview of `module avail`.
+    (Or you could of course use the `--show_hidden` command line flag of `module avail`
+    to show hidden modules also.)
+
 
 ### CrayEnv
 
-Loading `CrayEnv` will essentially give you the default [Cray environment](https://cpe.ext.hpe.com/docs/#hpe-cray-user-environment)
+Loading `CrayEnv` will essentially give you the default 
+[Cray environment](https://cpe.ext.hpe.com/docs/#hpe-cray-user-environment)
 enriched with several additional tools. The `CrayEnv` module will try to detect
 the node type of LUMI it is running on and load an appropriate set of target
 architecture modules to configure the Cray PE (see the documentation page on
@@ -137,6 +171,7 @@ architecture modules to configure the Cray PE (see the documentation page on
 `module purge` while working in the `CrayEnv` environment will automatically
 reload that module and restore the target architecture modules to a set
 suitable for the node type you are working on.
+
 
 ### LUMI
 
@@ -154,7 +189,7 @@ The LUMI software stack is activated by loading the desired version of the LUMI
 module, e.g.,
 
 ```bash
-module load LUMI/23.09
+module load LUMI/24.03
 ```
 
 The `LUMI` module will try to detect the node type it is running on and will
@@ -164,7 +199,7 @@ loading another `partition` module, and this can even be done in a single
 command, e.g.,
 
 ```bash
-module load LUMI/23.09 partition/L
+module load LUMI/24.03 partition/L
 ```
 
 will load the software stack for the login nodes (which in fact will also work
@@ -181,6 +216,30 @@ on the compute nodes and data analysis and visualization nodes).
     Running MPI programs is not supported on the login nodes, but those modules
     may still contain useful pre- or postprocessing software that can be used
     on the login nodes.
+
+!!! warning "Versions of the LUMI module"
+    It is advised to always load a specific version of the LUMI module to have
+    access to the versions of the software that you want. 
+    
+    Newer versions of the
+    `LUMI` module typically contain newer versions of a package.
+    Older versions of packages are rarely re-installed in newer versions of a
+    `LUMI` stack if a newer version is already available in that stack, and
+    newer versions of software are not backported to older LUMI stacks. So if 
+    you want to keep using a specific and older version of a package, you'll
+    have to stay with that older version of the stack.
+
+    After a system update, users should move to newer software stacks 
+    and updated software as soon
+    as possible. Older versions of the LUMI stacks may not be fully functional
+    anymore because some of the programming environment libraries they use do
+    not function well on the updated system, or simply because the older versions
+    of software in those stacks may no longer be compatible with the new 
+    environment.
+
+    Failing to specify a specific version of the LUMI module may cause problems
+    when the default is changed on the system, and jobs already in the queue may
+    fail for that reason. 
 
 Once loaded, you will be presented with a lot of modules in a flat naming scheme.
 This means that all software available in that version of the LUMI software
@@ -260,7 +319,7 @@ enable the `LUMI` modules to also find the software installed in that directory.
 
 Loading the `EasyBuild-user` module will enable installing software with
 EasyBuild for the current version of the `LUMI` software stack and current node
-type (`partition` module).
+type (`partition` module), but it is not needed for running that software.
 
 See the [Easybuild][eb-in-docs] page for more information about installing
 software using Easybuild.

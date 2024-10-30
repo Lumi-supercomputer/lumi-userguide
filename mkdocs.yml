@@ -32,6 +32,7 @@ nav:
         - Julia-Jupyter: runjobs/webui/julia-jupyter.md
         - Jupyter: runjobs/webui/jupyter.md
         - Jupyter for courses: runjobs/webui/jupyter-for-courses.md
+        - MLflow: runjobs/webui/mlflow.md
         - TensorBoard: runjobs/webui/tensorboard.md
         - Visual Studio Code: runjobs/webui/vscode.md
     - LUMI environment:
@@ -52,6 +53,7 @@ nav:
       - Interactive jobs: runjobs/scheduled-jobs/interactive.md
       - Container jobs: runjobs/scheduled-jobs/container-jobs.md
       - Julia scheduled jobs: runjobs/scheduled-jobs/julia.md
+      - Energy consumption: runjobs/scheduled-jobs/jobenergy.md
   - Software:
     - Overview: software/index.md
     - Install policy: software/policy.md
@@ -66,7 +68,6 @@ nav:
       - Software library: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/
       - CP2K: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/c/CP2K/
       - PyTorch: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/p/PyTorch/
-      - ParaView: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/p/ParaView
       - QuantumESPRESSO: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/q/QuantumESPRESSO/
       - VASP: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/v/VASP/
     - Local software collections:

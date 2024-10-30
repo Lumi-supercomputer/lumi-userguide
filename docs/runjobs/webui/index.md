@@ -11,11 +11,14 @@ Features available in the web interface:
 - Open a shell on the login node
 - Open a persistent shell on a compute node
 - View running batch jobs
+- Check project billing units and disk quotas
 - Launch interactive apps and connect to them directly from the browser:
     - Desktop with support for GPU acceleration
     - Julia-Jupyter
     - Jupyter
     - Jupyter for courses: An interactive Jupyter session specifically for courses
+    - MATLAB
+    - MLflow
     - TensorBoard
     - Visual Studio Code
  
@@ -68,14 +71,16 @@ The file browser comes with a basic text editor. Some important notes on that:
 - There is no _save-as_ feature, so read-only files cannot be edited.
 
 #### Accessing LUMI-O
-[LUMI-O](../../storage/lumio/#lumi-o) can also be accessed if you have
+[LUMI-O](../../storage/lumio/index.md#lumi-o) can also be accessed if you have
 configured the connection, which you can do using the Cloud storage
 configuration app, found in the _Pinned apps_ or the _Tools_ dropdown in the
 navbar. After configuring the connections, also known as remotes, you can find
 them in the _Files_ dropdown in the navbar or in the files browser.
 
 The Cloud storage configuration app will configure a private remote,
-`lumi-<project_number>-private`, and a public remote, `lumi-<project_number>-public`, if you have enabled the option. Note that files uploaded to
+
+`lumi-<project number>-private`, and a public remote, `lumi-<project
+number>-public`, if you have enabled the option. Note that files uploaded to
 the public remote will be publicly accessible on the URL:
 ```
 https://<project-number>.lumidata.eu/<bucket_name>
@@ -100,6 +105,19 @@ The _Active Jobs_ app can be found under the _Jobs_ section in the top navbar.
 In the app you will be able to see your currently running and recently completed Slurm jobs.
 By expanding the row for the job using the arrow on the left side more details about the job will be visible.
 
+### Project view
+
+The Project view app, found in the _Tools_ section in the navbar, can be used
+to view the status of your projects and the amount of billing units remaining.
+
+![Project view app](../../assets/images/wwwLumiProjectView.png)
+
+### Disk quotas
+
+The Disk quotas app, in the _Tools_ section in the navbar, can be used to view
+the disk quotas of your projects and home directory.
+
+![Disk quotas app](../../assets/images/wwwLumiDiskQuotas.png)
 
 ### Interactive applications
 
@@ -111,5 +129,6 @@ or the applications specific instructions:
 - [Julia-Jupyter](./julia-jupyter.md)
 - [Jupyter](./jupyter.md)
 - [Jupyter for courses](./jupyter-for-courses.md)
+- [MLflow](./mlflow.md)
 - [TensorBoard](./tensorboard.md)
 - [Visual Studio Code](./vscode.md)

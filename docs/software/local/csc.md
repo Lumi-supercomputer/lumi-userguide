@@ -10,15 +10,25 @@ Load the CSC module tree into use with:
 module use /appl/local/csc/modulefiles
 ```
 
-Available software:
+Alternatively, there is also a module that you can load to accomplish the
+same:
 
+```bash
+module load Local-CSC
+```
+
+Available software and tools:
+
+* [Allas](https://docs.csc.fi/data/Allas/allas_lumi/)
+  (only for the Finnish national system users)
 * [Amber](https://docs.csc.fi/apps/amber/)
-* [Allas](https://docs.csc.fi/data/Allas/allas_lumi/) (only for the Finnish national system users)
+* [ANSYS](https://docs.csc.fi/apps/ansys/)
 * [CP2K](https://docs.csc.fi/apps/cp2k/)
 * [Elmer](https://docs.csc.fi/apps/elmer/)
 * [GDAL](https://docs.csc.fi/apps/gdal/)
 * [GRASS GIS](https://docs.csc.fi/apps/grass/)
 * [GROMACS](https://docs.csc.fi/apps/gromacs/)
+* [HyperQueue](https://docs.csc.fi/apps/hyperqueue/)
 * [JAX](https://docs.csc.fi/apps/jax/)
 * [Julia](https://docs.csc.fi/apps/julia/)
 * [LAMMPS](https://docs.csc.fi/apps/lammps/)
@@ -29,7 +39,6 @@ Available software:
 * [PALM](https://docs.csc.fi/apps/palm/)
 * [PDAL](https://docs.csc.fi/apps/pdal/)
 * [Pennylane](https://docs.csc.fi/apps/pennylane/)
-* [PLUMED](https://docs.csc.fi/apps/plumed/)
 * [PyTorch](https://docs.csc.fi/apps/pytorch/)
 * [QGIS](https://docs.csc.fi/apps/qgis/)
 * [SAGA GIS](https://docs.csc.fi/apps/saga-gis/)

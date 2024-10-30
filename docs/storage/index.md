@@ -8,7 +8,7 @@
 
 [helpdesk]: ../helpdesk/index.md
 
-[sionlib]: https://www.fz-juelich.de/ias/jsc/EN/Expertise/Support/Software/SIONlib/_node.html
+[sionlib]: https://www.fz-juelich.de/en/ias/jsc/services/user-support/software-tools/sionlib
 [hdf5]: https://www.hdfgroup.org/solutions/hdf5/
 
 # Overview
@@ -19,6 +19,21 @@ Here you find a description of available LUMI storage systems, what kind of
 systems they are and on what hardware partitions they are located at.
 
 ---
+
+!!! note "Important information regarding data lifetime"
+
+    The data lifetime on LUMI is closely related to the project lifetime.
+    
+    When a project ends, it is deactivated for compute, meaning you will no
+    longer be able to submit jobs. However, you will still have access to LUMI
+    and the data stored on it for 90 days. You are responsible of the backup any
+    data you may still need within this 90-day period. After the 90 days, the
+    data will be deleted.
+
+    If you start a new project within 90 days of your previous project's end and
+    wish to reuse the data, you are responsible for transferring the data from
+    one project to the other.
+
 
 On LUMI you have access to network file system storage based on the
 [LUMI-P][lumip] and [LUMI-F][lumif] hardware partitions, as well as to the object storage on [LUMI-O][lumio]. 
@@ -77,16 +92,16 @@ areas.
 | **Project<br> flash**      | `/flash/<project>`         | High performance temporary<br> storage for input and output data | [LUMI-F][lumif]         |
 
 
-|                           | Quota | Max files | Expandable            | Backup | Retention        |
-|---------------------------|-------|-----------|-----------------------|--------|------------------|
-| **User<br>home**          | 20 GB | 100k      | No                    | No     | User lifetime    |
-| **Project<br>persistent** | 50 GB | 100k      | Yes,<br> up to 500GB  | No     | Project lifetime |
-| **Project<br>scratch**    | 50 TB | 2000k     | Yes,<br> up to 500TB  | No     | 90 days          |
-| **Project<br>fast**       |  2 TB | 1000k     | Yes,<br> up to 100TB  | No     | 30 days          |
+|                           | Quota | Max files | Expandable            | Retention        | Billing<br>rate |
+|---------------------------|-------|-----------|-----------------------| -----------------|-----------------|
+| **User<br>home**          | 20 GB | 100k      | No                    | User lifetime    | NA              |
+| **Project<br>persistent** | 50 GB | 100k      | Yes,<br> up to 500GB  | Project lifetime | 1x              |
+| **Project<br>scratch**    | 50 TB | 2000k     | Yes,<br> up to 500TB  | 90 days          | 1x              |
+| **Project<br>fast**       |  2 TB | 1000k     | Yes,<br> up to 100TB  | 30 days          | 10x             |
 
-|                    | Quota  | Max<br>buckets | Max<br>objects<br>per bucket     | Backup | Retention           |
-|--------------------|--------|----------------|----------------------------------|--------|---------------------|
-| **Object storage** | 150 TB | 1000           | 500 000                          | No     | project lifetime    |
+|                    | Quota  | Max<br>buckets | Max<br>objects<br>per bucket     | Retention           | Billing<br>rate |
+|--------------------|--------|----------------|----------------------------------|---------------------|-----------------|
+| **Object storage** | 150 TB | 1000           | 500 000                          | project lifetime    | 0.5x            |
 
 Note that, except for the user home directory, data storage is allocated per
 project. When a storage space is marked as expandable, it means that you can

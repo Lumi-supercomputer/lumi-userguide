@@ -88,6 +88,28 @@ start by generating an SSH key pair as detailed below.
     on the *Save private key* button and save it to the desired location (for 
     example, with `id_rsa_lumi` as a name).
 
+    !!! note "Key format"
+
+        To use your key, you may need two different key formats. The
+        instructions above generate a private key in PuTTY format (PPK), which
+        can be used with PuTTY and in a MobaXTerm SSH session created via the
+        MobaXTerm GUI.
+                
+        However, if you are using the OpenSSH client (the ssh command in a
+        MobaXTerm terminal), you will need a key in the OpenSSH format. To
+        convert your key, go to the **Conversions :octicons-arrow-right-16:
+        Export OpenSSH key** menu in the key generator tool and save it in the
+        OpenSSH format.
+
+        You can convert between these two key formats at any time using the key
+        generator tool. Load a key by using the **Conversions :octicons-arrow-right-16:
+        Import key** menu, then save it in the desired format: 
+        
+          - OpenSSH to PPK: load a OpenSSH key, then save it with the **Save
+            private key** button
+          - PPK to OpenSSH: load a PPK key, then save it via the **Conversions
+            :octicons-arrow-right-16: Export OpenSSH key** menu
+
 !!! warning
     The private key should never be shared with anyone, not even
     with LUMI staff. It should also be stored only on your local computer

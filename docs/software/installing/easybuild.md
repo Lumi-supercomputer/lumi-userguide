@@ -14,17 +14,20 @@ confusion. E.g., packages for which users request special customisations will
 never be installed in the central software stack. Moreover, due to the
 technical implementation of a software stack on a system the size of LUMI,
 some software maintenance operations in the stack can be disruptive and
-only be done during system maintenance intervals, making maintenance 
+can only be done during system maintenance intervals, making maintenance 
 difficult.
 
 This, however, does not mean that you may have to wait for weeks before you can
 get the software you need for your project on LUMI. We have made it very easy to
 install additional software in your home or project directories (where the
 latter is a better choice as you can then share it with the other people in your
-project). After installing, using the software requires not much more than loading a module
+project and have more capacity). 
+Installing software requires not much more than loading a module
 that configures EasyBuild for local installations and running EasyBuild with a
-few recipes that can be supplied by the [User Support Team][helpdesk] or your
-national support team or that you may write yourself. And this software is then
+few recipes that may already be offered on the system or that can be 
+supplied by the [User Support Team][helpdesk] or your
+national support team, and you can even write your own recipes or adapt ours
+to your specific needs. And this software is then
 built in exactly the same way as it would be in a central installation.
 
 *Before continuing to read this page, make sure you are familiar with the
@@ -37,7 +40,7 @@ with [the Lmod module environment][Lmod_modules].*
 through this chapter once, and then start software installations.*
 
 We support installing software with EasyBuild only in the LUMI software stacks,
-not in CrayEnv.
+not in CrayEnv or any other stack.
 
 
 ### EasyBuild recipes
@@ -51,16 +54,16 @@ An EasyBuild build recipe is a file with a name that consists of different
 components and ends with '.eb'. Consider, e.g., a build recipe for the software GROMACS:
 
 ```text
-GROMACS-2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU.eb
+GROMACS-2024.3-cpeGNU-24.03-PLUMED-2.9.2-noPython-CPU.eb
 ```
 
 The first part of the name, `GROMACS`, is the name of the package. The second
-part of the name, `2022.5` is the version of GROMACS, in this case the
+part of the name, `2024.3` is the version of GROMACS, in this case the
 2021.4 release. 
 
-The next part, `cpeGNU-23.09`, denotes the so-called *toolchain*
+The next part, `cpeGNU-24.03`, denotes the so-called *toolchain*
 used for the build. Each toolchain corresponds to a particular HPE Cray Programming
-Environment, and the number (`23.09`in this example) denotes the version of this
+Environment, and the number (`24.03`in this example) denotes the version of this
 programming environment. The various EasyBuild toolchains on LUMI are:
 
 | EasyBuild toolchain | HPE Cray PE                                                    |
@@ -76,9 +79,9 @@ just the version in the file name that should match but the version of the
 toolchain that is used in the recipe file.) 
 
 The last part of the name,
-`-PLUMED-2.9.0-noPython-CPU`, is called the version suffix. Version suffixes are
+`-PLUMED-2.9.2-noPython-CPU`, is called the version suffix. Version suffixes are
 typically used to distinguish different builds of the same package version.
-In this case, it indicates that it is a build of the 2022.5 version
+In this case, it indicates that it is a build of the 2024.3 version
 purely for CPU and also includes PLUMED as we have also builds without PLUMED
 (which is not compatible with every GROMACS version).
 
@@ -150,7 +153,7 @@ export EBU_USER_PREFIX=/project/project_465000000/EasyBuild
     using `module --force purge`. This is a side effect of how Lmod works when
     unloading modules. There is no easy workaround for this.
 
-    However, doing a `module --force unlod LUMI` first and then changing the
+    However, doing a `module --force unload LUMI` first and then changing the
     value of `EBU_USER_PREFIX` and then reloading a `LUMI` module will work.
 
 From now on you will also see the software that you have installed yourself for
@@ -161,11 +164,11 @@ the selected version of the LUMI software stack and partition when you do
 ### Step 1: Load the LUMI software stack
 
 The next step is to ensure that the right version of the software stack is
-loaded. Assume that we want to install software in the `LUMI/23.09` stack, then
+loaded. Assume that we want to install software in the `LUMI/24.03` stack, then
 one needs to execute
 
 ``` bash
-$ module load LUMI/23.09
+$ module load LUMI/24.03
 ```
 
 This should also automatically load the right `partition module` for the part
@@ -213,31 +216,31 @@ the command line.
 ### Step 3: Install the package
 
 To show how to actually install a package, we continue with our
-`GROMACS-2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU.eb` example.
+`GROMACS-2024.3-cpeGNU-24.03-PLUMED-2.9.2-noPython-CPU.eb` example.
 
-If all needed EasyBuild recipes are in one of the
+If all required EasyBuild recipes are in one of the
 repositories, all you need to do to install the
 package is to run
 
 ```bash
-$ eb GROMACS-2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU.eb -r
+$ eb GROMACS-2024.3-cpeGNU-24.03-PLUMED-2.9.2-noPython-CPU.eb -r
 ```
 
 The `-r` tells EasyBuild to also install dependencies that may not yet be
 installed.
 
-If the `GROMACS-2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU.eb` would not have been
+If the `GROMACS-2024.3-cpeGNU-24.03-PLUMED-2.9.2-noPython-CPU.eb` would not have been
 in a repository, but in the current directory or one of its subdirectories,
 you could use 
 
 ```bash
-$ eb GROMACS-2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU.eb -r .
+$ eb GROMACS-2024.3-cpeGNU-24.03-PLUMED-2.9.2-noPython-CPU.eb -r .
 ```
 
 The only difference is the dot added to the `-r` flag. This adds the current directory to
 the front of the search path. In general, it doesn't hurt to always use the dot with `-r`,
-but performance may suffer if the current directory contains a lot of subdirectories they
-will all be searched for EasyBuild recipes.
+but performance may suffer if the current directory contains a lot of subdirectories 
+as they will all be searched for EasyBuild recipes.
 
 The `-r .` or `-r` flags should be omitted if you
 want full control and install dependency by dependency before installing the
@@ -246,7 +249,7 @@ package (which may be handy if building right away fails).
 If you now type `module avail` you should see the
 
 ```text
-GROMACS/2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU
+GROMACS/2024.3-cpeGNU-24.03-PLUMED-2.9.2-noPython-CPU
 ```
 
 module in the list. Note the relation between the name of the EasyBuild recipe
@@ -255,14 +258,14 @@ the EasyBuild recipe follows the EasyBuild guidelines for naming. If the
 guidelines are not followed and if EasyBuild needs to install this module as a
 dependency of another package, EasyBuild will fail to locate the build recipe.
 
-The `GROMACS/2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU` module can now be used just like
+The `GROMACS/2024.3-cpeGNU-24.03-PLUMED-2.9.2-noPython-CPU` module can now be used just like
 any other module on the system. To *use* the GROMACS module, you don't need to load `EasyBuild-user`.
 That was only required for *installing* the package. 
 All you need to do to use the GROMACS module we just installed is 
 
 ```bash
-module load LUMI/23.09
-module load GROMACS/2022.5-cpeGNU-23.09-PLUMED-2.9.0-noPython-CPU
+module load LUMI/24.03
+module load GROMACS/2024.3-cpeGNU-24.03-PLUMED-2.9.2-noPython-CPU
 ```
 
 (i.e., loading the software stack in which we installed GROMACS and the GROMACS module that 
@@ -289,7 +292,7 @@ and the module will automatically pick up the central one. However, check the do
 for the package in the [LUMI Software Library][software-library], it will tell you if you can do so.
 
 Do keep in mind though that the centrally stored container file will be removed if we find problems
- with it, while the container may still be perfectly fine for you. E.g., some containers
+with it, while the container may still be perfectly fine for you. E.g., some containers
 provide the RCCL communication library which is popular in AI applications, but requires a 
 specific plugin to work well with the Slingshot 11 interconnect of LUMI. These containers often
 need to be rebuilt after a system upgrade, but they may still be perfectly fine for users who use
@@ -307,7 +310,7 @@ module load LUMI partition/container EasyBuild-user
 eb <container-easyconfig.eb>
 ```
 
-Note that to subsequently use the container you do not need to load `partition/common` or 
+Note that to subsequently use the container you do not need to load `partition/container` or 
 `EasyBuild-user`.
 
 Many containers come with documentation about their use. We encourage you to check
@@ -329,7 +332,7 @@ or `module spider`).
         right after running the `eb` command to install a module): 
 
         ```bash
-        rm -rf ~/.lmod.d/.cache
+        rm -rf ~/.cache/lmod
         ```
 
         and to log out and log in again to start with a clean shell.
@@ -346,10 +349,10 @@ or `module spider`).
 
         In the example above, if the installation commands
         were executed on the login node, the software would have been installed in `partition/L`,
-        but if we then do a `module load LUMI/23.09` on the compute nodes, `partition/C` would have been
+        but if we then do a `module load LUMI/24.03` on the compute nodes, `partition/C` would have been
         selected. To get a GROMACS version in `partition/C` that EasyBuild would build with compiler settings
         that are specific for the processors in the compute nodes, either do the compilation on a compute node
-        or use *cross-compiling* by loading `partition/C` after loading `LUMI/23.09` in step 1 above.
+        or use *cross-compiling* by loading `partition/C` after loading `LUMI/24.03` in step 1 above.
 
 2.  **EasyBuild complains that some modules are already loaded.**
 
@@ -420,7 +423,7 @@ EasyBuild recipes (`.eb` files) should be in a subdirectory
 then go in the `easybuild/easyblocks` subdirectory) and even personal
 configuration files that overwrite some system options. This setup also
 guarantees compatibility with some EasyBuild features for very advanced users
-that go way beyond this page.
+that go way beyond what we can cover in this page.
 
 To store this repository on GitHub, you can follow the GitHub documentation,
 and in particular the page ["Adding an existing project to GitHub using the
@@ -438,7 +441,7 @@ recipes, we suggest the following sources of information:
 
 - [EasyBuild documentation](https://docs.easybuild.io/)
 - [EasyBuild tutorials](https://tutorial.easybuild.io)
-    - [Tutorial specific for LUMI](https://klust.github.io/easybuild-tutorial/2022-CSC_and_LO/)
+    - [Tutorial specific for LUMI](https://klust.github.io/LUMI-training-materials/EasyBuild-CSC-20220509/)
 - The [EasyBuild YouTube channel](https://www.youtube.com/@easybuilders)
   contains recordings of a four-session tutorial
   given for the LUMI User Support Team by Kenneth Hoste (UGent), the lead developer
@@ -452,7 +455,7 @@ recipes, we suggest the following sources of information:
     - [Main LUMI software stack GitHub repository](https://github.com/Lumi-supercomputer/LUMI-SoftwareStack)
       contains the full EasyBuild setup for LUMI, including the EasyBuild recipes
       that we use for the central software stack and many others that we fully support
-      and consider of good quality. The clone on the system is automatically searched
+      and considered of good quality. The clone on the system is automatically searched
       by the `EasyBuild-user` module.
     - [LUMI contributed EasyBuild recipes GitHub repository](https://github.com/Lumi-supercomputer/LUMI-EasyBuild-contrib)
       contains contributed EasyBuild recipes and other recipes developed by LUST
@@ -465,7 +468,8 @@ recipes, we suggest the following sources of information:
       [LUMI Software Library][software-library].
 - Other EasyBuild recipes for the Cray Programming Environment
     - [CSCS GitHub repository](https://github.com/eth-cscs/production).
-      Most of the recipes are for Piz Daint which uses slightly different toolchains.
+      Most of the recipes are still for the now decommissioned Piz Daint cluster which 
+      uses slightly different toolchains.
       Moreover dependencies typically need updating, as the software installation
       on LUMI is not in sync with the CSCS installation. The repository is particularly
       useful for CPU-only programs as the GPUs in their system are not compatible

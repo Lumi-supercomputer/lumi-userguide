@@ -32,6 +32,7 @@ $ cc -g -o my_app source.c
 Next, run your application with Valgrind
 
 ```bash
+$ module load valgrind4hpc
 $ valgrind --tool=memcheck --leak-check=yes ./my_app
 ```
 
