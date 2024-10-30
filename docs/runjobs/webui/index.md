@@ -78,7 +78,6 @@ navbar. After configuring the connections, also known as remotes, you can find
 them in the _Files_ dropdown in the navbar or in the files browser.
 
 The Cloud storage configuration app will configure a private remote,
-
 `lumi-<project number>-private`, and a public remote, `lumi-<project
 number>-public`, if you have enabled the option. Note that files uploaded to
 the public remote will be publicly accessible on the URL:
