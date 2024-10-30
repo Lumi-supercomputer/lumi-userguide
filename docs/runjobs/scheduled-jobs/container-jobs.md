@@ -88,8 +88,7 @@ All the necessary components are available in a module that can be installed
 by the user via [EasyBuild][easybuild-install]
 
 ```bash
-$ module load LUMI partition/<lumi-partition> EasyBuild-user
-$ eb singularity-bindings-system-cpeGNU-<toolchain-version>.eb -r
+$ module load LUMI partition/<lumi-partition>
 ```
 
 Running e.g. the [OSU point-to-point bandwidth test
@@ -98,38 +97,39 @@ can then be done using
 
 ```bash
 $ module load singularity-bindings
-$ srun --partition=<partition> --account=<account> --nodes=2 singularity run mpi_osu.sif
+$ srun --time=5 --partition=<partition> --nodes=2 --ntasks-per-node=1 --account=<account> singularity run  mpi_osu.sif
 ```
 
 which gives the bandwidth measured for different message sizes, i.e., something
 along the lines of
 
 ```text
-# OSU MPI Bandwidth Test v5.3.2
+# OSU MPI Bandwidth Test v7.4
+# Datatype: MPI_CHAR.
 # Size      Bandwidth (MB/s)
-1                       3.00
-2                       6.01
-4                      12.26
-8                      24.53
-16                     49.83
-32                     97.97
-64                    192.37
-128                   379.80
-256                   716.64
-512                  1386.52
-1024                 2615.18
-2048                 4605.69
-4096                 6897.21
-8192                 9447.54
-16384               10694.19
-32768               11419.39
-65536               11802.31
-131072              11997.96
-262144              12100.20
-524288              12162.28
-1048576             12207.27
-2097152             12230.66
-4194304             12242.46
+1                       2.50
+2                       5.50
+4                      11.03
+8                      22.15
+16                     44.07
+32                     88.62
+64                    177.22
+128                   351.81
+256                   601.45
+512                  1308.68
+1024                 2596.95
+2048                 5150.26
+4096                10025.73
+8192                17790.65
+16384               20705.33
+32768               21661.02
+65536               22848.10
+131072              23301.75
+262144              23700.72
+524288              23845.06
+1048576             23924.48
+2097152             23965.17
+4194304             23979.38
 ```
 
 ### Using the container MPI
@@ -139,37 +139,38 @@ To do so, Slurm needs to be instructed to use the PMI-2 process management
 interface by passing `--mpi=pmi2` to `srun`, e.g.
 
 ```bash
-$ srun --partition=<partition> --account=<account> --mpi=pmi2 --nodes=2 singularity run mpi_osu.sif
+$ srun --time=5 --partition=<partition> --account=<account> --mpi=pmi2 --nodes=2 --ntasks-per-node=1 singularity run mpi_osu.sif
 ```
 
 which produces an output along the lines of
 
 ```text
-# OSU MPI Bandwidth Test v5.3.2
+# OSU MPI Bandwidth Test v7.4
+# Datatype: MPI_CHAR.
 # Size      Bandwidth (MB/s)
-1                       0.50
-2                       1.61
-4                       3.57
-8                       6.54
-16                      9.65
-32                     18.04
-64                     35.27
-128                    67.76
-256                    91.12
-512                   221.09
-1024                  278.88
-2048                  471.54
-4096                  917.02
-8192                 1160.74
-16384                1223.41
-32768                1397.97
-65536                1452.23
-131072               2373.07
-262144               2104.56
-524288               2316.71
-1048576              2478.30
-2097152              2481.68
-4194304              2380.51
+1                       0.23
+2                       0.46
+4                       0.95
+8                       1.80
+16                      3.27
+32                      6.31
+64                     13.05
+128                    22.23
+256                    40.47
+512                    62.13
+1024                   81.24
+2048                  100.24
+4096                  106.50
+8192                  114.32
+16384                 116.41
+32768                 117.44
+65536                 118.10
+131072                117.90
+262144                118.27
+524288                118.48
+1048576               118.56
+2097152               118.60
+4194304               118.63
 ```
 
 Note that this approach gives lower bandwidths, especially for the larger
