@@ -38,7 +38,6 @@ Available software and tools:
 * [OpenFOAM](https://docs.csc.fi/apps/openfoam/)
 * [PALM](https://docs.csc.fi/apps/palm/)
 * [PDAL](https://docs.csc.fi/apps/pdal/)
-* [Pennylane](https://docs.csc.fi/apps/pennylane/)
 * [PyTorch](https://docs.csc.fi/apps/pytorch/)
 * [QGIS](https://docs.csc.fi/apps/qgis/)
 * [SAGA GIS](https://docs.csc.fi/apps/saga-gis/)
