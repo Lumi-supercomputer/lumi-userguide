@@ -72,6 +72,7 @@ nav:
       - VASP: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/v/VASP/
     - Local software collections:
       - CSC: software/local/csc.md
+      - CSC_quantum: software/local/csc-quantum.md
       #- Quantum ESPRESSO: software/guides/quantumespresso.md
       #- ParaView: software/guides/paraview.md
       #- Quantum ESPRESSO: software/guides/quantumespresso.md
