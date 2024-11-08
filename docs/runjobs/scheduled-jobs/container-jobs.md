@@ -93,7 +93,16 @@ $ module load LUMI partition/<lumi-partition>
 
 Running e.g. the [OSU point-to-point bandwidth test
 container](../../software/containers/singularity.md#building-containers-on-local-hardware)
-can then be done using
+can then be done using [singularity-bindings](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/s/singularity-bindings/singularity-bindings-24.03)
+
+The first time this is run it needs to be installed using:
+
+```bash
+$ module load EasyBuild-user
+$ eb singularity-bindings-24.03.eb -r
+```
+
+And then we can load [singularity-bindings](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/s/singularity-bindings/singularity-bindings-24.03) and run the program
 
 ```bash
 $ module load singularity-bindings
