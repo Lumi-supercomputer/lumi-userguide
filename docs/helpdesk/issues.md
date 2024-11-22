@@ -42,6 +42,16 @@ If you suspect that the job has crashed because of a faulty node:
   sinfo -R --nodes=$(sacct -n -j 123456 --format=nodelist --json | jq -r ".jobs[0].steps[1].nodes.list | .[]"  | paste -sd ',')
   ```
 
+- To exclude the faulty node(s) from the resources granted for your job, you can use the Slurm options `-x` or `--exclude`. E.g. to exclude the node nid005038:
+  ```
+  #SBATCH --exclude=nid005038
+  ```
+  Or to exclude the two nodes nid005038 and nid005270:
+  ```
+  #SBATCH --exclude=nid[005038,005270]
+  ```
+  
+
 - Send a ticket to [LUMI service desk](https://lumi-supercomputer.eu/user-support/need-help/running/) identifying the job id, the error you got, and any other information you could provide to help find the source of the fault.
 
 - If you want to re-run a job and have a list of nodes to exclude, check the health status of these nodes to see if you could include them again, rather than having an ever-increasing list of nodes to exclude.
