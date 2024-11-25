@@ -44,7 +44,7 @@ through the general contact form, as the "large-scale runs" category.
 ## Once the run is granted
 
 Before the actual full machine run, you will be informed about specific settings and small tests to do. The LUMI user support team will be in contact with you about these. 
-Notice that the actual full machine run slots are zero-support sessions, and on the full machine run Sunday your team should be able to manage the run yourselves. 
+Please note that support is not available the days full-machine runs are carried out.
 
 ## Post runs
 
