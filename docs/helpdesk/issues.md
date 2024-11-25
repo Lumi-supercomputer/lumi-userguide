@@ -52,9 +52,9 @@ If you suspect that the job has crashed because of a faulty node:
   ```
   
 
-- Send a ticket to [LUMI service desk](https://lumi-supercomputer.eu/user-support/need-help/running/) identifying the job id, the error you got, and any other information you could provide to help find the source of the fault.
+- In any case, **please send a ticket** to [LUMI service desk](https://lumi-supercomputer.eu/user-support/need-help/running/) identifying the job id, the error you got, and any other information you could provide to help find the source of the fault. It's important for the LUMI support to know about the non-working nodes to fix the issues.
 
-- If you want to re-run a job and have a list of nodes to exclude, check the health status of these nodes to see if you could include them again, rather than having an ever-increasing list of nodes to exclude.
+- If you want to re-run a job and have a list of nodes to exclude, **check the health status of these nodes to see if you could include them again**, rather than having an ever-increasing list of nodes to exclude.
   The command to check health of the nodes on your exclude list is:
   ```
   sinfo -R --nodes=<list_of_nodes>
