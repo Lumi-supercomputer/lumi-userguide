@@ -41,6 +41,11 @@ through the general contact form, as the "large-scale runs" category.
   something that cannot be done in the normal production queues. As well as
   evidence that you already have it running on LUMI.
 
+## Once the run is granted
+
+Before the actual full machine run, you will be informed about specific settings and small tests to do. The LUMI user support team will be in contact with you about these. 
+Please note that support is not available the days full-machine runs are carried out.
+
 ## Post runs
 
 We also require that you provide a short and simple summary of the runs you did
