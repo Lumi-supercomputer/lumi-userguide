@@ -26,6 +26,7 @@ Available software and tools:
 * [CP2K](https://docs.csc.fi/apps/cp2k/)
 * [Elmer](https://docs.csc.fi/apps/elmer/)
 * [GDAL](https://docs.csc.fi/apps/gdal/)
+* [Geoconda](https://docs.csc.fi/apps/geoconda/)
 * [GRASS GIS](https://docs.csc.fi/apps/grass/)
 * [GROMACS](https://docs.csc.fi/apps/gromacs/)
 * [HyperQueue](https://docs.csc.fi/apps/hyperqueue/)
