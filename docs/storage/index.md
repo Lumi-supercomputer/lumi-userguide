@@ -110,8 +110,8 @@ to request more storage space.
 
 !!! warning " *) Data retention policies on LUMI"
 
-    Automatic data retention policies of project scratch and fast are not active on LUMI at the moment. Please remove the files that are no longer needed by your project on a regular basis.
-    If the storage space on LUMI gets too full at some point, automatic cleaning of project scratch and fast might be taken into use. In this case information would be sent to LUMI users at least three months in prior. 
+    Please remove the files that are no longer needed by your project on a regular basis.
+    If the storage space on LUMI gets too full at some point, automatic cleaning of project scratch and fast might be enabled. In this case information would be sent to LUMI users at least three months in advance. 
     
 <!---
 (Comment: This box should be hidden as long as the policy is kept inactive.)
