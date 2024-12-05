@@ -92,12 +92,12 @@ areas.
 | **Project<br> flash**      | `/flash/<project>`         | High performance temporary<br> storage for input and output data | [LUMI-F][lumif]         |
 
 
-|                           | Quota | Max files | Expandable            | Retention        | Billing<br>rate |
-|---------------------------|-------|-----------|-----------------------| -----------------|-----------------|
-| **User<br>home**          | 20 GB | 100k      | No                    | User lifetime    | NA              |
-| **Project<br>persistent** | 50 GB | 100k      | Yes,<br> up to 500GB  | Project lifetime | 1x              |
-| **Project<br>scratch**    | 50 TB | 2000k     | Yes,<br> up to 500TB  | 90 days          | 1x              |
-| **Project<br>fast**       |  2 TB | 1000k     | Yes,<br> up to 100TB  | 30 days          | 10x             |
+|                           | Quota | Max files | Expandable            | Retention         | Billing<br>rate |
+|---------------------------|-------|-----------|-----------------------| ------------------|-----------------|
+| **User<br>home**          | 20 GB | 100k      | No                    | User lifetime     | NA              |
+| **Project<br>persistent** | 50 GB | 100k      | Yes,<br> up to 500GB  | Project lifetime  | 1x              |
+| **Project<br>scratch**    | 50 TB | 2000k     | Yes,<br> up to 500TB  | Project lifetime* | 1x              |
+| **Project<br>fast**       |  2 TB | 1000k     | Yes,<br> up to 100TB  | Project lifetime* | 10x             |
 
 |                    | Quota  | Max<br>buckets | Max<br>objects<br>per bucket     | Retention           | Billing<br>rate |
 |--------------------|--------|----------------|----------------------------------|---------------------|-----------------|
@@ -108,16 +108,19 @@ project. When a storage space is marked as expandable, it means that you can
 request more space if needed. Please contact the [User Support Team][helpdesk]
 to request more storage space.
 
-!!! warning "Data retention policies are not active"
+!!! warning " *) Data retention policies on LUMI"
 
-    Automatic cleaning of project scratch and fast storage is not active at the
-    moment. Please remove the files that are no longer needed by your project
-    on a regular basis.
+    Please remove the files that are no longer needed by your project on a regular basis.
+    If the storage space on LUMI gets too full at some point, automatic cleaning of project scratch and fast might be enabled. In this case information would be sent to LUMI users at least three months in advance. 
+    
+<!---
+(Comment: This box should be hidden as long as the policy is kept inactive.)
 
 !!! failure "Don't circumvent the retention policy"
 
     Deliberately modifying file access times to bypass the retention policy is
     prohibited. It's anti-social behavior that may impact other users negatively.
+--->
 
 ### About the number-of-files quota
 
