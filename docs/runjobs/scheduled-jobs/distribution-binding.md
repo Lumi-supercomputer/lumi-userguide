@@ -12,7 +12,7 @@ tasks via Slurm on LUMI.
     partitions. For other partitions, it will apply if you use the `--exclusive` 
     sbatch directive.
 
-    Similarly, binding cannot by applied for interactive jobs if you run `srun` 
+    Similarly, binding cannot be applied for interactive jobs if you run `srun` 
     outside of an allocation, meaning you directly call `srun` on a login node.
     You have to [create an allocation with `salloc`][interactive] first.
 
