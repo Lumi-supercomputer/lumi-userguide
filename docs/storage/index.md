@@ -71,7 +71,7 @@ The use of storage is billed according to the [billing policy](../runjobs/lumi_e
 
     A high performance variant of project scratch. Use this when running jobs
     on LUMI that need very fast disk I/O operations. Note the difference in
-    billing of the project scratch and project fast as detailed on the
+    billing of the project scratch and project flash as detailed on the
     [billing page][billing].
 
     The project flash space is only meant for very short term file storage.
@@ -97,7 +97,7 @@ areas.
 | **User<br>home**          | 20 GB | 100k      | No                    | User lifetime     | NA              |
 | **Project<br>persistent** | 50 GB | 100k      | Yes,<br> up to 500GB  | Project lifetime  | 1x              |
 | **Project<br>scratch**    | 50 TB | 2000k     | Yes,<br> up to 500TB  | Project lifetime* | 1x              |
-| **Project<br>fast**       |  2 TB | 1000k     | Yes,<br> up to 100TB  | Project lifetime* | 10x             |
+| **Project<br>flash**       |  2 TB | 1000k     | Yes,<br> up to 100TB  | Project lifetime* | 10x             |
 
 |                    | Quota  | Max<br>buckets | Max<br>objects<br>per bucket     | Retention           | Billing<br>rate |
 |--------------------|--------|----------------|----------------------------------|---------------------|-----------------|
@@ -111,7 +111,7 @@ to request more storage space.
 !!! warning " *) Data retention policies on LUMI"
 
     Please remove the files that are no longer needed by your project on a regular basis.
-    If the storage space on LUMI gets too full at some point, automatic cleaning of project scratch and fast might be enabled. In this case information would be sent to LUMI users at least three months in advance. 
+    If the storage space on LUMI gets too full at some point, automatic cleaning of project scratch and flash might be enabled. In this case information would be sent to LUMI users at least three months in advance. 
     
 <!---
 (Comment: This box should be hidden as long as the policy is kept inactive.)
