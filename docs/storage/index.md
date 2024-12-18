@@ -63,9 +63,7 @@ The use of storage is billed according to the [billing policy](../runjobs/lumi_e
     When running jobs on LUMI, this is the main storage you should use for your
     disk I/O needs.
     
-    You are not supposed to use the scratch space as long-term storage. The 
-    scratch file system is a temporary storage space. Files that have not been
-    accessed will be **purged after 90 days**.
+    You are not supposed to use the scratch space as long-term storage. 
 
 === "Project flash"
 
@@ -75,7 +73,7 @@ The use of storage is billed according to the [billing policy](../runjobs/lumi_e
     [billing page][billing].
 
     The project flash space is only meant for very short term file storage.
-    Files that have not been accessed will be **purged after 30 days**.
+    
 
 ## LUMI network file system disk storage areas
 
