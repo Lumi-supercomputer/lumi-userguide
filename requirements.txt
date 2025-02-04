@@ -14,7 +14,7 @@ ghp-import==2.0.2
 htmlmin==0.1.12
 idna==3.7
 importlib-metadata==4.8.3
-Jinja2==3.1.4
+Jinja2==3.1.5
 jsmin==3.0.1
 Markdown==3.6
 MarkupSafe==2.0.1
