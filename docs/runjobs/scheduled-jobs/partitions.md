@@ -41,18 +41,24 @@ that your job may share the node with other jobs.
 
 | Name     | Max walltime | Max jobs                | Max resources/job  | Hardware partition | Purpose                                                                  |
 | -------- | ------------ | ----------------------- | ------------------ | ------------------ | ------------------------------------------------------------------------ |
-| dev-g    | 3 hours      |   2 (2 running)         | 32 nodes           | [LUMI-G][lumi-g]   | [Debugging](#debugging-nodes)                                            |
 | debug    | 30 minutes   |   2 (2 running)         |  4 nodes           | [LUMI-C][lumi-c]   | [Debugging and testing](#debugging-nodes)                                |
 | small-g  | 3 days       | 210 (200 running)       |  4 nodes           | [LUMI-G][lumi-g]   | [Small GPU jobs](#small-partitions)                                      | 
 | small    | 3 days       | 220 (200 running)       |  4 nodes           | [LUMI-C][lumi-c]   | [Small](#small-partitions) or [memory intense](#large-memory-nodes) jobs |
 | largemem | 1 day        |  30 (20 running)        |  1 nodes           | [LUMI-D][lumi-d]   | [Memory intense jobs](#large-memory-nodes)                               |
 | lumid    | 4 hours      |   1 (1 running)         |  1 GPU             | [LUMI-D][lumi-d]   | [Visualisation](#visualization-nodes)                                    |
 
+| Name     | Max walltime | Max jobs                | Max resources/job  | Hardware partition | Purpose                                                                  |
+| -------- | ------------ | ----------------------- | ------------------ | ------------------ | ------------------------------------------------------------------------ |
+| dev-g    | 30 minutes   |   2 (2 running)         | 32 nodes           | [LUMI-G][lumi-g]   | [Debugging](#debugging-nodes)                                            |
+|          | 1 hour       |   2 (2 running)         | 16 nodes           | [LUMI-G][lumi-g]   | [Debugging](#debugging-nodes)                                            |
+|          | 2 hours      |   2 (2 running)         | 8 nodes            | [LUMI-G][lumi-g]   | [Debugging](#debugging-nodes)                                            |
+
+
 !!! info "Notes about specific partitions"
 
     #### Debugging nodes
     Nodes in the `debug` and `dev-g` partition are meant for debugging and
-    quick testing purposes and not for production runs. Repeated abuse of these
+    quick testing purposes and not for production runs. The max runtime on dev-g depends on the number of nodes one requests, as seen from the table. Repeated abuse of these
     partitions might result in account suspension.
 
     #### Small partitions
