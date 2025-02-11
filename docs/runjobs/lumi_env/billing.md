@@ -173,30 +173,30 @@ For example, storing 1.2 TB of data for 4 days consumes:
 
 ### Flash storage (LUMI-F) billing
 
-The flash storage backed by [LUMI-F][lumi-f] is billed at a 10x rate compared
+The flash storage backed by [LUMI-F][lumi-f] is billed at a 3x rate compared
 to the main storage:
 
 ```text
-TB-hours-billed = 10 x storage-volume x time-used
+TB-hours-billed = 3 x storage-volume x time-used
 ```
 
 For example, storing 1.2 TB of data for 4 days consumes:
 
 ```text
-10 x 1.2 TB x 24 hours/day x 4 days = 1152 TB-hours
+3 x 1.2 TB x 24 hours/day x 4 days = 345.6 TB-hours
 ```
 
 ### Object storage (LUMI-O) billing
 
-The object storage backed by [LUMI-O][lumi-o] is billed at a 0.5x rate compared
+The object storage backed by [LUMI-O][lumi-o] is billed at a 0.25x rate compared
 to the main storage:
 
 ```text
-TB-hours-billed = 0.5 x storage-volume x time-used
+TB-hours-billed = 0.25 x storage-volume x time-used
 ```
 
 For example, storing 1.2 TB of data for 4 days consumes:
 
 ```text
-0.5 x 1.2 TB x 24 hours/day x 4 days = 57.6 TB-hours
+0.25 x 1.2 TB x 24 hours/day x 4 days = 28.8 TB-hours
 ```
