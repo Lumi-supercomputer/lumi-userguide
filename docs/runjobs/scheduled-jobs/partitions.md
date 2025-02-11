@@ -49,7 +49,7 @@ that your job may share the node with other jobs.
 
 | Name     | Max walltime | Max jobs                | Max resources/job  | Hardware partition | Purpose                                                                  |
 | -------- | ------------ | ----------------------- | ------------------ | ------------------ | ------------------------------------------------------------------------ |
-| dev-g    | 30 minutes   |   2 (2 running)         | 32 nodes           | [LUMI-G][lumi-g]   | [Debugging](#debugging-nodes)                                            |
+| dev-g    | 30 minutes   |   2 (1 running)         | 32 nodes           | [LUMI-G][lumi-g]   | [Debugging](#debugging-nodes)                                            |
 |          | 1 hour       |   2 (2 running)         | 16 nodes           | [LUMI-G][lumi-g]   | [Debugging](#debugging-nodes)                                            |
 |          | 2 hours      |   2 (2 running)         | 8 nodes            | [LUMI-G][lumi-g]   | [Debugging](#debugging-nodes)                                            |
 
