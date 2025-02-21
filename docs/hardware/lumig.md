@@ -158,8 +158,8 @@ The way the wavefronts are executed by a compute unit is the following:
   executed concurrently, the throughput remains constant at one instruction per
   wavefront per compute unit
 
-The compute units have 512 64-wide 4 bytes Vector General Purpose Registers
-(VGPRs).  In addition to these registers, the unit also provides access to low
+The SIMD compute units have 512 64-wide 4 bytes Vector General Purpose Registers
+(VGPRs).  In addition to these registers, the compute units also provide access to low
 latency storage through a 64 kB Local Data Share (LDS). This shared memory is
 akin to NVIDIA's "shared memory" and is accessible to all threads within a block
 (workgroup). The programmer manages the LDS allocation. Additionally,
