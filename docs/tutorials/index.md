@@ -12,7 +12,7 @@
 
 The LUMI training material is hosted at [lumi-supercomputer.github.io/LUMI-training-materials][training-material].
 
-It contains all slides and recordings of all past LUMI training events, including introductory and advanced courses, AI workshops, hackathons, and profiling courses. The training material also provides recordings of the [LUMI user coffee breaks][coffee-breaks] and [user update events][user-updates].
+It contains all slides and recordings of all past LUMI training events, including introductory and advanced courses, AI workshops, hackathons, and profiling courses. The training material also provides recordings of the [LUMI user coffee break talks][coffee-breaks] and [user update events][user-updates].
 
 ## LUMI AI Guide
 
