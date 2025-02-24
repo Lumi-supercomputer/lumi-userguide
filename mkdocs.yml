@@ -66,10 +66,10 @@ nav:
       - Singularity/Apptainer: software/containers/singularity.md
     - Software guides:
       - Software library: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/
-      - CP2K: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/c/CP2K/
-      - PyTorch: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/p/PyTorch/
-      - QuantumESPRESSO: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/q/QuantumESPRESSO/
-      - VASP: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/v/VASP/
+      #- CP2K: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/c/CP2K/
+      #- PyTorch: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/p/PyTorch/
+      #- QuantumESPRESSO: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/q/QuantumESPRESSO/
+      #- VASP: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/v/VASP/
     - Local software collections:
       - CSC: software/local/csc.md
       - CSC_quantum: software/local/csc-quantum.md
@@ -105,6 +105,10 @@ nav:
       - Authentication for LUMI-O: storage/lumio/auth-lumidata-eu.md
       - Error messages: storage/lumio/error-messages.md
       - Advanced usage of LUMI-O: storage/lumio/advanced.md
+  - Tutorials:
+    - Tutorials: tutorials/index.md
+    - LUMI training materials: https://lumi-supercomputer.github.io/LUMI-training-materials
+    - LUMI AI Guide: https://github.com/Lumi-supercomputer/LUMI-AI-Guide
   - Help desk: 
     - Help desk: helpdesk/index.md
     - Training and events: helpdesk/training.md
