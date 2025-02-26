@@ -50,7 +50,6 @@ The use of storage is billed according to the [billing policy](../runjobs/lumi_e
 
 === "Project persistent"
 
-    Persistent storage intended to share data amongst the members of a project.
     You can see this disk area as the project home directory. Typically, this
     space is used to share applications and libraries compiled for the project.
     The project persistent storage is located at
@@ -62,8 +61,6 @@ The use of storage is billed according to the [billing policy](../runjobs/lumi_e
     Temporary storage for input, output, or checkpoint data of your application.
     When running jobs on LUMI, this is the main storage you should use for your
     disk I/O needs.
-    
-    You are not supposed to use the scratch space as long-term storage. 
 
 === "Project flash"
 
@@ -72,8 +69,11 @@ The use of storage is billed according to the [billing policy](../runjobs/lumi_e
     billing of the project scratch and project flash as detailed on the
     [billing page][billing].
 
-    The project flash space is only meant for very short term file storage.
+    It is recommended to only keep the data on /flash during the time when it's actively needed.
     
+
+Notice that we have no backups for any data in the LUMI storage system. Users should pay attention to move their important data elsewhere, and take regular backups. One option for a backup solution is to copy your data also to LUMI-O.
+
 
 ## LUMI network file system disk storage areas
 
