@@ -5,11 +5,16 @@
     There will be no large-scale runs during July, August and December      due to the difficulty to schedule such large scale runs with reduced      personnel during the holiday seasons.
 
 We provide the opportunity to perform runs on the entirety of LUMI the last
-Sunday every month (subject to change over time). This can either be all the CPU
-nodes, all GPU nodes or even a combination of CPU and GPU nodes if needed. For
+Sunday every month (subject to change over time). This can either be all* the CPU
+nodes, all* GPU nodes or even a combination of CPU and GPU nodes if needed. For
 these runs, we can make changes to queue policies as needed. The slot we provide
 is at most 6 hours, but can be shorter if you either do not need the full 6h or
 there are a lot of other users that have requested time for the same day.
+
+!!! info " *) LUMI full machine run partitions"
+    
+    The full machine runs on LUMI-C are carried out on a partition `fmr` with 2020 nodes, and on LUMI-G a partition `fmr-g` with 2916 nodes. 
+      
 
 Provide at most a 1-page description of what you are intending to do with the
 full-machine access (see template below). Do not request access before you have
