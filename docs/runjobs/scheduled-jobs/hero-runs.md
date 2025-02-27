@@ -44,7 +44,13 @@ through the general contact form, as the "large-scale runs" category.
 ## Once the run is granted
 
 Before the actual full machine run, you will be informed about specific settings and small tests to do. The LUMI user support team will be in contact with you about these. 
+
 Please note that support is not available the days full-machine runs are carried out.
+
+Good to know:
+- To run with a full machine run slot, you need to specify [a reservation](https://slurm.schedmd.com/sbatch.html#OPT_reservation). The details about this are given by the LUMI user support team.
+- In case you would need to exclude some specific nodes from the reservation during the full machine run (e.g. in case of encountering a nonfunctional node), we have given [here](https://docs.lumi-supercomputer.eu/helpdesk/issues/#job-crashes-because-of-a-faulty-node) a couple of examples how to do so.
+
 
 ## Post runs
 
