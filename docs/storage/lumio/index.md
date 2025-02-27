@@ -85,14 +85,14 @@ The most common commands for `s3cmd` and `rclone` to
 
 ### rclone
 
-For `rclone`, the LUMI-O configuration provides two remotes endpoints: 
+For `rclone`, the LUMI-O configuration provides two kinds of remotes endpoints: 
 
-- **lumi-o**: The private endpoint. The buckets and objects uploaded to this
+- **lumi-<project_number>-private**: A private endpoint. The buckets and objects uploaded to this
               endpoint will not be publicly accessible.
-- **lumi-pub**: The public endpoint. The buckets and objects uploaded to this
+- **lumi-<project_number>-public**: A public endpoint. The buckets and objects uploaded to this
                 endpoint will publicly accessible using the URL:
                 ```
-                https://<project-number>.lumidata.eu/<bucket_name>`
+                https://<project_number>.lumidata.eu/<bucket_name>`
                 ```
                 Be careful to not upload data that cannot be public to this
                 endpoint.
