@@ -88,7 +88,7 @@ areas.
 |                            | Path                       | Intended use                                                     | Hardware partition used |
 |----------------------------|----------------------------|------------------------------------------------------------------|-------------------------|
 | **User<br> home**          | `/users/<username>`        | User home directory for<br> personal and configuration files     | [LUMI-P][lumip]         |
-| **Project<br> persistent** | `/project/<project>`       | Project home directory for<br> shared project files              | [LUMI-P][lumip]         |
+| **Project<br> space** | `/project/<project>`       | Project home directory for<br> shared project files              | [LUMI-P][lumip]         |
 | **Project<br> scratch**    | `/scratch/<project>`       | Temporary storage for<br> input, output or checkpoint data       | [LUMI-P][lumip]         |
 | **Project<br> flash**      | `/flash/<project>`         | High performance temporary<br> storage for input and output data | [LUMI-F][lumif]         |
 
@@ -96,7 +96,7 @@ areas.
 |                           | Quota | Max files | Expandable            | Retention         | Billing<br>rate |
 |---------------------------|-------|-----------|-----------------------| ------------------|-----------------|
 | **User<br>home**          | 20 GB | 100k      | No                    | User lifetime     | NA              |
-| **Project<br>persistent** | 50 GB | 100k      | Yes,<br> up to 500GB  | Project lifetime  | 1x              |
+| **Project<br>space** | 50 GB | 100k      | Yes,<br> up to 500GB  | Project lifetime  | 1x              |
 | **Project<br>scratch**    | 50 TB | 2000k     | Yes,<br> up to 500TB  | Project lifetime* | 1x              |
 | **Project<br>flash**       |  2 TB | 1000k     | Yes,<br> up to 100TB  | Project lifetime* | 3x             |
 
