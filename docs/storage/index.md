@@ -74,7 +74,7 @@ The use of storage is billed according to the [billing policy](../runjobs/lumi_e
 
 Notice that there are **no** backups for any storage systems of LUMI. 
 
-Users should pay attention to make secure copy of important data elsewhere. One possibility is to keep a backup of data in LUMI-O. 
+Users should pay attention to make secure copy of important data elsewhere. One option is to keep a backup of data in LUMI-O. 
 
 
 ## LUMI network file system disk storage areas
