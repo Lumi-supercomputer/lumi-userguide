@@ -48,13 +48,14 @@ The use of storage is billed according to the [billing policy](../runjobs/lumi_e
     20 GB of data. It is intended to store user configuration files and personal
     data. The user home directory is purged once the user account expires. However, LUMI, and therefore the user home directory, is not accessible if the user is not a member of an active project, even though the user has still a valid account on LUMI.
 
-=== "Project persistent"
+=== "Project space"
 
     You can see this disk area as the project home directory. Typically, this
     space is used to share applications and libraries compiled for the project.
-    The project persistent storage is located at
-    `/project/project_<project-number>`. The project persistent directory is
+    The project storage is located at
+    `/project/project_<project-number>`. The project directory is
     purged once the project ends.
+    Transient data is meant to be processed with scratch space which allows higher quotas.
 
 === "Project scratch"
 
