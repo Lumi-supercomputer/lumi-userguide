@@ -54,7 +54,7 @@ The use of storage is billed according to the [billing policy](../runjobs/lumi_e
     space is used to share applications and libraries compiled for the project.
     The project persistent storage is located at
     `/project/project_<project-number>`. The project persistent directory is
-    purged once the project expires.
+    purged once the project ends.
 
 === "Project scratch"
 
@@ -72,7 +72,9 @@ The use of storage is billed according to the [billing policy](../runjobs/lumi_e
     It is recommended to only keep the data on /flash during the time when it's actively needed.
     
 
-Notice that we have no backups for any data in the LUMI storage system. Users should pay attention to move their important data elsewhere, and take regular backups. One option for a backup solution is to copy your data also to LUMI-O.
+Notice that there are **no** backups for any storage systems of LUMI. 
+
+Users should pay attention to make secure copy of important data elsewhere. One possibility is to keep a backup of data in LUMI-O. 
 
 
 ## LUMI network file system disk storage areas
