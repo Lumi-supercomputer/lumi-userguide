@@ -48,22 +48,20 @@ The use of storage is billed according to the [billing policy](../runjobs/lumi_e
     20 GB of data. It is intended to store user configuration files and personal
     data. The user home directory is purged once the user account expires. However, LUMI, and therefore the user home directory, is not accessible if the user is not a member of an active project, even though the user has still a valid account on LUMI.
 
-=== "Project persistent"
+=== "Project space"
 
-    Persistent storage intended to share data amongst the members of a project.
     You can see this disk area as the project home directory. Typically, this
     space is used to share applications and libraries compiled for the project.
-    The project persistent storage is located at
-    `/project/project_<project-number>`. The project persistent directory is
-    purged once the project expires.
+    The project storage is located at
+    `/project/project_<project-number>`. The project directory is
+    purged once the project ends.
+    Transient data is meant to be processed with scratch space which allows higher quotas.
 
 === "Project scratch"
 
     Temporary storage for input, output, or checkpoint data of your application.
     When running jobs on LUMI, this is the main storage you should use for your
     disk I/O needs.
-    
-    You are not supposed to use the scratch space as long-term storage. 
 
 === "Project flash"
 
@@ -72,8 +70,13 @@ The use of storage is billed according to the [billing policy](../runjobs/lumi_e
     billing of the project scratch and project flash as detailed on the
     [billing page][billing].
 
-    The project flash space is only meant for very short term file storage.
+    It is recommended to only keep the data on /flash during the time when it's actively needed.
     
+
+Notice that there are **no** backups for any storage systems of LUMI. 
+
+Users should pay attention to make secure copy of important data elsewhere. One option is to keep a backup of data in LUMI-O. 
+
 
 ## LUMI network file system disk storage areas
 
@@ -85,7 +88,7 @@ areas.
 |                            | Path                       | Intended use                                                     | Hardware partition used |
 |----------------------------|----------------------------|------------------------------------------------------------------|-------------------------|
 | **User<br> home**          | `/users/<username>`        | User home directory for<br> personal and configuration files     | [LUMI-P][lumip]         |
-| **Project<br> persistent** | `/project/<project>`       | Project home directory for<br> shared project files              | [LUMI-P][lumip]         |
+| **Project<br> space** | `/project/<project>`       | Project home directory for<br> shared project files              | [LUMI-P][lumip]         |
 | **Project<br> scratch**    | `/scratch/<project>`       | Temporary storage for<br> input, output or checkpoint data       | [LUMI-P][lumip]         |
 | **Project<br> flash**      | `/flash/<project>`         | High performance temporary<br> storage for input and output data | [LUMI-F][lumif]         |
 
@@ -93,7 +96,7 @@ areas.
 |                           | Quota | Max files | Expandable            | Retention         | Billing<br>rate |
 |---------------------------|-------|-----------|-----------------------| ------------------|-----------------|
 | **User<br>home**          | 20 GB | 100k      | No                    | User lifetime     | NA              |
-| **Project<br>persistent** | 50 GB | 100k      | Yes,<br> up to 500GB  | Project lifetime  | 1x              |
+| **Project<br>space** | 50 GB | 100k      | Yes,<br> up to 500GB  | Project lifetime  | 1x              |
 | **Project<br>scratch**    | 50 TB | 2000k     | Yes,<br> up to 500TB  | Project lifetime* | 1x              |
 | **Project<br>flash**       |  2 TB | 1000k     | Yes,<br> up to 100TB  | Project lifetime* | 3x             |
 
