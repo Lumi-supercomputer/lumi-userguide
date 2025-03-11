@@ -65,13 +65,16 @@ The most common commands for `s3cmd` and `rclone` to
 
 === "Rclone"
     
-    | Action                                     | Command                              |
-    |--------------------------------------------|--------------------------------------|
-    | List buckets                               | `rclone lsd lumi-o:`                 |
-    | Create bucket *mybuck*                     | `rclone mkdir lumi-o:mybuck`         |
-    | List objects in bucket *mybuck*            | `rclone ls lumi-o:mybuck/`           |
-    | Upload file *file1* to bucket *mybuck*     | `rclone copy file1 lumi-o:mybuck/`   |
-    | Download file *file1* from bucket *mybuck* | `rclone copy lumi-o:mybuck/file1 .`  |
+    | Action                                     | Command                                             |
+    |--------------------------------------------|-----------------------------------------------------|
+    | List buckets                               | `rclone lsd lumi-46YXXXXXX-private:`                |
+    | Create bucket *mybuck*                     | `rclone mkdir lumi-46YXXXXXX-private:mybuck`        |
+    | List objects in bucket *mybuck*            | `rclone ls lumi-46YXXXXXX-private:mybuck/`          |
+    | Upload file *file1* to bucket *mybuck*     | `rclone copy file1 lumi-46YXXXXXX-private:mybuck/`  |
+    | Download file *file1* from bucket *mybuck* | `rclone copy lumi-46YXXXXXX-private:mybuck/file1 .` |
+
+    _Replace 46YXXXXXX with your LUMI project number._
+    _For public buckets, replace the word 'private' with 'public'_
 
 === "s3cmd"
 
