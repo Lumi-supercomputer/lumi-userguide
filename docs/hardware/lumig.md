@@ -8,7 +8,7 @@ hide:
 [storage]: ../storage/index.md
 [network]: ./network.md
 [MI250x-amd]: https://www.amd.com/en/products/accelerators/instinct/mi200/mi250x.html
-[benchmarks]: https://www.amd.com/en/graphics/server-accelerators-benchmarks
+[benchmarks]: https://www.amd.com/en/graphics/server-accelerators-benchmarks <!-- link is broken, reference removed from docs --> 
 [zen3-wiki]: https://en.wikipedia.org/wiki/Zen_3
 
 The LUMI-G hardware partition consists of 2978 nodes with 4 AMD MI250x GPUs and 
@@ -40,7 +40,6 @@ of 220 CUs and 128 GB total memory per MI250x module.
 More information about the AMD MI250x can be found here:
 
 - [MI250X information on the AMD website][MI250x-amd]
-- [Applications performance and benchmarks][benchmarks]
 
 The LUMI-G nodes CPU is a single 64-core AMD EPYC 7A53 "Trento" CPU. The cores
 of this CPU are ["Zen 3" compute cores][zen3-wiki] supporting AVX2 256-bit
