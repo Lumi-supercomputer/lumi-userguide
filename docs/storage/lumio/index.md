@@ -74,7 +74,7 @@ The most common commands for `s3cmd` and `rclone` to
     | Download file *file1* from bucket *mybuck* | `rclone copy lumi-46YXXXXXX-private:mybuck/file1 .` |
 
     _Replace 46YXXXXXX with your LUMI project number._
-    _For public buckets, replace the word 'private' with 'public'_
+    _For data in public endpoint, replace the word 'private' with 'public'_
 
 === "s3cmd"
 
