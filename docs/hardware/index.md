@@ -16,9 +16,9 @@ hardware partitions available on LUMI.
 LUMI is one of the three European pre-exascale supercomputers. It's an HPE Cray
 EX supercomputer consisting of several hardware partitions targeted different
 use cases. All the hardware partitions are connected via an HPE Slingshot 11
-high-speed [interconnect][network]. As of 06/2024, LUMI ranks fifth on the
-[top500.org list][lumi-top500] and is currently the fastest supercomputer in
-Europe.
+high-speed [interconnect][network]. As of 11/2024, LUMI ranks eighth on the
+[top500.org list][lumi-top500] and is currently the third fastest supercomputer
+in Europe.
 
 The primary compute power in LUMI is found in the [LUMI-G][lumi-g] hardware
 partition which features GPU accelerated nodes using AMD Instinct MI250X GPUs.
