@@ -6,7 +6,7 @@
 [ai-guide]: https://github.com/Lumi-supercomputer/LUMI-AI-Guide
 [VisionTransformer]: https://pytorch.org/vision/main/models/vision_transformer.html
 [imagenet]: https://www.image-net.org/
-[vt-script]: https://github.com/Lumi-supercomputer/LUMI-AI-Guide/blob/main/quickstart/visualtransformer.py
+[vt-script]: https://github.com/Lumi-supercomputer/LUMI-AI-Guide/blob/main/1-quickstart/visualtransformer.py
 
 ## Training Material
 
