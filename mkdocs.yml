@@ -52,10 +52,7 @@ nav:
       - Job array: runjobs/scheduled-jobs/throughput.md
       - Interactive jobs: runjobs/scheduled-jobs/interactive.md
       - Container jobs: runjobs/scheduled-jobs/container-jobs.md
-      - FUSE mounts: runjobs/scheduled-jobs/FUSE.md
-- Storage
-  - Storage formats
-    - SquashFS: runjobs/scheduled-jobs/FUSE.md
+      - Julia scheduled jobs: runjobs/scheduled-jobs/julia.md
       - Energy consumption: runjobs/scheduled-jobs/jobenergy.md
   - Software:
     - Overview: software/index.md
@@ -108,6 +105,8 @@ nav:
       - Authentication for LUMI-O: storage/lumio/auth-lumidata-eu.md
       - Error messages: storage/lumio/error-messages.md
       - Advanced usage of LUMI-O: storage/lumio/advanced.md
+    - Storage formats:
+      - SquashFS: storage/formats/FUSE.md
   - Tutorials:
     - Tutorials: tutorials/index.md
     - LUMI training materials: https://lumi-supercomputer.github.io/LUMI-training-materials
