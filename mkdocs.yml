@@ -53,7 +53,9 @@ nav:
       - Interactive jobs: runjobs/scheduled-jobs/interactive.md
       - Container jobs: runjobs/scheduled-jobs/container-jobs.md
       - FUSE mounts: runjobs/scheduled-jobs/FUSE.md
-      - Julia scheduled jobs: runjobs/scheduled-jobs/julia.md
+- Storage
+  - Storage formats
+    - SquashFS: runjobs/scheduled-jobs/FUSE.md
       - Energy consumption: runjobs/scheduled-jobs/jobenergy.md
   - Software:
     - Overview: software/index.md
