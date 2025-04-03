@@ -52,6 +52,7 @@ nav:
       - Job array: runjobs/scheduled-jobs/throughput.md
       - Interactive jobs: runjobs/scheduled-jobs/interactive.md
       - Container jobs: runjobs/scheduled-jobs/container-jobs.md
+      - FUSE mounts: runjobs/scheduled-jobs/FUSE.md
       - Julia scheduled jobs: runjobs/scheduled-jobs/julia.md
       - Energy consumption: runjobs/scheduled-jobs/jobenergy.md
   - Software:
