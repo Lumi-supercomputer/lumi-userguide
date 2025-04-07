@@ -100,11 +100,34 @@ nav:
       - Lustre: storage/parallel-filesystems/lustre.md
       - Main storage - LUMI-P: storage/parallel-filesystems/lumip.md
       - Flash storage - LUMI-F: storage/parallel-filesystems/lumif.md
-    - Object storage:
-      - LUMI-O usage: storage/lumio/index.md
-      - Authentication for LUMI-O: storage/lumio/auth-lumidata-eu.md
+    - LUMI-O object storage:
+      - Overview: storage/lumio/index.md
+      - Accessing LUMI-O: storage/lumio/auth-lumidata-eu.md
+      - Tools to manage data:
+        - General about the tools: storage/lumio/clients-general.md
+        - Available tools:
+          - rclone: storage/lumio/client-rclone.md
+          - s3cmd: storage/lumio/client-s3cmd.md
+          - restic: storage/lumio/client-restic.md
+          - Raw HPPT request: storage/lumio/raw-http.md
+          - Python (boto3): storage/lumio/python-boto3.md
+          # - ...
+      - Access rights management: storage/lumio/advanced.md
+      - Checking your quota: storage/lumio/check-quota.md
       - Error messages: storage/lumio/error-messages.md
-      - Advanced usage of LUMI-O: storage/lumio/advanced.md
+      # - Object storage related terms and concepts: 
+      - LUMI-O with batch jobs: storage/lumio/lumio-batchjobs.md 
+      - Use case examples: 
+        - Simple upload and download: storage/lumio/upload-download.md
+        # - Backup your data: storage/lumio/upload-download.md 
+        # - Checking privacy settings:
+        # - Multiproject use case 1:
+        # - Multiproject use case 2:
+        # - Giving temporary access: 
+        # - Public content use case: 
+        # - Private content use case: 
+        # - Access outside LUMI:
+        - Using Allas on LUMI: storage/lumio/allas-lumi.md
   - Tutorials:
     - Tutorials: tutorials/index.md
     - LUMI training materials: https://lumi-supercomputer.github.io/LUMI-training-materials

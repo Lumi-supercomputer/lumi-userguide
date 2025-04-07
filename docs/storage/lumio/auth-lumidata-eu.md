@@ -1,6 +1,22 @@
-# Create LUMI-O credentials
+# LUMI-O Access and Authentication
 
 [auth.lumidata.eu]: https://auth.lumidata.eu
+[lumi-o-tools]: https://github.com/Lumi-supercomputer/LUMI-O-tools
+
+
+## Gaining access
+
+To be able to use LUMI-O, you need to be a member of a LUMI project. 
+
+
+## Create LUMI-O credentials
+
+[auth.lumidata.eu]: https://auth.lumidata.eu
+
+
+To connect to LUMI-O, one needs to create access credentials. These access credentials are valid for a pre-defined period of time. 
+Note that if you are using the LUMI web interface, you can also create the access credentials directly in the web interface as described [here](../../runjobs/webui/index.md#accessing-lumi-o). 
+
 
 Go to [LUMI-O credentials management service page][auth.lumidata.eu]. And click
 on "-> Go to login".
@@ -112,11 +128,8 @@ From this side menu, it is also possible to extend the key.
 	This can then be extended by one hour for every hour from key creation,
     i.e., you are always able to extend the duration of the key to now + 7 days.
 
-Downloading a configuration template for different object storage clients like
-shell, boto3, rclone, s3cmd and aws.
-
-After selecting the desired object storage client and clicking "Generate"
-opens the output in a new browser tab.
+It's also possible to download a configuration template for different object storage clients like
+shell, boto3, rclone, s3cmd and aws. After selecting the desired object storage client and clicking "Generate" opens the output in a new browser tab.
 
 Finally, by scrolling down in the menu this side menu allows you to delete the
 key. After deletion of a key, a new one needs to be created to resume
@@ -130,4 +143,66 @@ can be created in its place.
   >
   <figcaption>Access key details</figcaption>
 </figure>
+
+
+## Connecting
+
+You can access LUMI-O from any machine or server that is connected to internet. This can be a laptop, supercomputer, virtual machine in cloud or even your phone. 
+
+
+
+### Using the LUMI web interface
+
+[LUMI web interface](../../runjobs/webui/index.md#accessing-lumi-o) can be used to connect to LUMI-O. 
+
+
+
+### On LUMI via terminal
+
+With terminal, once logged in to LUMI, start by loading the `lumio` module which provides configuration and data transfer tools:
+
+```
+module load lumio
+```
+
+To configure a connection to LUMI-O, run the command:
+```text
+lumio-conf
+```
+
+This command asks you to connect with your browser to the [LUMI-O credentials
+management service](#create-lumi-o-credentials), create credentials there and the copy
+the project number and keys for the setup tool. The setup process will create configuration files for `s3cmd`
+and `rclone`.
+
+Read the [step-by-step description](#create-lumi-o-credentials) for Creating LUMI-O
+credentials above.
+
+Using the LUMI-O credentials management service, you can
+also generate configuration for different object storage clients like shell,
+boto3, rclone, s3cmd and aws. This is useful for using LUMI-O from somewhere
+else than LUMI, where the `lumio-conf` command is not available (The tool can be
+downloaded from the [LUMI-O repository][lumi-o-tools], but we only officially
+support the tool on LUMI) 
+
+
+### Other ways to access LUMI-O
+
+
+#### Access without connecting to LUMI
+
+In [auth.lumidata.eu](https://auth.lumidata.eu) one can create configuration files associated to valid keys. These configuration files specify the details that are needed to access LUMI-O, and connecting to LUMI is actually not needed at all. 
+
+To connect to LUMI-O directly e.g. from your own laptop, create first a valid key in [auth.lumidata.eu](https://auth.lumidata.eu) for a LUMI project. Then click the available "Access key", select a Configuration template format (rclone,s3cmd,..), and click "Generate". This opens a new tab with a template that you can use for a config file. 
+See an example for rclone in [Available tools](../lumio/client-rclone.md).
+
+
+#### Access via shell script
+
+(explanation about LUMI-O access via shell script)
+
+
+
+<!--Link to remote tools chapter in some parts-->
+
 
