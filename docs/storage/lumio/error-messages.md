@@ -9,7 +9,8 @@ EntityTooLarge
 ```
 ### HTTP status code 403
 
-You have reached a quota limit. Contact your local Resource Allocator and request a quota increase. Please specify the project name, bucket name and size of the file in the request.
+You have reached a quota limit. If you need more quota in LUMI-O, please contact LUMI helpdesk.  
+Please specify your current quota usage and the current allocated quota for your project in the request:
 ```bash
 QuotaExceeded
 ```

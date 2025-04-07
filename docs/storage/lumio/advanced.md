@@ -1,96 +1,29 @@
-# Advanced usage of LUMI-O  
+# Access rights management
 
-## Introduction
+This section explains how you can set more granular access restrictions to your data in LUMI-O than just "private" (only project members can view or edit) or "public". 
+Possibile use cases e.g.
 
-This is not a comprehensive tutorial, but more of
-a list of examples of things that are possible when using LUMI-O.
-Please consult the manual pages of the tools for additional details.
+- How to share the data in LUMI-O with members of another LUMI project
+- How to share a read-only link to your data that is valid only for a certain amount of time
+- ... 
 
-The examples here assume that you have properly configured the tools to use LUMI-O,
-otherwise they will usually default to using amazon aws s3. This is also the case for most other programs
-so if you wish to use LUMI-O with other software, you usually have to find some configuration option or environment variable to set a non-default
-host name. The correct hostname to use for LUMI-O is `https://lumidata.eu`
+---
 
-LUMI-O is an S3 compatible storage solution. However, this does not mean
-that the system is the same as the "Amazon S3 Cloud Storage". The interface for reading and writing data 
-is exactly the same, but AWS has a bunch of additional features, like _self-service provisioning of IAM users_,
-_life cycle configuration_ and _write once, read many functionality_, which are not really part of "just" s3 storage. 
+In object storage, one LUMI project is considered as one account. This means that by default all project members have the same access rights to the data that is stored in the buckets for this project. 
 
-It's worth keeping the above in mind, as many people use S3 and Amazon S3 interchangeably
-when writing guides or instructions.  
+The examples here assume that you have properly configured the tools to use LUMI-O, otherwise they will usually default to using amazon aws s3. 
+
+See also [LUMI-O vs Amazon s3](./index.md#lumi-o-vs-amazon-s3)
+
+<!-- mentioning the above would need some explanation/link, what does it mean that the tools are configured correctly or how does one know that they are configured correctly 
+This might sound just scary to a new user, although they would have done everything right when configuring the s3cmd tool
+-->
 
 !!! warning 
 	Some advanced  operations which are supported by AWS will complete successfully when run against
 	LUMI-O, e.g object locks, but will actually have no effect. Unless it is explicitly stated that a feature
 	is provided by LUMI-O, assume that it will not work and be extra thorough in verifying correct functionality. 
 
-## Credentials & Configuration
-
-### Moving tool configuration files
-
-In some cases it might be required to read
-credentials from some other location than the default 
-locations under home. This can be achieved using environment variables or command line flags.
-
-
-|      | rclone        | s3cmd                  | aws                                         |
-|------|---------------|------------------------|---------------------------------------------|
-| DEFAULT | `~/.config/rclone/rclone.conf`   | `~/.s3cfg`  | `~/.aws/credentials` and `~/.aws/config`|
-| ENV  | `RCLONE_CONFIG` | `S3CMD_CONFIG`           | `AWS_SHARED_CREDENTIALS_FILE` and `AWS_CONFIG_FILE` |
-| FLAG | `--config FILE` | `-c FILE`, `--config=FILE` |                                             |
-
-The `aws` cli additionally has the concept of [profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html), and you can specify 
-which one to use using the `--profile <name>` flag or the `AWS_PROFILE` environment variable.
-
-### Environment
-
-Most programs will use the environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
-when trying to authenticate. So these can be set if one does not wish to save the credentials on disk.
-The environment variables do not always take precedence over values set in configuration files, as
-is the case for `s3cmd` and `rclone`. This means that invalid credentials in config files will
-lead to an access denied even if there are valid credentials in the environment. The `aws` command
-will use the environment variables instead of `~/.aws/credentials` if they are set. 
-`rclone` will additionally require `RCLONE_S3_ENV_AUTH=true` in the environment or `env_auth = true`
-in the config file.
-
-
-## Programmatic access 
-
-When use cases become sufficiently complex one might want to interact
-with LUMI-O in a more programmatic fashion instead of using the 
-command line tools. One such option is the AWS SDK for Python [boto3](https://pypi.org/project/boto3/)\*.
-
-The script
-
-```python
-import boto3
-
-session = boto3.session.Session(profile_name='lumi-465000001')
-s3_client = session.client('s3')
-buckets=s3_client.list_buckets()
-```
-
-Would fetch the buckets of project 465000001 and return the information as a python dictionary. 
-For the full list of available functions, see the [aws s3 client documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html)
-
-
-If a default profile has been configured `~/.aws/credentials`
-the client creation can be shortened to:
-
-```python
-import boto3
-s3_client = boto3.client('s3')
-```
-
-boto3 uses the same configuration files and respects the same environment variables as the `aws` cli.
-
-!!! note 
-	You will need a sufficiently new version of boto3 (e.g version 1.26, which is installed if using python3.6, is too old) for it
-	to understand a default profile set in ~/.aws/credentials and corresponding config file, 
-	otherwise the tool will always default to aws s3 endpoint and you will need to specify the
-	profile/endpoint when constructing the client.
-
-\*_If you prefer to work with some other language there are also options for e.g Java, GO and Javascript_
 
 ## Granular Access management
 
