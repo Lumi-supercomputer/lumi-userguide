@@ -26,11 +26,18 @@ For example, Plots.jl installs over 10k files and is quite large.
 
 ## Starting Julia kernel
 
-Inside the Jupyter session, we can start notebooks with the desired Julia version.
-Starting a kernel loads the corresponding Julia module and starts the notebook.
-We launched the Julia kernel using the [IJulia.jl](https://github.com/JuliaLang/IJulia.jl).
-Note that the Jupyter installation for Julia is separate from the Jupyter installation for Python, and is not intended for other uses.
-
 ![available julia kernels on jupyter lab](../../assets/images/julia-jupyter/julia-kernels.png)
 
+When we first start the Julia-Jupyter session, we don't have any Julia kernels available.
+To install kernels, we must open the *Terminal* application, load the Julia module, and invoke an installation script as follows:
 
+```bash
+module load julia
+install_ijulia_kernel.jl
+```
+
+The script installs [IJulia.jl](https://github.com/JuliaLang/IJulia.jl) and the kernel for the Julia version that was loaded from the module.
+Now, we can close the terminal and refresh the Launcher window, and we should see the installed Julia kernel in the notebook menu.
+Press the icon to start a Julia notebook.
+
+Note that the Jupyter installation for Julia is separate from the Jupyter installation for Python and is not intended for other use.
