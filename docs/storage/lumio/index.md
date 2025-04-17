@@ -7,29 +7,31 @@
 
 ## What is LUMI-O?
 
-LUMI-O is a S3 compatible object storage based on Ceph Reef (v18.2.2). It offers a total of 30 PB storage for storing, sharing,
-and staging of data. By default 150 TB of storage space is allocated per LUMI project, but projects can request for more LUMI-O storage space by contacting the [LUMI helpdesk](../../helpdesk/index.md).
+LUMI-O is a S3 compatible object storage based on Ceph Reef (v18.2.2). It is a completely separate instance from the LUMI filesystem (LUMI-P and LUMI-F). LUMI-O offers a total of 30 PB storage space for storing, sharing, and staging of data. By default 150 TB of storage space is allocated per LUMI project, but projects can request for more LUMI-O storage space by contacting the [LUMI helpdesk](../../helpdesk/index.md).
 
-!!! Info "Some features and benefits of LUMI-O"
+!!! Info "Some features of LUMI-O"
 
     - Separate service from the LUMI filesystem, with a fast connection for data transfer between LUMI filesystem and LUMI-O
-    - Accessible also without connecting to LUMI - in most cases available also during LUMI service breaks
-    - Possible to set different levels of access rights to the data (for other projects and users) 
-    - Possible to share your pubic data across the internet (for the duration of your project)
-    - Possible to share temporary link to otherwise private data
+    - Accessible also without connecting to LUMI
+    - Service breaks of LUMI don't usually affect to availability of LUMI-O
+    - Usage with client tools like rclone and s3cmd, or via LUMI web interface
+    - Possible to set granular access rights to data (e.g. for other projects or users of other projects) 
+    - Possible to set a temporary access link to otherwise private data
+    - Possible to share pubic data across the internet (for the duration of your project)
     - Data lifetime in LUMI-O is the same as your project lifetime 
 
 
-To use LUMI-O, you will need to generate authentication credentials, which you
-can then use with different [tools](./clients-general.md) to connect to LUMI-O. Read more for how to create the credentials and configure the connection from the [Accessing LUMI-O](./auth-lumidata-eu.md) page.
+## Usage of LUMI-O
+
+To access LUMI-O, you will need to [generate authentication credentials](./auth-lumidata-eu.md). 
+You can use LUMI-O [via the LUMI web interface](../../runjobs/webui/index.md#accessing-lumi-o) (limited functionality), or with different [client tools](./clients-general.md) like `rclone`. Read more about how to create the credentials and configure the connection from the [Accessing LUMI-O](./auth-lumidata-eu.md) page.
 
 For examples how to use LUMI-O, see the 'Use case examples' section and [teaching material](#teaching-material).
 
 
 ## Structure of object storage
 
-In an object-based storage, data is managed as objects instead of being
-organized as files in a directory hierarchy.
+Structure of an object storage differs a bit from a normal file system structure. In an object-based storage, data is managed as 'objects', instead of being organized as files in a directory hierarchy.
 
 Within your object storage project space, you can create buckets. These buckets
 will store objects with metadata associated with these objects.
