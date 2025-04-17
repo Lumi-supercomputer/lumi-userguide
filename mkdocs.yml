@@ -116,9 +116,9 @@ nav:
       - Checking your quota: storage/lumio/check-quota.md
       - Error messages: storage/lumio/error-messages.md
       # - Object storage related terms and concepts: 
-      - LUMI-O with batch jobs: storage/lumio/lumio-batchjobs.md 
       - Use case examples: 
         - Simple upload and download: storage/lumio/upload-download.md
+        - Copying data between object storages: storage/lumio/between-object-storages.md
         # - Backup your data: storage/lumio/upload-download.md 
         # - Checking privacy settings:
         # - Multiproject use case 1:
@@ -127,6 +127,7 @@ nav:
         # - Public content use case: 
         # - Private content use case: 
         # - Access outside LUMI:
+        - LUMI-O with batch jobs: storage/lumio/lumio-batchjobs.md 
         - Using Allas on LUMI: storage/lumio/allas-lumi.md
   - Tutorials:
     - Tutorials: tutorials/index.md
