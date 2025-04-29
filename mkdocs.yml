@@ -105,6 +105,8 @@ nav:
       - Authentication for LUMI-O: storage/lumio/auth-lumidata-eu.md
       - Error messages: storage/lumio/error-messages.md
       - Advanced usage of LUMI-O: storage/lumio/advanced.md
+    - Storage formats:
+      - SquashFS: storage/formats/FUSE.md
   - Tutorials:
     - Tutorials: tutorials/index.md
     - LUMI training materials: https://lumi-supercomputer.github.io/LUMI-training-materials
