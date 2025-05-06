@@ -40,8 +40,8 @@ To manage the load on the login nodes and to make sure that any hanging processe
 
 !!! warning
 
-    All tasks not adhering to the above fair use rules for the login nodes will
-    be terminated without warning. The walltime of processes is limited to 336 hours (2 weeks), and the maximum CPU time of jobs is 24 CPU-core-hours.
+    **All tasks not adhering to the above fair use rules for the login nodes will
+    be terminated without warning.** The walltime of processes is limited to 336 hours (2 weeks), and the maximum CPU time of jobs is 24 CPU-core-hours.
     
 
 Also, you may want to familiarize yourself with the LUMI environment:
