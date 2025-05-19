@@ -11,9 +11,9 @@
 
 For the [Cray libraries](https://cpe.ext.hpe.com/docs/#hpe-cray-scientific-and-math-libraries),
 that are available as modules, prefixed by `cray-`, the compiler wrappers
-will, automatically add them to the search path for include and provide the
-linker with appropriate options for the library to use them. This means
-that, as a user, all you have to do is to load the respective module.
+will, automatically update the include path and provide the linker with the
+appropriate options for the library to use them. This means that, as a
+user, all you have to do is to load the respective module.
 
 [libsci]: #libsci
 [fftw]: #fftw
