@@ -74,9 +74,9 @@ To ease a debugging process, it is useful to generate an executable containing
 debugging information. For this purpose, you can use the `-g` option.
 
 Most of the time, the debug information works best at low levels of code
-optimization, so consider using the `-O0` level. The `-g` options can be
-specified on a per-file basis so that only a small part of your application
-incurs the debugging penalty.
+optimization, so consider using the `-O0` level. The `-g` options comes
+with a penalty of larger binary size and slower execution, hence it is
+recommended using it only for debugging purposes.
 
 ## Compiler feedback
 
@@ -209,9 +209,9 @@ If your application is sensitive to the floating-point optimization, use the
 
 ## CCE C and C++ compilers
 
-:material-help-circle-outline: `man craycc` - `man crayCC` - `clang --help`
+:material-help-circle-outline: `man craycc` - `man crayCC`
 
-One the `PrgEnv-cray` module is loaded (by default) you can invoke the Cray C
+Once the `PrgEnv-cray` module is loaded (by default) you can invoke the Cray C
 compiler with the `cc` command. The C++ compiler may be invoked with the `CC`
 command. These compilers are based on Clang/LLVM with Cray improvements. The
 Cray improvements can be turned off with the `-fno-cray` flag.
