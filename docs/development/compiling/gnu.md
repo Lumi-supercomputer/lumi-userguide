@@ -24,22 +24,14 @@ If you wish to use an older or newer version, you can list the available
 version with
 
 ```bash
-$ module avail gcc
+$ module avail gcc-native
 ```
 
 and then switch to the desired version using
 
 ```bash
-$ module swap gcc gcc/<version>
+$ module swap gcc-native gcc-native/<version>
 ```
-
-As of April 2022, GCC versions 9.3.0, 10.3.0, and 11.2.0 are available on LUMI.
-We recommend using GCC 11, if possible, because it can optimize code
-specifically for the Zen 3 processors in LUMI (with the `craype-x86-milan`
-module or the compiler flag `-march=znver3`). GCC 9 and 10 can only optimize
-for Zen 2 processors.
-The performance difference is quite small, though (on average ca 1%, according to e.g.
-[these tests from Phoronix](https://www.phoronix.com/scan.php?page=article&item=amd-znver3-gcc11&num=1)).
 
 ## OpenMP Support
 
@@ -110,8 +102,8 @@ To ease a debugging process, it is useful to generate an executable containing
 debugging information. For this purpose, you can use the `-g` option.
 
 Most of the time, the debug information works best at low levels of code
-optimization, so consider using the `-O0` level. The `-g` options can be
-specified on a per-file basis so that only a small part of your application
-incurs the debugging penalty.
+optimization, so consider using the `-O0` level. The `-g` options comes
+with a penalty of larger binary size and slower execution, hence it is
+recommended using it only for debugging purposes.
 
 - [GCC documentation about debug options][gcc-debug]
