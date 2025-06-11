@@ -62,7 +62,7 @@ This starts a shell where you can run any command on the first allocated node
 in a specific job:
 
 ```bash
-$ srun --overlap --pty --jobid=<jobid> $SHELL
+$ srun -n 1 --overlap --pty --jobid=<jobid> $SHELL
 ```
 
 By default, you will be connected to the master node of your job which is the 
@@ -105,6 +105,6 @@ $ sacct --noheader -X -P -oNodeList --jobs=<jobid>
     node you try to access:
     
     ```bash
-    srun --overlap --pty --jobid=<jobid> --gpus=<numgpus> $SHELL
+    srun -n 1 --overlap --pty --jobid=<jobid> --gpus=<numgpus> $SHELL
     ```
 

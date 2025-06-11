@@ -36,10 +36,13 @@ they are run on the compute nodes in
 The job scheduler used on LUMI is Slurm.
 To get started using Slurm on LUMI, read the [Slurm quickstart guide][slurm-quickstart].
 
+To manage the load on the login nodes and to make sure that any hanging processes get cleaned up, the walltime of processes on the login nodes is limited to 336 hours (2 weeks). After a process reaches this time limit, it is first softly killed, before a hard kill is sent, to ensure that if a process still has to write some data, it can do so properly (like shell histories). Also to ensure that the policy for not running heavy tasks on login nodes is followed, the maximum CPU time of a job on a login node is set to 24 CPU-core-hours. This is long enough for software builds or reasonable data transfer to LUMI-O not to be interrupted, yet short enough that a compute job using the 16 cores that it can use at 100% would get killed after 1.5 hours. 
+
 !!! warning
 
-    All tasks not adhering to the above fair use rules for the login nodes will
-    be terminated without warning.
+    **All tasks not adhering to the above fair use rules for the login nodes will
+    be terminated without warning.** The walltime of processes is limited to 336 hours (2 weeks), and the maximum CPU time of jobs is 24 CPU-core-hours.
+    
 
 Also, you may want to familiarize yourself with the LUMI environment:
 
