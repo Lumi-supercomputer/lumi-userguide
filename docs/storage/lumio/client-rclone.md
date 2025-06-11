@@ -2,7 +2,6 @@
 
 [rclone-manual]: https://rclone.org/docs/
 
-## rclone endpoints
 
 For `rclone`, the LUMI-O configuration provides two kinds of remote endpoints: 
 
@@ -53,41 +52,6 @@ The table below lists the most frequently used `rclone` subcommands:
 
 A more extensive list can be found on the [Rclone manual pages][rclone-manual]
 or by typing the command `rclone` in LUMI.
-
-
-## rclone config files
-
-The rclone config files are created in `~/.config/rclone/rclone.conf` .
-By setting a file called `rclone.conf` in this path with the correct configuration setting and valid access keys, it is possible to use rclone to access LUMI-O from anywhere across internet. Connection to LUMI is not needed. 
-
-### Example: Create rclone config file to connect to LUMI-O
-
-You can get a valid rclone configuration from [auth.lumidata.eu](https://auth.lumidata.eu). 
-
-1) Create a key for your project
-
-2) Click the key
-
-3) Select `rclone` from the Configuration templates and click Generate
-
-4) Copy the created text block to a file that you name 'rclone.conf', and place it in the correct path `~/.config/rclone/rclone.conf`
-
-5) Now, if you have rclone installed, you can access LUMI-O with rclone. Type e.g. 
-```
-rclone lsd lumi-465000XXX-private:
-```
-to see the content of project 465000XXX in LUMI-O.
-
-If you don't have rclone installed, follow the directions [on rclone website](https://rclone.org/install/) to install rclone e.g. on your local machine.
-
-The connection with this rclone config-file works as long as your access key is valid. 
-You can extend the validity of the key in [auth.lumidata.eu](https://auth.lumidata.eu)
-You can also create a new key and a new config file for it, if the key expires.
-
-
-
-
-
 
 
 

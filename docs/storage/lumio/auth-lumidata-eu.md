@@ -53,8 +53,11 @@ which are required for accessing the object storage.
   <figcaption>LUMI-O credential management main page</figcaption>
 </figure>
 
+
+<!--
 !!! warning
 	The **Usage** column does not display correct data as the feature is still being implemented 
+-->
 
 
 To create an authentication access key pair. Open up the side menu from the
@@ -171,15 +174,15 @@ lumio-conf
 ```
 
 This command asks you to connect with your browser to the [LUMI-O credentials
-management service](#create-lumi-o-credentials), create credentials there and the copy
+management service](#create-lumi-o-credentials), create credentials and the copy
 the project number and keys for the setup tool. The setup process will create configuration files for `s3cmd`
 and `rclone`.
 
-Read the [step-by-step description](#create-lumi-o-credentials) for Creating LUMI-O
-credentials above.
+Read the [step-by-step description](#create-lumi-o-credentials) above for creating LUMI-O
+credentials.
 
 Using the LUMI-O credentials management service, you can
-also generate configuration for different object storage clients like shell,
+also generate configuration for different [object storage clients](./clients-general.md) like shell,
 boto3, rclone, s3cmd and aws. This is useful for using LUMI-O from somewhere
 else than LUMI, where the `lumio-conf` command is not available (The tool can be
 downloaded from the [LUMI-O repository][lumi-o-tools], but we only officially
@@ -189,20 +192,50 @@ support the tool on LUMI)
 ### Other ways to access LUMI-O
 
 
-#### Access without connecting to LUMI
-
 In [auth.lumidata.eu](https://auth.lumidata.eu) one can create configuration files associated to valid keys. These configuration files specify the details that are needed to access LUMI-O, and connecting to LUMI is actually not needed at all. 
 
-To connect to LUMI-O directly e.g. from your own laptop, create first a valid key in [auth.lumidata.eu](https://auth.lumidata.eu) for a LUMI project. Then click the available "Access key", select a Configuration template format (rclone,s3cmd,..), and click "Generate". This opens a new tab with a template that you can use for a config file. 
-See an example for rclone in [Available tools](../lumio/client-rclone.md).
+To connect to LUMI-O directly e.g. from your own laptop, you need to set a configuration file in your home directory (in your laptop) to a specified location, with valid LUMI-O access keys. 
 
-
-#### Access via shell script
-
-(explanation about LUMI-O access via shell script)
+In the 'Transferring and managing data' section there is [an example with rclone](./client-rclone.md#example-create-rclone-config-file-to-connect-to-lumi-o).
 
 
 
-<!--Link to remote tools chapter in some parts-->
 
+## Advanced: Credentials & Configuration
+
+This advanced topic is for people, who wish to modify where the client software used with LUMI-O read the authentication credentials. 
+As a basic user, you don't need to care about this topic.
+
+### Configuration files
+
+The data moving tools (client software) have default locations for config files under home directory.
+In some cases it might be required to read
+credentials from some other location than the default 
+locations under home. This can be achieved using environment variables or command line flags.
+
+
+|      | rclone        | s3cmd                  | aws                                         |
+|------|---------------|------------------------|---------------------------------------------|
+| DEFAULT | `~/.config/rclone/rclone.conf`   | `~/.s3cfg`  | `~/.aws/credentials` and `~/.aws/config`|
+| ENV  | `RCLONE_CONFIG` | `S3CMD_CONFIG`           | `AWS_SHARED_CREDENTIALS_FILE` and `AWS_CONFIG_FILE` |
+| FLAG | `--config FILE` | `-c FILE`, `--config=FILE` |                                             |
+
+The `aws` cli additionally has the concept of [profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html), and you can specify 
+which one to use using the `--profile <name>` flag or the `AWS_PROFILE` environment variable.
+
+### Environment variables
+
+Most programs will use the environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
+when trying to authenticate. So these can be set if one does not wish to save the credentials on disk.
+The environment variables do not always take precedence over values set in configuration files, as
+is the case for `s3cmd` and `rclone`. This means that invalid credentials in config files will
+lead to an access denied even if there are valid credentials in the environment. The `aws` command
+will use the environment variables instead of `~/.aws/credentials` if they are set. 
+`rclone` will additionally require `RCLONE_S3_ENV_AUTH=true` in the environment or `env_auth = true`
+in the config file.
+
+
+Unless you have properly configured the s3 tools to use LUMI-O, they will usually default to using amazon aws s3. This is also the case for most other programs
+so if you wish to use LUMI-O with other software, you usually have to find some configuration option or environment variable to set a non-default
+host name. The correct hostname to use for LUMI-O is `https://lumidata.eu`
 

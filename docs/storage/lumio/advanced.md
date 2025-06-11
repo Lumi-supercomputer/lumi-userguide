@@ -1,15 +1,23 @@
-# Access rights management
+# Sharing access to data
 
-This section explains how you can set more granular access restrictions to your data in LUMI-O than just "private" (only project members can view or edit) or "public". 
-Possibile use cases e.g.
+Sharing data, e.g. datasets or research results, is (in principle) easy in the object storage, but managing the granular access rights might take in some use cases some dedication to understand. 
 
-- How to share the data in LUMI-O with members of another LUMI project
-- How to share a read-only link to your data that is valid only for a certain amount of time
-- ... 
+<!-- Would be great to give some user friendly examples e.g. in the Use Case Examples section -->
 
----
+This advanced section explains how you can set more granular access restrictions to your data in LUMI-O than just "private" (only project members can view or edit) or "public". 
 
-In object storage, one LUMI project is considered as one account. This means that by default all project members have the same access rights to the data that is stored in the buckets for this project. 
+By default, if you do not specify anything else, the contents of private buckets can only be accessed by authenticated members of your project.
+
+The data can be accessed and shared in a variety of ways:
+
+- **Access control lists (ACLs) and Policies**: You can share your data in a limited manner to other projects. You can e.g. grant a collaboration project authenticated read access to your datasets.
+
+- **Temporary signed links**: This kind of links can be used in cases where the data needs to be accessed over the internet without credentials, but is not supposed to remain publicly accessible.
+
+- **Making the bucket or object public**: If the data is in a public endpoint, it is of course accessible to anyone over internet. You can also use ACLs or Policies to grant public read access to data in a private bucket, which is useful e.g. for permanently sharing public scientific results or public datasets.
+
+!!!info
+    Notice that in the object storage, one LUMI project is considered as one account. This means that by default all project members have the same access rights to the data that is stored in the buckets for this project. 
 
 The examples here assume that you have properly configured the tools to use LUMI-O, otherwise they will usually default to using amazon aws s3. 
 

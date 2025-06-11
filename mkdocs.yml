@@ -103,16 +103,17 @@ nav:
     - LUMI-O object storage:
       - Overview: storage/lumio/index.md
       - Accessing LUMI-O: storage/lumio/auth-lumidata-eu.md
-      - Tools to manage data:
-        - General about the tools: storage/lumio/clients-general.md
-        - Available tools:
+      - Transferring and managing data:
+        # - storage/lumio/clients-lumio/index.md
+        - Overview of data transfer: storage/lumio/clients-general.md
+        - LUMI-O clients:
           - rclone: storage/lumio/client-rclone.md
           - s3cmd: storage/lumio/client-s3cmd.md
           - restic: storage/lumio/client-restic.md
           - Raw HPPT request: storage/lumio/raw-http.md
           - Python (boto3): storage/lumio/python-boto3.md
           # - ...
-      - Access rights management: storage/lumio/advanced.md
+      - Sharing access to data: storage/lumio/advanced.md
       - Checking your quota: storage/lumio/check-quota.md
       - Error messages: storage/lumio/error-messages.md
       # - Object storage related terms and concepts: 
@@ -126,7 +127,7 @@ nav:
         # - Giving temporary access: 
         # - Public content use case: 
         # - Private content use case: 
-        # - Access outside LUMI:
+        - Access without connecting to LUMI: storage/lumio/connect-local.md
         - LUMI-O with batch jobs: storage/lumio/lumio-batchjobs.md 
         - Using Allas on LUMI: storage/lumio/allas-lumi.md
   - Tutorials:
@@ -206,6 +207,7 @@ markdown_extensions:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 plugins:
+#  - section-index
   - redirects:
       redirect_maps:
         'computing/Lmod_modules.md': 'runjobs/lumi_env/Lmod_modules.md'
