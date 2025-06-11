@@ -1,19 +1,19 @@
-# General info of the tools
+# Transferring and managing data
+
+<!-- This page could be also called 'Overview of data transfer tools' in the table of contents. With the current name it hints that there is also other information related to good practices when transferring data, which would be nice, I think. But it could also be only about the client software / tools.
+ -->
+
+LUMI-O is used via tools (client software) that take care of moving data to and from LUMI-O and managing data objects. There are several different kinds of client software for accessing the object storage servers. LUMI-O can be used with any object storage client that is compatible with S3 protocol.
 
 
-
-
-LUMI-O is used via client tools that take care of moving data to and from LUMI-O and managing data objects. There are several different kinds of client software for accessing the object storage servers. LUMI-O can be used with any object storage client that is compatible with S3 protocol.
-
-
-## Supported tools
+## Supported tools (client software)
 
 The `lumio` module provides some pre-installed tools to interact with LUMI-O:
-`rclone`, `s3cmd` and `restic`.
+[`rclone`](./client-rclone.md), [`s3cmd`](./client-s3cmd.md) and [`restic`](./client-restic.md). After loading the `lumio` module on LUMI, you can use rclone, s3cmd and restic to work with LUMI-O. 
 
-Please refer to the manuals of the respective tools for more detailed information.
+Please refer to the manuals of rclone, s3cmd and restic for more detailed information.
 
-The most common commands for `s3cmd` and `rclone` to
+The most common commands for `s3cmd` and `rclone` to work with LUMI-O are listed below.
 
 === "Rclone"
     
@@ -39,41 +39,58 @@ The most common commands for `s3cmd` and `rclone` to
     | Download file *file1* from bucket *mybuck* | `s3cmd get s3://mybuck/file1 .`     |
 
 
+<!--
+
+Would be great to add similar table here, but need to confirm if the same is true in all parts with rclone and s3cmd + restic? with LUMI-O
+https://docs.csc.fi/data/Allas/introduction/#client-operations
+
+-->
+
+
+<!--
+
+## File formats 
+
+(here or in index.md / LUMI-O Overview ?)
+
+Check LUMI-O notes by Kurt 
+
+!!!info
+    In an object storage 'files' are called objects. But since object is not same thing as a file, 'file format' is not exactly a correct term when talking about objects in an object storage.
+
+Since object storage is a different kind of storage system than the Lustre file system on LUMI, some file formats behave naturally well with object storage, e.g. ... 
 
 
 
-## Credentials & Configuration
+The ... file format 
+
+-->
+
+<!--
+
+To be added here, or in 'Use case examples' : Some info / examples of performing downloads/uploads of large datasets
 
 
-### Moving tool configuration files
+## Large number of small files
 
-In some cases it might be required to read
-credentials from some other location than the default 
-locations under home. This can be achieved using environment variables or command line flags.
+-->
 
+## Large amount of data
 
-|      | rclone        | s3cmd                  | aws                                         |
-|------|---------------|------------------------|---------------------------------------------|
-| DEFAULT | `~/.config/rclone/rclone.conf`   | `~/.s3cfg`  | `~/.aws/credentials` and `~/.aws/config`|
-| ENV  | `RCLONE_CONFIG` | `S3CMD_CONFIG`           | `AWS_SHARED_CREDENTIALS_FILE` and `AWS_CONFIG_FILE` |
-| FLAG | `--config FILE` | `-c FILE`, `--config=FILE` |                                             |
+If you need to transfer a file to LUMI-O that has a size more than larger than 5 GB, the data transfer will be automatically split to a multipart upload. When doing a multipart upload, the parts are first moved to your bucket in LUMI-O as separate objects, and when the download of all the parts is finished, the parts are combined to one single object. 
 
-The `aws` cli additionally has the concept of [profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html), and you can specify 
-which one to use using the `--profile <name>` flag or the `AWS_PROFILE` environment variable.
+If the download is interrupted for one reason or another, the unfinished parts of your multipart upload are left in your bucket. 
 
-### Environment
+Most of the tools (e.g. rclone) are able to identify the existing parts and continue where the download was interrupted. In some cases it might happen though, that the client tool is not able to continue the multipart upload. Notice that if the multipart upload is not finished, the parts of the unfinished multipart upload stay in your bucket to fill the quota of that specific bucket, unless you separately delete them. 
+<!-- Check when LUMI-O available again
+There are commands to clean up the objects that result from unfinished multipart upload (e.g. `rclone cleanup` for [`rclone`](https://rclone.org/commands/), but please refer to the manual pages for the specific client software for more information).
 
-Most programs will use the environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
-when trying to authenticate. So these can be set if one does not wish to save the credentials on disk.
-The environment variables do not always take precedence over values set in configuration files, as
-is the case for `s3cmd` and `rclone`. This means that invalid credentials in config files will
-lead to an access denied even if there are valid credentials in the environment. The `aws` command
-will use the environment variables instead of `~/.aws/credentials` if they are set. 
-`rclone` will additionally require `RCLONE_S3_ENV_AUTH=true` in the environment or `env_auth = true`
-in the config file.
+-->
 
 
-Unless you have properly configured the s3 tools to use LUMI-O, they will usually default to using amazon aws s3. This is also the case for most other programs
-so if you wish to use LUMI-O with other software, you usually have to find some configuration option or environment variable to set a non-default
-host name. The correct hostname to use for LUMI-O is `https://lumidata.eu`
+
+
+
+
+
 
