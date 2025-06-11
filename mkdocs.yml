@@ -130,6 +130,8 @@ nav:
         - Access without connecting to LUMI: storage/lumio/connect-local.md
         - LUMI-O with batch jobs: storage/lumio/lumio-batchjobs.md 
         - Using Allas on LUMI: storage/lumio/allas-lumi.md
+    - Storage formats:
+      - SquashFS: storage/formats/FUSE.md
   - Tutorials:
     - Tutorials: tutorials/index.md
     - LUMI training materials: https://lumi-supercomputer.github.io/LUMI-training-materials
