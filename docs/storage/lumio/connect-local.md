@@ -1,5 +1,10 @@
 # Using LUMI-O without connecting to LUMI
 
+!!!Warning
+    This example is for Linux and MacOS. For Windows machines this might not work similarily.
+
+
+
 This example is with `rclone`. The same works similarily with e.g `s3cmd` and other clients. (Notice that for s3cmd the default path under home directory is `~/.s3cfg`.)
 
 By setting a file called `rclone.conf` in the default path `~/.config/rclone/rclone.conf` (e.g. in your own laptop) with the correct configuration setting and valid access keys, it is possible to use rclone to access LUMI-O from anywhere across internet, e.g. from your own laptop. Connection to LUMI is not needed. 

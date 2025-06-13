@@ -1,42 +1,250 @@
 # Transferring and managing data
 
+This page describes the basic useage of LUMI-O with different kind of tools. 
+
 <!-- This page could be also called 'Overview of data transfer tools' in the table of contents. With the current name it hints that there is also other information related to good practices when transferring data, which would be nice, I think. But it could also be only about the client software / tools.
  -->
 
+<!--
+## Using LUMI-O
+
+-->
+
+## Tools to transfer data
+
 LUMI-O is used via tools (client software) that take care of moving data to and from LUMI-O and managing data objects. There are several different kinds of client software for accessing the object storage servers. LUMI-O can be used with any object storage client that is compatible with S3 protocol.
 
-
+<!--
 ## Supported tools (client software)
+-->
 
 The `lumio` module provides some pre-installed tools to interact with LUMI-O:
-[`rclone`](./client-rclone.md), [`s3cmd`](./client-s3cmd.md) and [`restic`](./client-restic.md). After loading the `lumio` module on LUMI, you can use rclone, s3cmd and restic to work with LUMI-O. 
+[`rclone`](#rclone), [`s3cmd`](#s3cmd) and [`restic`](#restic). After loading the `lumio` module on LUMI, you can use rclone, s3cmd and restic to work with LUMI-O. 
 
-Please refer to the manuals of rclone, s3cmd and restic for more detailed information.
+Please refer to the manuals of the client software for more detailed information.
 
-The most common commands for `s3cmd` and `rclone` to work with LUMI-O are listed below.
 
-=== "Rclone"
+
+
+### rclone
+
+[rclone-manual]: https://rclone.org/docs/
+
+
+For `rclone`, the LUMI-O configuration provides two kinds of remote endpoints: 
+
+- **lumi-<project_number\>-private**: A private endpoint. The buckets and objects uploaded to this
+              endpoint will not be publicly accessible.
+- **lumi-<project_number\>-public**: A public endpoint. The buckets and objects uploaded to this
+                endpoint will be publicly accessible using the URL:
+                ```
+                https://<project_number>.lumidata.eu/<bucket_name>
+                ```
+                Be careful to not upload data that cannot be public to this
+                endpoint.
+
+
+The most common commands for `rclone` to work with LUMI-O are listed below. _Replace 46YXXXXXX with your LUMI project number._
+_For public buckets, replace the word 'private' with 'public'_
+
     
-    | Action                                     | Command                                              |
-    |--------------------------------------------|------------------------------------------------------|
-    | List buckets                               | `rclone lsd lumi-46YXXXXXX-private:`                 |
-    | Create bucket *mybuck*                     | `rclone mkdir lumi-46YXXXXXX-private:mybuck`         |
-    | List objects in bucket *mybuck*            | `rclone ls lumi-46YXXXXXX-private:mybuck/`           |
-    | Upload file *file1* to bucket *mybuck*     | `rclone copy file1 lumi-46YXXXXXX-private:mybuck/`   |
-    | Download file *file1* from bucket *mybuck* | `rclone copy lumi-46YXXXXXX-private:mybuck/file1 .`  |
+| Action                                     | Command                                              |
+|--------------------------------------------|------------------------------------------------------|
+| List buckets                               | `rclone lsd lumi-46YXXXXXX-private:`                 |
+| Create bucket *mybuck*                     | `rclone mkdir lumi-46YXXXXXX-private:mybuck`         |
+| List objects in bucket *mybuck*            | `rclone ls lumi-46YXXXXXX-private:mybuck/`           |
+| Upload file *file1* to bucket *mybuck*     | `rclone copy file1 lumi-46YXXXXXX-private:mybuck/`   |
+| Download file *file1* from bucket *mybuck* | `rclone copy lumi-46YXXXXXX-private:mybuck/file1 .`  |
 
-    _Replace 46YXXXXXX with your LUMI project number._
-    _For public buckets, replace the word 'private' with 'public'_
 
-=== "s3cmd"
 
-    | Action                                     | Command                             |
-    |--------------------------------------------|-------------------------------------|
-    | List buckets                               | `s3cmd ls s3:`                      |
-    | Create bucket *mybuck*                     | `s3cmd mb s3://mybuck`              |
-    | List objects in bucket *mybuck*            | `s3cmd ls --recursive  s3://mybuck` |
-    | Upload file *file1* to bucket *mybuck*     | `s3cmd put file1 s3://mybuck`       |
-    | Download file *file1* from bucket *mybuck* | `s3cmd get s3://mybuck/file1 .`     |
+The basic syntax of the `rclone` command is:
+
+```text
+rclone <subcommand> <options> source:path dest:path 
+```
+
+The table below lists the most frequently used `rclone` subcommands:
+
+[rc_copy]:    https://rclone.org/commands/rclone_copy/
+[rc_sync]:    https://rclone.org/commands/rclone_sync/
+[rc_move]:    https://rclone.org/commands/rclone_move/
+[rc_delete]:  https://rclone.org/commands/rclone_delete/
+[rc_mkdir]:   https://rclone.org/commands/rclone_mkdir/
+[rc_rmdir]:   https://rclone.org/commands/rclone_rmdir/
+[rc_check]:   https://rclone.org/commands/rclone_check/
+[rc_ls]:      https://rclone.org/commands/rclone_ls/
+[rc_lsd]:     https://rclone.org/commands/rclone_lsd/
+[rc_lsl]:     https://rclone.org/commands/rclone_lsl/
+[rc_lsf]:     https://rclone.org/commands/rclone_lsf/
+
+| rclone subcommand   | Description                                                                      |
+| ------------------- | -------------------------------------------------------------------------------- |
+| [copy][rc_copy]     | Copy files from the source to the destination                                    |
+| [sync][rc_sync]     | Make the source and destination identical, modifying only the destination        |
+| [move][rc_move]     | Move files from the source to the destination                                    |
+| [delete][rc_delete] | Remove the contents of a path                                                    |
+| [mkdir][rc_mkdir]   | Create the path if it does not already exist                                     |
+| [rmdir][rc_rmdir]   | Remove the path                                                                  |
+| [check][rc_check]   | Check if the files in the source and destination match                           |
+| [ls][rc_ls]         | List all objects in the path, including size and path                            |
+| [lsd][rc_lsd]       | List all directories/containers/buckets in the path                              |
+| [lsl][rc_lsl]       | List all objects in the path, including size, modification time and path         |
+| [lsf][rc_lsf]       | List the objects using the virtual directory structure based on the object names |
+
+A more extensive list can be found on the [Rclone manual pages][rclone-manual]
+or by typing the command `rclone` in LUMI.
+
+
+
+
+### s3cmd
+
+The syntax of the `s3cmd` command:
+
+```bash
+s3cmd -options <command> parameters
+```
+
+The most commonly used _s3cmd_ commands:
+
+| s3cmd command      | Function |
+| :----------------- | :--------------------------- |
+| mb                 | Create a bucket              |
+| put                | Upload an object             |
+| ls                 | List objects and buckets     |
+| get                | Download objects and buckets |
+| cp                 | Move object                  |
+| del                | Remove objects or buckets    |
+| md5sum             | Get the checksum             |
+| info               | View metadata                |
+| signurl            | Create a temporary URL       |
+| put -P             | Make an object public        |
+| setacl --acl-grant | Manage access rights         |
+
+
+The table above lists only the most essential `s3cmd` commands. For more
+complete list, visit the [s3cmd manual page](https://s3tools.org/usage) or type:
+
+```text
+s3cmd -h
+```
+
+The most common commands for `s3cmd` to work with LUMI-O are listed below:
+
+| Action                                     | Command                             |
+|--------------------------------------------|-------------------------------------|
+| List buckets                               | `s3cmd ls s3:`                      |
+| Create bucket *mybuck*                     | `s3cmd mb s3://mybuck`              |
+| List objects in bucket *mybuck*            | `s3cmd ls --recursive  s3://mybuck` |
+| Upload file *file1* to bucket *mybuck*     | `s3cmd put file1 s3://mybuck`       |
+| Download file *file1* from bucket *mybuck* | `s3cmd get s3://mybuck/file1 .`     |
+
+
+If you need to make uploaded objects or buckets public you can add the `-P, --acl-public` flag
+to `s3cmd put`. 
+
+
+### restic
+
+
+`restic` is a slightly different from `rclone` and `s3cmd` and is mainly used
+for doing backups. 
+
+**Set up the restic repository**
+
+```bash
+$ export AWS_ACCESS_KEY_ID=<MY_ACCESS_KEY>
+$ export AWS_SECRET_ACCESS_KEY=<MY_SECRET_ACCESS_KEY>
+$ restic -r s3:https://lumidata.eu/<bucket> init
+```
+
+After this we can run commands like `restic restore` and `restic backup`. the
+`-r` flag with the correct bucket and the KEY environment variables are always
+needed when running `restic` commands.
+
+For more information, see the [Restic documentation](https://restic.readthedocs.io/en/stable/index.html)
+
+### Python with boto3 library 
+
+
+When use cases become sufficiently complex one might want to interact
+with LUMI-O in a more programmatic fashion instead of using the 
+command line tools. One such option is the AWS SDK for Python [boto3](https://pypi.org/project/boto3/)\*.
+
+The script
+
+```python
+import boto3
+
+session = boto3.session.Session(profile_name='lumi-465000001')
+s3_client = session.client('s3')
+buckets=s3_client.list_buckets()
+```
+
+Would fetch the buckets of project 465000001 and return the information as a python dictionary. 
+For the full list of available functions, see the [aws s3 client documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html)
+
+
+If a default profile has been configured `~/.aws/credentials`
+the client creation can be shortened to:
+
+```python
+import boto3
+s3_client = boto3.client('s3')
+```
+
+boto3 uses the same configuration files and respects the same environment variables as the `aws` cli.
+
+!!! note 
+	You will need a sufficiently new version of boto3 (e.g version 1.26, which is installed if using python3.6, is too old) for it
+	to understand a default profile set in ~/.aws/credentials and corresponding config file, 
+	otherwise the tool will always default to aws s3 endpoint and you will need to specify the
+	profile/endpoint when constructing the client.
+
+\*_If you prefer to work with some other language there are also options for e.g Java, GO and Javascript_
+
+
+You can create a configuration format for boto3 in [auth.lumidata.eu](https://auth.lumidata.eu) to access LUMI-O directly with boto3 e.g. from your local machine: after creating an access key, click the active key, and select "boto3" from the configuration formats. 
+
+
+### Raw HTTP request
+
+
+The LUMI-O object storage can be used by issuing HTTP request.
+
+!!! warning
+
+    We don't recommend using the HTTP API unless there is a specific need. The 
+    other listed tools are easier to use. This section only serve as a reference
+    on how to provide the credentials to the HTTP API. 
+
+    See [Common error messages](#common-error-messages) for explanations on some of
+    the HTTP return codes. 
+
+The example below upload the file `README.md` to the bucket `my-nice-bucket`
+using `curl`:
+
+```bash
+export S3_ACCESS_KEY_ID=<MY_ACCESS_KEY>
+export S3_SECRET_ACCESS_KEY=<MY_SECRET_ACCESS_KEY>
+
+file=README.md
+bucket=my-nice-bucket
+resource="/${bucket}/${file}"
+contentType="text/plain"
+dateValue=`date -R`
+stringToSign="PUT\n\n${contentType}\n${dateValue}\n${resource}"
+s3Key=$S3_ACCESS_KEY_ID
+s3Secret=$S3_SECRET_ACCESS_KEY
+signature=`echo -en ${stringToSign} | openssl sha1 -hmac ${s3Secret} -binary | base64`
+curl -X PUT -T "${file}" \
+     -H "Host: https://lumidata.eu/" \
+     -H "Date: ${dateValue}" \
+     -H "Content-Type: ${contentType}" \
+     -H "Authorization: AWS ${s3Key}:${signature}" \
+      https://lumidata.eu/${bucket}/${file}
+```
 
 
 <!--
@@ -75,6 +283,7 @@ To be added here, or in 'Use case examples' : Some info / examples of performing
 
 -->
 
+
 ## Large amount of data
 
 If you need to transfer a file to LUMI-O that has a size more than larger than 5 GB, the data transfer will be automatically split to a multipart upload. When doing a multipart upload, the parts are first moved to your bucket in LUMI-O as separate objects, and when the download of all the parts is finished, the parts are combined to one single object. 
@@ -84,11 +293,108 @@ If the download is interrupted for one reason or another, the unfinished parts o
 Most of the tools (e.g. rclone) are able to identify the existing parts and continue where the download was interrupted. In some cases it might happen though, that the client tool is not able to continue the multipart upload. Notice that if the multipart upload is not finished, the parts of the unfinished multipart upload stay in your bucket to fill the quota of that specific bucket, unless you separately delete them. 
 <!-- Check when LUMI-O available again
 There are commands to clean up the objects that result from unfinished multipart upload (e.g. `rclone cleanup` for [`rclone`](https://rclone.org/commands/), but please refer to the manual pages for the specific client software for more information).
-
+>> `rclone cleanup` apparently doesn't work optimally with LUMI-O - to be checked w/ LUMI-O admins
 -->
 
 
 
+## Checking your utilized LUMI-O quota
+
+One can see information (with a little different ways) about the utilized and allocated quota in [LUMI web interface](#lumi-web-interface), in [the LUMI-O auth website](#lumi-o-authentication-web-site) and [via command line](#command-line). 
+
+Quota limits:
+
+- The default allocated quota per LUMI project is 150 TB. 
+- One project can have up to 1000 buckets
+- One bucket can have up to 500 000 objects
+
+If you need more storage space in LUMI-O, please contact the LUMI helpdesk. 
+
+
+#### LUMI web interface
+
+Currently one can check the sizes of objects in a bucket, but the total sizes of buckets are not shown, or the total used quota. 
+
+The number of lines/rows in a bucket is the same as the number of objects in the bucket.
+
+The number of lines/rows for the list of buckets is the number of buckets.
+
+
+#### LUMI-O authentication web site 
+
+The table on [auth.lumidata.eu](https://auth.lumidata.eu/) shows the allocated quota for your project, and the current used LUMI-O quota for your project. This information is updated with a delay. 
+
+
+#### Command line
+
+When connected to LUMI-O, the used quotas can be checked e.g. with `rclone` or `s3cmd`:
+
+=== "Rclone"
+    
+    | Quota to check                                | Command                                              |
+    |--------------------------------------------|------------------------------------------------------|
+    | Number of buckets                          | `rclone lsd lumi-46YXXXXXX-private: | wc -l`         |
+    | Number of objects in a bucket 'mybucket'   | `rclone lsd lumi-46YXXXXXX-private:mybucket | wc -l` |
+    | Used quota by the project                  | `rclone size lumi-46YXXXXXX-private:`                |
+
+
+    _Replace 46YXXXXXX with your LUMI project number._
+    _For public buckets, replace the word 'private' with 'public'_
+
+=== "s3cmd"
+
+    | Action                                     | Command                             |
+    |--------------------------------------------|-------------------------------------|
+    | Number of buckets                          | `s3cmd ls s3: | wc -l`              |
+    | Number of objects in a bucket 'mybucket'   | `s3cmd ls s3://mybucket | wc -l`    |
+    | Used quota by the project                  | `s3cmd du`                          |
+
+
+<!-- 
+#### rclone
+
+Replace 46YXXXXXX with your LUMI project number.
+
+- Number of buckets:
+
+    `rclone lsd lumi-46YXXXXXX-private: | wc -l`
+
+- Number of objects in a bucket 'mybucket':
+
+    `rclone lsd lumi-46YXXXXXX-private:mybucket | wc -l`
+
+- Used quota by the project:
+
+    `rclone size lumi-46YXXXXXX-private:`
+
+
+#### s3cmd
+
+- Number of buckets:
+
+    `s3cmd ls s3: | wc -l`
+
+- Number of objects in a bucket 'mybucket':
+
+    `s3cmd ls s3://mybucket | wc -l`
+
+- Used quota by the project:
+
+    `s3cmd du`
+
+-->
+
+## Common error messages
+
+
+
+| HTTP status code | Message           | Meaning  |
+|------------------|-------------------|----------|
+| 400 | EntityTooLarge | The file is too large |
+| 403 | QuotaExceeded | You have reached a quota limit. If you need more quota in LUMI-O, please contact LUMI helpdesk. Please specify your current quota usage and the current allocated quota for your project in the request. |
+| 403 | AccessDenied | Your credentials are not allowed to view the bucket |
+| 404 | NoSuchBucket | The bucket does not exist |
+| 409 | Conflict | A bucket with that name already exists |
 
 
 

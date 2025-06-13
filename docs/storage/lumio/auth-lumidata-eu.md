@@ -194,9 +194,7 @@ support the tool on LUMI)
 
 In [auth.lumidata.eu](https://auth.lumidata.eu) one can create configuration files associated to valid keys. These configuration files specify the details that are needed to access LUMI-O, and connecting to LUMI is actually not needed at all. 
 
-To connect to LUMI-O directly e.g. from your own laptop, you need to set a configuration file in your home directory (in your laptop) to a specified location, with valid LUMI-O access keys. 
-
-In the 'Transferring and managing data' section there is [an example with rclone](./client-rclone.md#example-create-rclone-config-file-to-connect-to-lumi-o).
+To connect to LUMI-O directly e.g. from your own laptop, you need to set a configuration file in your home directory (in your laptop) to a specified location, with valid LUMI-O access keys. See [an example with rclone](./connect-local.md).
 
 
 

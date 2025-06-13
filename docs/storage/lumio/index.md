@@ -7,12 +7,14 @@
 
 ## What is LUMI-O?
 
-LUMI-O is a S3 compatible object storage based on Ceph Reef (v18.2.2). If one has used Amazon AWS S3, many functionalities are the same, but one should [be aware of the differences](#lumi-o-vs-amazon-s3).
-LUMI-O is a completely separate instance from the Lustre parallel filesystem (LUMI-P and LUMI-F). It offers a total of 30 PB storage space for storing, sharing, and staging of data. By default 150 TB of storage space is allocated per LUMI project, but projects can request for more LUMI-O storage space by contacting the [LUMI helpdesk](../../helpdesk/index.md).
+LUMI-O is a S3 compatible object storage. If one has used Amazon AWS S3, many functionalities are the same with LUMI-O, but one should [be aware of the differences](#lumi-o-vs-amazon-s3).
+LUMI-O is based on completely different technology than the Lustre parallel filesystem (LUMI-P and LUMI-F). Also, unlike the Lustre parallel file system, LUMI-O is a separate system from LUMI. 
+
+LUMI-O offers a total of 30 PB storage space for storing, sharing, and staging of data. By default 150 TB of storage space is allocated per LUMI project, but projects can request for more LUMI-O storage space by contacting the [LUMI helpdesk](../../helpdesk/index.md).
 
 !!! Info "Some features of LUMI-O"
 
-    - Separate service from the LUMI filesystem, with a fast connection for data transfer between LUMI filesystem and LUMI-O
+    - A separate system from LUMI, with a fast connection for data transfer between LUMI filesystem and LUMI-O
     - Accessible also without connecting to LUMI
     - Service breaks of LUMI don't usually affect to availability of LUMI-O
     - Usage with client tools like rclone and s3cmd, or via LUMI web interface
@@ -34,18 +36,18 @@ For examples how to use LUMI-O, see the 'Use case examples' section and [trainin
 
 ## Structure of object storage
 
-Structure of an object storage differs a bit from a normal file system structure. The data is organized in a flat structure with 'buckets' that can contain 'objects'. Buckets can not contain other buckets, and one bucket can contain up to 500k objects. 
+Structure of an object storage differs a bit from a normal file system structure. Instead of a filesystem structure with directories and files, the data is organized in a structure with *buckets* that can contain *objects*. 
 
-- **Buckets**: Containers used to store one or more objects.
-  Object storage uses a flat structure with only
-  one level which means that buckets cannot contain other buckets.
+- **Buckets**: Containers used to store one or more objects. Buckets can not contain other buckets, so the structure is much flatter than a normal filesystem structure. One bucket can contain up to 500k objects. 
 - **Objects**: Any type of data. An object is stored in a bucket.
 - **Metadata**: Both buckets and objects have metadata specific to them. The 
   metadata of a bucket specifies e.g., the access rights to the bucket. While
   traditional file systems have fixed metadata (filename, creation date, type,
   etc.), an object storage allows you to add custom metadata.
 
-Objects are managed through simple atomic operations. One can put an object in the object storage, get its content, copy an object or delete an object. But contrary to a file e.g. in the Lustre filesystem, the object cannot be modified: One cannot simply change a part of the content, but to edit an object, it needs to be replaced with a new object.
+
+
+Objects are managed through simple atomic operations. One can put an object in the object storage, get its content, copy an object or delete an object. But contrary to a file e.g. in the Lustre filesystem, the object in LUMI-O cannot be modified: One cannot simply change a part of the content of an object. To edit an object, it needs to be replaced with a new object.
 
 With LUMI-O, one LUMI project is considered as _one user account_, i.e. by default all project members have the same user rights to all the data that is stored in LUMI-O for the project.
 
@@ -59,8 +61,8 @@ A good introductory lecture and exercises about using LUMI-O object storage are 
 
 LUMI-O is an S3 compatible storage solution. However, this does not mean
 that the system is the same as the "Amazon S3 Cloud Storage". The interface for reading and writing data 
-is exactly the same, but AWS has a bunch of additional features, like _self-service provisioning of IAM users_,
-_life cycle configuration_ and _write once, read many functionality_, which are not really part of "just" s3 storage. 
+is exactly the same, but AWS has a bunch of additional features which are not really part of "just" s3 storage, like _self-service provisioning of IAM users_,
+_life cycle configuration_ and _write once, read many functionality_. 
 
 It's worth keeping the above in mind, as many people use S3 and Amazon S3 interchangeably
 when writing guides or instructions.  
