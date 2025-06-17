@@ -116,7 +116,7 @@ nav:
           # - ...
       - Sharing access to data: storage/lumio/advanced.md
       # - Checking your quota: storage/lumio/check-quota.md
-      - Error messages: storage/lumio/error-messages.md
+      # - Error messages: storage/lumio/error-messages.md
       # - Object storage related terms and concepts: 
       - Use case examples: 
         - Simple upload and download: storage/lumio/upload-download.md

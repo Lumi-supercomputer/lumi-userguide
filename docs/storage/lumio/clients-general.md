@@ -1,6 +1,6 @@
 # Transferring and managing data
 
-This page describes the basic useage of LUMI-O with different kind of tools. 
+This page describes the basics of using LUMI-O with different kind of tools. Make sure that you have first connected to LUMI-O, as described on the [Accessing LUMI-O page](./auth-lumidata-eu.md).
 
 <!-- This page could be also called 'Overview of data transfer tools' in the table of contents. With the current name it hints that there is also other information related to good practices when transferring data, which would be nice, I think. But it could also be only about the client software / tools.
  -->
