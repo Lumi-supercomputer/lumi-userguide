@@ -4,6 +4,9 @@
 [lumi-o-tools]: https://github.com/Lumi-supercomputer/LUMI-O-tools
 
 
+This page describes how to create credentials for using LUMI-O, and how to connect to LUMI-O.
+
+
 ## Gaining access
 
 To be able to use LUMI-O, you need to be a member of a LUMI project. 
