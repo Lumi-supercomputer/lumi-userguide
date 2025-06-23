@@ -221,13 +221,19 @@ From: ubuntu:24.04
   /usr/local/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_bw
 ```
 
-The image can be built **on your local hardware (not on LUMI)** with
+The image can be built on LUMI with
+```bash
+module load PRoot
+singularity build mpi_osu.sif mpi_osu.def
+```
+
+Alternatively it can be build on your local hardware (i.e. not LUMI) with
 
 ```bash
 $ sudo singularity build mpi_osu.sif mpi_osu.def
 ```
 
-The `mpi_osu.sif` file must then be [transferred to LUMI][copying-files]. See
-the [container jobs MPI documentation
+If the `mpi_osu.sif` is not built on LUMI the file must then be 
+[transferred to LUMI][copying-files]. See the [container jobs MPI documentation
 page](../../runjobs/scheduled-jobs/container-jobs.md#running-containerized-mpi-applications)
 for instructions on running this MPI container on LUMI.
