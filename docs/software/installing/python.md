@@ -70,9 +70,9 @@ needs](#use-a-container-you-build-specifically-tailored-to-your-needs).
 ### Use an existing container
 
 If somebody is already publishing a container which includes the Python
-packages you need, e.g. this [PyTorch ROCm
-container](https://hub.docker.com/r/rocm/pytorch), you may [pull and use that
-container][pull-container].
+packages you need,you may [pull and use that container][pull-container].
+
+We provide a number of custom built containers for LUMI at /appl/local/containers/sif-images. This folder includes base containers, following the naming convention lumi-rocm-<rocm version number>.sif and containers that already include an machine learning framework and some commonly used packages. The names of the .sif files indicate which machine learning framework is installed and which versions are used for ROCm, Python and the framework.
 
 ### Use a container you build specifically tailored to your needs
 
