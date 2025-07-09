@@ -1,6 +1,6 @@
 # Transferring and managing data
 
-This page describes the basics of using LUMI-O with different kind of tools. Make sure that you have first connected to LUMI-O, as described on the [Accessing LUMI-O page](./auth-lumidata-eu.md).
+This page describes the basics of using LUMI-O with different kind of tools. Make sure that you have first connected to LUMI-O, as described on the [Accessing LUMI-O](./auth-lumidata-eu.md) page.
 
 <!-- This page could be also called 'Overview of data transfer tools' in the table of contents. With the current name it hints that there is also other information related to good practices when transferring data, which would be nice, I think. But it could also be only about the client software / tools.
  -->
@@ -19,7 +19,7 @@ LUMI-O is used via tools (client software) that take care of moving data to and 
 -->
 
 The `lumio` module provides some pre-installed tools to interact with LUMI-O:
-[`rclone`](#rclone), [`s3cmd`](#s3cmd) and [`restic`](#restic). After loading the `lumio` module on LUMI, you can use rclone, s3cmd and restic to work with LUMI-O. 
+[`rclone`](#rclone), [`s3cmd`](#s3cmd) and [`restic`](#restic). After loading the `lumio` module and running the `lumio-conf` command on LUMI, you can use rclone, s3cmd and restic to work with LUMI-O. 
 
 Please refer to the manuals of the client software for more detailed information.
 
@@ -31,7 +31,7 @@ Please refer to the manuals of the client software for more detailed information
 [rclone-manual]: https://rclone.org/docs/
 
 
-For `rclone`, the LUMI-O configuration provides two kinds of remote endpoints: 
+For `rclone`, the configuration by `lumio` module provides two kinds of remote endpoints: 
 
 - **lumi-<project_number\>-private**: A private endpoint. The buckets and objects uploaded to this
               endpoint will not be publicly accessible.
@@ -44,8 +44,8 @@ For `rclone`, the LUMI-O configuration provides two kinds of remote endpoints:
                 endpoint.
 
 
-The most common commands for `rclone` to work with LUMI-O are listed below. _Replace 46YXXXXXX with your LUMI project number._
-_For public buckets, replace the word 'private' with 'public'_
+The most common commands to work with LUMI-O with `rclone` are listed below. _Replace 46YXXXXXX with your LUMI project number._
+_For the public endpoint, replace the word 'private' with 'public'_
 
     
 | Action                                     | Command                                              |
@@ -56,9 +56,12 @@ _For public buckets, replace the word 'private' with 'public'_
 | Upload file *file1* to bucket *mybuck*     | `rclone copy file1 lumi-46YXXXXXX-private:mybuck/`   |
 | Download file *file1* from bucket *mybuck* | `rclone copy lumi-46YXXXXXX-private:mybuck/file1 .`  |
 
+!!! info
+    It doesn't matter which one of the _public_ or _private_ endpoints is used to list the buckets with the `rclone lsd` command. This is because the only difference between the two endpoints is that with the public endpoint, [ACL](./advanced.md/#configuring-access-control-lists-acls) (that defines the access rights) is by default set to _`public-read`_, making the content in this endpoint publicly accessible. Otherwise the content uploaded to either of the endpoints is located "in the same place".
 
 
-The basic syntax of the `rclone` command is:
+
+The basic syntax of an `rclone` command is:
 
 ```text
 rclone <subcommand> <options> source:path dest:path 
@@ -84,7 +87,7 @@ The table below lists the most frequently used `rclone` subcommands:
 | [sync][rc_sync]     | Make the source and destination identical, modifying only the destination        |
 | [move][rc_move]     | Move files from the source to the destination                                    |
 | [delete][rc_delete] | Remove the contents of a path                                                    |
-| [mkdir][rc_mkdir]   | Create the path if it does not already exist                                     |
+| [mkdir][rc_mkdir]   | Create the path if it does not already exist (i.e. create a new bucket)                                    |
 | [rmdir][rc_rmdir]   | Remove the path                                                                  |
 | [check][rc_check]   | Check if the files in the source and destination match                           |
 | [ls][rc_ls]         | List all objects in the path, including size and path                            |
@@ -100,7 +103,23 @@ or by typing the command `rclone` in LUMI.
 
 ### s3cmd
 
-The syntax of the `s3cmd` command:
+For s3cmd only one endpoint is configured. The content in this endpoint is (by default) private, but it's also possible to set individual buckets or objects in this endpoint as publicly accessible (see below).  
+
+The most common commands to work with LUMI-O with `s3cmd` are listed below:
+
+| Action                                     | Command                             |
+|--------------------------------------------|-------------------------------------|
+| List buckets                               | `s3cmd ls s3:`                      |
+| Create bucket *mybuck*                     | `s3cmd mb s3://mybuck`              |
+| List objects in bucket *mybuck*            | `s3cmd ls --recursive  s3://mybuck` |
+| Upload file *file1* to bucket *mybuck*     | `s3cmd put file1 s3://mybuck`       |
+| Download file *file1* from bucket *mybuck* | `s3cmd get s3://mybuck/file1 .`     |
+
+
+To set the uploaded buckets or objects public you can add the option `-P` or `--acl-public` to the `s3cmd mb` or `s3cmd put` commands.
+(For more information about checking or changing access rights, see the chapter about [ACLs](./advanced.md#configuring-access-control-lists-acls).)
+
+The syntax of a `s3cmd` command:
 
 ```bash
 s3cmd -options <command> parameters
@@ -130,19 +149,7 @@ complete list, visit the [s3cmd manual page](https://s3tools.org/usage) or type:
 s3cmd -h
 ```
 
-The most common commands for `s3cmd` to work with LUMI-O are listed below:
 
-| Action                                     | Command                             |
-|--------------------------------------------|-------------------------------------|
-| List buckets                               | `s3cmd ls s3:`                      |
-| Create bucket *mybuck*                     | `s3cmd mb s3://mybuck`              |
-| List objects in bucket *mybuck*            | `s3cmd ls --recursive  s3://mybuck` |
-| Upload file *file1* to bucket *mybuck*     | `s3cmd put file1 s3://mybuck`       |
-| Download file *file1* from bucket *mybuck* | `s3cmd get s3://mybuck/file1 .`     |
-
-
-If you need to make uploaded objects or buckets public you can add the `-P, --acl-public` flag
-to `s3cmd put`. 
 
 
 ### restic
@@ -283,6 +290,21 @@ To be added here, or in 'Use case examples' : Some info / examples of performing
 
 -->
 
+## Is my bucket public or private?
+
+If you don't know (or remember) if your bucket or object is public or private, you can check it e.g. in the two following ways:
+
+1) Only public buckets and objects can be accessed with a link as described [here]. If a bucket is publicly accessible, it's possible to list the objects in the bucket with the link. If an object is publicly accessible, one is able to access the data. 
+
+2) The following commands print the ACLs for a bucket or object:
+
+```
+s3cmd info s3://<bucketname>
+s3cmd info s3://<bucketname>/<objectname>
+```
+E.g. the line `ACL: *anon*: READ` indicates that the bucket/object is accessible with a public link. In that case also a link to the content is printed out, but this link might be in a wrong format (see ...)
+
+
 
 ## Large amount of data
 
@@ -339,7 +361,7 @@ When connected to LUMI-O, the used quotas can be checked e.g. with `rclone` or `
 
 
     _Replace 46YXXXXXX with your LUMI project number._
-    _For public buckets, replace the word 'private' with 'public'_
+    _Note that it doesn't matter if you list the content for 'private' or 'public' endpoint, in both cases all content is included to the quota._
 
 === "s3cmd"
 

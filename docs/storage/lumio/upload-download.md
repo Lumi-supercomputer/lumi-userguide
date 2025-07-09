@@ -40,7 +40,7 @@ To create a new bucket:
 ```
 rclone mkdir lumi-46YXXXXXX-private:mynewbucketname_myusername
 ```
-creates a new bucket "mynewbucketname_myusername". Remember that it's a good practice to name the buckets such that you will remember that it's your bucket, especially if there are several members in your project. Also a good naming practice helps the other members in your project to identify that this bucket is created by you.
+creates a new bucket with a name "mynewbucketname_myusername". It's in general good to name a bucket such that you will remember that it's your bucket, especially if there are several members in your project. Also this helps the other members in your project to identify that this bucket is created by you.
 You can download a file (e.g. mydatafile.txt) to this bucket with:
 
 ```
