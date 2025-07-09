@@ -29,6 +29,12 @@ Hugepages can be beneficial
   the PGAS programming model, to map the static data and/or private heap onto
   huge pages
 
+!!! warning "Transparent hugepages not active on LUMI-G"
+
+    MPI can make use of transparent hugepages which are disabled with the low-noise 
+    mode of the LUMI-G compute nodes. For this reason explicit use of hugepages can 
+    improve GPU-accelerated MPI applications performance. 
+
 ## How to use hugepages
 
 To use hugepages load the module corresponding to the page size you wish to
@@ -71,6 +77,13 @@ module load craype-hugepages2M
 
 srun ./myprogram
 ```
+
+!!! warning "Modules for larger hugepages"
+
+    You can use hugepages modules for larger sizes than CPU supports. This
+    is emulated with the `libhugetlbfs` library. Caution is needed with enabling
+    very large page sizes while these can easily exhaust node's resources. 
+    Use huge page sizes no larger than needed.
 
 If you execute multiple applications in your job, but only some of them can
 benefit from using hugepages, export the `HUGETLB_RESTRICT_EXE` environment
