@@ -12,6 +12,7 @@ LUMI-O is based on completely different technology than the Lustre parallel file
 
 LUMI-O offers a total of 30 PB storage space for storing, sharing, and staging of data. By default 150 TB of storage space is allocated per LUMI project, but projects can request for more LUMI-O storage space by contacting the [LUMI helpdesk](../../helpdesk/index.md).
 
+
 !!! Info "Some features of LUMI-O"
 
     - A separate system from LUMI, with a fast connection for data transfer between LUMI filesystem and LUMI-O
@@ -21,7 +22,9 @@ LUMI-O offers a total of 30 PB storage space for storing, sharing, and staging o
     - Possible to set granular access rights to data (e.g. for other projects or users from other projects) 
     - Possible to set a temporary access link to otherwise private data
     - Possible to share pubic data across the internet (for the duration of your project)
+    - In LUMI-O one project is treated as one account: all project members have the same access/user rights to the projects data
     - Data lifetime in LUMI-O is the same as your project lifetime 
+
 
 
 ## Usage of LUMI-O
@@ -33,6 +36,15 @@ You can use LUMI-O [via the LUMI web interface](../../runjobs/webui/index.md#acc
 
 For examples how to use LUMI-O, see the 'Use case examples' section and [training material](#training-material).
 
+<!--
+This is now in 'Sharing access to data'. Where does it belong to?
+
+!!!info
+    Notice that in the object storage, one LUMI project is considered as one account. This means that by default all project members have the same access rights to the data that is stored in the buckets for this project. 
+    Projects in LUMI-O are handled as "single user tenants/accounts", where the project numerical id (e.g. 465000001) corresponds both the tenant/account name and the project name.
+    Subsequently, **all members of a LUMI-O project have the exact same rights and permissions**, unlike in the LUMI filesystem, where files have individual owners.**Keep this in mind if you have critical data in LUMI-O as any other member of your LUMI project could accidentally delete it**.
+
+-->
 
 ## Structure of object storage
 

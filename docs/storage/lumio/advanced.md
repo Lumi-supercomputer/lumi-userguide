@@ -11,7 +11,6 @@ Sharing data, e.g. datasets or research results, is (in principle) easy in the o
 This (in many parts advanced) section explains how to manage access by setting more granular access restrictions to your data in LUMI-O than just "private" (only project members can view or edit) or "public", and how to share data with creating access links (to public or private data).
 By default, if you do not specify anything else, the contents of private buckets can only be accessed by authenticated members of your project.
 
-
 !!!info
     Notice that in the object storage, one LUMI project is considered as one account. This means that by default all project members have the same access rights to the data that is stored in the buckets for this project. 
     Projects in LUMI-O are handled as "single user tenants/accounts", where the project numerical id (e.g. 465000001) corresponds both the tenant/account name and the project name.
