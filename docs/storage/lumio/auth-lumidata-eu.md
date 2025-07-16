@@ -4,7 +4,7 @@
 [lumi-o-tools]: https://github.com/Lumi-supercomputer/LUMI-O-tools
 
 
-This page describes how to create credentials for using LUMI-O, and how to connect to LUMI-O.
+This page describes how to create credentials and how to connect to LUMI-O.
 
 
 ## Gaining access
@@ -42,8 +42,8 @@ Choose the correct authentication provider which for most LUMI users is "MyAcces
 </figure>
 
 This page displays all the projects that are associated with your account.
-It shows the project number, project description, set storage quota, in GB, for
-a specific project, and how much of said quota is used up.
+It shows the project number, project description, set storage quota for
+a specific project, and how much of the quota is used.
 Additionally, this page allows creating the necessary authentication keys,
 which are required for accessing the object storage.
 
@@ -63,9 +63,9 @@ which are required for accessing the object storage.
 -->
 
 
-To create an authentication access key pair. Open up the side menu from the
+To create an authentication access key pair, open up the side menu from the
 rightward pointing arrow. In this example, we are opening the side menu for
-project 462000008, for which we will create the authentication key pair for.
+project 462000008, for which we will create the authentication key pair.
 
 <figure>
   <img
@@ -80,7 +80,7 @@ The side menu allows for the creation of access keys. To generate an access key
 "Duration (hours)*" and "Key description*" fields must be filled out.
 
 !!! tip
-    A good practice is to set the authentication key pair duration for the job
+    With batch jobs, it's a good practice is to set the authentication key pair duration such that it covers the job
     walltime. This lets the job move the necessary data from LUMI-O to the
     scratch filesystem, perform the necessary calculations, and after finishing
     move the data back to LUMI-O.
@@ -93,11 +93,12 @@ The side menu allows for the creation of access keys. To generate an access key
   <figcaption>Side menu</figcaption>
 </figure>
 
-When filling out the duration, keep the previous advice in mind.
+The duration of the keys can also be extended later, as long as the key is still valid.
+
 
 !!! tip
-    The key description should be something relevant to the job it is meant for,
-    that way it is easier to manage the created keys, should there be more than
+    The key description should be something relevant to the task it is meant for,
+    as that way it is easier to manage the created keys, should there be more than
     a few at the same time.
 
 <figure>
@@ -127,7 +128,7 @@ provides the necessary "Access key" and "Secret key". You can also see the key
 description, which project said key is related to, owner of the key and finally
 Creation and Expiry dates.
 
-From this side menu, it is also possible to extend the key.
+From this side menu, it is also possible to extend the duration of the key.
 
 !!! info
 	When you initially create the key, the initial allowed maximum lifetime is 168h = 7 days.
