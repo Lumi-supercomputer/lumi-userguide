@@ -24,16 +24,27 @@ Once the job has started, there are two ways to connect to the desktop.
 For the best visual quality set compression to 0 and image quality to 9 using the sliders.
 For a more responsive connection, increase the compression and reduce the quality. 
 
+## Applications
 
-## GPU accelerated applications
-
-Currently, the following graphical applications are available with GPU acceleration on LUMI-D:
+Currently, the following applications are available:
 
 - Blender
+- GRASS GIS
+- MATLAB
 - ParaView
+- QGIS
+- SAGA GIS
 - VisIt
 
-You can find the available applications in the Apps dropdown in the taskbar, under the *Other* category.
-If you want to be able to access the apps easier, shortcuts to the applications can be created by dragging the icons to the desktop.
+You can find the available applications in the Apps dropdown in the taskbar,
+under the *Other* category. If you want to be able to access the apps more
+easily, shortcuts to the applications can be created by dragging the icons to
+the desktop.
 
 ![Apps available in the LUMI-D partition](../../assets/images/wwwLumiDesktopApps.png)
+
+### GPU Acceleration
+
+All of the available apps will utilize a GPU for rendering if the _lumid_
+partition was selected. However, note that not all of the applications benefit
+from having a GPU available.

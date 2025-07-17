@@ -1,35 +1,27 @@
 # Julia Jupyter
-## Selecting the Julia-Jupyter application
 
-We can use Julia on Jupyter through the [LUMI web interface](https://www.lumi.csc.fi) by selecting the **Julia-Jupyter** application from the menu:
-
-![ood application menu](../../assets/images/julia-jupyter/ood-application-menu.png)
+The Julia-Jupyter app launches Jupyter Lab with support for Julia kernels on a
+LUMI compute node, which you can access from the web interface.
 
 ## Launching Julia-Jupyter
 
-Now, we need to select the resources for running Julia-Jupyter.
-First, we must select a project for billing and partition for computing resources.
+In the form, start by selecting the project for billing, partition for computing resources,
+and the desired computing resources: CPU cores, memory, local disk, and time.
 
-![julia jupyter options](../../assets/images/julia-jupyter/options-1.png)
-
-Next, we must set the desired computing resources: CPU cores, memory, local disk, and time.
-
-![julia jupyter options](../../assets/images/julia-jupyter/options-2.png)
-
-Finally, we must select the Jupyter type. We recommend using the Jupyter lab, but the classic notebook is also available.
+Finally, select the Jupyter type. We recommend using JupyterLab, but the classic notebook is also available.
 The working directory sets the root directory for Jupyter.
 The Julia depot directory sets the location for package installations, compiled files, and other Julia depots.
 If you plan to install large numbers of Julia packages, we recommend using Projappl or Scratch instead of the home directory as it could run out of quota.
 For example, Plots.jl installs over 10k files and is quite large.
 
-![julia jupyter options](../../assets/images/julia-jupyter/options-3.png)
+![julia jupyter options](../../assets/images/wwwLumiJuliaJupyter.png)
 
 ## Starting Julia kernel
 
 ![available julia kernels on jupyter lab](../../assets/images/julia-jupyter/julia-kernels.png)
 
-When we first start the Julia-Jupyter session, we don't have any Julia kernels available.
-To install kernels, we must open the *Terminal* application, load the Julia module, and invoke an installation script as follows:
+When Julia-Jupyter is launched for the first time, there are no Julia kernels available.
+To install kernels,  open the *Terminal* application, load the Julia module, and invoke an installation script as follows:
 
 ```bash
 module load julia
