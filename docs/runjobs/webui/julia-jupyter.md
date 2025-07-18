@@ -5,15 +5,13 @@ LUMI compute node, which you can access from the web interface.
 
 ## Launching Julia-Jupyter
 
-In the form, start by selecting the project for billing, partition for
-computing resources, and the desired computing resources depending on which
-partition is selected: CPU cores, memory, local disk, and time.
+In the form you will be able to select:
 
-Finally, select the Jupyter type. We recommend using JupyterLab, but the classic notebook is also available.
-The working directory sets the root directory for Jupyter.
-The Julia depot directory sets the location for package installations, compiled files, and other Julia depots.
-If you plan to install large numbers of Julia packages, we recommend using Projappl or Scratch instead of the home directory as it could run out of quota.
-For example, Plots.jl installs over 10k files and is quite large.
+- **Jupyter type**: We recommend using JupyterLab, but the classic notebook is also available.
+- **Working directory**: The root directory for Jupyter.
+- **Julia depot directory**: Sets the location for package installations, compiled files, and other Julia depots.
+    If you plan to install large numbers of Julia packages, we recommend using Projappl or Scratch instead of the home directory as it could run out of quota.
+    For example, Plots.jl installs over 10k files and is quite large.
 
 ![julia jupyter options](../../assets/images/wwwLumiJuliaJupyter.png)
 
