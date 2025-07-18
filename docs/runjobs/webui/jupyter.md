@@ -55,8 +55,8 @@ customizing your Python environment:
     `jupyterlab` package has been installed. Jupyter will be launched using the
     command `python -m jupyter lab`.
 - **Container:**
-    Allows you to use a containerized Python installation. You can can specify
-    a list of modules to load before entering the container, the path to your
+    Allows you to use a containerized Python installation. You can specify a
+    list of modules to load before entering the container, the path to your
     container, additional container launch arguments, as well as an
     initialization script for the container. A virtual environment can also be
     used.

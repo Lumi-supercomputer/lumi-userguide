@@ -5,8 +5,9 @@ LUMI compute node, which you can access from the web interface.
 
 ## Launching Julia-Jupyter
 
-In the form, start by selecting the project for billing, partition for computing resources,
-and the desired computing resources: CPU cores, memory, local disk, and time.
+In the form, start by selecting the project for billing, partition for
+computing resources, and the desired computing resources depending on which
+partition is selected: CPU cores, memory, local disk, and time.
 
 Finally, select the Jupyter type. We recommend using JupyterLab, but the classic notebook is also available.
 The working directory sets the root directory for Jupyter.
