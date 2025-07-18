@@ -47,4 +47,7 @@ the desktop.
 
 All of the available apps will utilize a GPU for rendering if the _lumid_
 partition was selected. However, note that not all of the applications benefit
-from having a GPU available.
+from having a GPU available. It is recommended to first test running your
+application on a CPU partition, such as _interactive_, to see whether it runs
+well enough, and only test the _lumid_ partition if you experience low
+frame rate in your applications.
