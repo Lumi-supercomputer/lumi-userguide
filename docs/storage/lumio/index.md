@@ -7,7 +7,7 @@
 
 ## What is LUMI-O?
 
-LUMI-O is a S3 compatible object storage. If one has used Amazon AWS S3, many functionalities are the same with LUMI-O, but one should [be aware of the differences](#lumi-o-vs-amazon-s3).
+LUMI-O is object storage service accessible through a web interface and S3 API. 
 LUMI-O is based on completely different technology than the Lustre parallel filesystem (LUMI-P and LUMI-F). Also, unlike the Lustre parallel file system, LUMI-O is a separate system from LUMI. 
 
 LUMI-O offers a total of 30 PB storage space for storing, sharing, and staging of data. By default 150 TB of storage space is allocated per LUMI project, but projects can request for more LUMI-O storage space by contacting the [LUMI helpdesk](../../helpdesk/index.md).
