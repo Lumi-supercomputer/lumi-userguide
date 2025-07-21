@@ -7,7 +7,14 @@ Currently running and past interactive app sessions can be found on the _My Inte
 
 ## Launching an application
 
-Each application has a form with settings for launching, where you can select the project for billing, the partition, resources, and app-specific settings.
+Each application has a form with settings for launching, where you can select
+the project for billing, the partition, resources, and app-specific settings.
+
+The app settings specified in the form can be saved for restoring later by
+checking the _Save settings_ checkbox in the form, and specifying a name. Your
+saved settings can be found in the menu on the left side of the app forms, or
+in the saved settings dropdown in the app form for the app.
+
 
 ![Interactive app form](../../assets/images/wwwLumiDesktop.png)
 
