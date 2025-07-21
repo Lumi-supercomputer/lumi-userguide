@@ -21,7 +21,7 @@ LUMI-O offers a total of 30 PB storage space for storing, sharing, and staging o
     - Usage with client tools like rclone and s3cmd, or via LUMI web interface
     - Possible to set granular access rights to data (e.g. for other projects or users from other projects) 
     - Possible to set a temporary access link to otherwise private data
-    - Possible to share pubic data across the internet (for the duration of your project)
+    - Possible to share public data across the internet (for the duration of your project)
     - In LUMI-O one project is treated as one account: all project members have the same access/user rights to the projects data
     - Data lifetime in LUMI-O is the same as your project lifetime 
 
