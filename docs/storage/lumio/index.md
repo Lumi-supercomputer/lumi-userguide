@@ -31,7 +31,7 @@ LUMI-O offers a total of 30 PB storage space for storing, sharing, and staging o
 
 All LUMI projects have LUMI-O available by default.
 
-To access LUMI-O, you will need to [generate authentication credentials](./auth-lumidata-eu.md) that are specific to accessing LUMI-O, and not the same thing as the SSH-keys to access LUMI.
+To access LUMI-O, you will need to [generate access token](./auth-lumidata-eu.md). This token is exclusive for your project. There are no other credentials allowing access to LUMI-O bucket. 
 You can use LUMI-O [via the LUMI web interface](../../runjobs/webui/index.md#accessing-lumi-o) (limited functionality), or with different [client tools](./clients-general.md) like `rclone`. Read more how to create the credentials and configure the connection from the [Accessing LUMI-O](./auth-lumidata-eu.md) page.
 
 For examples how to use LUMI-O, see the 'Use case examples' section and [training material](#training-material).
