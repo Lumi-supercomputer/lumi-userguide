@@ -48,7 +48,7 @@ This is now in 'Sharing access to data'. Where does it belong to?
 
 ## Structure of object storage
 
-Structure of an object storage differs a bit from a normal file system structure. Instead of a filesystem structure with directories and files, the data is organized in a structure with *buckets* that can contain *objects*. 
+Structure of an object storage is different from a normal file system structure. Instead of directories and files, the data is organized in a flat structure with *buckets* that contain *objects*. 
 
 - **Buckets**: Containers used to store one or more objects. Buckets can not contain other buckets, so the structure is much flatter than a normal filesystem structure. One bucket can contain up to 500k objects. 
 - **Objects**: Any type of data. An object is stored in a bucket.
