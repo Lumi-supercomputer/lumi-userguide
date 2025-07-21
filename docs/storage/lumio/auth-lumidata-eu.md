@@ -4,15 +4,13 @@
 [lumi-o-tools]: https://github.com/Lumi-supercomputer/LUMI-O-tools
 
 
-This page describes how to create credentials and how to connect to LUMI-O.
-
 
 ## Gaining access
 
 To be able to use LUMI-O, you need to be a member of a LUMI project. 
 
 
-## Create LUMI-O credentials
+## Authentication credentials
 
 [auth.lumidata.eu]: https://auth.lumidata.eu
 
@@ -152,7 +150,7 @@ can be created in its place.
 </figure>
 
 
-## Connecting
+## Accessing LUMI-O
 
 You can access LUMI-O from any machine or server that is connected to internet. This can be a laptop, supercomputer, virtual machine in cloud or even your phone. 
 
@@ -160,35 +158,34 @@ You can access LUMI-O from any machine or server that is connected to internet. 
 
 ### Using the LUMI web interface
 
-[LUMI web interface](../../runjobs/webui/index.md#accessing-lumi-o) can be used to connect to LUMI-O. 
+LUMI-O can be used via the [LUMI web interface](../../runjobs/webui/index.md#accessing-lumi-o).
 
 
 
 ### On LUMI via terminal
 
-With terminal, once logged in to LUMI, start by loading the `lumio` module which provides configuration and data transfer tools:
+Once connected to LUMI, start by loading the module `lumio`, which provides data transfer tools to use LUMI-O with (`rclone` and `s3cmd`). This module also provides an authentication tool `lumio-conf` to easily set the proper credentials for access.
 
 ```
 module load lumio
 ```
 
-To configure a connection to LUMI-O, run the command:
+Next, to automatically set the proper configuration files for access, run the command:
+
 ```text
 lumio-conf
 ```
 
-This command asks you to connect with your browser to the [LUMI-O credentials
-management service](#create-lumi-o-credentials), create credentials and the copy
-the project number and keys for the setup tool. The setup process will create configuration files for `s3cmd`
-and `rclone`.
+This command asks you to connect with your browser to the LUMI-O credentials
+management service, create credentials (as described on top of this page) and then copy
+the project number and keys for the setup tool. The setup process will create configuration files for `s3cmd` and `rclone`. 
 
-Read the [step-by-step description](#create-lumi-o-credentials) above for creating LUMI-O
-credentials.
+After this setup proces is done, you can use the the client tools `rclone` and `s3cmd` to manage and transfer your projects data between LUMI filesystem and LUMI-O. 
 
-Using the LUMI-O credentials management service, you can
-also generate configuration for different [object storage clients](./clients-general.md) like shell,
+
+Using the LUMI-O credentials management service, you can also generate configuration files for different [object storage clients](./clients-general.md) like shell,
 boto3, rclone, s3cmd and aws. This is useful for using LUMI-O from somewhere
-else than LUMI, where the `lumio-conf` command is not available (The tool can be
+else than LUMI, where the `lumio-conf` set-up tool is not available (The tool can be
 downloaded from the [LUMI-O repository][lumi-o-tools], but we only officially
 support the tool on LUMI) 
 
@@ -196,11 +193,9 @@ support the tool on LUMI)
 ### Other ways to access LUMI-O
 
 
-In [auth.lumidata.eu](https://auth.lumidata.eu) one can create configuration files associated to valid keys. These configuration files specify the details that are needed to access LUMI-O, and connecting to LUMI is actually not needed at all. 
+In the LUMI-O credentials management service [auth.lumidata.eu](https://auth.lumidata.eu) one can create configuration files associated to valid access tokens. These configuration files specify the details that are needed to access LUMI-O with object storage client tools from anywhere over the internet, and a connection to LUMI is not needed.
 
 To connect to LUMI-O directly e.g. from your own laptop, you need to set a configuration file in your home directory (in your laptop) to a specified location, with valid LUMI-O access keys. See [an example with rclone](./connect-local.md).
-
-
 
 
 ## Advanced: Credentials & Configuration

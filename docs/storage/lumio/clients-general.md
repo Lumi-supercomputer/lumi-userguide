@@ -1,6 +1,6 @@
-# Transferring and managing data
+# Managing data
 
-This page describes the basics of using LUMI-O with different kind of tools. Make sure that you have first connected to LUMI-O, as described on the [Accessing LUMI-O](./auth-lumidata-eu.md) page.
+This page describes the basics of transferring and managing data with LUMI-O. Make sure that you have first properly set up the [authentication and access](./auth-lumidata-eu.md) for LUMI-O.
 
 <!-- This page could be also called 'Overview of data transfer tools' in the table of contents. With the current name it hints that there is also other information related to good practices when transferring data, which would be nice, I think. But it could also be only about the client software / tools.
  -->
@@ -12,26 +12,21 @@ This page describes the basics of using LUMI-O with different kind of tools. Mak
 
 ## Tools to transfer data
 
-LUMI-O is used via tools (client software) that take care of moving data to and from LUMI-O and managing data objects. There are several different kinds of client software for accessing the object storage servers. LUMI-O can be used with any object storage client that is compatible with S3 protocol.
+LUMI-O is used via tools (client software) that take care of moving data to and from LUMI-O and managing data objects. There are several different kinds of client software for accessing object storage servers. LUMI-O can be used with any object storage client that is compatible with S3 protocol.
 
 <!--
 ## Supported tools (client software)
 -->
 
-The `lumio` module provides some pre-installed tools to interact with LUMI-O:
-[`rclone`](#rclone), [`s3cmd`](#s3cmd) and [`restic`](#restic). After loading the `lumio` module and running the `lumio-conf` command on LUMI, you can use rclone, s3cmd and restic to work with LUMI-O. 
-
-Please refer to the manuals of the client software for more detailed information.
-
-
-
+The `lumio` module provides some pre-installed client software to interact with LUMI-O:
+`rclone`, `s3cmd` and `restic`. On this page we give just some basic information of a few client software that can be used with LUMI-O. Please refer to the manuals of the client software for more detailed information.
 
 ### rclone
 
 [rclone-manual]: https://rclone.org/docs/
 
 
-For `rclone`, the configuration by `lumio` module provides two kinds of remote endpoints: 
+The configuration by `lumio` module provides two kinds of remote endpoints for `rclone`, private and public: 
 
 - **lumi-<project_number\>-private**: A private endpoint. The buckets and objects uploaded to this
               endpoint will not be publicly accessible.
@@ -44,7 +39,7 @@ For `rclone`, the configuration by `lumio` module provides two kinds of remote e
                 endpoint.
 
 
-The most common commands to work with LUMI-O with `rclone` are listed below. _Replace 46YXXXXXX with your LUMI project number._
+Some common example commands to work with LUMI-O with `rclone` are listed in the table below. Once you have set the authentication and access (as described on the [Accessing LUMI-O](./auth-lumidata-eu.md) page, you can use LUMI-O with rclone commands. _Replace 46YXXXXXX with your LUMI project number._
 _For the public endpoint, replace the word 'private' with 'public'_
 
     
@@ -57,7 +52,7 @@ _For the public endpoint, replace the word 'private' with 'public'_
 | Download file *file1* from bucket *mybuck* | `rclone copy lumi-46YXXXXXX-private:mybuck/file1 .`  |
 
 !!! info
-    It doesn't matter which one of the _public_ or _private_ endpoints is used to list the buckets with the `rclone lsd` command. This is because the only difference between the two endpoints is that with the public endpoint, [ACL](./advanced.md/#configuring-access-control-lists-acls) (that defines the access rights) is by default set to _`public-read`_, making the content in this endpoint publicly accessible. Otherwise the content uploaded to either of the endpoints is located "in the same place".
+    It doesn't matter which one of the _public_ or _private_ endpoints is used to list the buckets with the `rclone lsd` command. This is because the only difference between the two endpoints is that with the _public_ endpoint, the _ACL_ (that defines the access rights) is by default set to _`public-read`_, making the content in this endpoint publicly accessible. Otherwise the content uploaded to either of the endpoints is located "in the same place".
 
 
 
@@ -96,14 +91,14 @@ The table below lists the most frequently used `rclone` subcommands:
 | [lsf][rc_lsf]       | List the objects using the virtual directory structure based on the object names |
 
 A more extensive list can be found on the [Rclone manual pages][rclone-manual]
-or by typing the command `rclone` in LUMI.
+or by typing the command `rclone`on LUMI (when the `lumio` module is loaded).
 
 
 
 
 ### s3cmd
 
-For s3cmd only one endpoint is configured. The content in this endpoint is (by default) private, but it's also possible to set individual buckets or objects in this endpoint as publicly accessible (see below).  
+For s3cmd only one endpoint is configured by the `lumio` module. The content in this endpoint is (by default) private, but it's also possible to set individual buckets or objects in this endpoint as publicly accessible (see below).  
 
 The most common commands to work with LUMI-O with `s3cmd` are listed below:
 
@@ -117,15 +112,15 @@ The most common commands to work with LUMI-O with `s3cmd` are listed below:
 
 
 To set the uploaded buckets or objects public you can add the option `-P` or `--acl-public` to the `s3cmd mb` or `s3cmd put` commands.
-(For more information about checking or changing access rights, see the chapter about [ACLs](./advanced.md#configuring-access-control-lists-acls).)
+(For more information about checking or changing access rights, see the section about [sharing data](./advanced.md).)
 
-The syntax of a `s3cmd` command:
+The syntax of an `s3cmd` command:
 
 ```bash
 s3cmd -options <command> parameters
 ```
 
-The most commonly used _s3cmd_ commands:
+The most commonly used _s3cmd_ command options:
 
 | s3cmd command      | Function |
 | :----------------- | :--------------------------- |
@@ -143,16 +138,13 @@ The most commonly used _s3cmd_ commands:
 
 
 The table above lists only the most essential `s3cmd` commands. For more
-complete list, visit the [s3cmd manual page](https://s3tools.org/usage) or type:
-
-```text
-s3cmd -h
-```
+complete list, visit the [s3cmd manual page](https://s3tools.org/usage) or type `s3cmd -h` (when the `lumio` module is loaded).
 
 
 
 
-### restic
+
+### restic (advanced)
 
 
 `restic` is a slightly different from `rclone` and `s3cmd` and is mainly used
@@ -172,7 +164,7 @@ needed when running `restic` commands.
 
 For more information, see the [Restic documentation](https://restic.readthedocs.io/en/stable/index.html)
 
-### Python with boto3 library 
+### Python with boto3 library (advanced)
 
 
 When use cases become sufficiently complex one might want to interact
@@ -190,7 +182,10 @@ buckets=s3_client.list_buckets()
 ```
 
 Would fetch the buckets of project 465000001 and return the information as a python dictionary. 
-For the full list of available functions, see the [aws s3 client documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html)
+For the full list of available functions, see the [aws s3 client documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html). 
+
+Note that some advanced operations which are supported by AWS might complete successfully when run against LUMI-O, but will actually have no effect. **Be extra thorough in verifying the correct functionality.**
+ 
 
 
 If a default profile has been configured `~/.aws/credentials`
@@ -215,7 +210,7 @@ boto3 uses the same configuration files and respects the same environment variab
 You can create a configuration format for boto3 in [auth.lumidata.eu](https://auth.lumidata.eu) to access LUMI-O directly with boto3 e.g. from your local machine: after creating an access key, click the active key, and select "boto3" from the configuration formats. 
 
 
-### Raw HTTP request
+### Raw HTTP request (advanced)
 
 
 The LUMI-O object storage can be used by issuing HTTP request.
@@ -294,7 +289,7 @@ To be added here, or in 'Use case examples' : Some info / examples of performing
 
 If you don't know (or remember) if your bucket or object is public or private, you can check it e.g. in the two following ways:
 
-1) Only public buckets and objects can be accessed with a link as described [here]. If a bucket is publicly accessible, it's possible to list the objects in the bucket with the link. If an object is publicly accessible, one is able to access the data. 
+1) Only public buckets and objects can be accessed with a link over the internet (as described in the [Sharing data](./advanced.md#for-public-data) section). If a bucket is publicly accessible, it's possible to list the objects in the bucket with the link. If an object is publicly accessible, one is able to access the data. 
 
 2) The following commands print the ACLs for a bucket or object:
 
@@ -302,9 +297,11 @@ If you don't know (or remember) if your bucket or object is public or private, y
 s3cmd info s3://<bucketname>
 s3cmd info s3://<bucketname>/<objectname>
 ```
-E.g. the line `ACL: *anon*: READ` indicates that the bucket/object is accessible with a public link. In that case also a link to the content is printed out, but this link might be in a wrong format (see ...)
+E.g. the line `ACL: *anon*: READ` indicates that the bucket/object is accessible with a public link. (In that case also a link to the content is printed out, but this link might be in a wrong format. For more information about access links, see the [Sharing data](./advanced.md) section.)
 
 
+<!--
+Internal comment: The information here should be double checked, and also more information about working with large amount of data would probably be useful.
 
 ## Large amount of data
 
@@ -313,16 +310,11 @@ If you need to transfer a file to LUMI-O that has a size more than larger than 5
 If the download is interrupted for one reason or another, the unfinished parts of your multipart upload are left in your bucket. 
 
 Most of the tools (e.g. rclone) are able to identify the existing parts and continue where the download was interrupted. In some cases it might happen though, that the client tool is not able to continue the multipart upload. Notice that if the multipart upload is not finished, the parts of the unfinished multipart upload stay in your bucket to fill the quota of that specific bucket, unless you separately delete them. 
-<!-- Check when LUMI-O available again
-There are commands to clean up the objects that result from unfinished multipart upload (e.g. `rclone cleanup` for [`rclone`](https://rclone.org/commands/), but please refer to the manual pages for the specific client software for more information).
->> `rclone cleanup` apparently doesn't work optimally with LUMI-O - to be checked w/ LUMI-O admins
+
 -->
 
 
-
 ## Checking your utilized LUMI-O quota
-
-One can see information (with a little different ways) about the utilized and allocated quota in [LUMI web interface](#lumi-web-interface), in [the LUMI-O auth website](#lumi-o-authentication-web-site) and [via command line](#command-line). 
 
 Quota limits:
 
@@ -330,26 +322,21 @@ Quota limits:
 - One project can have up to 1000 buckets
 - One bucket can have up to 500 000 objects
 
-If you need more storage space in LUMI-O, please contact the LUMI helpdesk. 
-
-
-#### LUMI web interface
-
-Currently one can check the sizes of objects in a bucket, but the total sizes of buckets are not shown, or the total used quota. 
-
-The number of lines/rows in a bucket is the same as the number of objects in the bucket.
-
-The number of lines/rows for the list of buckets is the number of buckets.
+If you need more storage space in LUMI-O, please contact the [LUMI helpdesk](../../helpdesk/index.md). 
 
 
 #### LUMI-O authentication web site 
 
 The table on [auth.lumidata.eu](https://auth.lumidata.eu/) shows the allocated quota for your project, and the current used LUMI-O quota for your project. This information is updated with a delay. 
 
+#### LUMI web interface
+
+In LUMI web interface one can see the sizes of objects in a bucket. Also the number of lines/rows for a bucket is the same as the number of objects in the bucket. For the list of buckets, the number of lines/rows is the same as the number of buckets.
+
 
 #### Command line
 
-When connected to LUMI-O, the used quotas can be checked e.g. with `rclone` or `s3cmd`:
+When access to LUMI-O is set, the used quotas can be checked e.g. with `rclone` or `s3cmd`:
 
 === "Rclone"
     

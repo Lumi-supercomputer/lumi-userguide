@@ -2,7 +2,7 @@
 
 ## Examples with rclone
 
-To copy files directly between two object storages (e.g. between two LUMI-O project storages, or LUMI-O and other object storages like [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html), [Google cloud](https://cloud.google.com/learn/what-is-object-storage), [CREODIAS](https://creodias.eu/cloud/cloudferro-cloud/storage-2/object-storage/), [Allas](https://docs.csc.fi/data/Allas/introduction/)), the credentials for both object storages need to be set in the `rclone.conf` file (in the users home directory `.config/rclone/rclone.conf`). 
+To copy content directly between two object storage endpoints (e.g. between two LUMI-O project storages, or LUMI-O and other object storages like [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html), [Google cloud](https://cloud.google.com/learn/what-is-object-storage), [CREODIAS](https://creodias.eu/cloud/cloudferro-cloud/storage-2/object-storage/), [Allas](https://docs.csc.fi/data/Allas/introduction/)), the credentials for both object storages need to be set in the `rclone.conf` file (in the users home directory `.config/rclone/rclone.conf`). 
 
 
 ### General example
@@ -29,22 +29,25 @@ access_key_id = yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
 secret_access_key = yyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
 ```
 
-After creating/updating this file, rclone can be used e.g. to copy files from the other object storage to LUMI-O:
+After setting these information to the rclone.conf file, rclone can be used to interact with both of these object storage endpoints. 
 
-```
-rclone copyto otherobjectstorage:bucket-x/object-y lumi-46YXXXXXX-private:bucket-z/object-a
-```
-
-or r.g. to list files from either LUMI-O or the other object storage by using the respective name:
+You can e.g. list objects in either of these object storage endpoints by using the respective name:
 
 ```
 rclone lsf otherobjectstorage:
 ```
 
+and to copy objects from one object storage endpoint to the other. E.g. to copy the object `object-y` from the other object storage endpoint to LUMI-O (with naming it as `object-a`):
+
+```
+rclone copyto otherobjectstorage:bucket-x/object-y lumi-46YXXXXXX-private:bucket-z/object-a
+```
+
+
 
 ### Between LUMI-O and LUMI-O
 
-Two copy/move data between two LUMI-O storages, you need to have user rights to access both these LUMI-O projects, and your access keys for both projects need to be valid. 
+Two copy/move data between two LUMI-O endpoints, you need to have user rights to access both of the LUMI-O projects, and your LUMI-O access keys for both projects need to be valid. 
 
 If you need to move a very large amount of data between two of your LUMI-O project storages, you can also contact the [LUMI user support team](../../helpdesk/index.md) for this.
 
@@ -109,13 +112,13 @@ After creating/updating this file, rclone can be used e.g. to copy files from Al
 rclone copyto s3allas:bucket-x/object-y lumi-46YXXXXXX-private:bucket-z/object-a
 ```
 
-or e.g. to list files from either Allas or LUMI-O by using the respective name:
+or e.g. to list objects in either Allas or LUMI-O by using the respective name of the endpoint:
 
 ```
 rclone lsf s3allas:
 ```
 
-You can also use Allas directly from LUMI with the same tools that work in the environments of CSC national clusters. See also the [CSC documentation about Allas on LUMI](https://docs.csc.fi/data/Allas/allas_lumi/) and the page [Using Allas on LUMI](./allas-lumi.md) use case.
+You can also use Allas directly from LUMI with the same tools that work in the environments of CSC national clusters. See also the [CSC documentation about Allas on LUMI](https://docs.csc.fi/data/Allas/allas_lumi/).
 
 <!-- 
 To be checked and tested ^

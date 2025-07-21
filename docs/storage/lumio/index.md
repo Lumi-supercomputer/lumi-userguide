@@ -15,7 +15,7 @@ LUMI-O offers a total of 30 PB storage space for storing, sharing, and staging o
 
 !!! Info "Some features of LUMI-O"
 
-    - A separate system from LUMI, with a fast connection for data transfer between LUMI filesystem and LUMI-O
+    - A separate service from the rest of LUMI, with a fast connection for data transfer between LUMI filesystem and LUMI-O
     - Accessible also without connecting to LUMI
     - Service breaks of LUMI don't usually affect to availability of LUMI-O
     - Usage with client tools like rclone and s3cmd, or via LUMI web interface
@@ -31,7 +31,7 @@ LUMI-O offers a total of 30 PB storage space for storing, sharing, and staging o
 
 All LUMI projects have LUMI-O available by default.
 
-To access LUMI-O, you will need to [generate access token](./auth-lumidata-eu.md). This token is exclusive for your project. There are no other credentials allowing access to LUMI-O bucket. 
+To access LUMI-O, you will need to [generate access tokens](./auth-lumidata-eu.md). These tokens are personal and exclusive for a project. There are no other credentials allowing access to LUMI-O buckets. 
 You can use LUMI-O [via the LUMI web interface](../../runjobs/webui/index.md#accessing-lumi-o) (limited functionality), or with different [client tools](./clients-general.md) like `rclone`. Read more how to create the credentials and configure the connection from the [Accessing LUMI-O](./auth-lumidata-eu.md) page.
 
 For examples how to use LUMI-O, see the 'Use case examples' section and [training material](#training-material).
@@ -63,6 +63,9 @@ Objects are managed through simple atomic operations. One can put an object in t
 
 With LUMI-O, one LUMI project is considered as _one user account_, i.e. by default all project members have the same user rights to all the data that is stored in LUMI-O for the project.
 
+!!!info
+    Projects in LUMI-O are handled as "single user tenants/accounts", where the project numerical id (e.g. 465000001) corresponds both the tenant/account name and the project name.
+    Subsequently, **all members of a LUMI-O project have the exact same rights and permissions**, unlike in the LUMI filesystem, where files have individual owners.**Keep this in mind if you have critical data in LUMI-O as any other member of your LUMI project could accidentally delete it**.
 
 ## Training material
 

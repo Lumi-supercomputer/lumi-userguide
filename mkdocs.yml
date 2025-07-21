@@ -103,7 +103,7 @@ nav:
     - LUMI-O object storage:
       - Overview: storage/lumio/index.md
       - Accessing LUMI-O: storage/lumio/auth-lumidata-eu.md
-      - Transferring and managing data: storage/lumio/clients-general.md
+      - Managing data: storage/lumio/clients-general.md
       # - Transferring and managing data: storage/lumio/clients-general.md
         # - storage/lumio/clients-lumio/index.md
         # - Overview of data transfer: storage/lumio/clients-general.md
@@ -114,7 +114,7 @@ nav:
         #  - Python (boto3): storage/lumio/python-boto3.md
         #  - Raw HTTP request: storage/lumio/raw-http.md
           # - ...
-      - Sharing access to data: storage/lumio/advanced.md
+      - Sharing data: storage/lumio/advanced.md
       # - Checking your quota: storage/lumio/check-quota.md
       # - Error messages: storage/lumio/error-messages.md
       # - Object storage related terms and concepts: 
