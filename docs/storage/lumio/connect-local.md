@@ -5,30 +5,32 @@
 
 
 
-This example is with `rclone`. The same works similarily with e.g `s3cmd` and other clients. (Notice that for s3cmd the default path under home directory is `~/.s3cfg`.)
+This example is with `rclone`. The same works similarily with e.g `s3cmd` and other clients. (For s3cmd the default path under home directory is `~/.s3cfg`.)
 
-By setting a file called `rclone.conf` in the default path `~/.config/rclone/rclone.conf` (e.g. in your own laptop) with the correct configuration setting and valid access keys, it is possible to use rclone to access LUMI-O from anywhere across internet, e.g. from your own laptop. Connection to LUMI is not needed. 
+By setting the file `rclone.conf` in the default path `~/.config/rclone/rclone.conf` (e.g. in your own laptop) with the correct configuration setting and valid access keys, it is possible to use rclone to access LUMI-O from anywhere across internet, e.g. from your own laptop. Connection to LUMI is not needed. 
 
-## Example: Create rclone config file and connect to LUMI-O directly from your laptop
+Notice that you should have rclone installed for this example to work. If you don't have rclone installed, follow the directions e.g. [on rclone website](https://rclone.org/install/) to install rclone on your laptop.
 
-You can get a valid rclone configuration from [auth.lumidata.eu](https://auth.lumidata.eu). 
+From auth.lumidata.eu you can get a valid rclone configuration for LUMI-O that is assosiated to (valid) access keys/tokens for a specific LUMI project. 
 
-**1)** Click a valid 'Access key' (or if you don't have one, create a new key first for your project)
 
-**2)** Select `rclone` from the Configuration templates and click 'Generate'
+## Example: Create rclone config file and access LUMI-O directly from your laptop
 
-**3)** Copy the created text block to a file (on your laptop) that you name 'rclone.conf'. It's simplest to place it in the default path for rclone `~/.config/rclone/rclone.conf`
+**1)** Go to [auth.lumidata.eu](https://auth.lumidata.eu) 
 
-**4)** Notice that you should have rclone installed for this to work. If you don't have rclone installed, follow the directions e.g. [on rclone website](https://rclone.org/install/) to install rclone on your laptop.
+**2)** Click the valid 'Access key' for your project (or if you don't have one, create a new key first for your project)
+
+**3)** Select `rclone` from the Configuration templates and click 'Generate'
+
+**4)** Copy the created text block to a file (on your laptop) that you name 'rclone.conf' (or add it to an existing rclone.conf file). It's simplest to place it in the default path for rclone `~/.config/rclone/rclone.conf` 
 
 **5)** Now you can access LUMI-O with rclone. Type e.g. 
 ```
-rclone lsd lumi-465000XXX-private:
+rclone lsd lumi-46500XXXX-private:
 ```
-to see the content of your project 465000XXX in LUMI-O. (Replace 465000XXX with your actual LUMI project number.)
+to see the buckets of your project 46500XXXX in LUMI-O. (_Replace 46500XXXX with your actual LUMI project number_.)
 
 
-
-The connection with this rclone config-file works as long as your access key is valid. 
-You can extend the validity of the key in [auth.lumidata.eu](https://auth.lumidata.eu)
-You can also create a new key and a new config file for it, if the key expires.
+The access with this rclone config file works as long as your access credentials for the LUMI-O endpoint are valid. 
+You can extend the validity of the access keys in [auth.lumidata.eu](https://auth.lumidata.eu)
+You can also create new keys (and update the config file for them), if the keys expire.
