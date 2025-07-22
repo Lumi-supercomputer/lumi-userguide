@@ -22,7 +22,7 @@ From auth.lumidata.eu you can get a valid rclone configuration for LUMI-O that i
 
 **3)** Select `rclone` from the Configuration templates and click 'Generate'
 
-**4)** Copy the created text block to a file (on your laptop) that you name 'rclone.conf' (or add it to an existing rclone.conf file). It's simplest to place it in the default path for rclone `~/.config/rclone/rclone.conf` 
+**4)** Copy the created text block to the local 'rclone.conf' file (create the file or add it to an existing file). Default path for rclone config is `~/.config/rclone/rclone.conf` 
 
 **5)** Now you can access LUMI-O with rclone. Type e.g. 
 ```
