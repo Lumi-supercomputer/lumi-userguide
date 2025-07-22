@@ -5,7 +5,7 @@
 
 
 
-This example is with `rclone`. The same works similarily with e.g `s3cmd` and other clients. (For s3cmd the default path under home directory is `~/.s3cfg`.)
+This example uses `rclone`. The same works similarly with e.g. `s3cmd` and other clients. (for the s3cmd the default path under home directory is `~/.s3cfg`.)
 
 By setting the file `rclone.conf` in the default path `~/.config/rclone/rclone.conf` (e.g. in your own laptop) with the correct configuration setting and valid access keys, it is possible to use rclone to access LUMI-O from anywhere across internet, e.g. from your own laptop. Connection to LUMI is not needed. 
 
