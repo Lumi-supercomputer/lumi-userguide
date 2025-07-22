@@ -128,7 +128,7 @@ nav:
         # - Giving temporary access: 
         # - Public content use case: 
         # - Private content use case: 
-        - Access without connecting to LUMI (Linux & MacOS): storage/lumio/connect-local.md
+        - Using LUMI-O from your local computer (Linux & MacOS): storage/lumio/connect-local.md
         # - LUMI-O with batch jobs: storage/lumio/lumio-batchjobs.md 
         # - Using Allas on LUMI: storage/lumio/allas-lumi.md
     - Storage formats:
