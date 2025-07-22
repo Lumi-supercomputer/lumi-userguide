@@ -144,7 +144,7 @@ complete list, visit the [s3cmd manual page](https://s3tools.org/usage) or type 
 
 
 
-### restic (advanced)
+### restic
 
 
 `restic` is a slightly different from `rclone` and `s3cmd` and is mainly used
@@ -164,7 +164,7 @@ needed when running `restic` commands.
 
 For more information, see the [Restic documentation](https://restic.readthedocs.io/en/stable/index.html)
 
-### Python with boto3 library (advanced)
+### Python with boto3 library
 
 
 When use cases become sufficiently complex one might want to interact
@@ -210,7 +210,7 @@ boto3 uses the same configuration files and respects the same environment variab
 You can create a configuration format for boto3 in [auth.lumidata.eu](https://auth.lumidata.eu) to access LUMI-O directly with boto3 e.g. from your local machine: after creating an access key, click the active key, and select "boto3" from the configuration formats. 
 
 
-### Raw HTTP request (advanced)
+### Raw HTTP request
 
 
 The LUMI-O object storage can be used by issuing HTTP request.
