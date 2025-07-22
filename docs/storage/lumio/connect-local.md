@@ -9,7 +9,7 @@ This example uses `rclone`. The same works similarly with e.g. `s3cmd` and other
 
 By setting the file `rclone.conf` (default config path is `~/.config/rclone/rclone.conf`) on your local system with the correct configuration setting and valid access key, rclone opens LUMI-O session from anywhere across internet, e.g. from your own laptop. Connection to LUMI is not needed. 
 
-Notice that you should have rclone installed for this example to work. If you don't have rclone installed, follow the directions e.g. [on rclone website](https://rclone.org/install/) to install rclone on your laptop.
+Note you should have rclone installed locally for this example to work. Follow the directions e.g. [on rclone website](https://rclone.org/install/) to install rclone on your local computer.
 
 From auth.lumidata.eu you can get a valid rclone configuration for LUMI-O that is assosiated to (valid) access keys/tokens for a specific LUMI project. 
 
