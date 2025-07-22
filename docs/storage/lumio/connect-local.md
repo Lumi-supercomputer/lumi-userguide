@@ -28,7 +28,7 @@ From auth.lumidata.eu you can get a valid rclone configuration for LUMI-O that i
 ```
 rclone lsd lumi-46500XXXX-private:
 ```
-to see the buckets of your project 46500XXXX in LUMI-O. (_Replace 46500XXXX with your actual LUMI project number_.)
+to see existing buckets of your project 46500XXXX in LUMI-O. (_Replace `46500XXXX` with your actual LUMI project ID.)
 
 
 The access with this rclone config file works as long as your access credentials for the LUMI-O endpoint are valid. 
