@@ -1,4 +1,4 @@
-# Using LUMI-O without connecting to LUMI
+# Using LUMI-O from your local computer
 
 !!!Warning
     This example is for Linux and MacOS. For Windows machines this might not work similarily.
