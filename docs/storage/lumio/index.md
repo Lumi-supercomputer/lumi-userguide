@@ -36,15 +36,6 @@ You can use LUMI-O [via the LUMI web interface](../../runjobs/webui/index.md#acc
 
 For examples how to use LUMI-O, see the 'Use case examples' section and [training material](#training-material).
 
-<!--
-This is now in 'Sharing access to data'. Where does it belong to?
-
-!!!info
-    Notice that in the object storage, one LUMI project is considered as one account. This means that by default all project members have the same access rights to the data that is stored in the buckets for this project. 
-    Projects in LUMI-O are handled as "single user tenants/accounts", where the project numerical id (e.g. 465000001) corresponds both the tenant/account name and the project name.
-    Subsequently, **all members of a LUMI-O project have the exact same rights and permissions**, unlike in the LUMI filesystem, where files have individual owners.**Keep this in mind if you have critical data in LUMI-O as any other member of your LUMI project could accidentally delete it**.
-
--->
 
 ## Structure of object storage
 
@@ -86,12 +77,6 @@ when writing guides or instructions.
 	Some advanced  operations which are supported by AWS will complete successfully when run against
 	LUMI-O, e.g object locks, but will actually have no effect. Unless it is explicitly stated that a feature
 	is provided by LUMI-O, assume that it will not work and be extra thorough in verifying correct functionality. 
-
-
-
-<!-- This is not a comprehensive tutorial, but more of
-a list of examples of things that are possible when using LUMI-O.
-Please consult the manual pages of the tools for additional details. -->
 
 
 

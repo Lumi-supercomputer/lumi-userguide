@@ -120,19 +120,6 @@ rclone lsf s3allas:
 
 You can also use Allas directly from LUMI with the same tools that work in the environments of CSC national clusters. See also the [CSC documentation about Allas on LUMI](https://docs.csc.fi/data/Allas/allas_lumi/).
 
-<!-- 
-To be checked and tested ^
-The current configuration with Allas on LUMI seems to happen with swift. 
-Does this apply on LUMI side or does it matter? Is it somehow taken care with allas_conf settings on LUMI already?
-
-"The configuration for Allas is added automatically in `rclone.conf` when configuring Allas in s3 mode:
-
-```
-source allas_conf --mode s3cmd
-```
-"
-
--->
 
 
 
