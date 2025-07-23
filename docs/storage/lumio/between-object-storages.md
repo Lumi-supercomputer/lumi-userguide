@@ -8,7 +8,7 @@ To copy content directly between two object storage endpoints (e.g. between two 
 ### General example
 
 ```
-[lumi-46YXXXXXX-private]
+[lumi-46XXXXXXX-private]
 type = s3
 acl  = private
 env_auth = false
@@ -40,7 +40,7 @@ rclone lsf otherobjectstorage:
 and to copy objects from one object storage endpoint to the other. E.g. to copy the object `object-y` from the other object storage endpoint to LUMI-O (with naming it as `object-a`):
 
 ```
-rclone copyto otherobjectstorage:bucket-x/object-y lumi-46YXXXXXX-private:bucket-z/object-a
+rclone copyto otherobjectstorage:bucket-x/object-y lumi-46XXXXXXX-private:bucket-z/object-a
 ```
 
 
@@ -54,7 +54,7 @@ If you need to move a very large amount of data between two of your LUMI-O proje
 An example for how to set the `rclone.conf` file:
 
 ```
-[lumi-46YXXXXXX-private]
+[lumi-46XXXXXXX-private]
 type = s3
 acl  = private
 env_auth = false
@@ -64,7 +64,7 @@ access_key_id     = xxxxxxxxxxxxxxxxxxxx
 secret_access_key = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 max_upload_parts  = 1000
 
-[lumi-46ZYYYYYY-private]
+[lumi-46YYYYYYY-private]
 type = s3
 acl  = private
 env_auth = false
@@ -85,7 +85,7 @@ max_upload_parts  = 1000
 
 An example for how to set the `rclone.conf` file:
 ```
-[lumi-46YXXXXXX-private]
+[lumi-46XXXXXXX-private]
 type = s3
 acl  = private
 env_auth = false
@@ -109,7 +109,7 @@ secret_access_key = yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
 After creating/updating this file, rclone can be used e.g. to copy files from Allas to LUMI-O:
 
 ```
-rclone copyto s3allas:bucket-x/object-y lumi-46YXXXXXX-private:bucket-z/object-a
+rclone copyto s3allas:bucket-x/object-y lumi-46XXXXXXX-private:bucket-z/object-a
 ```
 
 or e.g. to list objects in either Allas or LUMI-O by using the respective name of the endpoint:
