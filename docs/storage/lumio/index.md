@@ -4,224 +4,79 @@
 [lumi-o-tools]: https://github.com/Lumi-supercomputer/LUMI-O-tools
 [rclone-manual]: https://rclone.org/docs/
 
-The LUMI-O object store offers a total of 30 PB storage for storing, sharing,
-and staging of data.
 
-In an object-based storage, data is managed as objects instead of being
-organized as files in a directory hierarchy.
+## What is LUMI-O?
 
-Within your object storage project space, you can create buckets. These buckets
-will store objects with metadata associated with these objects.
+LUMI-O is object storage service accessible through a web interface and S3 API. 
+LUMI-O is based on completely different technology than the Lustre parallel filesystem (LUMI-P and LUMI-F). Also, unlike the Lustre parallel file system, LUMI-O is a separate service from LUMI compute partitions. 
 
-- **Buckets**: Containers used to store one or more objects.
-  Object storage uses a flat structure with only
-  one level which means that buckets cannot contain other buckets.
+LUMI-O offers a total of 30 PB storage space for storing, sharing, and staging of data. By default 150 TB of storage space is allocated per LUMI project, but projects can request for more LUMI-O storage space by contacting the [LUMI helpdesk](../../helpdesk/index.md).
+
+
+!!! Info "Some features of LUMI-O"
+
+    - A separate service from the rest of LUMI, with a fast connection for data transfer between LUMI filesystem and LUMI-O
+    - Accessible also without connecting to LUMI
+    - Service breaks of LUMI don't usually affect to availability of LUMI-O
+    - Usage with client tools like rclone and s3cmd, or via LUMI web interface
+    - Possible to set granular access rights to data (e.g. for other projects or users from other projects) 
+    - Possible to set a temporary access link to otherwise private data
+    - Possible to share public data across the internet (for the duration of your project)
+    - In LUMI-O one project is treated as one account: all project members have the same access/user rights to the projects data
+    - Data lifetime in LUMI-O is the same as your project lifetime 
+
+
+
+## Usage of LUMI-O
+
+All LUMI projects have LUMI-O available by default.
+
+To access LUMI-O, you will need to [generate access tokens](./auth-lumidata-eu.md). These tokens are personal and exclusive for a project. There are no other credentials allowing access to LUMI-O buckets. 
+You can use LUMI-O [via the LUMI web interface](../../runjobs/webui/index.md#accessing-lumi-o) (limited functionality), or with different [client tools](./clients-general.md) like `rclone`. Read more how to create the credentials and configure the connection from the [Accessing LUMI-O](./auth-lumidata-eu.md) page.
+
+For examples how to use LUMI-O, see the 'Use case examples' section and [training material](#training-material).
+
+
+## Structure of object storage
+
+Structure of an object storage is different from a normal file system structure. Instead of directories and files, the data is organized in a flat structure with *buckets* that contain *objects*. 
+
+- **Buckets**: Containers used to store one or more objects. Buckets can not contain other buckets, so the structure is much flatter than a normal filesystem structure. One bucket can contain up to 500k objects. 
 - **Objects**: Any type of data. An object is stored in a bucket.
 - **Metadata**: Both buckets and objects have metadata specific to them. The 
   metadata of a bucket specifies e.g., the access rights to the bucket. While
   traditional file systems have fixed metadata (filename, creation date, type,
   etc.), an object storage allows you to add custom metadata.
 
-To use LUMI-O, you will need to generate authentication credentials, which you
-can then use with different tools to connect to LUMI-O.
-
-## Configuring the LUMI-O connection
-
-Start by loading the `lumio` module which provides configuration and data
-transfer tools:
-
-```
-module load lumio
-```
-
-To configure a connection to LUMI-O, run the command:
-```text
-lumio-conf
-```
-
-This command asks you to connect with your browser to the [LUMI-O credentials
-management service](auth-lumidata-eu.md), create credentials there and the copy
-the project number and keys for the setup tool. The setup process will create configuration files for `s3cmd`
-and `rclone`.
-
-For a step-by-step description, read the [Creating LUMI-O
-credentials](auth-lumidata-eu.md) instructions.
-
-Using the [LUMI-O credentials management service,](auth-lumidata-eu.md) you can
-also generate configuration for different object storage clients like shell,
-boto3, rclone, s3cmd and aws. This is useful for using LUMI-O from somewhere
-else than LUMI, where the `lumio-conf` command is not available (The tool can be
-downloaded from the [LUMI-O repository][lumi-o-tools], but we only officially
-support the tool on LUMI) 
-
-## Tools to transfer data
-
-The `lumio` module provides some pre-installed tools to interact with LUMI-O:
-`rclone`, `s3cmd` and `restic`.
-
-Please refer to the manuals of the respective tools for more detailed information.
-
-The most common commands for `s3cmd` and `rclone` to
-
-=== "Rclone"
-    
-    | Action                                     | Command                              |
-    |--------------------------------------------|--------------------------------------|
-    | List buckets                               | `rclone lsd lumi-o:`                 |
-    | Create bucket *mybuck*                     | `rclone mkdir lumi-o:mybuck`         |
-    | List objects in bucket *mybuck*            | `rclone ls lumi-o:mybuck/`           |
-    | Upload file *file1* to bucket *mybuck*     | `rclone copy file1 lumi-o:mybuck/`   |
-    | Download file *file1* from bucket *mybuck* | `rclone copy lumi-o:mybuck/file1 .`  |
-
-=== "s3cmd"
-
-    | Action                                     | Command                             |
-    |--------------------------------------------|-------------------------------------|
-    | List buckets                               | `s3cmd ls s3:`                      |
-    | Create bucket *mybuck*                     | `s3cmd mb s3://mybuck`              |
-    | List objects in bucket *mybuck*            | `s3cmd ls --recursive  s3://mybuck` |
-    | Upload file *file1* to bucket *mybuck*     | `s3cmd put file1 s3://mybuck`       |
-    | Download file *file1* from bucket *mybuck* | `s3cmd get s3://mybuck/file1 .`     |
-
-### rclone
-
-For `rclone`, the LUMI-O configuration provides two kinds of remote endpoints: 
-
-- **lumi-<project_number\>-private**: A private endpoint. The buckets and objects uploaded to this
-              endpoint will not be publicly accessible.
-- **lumi-<project_number\>-public**: A public endpoint. The buckets and objects uploaded to this
-                endpoint will be publicly accessible using the URL:
-                ```
-                https://<project_number>.lumidata.eu/<bucket_name>`
-                ```
-                Be careful to not upload data that cannot be public to this
-                endpoint.
 
 
-The basic syntax of the `rclone` command is:
+Objects are managed through simple atomic operations. One can put an object in the object storage, get its content, copy an object or delete an object. But contrary to a file e.g. in the Lustre filesystem, the object in LUMI-O cannot be modified: One cannot simply change a part of the content of an object. To edit an object, it needs to be replaced with a new object.
 
-```text
-rclone <subcommand> <options> source:path dest:path 
-```
+With LUMI-O, one LUMI project is considered as _one user account_, i.e. by default all project members have the same user rights to all the data that is stored in LUMI-O for the project.
 
-The table below lists the most frequently used `rclone` subcommands:
+!!!info
+    Projects in LUMI-O are handled as "single user tenants/accounts", where the project numerical id (e.g. 465000001) corresponds both the tenant/account name and the project name.
+    Subsequently, **all members of a LUMI-O project have the exact same rights and permissions**, unlike in the LUMI filesystem, where files have individual owners.**Keep this in mind if you have critical data in LUMI-O as any other member of your LUMI project could accidentally delete it**.
 
-[rc_copy]:    https://rclone.org/commands/rclone_copy/
-[rc_sync]:    https://rclone.org/commands/rclone_sync/
-[rc_move]:    https://rclone.org/commands/rclone_move/
-[rc_delete]:  https://rclone.org/commands/rclone_delete/
-[rc_mkdir]:   https://rclone.org/commands/rclone_mkdir/
-[rc_rmdir]:   https://rclone.org/commands/rclone_rmdir/
-[rc_check]:   https://rclone.org/commands/rclone_check/
-[rc_ls]:      https://rclone.org/commands/rclone_ls/
-[rc_lsd]:     https://rclone.org/commands/rclone_lsd/
-[rc_lsl]:     https://rclone.org/commands/rclone_lsl/
-[rc_lsf]:     https://rclone.org/commands/rclone_lsf/
+## Training material
 
-| rclone subcommand   | Description                                                                      |
-| ------------------- | -------------------------------------------------------------------------------- |
-| [copy][rc_copy]     | Copy files from the source to the destination                                    |
-| [sync][rc_sync]     | Make the source and destination identical, modifying only the destination        |
-| [move][rc_move]     | Move files from the source to the destination                                    |
-| [delete][rc_delete] | Remove the contents of a path                                                    |
-| [mkdir][rc_mkdir]   | Create the path if it does not already exist                                     |
-| [rmdir][rc_rmdir]   | Remove the path                                                                  |
-| [check][rc_check]   | Check if the files in the source and destination match                           |
-| [ls][rc_ls]         | List all objects in the path, including size and path                            |
-| [lsd][rc_lsd]       | List all directories/containers/buckets in the path                              |
-| [lsl][rc_lsl]       | List all objects in the path, including size, modification time and path         |
-| [lsf][rc_lsf]       | List the objects using the virtual directory structure based on the object names |
-
-A more extensive list can be found on the [Rclone manual pages][rclone-manual]
-or by typing the command `rclone` in LUMI.
-
-### s3cmd
-
-The syntax of the `s3cmd` command:
-
-```bash
-s3cmd -options <command> parameters
-```
-
-The most commonly used _s3cmd_ commands:
-
-| s3cmd command      | Function |
-| :----------------- | :--------------------------- |
-| mb                 | Create a bucket              |
-| put                | Upload an object             |
-| ls                 | List objects and buckets     |
-| get                | Download objects and buckets |
-| cp                 | Move object                  |
-| del                | Remove objects or buckets    |
-| md5sum             | Get the checksum             |
-| info               | View metadata                |
-| signurl            | Create a temporary URL       |
-| put -P             | Make an object public        |
-| setacl --acl-grant | Manage access rights         |
+A good introductory lecture and exercises about using LUMI-O object storage are included in the trainings that LUMI user support team gives on a regular basis. See the material for [the latest introductory training](lumi-supercomputer.github.io/intro-latest) and other trainings from [LUMI training materials](https://lumi-supercomputer.github.io/LUMI-training-materials/).
 
 
-The table above lists only the most essential `s3cmd` commands. For more
-complete list, visit the [s3cmd manual page](https://s3tools.org/usage) or type:
+## LUMI-O vs Amazon S3
 
-```text
-s3cmd -h
-```
+LUMI-O is an S3 compatible storage solution. However, this does not mean
+that the system is the same as the "Amazon S3 Cloud Storage". The interface for reading and writing data 
+is exactly the same, but AWS has a bunch of additional features which are not really part of "just" s3 storage, like _self-service provisioning of IAM users_,
+_life cycle configuration_ and _write once, read many functionality_. 
 
-If you need to make uploaded objects or buckets public you can add the `-P, --acl-public` flag
-to `s3cmd put`. 
+It's worth keeping the above in mind, as many people use S3 and Amazon S3 interchangeably
+when writing guides or instructions.  
 
-### restic
+!!! warning 
+	Some advanced  operations which are supported by AWS will complete successfully when run against
+	LUMI-O, e.g object locks, but will actually have no effect. Unless it is explicitly stated that a feature
+	is provided by LUMI-O, assume that it will not work and be extra thorough in verifying correct functionality. 
 
-`restic` is a slightly different from `rclone` and `s3cmd` and is mainly used
-for doing backups. 
 
-**Set up the restic repository**
 
-```bash
-$ export AWS_ACCESS_KEY_ID=<MY_ACCESS_KEY>
-$ export AWS_SECRET_ACCESS_KEY=<MY_SECRET_ACCESS_KEY>
-$ restic -r s3:https://lumidata.eu/<bucket> init
-```
-
-After this we can run commands like `restic restore` and `restic backup`. the
-`-r` flag with the correct bucket and the KEY environment variables are always
-needed when running `restic` commands.
-
-For more information, see the [Restic documentation](https://restic.readthedocs.io/en/stable/index.html)
-
-## Raw HTTP request 
-
-The LUMI-O object storage can be used by issuing HTTP request.
-
-!!! warning
-
-    We don't recommend using the HTTP API unless there is a specific need. The 
-    tools listed above are easier to use. This section only serve as a reference
-    on how to provide the credentials to the HTTP API. 
-
-    See [Common error messages](error-messages.md) for explanations on some of
-    the HTTP return codes. 
-
-The example below upload the file `README.md` to the bucket `my-nice-bucket`
-using `curl`:
-
-```bash
-export S3_ACCESS_KEY_ID=<MY_ACCESS_KEY>
-export S3_SECRET_ACCESS_KEY=<MY_SECRET_ACCESS_KEY>
-
-file=README.md
-bucket=my-nice-bucket
-resource="/${bucket}/${file}"
-contentType="text/plain"
-dateValue=`date -R`
-stringToSign="PUT\n\n${contentType}\n${dateValue}\n${resource}"
-s3Key=$S3_ACCESS_KEY_ID
-s3Secret=$S3_SECRET_ACCESS_KEY
-signature=`echo -en ${stringToSign} | openssl sha1 -hmac ${s3Secret} -binary | base64`
-curl -X PUT -T "${file}" \
-     -H "Host: https://lumidata.eu/" \
-     -H "Date: ${dateValue}" \
-     -H "Content-Type: ${contentType}" \
-     -H "Authorization: AWS ${s3Key}:${signature}" \
-      https://lumidata.eu/${bucket}/${file}
-```

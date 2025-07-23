@@ -100,11 +100,37 @@ nav:
       - Lustre: storage/parallel-filesystems/lustre.md
       - Main storage - LUMI-P: storage/parallel-filesystems/lumip.md
       - Flash storage - LUMI-F: storage/parallel-filesystems/lumif.md
-    - Object storage:
-      - LUMI-O usage: storage/lumio/index.md
-      - Authentication for LUMI-O: storage/lumio/auth-lumidata-eu.md
-      - Error messages: storage/lumio/error-messages.md
-      - Advanced usage of LUMI-O: storage/lumio/advanced.md
+    - LUMI-O object storage:
+      - Overview: storage/lumio/index.md
+      - Accessing LUMI-O: storage/lumio/auth-lumidata-eu.md
+      - Managing data: storage/lumio/clients-general.md
+      # - Transferring and managing data: storage/lumio/clients-general.md
+        # - storage/lumio/clients-lumio/index.md
+        # - Overview of data transfer: storage/lumio/clients-general.md
+        # - LUMI-O clients:
+        #  - rclone: storage/lumio/client-rclone.md
+        #  - s3cmd: storage/lumio/client-s3cmd.md
+        #  - restic: storage/lumio/client-restic.md
+        #  - Python (boto3): storage/lumio/python-boto3.md
+        #  - Raw HTTP request: storage/lumio/raw-http.md
+          # - ...
+      - Sharing data: storage/lumio/advanced.md
+      # - Checking your quota: storage/lumio/check-quota.md
+      # - Error messages: storage/lumio/error-messages.md
+      # - Object storage related terms and concepts: 
+      - Use case examples: 
+        - Simple upload and download: storage/lumio/upload-download.md
+        - Copying data between object storages: storage/lumio/between-object-storages.md
+        # - Backup your data: storage/lumio/upload-download.md 
+        # - Checking privacy settings:
+        # - Multiproject use case 1:
+        # - Multiproject use case 2:
+        # - Giving temporary access: 
+        # - Public content use case: 
+        # - Private content use case: 
+        - Using LUMI-O from your local computer (Linux & MacOS): storage/lumio/connect-local.md
+        # - LUMI-O with batch jobs: storage/lumio/lumio-batchjobs.md 
+        # - Using Allas on LUMI: storage/lumio/allas-lumi.md
     - Storage formats:
       - SquashFS: storage/formats/FUSE.md
   - Tutorials:
@@ -184,6 +210,7 @@ markdown_extensions:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 plugins:
+#  - section-index
   - redirects:
       redirect_maps:
         'computing/Lmod_modules.md': 'runjobs/lumi_env/Lmod_modules.md'
