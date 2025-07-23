@@ -60,7 +60,7 @@ With LUMI-O, one LUMI project is considered as _one user account_, i.e. by defau
 
 ## Training material
 
-A good introductory lecture and exercises about using LUMI-O object storage are included in the trainings that LUMI user support team gives on a regular basis. See the material for [the latest introductory training](lumi-supercomputer.github.io/intro-latest) and other trainings from [LUMI training materials](https://lumi-supercomputer.github.io/LUMI-training-materials/).
+A good introductory lecture and exercises about using LUMI-O object storage are included in the trainings that LUMI user support team gives on a regular basis. See the material for [the latest introductory training](https://lumi-supercomputer.github.io/intro-latest) and other trainings from [LUMI training materials](https://lumi-supercomputer.github.io/LUMI-training-materials/).
 
 
 ## LUMI-O vs Amazon S3
