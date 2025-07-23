@@ -2,21 +2,11 @@
 
 This page describes the basics of transferring and managing data with LUMI-O. Make sure that you have first properly set up the [authentication and access](./auth-lumidata-eu.md) for LUMI-O.
 
-<!-- This page could be also called 'Overview of data transfer tools' in the table of contents. With the current name it hints that there is also other information related to good practices when transferring data, which would be nice, I think. But it could also be only about the client software / tools.
- -->
-
-<!--
-## Using LUMI-O
-
--->
 
 ## Tools to transfer data
 
 LUMI-O is used via tools (client software) that take care of moving data to and from LUMI-O and managing data objects. There are several different kinds of client software for accessing object storage servers. LUMI-O can be used with any object storage client that is compatible with S3 protocol.
 
-<!--
-## Supported tools (client software)
--->
 
 The `lumio` module provides some pre-installed client software to interact with LUMI-O:
 `rclone`, `s3cmd` and `restic`. On this page we give just some basic information of a few client software that can be used with LUMI-O. Please refer to the manuals of the client software for more detailed information.
@@ -249,42 +239,6 @@ curl -X PUT -T "${file}" \
 ```
 
 
-<!--
-
-Would be great to add similar table here, but need to confirm if the same is true in all parts with rclone and s3cmd + restic? with LUMI-O
-https://docs.csc.fi/data/Allas/introduction/#client-operations
-
--->
-
-
-<!--
-
-## File formats 
-
-(here or in index.md / LUMI-O Overview ?)
-
-Check LUMI-O notes by Kurt 
-
-!!!info
-    In an object storage 'files' are called objects. But since object is not same thing as a file, 'file format' is not exactly a correct term when talking about objects in an object storage.
-
-Since object storage is a different kind of storage system than the Lustre file system on LUMI, some file formats behave naturally well with object storage, e.g. ... 
-
-
-
-The ... file format 
-
--->
-
-<!--
-
-To be added here, or in 'Use case examples' : Some info / examples of performing downloads/uploads of large datasets
-
-
-## Large number of small files
-
--->
-
 ## Is my bucket public or private?
 
 If you don't know (or remember) if your bucket or object is public or private, you can check it e.g. in the two following ways:
@@ -298,20 +252,6 @@ s3cmd info s3://<bucketname>
 s3cmd info s3://<bucketname>/<objectname>
 ```
 E.g. the line `ACL: *anon*: READ` indicates that the bucket/object is accessible with a public link. (In that case also a link to the content is printed out, but this link might be in a wrong format. For more information about access links, see the [Sharing data](./advanced.md) section.)
-
-
-<!--
-Internal comment: The information here should be double checked, and also more information about working with large amount of data would probably be useful.
-
-## Large amount of data
-
-If you need to transfer a file to LUMI-O that has a size more than larger than 5 GB, the data transfer will be automatically split to a multipart upload. When doing a multipart upload, the parts are first moved to your bucket in LUMI-O as separate objects, and when the download of all the parts is finished, the parts are combined to one single object. 
-
-If the download is interrupted for one reason or another, the unfinished parts of your multipart upload are left in your bucket. 
-
-Most of the tools (e.g. rclone) are able to identify the existing parts and continue where the download was interrupted. In some cases it might happen though, that the client tool is not able to continue the multipart upload. Notice that if the multipart upload is not finished, the parts of the unfinished multipart upload stay in your bucket to fill the quota of that specific bucket, unless you separately delete them. 
-
--->
 
 
 ## Checking your utilized LUMI-O quota
@@ -359,39 +299,6 @@ When access to LUMI-O is set, the used quotas can be checked e.g. with `rclone` 
     | Used quota by the project                  | `s3cmd du`                          |
 
 
-<!-- 
-#### rclone
-
-Replace 46YXXXXXX with your LUMI project number.
-
-- Number of buckets:
-
-    `rclone lsd lumi-46YXXXXXX-private: | wc -l`
-
-- Number of objects in a bucket 'mybucket':
-
-    `rclone lsd lumi-46YXXXXXX-private:mybucket | wc -l`
-
-- Used quota by the project:
-
-    `rclone size lumi-46YXXXXXX-private:`
-
-
-#### s3cmd
-
-- Number of buckets:
-
-    `s3cmd ls s3: | wc -l`
-
-- Number of objects in a bucket 'mybucket':
-
-    `s3cmd ls s3://mybucket | wc -l`
-
-- Used quota by the project:
-
-    `s3cmd du`
-
--->
 
 ## Common error messages
 
