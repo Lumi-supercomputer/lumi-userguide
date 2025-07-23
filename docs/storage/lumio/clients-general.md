@@ -39,17 +39,17 @@ The configuration by `lumio` module provides two kinds of remote endpoints for `
                 endpoint.
 
 
-Some common example commands to work with LUMI-O with `rclone` are listed in the table below. Once you have set the authentication and access (as described on the [Accessing LUMI-O](./auth-lumidata-eu.md) page, you can use LUMI-O with rclone commands. _Replace 46YXXXXXX with your LUMI project number._
+Some common example commands to work with LUMI-O with `rclone` are listed in the table below. Once you have set the authentication and access (as described on the [Accessing LUMI-O](./auth-lumidata-eu.md) page, you can use LUMI-O with rclone commands. _Replace 46XXXXXXX with your LUMI project number._
 _For the public endpoint, replace the word 'private' with 'public'_
 
     
 | Action                                     | Command                                              |
 |--------------------------------------------|------------------------------------------------------|
-| List buckets                               | `rclone lsd lumi-46YXXXXXX-private:`                 |
-| Create bucket *mybuck*                     | `rclone mkdir lumi-46YXXXXXX-private:mybuck`         |
-| List objects in bucket *mybuck*            | `rclone ls lumi-46YXXXXXX-private:mybuck/`           |
-| Upload file *file1* to bucket *mybuck*     | `rclone copy file1 lumi-46YXXXXXX-private:mybuck/`   |
-| Download file *file1* from bucket *mybuck* | `rclone copy lumi-46YXXXXXX-private:mybuck/file1 .`  |
+| List buckets                               | `rclone lsd lumi-46XXXXXXX-private:`                 |
+| Create bucket *mybuck*                     | `rclone mkdir lumi-46XXXXXXX-private:mybuck`         |
+| List objects in bucket *mybuck*            | `rclone ls lumi-46XXXXXXX-private:mybuck/`           |
+| Upload file *file1* to bucket *mybuck*     | `rclone copy file1 lumi-46XXXXXXX-private:mybuck/`   |
+| Download file *file1* from bucket *mybuck* | `rclone copy lumi-46XXXXXXX-private:mybuck/file1 .`  |
 
 !!! info
     It doesn't matter which one of the _public_ or _private_ endpoints is used to list the buckets with the `rclone lsd` command. This is because the only difference between the two endpoints is that with the _public_ endpoint, the _ACL_ (that defines the access rights) is by default set to _`public-read`_, making the content in this endpoint publicly accessible. Otherwise the content uploaded to either of the endpoints is located "in the same place".
@@ -342,12 +342,12 @@ When access to LUMI-O is set, the used quotas can be checked e.g. with `rclone` 
     
     | Quota to check                                | Command                                              |
     |--------------------------------------------|------------------------------------------------------|
-    | Number of buckets                          | `rclone lsd lumi-46YXXXXXX-private: | wc -l`         |
-    | Number of objects in a bucket 'mybucket'   | `rclone lsd lumi-46YXXXXXX-private:mybucket | wc -l` |
-    | Used quota by the project                  | `rclone size lumi-46YXXXXXX-private:`                |
+    | Number of buckets                          | `rclone lsd lumi-46XXXXXXX-private: | wc -l`         |
+    | Number of objects in a bucket 'mybucket'   | `rclone lsd lumi-46XXXXXXX-private:mybucket | wc -l` |
+    | Used quota by the project                  | `rclone size lumi-46XXXXXXX-private:`                |
 
 
-    _Replace 46YXXXXXX with your LUMI project number._
+    _Replace 46XXXXXXX with your LUMI project number._
     _Note that it doesn't matter if you list the content for 'private' or 'public' endpoint, in both cases all content is included to the quota._
 
 === "s3cmd"

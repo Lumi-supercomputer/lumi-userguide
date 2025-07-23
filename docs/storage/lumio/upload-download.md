@@ -25,7 +25,7 @@ lumio-conf
 Now you are able to use e.g. `rclone` commands to interact with LUMI-O. To list the buckets that have been created in LUMI-O for your project, run the following command:
 
 ```
-rclone lsd lumi-46YXXXXXX-private:   #Replace 46YXXXXXX with your LUMI project number
+rclone lsd lumi-46XXXXXXX-private:   #Replace 46XXXXXXX with your LUMI project number
 ```
 
 The command above lists all the buckets for this LUMI project in LUMI-O. If no one from your project has uploaded content to LUMI-O so far, the output is empty. 
@@ -33,7 +33,7 @@ The command above lists all the buckets for this LUMI project in LUMI-O. If no o
 The following command creates a new bucket with the name _mynewbucketname_myusername_ :
 
 ```
-rclone mkdir lumi-46YXXXXXX-private:mynewbucketname_myusername
+rclone mkdir lumi-46XXXXXXX-private:mynewbucketname_myusername
 ```
 
 It's in general a good idea to name a bucket such that you will remember that it's your bucket, especially if there are several members in your project. Also this helps the other members in your project to identify that this bucket is yours. 
@@ -41,19 +41,19 @@ It's in general a good idea to name a bucket such that you will remember that it
 You can download a file (e.g. mydatafile.txt) from LUMI filesystem to this bucket with:
 
 ```
-rclone copy mydatafile.txt lumi-46YXXXXXX-private:mynewbucketname_myusername
+rclone copy mydatafile.txt lumi-46XXXXXXX-private:mynewbucketname_myusername
 ```
 
 To see that your datafile is now an object in your bucket, you can list the objects in the bucket with the command:
 
 ```
-rclone ls lumi-46YXXXXXX-private:mynewbucketname_myusername/   
+rclone ls lumi-46XXXXXXX-private:mynewbucketname_myusername/   
 ```
 
 Downloading data from LUMI-O to LUMI works in a similar manner:
 
 ```
-rclone copy lumi-46YXXXXXX-private:mynewbucketname_myusername/mydatafile.txt .
+rclone copy lumi-46XXXXXXX-private:mynewbucketname_myusername/mydatafile.txt .
 ```
 
 This is not the most clever example, since it just downloads the same datafile back to LUMI. Notice that rclone now overwrites the existing data file in LUMI filesystem. 
@@ -61,7 +61,7 @@ This is not the most clever example, since it just downloads the same datafile b
 To download the data of the object 'mydatafile.txt' to a different file in LUMI filesystem, we can tell rclone to rename it e.g. as `mydatafile2.txt` with the following command (notice that now we need to use the `copyto` option with the command):
 
 ```
-rclone copyto lumi-46YXXXXXX-private:mynewbucketname_myusername/mydatafile.txt ./mydatafile2.txt
+rclone copyto lumi-46XXXXXXX-private:mynewbucketname_myusername/mydatafile.txt ./mydatafile2.txt
 ```
 
 The `copyto` command allows creating a new file with a different name, in which the content of 'mydatafile.txt' object is now downloaded from LUMI-O. 
