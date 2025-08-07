@@ -7,13 +7,13 @@
 [doc-hdf5]: https://portal.hdfgroup.org/display/HDF5/Learning+the+Basics
 [doc-netcdf]: https://www.unidata.ucar.edu/software/netcdf/docs/
 [doc-openblas]: https://github.com/xianyi/OpenBLAS/wiki/User-Manual
-[doc-blis]: https://github.com/flame/blis/wiki
+[doc-netcdf-hdf5]: https://docs.unidata.ucar.edu/netcdf-c/4.9.3/interoperability_hdf5.html
 
-For the [Cray libraries](https://cpe.ext.hpe.com/docs/#hpe-cray-scientific-and-math-libraries) that are available as a modules prefixed by `cray-`, the compiler
-wrappers will automatically take care of adding the search paths for the
-include files and the libraries and provide the linker with the appropriate
-options. This means that, as a user, you don't need to provide such information
-to `cray-libsci`, `cray-fftw`, `cray-hdf5`, and `cray-netcdf`.
+For the [Cray libraries](https://cpe.ext.hpe.com/docs/#hpe-cray-scientific-and-math-libraries),
+that are available as modules, prefixed by `cray-`, the compiler wrappers
+will, automatically update the include path and provide the linker with the
+appropriate options for the library to use them. This means that, as a
+user, all you have to do is to load the respective module.
 
 [libsci]: #libsci
 [fftw]: #fftw
@@ -98,4 +98,6 @@ scientific data.
 
 :material-package-variant: `module load cray-netcdf-hdf5parallel`
 
-A serial [NetCDF][netcdf] built against parallel [HDF5][hdf5].
+A version of [netCDF][netcdf] that directly writes [HDF5][hdf5] data.
+
+[More information][doc-netcdf-hdf5]
