@@ -54,7 +54,7 @@ CrayPat is the full-featured program analysis tool set. The typical workflow is
 ### Sampling
 
 Sampling is a statistical profiling. By taking regular snapshots of the
-applications call stack, we can create a statistical profile of where the
+application's call stack, we can create a statistical profile of where the
 application spends most of its time.
 
 <figure>
@@ -69,8 +69,8 @@ application spends most of its time.
   </figcaption>
 </figure>
 
-One of the main advantages of a sampling experiment is the low overhead
-fixed by the choice of sampling rate.
+One of the main advantages of a sampling experiment is the low overhead,
+which is also fixed by the choice of sampling rate.
 On the other hand, sampling is non-deterministic and can only provide a
 statistical picture of the application behavior.
 
@@ -135,7 +135,7 @@ instrumented.
   </figcaption>
 </figure>
 
-The main downside is that the instrumentation code inserted will be run every
+The main downside is that the inserted instrumentation code will be run every
 time an instrumented function is called to record the information.
 This may introduce significant profiling overhead.
 
@@ -174,7 +174,7 @@ where the `-g` option is used to select a trace group. There is support for a
 wide variety of predefined function groups. A full list can be obtained from
 the `pat_build` manpage.
 
-User-defined function can be traced with the `-T` option and provide a list of
+User-defined function can be traced with the `-T` option and a list of provided
 function names, or use the `-t` option and provide a file listing the functions
 to trace.
 
