@@ -73,6 +73,7 @@ nav:
     - Local software collections:
       - CSC: software/local/csc.md
       - CSC_quantum: software/local/csc-quantum.md
+      - LUMI-AIF: software/local/lumi-aif.md
       #- Quantum ESPRESSO: software/guides/quantumespresso.md
       #- ParaView: software/guides/paraview.md
       #- Quantum ESPRESSO: software/guides/quantumespresso.md
