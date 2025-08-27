@@ -1,4 +1,3 @@
-[lumi-c]: ../../hardware/lumic.md
 [container-jobs]: ../../runjobs/scheduled-jobs/container-jobs.md
 [python-install]: ../../software/installing/python.md
 [job-arrays]: ../../runjobs/scheduled-jobs/throughput.md
@@ -52,8 +51,23 @@ srun singularity exec $CONTAINER python3 your_application.py # Use srun instead 
 ```
 
 ## Python Array job
-Job arrays have already been described in details in [Job array][job-arrays], and this is particularly useful here since Python is often used to post-process data. In the example job script below, we submit an array of 10 jobs corresponding to 10 data files "data*.json" stored in an arbitrary folder structure under "./data/", the resulting output is stored next to the data. In this example `your_application.py` takes the folder string as input.
-
+Job arrays have already been described in details in [Job array][job-arrays], and this is particularly useful here since Python is often used to post-process data. In the example job script below, we submit an array of 10 jobs corresponding to 10 data files "data*.json" stored in arbitrary folder structure such as a structured tree
+```
+data/
+├── partition1
+│   └── data.json
+├── partition2
+│   └── data.json
+⋮
+```
+or a flat structure
+```
+data/
+├── data1.json
+├── data2.json
+⋮
+```
+The resulting output is stored next to the data*.json, where '*' denoted a wildcard string of characters.
 
 ```bash
 #!/bin/bash -l
@@ -62,7 +76,7 @@ Job arrays have already been described in details in [Job array][job-arrays], an
 #SBATCH --ntasks=1              # One task (process)
 #SBATCH --time=00:15:00         # Run time (hh:mm:ss)
 #SBATCH --account=project_<id>  # Project for billing
-#SBATCH --array=1-10             # Array tasks
+#SBATCH --array=1-10            # Array tasks
 
 module load cray-python
 
@@ -78,3 +92,4 @@ srun --output="$FOLDER"/slurm-%j_$SLURM_ARRAY_TASK_ID.out \
      python3 your_application.py $DATA
 ```
 
+In this example `your_application.py` takes the folder string as input, however an alternative approach would be to run `ch $FOLDER` before the `srun` command, and putting `your_application.py` next to the `data*.json`.
