@@ -34,7 +34,7 @@ The LLM Text Processing workflow enables efficient text processing using Large L
 - Summarizing lengthy documents to extract key information.
 - Translating text between multiple languages for multilingual research projects.
 
-For more details, refer to the documentation available on LUMI at `/appl/local/laifs/workflows/llm-text-processing`.
+For more details, refer to the documentation available on LUMI at `/appl/local/laifs/workflows/vllm-text-processing`.
 
 **Usage Example:**
 
@@ -85,7 +85,7 @@ The Vision-Language Batch Processing workflow can be used for image analysis usi
 - Analyzing visual content to answer specific questions about the images.
 - Enhancing accessibility by providing textual descriptions of visual data for visually impaired users.
 
-For more details, refer to the documentation available on LUMI at `/appl/local/laifs/workflows/vision-language-batch-processing`.
+For more details, refer to the documentation available on LUMI at `/appl/local/laifs/workflows/huggingface-vqa`.
 
 **Usage Example:**
 
