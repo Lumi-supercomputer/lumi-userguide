@@ -40,7 +40,7 @@ For more details, refer to the documentation available on LUMI at `/appl/local/l
 
 1. **Copy the example directory** to your project space:
    ```bash
-   cp -r /appl/local/laifs/workflows/llm-text-processing/examples/example1 ~/my-llm-example
+   cp -r /appl/local/laifs/workflows/vllm-text-processing/examples/example1 ~/my-llm-example
    cd ~/my-llm-example
    ```
 
