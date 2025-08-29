@@ -11,8 +11,10 @@ hide:
 [benchmarks]: https://www.amd.com/en/graphics/server-accelerators-benchmarks
 [zen3-wiki]: https://en.wikipedia.org/wiki/Zen_3
 
+<!-- benchmark link broken, removed reference from docs -->
+
 The LUMI-G hardware partition consists of 2978 nodes with 4 AMD MI250x GPUs and 
-a single 64 cores AMD EPYC "Trento" CPU. The aggregated HPL Linpack performance
+a single 64-core AMD EPYC "Trento" CPU. The aggregated HPL Linpack performance
 of LUMI-G is 379.70 PFlop/s.
 
 <figure>
@@ -25,8 +27,8 @@ of LUMI-G is 379.70 PFlop/s.
 </figure>
 
 The LUMI-G compute nodes are equipped with four AMD MI250X GPUs based on the
-2nd Gen AMD CDNA architecture. A MI250x GPU is a multi-chip module (MCM) with 
-two GPU dies named by AMD Graphics Compute Die (GCD). Each of these dies features 
+2nd Gen AMD CDNA architecture. An MI250x GPU is a multi-chip module (MCM) with 
+two GPU dies named Graphics Compute Die (GCD) by AMD. Each of these dies features 
 110 compute units (CU) and has access to a 64 GB slice of HBM memory for a total
 of 220 CUs and 128 GB total memory per MI250x module.
 
@@ -34,15 +36,14 @@ of 220 CUs and 128 GB total memory per MI250x module.
 
     From a software perspective as well as from the Slurm perspective, one
     MI250x module is considered as two GPUs. It means the LUMI-G nodes can be
-    considered as 8 GPUs nodes. If you do a `hipGetDeviceCount` runtime call the
+    considered as 8-GPU nodes. If you do a `hipGetDeviceCount` runtime call the
     value returned for a full node will be 8.
 
 More information about the AMD MI250x can be found here:
 
 - [MI250X information on the AMD website][MI250x-amd]
-- [Applications performance and benchmarks][benchmarks]
 
-The LUMI-G nodes CPU is a single 64-core AMD EPYC 7A53 "Trento" CPU. The cores
+The LUMI-G nodes' CPU is a single 64-core AMD EPYC 7A53 "Trento" CPU. The cores
 of this CPU are ["Zen 3" compute cores][zen3-wiki] supporting AVX2 256-bit
 vector instructions for a maximum throughput of 16 double precision FLOP/clock
 (AVX2 FMA operations). The cores have 32 KiB of private L1 cache, a 32 KiB
@@ -94,10 +95,10 @@ PCIe links to the slingshot-11 interconnect.
 
 ## The MI250x Graphics Compute Die
 
-As mentioned previously, the MI250x GPU modules have two Graphics Compute Dies (GCD).
-Each GCD has 112 physical compute units (CUs), but 2 of these are disabled
-which means that 110 CU can actually be used.
-To boost memory throughput, all CU share a L2 cache.
+As mentioned previously, the MI250x GPU modules have two Graphics Compute Dies (GCDs).
+Each GCD has 112 physical compute units (CUs), but 2 of these are disabled,
+which means that 110 CUs can actually be used.
+To boost memory throughput, all CUs share a L2 cache.
 This L2 cache has an 8 MB capacity and is
 divided in 32 slices capable of delivering 128 B/clock/slice for a total of 6.96
 TB/s peak theoretical bandwidth.
@@ -137,7 +138,7 @@ scheduled in groups of 64 threads known as wavefronts. This is comparable to a
 warp on NVIDIA hardware, with the primary distinction being that a warp consists
 of 32 threads, while a wavefront comprises 64 threads.
 
-The figure below presents a schematic view of a MI250x compute unit.
+The figure below presents a schematic view of an MI250x compute unit.
 
 <figure>
   <img 
@@ -162,7 +163,7 @@ The SIMD units have 512 64-wide 4 bytes Vector General Purpose Registers
 (VGPRs).  In addition to these registers, the compute units also provide access to low
 latency storage through a 64 kB Local Data Share (LDS). This shared memory is
 akin to NVIDIA's "shared memory" and is accessible to all threads within a block
-(workgroup). The programmer manages the LDS allocation. Additionally,
+(workgroup). The programmer manages the LDS allocation. Additionally, 
 each compute unit has access to 16 kB of L1 cache.
 
 The vector ALUs are completed by matrix cores optimized to execute Matrix Fused

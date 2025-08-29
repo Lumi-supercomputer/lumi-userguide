@@ -25,8 +25,8 @@ create a statistical profile. This is a good option for low overhead profiling.
 
 ## Tracing
 
-Tracing revolves around specific program events like entering or exiting a
-function. This allows the collection of accurate information about specific
-areas of the code every time the event occurs.
+Tracing is a profiling technique that captures specific program events,
+such as entering or exiting a function, every time they occur. This allows
+the collection of accurate profiling information about specific areas of the code.
 
 - [See how to run a tracing experiment with CrayPat][tracing]
