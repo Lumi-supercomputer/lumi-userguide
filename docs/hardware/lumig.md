@@ -160,10 +160,10 @@ The way the wavefronts are executed by a compute unit is the following:
   wavefront per compute unit
 
 The SIMD units have 512 64-wide 4 bytes Vector General Purpose Registers
-(VGPRs). In addition to these registers, the compute units provide access to
-low latency storage through a 64 kB Local Data Share (LDS). This shared memory
-is akin to NVIDIA's "shared memory" and is accessible to all threads within a
-block (workgroup). The programmer manages the LDS allocation. Additionally,
+(VGPRs).  In addition to these registers, the compute units also provide access to low
+latency storage through a 64 kB Local Data Share (LDS). This shared memory is
+akin to NVIDIA's "shared memory" and is accessible to all threads within a block
+(workgroup). The programmer manages the LDS allocation. Additionally, 
 each compute unit has access to 16 kB of L1 cache.
 
 The vector ALUs are completed by matrix cores optimized to execute Matrix Fused
