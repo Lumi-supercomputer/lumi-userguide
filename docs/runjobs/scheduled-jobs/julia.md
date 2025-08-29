@@ -6,6 +6,11 @@
 Here we present examples of running scheduled
 [Julia](http://julialang.org/) jobs as a [container jobs][container-jobs].
 
+If you are looking for module installation of the Julia programming language, or want to use MPI or GPUs with Julia, there is currently available [a local installation by CSC](../../software/local/csc.md) on LUMI. You can take a look at the following CSC's Julia installation documentation, which also describes the usage of these modules on LUMI (from the Puhti/Mahti/LUMI tabs, choose the LUMI ones for LUMI specific examples):
+
+- [https://docs.csc.fi/apps/julia/](https://docs.csc.fi/apps/julia/)
+- [https://docs.csc.fi/support/tutorials/julia/](https://docs.csc.fi/support/tutorials/julia/)
+
 Assuming you have a Julia Singularity image file `julia_latest.sif` (e.g.
 created using `singularity pull docker://julia`), Julia can be executed
 interactively on a single [LUMI-C][lumi-c] node with N threads by allocating N

@@ -41,6 +41,7 @@ Available software and tools:
 * [PDAL](https://docs.csc.fi/apps/pdal/)
 * [PyTorch](https://docs.csc.fi/apps/pytorch/)
 * [QGIS](https://docs.csc.fi/apps/qgis/)
+* [Quantum ESPRESSO](https://docs.csc.fi/apps/qe)
 * [SAGA GIS](https://docs.csc.fi/apps/saga-gis/)
 * [STAR-CCM+](https://docs.csc.fi/apps/starccm%2B/)
 * [TensorFlow](https://docs.csc.fi/apps/tensorflow/)

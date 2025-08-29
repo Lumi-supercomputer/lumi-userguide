@@ -55,16 +55,16 @@ controller. There are 8 memory channels with a peak theoretical bandwidth of
 
 The LUMI-C compute nodes are configured with 4 NUMA zones ("quadrant mode")
 with 2 CCDs per quadrant. The figure below gives you an overview of the
-distances between the NUMA nodes.
+distances (relative latency) between the NUMA nodes.
 
 <figure>
   <img 
     align="left" 
     src="../../assets/images/numa-lumic.svg" 
     width="400"
-    alt="Distances between NUMA nodes"
+    alt="Distances (relative latency) between NUMA nodes"
   >
-  <figcaption>Distances between NUMA nodes</figcaption>
+  <figcaption>Distances (relative latency) between NUMA nodes</figcaption>
 </figure>
 
 The two processors within a node are connected by four bidirectional and 16-bit

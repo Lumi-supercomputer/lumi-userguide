@@ -11,6 +11,11 @@ these runs, we can make changes to queue policies as needed. The slot we provide
 is at most 6 hours, but can be shorter if you either do not need the full 6h or
 there are a lot of other users that have requested time for the same day.
 
+!!! info "LUMI full machine run partitions"
+    
+    The full machine runs on LUMI-C are carried out on a partition `fmr` with 2020 nodes, and on LUMI-G a partition `fmr-g` with 2916 nodes. 
+      
+
 Provide at most a 1-page description of what you are intending to do with the
 full-machine access (see template below). Do not request access before you have
 the code and cases well-prepared, as the time slot is fixed and cannot be moved.
@@ -44,7 +49,14 @@ through the general contact form, as the "large-scale runs" category.
 ## Once the run is granted
 
 Before the actual full machine run, you will be informed about specific settings and small tests to do. The LUMI user support team will be in contact with you about these. 
+
 Please note that support is not available the days full-machine runs are carried out.
+
+Good to know:
+
+- To run with a full machine run slot, you need to specify [a reservation](https://slurm.schedmd.com/sbatch.html#OPT_reservation). The details about this are given by the LUMI user support team.
+- In case you would need to exclude some specific nodes from the reservation during the full machine run (e.g. in case of encountering a nonfunctional node), we have given [here](https://docs.lumi-supercomputer.eu/helpdesk/issues/#job-crashes-because-of-a-faulty-node) a couple of examples how to do so.
+
 
 ## Post runs
 

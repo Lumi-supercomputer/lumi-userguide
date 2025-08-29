@@ -43,7 +43,7 @@ particular, the `module load` command:
 $ module load PrgEnv-<name>
 ```
 
-where `<name>` is the name of the compiler suite. There are 3 collections
+where `<name>` is the name of the compiler suite. There are 4 collections
 available on LUMI. The default collection is Cray.
 
 |      | Description                   | Module collection |
@@ -62,17 +62,6 @@ $ module load PrgEnv-gnu
 After you have loaded a programming environment, the [compiler wrappers][2]
 (`cc`, `CC` and `ftn`) are available.
 
-??? Bug "PrgEnv-aocc broken in 21.08 and 21.12"
-    The ``PrgEnv-aocc`` module does not work correctly in the 21.08 and 21.12
-    releases of the Cray programming environment. This is due to different
-    reasons. The ``aocc/3.0.0`` module (used as the default version of AOCC in
-    the 21.08 release) is broken since the compilers themselves are not
-    installed. The ``aocc/3.1.0`` module has a bug in the code of the module.
-    This has been fixed in later releases of the Cray programming environment
-    so that the problem will be solved when those releases are installed. Due to
-    the way the installation of the Cray programming environment works, it is
-    currently not possible for us to correct the module by hand.
-
 ### Changing compiler versions
 
 If the default compiler version does not suit you, you can change the version
@@ -90,13 +79,13 @@ example
 === "CCE"
 
     ```bash
-    $ module swap cce cce/11.0.2
+    $ module swap cce cce/16.0.1
     ```
 
 === "GNU"
 
     ```bash
-    $ module swap gcc gcc/10.2.0
+    $ module swap gcc-native gcc-native/12.3
     ```
 
 ## Compiler Wrappers
@@ -183,7 +172,7 @@ compiler flags to target specific CPU architecture, like `-march` and `-mtune`
 in GCC or `--offload-arch` for GPU compilation. Instead, you load an appropriate
 combination of modules to choose the target architecture when compiling. 
 These modules influence the optimizations performed by the compiler, as well as
-the libraries (e.g., which BLAS routines are used in Cray LibSci) used. Here is a
+the libraries used (e.g., which BLAS routines are used in Cray LibSci). Here is a
 list of the relevant CPU target module available on LUMI:
 
 - `craype-x86-trento` : GPU partition GPUs (LUMI-G)
@@ -191,8 +180,7 @@ list of the relevant CPU target module available on LUMI:
 - `craype-x86-rome`   : Login nodes and data analytics partition CPUs (LUMI-D)
 
 We recommend that you compile with `craype-x86-trento` for LUMI-G and 
-`craype-x86-milan` for LUMI-C, even if the compiler optimizations for these 
-processors are immature at the moment. **You have to load these modules yourself
+`craype-x86-milan` for LUMI-C. **You have to load these modules yourself
 when compiling your code from a login node** as the default module is 
 `craype-x86-rome`.
 
@@ -214,7 +202,7 @@ The wrapper will pass the appropriate linking information to the compiler and
 linker for libraries accessible via [modules prefixed by
 `cray-`][libraries]. These libraries don't require user-provided options
 to be linked. For other libraries, the user should provide the
-appropriate include (`-I`) and library (`-L`) search paths as well as linking
+appropriate include (`-I`) and library search paths (`-L`) as well as linking
 command (`-l`).
 
 If you have used a Cray system in the past, you may be familiar with the legacy
@@ -232,13 +220,11 @@ of your application
   mode.
 - Allow the currently loaded programming environment modules to select the
   library version at runtime. Applications must not be linked with
-  `CRAY_ADD_RPATH=yes` and must add the following line to the Slurm script:
+  `CRAY_ADD_RPATH=yes`, and must add the following line to the Slurm script:
   
   ```bash
   export LD_LIBRARY_PATH=${CRAY_LD_LIBRARY_PATH}:$LD_LIBRARY_PATH
   ```
-
-Static linking is unsupported by Cray at the moment.
 
 ### Using the wrappers with build systems
 
@@ -430,8 +416,8 @@ target offloading. Like for OpenMP for the host (CPU), this is done by using the
 
     ```bash
     module load PrgEnv-cray
-    module load rocm
     module load craype-accel-amd-gfx90a
+    module load rocm
     ```
 
 === "PrgEnv-amd"
@@ -439,6 +425,7 @@ target offloading. Like for OpenMP for the host (CPU), this is done by using the
     ```bash
     module load PrgEnv-amd
     module load craype-accel-amd-gfx90a
+    module load rocm
     ```
 
 The `craype-accel-amd-gfx90a` will instruct the compiler wrappers to 
@@ -497,14 +484,8 @@ The Cray programming environment can be accessed in three different ways on LUMI
    integrate with the Cray programming environment and we advise users to use
    those instead when working in the ``LUMI`` stack: ``cpeCray`` replaces
    ``PrgEnv-cray``, ``cpeGNU`` replaces ``PrgEnv-gnu``, ``cpeAOCC`` replaces
-   ``PrgEnv-aocc`` and ``cpeAMD`` will replace ``PrgEnv-amd`` when that
-   environment becomes available on the [LUMI-G][lumi-g] partition. These
+   ``PrgEnv-aocc`` and ``cpeAMD`` replaces ``PrgEnv-amd``
+   on the [LUMI-G][lumi-g] partition. These
    modules also take care of the target architecture modules based on the
    ``partition`` module that is loaded (which offer a way to do cross-compiling
    for another section of LUMI than you are working on).
-
-!!! Remark "Workaround for ``PrgEnv/aocc`` bug in 21.12"
-    The ``cpeAOCC/21.12`` in ``LUMI/21.12`` contains a workaround for the
-    problems with the ``aocc/3.1.0`` module. Hence, it is possible to use
-    the AOCC compilers bh working in the ``LUMI/21.12`` stack and using
-    ``cpeAOCC/21.12`` rather than loading the ``PrgEnv-aocc`` module.

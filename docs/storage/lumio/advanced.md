@@ -1,113 +1,124 @@
-# Advanced usage of LUMI-O  
+# Sharing access to data
 
-## Introduction
+By default the contents of private buckets can only be accessed by authenticated members of your project. This section explains how to manage access by either sharing a link to your data or by setting more granular access restrictions than just "private" (only project members can view or edit) or "public". The data in LUMI-O can be shared in a variety of ways:
 
-This is not a comprehensive tutorial, but more of
-a list of examples of things that are possible when using LUMI-O.
-Please consult the manual pages of the tools for additional details.
+- **Sharing a link to data**: All public objects can be accessed with a link, but a link can also be used to grant access to a private object. This can be done with a _presigned URL_ that is a temporary signed link that anyone (who has the link) can use. A presigned URL can be useful in cases when the data needs to be accessed over the internet without credentials, but is not supposed to remain publicly accessible.
 
-The examples here assume that you have properly configured the tools to use LUMI-O,
-otherwise they will usually default to using amazon aws s3. This is also the case for most other programs
-so if you wish to use LUMI-O with other software, you usually have to find some configuration option or environment variable to set a non-default
-host name. The correct hostname to use for LUMI-O is `https://lumidata.eu`
+- **Granting access to other LUMI projects**: _With access control lists (ACLs)_ or _Policies_ it's possible to share your data in a limited manner to other projects. You can e.g. grant a collaboration project authenticated read access to your datasets.
 
-LUMI-O is an S3 compatible storage solution. However, this does not mean
-that the system is the same as the "Amazon S3 Cloud Storage". The interface for reading and writing data 
-is exactly the same, but AWS has a bunch of additional features, like _self-service provisioning of IAM users_,
-_life cycle configuration_ and _write once, read many functionality_, which are not really part of "just" s3 storage. 
+- **Making the bucket or object public**: It's possible to use ACLs or Policies to make individual buckets or objects publicly accessible. One can set e.g. public read access to a specific object in an otherwise private bucket. 
 
-It's worth keeping the above in mind, as many people use S3 and Amazon S3 interchangeably
-when writing guides or instructions.  
-
-!!! warning 
-	Some advanced  operations which are supported by AWS will complete successfully when run against
-	LUMI-O, e.g object locks, but will actually have no effect. Unless it is explicitly stated that a feature
-	is provided by LUMI-O, assume that it will not work and be extra thorough in verifying correct functionality. 
-
-## Credentials & Configuration
-
-### Moving tool configuration files
-
-In some cases it might be required to read
-credentials from some other location than the default 
-locations under home. This can be achieved using environment variables or command line flags.
+With _Policies_ it's also possible to e.g. _restrict_ object access to specific IP:s. 
 
 
-|      | rclone        | s3cmd                  | aws                                         |
-|------|---------------|------------------------|---------------------------------------------|
-| DEFAULT | `~/.config/rclone/rclone.conf`   | `~/.s3cfg`  | `~/.aws/credentials` and `~/.aws/config`|
-| ENV  | `RCLONE_CONFIG` | `S3CMD_CONFIG`           | `AWS_SHARED_CREDENTIALS_FILE` and `AWS_CONFIG_FILE` |
-| FLAG | `--config FILE` | `-c FILE`, `--config=FILE` |                                             |
-
-The `aws` cli additionally has the concept of [profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html), and you can specify 
-which one to use using the `--profile <name>` flag or the `AWS_PROFILE` environment variable.
-
-### Environment
-
-Most programs will use the environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
-when trying to authenticate. So these can be set if one does not wish to save the credentials on disk.
-The environment variables do not always take precedence over values set in configuration files, as
-is the case for `s3cmd` and `rclone`. This means that invalid credentials in config files will
-lead to an access denied even if there are valid credentials in the environment. The `aws` command
-will use the environment variables instead of `~/.aws/credentials` if they are set. 
-`rclone` will additionally require `RCLONE_S3_ENV_AUTH=true` in the environment or `env_auth = true`
-in the config file.
 
 
-## Programmatic access 
 
-When use cases become sufficiently complex one might want to interact
-with LUMI-O in a more programmatic fashion instead of using the 
-command line tools. One such option is the AWS SDK for Python [boto3](https://pypi.org/project/boto3/)\*.
 
-The script
+## Sharing a link to data
 
-```python
-import boto3
+### For public data
 
-session = boto3.session.Session(profile_name='lumi-465000001')
-s3_client = session.client('s3')
-buckets=s3_client.list_buckets()
+If the data is uploaded in a public rclone endpoint, or otherwise made public (e.g. with ACLs), it can be accessed over internet with a link. E.g. the data of an example project 465000001 stored in an object `objectname` in a bucket `bucketname` could be accessed with the link: 
+
+```
+https://465000001.lumidata.eu/bucketname/objectname
 ```
 
-Would fetch the buckets of project 465000001 and return the information as a python dictionary. 
-For the full list of available functions, see the [aws s3 client documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html)
 
 
-If a default profile has been configured `~/.aws/credentials`
-the client creation can be shortened to:
+### Read-only presigned URLs
 
-```python
-import boto3
-s3_client = boto3.client('s3')
+Presigned URLs are URLs generated by the user which grant time-limited "public" access 
+to an object. It's also possible to generate an URL which allows time-limited 
+upload for a specific object (key) in a bucket. 
+
+You can generate a presigned url using e.g. s3cmd:
+
+For example command:
+
+```bash
+s3cmd signurl s3://<bucket_name>/<object_name> +3600
 ```
 
-boto3 uses the same configuration files and respects the same environment variables as the `aws` cli.
+generates an URL that remains valid for 3600 s (1h). To give access until a specific date, it needs to be expressed in Unix epoch time:
 
-!!! note 
-	You will need a sufficiently new version of boto3 (e.g version 1.26, which is installed if using python3.6, is too old) for it
-	to understand a default profile set in ~/.aws/credentials and corresponding config file, 
-	otherwise the tool will always default to aws s3 endpoint and you will need to specify the
-	profile/endpoint when constructing the client.
+```bash
+s3cmd signurl s3://<bucket_name>/<object_name> <unix_epoch_time>
+```
 
-\*_If you prefer to work with some other language there are also options for e.g Java, GO and Javascript_
+To get the required unix epoch time, it's possible to use online calculators. 
+
+You can also define the expiration time of the link by adding the desired duration to the current time:
+
+```
+s3cmd signurl s3://<bucket_name>/<object_name> $(echo "`date +%s` + 3600 * <nbr_of_hours>" | bc)
+```
+
+Irregardless of the set expiry time, presigned urls will become invalid when
+the access key used for the signing expires.  
+
+It's also possible to use e.g. an `aws` command to create a presigned URL:
+
+```bash
+aws s3 presign s3://<bucket_name>/<object_name> --expires-in <seconds>
+```
+
+### Writable presigned URLs
+
+
+There is no way to create presigned urls for `PUT` operations 
+using either `s3cmd` or `aws`. Below is a short example script
+using [boto3](./clients-general.md/#python-with-boto3-library) to generate a valid url that can be then used to add an object called `file.txt` to the defined bucket. 
+
+``` bash
+python3 presign.py presign file.txt
+curl -X PUT -T file.txt "<generated url>"
+```
+
+
+**presign.py**
+```python
+import boto3
+import argparse
+
+def generate_presigned_url(s3_client, client_method, method_parameters, expires_in):
+    try:
+        url = s3_client.generate_presigned_url(
+            ClientMethod=client_method, Params=method_parameters, ExpiresIn=expires_in
+        )
+    except:
+        print("Couldn't get a presigned URL")
+        raise
+    return url
+
+def usage_demo():
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("bucket", help="The name of the bucket.")
+    parser.add_argument("key", help="The name of the bucket")
+    args = parser.parse_args()
+    s3_client = boto3.client("s3")
+    client_action = "put_object"
+    url = generate_presigned_url(
+        s3_client, client_action, {"Bucket": args.bucket, "Key": args.key}, 1000
+    )
+    print(f"Generated put_object url: {url}")
+
+
+if __name__ == "__main__":
+    usage_demo()
+```
+
 
 ## Granular Access management
 
-Using the rclone config generated by `lumio-conf` or using `s3cmd put -P` you can easily
-make objects and buckets public or private. This section
-explains how to apply more granular rules than a fully private/public content to e.g:
 
-- Share data with another lumi project.
-- Restrict object access to specific IP:s
-- Allow external modification to only specific objects. 
+The examples here assume that you have properly configured the tools to use LUMI-O, otherwise they will usually default to using amazon aws s3. 
 
-Projects in LUMI-O are handled as "single user tenants/accounts", where the project numerical id (e.g. 465000001) corresponds both the tenant/account name and the project name.
+See also [LUMI-O vs Amazon s3](./index.md#lumi-o-vs-amazon-s3)
 
-Subsequently, **all members of a LUMI-O project have the exact same 
-rights and permissions**, unlike on the LUMI filesystem, where files have individual owners.
-**Keep this mind if you have critical data in LUMI-O as any other member of your
-LUMI project could accidentally delete it** 
+Note that some advanced operations which are supported by AWS will complete successfully when run against LUMI-O, e.g object locks, but will actually have no effect. **Unless it is explicitly stated that a feature is provided by LUMI-O, assume that it will not work and be extra thorough in verifying correct functionality.**
 
 !!! warning
 	Be very careful when configuring and updating access to buckets and objects.   
@@ -116,23 +127,153 @@ LUMI project could accidentally delete it**
 	and your data could be permanently lost.
 
 
+
+
+
+
+
+
+
 ### ACLs vs Policies 
 
-There are two ways to manage access for data in LUMI-O:
+There are two ways to manage access to data in LUMI-O:
 
-1. Policies
-2. Access control list (ACL)
+1. Access control list (ACL)
+2. Policies
 
 While ACLs are simpler to configure, they are an older
 method for access control and offer much less granular control
-over permissions. **We recommend primarily using Policies**  
+over permissions.
 
 Some other differences include:
 
 - ACLs can only be used to allow more access, not restrict access from the defaults
-- ACLs can be applied to buckets and objects while policies can only be applied to buckets
-	- You can create bucket policies which only affect specific objects in the bucket. 
-	- This also means that you will have to individually / recursively apply ACL changes to all objects in a bucket + the bucket itself.
+- ACLs can be applied to buckets or objects, while policies can only be applied to buckets
+	- You can create ACLs which only affect specific objects in the bucket. 
+	- This also means that you will have to individually/recursively apply ACL changes to all objects in a bucket + the bucket itself.
+
+
+### Configuring Access control lists (ACLs): 
+
+You can apply ACL:s to buckets or individual objects.
+
+!!! important 
+	ACL:s are not inherited, e.g new objects created in a bucket with an ACL will not have any ACLs. 
+	By default created objects are private (unless you have created a policy changing this and applied it to a bucket ).
+
+#### Checking existing ACLs
+
+To view existing ACLs of buckets or objects you can use 
+
+```
+s3cmd info s3://<bucket_name>
+s3cmd info s3://<bucket_name>/<object_name>
+```
+
+or
+
+```
+aws s3api get-bucket-acl  --bucket <bucket_name>
+aws s3api get-object-acl  --bucket <bucket_name> --key <object_name> 
+```
+
+
+!!! important
+	Always after modifying ACLs it's good to verify that the intended effect was achieved.
+	I.e check that things which should be private are private and that public objects
+	and buckets are accessible without authentication. Public buckets/objects are available using the url  
+	`https://<proj_id>.lumidata.eu/<bucket>/<object>` *, use e.g `wget`, `curl` or a browser to check the access permissions. 
+
+_*) For accessing shared content by another project, see [accessing shared buckets/objects](#accessing-shared-bucketsobjects)_ 
+
+#### Granting public access
+
+```bash
+s3cmd setacl --recursive --acl-public s3://<bucket_name>/
+```
+Would make all the objects in the bucket readable by everyone.
+The corresponding operation using `aws s3api`: 
+
+```bash
+aws s3api put-bucket-acl  --acl public-read --bucket <bucket_name>
+aws s3api put-object-acl --acl public-read --bucket <bucket_name> --key <object_name> 
+```
+requires setting the acl separately for each object as there is no `--recursive` option.
+
+
+The commands: 
+
+```bash
+s3cmd setacl --acl-public s3://<bucket_name>/
+```
+or 
+
+```bash
+aws s3api put-bucket-acl --acl public-read --bucket <bucket_name> 
+```
+Would make the bucket but not the object readable for the world &rarr; Only possible to list the objects
+but not download them. The inverse situation where the bucket is not readable but the objects are is
+similar to a UNIX directory with only executable permissions and no read permissions. I.e
+file/object can be retrieved from the directory/bucket, but it's not possible to list the content.
+
+To remove the public access you would run:
+
+```bash
+s3cmd setacl --recursive --acl-private s3://<bucket_name>
+```
+
+or 
+
+```bash
+aws s3api put-bucket-acl  --acl private --bucket <bucket_name>
+aws s3api put-object-acl --acl  private --bucket <bucket_name> --key <object_name> 
+```
+Again `put-object-acl` has to be run separately for each object.
+
+
+#### Granting access to a specific project
+
+```bash
+s3cmd setacl --recursive --acl-grant=read:'<proj_id>$<proj_id>' s3://<bucket_name>/
+```
+
+Would grant read access to all objects in the `<bucket_name>` bucket for the `<proj_id>` project. 
+The single quotes are important as otherwise the shell might interpret `$<proj_id>` as an (empty) variable
+The corresponding command for `aws s3api` would be:
+
+```bash
+aws s3api put-bucket-acl --bucket <bucket_name> --grant-read id='<proj_id>$<proj_id>'
+aws s3api put-object-acl --grant-read id='<proj_id>$<proj_id>' --bucket <bucket_name> --key <object_name> 
+```
+
+The public rclone remotes configured by lumio-conf use acl settings to make
+created objects and buckets public, and the same goes for `s3cmd put -P`
+So if you need to "unpublish" or "publish" some data you can use the above commands
+
+!!! warning
+	Permissions granted with `--acl-grant` are not revoked automatically when running `--acl-private`
+	and they have to be explicitly removed with `--acl-revoke`
+
+
+	
+
+#### Only for authenticated users
+
+The `aws` cli has a larger selection of acl settings than `s3cmd`, e.g
+
+```bash
+aws s3api put-bucket-acl --bucket <bucket_name> --acl authenticated-read
+```
+
+Can be used to grant read-only access to **all** authenticated users of LUMI-O.
+Useful if data is semi-public but for some reason or another only
+people with lumi access. Note here that we are only granting read access to the bucket itself
+not any of the objects. 
+
+
+
+See the [s3cmd documentation](https://s3tools.org/usage) and [aws s3api documentation](https://docs.aws.amazon.com/cli/latest/reference/s3api/put-object-acl.html#options) for a full list of ACLs.
+
 
 
 ### Configuring Policies
@@ -261,113 +402,7 @@ aws s3api delete-bucket-policy --bucket <bucket_name>
 ```
 
 
-### Configuring Access control lists (ACLs): 
-
-You can apply ACL:s to buckets or individual objects
-
-!!! important 
-	ACL:s are not inherited, e.g new objects created in a bucket with an ACL will not have any ACLs. 
-	By default created objects are private (unless you have created a policy changing this and applied it to a bucket ).
-
-```bash
-s3cmd setacl --recursive --acl-public s3://<bucket_name>/
-```
-Would make all the objects in the bucket readable by everyone.
-The corresponding operation using `aws s3api`: 
-
-```bash
-aws s3api put-bucket-acl  --acl public-read --bucket <bucket_name>
-aws s3api put-object-acl --acl public-read --bucket <bucket_name> --key <object_name> 
-```
-requires setting the acl separately for each object as there is no `--recursive` option.
-
-
-The commands: 
-
-```bash
-s3cmd setacl --acl-public s3://<bucket_name>/
-```
-or 
-
-```bash
-aws s3api put-bucket-acl --acl public-read --bucket <bucket_name> 
-```
-Would make the bucket but not the object readable for the world &rarr; Only possible to list the objects
-but not download them. The inverse situation where the bucket is not readable but the objects are is
-similar to a UNIX directory with only executable permissions and no read permissions. I.e
-files / object can be retrieved from the directory / bucket, but it's not possible to list the content.
-
-To remove the public access you would run:
-
-```bash
-s3cmd setacl --recursive --acl-private s3://<bucket_name>
-```
-
-or 
-
-```bash
-aws s3api put-bucket-acl  --acl private --bucket <bucket_name>
-aws s3api put-object-acl --acl  private --bucket <bucket_name> --key <object_name> 
-```
-Again `put-object-acl` has to be run separately for each object.
-
-while,
-```bash
-s3cmd setacl --recursive --acl-grant=read:'<proj_id>$<proj_id>' s3://<bucket_name>/
-```
-
-Would grant read access to all objects in the `<bucket_name>` bucket for the `<proj_id>` project. 
-The single quotes are important as otherwise the shell might interpret `$<proj_id>` as an (empty) variable
-The corresponding command for `aws s3api` would be:
-
-```bash
-aws s3api put-bucket-acl --bucket <bucket_name> --grant-read id='<proj_id>$<proj_id>'
-aws s3api put-object-acl --grant-read id='<proj_id>$<proj_id>' --bucket <bucket_name> --key <object_name> 
-```
-
-The lumi-pub rlcone remotes configured by lumio-conf uses acl settings to make
-created objects and buckets public, and the same goes for `s3cmd put -P`
-So if you need to "unpublish" or "publish" some data you can use the above commands
-
-!!! warning
-	Permissions granted with `--acl-grant` are not revoked automatically when running `--acl-private`
-	and they have to be explicitly removed with `--acl-revoke`
-
-!!! important
-	After modifying ACL:s, always verify that the intended effect was achieved.
-	I.e check that things which should be private are private and that public objects
-	and buckets are accessible without authentication. Public buckets / objects are available using the url  
-	`https://<proj_id>.lumidata.eu/<bucket>/<object>`, use e.g `wget`, `curl` or a browser to check the access permissions. 
-	
-
-The `aws` cli has a larger selection of acl settings than `s3cmd`, e.g
-
-```bash
-aws s3api put-bucket-acl --bucket <bucket_name> --acl authenticated-read
-```
-
-Can be used to grant read-only access to **all** authenticated users of LUMI-O.
-Useful if data is semi-public but for some reason or another only
-people with lumi access. Note here that we are only granting read access to the bucket itself
-not any of the objects. 
-
-To view existing ACL:s you can use 
-
-```
-s3cmd info s3://<bucket_name>/<optional_object_name>
-```
-
-or
-
-```
-aws s3api get-bucket-acl  --bucket <bucket_name>
-aws s3api get-object-acl  --bucket <bucket_name> --key <object_name> 
-```
-
-See the [s3cmd documentation](https://s3tools.org/usage) and [aws s3api documentation](https://docs.aws.amazon.com/cli/latest/reference/s3api/put-object-acl.html#options) for a full list of ACLs.
-
-
-### Sharing data with other projects.
+## Accessing shared buckets/objects
 
 
 The authentication information used when interacting with LUMI-O
@@ -436,79 +471,3 @@ curl -X GET -s -o out.tmp -w "%{http_code}"  \
      $endPoint
 ```
 
-## Presigned URLs
-
-Presigned URLs are URLs generated by the user which grant time-limited "public" access 
-to an object. It's also possible to generate an URL which allows time-limited 
-upload for a specific object (key) in a bucket. 
-
-### Read-only presigned urls
-
-You can generate a presigned url using e.g s3cmd 
-
-```bash
-s3cmd signurl s3://<bucket_name>/<object_name> <unix_epoch_time>
-```
-
-That generates access link that is valid until the given unix epoch time. To get the required unix epoch time, it's possible to use online calculators,
-e.g when one wants to grant access until a specific date, or then adding 
-the desired duration to the current time.
-
-```
-s3cmd signurl s3://<bucket_name>/<object_name> $(echo "`date +%s` + 3600 * <nbr_of_hours>" | bc)
-```
-
-Irregardless of the set expiry time, presigned urls will become invalid when
-the access key used for the signing expires.  
-
-It's also possible to use the `aws` command to presign:
-
-```bash
-aws s3 presign s3://<bucket_name>/<object_name> --expires-in <seconds>
-```
-
-### Writable presigned urls
-
-
-There is no way to create presigned urls for `PUT` operations 
-using either `s3cmd` or `aws`. Below is a short example script
-using boto3 to generate a valid url that can be then used to add an object called `file.txt` to the defined bucket. 
-
-``` bash
-python3 presign.py presign file.txt
-curl -X PUT -T file.txt "<generated url>"
-```
-
-
-**presign.py**
-```python
-import boto3
-import argparse
-
-def generate_presigned_url(s3_client, client_method, method_parameters, expires_in):
-    try:
-        url = s3_client.generate_presigned_url(
-            ClientMethod=client_method, Params=method_parameters, ExpiresIn=expires_in
-        )
-    except:
-        print("Couldn't get a presigned URL")
-        raise
-    return url
-
-def usage_demo():
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument("bucket", help="The name of the bucket.")
-    parser.add_argument("key", help="The name of the bucket")
-    args = parser.parse_args()
-    s3_client = boto3.client("s3")
-    client_action = "put_object"
-    url = generate_presigned_url(
-        s3_client, client_action, {"Bucket": args.bucket, "Key": args.key}, 1000
-    )
-    print(f"Generated put_object url: {url}")
-
-
-if __name__ == "__main__":
-    usage_demo()
-```
