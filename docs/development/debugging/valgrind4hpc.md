@@ -8,7 +8,7 @@ Memory debugging is the process of tracking bugs related to the allocation and
 deallocation of dynamic memory. This page will start with a short introduction
 on how to use Valgrind for this purpose. Then, we present how to use it for a
 parallel code.
-See also the Cray documentation page about [debugging tools in Cray Programming Environment](https://cpe.ext.hpe.com/docs/#debugging-tools). 
+See also the Cray documentation page about [Cray Debugging Support Tools](https://cpe.ext.hpe.com/docs/latest/debugging-tools/index.html)
 
 ## Valgrind
 
@@ -78,6 +78,7 @@ $ valgrind4hpc <valgrind4hpc options> <program-name> -- arg1 arg2
 ```
 
 If your application does not take arguments, the `--` at the end is optional.
+
 The table below summarizes the basic options that you can use with Valgrind4hpc.
 
 | Option                        | Description
@@ -85,7 +86,6 @@ The table below summarizes the basic options that you can use with Valgrind4hpc.
 | `--num-ranks=<num ranks>`     | Specify the number of ranks to run             |
 | `--launcher-args=<arguments>` | Arguments to the application launcher (`srun`) |
 | `--valgrind-args=<arguments>` | Specify Valgrind arguments                     |
-| `--from-ranks=<ranks>`        | Only show Valgrind output from certain ranks   |
 
 For example, to run your application with rank 16 on two nodes, the command will be
 
