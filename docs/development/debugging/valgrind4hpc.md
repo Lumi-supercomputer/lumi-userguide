@@ -8,6 +8,7 @@ Memory debugging is the process of tracking bugs related to the allocation and
 deallocation of dynamic memory. This page will start with a short introduction
 on how to use Valgrind for this purpose. Then, we present how to use it for a
 parallel code.
+See also the Cray documentation page about [Cray Debugging Support Tools](https://cpe.ext.hpe.com/docs/latest/debugging-tools/index.html)
 
 ## Valgrind
 
