@@ -51,7 +51,7 @@ srun singularity exec $CONTAINER python3 your_application.py # Use srun instead 
 ```
 
 ## Python Array job
-Job arrays have already been described in details in [Job array][job-arrays], and this is particularly useful here since Python is often used to post-process data. In the example job script below, we submit an array of 10 jobs corresponding to 10 data files `data*.json` stored in arbitrary folder structure such as a structured tree
+Job arrays have already been described in details in the [Job array][job-arrays] chapter, and are particularly useful here since Python is often used to post-process data. In the example job script below, we submit an array of 10 jobs corresponding to 10 data files `data*.json` stored in arbitrary folder structure such as a structured tree
 
 ```
 data/
@@ -71,7 +71,7 @@ data/
 ...
 ```
 
-The resulting output is stored next to the `data*.json`, where the star '\*' denoted a wildcard string of characters.
+The resulting output is stored next to the `data*.json`, where the star '\*' denotes a wildcard string of characters.
 
 ```bash
 #!/bin/bash -l
@@ -96,6 +96,6 @@ srun --output="$FOLDER"/slurm-%j_$SLURM_ARRAY_TASK_ID.out \
      python3 your_application.py $DATA
 ```
 
-In this example we attempt to submit 10 jobs in the array, however this might not correspond to all of the eligible `data*.json` present. If less array jobs are requested than `data*.json` then they will be submitted in alphabetical order and others will be missing. On the other hand if more array jobs are requested than possible, and error will be produced.
+In this example we attempt to submit 10 jobs in the array, however this might not correspond to all of the eligible `data*.json` present. If less array jobs are requested than `data*.json` then they will be submitted in alphabetical order and others will be missing. On the other hand if more array jobs are requested than possible, an error will be produced.
 
 In this example `your_application.py` takes the folder string as input, however an alternative approach would be to run `cd $FOLDER` before the `srun` command, and putting `your_application.py` next to the `data*.json`.
