@@ -39,7 +39,7 @@ Running MPI jobs in Python can quickly run out of hand because all MPI processes
 #SBATCH --partition=standard    # partition name
 #SBATCH --nodes=2               # Total number of nodes 
 #SBATCH --ntasks=256            # Total number of mpi tasks
-#SBATCH --mem=0                 # Allocate all the memory on each node
+#SBATCH --mem=224G              # Allocate 224GB memory on each node
 #SBATCH --time=1-12:00:00       # Run time (d-hh:mm:ss)
 #SBATCH --account=project_<id>  # Project for billing
 
