@@ -15,6 +15,9 @@ interactive data analytics and visualization.
 | 8     | 2x AMD EPYC 7742<br>(2.25 GHz base,<br> 3.4 GHz boost) | 128 cores (2x64)   | 4 TiB   | none                                  | 25 TB SSD | 2x200 Gb/s |
 | 8     | 2x AMD EPYC 7742<br>(2.25 GHz base,<br> 3.4 GHz boost) | 128 cores (2x64)   | 2 TiB   | 8x NVIDIA A40,<br>48 GB of memory     | 14 TB SSD | 2x200 Gb/s |
 
+See the [Slurm partitions page][slurm-partitions] for an overview of options
+for allocating these nodes.
+
 ## CPU
 The CPUs in LUMI-D are one generation older (Zen 2 / "Rome") than in
 [LUMI-C][lumic] (Zen 3 / "Milan"). There should be no big problem with software
