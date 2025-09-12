@@ -10,9 +10,9 @@ use these as templates for your own project batch scripts.
     - The LUMI-C compute nodes have 256GB of memory installed but 224GB is really 
       available to the job. The exception is the 512 GB and 1TB nodes located in
       the `small` partition.
-    - If you submit to the `standard` partition, were the node are in exclusive
-      mode we recommend to use the `--mem=0` option, i.e., all  the memory on 
-      the node.
+    - We recommend you allocate memory equal to the total node memory minus 32GB
+      e.g. `--mem=224G` on the `standard` partition, `--mem=480G` on `standard-g`,
+      `small-g` and `small` partitions and `--mem=992G` on the `small` partition.
     - If you use the small partition, we recommend you to use `--mem-per-cpu=1750`
       or a lower value. If you request more than 2GB/core then you will be 
       billed for the memory according to the [billing policy][billing].
@@ -61,7 +61,7 @@ LUMI-C `standard` partition.
 #SBATCH --partition=standard    # partition name
 #SBATCH --nodes=2               # Total number of nodes 
 #SBATCH --ntasks=256            # Total number of mpi tasks
-#SBATCH --mem=0                 # Allocate all the memory on each node
+#SBATCH --mem=224G              # Allocate 224GB memory on each standard node
 #SBATCH --time=1-12:00:00       # Run time (d-hh:mm:ss)
 #SBATCH --account=project_<id>  # Project for billing
 
