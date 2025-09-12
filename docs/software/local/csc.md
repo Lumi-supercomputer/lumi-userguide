@@ -29,6 +29,7 @@ Available software and tools:
 * [Geoconda](https://docs.csc.fi/apps/geoconda/)
 * [GRASS GIS](https://docs.csc.fi/apps/grass/)
 * [GROMACS](https://docs.csc.fi/apps/gromacs/)
+* [HADDOCK3](https://docs.csc.fi/apps/haddock3/)
 * [HyperQueue](https://docs.csc.fi/apps/hyperqueue/)
 * [JAX](https://docs.csc.fi/apps/jax/)
 * [Julia](https://docs.csc.fi/apps/julia/)
