@@ -85,11 +85,11 @@ that your job may share the node with other jobs.
     project as there are only a limited number of those nodes.
 
     #### Visualization nodes
-    [LUMI-D](lumi-d) nodes are the only nodes in LUMI that have Nvidia GPUs.
-    They are only intended for visualisation purposes like Paraview. They are not a 
-    source of CUDA-compatible compute power for regular computations. Regular computations
-    should be done with codes suitable for the AMD GPUs of LUMI-G. Repeated abuse 
-    may result in account suspension or project termination.
+    [LUMI-D][lumi-d] GPU nodes are the only nodes in LUMI that have Nvidia GPUs.
+    They are only intended for graphical hardware acceleration, to be used for visualisation 
+    purposes like Paraview. They are not a source of CUDA-compatible compute power for 
+    regular computations. Compute workloads should be done with codes suitable for the AMD GPUs 
+    of LUMI-G. Repeated abuse may result in account suspension or project termination.
 
 
 ## Getting information about Slurm partitions
