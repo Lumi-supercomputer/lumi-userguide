@@ -159,6 +159,11 @@ Here is an overview of some of the most commonly used Slurm options.
     `/tmp`, you must allocate memory for it to avoid running out of
     memory.
 
+
+!!! info
+    The Slurm email notifications feature is not supported on LUMI for technical and security reasons. 
+
+
 ## Pipelining with dependencies
 
 Job dependencies allow you to defer the start of a job until the specified
