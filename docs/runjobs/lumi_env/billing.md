@@ -99,7 +99,7 @@ Allocating 4 CPU-cores and 32GB of memory in a job running for 1 day consumes:
 
 ### GPU billing
 
-For GPU compute, your project is allocated GPU-core-hours that are consumed
+For GPU compute, your project is allocated GPU-hours that are consumed
 when running jobs on the GPU nodes. A GPU-hour corresponds to the allocation
 of a full MI250x module (2 GCDs) for one hour.
 
