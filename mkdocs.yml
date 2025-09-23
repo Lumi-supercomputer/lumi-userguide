@@ -145,6 +145,15 @@ nav:
     - Known issues: helpdesk/issues.md
     - LUMI service status: https://www.lumi-supercomputer.eu/lumi-service-status/
     - Mailing list archive: https://postit.csc.fi/sympa/arc/lumi-users
+  - LUMI AI Factory:
+    - Services: laif/index.md
+    - Data:
+      - Dataset as a Service:
+        - User guide: laif/data/daas_guide.md
+        - Service description: laif/data/daas_description.md
+    - Software:
+      - Overview: laif/software/index.md
+      - Containerized Workflows: laif/software/workflows.md
     
  
 theme:
