@@ -222,7 +222,7 @@ Metax metadata model is designed to describe research datasets and related
 entities in a structured, interoperable way.
 
 The Metax metadata model:
-[https://wiki.eduuni.fi/spaces/Fairdataverkosto/pages/469015907/In+English+Data+Model+and+metadata+in+Metax+V3]([https://wiki.eduuni.fi/spaces/Fairdataverkosto/pages/469015907/In+English+Data+Model+and+metadata+in+Metax+V3)
+[https://wiki.eduuni.fi/spaces/Fairdataverkosto/pages/469015907/In+English+Data+Model+and+metadata+in+Metax+V3](https://wiki.eduuni.fi/spaces/Fairdataverkosto/pages/469015907/In+English+Data+Model+and+metadata+in+Metax+V3)
 
 Contact the LUMI AI Factory support if you need help with providing
 comprehensive metadata for your dataset.
