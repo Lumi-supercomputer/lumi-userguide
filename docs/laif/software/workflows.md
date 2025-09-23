@@ -1,30 +1,20 @@
-# LUMI AI Factory Services
+# Containerized Workflows
 
 !!! info "Note"
     Software installed under `/appl/local` are maintained by the respective
     local organizations.
 
-The [LUMI AI Factory](https://www.lumi-supercomputer.eu/lumi-ai-factory) is developing and providing services on the current LUMI supercomputer, ahead of the deployment of the upcoming [LUMI-AI supercomputer](https://csc.fi/en/media-release/lumis-capacity-in-high-demand-to-be-succeeded-by-an-ai-optimized-supercomputer). As part of our ongoing ramp-up, we’re setting up a service center to provide a suite of tools, services, and user support for AI-related use cases.
-
-The software provided by the LUMI AI Factory is separate from the official LUMI software stack maintained and supported by the LUMI User Support Team. Since the work is still in the early stages, the LUMI AI Factory provided offerings are under active development and the official support process has not yet been finalized. The software and services are currently offered as a preview.
-
-Currently available tools and software:
-
-* [Containerized Workflows](#containerized-workflows)
-
-## Containerized Workflows
-
 Containerized Workflows are developed by the LUMI AI Factory to streamline AI related tasks in HPC environment. The Containerized Workflows consist of pre-built container images, custom software, pre-tested models and examples as well as documentation that can be used to kickstart the use of AI in specific types of tasks. In later stages of development, the workflows will be integrated with the broader LUMI AI Factory software ecosystem.
 
-### Getting Started
+## Getting started
 
 To get started with the Containerized Workflows, you can copy example directories from the workflow's examples folder into your project directory. These examples include all the necessary files to run a job on LUMI and can be easily adapted for your specific task.
 
 An example batch job script is included for each example, which you can use to submit the job to the computing cluster. For detailed examples and instructions, refer to the README files located within the workflow example directories on LUMI.
 
-### Overview of Available Workflows
+## Overview of available workflows
 
-#### LLM Text Processing
+### LLM Text Processing
 
 The LLM Text Processing workflow enables efficient text processing using Large Language Models (LLMs). This workflow is designed for tasks such as dataset curation, text summarization, and language translation. It leverages the vLLM library to process input files based on user-provided instructions and generate corresponding output files. The workflow uses a YAML configuration file to specify the files used for inputs, outputs, and processing instructions. It utilizes tensor parallelism and batched processing for achieving optimal performance.
 
@@ -122,7 +112,7 @@ For more details, refer to the documentation available on LUMI at `/appl/local/l
 
 6. **Check results** in the `output/` directory after completion. You will get one output file for each input image.
 
-#### YOLO Image Processing Workflow
+### YOLO Image Processing Workflow
 
 The YOLO Image Processing Workflow is tailored for tasks such as object detection and classification using YOLO (You Only Look Once) models. This workflow processes input images and generates output files with class predictions in a human-readable format.
 
