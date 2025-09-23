@@ -43,6 +43,7 @@ data providers.
 
 **Data users** are those individual users who utilize the datasets in their
 research or development work. They can
+
 * search or browse the public data catalogue to find datasets
 * apply to access a dataset
 * use the dataset in their research (when given access to the dataset)
@@ -51,6 +52,7 @@ research or development work. They can
 
 **Data providers** are the organizations that make their datasets available
 via Dataset-as-a-Service. They can
+
 * make large, widely interesting and high-quality datasets (and associated
   metadata) available for data users
 * limit the use and level of publicity of the dataset
@@ -83,6 +85,7 @@ Dataset-as-a-Service data catalogue:
 [https://django-route-test-rahti.2.rahtiapp.fi/remote/](https://django-route-test-rahti.2.rahtiapp.fi/remote/)
 
 You can search for datasets by using
+
 * access type (open/restricted)
 * year
 * field of science
@@ -94,7 +97,7 @@ To access a dataset and to use it in your project you will need an account:
 ## Accessing a dataset
 
 1. Search for a dataset from the Dataset-as-Service data catalogue:
-   https://django-route-test-rahti.2.rahtiapp.fi/remote/
+   [https://django-route-test-rahti.2.rahtiapp.fi/remote/](https://django-route-test-rahti.2.rahtiapp.fi/remote/)
 2. Apply to access a dataset
     1. Currently you can apply by sending an e-mail to the LUMI AI Factory
        support
@@ -113,8 +116,8 @@ To access a dataset and to use it in your project you will need an account:
        [LUMI Supercomputer Get Started](https://lumi-supercomputer.eu/get-started/)
        page.
 5. Evaluate the usability of Dataset-as-a-Service and give feedback
-1. We are building a new service and would be happy to hear about your
-   experiences and how we can make Dataset-as-a-Service better
+    1. We are building a new service and would be happy to hear about your
+       experiences and how we can make Dataset-as-a-Service better
 
 You can contact LUMI AI Factory user support to receive support at any step of
 the process.
@@ -167,7 +170,9 @@ datasets.
 
 Please note that LUMI is not designed to process personal data, and you must
 not transfer personal data to the service. Uploading and deleting your own
-data is on your own responsibility. Data storage options:
+data is on your own responsibility.
+
+Data storage options:
 [https://docs.lumi-supercomputer.eu/storage/](https://docs.lumi-supercomputer.eu/storage/)
 
 ## Providing your dataset to be used via Dataset-as-a-Service
