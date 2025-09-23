@@ -3,6 +3,7 @@ Version 1.0, 22.9.2025
 
 | Service name | **LUMI AI Factory Dataset-as-a-Service** |
 | :-: | :-: |
+| Service overview | Dataset-as-a-Service (DaaS) offers curated high-quality datasets close to high-performance computing resources, enabling researchers, innovators, and industry users to focus on AI development rather than data acquisition and infrastructure management. The datasets are usually accessible through a front-end portal and application programming interfaces (APIs). |
 | Detailed description | **Service Functions and Features**<br>Data catalogue<br>Access to HPC tools<br>Expert support<br>**Service Lifecycle**<br>Minimum viable product (MVP), in production, in development |
 | Target audience | Academic, public and private sector |
 | How to obtain the service | To be able to use the datasets, the customer has to register as a LUMI user and apply to use a dataset. To be able to offer a dataset via Dataset-as-a-Service, the customer has to contact the LUMI AI Factory. |
