@@ -23,7 +23,7 @@ The configuration by `lumio` module provides two kinds of remote endpoints for `
 - **lumi-<project_number\>-public**: A public endpoint. The buckets and objects uploaded to this
                 endpoint will be publicly accessible using the URL:
                 ```
-                https://<project_number>.lumidata.eu/<bucket_name>
+                https://<project_number>.lumidata.eu/<bucket-name>
                 ```
                 Be careful to not upload data that cannot be public to this
                 endpoint.
