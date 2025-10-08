@@ -38,13 +38,13 @@ You can generate a presigned url using e.g. s3cmd:
 For example command:
 
 ```bash
-s3cmd signurl s3://<bucket_name>/<object_name> +3600
+s3cmd signurl s3://<bucket-name>/<object-name> +3600
 ```
 
 generates an URL that remains valid for 3600 s (1h). To give access until a specific date, it needs to be expressed in Unix epoch time:
 
 ```bash
-s3cmd signurl s3://<bucket_name>/<object_name> <unix_epoch_time>
+s3cmd signurl s3://<bucket-name>/<object-name> <unix-epoch-time>
 ```
 
 To get the required unix epoch time, it's possible to use online calculators. 
@@ -52,7 +52,7 @@ To get the required unix epoch time, it's possible to use online calculators.
 You can also define the expiration time of the link by adding the desired duration to the current time:
 
 ```
-s3cmd signurl s3://<bucket_name>/<object_name> $(echo "`date +%s` + 3600 * <nbr_of_hours>" | bc)
+s3cmd signurl s3://<bucket-name>/<object-name> $(echo "`date +%s` + 3600 * <nbr_of_hours>" | bc)
 ```
 
 Irregardless of the set expiry time, presigned urls will become invalid when
@@ -61,7 +61,7 @@ the access key used for the signing expires.
 It's also possible to use e.g. an `aws` command to create a presigned URL:
 
 ```bash
-aws s3 presign s3://<bucket_name>/<object_name> --expires-in <seconds>
+aws s3 presign s3://<bucket-name>/<object-name> --expires-in <seconds>
 ```
 
 ### Writable presigned URLs
@@ -166,15 +166,15 @@ You can apply ACL:s to buckets or individual objects.
 To view existing ACLs of buckets or objects you can use 
 
 ```
-s3cmd info s3://<bucket_name>
-s3cmd info s3://<bucket_name>/<object_name>
+s3cmd info s3://<bucket-name>
+s3cmd info s3://<bucket-name>/<object-name>
 ```
 
 or
 
 ```
-aws s3api get-bucket-acl  --bucket <bucket_name>
-aws s3api get-object-acl  --bucket <bucket_name> --key <object_name> 
+aws s3api get-bucket-acl  --bucket <bucket-name>
+aws s3api get-object-acl  --bucket <bucket-name> --key <object-name> 
 ```
 
 
@@ -189,14 +189,14 @@ _*) For accessing shared content by another project, see [accessing shared bucke
 #### Granting public access
 
 ```bash
-s3cmd setacl --recursive --acl-public s3://<bucket_name>/
+s3cmd setacl --recursive --acl-public s3://<bucket-name>/
 ```
 Would make all the objects in the bucket readable by everyone.
 The corresponding operation using `aws s3api`: 
 
 ```bash
-aws s3api put-bucket-acl  --acl public-read --bucket <bucket_name>
-aws s3api put-object-acl --acl public-read --bucket <bucket_name> --key <object_name> 
+aws s3api put-bucket-acl  --acl public-read --bucket <bucket-name>
+aws s3api put-object-acl --acl public-read --bucket <bucket-name> --key <object_name> 
 ```
 requires setting the acl separately for each object as there is no `--recursive` option.
 
@@ -204,12 +204,12 @@ requires setting the acl separately for each object as there is no `--recursive`
 The commands: 
 
 ```bash
-s3cmd setacl --acl-public s3://<bucket_name>/
+s3cmd setacl --acl-public s3://<bucket-name>/
 ```
 or 
 
 ```bash
-aws s3api put-bucket-acl --acl public-read --bucket <bucket_name> 
+aws s3api put-bucket-acl --acl public-read --bucket <bucket-name> 
 ```
 Would make the bucket but not the object readable for the world &rarr; Only possible to list the objects
 but not download them. The inverse situation where the bucket is not readable but the objects are is
@@ -219,14 +219,14 @@ file/object can be retrieved from the directory/bucket, but it's not possible to
 To remove the public access you would run:
 
 ```bash
-s3cmd setacl --recursive --acl-private s3://<bucket_name>
+s3cmd setacl --recursive --acl-private s3://<bucket-name>
 ```
 
 or 
 
 ```bash
-aws s3api put-bucket-acl  --acl private --bucket <bucket_name>
-aws s3api put-object-acl --acl  private --bucket <bucket_name> --key <object_name> 
+aws s3api put-bucket-acl  --acl private --bucket <bucket-name>
+aws s3api put-object-acl --acl  private --bucket <bucket-name> --key <object-name> 
 ```
 Again `put-object-acl` has to be run separately for each object.
 
@@ -234,16 +234,16 @@ Again `put-object-acl` has to be run separately for each object.
 #### Granting access to a specific project
 
 ```bash
-s3cmd setacl --recursive --acl-grant=read:'<proj_id>$<proj_id>' s3://<bucket_name>/
+s3cmd setacl --recursive --acl-grant=read:'<proj_id>$<proj_id>' s3://<bucket-name>/
 ```
 
-Would grant read access to all objects in the `<bucket_name>` bucket for the `<proj_id>` project. 
+Would grant read access to all objects in the `<bucket-name>` bucket for the `<proj_id>` project. 
 The single quotes are important as otherwise the shell might interpret `$<proj_id>` as an (empty) variable
 The corresponding command for `aws s3api` would be:
 
 ```bash
-aws s3api put-bucket-acl --bucket <bucket_name> --grant-read id='<proj_id>$<proj_id>'
-aws s3api put-object-acl --grant-read id='<proj_id>$<proj_id>' --bucket <bucket_name> --key <object_name> 
+aws s3api put-bucket-acl --bucket <bucket-name> --grant-read id='<proj_id>$<proj_id>'
+aws s3api put-object-acl --grant-read id='<proj_id>$<proj_id>' --bucket <bucket-name> --key <object-name> 
 ```
 
 The public rclone remotes configured by lumio-conf use acl settings to make
@@ -262,7 +262,7 @@ So if you need to "unpublish" or "publish" some data you can use the above comma
 The `aws` cli has a larger selection of acl settings than `s3cmd`, e.g
 
 ```bash
-aws s3api put-bucket-acl --bucket <bucket_name> --acl authenticated-read
+aws s3api put-bucket-acl --bucket <bucket-name> --acl authenticated-read
 ```
 
 Can be used to grant read-only access to **all** authenticated users of LUMI-O.
@@ -281,25 +281,25 @@ See the [s3cmd documentation](https://s3tools.org/usage) and [aws s3api document
 You can apply policies to a bucket using `s3cmd` or `aws` commands:
 
 ```
-s3cmd setpolicy policy.json s3://<bucket_name>/
+s3cmd setpolicy policy.json s3://<bucket-name>/
 ```
 
 or
 
 ```
-aws s3api put-bucket-policy --bucket <bucket_name> --policy file://policy.json
+aws s3api put-bucket-policy --bucket <bucket-name> --policy file://policy.json
 ```
 
 You can list the existing polices on a bucket with:
 
 ```
-s3cmd info s3://<bucket_name>
+s3cmd info s3://<bucket-name>
 ```
 
 or 
 
 ```
-aws s3api get-bucket-policy --bucket <bucket_name>
+aws s3api get-bucket-policy --bucket <bucket-name>
 ```
 
 
@@ -398,7 +398,7 @@ s3cmd delpolicy s3://<bucket>
 or 
 
 ```bash
-aws s3api delete-bucket-policy --bucket <bucket_name>
+aws s3api delete-bucket-policy --bucket <bucket-name>
 ```
 
 
