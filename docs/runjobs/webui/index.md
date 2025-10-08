@@ -82,7 +82,7 @@ The Cloud storage configuration app will configure a private remote,
 number>-public`, if you have enabled the option. Note that files uploaded to
 the public remote will be publicly accessible on the URL:
 ```
-https://<project-number>.lumidata.eu/<bucket_name>
+https://<project-number>.lumidata.eu/<bucket-name>
 ```
 
 Only shortcuts to the project storage spaces in LUMI-O that have valid
