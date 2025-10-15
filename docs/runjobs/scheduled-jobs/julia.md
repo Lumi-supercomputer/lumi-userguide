@@ -37,7 +37,7 @@ Both multithreading and multiprocessing can be combined in the Slurm job
 submission using the `--ntasks-per-node` (for a number of processes) and
 `--cpus-per-task` (for a number of threads) options.
 
-Multi node distributed execution requires a custom "ClusterManager" plugin for
+Multi node distributed execution requires the SlurmClusterManager.jl plugin for
 integration with Slurm which requires a specific version of the Julia
 container. The same applies to GPU enabled execution on the LUMI-G compute
 nodes.
