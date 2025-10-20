@@ -77,12 +77,11 @@ welcome pilot datasets to offer through the service.
 
 ## Searching for Datasets
 
-The currently available datasets are listed in the
-[**data catalogue**](https://django-route-test-rahti.2.rahtiapp.fi/remote/).
+The currently available datasets are listed in the **data catalogue**.
 Take a look – you don't need have an account to browse it.
 
 Dataset-as-a-Service data catalogue:
-[https://django-route-test-rahti.2.rahtiapp.fi/remote/](https://django-route-test-rahti.2.rahtiapp.fi/remote/)
+[https://dataset-portal-test-rahti.2.rahtiapp.fi/](https://dataset-portal-test-rahti.2.rahtiapp.fi/)
 
 You can search for datasets by using
 
@@ -97,7 +96,7 @@ To access a dataset and to use it in your project you will need an account:
 ## Accessing a dataset
 
 1. Search for a dataset from the Dataset-as-Service data catalogue:
-   [https://django-route-test-rahti.2.rahtiapp.fi/remote/](https://django-route-test-rahti.2.rahtiapp.fi/remote/)
+   [https://dataset-portal-test-rahti.2.rahtiapp.fi/](https://dataset-portal-test-rahti.2.rahtiapp.fi/)
 2. Apply to access a dataset
     1. Currently you can apply by sending an e-mail to the LUMI AI Factory
        support
