@@ -59,7 +59,12 @@ that your job may share the node with other jobs.
     #### Debugging nodes
     Nodes in the `debug` and `dev-g` partition are meant for debugging and
     quick testing purposes and not for production runs. 
-    The max runtime on dev-g depends on the number of nodes one requests, as seen from the table: On dev-g the max resources one can ask per job is 16 node hours. This corresponds to allocating 16 nodes for 1 hour, more nodes for a shorter time, or part of a node for a longer time. The max run time for a job on the partition is 3 hours, though. 
+    
+    The max runtime on dev-g depends on the number of nodes one requests, as 
+    seen from the table: on dev-g the max resources one can ask per job is 16 
+    node hours. This corresponds to allocating 16 nodes for 1 hour, more nodes 
+    for a shorter time, or part of a node for a longer time. The max run time 
+    for a job on the partition is 3 hours, though. 
     
     Repeated abuse of these
     partitions might result in account suspension.
