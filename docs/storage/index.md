@@ -18,6 +18,10 @@
 Here you find a description of available LUMI storage systems, what kind of
 systems they are and on what hardware partitions they are located at.
 
+Data storage on LUMI is provided by the [LUMI-P][lumip] parallel file system
+hardware partition, the [LUMI-F][lumif] flash based parallel file system
+hardware partition, and the [LUMI-O][lumio] object storage hardware partition,
+for a total of 117 PB of storage space.
 ---
 
 !!! note "Important information regarding data lifetime"
@@ -153,13 +157,21 @@ following command:
 $ lumi-workspaces
 ```
 
+
+## Temporary (SSD) storage on login nodes
+
+Each LUMI login node has a fast SSD based local storage area that is located under `/tmp`. This area is separate for each login node. 
+
+The local storage is good for example for compiling applications and performing pre- and post-processing that require heavy I/O operations, for example packing and unpacking archive files. 
+
+!!! warning
+    Note that the local storage under `/tmp` is only meant for temporary usage. Remember to move your data out of /tmp to a shared disk area after completing your task. 
+
+
 ## Temporary storage on compute nodes
 
 The `/tmp` directory on the compute nodes resides in memory. The memory used
 for `/tmp` is included in the job memory allocation. If you use `/tmp`, you
 must allocate memory for it to avoid running out of memory.
 
-Data storage on LUMI is provided by the [LUMI-P][lumip] parallel file system
-hardware partition, the [LUMI-F][lumif] flash based parallel file system
-hardware partition, and the [LUMI-O][lumio] object storage hardware partition
-for a total of 117 PB of storage space.
+
