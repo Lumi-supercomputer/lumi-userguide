@@ -64,7 +64,7 @@ that your job may share the node with other jobs.
     seen from the table: on dev-g the max resources one can ask per job is 16 
     node hours. This corresponds to allocating 16 nodes for 1 hour, more nodes 
     for a shorter time, or part of a node for a longer time. The max run time 
-    for a job on the partition is 3 hours, though. 
+    for a job on the partition is 3 hours. 
     
     Repeated abuse of these
     partitions might result in account suspension.
