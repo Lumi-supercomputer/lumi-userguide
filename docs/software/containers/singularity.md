@@ -1,6 +1,5 @@
-# Singularity/Apptainer
+# Singularity
 
-[apptainer]: http://apptainer.org/docs/user/main/index.html
 [conda-env]: https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment
 [cotainr]: https://cotainr.readthedocs.io/en/stable/
 [cotainr-conda-env]: https://cotainr.readthedocs.io/en/stable/user_guide/conda_env.html#conda-environments
@@ -25,17 +24,20 @@
 [python-packages]: ../installing/python.md
 [spack]: ../../software/installing/spack.md
 
-We support [Singularity][singularityce]/[Apptainer][apptainer] containers as an
+We support [Singularity][singularityce] containers as an
 alternative way to bring your scientific application to LUMI instead of
 installing it using [EasyBuild][easybuild] or [Spack][spack].
 
 If you are familiar with [Docker containers][docker-wiki],
-Singularity/Apptainer containers are essentially the same thing, but are better
+Singularity containers are essentially the same thing, but are better
 suited for multi-user HPC systems such as LUMI. The main benefit of using a
 container is that it provides an isolated software environment for each
 application, which makes it easier to install and manage complex applications.
 
-This page provides guidance on preparing your Singularity/Apptainer containers
+It is also a very useful tool to wrap python installations, and mitigate one 
+of the largest issues that python have on HPC system: the problem of loading small files.
+
+This page provides guidance on preparing your Singularity containers
 for use with LUMI. Please consult the [container jobs page][container-jobs] for
 guidance on running your container on LUMI.
 
@@ -79,22 +81,23 @@ page][container-jobs].
     $ export SINGULARITY_CACHEDIR=/tmp/$USER
     ```
 
-## Building Apptainer/Singularity SIF containers
+## Building Singularity SIF containers
 
-Building your own container on LUMI is, unfortunately, not in general possible.
+Building your own container on LUMI is, unfortunately, not fully straightforward.
 The `singularity build` command, in general, requires some level of root
 privileges, e.g. `sudo` or `fakeroot`, which are disabled on LUMI for security
-reasons. Thus, to build your own Singularity/Apptainer container for
-LUMI, you have two options:
+reasons. Thus, to build your own Singularity container for
+LUMI, you have three options:
 
 1. Use the [cotainr](#building-containers-using-the-cotainr-tool) tool to build
    containers on LUMI (only for certain use cases).
 2. [Build your own container](#building-containers-on-local-hardware) on your
    local hardware, e.g. your laptop.
+3. [Build/Extend a container using PRoot](#building-or-extending-containers-with-proot)
 
 ### Building containers using the cotainr tool
 
-[Cotainr][cotainr] is a tool that makes it easy to build Singularity/Apptainer
+[Cotainr][cotainr] is a tool that makes it easy to build Singularity
 containers on LUMI for certain [use cases][cotainr-usecases]. It is **not** a
 general purpose container building tool.
 
@@ -165,7 +168,7 @@ See the [cotainr documentation][cotainr] for more details about `cotainr`.
 
 ### Building containers on local hardware
 
-You may also build a Singularity/Apptainer container for LUMI on your local
+You may also build a Singularity container for LUMI on your local
 hardware and [transfer it to LUMI][copying-files].
 
 As an example, consider building a container that is compatible with the
@@ -231,3 +234,41 @@ The `mpi_osu.sif` file must then be [transferred to LUMI][copying-files]. See
 the [container jobs MPI documentation
 page](../../runjobs/scheduled-jobs/container-jobs.md#running-containerized-mpi-applications)
 for instructions on running this MPI container on LUMI.
+
+### Building or extending containers with PRoot
+
+It is possible to create or extend containers on lumi by using the PRoot build procedure provided by Singularity CE. This way of building containers does NOT require any root privileges so it is compatible with the strict security policies adopted on LUMI. It is however not covering all the possible cases, so it may not cover your specific use case. Please look at the [Official SingularityCE docs](https://docs.sylabs.io/guides/3.11/user-guide/build_a_container.html#unprivilged-proot-builds) for the specific details on coverage and usage.
+PRoot is provided in LUMI as a module and in its [documentation](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/p/PRoot/) you can see various ways of loading it.
+The easiest way is to use
+
+```bash
+module load CrayEnv
+module load PRoot
+````
+Then you need to define a container.def file for your container, for example
+
+```bash
+Bootstrap: docker
+From: docker.io/opensuse/leap:15.5
+
+%post
+    # Continue to install software into the container normally.
+    zypper --non-interactive update
+```
+and create your image with
+```bash
+singularity build container.sif container.def
+```
+
+Note that this is a powerful tool that allows you to build iteratively from an already existing container. For example you could configure your container.def to start from an existing sif file in this way:
+
+```bash
+Bootstrap: localimage
+From: /path/to/YOUR/container.sif
+
+%post
+    #things that you want to do on your existing container, such as adding some zypper packages, installing some pip wheels, etc...
+```
+
+
+
