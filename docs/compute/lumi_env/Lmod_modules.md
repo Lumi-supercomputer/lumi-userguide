@@ -4,7 +4,7 @@
 [lmod_collection]: https://lmod.readthedocs.io/en/latest/010_user.html#user-collections
 [lmod_doc]: https://lmod.readthedocs.io/en/latest/index.html
 
-[softwarestacks]: ../../runjobs/lumi_env/softwarestacks.md
+[softwarestacks]: ../../compute/lumi_env/softwarestacks.md
 
 !!! tip
     If you are already somewhat familiar with modules from your home system,

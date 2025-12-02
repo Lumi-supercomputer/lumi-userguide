@@ -8,9 +8,9 @@
 [spack]: ./installing/spack.md
 [contwrapper]: ../software/installing/container-wrapper.md
 [singularity-container]: ../software/containers/singularity.md
-[singularity-jobs]: ../runjobs/scheduled-jobs/container-jobs.md
-[software-stacks]: ../runjobs/lumi_env/softwarestacks.md
-[module-env]: ../runjobs/lumi_env/Lmod_modules.md
+[singularity-jobs]: ../compute/scheduled-jobs/container-jobs.md
+[software-stacks]: ../compute/lumi_env/softwarestacks.md
+[module-env]: ../compute/lumi_env/Lmod_modules.md
 [software-library]: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs
 [install-policy]: ./policy.md
 

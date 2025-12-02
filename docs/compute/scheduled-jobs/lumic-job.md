@@ -1,6 +1,6 @@
 # LUMI-C example batch scripts
 
-[billing]: ../../runjobs/lumi_env/billing.md#cpu-small-slurm-partition
+[billing]: ../../compute/lumi_env/billing.md#cpu-small-slurm-partition
 
 Here we give examples of batch scripts for typical CPU jobs on LUMI-C. You may
 use these as templates for your own project batch scripts.

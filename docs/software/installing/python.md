@@ -8,7 +8,7 @@
 [container-virt-env-example]: ../../software/packages/pytorch.md#installing-other-packages-along-the-containers-pytorch-installation
 [cotainr]: ../containers/singularity.md#building-containers-using-the-cotainr-tool
 [csc-software-stack]: ../local/csc.md
-[lumi-software-stack]: ../../runjobs/lumi_env/softwarestacks.md
+[lumi-software-stack]: ../../compute/lumi_env/softwarestacks.md
 [lustre]: ../../storage/parallel-filesystems/lustre.md
 [pull-container]: ../containers/singularity.md#pulling-container-images-from-a-registry
 [singularity-build]: ../containers/singularity.md#building-apptainersingularity-sif-containers

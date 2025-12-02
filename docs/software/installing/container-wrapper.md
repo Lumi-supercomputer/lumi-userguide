@@ -6,7 +6,7 @@
 [tykky-github]: https://github.com/CSCfi/hpc-container-wrapper
 
 [python-install]: ./python.md
-[softwarestacks]: ../../runjobs/lumi_env/softwarestacks.md
+[softwarestacks]: ../../compute/lumi_env/softwarestacks.md
 
 # LUMI container wrapper
 

@@ -1,7 +1,7 @@
 [lumif]: ./parallel-filesystems/lumif.md
 [lumip]: ./parallel-filesystems/lumip.md
 [lumio]: ./lumio/index.md
-[billing]: ../runjobs/lumi_env/billing.md
+[billing]: ../compute/lumi_env/billing.md
 [contwrapper]: ../software/installing/container-wrapper.md
 
 [python-install]: ../software/installing/python.md
@@ -41,7 +41,7 @@ for a total of 117 PB of storage space.
 
 On LUMI you have access to network file system storage based on the
 [LUMI-P][lumip] and [LUMI-F][lumif] hardware partitions, as well as to the object storage on [LUMI-O][lumio]. 
-The use of storage is billed according to the [billing policy](../runjobs/lumi_env/billing.md#storage-billing).
+The use of storage is billed according to the [billing policy](../compute/lumi_env/billing.md#storage-billing).
 
 
 ## Where to store data?

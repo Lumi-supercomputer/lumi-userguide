@@ -45,9 +45,9 @@ hide:
 
     ---
 
-    [:octicons-arrow-right-24: Available Slurm partitions](runjobs/scheduled-jobs/partitions.md)<br>
-    [:octicons-arrow-right-24: Example GPU jobs](runjobs/scheduled-jobs/lumig-job.md)<br>
-    [:octicons-arrow-right-24: Example CPU jobs](runjobs/scheduled-jobs/lumic-job.md)
+    [:octicons-arrow-right-24: Available Slurm partitions](compute/scheduled-jobs/partitions.md)<br>
+    [:octicons-arrow-right-24: Example GPU jobs](compute/scheduled-jobs/lumig-job.md)<br>
+    [:octicons-arrow-right-24: Example CPU jobs](compute/scheduled-jobs/lumic-job.md)
 
 -   **Storage**
 
@@ -61,7 +61,7 @@ hide:
 
     ---
 
-    [:octicons-arrow-right-24: The software stacks](runjobs/lumi_env/softwarestacks.md)<br>
+    [:octicons-arrow-right-24: The software stacks](compute/lumi_env/softwarestacks.md)<br>
     [:octicons-arrow-right-24: Installing software using EasyBuild](software/installing/easybuild.md)<br>
     [:octicons-arrow-right-24: Spack on LUMI](software/installing/spack.md)
 

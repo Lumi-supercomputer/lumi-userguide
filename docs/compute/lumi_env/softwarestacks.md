@@ -6,7 +6,7 @@
 [spack-site]: https://spack.readthedocs.io/
 [spack-in-docs]: ../../software/installing/spack.md
 
-[module-environment]: ../../runjobs/lumi_env/Lmod_modules.md
+[module-environment]: ../../compute/lumi_env/Lmod_modules.md
 [containerwrapper]: ../software/installing/container-wrapper.md
 [prgenv]: ../../development/compiling/prgenv.md
 
