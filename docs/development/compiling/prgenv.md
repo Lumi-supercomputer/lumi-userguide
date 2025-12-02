@@ -11,8 +11,8 @@
 [4]: #compile-an-openmp-application
 [5]: #accessing-the-programming-environment-on-lumi
 
-[modules]: ../../runjobs/lumi_env/Lmod_modules.md
-[softwarestacks]: ../../runjobs/lumi_env/softwarestacks.md
+[modules]: ../../compute/lumi_env/Lmod_modules.md
+[softwarestacks]: ../../compute/lumi_env/softwarestacks.md
 [easybuild]: ../../software/installing/easybuild.md
 [libraries]: ../../development/libraries/cray-libraries.md
 [cce]: cce.md

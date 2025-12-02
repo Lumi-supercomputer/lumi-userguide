@@ -1,6 +1,6 @@
-[container-jobs]: ../../runjobs/scheduled-jobs/container-jobs.md
+[container-jobs]: ../../compute/scheduled-jobs/container-jobs.md
 [python-install]: ../../software/installing/python.md
-[job-arrays]: ../../runjobs/scheduled-jobs/throughput.md
+[job-arrays]: ../../compute/scheduled-jobs/throughput.md
 
 # Python scheduled jobs
 

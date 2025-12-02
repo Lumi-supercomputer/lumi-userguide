@@ -2,7 +2,7 @@
 
 [storage]: ../storage/index.md
 [interconnect]: network.md
-[slurm-partitions]: ../runjobs/scheduled-jobs/partitions.md
+[slurm-partitions]: ../compute/scheduled-jobs/partitions.md
 [zen3-wiki]: https://en.wikipedia.org/wiki/Zen_3
 
 The LUMI-C hardware partition consists of 2048 CPU-based compute nodes. Some of
