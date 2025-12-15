@@ -41,60 +41,30 @@ nav:
       - Daily management: compute/lumi_env/dailymanagement.md
       - Data storage options: storage/index.md
       - Billing policy: compute/lumi_env/billing.md
-    - Kubernetes:
-      - compute/lumik/index.md
-      - What is LUMI-K:
-          - compute/lumik/rahti-what-is.md
-          - Containers & their Orchestration: compute/lumik/containers.md
-          - Kubernetes and OpenShift concepts: compute/lumik/concepts.md
-          - External documentation: compute/lumik/ext_docs.md
+    - Cloud containers in LUMI-K:
       - Getting Started:
-          - Getting access: compute/lumik/access.md
-          - Web user interface: compute/lumik/usage/getting_started.md
-          - Command line tool: compute/lumik/usage/cli.md
-          - Moving into LUMI-K: compute/lumik/moving-into.md
+        - What is LUMI-K: compute/lumi-k/01_getting-started/01_lumi_k_what_is.md
+        - Log in to LUMI-K: compute/lumi-k/01_getting-started/02_lumik_login.md
+        - Create projects: compute/lumi-k/01_getting-started/03_lumik_projects.md
+        - Command Line Interface (CLI): compute/lumi-k/01_getting-started/04_lumik_cli.md
+        - External documentation: compute/lumi-k/01_getting-started/05_ext_docs.md
+      - Usage:
+        - Kubernetes concepts: compute/lumi-k/02_usage/01_kube_concepts.md
+        - Container images:
+          - compute/lumi-k/02_usage/02_container_images/00_images_overview.md
+          - Build container images: compute/lumi-k/02_usage/02_container_images/01_creating_images.md
+          - Best practices: compute/lumi-k/02_usage/02_container_images/02_best_practices.md
+          - LUMI-K image registry: compute/lumi-k/02_usage/02_container_images/03_lumik_integrated_registry.md
+        - Storage:
+          - compute/lumi-k/02_usage/03_storage/00_storage_overview.md
+          - Ephemeral storage: compute/lumi-k/02_usage/03_storage/01_ephemeral_storage.md
+          - Persistent storage: compute/lumi-k/02_usage/03_storage/02_persistent_storage.md
+          - Object storage: compute/lumi-k/02_usage/03_storage/03_object_storage.md
+        - Networking: compute/lumi-k/02_usage/04_networking.md
       - Configuration:
-          - Billing: compute/lumik/billing.md
-          - Projects and quota: compute/lumik/usage/projects_and_quota.md
-          - LUMI-K Catalog: compute/lumik/catalog-docs.md
-          - Images:
-              - compute/lumik/images/overview.md
-              - Creating an image: compute/lumik/images/creating.md
-              - Keeping docker images small: compute/lumik/images/keeping_docker_images_small.md
-              - Using LUMI-K integrated registry: compute/lumik/images/Using_Rahti_integrated_registry.md
-          - Storage in LUMI-K:
-              - compute/lumik/storage/index.md
-              - Ephemeral storage: compute/lumik/storage/ephemeral.md
-              - Persistent volumes: compute/lumik/storage/persistent.md
-              - Object storage: compute/lumik/storage/objectstorage.md
-              - Expand a volume: compute/lumik/storage/expand-volumes.md
-              - Volume snapshot: compute/lumik/storage/volume-snapshot.md
-      - Advanced:
-          - compute/lumik/advanced.md
-          - Networking: compute/lumik/networking.md
-          - Security guide: compute/lumik/security-guide.md
-      - Tutorials:
-          - compute/lumik/tutorials/index.md
-          - 4cat: compute/lumik/tutorials/4cat.md
-          - Advanced NetworkPolicies: compute/lumik/tutorials/advanced-NetworkPolicies-networking.md
-          - Accessing databases on LUMI-K from CSC supercomputers: compute/lumik/tutorials/connect-database-hpc.md
-          - Allow pulls of images from one LUMI-K project to another: compute/lumik/tutorials/allow-pull-from-other-projects.md
-          - Annotations: compute/lumik/tutorials/annotations.md
-          - CI/CD on LUMI-K: compute/lumik/tutorials/ci_cd_introduction.md
-          - Custom domain names and secure transport: compute/lumik/tutorials/custom-domain.md
-          - Deploying a static web server using the command line: compute/lumik/tutorials/deploy_static_webserver_cli.md
-          - Deploying from Git: compute/lumik/tutorials/deploy_from_git.md
-          - Deploying a static web server using the web interface: compute/lumik/tutorials/deploy_static_webserver_webconsole.md
-          - Kustomize: compute/lumik/tutorials/kustomize.md
-          - Learn compute computing by developing and deploying a web application: compute/lumik/tutorials/web-app-dev-compute.md
-          - Multi stage builds: compute/lumik/tutorials/multi-stage-builds.md
-          - Pod (anti) affinity: compute/lumik/tutorials/pod-affinity.md
-          - Reverse proxy authentication using a sidecar container: compute/lumik/tutorials/sidecar_proxy_authentication.md
-          - Sending e-mail from LUMI-K: compute/lumik/tutorials/email.md
-          - Setup a HTTP redirection in LUMI-K: compute/lumik/tutorials/http-redirector.md
-          - Short introduction to YAML: compute/lumik/tutorials/yaml_introduction.md
-          - Webhooks: compute/lumik/tutorials/webhooks.md
-          - OAuth2 Proxy: compute/lumik/tutorials/oauth2.md
+        - Resource quotas: compute/lumi-k/03_configuration/01_resource_quotas.md
+        - Networking: compute/lumi-k/03_configuration/02_network.md
+      - Security guide: compute/lumi-k/04_security_guide.md
     - Batch jobs:
       - Slurm quickstart: compute/scheduled-jobs/slurm-quickstart.md
       - Slurm partitions: compute/scheduled-jobs/partitions.md
