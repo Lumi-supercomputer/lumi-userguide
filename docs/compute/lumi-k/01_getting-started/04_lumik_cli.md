@@ -10,11 +10,11 @@ The `oc` tool is a single binary that only needs to be included in your `PATH` e
 Instructions for downloading the oc tool including the download link for several platforms and operating systems can be
 found in [Command Line Tools](https://console.lumi-k.eu/command-line-tools) page in the LUMI-K web interface:
 
-![LUMI_K command Line Tools page](../../img/download_cli.png)
+![LUMI_K command Line Tools page](../img/lumik_download_cli.png)
 
 You can also visit the command line tools page using the help menu in the top right corner of the web interface 
 
-![Help command Line tools](../../img/help_cli.png)
+![Help command Line tools](../img/lumik_help_cli.png)
 
 Download the necessary package and copy it in your `PATH`.
 
@@ -31,7 +31,7 @@ It should show the list of all available commands.
 It is possible to copy the login command directly from the web console of LUMI-K by clicking the dropdown menu next to
 the username in the top right corner.
 
-![copy login](../../img/copy_login_command.png)
+![copy login](../img/lumik_copy_login_command.png)
 
 As an additional security measure, you will be prompted to log in again via the web interface before the command and
 token are revealed. Copy the command and paste it in a terminal to start using LUMI-K via the command line. The command looks like:
@@ -97,9 +97,7 @@ oc policy add-role-to-user system:image-pusher -z pusher
 docker login -p $(oc create token pusher) -u unused image-registry.apps.2.LUMI-K.csc.fi
 ```
 
-<s>This service account token, the one you get with `oc sa get-token pusher` does not expire.</s>
-
-Since OKD 4.11, `oc sa get-token` is deprecated (See [changelog](https://docs.redhat.com/en/documentation/openshift_container_platform/4.11/html/release_notes/ocp-4-11-release-notes#ocp-4-11-deprecated-features)). Use the command `oc create token` instead. It will generate a new token for the service account.
+Use the command `oc create token` to generate a new token for the service account.
 
 For example, you can run `oc create token pusher --duration=87600h` to create a token valid for 10 years.
 
