@@ -227,7 +227,7 @@ see the warning "**URL is valid but cannot be reached**"
             - Navigate to "SSH Keys".
             - Add a new SSH key and paste the contents of your `id_rsa.pub` file.
 
-     3. **Add the Private SSH Key to Rahti:**
+     3. **Add the Private SSH Key to LUMI-K:**
          - Under "Source Secret" choose "Create new Secret".
          - Name the secret, under "Authentication type" choose "SSH Key".
          - Paste the contents of your private SSH key (`id_rsa`) and create.
