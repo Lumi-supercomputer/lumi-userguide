@@ -137,7 +137,7 @@ For example, `nginx:1.25` and `nginx:latest` are two tags within the same reposi
 Public registries, such as [Docker Hub](https://hub.docker.com/) or [Quay.io](https://quay.io/), host images that 
 anyone can pull. Private registries require authentication and are commonly used to store internal or sensitive images. 
 Kubernetes clusters like LUMI-K can pull from both public and private registries as long as the required credentials 
-are provided. Moreover, LUMI-k provide its own [integrated registry](03_lumik_integrated_registry.md) that allows 
+are provided. Moreover, LUMI-K provide its own [integrated registry](03_lumik_integrated_registry.md) that allows 
 you to store, pull, and publish your images.
 
 ## The Open Container Initiative (OCI) standard
