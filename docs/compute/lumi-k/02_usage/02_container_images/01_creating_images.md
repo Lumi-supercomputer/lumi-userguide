@@ -9,18 +9,16 @@ configurations inside it are not suitable for your needs.
 ensure the application runs without root, which is a best practice enforced in LUMI-K.
 
   
-LUMI-K's registry has an image size limit of 10 GB, this because smaller images download faster, which reduces startup 
+LUMI-K's registry has an image size limit of 10 GB, this is because smaller images download faster, which reduces startup 
 time for Pods in Kubernetes and improves the responsiveness of scaling operations. They also use less storage in 
 registries and on cluster nodes, which matters in multi-tenant environments like LUMI-K. Moreover, a smaller image 
 contains fewer packages and files, which reduces the potential attack surface and lowers the chance of including 
-outdated or vulnerable components. This makes maintenance easier and improves overall security. Because smaller images 
-contain only what the application actually needs, they are more predictable, easier to debug, and simpler to reproduce 
-across environments.
-
+outdated or vulnerable components. This makes maintenance easier and improves overall security. Since smaller images include 
+only what the application needs, they are more predictable, easier to debug, and simpler to reproduce across environments.
 
 ## Building images locally
 
-In this example we are going to use build a custom version of the [official nginx image](https://hub.docker.com/_/nginx)
+In this example, we are going to build a custom version of the [official nginx image](https://hub.docker.com/_/nginx)
 built over the [Alpine Linux](https://www.alpinelinux.org/) distribution, and make the necessary changes to make it rootless and 
 compatible with LUMI-K policy. Three steps are needed to build an image in your machine or server:
 
@@ -38,7 +36,7 @@ RUN chmod g+rwx /var/cache/nginx /var/run /var/log/nginx && \
     sed -i.bak 's/listen\(.*\)80;/listen 8081;/' /etc/nginx/conf.d/default.conf && \
     # Make /etc/nginx/html/ available to use
     mkdir -p /etc/nginx/html/ && chmod 777 /etc/nginx/html/ && \
-    # comment user directive as master process is run as user in OpenShift anyhow
+    # comment user directive as master process is run as user in OKD anyhow
     sed -i.bak 's/^user/#user/' /etc/nginx/nginx.conf
 
 WORKDIR /usr/share/nginx/html/
@@ -65,7 +63,7 @@ FROM ubuntu
 RUN apt install git
 ```
 
-This is just installing git in the `ubuntu:latest` base image, and add also a new layer.
+This is installing git in the `ubuntu:latest` base image, and add also a new layer.
 
 See the [Dockerfile](https://docs.docker.com/engine/reference/builder/) reference docs.
 
@@ -89,8 +87,8 @@ You can see the built image in you local registry by running
 docker image ls
 ```
 
-3. Finally, if you want to share your image with others, you will need to publish it to a remote registry. Foir doing so,
-you will need to give your image a new tag that point to the remote registry and then pushi it.
+3. Finally, if you want to share your image with others, you will need to publish it to a remote registry. To do so,
+you will need to give your image a new tag that points to the remote registry and then push it.
 
 ```bash
 docker tag nginx:rootless <remote-registry.example.com>/<registry-username>/nginx:rootless
@@ -99,7 +97,7 @@ docker push <remote-registry.example.com>/<registry-username>/nginx:rootless
 
 !!! warning "Note"
     Images built for machines with architecture other than **amd64** are not runnable on LUMI-K. Either re-build them on 
-    an **amd64** machine or convert them. You can also rebuild them directly in LUMI-K as described in the next section.
+    an **amd64** machine or convert them. You can also rebuild them directly in LUMI-K as described in the following section.
 
 
 ## Using LUMI-K to build container images
@@ -108,7 +106,7 @@ The methods below use LUMI-K to build container images.
 
 ### Using a local folder for building
 
-This method allows to build an image using a local folder containing a Dockerfile and the other required project files
+This method allows building an image using a local folder containing a Dockerfile and the other required project files
 (source code, executables, configuration, etc.). It is useful when it is not possible or inconvenient to allow LUMI-K to
 clone your git repository directly. As prerequisites, you should have:
 
@@ -117,7 +115,7 @@ clone your git repository directly. As prerequisites, you should have:
 
 **Steps:**
 
-1. Create [Openshift BuildConfig](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/builds_using_buildconfig/creating-build-inputs#builds-binary-source_creating-build-inputs) 
+1. Create [OKD BuildConfig](https://docs.okd.io/latest/cicd/builds/creating-build-inputs.html#builds-binary-source_creating-build-inputs) 
 with build source set to binary. Be sure to not be in a directory under git version control:
 
 ```bash
@@ -137,17 +135,17 @@ The output should be similar to:
 --> Success
 ```
 
-Openshift create a **BuildConfig** with name `my-hello` object in your active project, it also create a placeholder
+OKD creates a **BuildConfig** with name `my-hello` object in your active project, it also creates a placeholder
 **ImageStream** object with name `my-hello-image` to host the resulting image.
 
 2. Trigger the build process by providing the build artifacts (i.e., Dockerfile amd other dependencies if any) to 
 LUMI-K. 
 
 ```bash
-oc start-build my-hello --from-dir=/path/to/artifacts  --follow
+oc start-build my-hello --from-dir=/path/to/artifacts --follow
 ```
 
-Once the build is successfully finished, the resulting image will be available in [LUMI-K image registry](03_lumik_integrated_registry.md). 
+Once the build is successfully completed, the resulting image will be available in [LUMI-K image registry](03_lumik_integrated_registry.md). 
 
 ### Using the Source to Image (S2I) mechanism
 
@@ -162,13 +160,13 @@ oc get is -n openshift
 S2I is a good choice when:
 
 * Your application fits well into a standard runtime environment (e.g., Python/Flask, Node.js/Express, Java/Spring).
-* ou prefer to avoid maintaining Dockerfiles.
+* You prefer to avoid maintaining Dockerfiles.
 * You want LUMI-K to handle dependency installation, environment setup, and incremental builds.
 
-S2I is not ideal when you need full control over the container image, custom OS packages, non-standard runtimes, 
-or complex build steps. In those cases, a Dockerfile or Binary build is better. 
+S2I is not ideal when you need full control over the container image, custom OS packages, 
+non-standard runtimes, or complex build steps. In such cases, a Dockerfile or binary build is better suited.
 
-Assume you have a private Git repository  containing a python application, you can import your application for build and
+Assume you have a private Git repository containing a python application, you can import your application for build and
 deployment in LUMI-K using the web console or the CLI.
 
 #### Using the web console
@@ -292,7 +290,7 @@ oc get route <application-name>
 ```bash
 oc start-build <application-name>
 ```
-Or using [webhooks](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/builds_using_buildconfig/triggering-builds-build-hooks#builds-webhook-triggers_triggering-builds-build-hooks).
+Or using [webhooks](https://docs.okd.io/latest/cicd/builds/triggering-builds-build-hooks.html#builds-webhook-triggers_triggering-builds-build-hooks).
 
 
 ### Using the inline Dockerfile method
@@ -313,7 +311,7 @@ cat Dockerfile | oc new-build -D -
 
 ### Troubleshooting
 
-* If a build fail due to authentication issues, set the build secret explicitly:
+* If a build fails due to authentication issues, set the build secret explicitly:
      
   ```bash
      oc set build-secret --source bc/<application-name> <secret-name>
@@ -360,6 +358,11 @@ spec:
       cpu: "1"
       memory: "2Gi"
 ```
+
+!!! info
+
+    You can also use the command `oc edit bc <buildconfig-name>` to modify the BuildConfig object.
+
 
 3. Apply the changes:
 
@@ -415,6 +418,5 @@ spec:
 oc start-build <buildconfig-name>
 ```
 
-Note that the resource request and limits  cannot be more than 5x apart 
+Note that the ratio between requests and limits cannot be more than 5x.
 (default ratio, more information [here](../../03_configuration/01_resource_quotas.md#custom-requests-and-limits)).
-
