@@ -61,7 +61,7 @@ In order to use LUMI-K internal container registry, it is necessary to login sep
 
 After login with `oc`, it is possible to use the command to generate a token (`oc whoami -t`):
 
-`docker login -p $(oc whoami -t ) -u unused image-registry.apps.2.LUMI-K.csc.fi`
+`docker login -p $(oc whoami -t ) -u unused image-registry.apps.v1.lumi-k.eu`
 
 !!! info "sudo use"
     Some docker client setups require to run the `docker` client as root using `sudo`. In this case the `oc login` command needs to also be run using `sudo`. This is because the login information is stored in the user's home directory, only the user that runs `oc login` is logged in to LUMI-K.
@@ -89,12 +89,12 @@ After login with `oc`, it is possible to use the command to generate a token (`o
 
 ### Using a service account token
 
-LUMI-K also offers the opportunity of using an internal service account to interact with the registry. This is recommended for automated procedures like a CI pipeline. Even though by default 3 internal service accounts are created in every LUMI-K namespace: builder, default and deployer, it is recommended to create a dedicated internal service account and assign to it the `system:image-pusher` role.
+LUMI-K also offers the opportunity of using an internal service account to interact with the registry. This is recommended for automated procedures like a CI pipeline. Even though by default 3 internal service accounts are created in every LUMI-K project: builder, default and deployer, it is recommended to create a dedicated internal service account and assign to it the `system:image-pusher` role.
 
 ```sh
 oc create serviceaccount pusher
 oc policy add-role-to-user system:image-pusher -z pusher
-docker login -p $(oc create token pusher) -u unused image-registry.apps.2.LUMI-K.csc.fi
+docker login -p $(oc create token pusher) -u unused image-registry.apps.v1.lumi-k.eu
 ```
 
 Use the command `oc create token` to generate a new token for the service account.
@@ -115,7 +115,7 @@ oc help <command>
 List LUMI-K projects:
 
 ```bash
-oc projects
+oc get projects
 ```
 
 Switch the context to project `my-project`:
