@@ -29,7 +29,7 @@ member of using the `lumi-workspaces` command as described [here](../../lumi_env
 
 If you would like to know which LUMI project,  a LUMI-K project is associated with, you can do so using the _oc_ command
 line tool. You can find instructions for setting up oc in the [command line tool usage instructions ](04_lumik_cli.md). 
-For example, if your LUMI-K project is called *my-openshift-project*, you would run:
+For example, if your LUMI-K project is called *my-lumik-project*, you would run:
 
 ```bash
 oc get project my-lumik-project -o yaml
