@@ -1,22 +1,21 @@
-# Kubernetes and OpenShift concepts
+# Kubernetes and Openshift concepts
 
-LUMI-K is container orchestration platform based on Kubernetes and Openshift, thus understanding their core concept is a
-prerequisite before deploying you applications to LUMI-K.
+LUMI-K is a container orchestration platform based on Kubernetes and Openshift, thus understanding their core concept is a
+prerequisite before deploying your applications to LUMI-K.
 
-The power of Kubernetes is in the relatively simple abstractions that it provides for complex tasks 
-such as load balancing, software updates, and autoscaling for distributed applications. Here we give a very brief overview 
-of some of the most important abstractions, but we highly recommend that you read the concept documentation for 
-Kubernetes and OpenShift as well:
+The power of Kubernetes lies in the relatively simple abstractions it provides for complex tasks such as load balancing, 
+software updates, and autoscaling for distributed applications. Here, we give a very brief overview of some of the most important 
+abstractions, but we highly recommend that you also read the concept documentation for Kubernetes and Openshift.
 
 * [Kubernetes concepts](https://kubernetes.io/docs/concepts/)
-* [OpenShift concepts](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/building_applications/index)
+* [Openshift concepts](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/building_applications/index)
 
 
-Kubernetes uses a declarative model to manage the state of applications deployed in users' projects (also called 
+Kubernetes uses a declarative model to manage the state of applications deployed in users' projects (also known as 
 Namespaces). At the core of this model are objects, which are persistent records of intent. Each object describes a 
 specific piece of the application desired state, such as how many replicas an application should have, what network 
-rules apply, or what storage a workload requires. Most of the objects are common to both plain Kubernetes and OpenShift,
-but OpenShift also introduces some of its own extra objects.
+rules apply, or what storage a workload requires. Most of the objects are common to both plain Kubernetes and Openshift,
+but Openshift also introduces some of its own extra objects.
 
 Object intents are provided to Kubernetes by submitting object definitions, usually written in YAML or JSON. 
 These definitions describe the desired state of the object, and Kubernetes continuously works to make the actual state 
@@ -45,7 +44,7 @@ requiring multiple physical clusters. Namespaces are used for:
 
 * Applying resource quotas, access controls, and network policies.
 
-In LUMI-K, you will primarily work with projects rather than namespaces. A project is an OpenShift abstraction built on 
+In LUMI-K, you will primarily work with projects rather than namespaces. A project is an Openshift abstraction built on 
 top of a Kubernetes namespace, adding additional metadata and access-control features. However, 
 the terms _project_ and _namespace_ are often used interchangeably, as both refer to the logical grouping of a 
 user’s resources.
@@ -395,9 +394,9 @@ metadata:
   namespace: my-namespace
 ```
 
-##  OpenShift extensions
+##  Openshift extensions
 
-OpenShift includes all Kubernetes objects, plus some extensions:
+Openshift includes all Kubernetes objects, plus some extensions:
 
 * **BuildConfig** objects build container images
   based on the source files.
@@ -434,7 +433,7 @@ spec:
 
 [BuildConfig](https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/builds_using_buildconfig/understanding-image-builds) objects 
 create container images according to specific rules. In the following example, the _Docker_ strategy is used to build a customized version
-of the `httpd` web server container image shipped with OpenShift.
+of the `httpd` web server container image shipped with Openshift.
 
 *`buildconfig.yaml`*:
 
@@ -464,7 +463,7 @@ new image stream for the custom image.
 
 ### Route
 
-Route objects are the OpenShift equivalent of _Ingress_ in vanilla Kubernetes, they expose a Service object to the 
+Route objects are the Openshift equivalent of _Ingress_ in vanilla Kubernetes, they expose a Service object to the 
 internet via HTTP/HTTPS. A typical Route definition would be:
 
 ```yaml
@@ -532,4 +531,4 @@ status:
 
 !!! warning
 
-    If the whitelist entry is malformed, OpenShift will discard the whitelist and allow all traffic.
+    If the whitelist entry is malformed, Openshift will discard the whitelist and allow all traffic.
