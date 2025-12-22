@@ -1,6 +1,6 @@
 # LUMI-K projects vs LUMI projects
 
-All applications deployed in LUMI-k run within **projects** (a.k.a namespaces)  that can be
+All applications deployed in LUMI-K run within **projects** (also known as Namespaces) that can be
 created by any authenticated user. It is important differentiate **LUMI-K projects** and **LUMI projects**.
 You can think about a LUMI project as an umbrella for all your LUMI-K projects. When creating a LUMI-K project,
 you will be asked to provide the LUMI project number to be associated with it. You need to have at least one active
@@ -12,9 +12,9 @@ LUMI-K projects. Users can only see LUMI-K projects created by themselves or by 
 
 1. Create a LUMI project by following these [instructions](../../../firststeps/accessLUMI.md), note that you do not 
 need to configure an SSH key to start using LUMI-K . If you already have a LUMI project used for accessing other LUMI 
-services (e.g., LUMI-G and LUMI-O), you can skip this step as you will already have default access to LUMI-K
+services (e.g., LUMI-G and LUMI-O), you can skip this step as you will already have default access to LUMI-K.
 
-2. Log in to LUMI-K at https://console.lumi-k.eu/ . Choose HAKA, CSC, or Puhuri depending on your organization. 
+2. Log in to LUMI-K at [https://console.lumi-k.eu/](https://console.lumi-k.eu/). Choose HAKA, CSC, or Puhuri depending on your organization. 
 
 !!! Warning "User not found"
     If you get an error message similar to this please make sure to create a LUMI project as described in the previous step.
