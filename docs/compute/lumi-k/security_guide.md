@@ -17,14 +17,6 @@ By default, LUMI-K applies the default security policies:
 - **Random UID/GID**: When your pod is deployed in LUMI-K, a random UID will be generated. You cannot assign a UID/GID out of this range (for example, `1001`), it will require special privileges. Usually, the number is like `1000620000`.
 
 - **[Restricted-v2 policy](https://connect.redhat.com/en/blog/important-openshift-changes-pod-security-standards)**: Since Openshift 4.11, the new SCC policies are introduced according to the [Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/).
-  - What is the difference between v1 and v2 SCC (Security Context Constraints) policies?
-    - V2 does not permit *allowPrivilegeEscalation=true*
-        - Empty or false is compatible with v1 SCC and therefore works on OCP versions < 4.11
-    - V2 requires you to leave the dropped capabilities empty, set it to *ALL*, or add only *NET_BIND_SERVICE*
-        - By being accepted as v2 the SCC will always drop *ALL*. V1 only dropped *KILL*, *MKNOD*, *SETUID*, *SETGID* capabilities.
-        - V2 still allows explicitly adding the *NET_BIND_SERVICE* capability
-    - V2 requires you to either leave *SeccompProfile* empty or set it to *runtime/default*
-        - Empty is compatible with v1 and works on OCP versions < 4.11
 
 - **[Default Pod resource limits](configuration/resource_quotas.md#default-requests-and-limits)**
 
