@@ -7,11 +7,11 @@ different environments.
 
 Container images are built using a layered filesystem, where each layer represents a change to the image, such as 
 adding files, installing packages, or modifying configuration. When these layers are stacked together, they form the 
-complete container image. An image is  immutable, because the different layers of the filesystem are read-only. However, you can add more layers 
-to the image, thus, create modified version suitable for your use.
+complete container image. An image is immutable, because different layers of the filesystem are read-only. However, you can add more layers 
+to the image, therefore, create modified version suitable for your use.
 
 A container is a running instance of that image. When Kubernetes starts a Pod, it takes the image, adds a writable
-layer on top of it, and runs the application inside an isolated environment. Multiple containers can be created from the same image
+layer on top of it, and runs the application inside an isolated environment. Multiple containers can be created from the same image.
 Containers are the running instances of Docker images. 
 
 
@@ -124,7 +124,7 @@ docker image inspect nginx:latest --format='{{.Architecture}}'
 
 !!! warning "Note"
     Images built on machines with architecture other than **amd64** are not runnable on LUMI-K. Either re-build them on 
-    an **amd64** machine or convert them. You can also rebuild them directly in LUMI-K as described in this section.
+    an **amd64** machine or convert them. You can also rebuild them directly in LUMI-K as described in the [next section](01_creating_images.md).
 
 
 ## Image registries
