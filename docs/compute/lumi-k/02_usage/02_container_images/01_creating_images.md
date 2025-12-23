@@ -313,9 +313,9 @@ cat Dockerfile | oc new-build -D -
 
 * If a build fails due to authentication issues, set the build secret explicitly:
      
-  ```bash
-     oc set build-secret --source bc/<application-name> <secret-name>
-     ```
+```bash
+oc set build-secret --source bc/<application-name> <secret-name>
+```
 
 * If your build fails or it is very slow in LUMI-K, it could mean that you need to assign more resources to the BuildConfig object.
 By default, the BuildConfig uses the [default request and limits](../../03_configuration/01_resource_quotas.md) for running the builder Pod. In that case
