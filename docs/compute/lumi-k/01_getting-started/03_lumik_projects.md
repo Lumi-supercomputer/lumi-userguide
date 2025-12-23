@@ -28,7 +28,7 @@ projects created by themselves or by their LUMI project team members. You can ch
 member of using the `lumi-workspaces` command as described [here](../../lumi_env/dailymanagement.md#lumi-workspaces).
 
 If you would like to know which LUMI project,  a LUMI-K project is associated with, you can do so using the _oc_ command
-line tool. You can find instructions for setting up oc in the [command line tool usage instructions ](04_lumik_cli.md). 
+line tool. You can find instructions for setting up oc in the [command line tool usage instructions ](lumik_cli.md). 
 For example, if your LUMI-K project is called *my-lumik-project*, you would run:
 
 ```bash
@@ -68,7 +68,7 @@ the project is `123456`. This information is also available via the web interfac
 
 ## Create a new project
 
-1. First, login to LUMI-K console as described [here](02_lumik_login.md). After being logged in, click the blue 
+1. First, login to LUMI-K console as described [here](lumik_login.md). After being logged in, click the blue 
 "Create Project" button as shown bellow:
 
 ![lumik list_projects](../img/lumik_list_projects.png)

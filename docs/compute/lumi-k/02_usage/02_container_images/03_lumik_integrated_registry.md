@@ -7,7 +7,7 @@ images locally and want to deploy them on the cluster without using an external 
 
 The process is simple:
 
-1. Make sure to [login vi the CLI](../../01_getting-started/04_lumik_cli.md)
+1. Make sure to [login vi the CLI](../../getting-started/lumik_cli.md)
 
 
 2. Log in to the registry
@@ -70,11 +70,11 @@ Alternatively you can query images in remote registry with `docker image ls [OPT
     oc create imagestream {YOUR_IMAGE_NAME}
     ```
 
-[oc](../../01_getting-started/04_lumik_cli.md) must be installed locally on your machine.
+[oc](../../getting-started/lumik_cli.md) must be installed locally on your machine.
 
 ## Download images from LUMI-K registry
 
-1. Make sure to [login vi the CLI](../../01_getting-started/04_lumik_cli.md)
+1. Make sure to [login vi the CLI](../../getting-started/lumik_cli.md)
 
 2. Log in to the registry
 

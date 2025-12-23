@@ -1,6 +1,6 @@
 # Security guide
 
-When LUMI-K applications are exposed to the Internet via [Routes](02_usage/04_networking.md#routes), their security 
+When LUMI-K applications are exposed to the Internet via [Routes](usage/networking.md#routes), their security 
 should be treated with an appropriate care. The user on whose account a service is running in LUMI-K is
 responsible for its security.
 
@@ -26,7 +26,7 @@ By default, LUMI-K applies the default security policies:
     - V2 requires you to either leave *SeccompProfile* empty or set it to *runtime/default*
         - Empty is compatible with v1 and works on OCP versions < 4.11
 
-- **[Default Pod resource limits](03_configuration/01_resource_quotas.md#default-requests-and-limits)**
+- **[Default Pod resource limits](configuration/resource_quotas.md#default-requests-and-limits)**
 
 
 ## Securing routes
@@ -38,7 +38,7 @@ provided by LUMI-K can be used directly. Otherwise, you need to add your certifi
 
 Access to the services should be limited to selected networks with
 **whitelists** whenever applicable (See the chapter
-[Routes](02_usage/04_networking.md#ip-whitelisting)). This is relevant whenever
+[Routes](usage/networking.md#ip-whitelisting)). This is relevant whenever
 access can be restricted in terms of IP addresses.
 
 Secure routes thwart eavesdropping attacks that target e.g. service passwords and usernames, and other critical data 
@@ -102,6 +102,6 @@ Other things to keep in mind:
 ## IP addresses for firewall openings
 
 When you need to configure firewall openings for traffic coming from LUMI-K, it is advised to request an 
-[Egress IP](03_configuration/02_network.md#egress-ips) for your LUMI-K project. This will allow the Pods in your LUMI-K 
+[Egress IP](configuration/network.md#egress-ips) for your LUMI-K project. This will allow the Pods in your LUMI-K 
 project to use a dedicated and fixed IP for all egress traffic.
 

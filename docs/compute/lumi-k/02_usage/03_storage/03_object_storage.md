@@ -15,7 +15,7 @@ For this first example, we will deploy a `nginx` deployment running with a `Pers
 
 First, for our tutorial, we will build and deploy a NGINX server.
 
-We [build](../02_container_images/01_creating_images.md) our nginx image with this Dockerfile: (since it's not possible to use the regular `nginx` image in LUMI-K)
+We [build](../container_images/creating_images.md) our nginx image with this Dockerfile: (since it's not possible to use the regular `nginx` image in LUMI-K)
 
 ```Dockerfile
 FROM nginx:stable
@@ -34,7 +34,7 @@ RUN sed -i.bak 's/^user/#user/' /etc/nginx/nginx.conf
 EXPOSE 8080
 ```
 
-If you build your image locally, don't forget to [push](../02_container_images/03_lumik_integrated_registry.md) it to your project, and 
+If you build your image locally, don't forget to [push](../container_images/lumik_integrated_registry.md) it to your project, and 
 to convert it to amd64 architecture if needed.
 
 Then, you can deploy and expose this `nginx` server with this Deployment:
@@ -163,7 +163,7 @@ COPY rclone.sh /usr/local/bin/
 RUN chmod 755 /.rclone.conf
 RUN chmod +x /usr/local/bin/rclone.sh
 ```
-If you create your image locally, don't forget to [push](../02_container_images/03_lumik_integrated_registry.md) it to your project.
+If you create your image locally, don't forget to [push](../container_images/lumik_integrated_registry.md) it to your project.
 
 Once all this done, you can deploy your `rclone` pod.
 
