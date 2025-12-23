@@ -26,46 +26,46 @@ compatible with LUMI-K policy. Three steps are needed to build an image in your 
 It specifies the base image to use, what files to add, what commands to run, and what settings the final image 
 should have:
 
-```Dockerfile
-FROM nginx:alpine
+    ```Dockerfile
+    FROM nginx:alpine
 
-# support running as arbitrary user which belongs to the root group
-RUN chmod g+rwx /var/cache/nginx /var/run /var/log/nginx && \
-    chown nginx.root /var/cache/nginx /var/run /var/log/nginx && \
-    # users are not allowed to listen on privileged ports
-    sed -i.bak 's/listen\(.*\)80;/listen 8081;/' /etc/nginx/conf.d/default.conf && \
-    # Make /etc/nginx/html/ available to use
-    mkdir -p /etc/nginx/html/ && chmod 777 /etc/nginx/html/ && \
-    # comment user directive as master process is run as user in OKD anyhow
-    sed -i.bak 's/^user/#user/' /etc/nginx/nginx.conf
+    # support running as arbitrary user which belongs to the root group
+    RUN chmod g+rwx /var/cache/nginx /var/run /var/log/nginx && \
+        chown nginx.root /var/cache/nginx /var/run /var/log/nginx && \
+        # users are not allowed to listen on privileged ports
+        sed -i.bak 's/listen\(.*\)80;/listen 8081;/' /etc/nginx/conf.d/default.conf && \
+        # Make /etc/nginx/html/ available to use
+        mkdir -p /etc/nginx/html/ && chmod 777 /etc/nginx/html/ && \
+        # comment user directive as master process is run as user in OKD anyhow
+        sed -i.bak 's/^user/#user/' /etc/nginx/nginx.conf
 
-WORKDIR /usr/share/nginx/html/
-EXPOSE 8081
+    WORKDIR /usr/share/nginx/html/
+    EXPOSE 8081
 
-USER nginx:root
-```
+    USER nginx:root
+    ```
 
-this `Dockerfile` is:
-* Uses the `nginx:alpine` image hosted in Docker hub registry as base image.
-* Gives write permissions to the `root` group (not the `root` user) to several folders that nginx needs to write to
-(/var/cache/nginx, /var/run, /var/log/nginx, and /etc/nginx/html/). LUMI-K runs application using a random user and the 
-`root` group.
-* Changing the port where nginx listens to, as only root is allowed to listen on privileged ports (<1024).
-* And finally comment out the `user` configuration directive.
+    this `Dockerfile` is:
+    * Uses the `nginx:alpine` image hosted in Docker hub registry as base image.
+    * Gives write permissions to the `root` group (not the `root` user) to several folders that nginx needs to write to
+    (/var/cache/nginx, /var/run, /var/log/nginx, and /etc/nginx/html/). LUMI-K runs application using a random user and the 
+    `root` group.
+    * Changing the port where nginx listens to, as only root is allowed to listen on privileged ports (<1024).
+    * And finally comment out the `user` configuration directive.
 
-The original `nginx:alpine` image has 5 layers, and  the `RUN` directive in our Docker file will add a new layer.
+    The original `nginx:alpine` image has 5 layers, and  the `RUN` directive in our Docker file will add a new layer.
 
-A simpler example of `Dockerfile` could be:
+    A simpler example of `Dockerfile` could be:
 
-```Dockerfile
-FROM ubuntu
+    ```Dockerfile
+    FROM ubuntu
 
-RUN apt install git
-```
+    RUN apt install git
+    ```
 
-This is installing git in the `ubuntu:latest` base image, and add also a new layer.
+    This is installing git in the `ubuntu:latest` base image, and add also a new layer.
 
-See the [Dockerfile](https://docs.docker.com/engine/reference/builder/) reference docs.
+    See the [Dockerfile](https://docs.docker.com/engine/reference/builder/) reference docs.
 
 
 
@@ -73,31 +73,31 @@ See the [Dockerfile](https://docs.docker.com/engine/reference/builder/) referenc
 directory as your Dockerfile. 
 
 
-```bash
-docker build . -t nginx:rootless
-```
+    ```bash
+    docker build . -t nginx:rootless
+    ```
 
-The instructions in your Dockerfile will be executed one by one to produce the final image container image. The value 
-you pass to `-t` is the name and tag that will be assigned to the image you are building. The name identifies the image,
-and the tag (after the colon) identifies a specific version of that image.
+    The instructions in your Dockerfile will be executed one by one to produce the final image container image. The value 
+    you pass to `-t` is the name and tag that will be assigned to the image you are building. The name identifies the image,
+    and the tag (after the colon) identifies a specific version of that image.
 
-You can see the built image in you local registry by running
+    You can see the built image in you local registry by running
 
-```bash
-docker image ls
-```
+    ```bash
+    docker image ls
+    ```
 
 3. Finally, if you want to share your image with others, you will need to publish it to a remote registry. To do so,
 you will need to give your image a new tag that points to the remote registry and then push it.
 
-```bash
-docker tag nginx:rootless <remote-registry.example.com>/<registry-username>/nginx:rootless
-docker push <remote-registry.example.com>/<registry-username>/nginx:rootless
-```
+    ```bash
+    docker tag nginx:rootless <remote-registry.example.com>/<registry-username>/nginx:rootless
+    docker push <remote-registry.example.com>/<registry-username>/nginx:rootless
+    ```
 
-!!! warning "Note"
-    Images built for machines with architecture other than **amd64** are not runnable on LUMI-K. Either re-build them on 
-    an **amd64** machine or convert them. You can also rebuild them directly in LUMI-K as described in the following section.
+    !!! warning "Note"
+        Images built for machines with architecture other than **amd64** are not runnable on LUMI-K. Either re-build them on 
+        an **amd64** machine or convert them. You can also rebuild them directly in LUMI-K as described in the following section.
 
 
 ## Using LUMI-K to build container images
@@ -118,34 +118,34 @@ clone your git repository directly. As prerequisites, you should have:
 1. Create [OKD BuildConfig](https://docs.okd.io/latest/cicd/builds/creating-build-inputs.html#builds-binary-source_creating-build-inputs) 
 with build source set to binary. Be sure to not be in a directory under git version control:
 
-```bash
-$ oc new-build --to=my-hello-image:devel --name=my-hello --binary
-```
+    ```bash
+    $ oc new-build --to=my-hello-image:devel --name=my-hello --binary
+    ```
 
-The output should be similar to:
+    The output should be similar to:
 
-```bash
-    * A Docker build using binary input will be created
-      * The resulting image will be pushed to image stream tag "my-hello-image:devel"
-      * A binary build was created, use 'start-build --from-dir' to trigger a new build
+    ```bash
+        * A Docker build using binary input will be created
+          * The resulting image will be pushed to image stream tag "my-hello-image:devel"
+          * A binary build was created, use 'start-build --from-dir' to trigger a new build
 
---> Creating resources with label build=my-hello ...
-    imagestream.image.openshift.io "my-hello-image" created
-    buildconfig.build.openshift.io "my-hello" created
---> Success
-```
+    --> Creating resources with label build=my-hello ...
+        imagestream.image.openshift.io "my-hello-image" created
+        buildconfig.build.openshift.io "my-hello" created
+    --> Success
+    ```
 
-OKD creates a **BuildConfig** with name `my-hello` object in your active project, it also creates a placeholder
-**ImageStream** object with name `my-hello-image` to host the resulting image.
+    OKD creates a **BuildConfig** with name `my-hello` object in your active project, it also creates a placeholder
+    **ImageStream** object with name `my-hello-image` to host the resulting image.
 
 2. Trigger the build process by providing the build artifacts (i.e., Dockerfile amd other dependencies if any) to 
 LUMI-K. 
 
-```bash
-oc start-build my-hello --from-dir=/path/to/artifacts --follow
-```
+    ```bash
+    oc start-build my-hello --from-dir=/path/to/artifacts --follow
+    ```
 
-Once the build is successfully completed, the resulting image will be available in [LUMI-K image registry](lumik_integrated_registry.md). 
+    Once the build is successfully completed, the resulting image will be available in [LUMI-K image registry](lumik_integrated_registry.md). 
 
 ### Using the Source to Image (S2I) mechanism
 
