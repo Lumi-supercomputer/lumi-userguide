@@ -59,7 +59,7 @@ Alternatively you can query images in remote registry with `docker image ls [OPT
     If you receive this error when attempting to push your image:
 
     ```
-    unknown: unexpected status from HEAD request to https:// registry.apps.v1.lumi-k.eu/v2/<lumik-project-name>/<image-name>/manifests/sha256:834e7b036543663e8616810c2c3a199cd8a3618e981f75eea235e0920d601ce4: 500
+    unknown: unexpected status from HEAD request to https://registry.apps.v1.lumi-k.eu/v2/<lumik-project-name>/<image-name>/manifests/sha256:834e7b036543663e8616810c2c3a199cd8a3618e981f75eea235e0920d601ce4: 500
     ```
 
     You must create the `ImageStream` before pushing.
