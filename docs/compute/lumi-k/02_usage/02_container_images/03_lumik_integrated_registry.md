@@ -13,7 +13,7 @@ The process is simple:
 2. Log in to the registry
 
     ```sh
-      docker login -u $(oc whoami) -p $(oc whoami -t) registry.apps.v1.lumi-k.eu
+    docker login -u $(oc whoami) -p $(oc whoami -t) registry.apps.v1.lumi-k.eu
     ```
 
 !!! info
@@ -28,25 +28,25 @@ The process is simple:
     Example:
 
     ```sh
-        docker tag myapp:latest registry.apps.v1.lumi-k.eu/myproject/myapp:latest
+    docker tag myapp:latest registry.apps.v1.lumi-k.eu/myproject/myapp:latest
     ```
 
 
 4. Push the image to the registry:
 
-   ```sh
-    docker push  registry.apps.v1.lumi-k.eu/<lumik-project-name>/<image-name>:<image-tag>
-   ```
+  ```sh
+  docker push  registry.apps.v1.lumi-k.eu/<lumik-project-name>/<image-name>:<image-tag>
+  ```
     Example:
 
     ```sh
-      docker push myapp:latest registry.apps.v1.lumi-k.eu/myproject/myapp:latest
+    docker push myapp:latest registry.apps.v1.lumi-k.eu/myproject/myapp:latest
     ```
 
 5. Verify the ImageStream in LUMI-K.
 
     ```sh
-      oc describe is <image-name>
+    oc describe is <image-name>
     ```
 
 You should be able to see the ImageStream in the web console as well under Builds -> ImageStreams :
@@ -79,24 +79,24 @@ Alternatively you can query images in remote registry with `docker image ls [OPT
 2. Log in to the registry
 
     ```sh
-      docker login -u $(oc whoami) -p $(oc whoami -t) registry.apps.v1.lumi-k.eu
+    docker login -u $(oc whoami) -p $(oc whoami -t) registry.apps.v1.lumi-k.eu
     ```
 
 3. Pull the image
 
     ```sh 
-     docker pull registry.apps.v1.lumi-k.eu/<lumik-project-name>/<image-name>:<image-tag>
+    docker pull registry.apps.v1.lumi-k.eu/<lumik-project-name>/<image-name>:<image-tag>
     ```
 
 4. Optionally you can re-tag the local image before using it (so you can refer to it without the the registry url)
 
     ```sh 
-     docker tag registry.apps.v1.lumi-k.eu/<lumik-project-name>/<image-name>:<image-tag> <image-name>:<image-tag> 
+    docker tag registry.apps.v1.lumi-k.eu/<lumik-project-name>/<image-name>:<image-tag> <image-name>:<image-tag> 
     ```
 5. Verify the image
 
     ```sh 
-     docker images
+    docker images
     ```
 
 ## Access control for the LUMI-K integrated registry
