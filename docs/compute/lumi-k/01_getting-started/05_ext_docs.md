@@ -2,7 +2,7 @@
 
 ## Platform documentation
 
-Both the OpenShift and the Kubernetes projects maintain extensive user
+Both the OKD and the Kubernetes projects maintain extensive user
 documentation. When looking at documentation, you should keep in mind that the
 documentation is versioned for each version of the platform. You should look at
 documentation for the platform with which you are currently working with. You
@@ -10,7 +10,7 @@ can find out the relevant version information by clicking the question mark
 symbol in the top bar of the web interface and selecting "About".
 
   * [Kubernetes documentation](https://kubernetes.io/docs/home/)
-  * [OpenShift documentation](https://docs.okd.io/)
+  * [OKD documentation](https://docs.okd.io/)
 
 You could also have a look at "Awesome Kubernetes" which is a curated list of
 links about Kubernetes:
@@ -30,7 +30,7 @@ you may find interesting for gaining deeper knowledge about Docker:
 
 ## Tutorials and courses
 
-There are many tutorials and online courses available for OpenShift and
+There are many tutorials and online courses available for OpenShift/OKD and
 Kubernetes. Here is a list of some of them:
 
   * [OpenShift: Interactive Learning Portal](https://learn.openshift.com/)
@@ -40,12 +40,10 @@ Kubernetes. Here is a list of some of them:
 You may also find the material and the exercises of the CSC container course
 helpful:
 
-  * [CSC container course material](https://LUMI-K-course.a3s.fi/index.html)
+  * [CSC container course material](https://rahti-course.a3s.fi/index.html)
 
 ## Blogs
 
-You can find usage examples and announcements from the OpenShift and the
-Kubernetes blogs:
+You can find usage examples and announcements from Kubernetes blogs:
 
   * [Kubernetes blog](http://blog.kubernetes.io/)
-  * [OpenShift blog](https://blog.openshift.com/)
