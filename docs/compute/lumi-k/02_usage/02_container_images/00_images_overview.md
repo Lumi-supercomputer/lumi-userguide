@@ -124,7 +124,7 @@ docker image inspect nginx:latest --format='{{.Architecture}}'
 
 !!! warning "Note"
     Images built on machines with architecture other than **amd64** are not runnable on LUMI-K. Either re-build them on 
-    an **amd64** machine or convert them. You can also rebuild them directly in LUMI-K as described in the [next section](01_creating_images.md).
+    an **amd64** machine or convert them. You can also rebuild them directly in LUMI-K as described in the [next section](creating_images.md).
 
 
 ## Image registries
@@ -137,7 +137,7 @@ For example, `nginx:1.25` and `nginx:latest` are two tags within the same reposi
 Public registries, such as [Docker Hub](https://hub.docker.com/) or [Quay.io](https://quay.io/), host images that 
 anyone can pull. Private registries require authentication and are commonly used to store internal or sensitive images. 
 Kubernetes clusters like LUMI-K can pull from both public and private registries as long as the required credentials 
-are provided. Moreover, LUMI-K provide its own [integrated registry](03_lumik_integrated_registry.md) that allows 
+are provided. Moreover, LUMI-K provide its own [integrated registry](lumik_integrated_registry.md) that allows 
 you to store, pull, and publish your images.
 
 ## The Open Container Initiative (OCI) standard

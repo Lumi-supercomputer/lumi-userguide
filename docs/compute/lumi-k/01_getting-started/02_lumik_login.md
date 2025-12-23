@@ -25,4 +25,4 @@ After logging in you should see a page like this:
 
 ![LUMI-K main page](../img/lumik_main_page.png)
 
-3. If not done yet, proceed to [create a project](03_lumik_projects.md) for running your applications.
+3. If not done yet, proceed to [create a project](lumik_projects.md) for running your applications.

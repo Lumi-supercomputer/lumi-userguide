@@ -50,7 +50,7 @@ the terms _project_ and _namespace_ are often used interchangeably, as both refe
 user’s resources.
 
 The first step when starting with LUMI-K is to create a project (also known as a namespace). 
-In order to create a project in LUMI-K, please refer to the [Creating a project](../01_getting-started/03_lumik_projects.md#creating-a-project) section of the documentation.
+In order to create a project in LUMI-K, please refer to the [Creating a project](../getting-started/lumik_projects.md#creating-a-project) section of the documentation.
 
 ### Pod
 
@@ -65,7 +65,7 @@ supporting functions like logging, data synchronization, or proxying.
 Pods are designed to be temporary. If a Pod fails or its hosting node becomes unavailable, Kubernetes may create a new Pod to 
 replace it. Because of this, Pods are usually wrapped and managed by persistent higher-level objects such as Deployments or 
 StatefulSets, which ensure the correct number of specific Pods is always running. Moreover, any data generated or modified 
-by a Pod should be stored on a [persistent volume](03_storage/02_persistent_storage.md) attached to the Pod.
+by a Pod should be stored on a [persistent volume](storage/persistent_storage.md) attached to the Pod.
 
 ![Pod](../img/lumik_pods.png)
 
@@ -499,7 +499,7 @@ Other options for `termination` include `passthrough` or `reencrypt`.
 All route that have `.spec.host` set to avalue with the pattern `*.apps.lumi-k.eu`, will automatically have a 
 **DNS record** and a valid **TLS certificate**. It is possible to configure a Route with any given hostname, 
 but a `CNAME` pointing to `router-default.v1.apps.lumi-k.eu` must be configured, and a **TLS certificate** must be provided. 
-See the [Custom domain names](04_networking.md#custom-domains) page for more information.
+See the [Custom domain names](networking.md#custom-domains) page for more information.
 
 !!! info "Default host value"
     If `.spec.host` is not set,  it defaults to `.metadata.name` + `-` + `namespace` + `.apps.lumi-k.eu`.

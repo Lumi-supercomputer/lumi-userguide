@@ -21,7 +21,7 @@ access by the applications running inside the containers to data that can be rec
 
 Do **not** use ephemeral storage for user data, databases, or anything that must persist.
 
-You can find additional information on the [Ephemeral storage](01_ephemeral_storage.md) page.
+You can find additional information on the [Ephemeral storage](ephemeral_storage.md) page.
 
 ## Persistent storage
 
@@ -36,7 +36,7 @@ or deleted:
 * Applications that manage user-generated content
 * State that must survive updates, restarts, or node failures
 
-You can find additional information on the [Persistent volume](02_persistent_storage.md) page.
+You can find additional information on the [Persistent volume](persistent_storage.md) page.
 
 
 ## Object storage

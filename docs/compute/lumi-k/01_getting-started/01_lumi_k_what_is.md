@@ -2,7 +2,7 @@
 
 !!! warning "Recommendations"
     Before using LUMI-K, we recommend that you familiarise yourself with cloud containers and Kubernetes.
-    You can find more information by following this [link](05_ext_docs.md).
+    You can find more information by following this [link](ext_docs.md).
 
 LUMI-K is a container orchestration platform built on top of a hardware partition of the LUMI supercomputer. 
 LUMI-K runs on [okd](https://www.okd.io/), the community distribution of Kubernetes that powers Red Hat OpenShift.

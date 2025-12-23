@@ -92,7 +92,7 @@ computing project cannot exceed 12 cores. The same restrictions apply for memory
 !!! warning "Note"
 
     If your LUMI project is shared with other team members, they can create new LUMI-K projects
-    (see [project creation page](../01_getting-started/03_lumik_projects.md)). Keep in mind that the quota will be shared with them.
+    (see [project creation page](../getting-started/lumik_projects.md)). Keep in mind that the quota will be shared with them.
     
 You can find the resource usage and quota of a project in the project view in
 the web interface under **Administration -> ResourceQuota** and **Administration -> LimitRanges**.

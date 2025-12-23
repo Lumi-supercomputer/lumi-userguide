@@ -110,8 +110,8 @@ This method allows building an image using a local folder containing a Dockerfil
 (source code, executables, configuration, etc.). It is useful when it is not possible or inconvenient to allow LUMI-K to
 clone your git repository directly. As prerequisites, you should have:
 
-* Created a project in LUMI-K as described [here](../../01_getting-started/03_lumik_projects.md)
-* Logged to the cluster using the `oc` [CLI](../../01_getting-started/04_lumik_cli.md)
+* Created a project in LUMI-K as described [here](../../getting-started/lumik_projects.md)
+* Logged to the cluster using the `oc` [CLI](../../getting-started/lumik_cli.md)
 
 **Steps:**
 
@@ -145,7 +145,7 @@ LUMI-K.
 oc start-build my-hello --from-dir=/path/to/artifacts --follow
 ```
 
-Once the build is successfully completed, the resulting image will be available in [LUMI-K image registry](03_lumik_integrated_registry.md). 
+Once the build is successfully completed, the resulting image will be available in [LUMI-K image registry](lumik_integrated_registry.md). 
 
 ### Using the Source to Image (S2I) mechanism
 
@@ -234,13 +234,13 @@ see the warning "**URL is valid but cannot be reached**"
 
 #### Using the CLI
 
-1. [Log into LUMI-K with (`oc`) CLI](../../01_getting-started/04_lumik_cli.md#how-to-login-with-oc):
+1. [Log into LUMI-K with (`oc`) CLI](../../getting-started/lumik_cli.md#how-to-login-with-oc):
 
 ```bash
 oc login <cluster-url>
 ```
 
-2. [Create a New Project](../../01_getting-started/03_lumik_projects.md#create-a-new-project):
+2. [Create a New Project](../../getting-started/lumik_projects.md#create-a-new-project):
 
 ```bash
 oc new-project <project-name> --display-name=<display-name> --description="lumi_project:<project-number>"
@@ -270,7 +270,7 @@ oc new-app <repository-url> --name=<application-name>
  oc logs bc/<application-name>
  ```
 
-7. Once the build ends, the resulting image will be pushed to [LUMI-K's integrated registry](03_lumik_integrated_registry.md).
+7. Once the build ends, the resulting image will be pushed to [LUMI-K's integrated registry](lumik_integrated_registry.md).
 Moreover, the container image will automatically be instantiated in LUMI-K via a Deployment object.
 
 8. Optionally, you can expose your application to internet by running:
@@ -279,7 +279,7 @@ Moreover, the container image will automatically be instantiated in LUMI-K via a
 $ oc expose service <application-name>
 ```
 
-This will create a [Route](../04_networking.md#routes) that you can check with:
+This will create a [Route](../networking.md#routes) that you can check with:
 
 ```bash
 oc get route <application-name>
@@ -318,7 +318,7 @@ oc set build-secret --source bc/<application-name> <secret-name>
 ```
 
 * If your build fails or it is very slow in LUMI-K, it could mean that you need to assign more resources to the BuildConfig object.
-By default, the BuildConfig uses the [default request and limits](../../03_configuration/01_resource_quotas.md) for running the builder Pod. In that case
+By default, the BuildConfig uses the [default request and limits](../../configuration/resource_quotas.md) for running the builder Pod. In that case
 you need to modify the BuildConfig YAML definition using the console or the CLI.
 
 #### Update BuildConfig resources using the CLI
@@ -419,4 +419,4 @@ oc start-build <buildconfig-name>
 ```
 
 Note that the ratio between requests and limits cannot be more than 5x.
-(default ratio, more information [here](../../03_configuration/01_resource_quotas.md#custom-requests-and-limits)).
+(default ratio, more information [here](../../configuration/resource_quotas.md#custom-requests-and-limits)).
