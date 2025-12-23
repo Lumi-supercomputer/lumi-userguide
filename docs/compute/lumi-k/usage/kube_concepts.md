@@ -82,7 +82,7 @@ metadata:
 spec:
   containers:
   - name: webserver
-    image: cscfi/nginx-okd
+    image: <image>
     ports:
     - containerPort: 8080
       protocol: TCP

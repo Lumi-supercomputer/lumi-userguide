@@ -5,7 +5,7 @@
     You can find more information by following this [link](ext_docs.md).
 
 LUMI-K is a container orchestration platform built on top of a hardware partition of the LUMI supercomputer. 
-LUMI-K runs on [okd](https://www.okd.io/), the community distribution of Kubernetes that powers Red Hat OpenShift.
+LUMI-K runs on [OKD](https://www.okd.io/), the community distribution of Kubernetes that powers Red Hat OpenShift.
 
 LUMI-K is a general-purpose platform that can run many types of applications, including web services, databases, 
 scientific software stacks, and data-analysis pipelines. Each application is deployed as one or more containers, 

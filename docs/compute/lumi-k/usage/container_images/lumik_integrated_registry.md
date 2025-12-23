@@ -93,6 +93,7 @@ Alternatively you can query images in remote registry with `docker image ls [OPT
     ```sh 
     docker tag registry.apps.v1.lumi-k.eu/<lumik-project-name>/<image-name>:<image-tag> <image-name>:<image-tag> 
     ```
+
 5. Verify the image
 
     ```sh 
