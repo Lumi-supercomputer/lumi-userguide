@@ -16,8 +16,8 @@ The process is simple:
     docker login -u $(oc whoami) -p $(oc whoami -t) registry.apps.v1.lumi-k.eu
     ```
 
-!!! info
-    If you get any error, make sure you are logged in. If you run `oc whoami`, the command should return your username.
+    !!! info
+        If you get any error, make sure you are logged in. If you run `oc whoami`, the command should return your username.
 
 3. Tag your local image so it points to your project’s ImageStream location. Images must follow this format:
 
@@ -34,9 +34,9 @@ The process is simple:
 
 4. Push the image to the registry:
 
-  ```sh
-  docker push  registry.apps.v1.lumi-k.eu/<lumik-project-name>/<image-name>:<image-tag>
-  ```
+    ```sh
+    docker push  registry.apps.v1.lumi-k.eu/<lumik-project-name>/<image-name>:<image-tag>
+    ```
     Example:
 
     ```sh
