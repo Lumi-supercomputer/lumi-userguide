@@ -116,9 +116,9 @@ An image located at:
 
 is by default accessible only to:
 
-* users who have access to <lumik-project-name>
+* users who have access to \<lumik-project-name\>
 
-* service accounts in <lumik-project-name>
+* service accounts in \<lumik-project-name\>
 
 Users in other projects cannot pull or push this image unless explicit access is granted.
 
