@@ -260,9 +260,9 @@ see the warning "**URL is valid but cannot be reached**"
 
 5. Deploy the Application:
 
-```bash
-oc new-app <repository-url> --name=<application-name>
-```
+    ```bash
+    oc new-app <repository-url> --name=<application-name>
+    ```
 
 6. You can follow the build progress:
 
@@ -279,7 +279,7 @@ Moreover, the container image will automatically be instantiated in LUMI-K via a
     $ oc expose service <application-name>
     ```
 
-This will create a [Route](../networking.md#routes) that you can check with:
+    This will create a [Route](../networking.md#routes) that you can check with:
 
     ```bash
     oc get route <application-name>
@@ -420,4 +420,4 @@ you need to modify the BuildConfig YAML definition using the console or the CLI.
     ```
 
 Note that the ratio between requests and limits cannot be more than 5x.
-(default ratio, more information [here](../../configuration/resource_quotas.md#custom-requests-and-limits)).
+Check out for more information in [here](../../configuration/resource_quotas.md#custom-requests-and-limits).
