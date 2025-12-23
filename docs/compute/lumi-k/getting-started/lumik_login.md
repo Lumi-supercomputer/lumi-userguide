@@ -16,13 +16,13 @@ services (e.g., LUMI-G and LUMI-O), you can skip this step as you will already h
 
 2. Log in to LUMI-K at [https://console.lumi-k.eu/](https://console.lumi-k.eu/). Choose HAKA, CSC, or Puhuri depending on your organization. 
 
-!!! Warning "User not found"
-    If you get an error message similar to this please make sure to create a LUMI project as described in the previous step.
-    If you have just created a LUMI project, it might take up to 10 minutes for your profile information to be synced to LUMI-K.
-    ![Error_no_user](../img/lumik_error_no_user.png)
+    !!! Warning "User not found"
+        If you get an error message similar to this please make sure to create a LUMI project as described in the previous step.
+        If you have just created a LUMI project, it might take up to 10 minutes for your profile information to be synced to LUMI-K.
+        ![Error_no_user](../img/lumik_error_no_user.png)
 
-After logging in you should see a page like this:
+    After logging in you should see a page like this:
 
-![LUMI-K main page](../img/lumik_main_page.png)
+    ![LUMI-K main page](../img/lumik_main_page.png)
 
 3. If not done yet, proceed to [create a project](lumik_projects.md) for running your applications.
