@@ -5,14 +5,14 @@ cluster and with the outside world. In this network, every Pod gets its own IP a
 other Pods directly. By default, a pod can communicate only with Pods running in the same namespace
 (i.e., LUMI-K project) unless changed by `NetworkPolicies`. When a Pod is restarted or moved, its IP address changes, 
 thus, in order to provide stable IPs to applications, `Services` are used to dynamically map the IPs of one or more Pods
-to fixed IPs and DNS records, which can be then used to reach the Pods. The IPs of Pods and Services are reachable form within the
+to fixed IPs and DNS records, which can be then used to reach the Pods. The IPs of Pods and Services are reachable within the
 cluster only, if a service is to be exposed to internet, you will need to create `Routes`. Hereafter, we explain these 
 concepts in details.
 
 ## Pod IPs
 
 Each Pod receives an IP address from the LUMI-K network (CIDR: 10.128.0.0/14). By default, Pods can communicate with
-other Pods in the same LUMI-K project (i.e., namespace ) and cross-nodes Pod communication is ensured dynamically by the
+other Pods in the same LUMI-K project (i.e., namespace) and cross-nodes Pod communication is ensured dynamically by the
 LUMI-K network. However, it is not advisable to use the Pod IPs directly to reach Pods, as the IPs are ephemeral 
 and can change when pods are recreated. You can check the IP addresses assigned to you pods using the following command:
 
@@ -53,9 +53,9 @@ spec:
 ## Services
 
 A Service is an abstraction that provides a stable way to access a group of Pods. Because Pods are temporary
-and can be replaced at any time, their IP addresses also are temporary. A Service solves this by giving the group of Pods a 
+and can be replaced at any time, their IP addresses also are temporary. A Service solves this by assigning the group of Pods a 
 consistent virtual IP and DNS name. The Service automatically keeps track of which Pods should receive traffic, 
-based on labels, and forwards traffic to them, acting as  **load balancers**. This allows applications to communicate 
+based on labels, and forwards traffic to them, acting as **load balancers**. This allows applications to communicate 
 with each other reliably even as individual Pods are replaced, restarted, or scaled.
 
 The following YAML definition creates a service object that points to all pods with label **app: my-app**, using the
