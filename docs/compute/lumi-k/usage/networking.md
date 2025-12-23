@@ -195,9 +195,9 @@ check if your custom domain name has the right configuration using the following
 
 ### IP Whitelisting
 
-An important feature of Routes, is the IP whitelisting , ie: only allowing a range of IPs to access the route. 
+An important feature of Routes, is the IP whitelisting , i.e., only allowing a single IP or a range of IPs to access the `Route`. 
 This can be achieved by creating an annotation in the Route object with the key `haproxy.router.openshift.io/ip_whitelist`, 
-and by setting the value to a space separated list of IPs and/or network ranges. See the examples below.
+and by setting the value to a space-separated list of IPs and/or network ranges. See the examples below.
 
 !!! info "Note"
 
@@ -212,19 +212,19 @@ and by setting the value to a space separated list of IPs and/or network ranges.
 * This first example will whitelist a network IP range (`193.166.0.0/16`):
 
     ```bash
-    oc annotate route $route_name haproxy.router.openshift.io/ip_whitelist='193.166.0.0/16'
+    oc annotate route <route_name> haproxy.router.openshift.io/ip_whitelist='193.166.0.0/16'
     ```
 
 * It is possible to whitelist only a specific IP:
 
     ```bash
-    oc annotate route $route_name haproxy.router.openshift.io/ip_whitelist='188.184.9.236'
+    oc annotate route <route_name> haproxy.router.openshift.io/ip_whitelist='188.184.9.236'
     ```
 
 * It is also possible to whitelist multiple IPs and networks at the same time:
 
     ```bash
-    oc annotate route $route_name haproxy.router.openshift.io/ip_whitelist='193.166.0.0/15 193.167.189.25'
+    oc annotate route <route_name> haproxy.router.openshift.io/ip_whitelist='193.166.0.0/15 193.167.189.25'
     ```
 
 Alternatively, you can set the annotation directly to `Route` resource when creating it for the first time.
