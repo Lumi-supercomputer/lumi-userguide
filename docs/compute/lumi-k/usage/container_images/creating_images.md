@@ -234,29 +234,29 @@ see the warning "**URL is valid but cannot be reached**"
 
 #### Using the CLI
 
-1. [Log into LUMI-K with (`oc`) CLI](../../getting-started/lumik_cli.md#how-to-login-with-oc):
+1. Log into LUMI-K with [(`oc`) CLI](../../getting-started/lumik_cli.md#how-to-login-with-oc):
 
-```bash
-oc login <cluster-url>
-```
+    ```bash
+    oc login <cluster-url>
+    ```
 
-2. [Create a New Project](../../getting-started/lumik_projects.md#create-a-new-project):
+2. Create a [New Project](../../getting-started/lumik_projects.md#create-a-new-project):
 
-```bash
-oc new-project <project-name> --display-name=<display-name> --description="lumi_project:<project-number>"
-```
+    ```bash
+    oc new-project <project-name> --display-name=<display-name> --description="lumi_project:<project-number>"
+    ```
 
 3. Create SSH Key Secret:
 
-```bash
-oc create secret generic <secret-name> --from-file=ssh-privatekey=<path-to-private-key> --type=kubernetes.io/ssh-auth
-```
+    ```bash
+    oc create secret generic <secret-name> --from-file=ssh-privatekey=<path-to-private-key> --type=kubernetes.io/ssh-auth
+    ```
 
 4. Link the Secret to the Builder Service Account:
 
-```bash
-oc secrets link builder <secret-name>
-```
+    ```bash
+    oc secrets link builder <secret-name>
+    ```
 
 5. Deploy the Application:
 
@@ -266,31 +266,32 @@ oc new-app <repository-url> --name=<application-name>
 
 6. You can follow the build progress:
 
- ```bash
- oc logs bc/<application-name>
- ```
+    ```bash
+    oc logs bc/<application-name>
+    ```
 
 7. Once the build ends, the resulting image will be pushed to [LUMI-K's integrated registry](lumik_integrated_registry.md).
 Moreover, the container image will automatically be instantiated in LUMI-K via a Deployment object.
 
 8. Optionally, you can expose your application to internet by running:
 
-```bash
-$ oc expose service <application-name>
-```
+    ```bash
+    $ oc expose service <application-name>
+    ```
 
 This will create a [Route](../networking.md#routes) that you can check with:
 
-```bash
-oc get route <application-name>
-```
+    ```bash
+    oc get route <application-name>
+    ```
 
 9. A new build can be triggered for the application by:
 
-```bash
-oc start-build <application-name>
-```
-Or using [webhooks](https://docs.okd.io/latest/cicd/builds/triggering-builds-build-hooks.html#builds-webhook-triggers_triggering-builds-build-hooks).
+    ```bash
+    oc start-build <application-name>
+    ```
+
+Alternatively, to trigger a build from a Gitlab or a Github repository you can checkout the [webhooks](https://docs.okd.io/latest/cicd/builds/triggering-builds-build-hooks.html#builds-webhook-triggers_triggering-builds-build-hooks) documentations.
 
 
 ### Using the inline Dockerfile method
@@ -325,56 +326,56 @@ you need to modify the BuildConfig YAML definition using the console or the CLI.
 
 1. First, you need to get he YAML definition of the failed BuildConfig.
 
-```bash
-oc get bc <name-of-failed-bc> -o yaml > fixed_buildconfig.yaml
-```
+    ```bash
+    oc get bc <name-of-failed-bc> -o yaml > fixed_buildconfig.yaml
+    ```
 
 2. Edit the fixed_buildconfig.yaml file in your favorite editor by adding the desired `resources` under `.spec` as follows:
 
-```yaml
-apiVersion: build.openshift.io/v1
-kind: BuildConfig
-metadata:
-  name: my-app-build
-spec:
-  source:
-    type: Git
-    git:
-      uri: https://github.com/example/my-app.git
+    ```yaml
+    apiVersion: build.openshift.io/v1
+    kind: BuildConfig
+    metadata:
+      name: my-app-build
+    spec:
+      source:
+        type: Git
+        git:
+          uri: https://github.com/example/my-app.git
 
-  strategy:
-    type: Docker
-    dockerStrategy: {}
+      strategy:
+        type: Docker
+        dockerStrategy: {}
 
-  output:
-    to:
-      kind: ImageStreamTag
-      name: my-app:latest
-  resources:
-    requests:
-      cpu: "500m"
-      memory: "1Gi"
-    limits:
-      cpu: "1"
-      memory: "2Gi"
-```
+      output:
+        to:
+          kind: ImageStreamTag
+          name: my-app:latest
+      resources:
+        requests:
+          cpu: "500m"
+          memory: "1Gi"
+        limits:
+          cpu: "1"
+          memory: "2Gi"
+    ```
 
-!!! info
+    !!! info
 
-    You can also use the command `oc edit bc <buildconfig-name>` to modify the BuildConfig object.
+        You can also use the command `oc edit bc <buildconfig-name>` to modify the BuildConfig object.
 
 
 3. Apply the changes:
 
-```bash
-oc apply -f fixed_buildconfig.yaml
-```
+    ```bash
+    oc apply -f fixed_buildconfig.yaml
+    ```
 
 4. Run the build again:
 
-```bash
-oc start-build <buildconfig-name>
-```
+    ```bash
+    oc start-build <buildconfig-name>
+    ```
 
 #### Update BuildConfig resources using the Web console
 
@@ -382,41 +383,41 @@ oc start-build <buildconfig-name>
 2. Select the `YAML` tab.
 3. Add  the desired `resources` under `.spec` as follows:
 
-```yaml
-apiVersion: build.openshift.io/v1
-kind: BuildConfig
-metadata:
-  name: my-app-build
-spec:
-  source:
-    type: Git
-    git:
-      uri: https://github.com/example/my-app.git
+    ```yaml
+    apiVersion: build.openshift.io/v1
+    kind: BuildConfig
+    metadata:
+      name: my-app-build
+    spec:
+      source:
+        type: Git
+        git:
+          uri: https://github.com/example/my-app.git
 
-  strategy:
-    type: Docker
-    dockerStrategy: {}
-  output:
-    to:
-      kind: ImageStreamTag
-      name: my-app:latest
-    
-  resources:
-    requests:
-      cpu: "500m"
-      memory: "1Gi"
-    limits:
-      cpu: "1"
-      memory: "2Gi"
-```
+      strategy:
+        type: Docker
+        dockerStrategy: {}
+      output:
+        to:
+          kind: ImageStreamTag
+          name: my-app:latest
+        
+      resources:
+        requests:
+          cpu: "500m"
+          memory: "1Gi"
+        limits:
+          cpu: "1"
+          memory: "2Gi"
+    ```
 
 4. Save the changes.
 
 5. Run the build again:
 
-```bash
-oc start-build <buildconfig-name>
-```
+    ```bash
+    oc start-build <buildconfig-name>
+    ```
 
 Note that the ratio between requests and limits cannot be more than 5x.
 (default ratio, more information [here](../../configuration/resource_quotas.md#custom-requests-and-limits)).
