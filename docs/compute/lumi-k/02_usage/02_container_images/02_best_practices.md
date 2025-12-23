@@ -83,7 +83,7 @@ RUN apt-get update && apt-get install -y curl
 ## Combine related commands into fewer layers.
 
 Every **RUN** instruction creates a new layer. If you install packages in one layer and clean them in another, 
-the unwanted content remains in earlier layers. Combining commands prevents this. Exampl:
+the unwanted content remains in earlier layers. Combining commands prevents this. Example:
 
 
 **Bad (bloated image)**:
