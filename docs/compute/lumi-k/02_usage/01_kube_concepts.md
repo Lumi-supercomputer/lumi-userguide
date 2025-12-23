@@ -1,21 +1,21 @@
-# Kubernetes and OpenShift concepts
+# Kubernetes and OKD concepts
 
-LUMI-K is a container orchestration platform based on Kubernetes and OpenShift, thus understanding their core concept is a
+LUMI-K is a container orchestration platform based on Kubernetes and OKD, thus understanding their core concept is a
 prerequisite before deploying your applications to LUMI-K.
 
 The power of Kubernetes lies in the relatively simple abstractions it provides for complex tasks such as load balancing, 
 software updates, and autoscaling for distributed applications. Here, we give a very brief overview of some of the most important 
-abstractions, but we highly recommend that you also read the concept documentation for Kubernetes and OpenShift.
+abstractions, but we highly recommend that you also read the concept documentation for Kubernetes and OKD.
 
 * [Kubernetes concepts](https://kubernetes.io/docs/concepts/)
-* [OpenShift concepts](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/building_applications/index)
+* [OKD concepts](https://docs.okd.io/latest/applications/index.html)
 
 
 Kubernetes uses a declarative model to manage the state of applications deployed in users' projects (also known as 
 Namespaces). At the core of this model are objects, which are persistent records of intent. Each object describes a 
 specific piece of the application desired state, such as how many replicas an application should have, what network 
-rules apply, or what storage a workload requires. Most of the objects are common to both plain Kubernetes and OpenShift,
-but OpenShift also introduces some of its own extra objects.
+rules apply, or what storage a workload requires. Most of the objects are common to both plain Kubernetes and OKD,
+but OKD also introduces some of its own extra objects.
 
 Object intents are provided to Kubernetes by submitting object definitions, usually written in YAML or JSON. 
 These definitions describe the desired state of the object, and Kubernetes continuously works to make the actual state 
@@ -44,7 +44,7 @@ requiring multiple physical clusters. Namespaces are used for:
 
 * Applying resource quotas, access controls, and network policies.
 
-In LUMI-K, you will primarily work with projects rather than namespaces. A project is an OpenShift abstraction built on 
+In LUMI-K, you will primarily work with projects rather than namespaces. A project is an OKD abstraction built on 
 top of a Kubernetes namespace, adding additional metadata and access-control features. However, 
 the terms _project_ and _namespace_ are often used interchangeably, as both refer to the logical grouping of a 
 user’s resources.
@@ -241,7 +241,7 @@ spec:
   selector:
     matchLabels:
       app: nginx # has to match .spec.template.metadata.labels
-  serviceName: "nginx"
+  serviceName: nginx
   replicas: 3 # If omitted, by default is 1
   template:
     metadata:
@@ -388,15 +388,15 @@ and their plain content is not displayed by default when inspecting the Secret o
 apiVersion: v1
 kind: Secret
 data:
-  secret-config: dGhpc19pc19hX2JhZF90b2tlbgo=
+  secret-config: V2VsY29tZSB0byBMVU1JLUsK
 metadata:
   name: my-secret
   namespace: my-namespace
 ```
 
-##  OpenShift extensions
+##  OKD extensions
 
-OpenShift includes all Kubernetes objects, plus some extensions:
+OKD includes all Kubernetes objects, plus some extensions:
 
 * **BuildConfig** objects build container images
   based on the source files.
@@ -409,7 +409,7 @@ OpenShift includes all Kubernetes objects, plus some extensions:
 
 ### ImageStream
 
-[ImageStreams](https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/images/managing-image-streams) store images. They simplify
+[ImageStreams](https://docs.okd.io/latest/openshift_images/image-streams-manage.html) store images. They simplify
 the management of container images and can be created by a BuildConfig or the user when a new images are uploaded to the
  image registry.
 
@@ -423,7 +423,8 @@ kind: ImageStream
 metadata:
   labels:
     app: serveapp
-  name: serveimagestream
+  name: custom-httpd-image
+  namespace: my-namespace
 spec:
   lookupPolicy:
     local: false
@@ -431,22 +432,22 @@ spec:
 
 ### BuildConfig
 
-[BuildConfig](https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/builds_using_buildconfig/understanding-image-builds) objects 
+[BuildConfig](https://docs.okd.io/latest/cicd/builds/understanding-image-builds.html) objects 
 create container images according to specific rules. In the following example, the _Docker_ strategy is used to build a customized version
-of the `httpd` web server container image shipped with OpenShift.
+of the `httpd` web server container image shipped with OKD.
 
 *`buildconfig.yaml`*:
 
 ```yaml
 kind: "BuildConfig"
-apiVersion: "build.openshift.io/v1"
+apiVersion: build.openshift.io/v1
 metadata:
-  name: "custom-httpd-build"
-  namespace: "my-namespace"
+  name: custom-httpd-build
+  namespace: my-namespace
   labels:
-    app: "serveapp"
+    app: serveapp
 spec:
-  runPolicy: "Serial"
+  runPolicy: Serial
   output:
     to:
       kind: ImageStreamTag
@@ -458,26 +459,30 @@ spec:
     type: Docker
 ```
 
-After creating the build object (here named `custom-httpd-build`), OpenShift will trigger the build process and create a
-new image stream for the custom image.
+After creating the build object (here named `custom-httpd-build`), you need to trigger "Start build" from web console. Alternatively, you can use the following command to start a build process.
+
+```sh
+oc start-build custom-httpd-build
+```
+
 
 ### Route
 
-Route objects are the OpenShift equivalent of _Ingress_ in vanilla Kubernetes, they expose a Service object to the 
+Route objects are the OKD equivalent of _Ingress_ in vanilla Kubernetes, they expose a Service object to the 
 internet via HTTP/HTTPS. A typical Route definition would be:
 
 ```yaml
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: "my-route"
-  namespace: "my-namespace"
+  name: my-route
+  namespace: my-namespace
 spec:
-  host: "my-route.apps.lumi-k.eu"
+  host: my-route.apps.lumi-k.eu
   to:
     kind: Service
     weight: 100
-    name: "my-service"
+    name: my-service
   tls:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
@@ -501,27 +506,31 @@ See the [Custom domain names](04_networking.md#custom-domains) page for more inf
 
 ## IP white listing
 
-It is possible to use annotations to enable **IP white listing**, where only a few IP ranges are allowed to get 
+It is possible to use annotations to enable **IP white listing**, where you can control the source IPs that cab be allowed to get 
 through the **route** and the rest of the internet is blocked. Security-wise it is highly encouraged to utilize 
 IP white listing for services that are not meant to be visible to the entire internet. The example bellow allows only
 traffic from `192.168.1.0/24` and `10.0.0.1` to reach the service.
 
+!!! info
+
+    The list of the IPs is in the format of space separated values.
+    For example: `"192.168.1.0/24 10.0.0.1"`
 
 
 ```yaml
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: "my-route"
-  namespace: "my-namespace"
+  name: my-route
+  namespace: my-namespace
   annotations:
      haproxy.router.openshift.io/ip_whitelist: '192.168.1.0/24 10.0.0.1'
 spec:
-  host: "my-route.apps.lumi-k.eu"
+  host: my-route.apps.lumi-k.eu
   to:
     kind: Service
     weight: 100
-    name: "my-service"
+    name: my-service
   tls:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
@@ -531,4 +540,4 @@ status:
 
 !!! warning
 
-    If the whitelist entry is malformed, OpenShift will discard the whitelist and allow all traffic.
+    If the whitelist entry is malformed, LUMI-K will discard the whitelist and allow all traffic.
