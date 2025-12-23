@@ -4,17 +4,17 @@ When LUMI-K applications are exposed to the Internet via [Routes](02_usage/04_ne
 should be treated with an appropriate care. The user on whose account a service is running in LUMI-K is
 responsible for its security.
 
-This guide should be treated as the baseline which must be taken in account rather than a checklist for perfect security.
+This guide should be treated as the baseline that must be taken into account, rather than a checklist for perfect security.
 
-Measures that tighten the security of the services running in LUMI-K includes the following:
+Measures that tighten the security of the services running in LUMI-K include the following:
 
 ## Cluster policy
 
-By default, our cluster applies default security policies:
+By default, LUMI-K applies the default security policies:
 
 - **No root enforced**: That means that you cannot run a container with root privileges. It will fail.
 
-- **Random UID/GID**: When your pod is deployed in our cluster, a random UID will be generated. You cannot assigned a UID/GID out of this range (for example, `1001`), it will require special privileges. Usually, the number is like `1000620000`.
+- **Random UID/GID**: When your pod is deployed in LUMI-K, a random UID will be generated. You cannot assign a UID/GID out of this range (for example, `1001`), it will require special privileges. Usually, the number is like `1000620000`.
 
 - **[Restricted-v2 policy](https://connect.redhat.com/en/blog/important-openshift-changes-pod-security-standards)**: Since Openshift 4.11, the new SCC policies are introduced according to the [Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/).
   - What is the difference between v1 and v2 SCC (Security Context Constraints) policies?
