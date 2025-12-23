@@ -197,9 +197,19 @@ check if your custom domain name has the right configuration using the following
 
 An important feature of Routes, is the IP whitelisting , ie: only allowing a range of IPs to access the route. 
 This can be achieved by creating an annotation in the Route object with the key `haproxy.router.openshift.io/ip_whitelist`, 
-and by setting the value to a space separated list of IPs and/or network ranges:
+and by setting the value to a space separated list of IPs and/or network ranges. See the examples below.
 
-* This first example will whitelist a network IP rang (`193.166.0.0/16`):
+!!! info "Note"
+
+    The list of the IPs is in the format of space-separated values.
+    For example: `"192.168.1.0/24 10.0.0.1"`
+
+!!! warning
+
+    If the whitelist entry is malformed, LUMI-K will discard the whitelist and allow all traffic.
+
+
+* This first example will whitelist a network IP range (`193.166.0.0/16`):
 
     ```bash
     oc annotate route $route_name haproxy.router.openshift.io/ip_whitelist='193.166.0.0/16'
@@ -216,6 +226,29 @@ and by setting the value to a space separated list of IPs and/or network ranges:
     ```bash
     oc annotate route $route_name haproxy.router.openshift.io/ip_whitelist='193.166.0.0/15 193.167.189.25'
     ```
+
+Alternatively, you can set the annotation directly to `Route` resource when creating it for the first time.
+
+```yaml
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: my-route
+  namespace: my-namespace
+  annotations:
+     haproxy.router.openshift.io/ip_whitelist: '192.168.1.0/24 10.0.0.1'
+spec:
+  host: my-route.apps.lumi-k.eu
+  to:
+    kind: Service
+    weight: 100
+    name: my-service
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+status:
+  ingress: []
+```
 
 
 ## Network policies
