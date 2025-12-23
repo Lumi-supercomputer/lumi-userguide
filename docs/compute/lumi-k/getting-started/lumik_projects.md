@@ -71,18 +71,18 @@ the project is `123456`. This information is also available via the web interfac
 1. First, login to LUMI-K console as described [here](lumik_login.md). After being logged in, click the blue 
 "Create Project" button as shown bellow:
 
-![lumik list_projects](../img/lumik_list_projects.png)
+    ![lumik list_projects](../img/lumik_list_projects.png)
 
 2. The following project creation form will pop-up:
 
-![LUMI-K new project dialog Developer](../img/lumik_create_project.png)  
+    ![LUMI-K new project dialog Developer](../img/lumik_create_project.png)  
 
-Enter the following information:
+    Enter the following information:
 
-* In the **Name** field, enter a **unique name** that is not in use by any other project
-in LUMI-K.
-* In the **Display name** field, you *can*  enter a **human-readable display name**, but this is optional.
-* In the **Description** field, enter the LUMI project number as instructed in the previous section, `lumi_project: 123456`.
+    * In the **Name** field, enter a **unique name** that is not in use by any other project
+    in LUMI-K.
+    * In the **Display name** field, you *can*  enter a **human-readable display name**, but this is optional.
+    * In the **Description** field, enter the LUMI project number as instructed in the previous section, `lumi_project: 123456`.
 
 
 3. Once you have filled in the fields, click "Create", and you will be redirected to the main project page, showing the details,
