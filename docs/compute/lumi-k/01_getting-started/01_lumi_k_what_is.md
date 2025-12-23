@@ -2,7 +2,7 @@
 
 !!! warning "Recommendations"
     Before using LUMI-K, we recommend that you familiarise yourself with cloud containers and Kubernetes.
-    You can find more information by following this [link](05_ext_docs.md)
+    You can find more information by following this [link](05_ext_docs.md).
 
 LUMI-K is a container orchestration platform built on top of a hardware partition of the LUMI supercomputer. 
 LUMI-K runs on [okd](https://www.okd.io/), the community distribution of Kubernetes that powers Red Hat OpenShift.
@@ -21,11 +21,11 @@ to set up these applications with only a few clicks.
 
 Here are some example use cases that LUMI-K is good for:
 
-* Deploy applications that are packaged and shipped as Docker containers.
-* Deploy application that are composed of multiple interconnected microservices.
-* Deploy container-based scientific computing stacks
-* Deploy interactive web applications.
-* Automatic management of your applications via external CI/CD systems.
+* Deploy applications that are packaged and shipped as Docker containers;
+* Deploy applications that are composed of multiple interconnected microservices;
+* Deploy container-based scientific computing stacks;
+* Deploy interactive web applications;
+* Automatically manage your applications via external CI/CD systems.
 
 ## LUMI-K Multi-tenancy
 
