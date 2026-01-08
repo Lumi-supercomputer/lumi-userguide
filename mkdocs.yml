@@ -65,7 +65,7 @@ nav:
         - Resource quotas: compute/lumi-k/configuration/resource_quotas.md
         - Networking: compute/lumi-k/configuration/network.md
       - Security guide: compute/lumi-k/security_guide.md
-    - Batch jobs:
+    - Slurm jobs:
       - Slurm quickstart: compute/scheduled-jobs/slurm-quickstart.md
       - Slurm partitions: compute/scheduled-jobs/partitions.md
       - Batch jobs: compute/scheduled-jobs/batch-job.md
