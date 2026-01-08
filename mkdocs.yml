@@ -41,6 +41,20 @@ nav:
       - Daily management: compute/lumi_env/dailymanagement.md
       - Data storage options: storage/index.md
       - Billing policy: compute/lumi_env/billing.md
+    - Slurm jobs:
+      - Slurm quickstart: compute/scheduled-jobs/slurm-quickstart.md
+      - Slurm partitions: compute/scheduled-jobs/partitions.md
+      - Batch jobs: compute/scheduled-jobs/batch-job.md
+      - Full machine runs: compute/scheduled-jobs/hero-runs.md
+      - GPU examples: compute/scheduled-jobs/lumig-job.md
+      - CPU examples: compute/scheduled-jobs/lumic-job.md
+      - Distribution and binding: compute/scheduled-jobs/distribution-binding.md
+      - Job array: compute/scheduled-jobs/throughput.md
+      - Interactive jobs: compute/scheduled-jobs/interactive.md
+      - Container jobs: compute/scheduled-jobs/container-jobs.md
+      - Julia scheduled jobs: compute/scheduled-jobs/julia.md
+      - Python scheduled jobs: compute/scheduled-jobs/python.md
+      - Energy consumption: compute/scheduled-jobs/jobenergy.md
     - Kubernetes:
       - Getting Started:
         - What is LUMI-K: compute/lumi-k/getting-started/lumi_k_what_is.md
@@ -65,20 +79,6 @@ nav:
         - Resource quotas: compute/lumi-k/configuration/resource_quotas.md
         - Networking: compute/lumi-k/configuration/network.md
       - Security guide: compute/lumi-k/security_guide.md
-    - Slurm jobs:
-      - Slurm quickstart: compute/scheduled-jobs/slurm-quickstart.md
-      - Slurm partitions: compute/scheduled-jobs/partitions.md
-      - Batch jobs: compute/scheduled-jobs/batch-job.md
-      - Full machine runs: compute/scheduled-jobs/hero-runs.md
-      - GPU examples: compute/scheduled-jobs/lumig-job.md
-      - CPU examples: compute/scheduled-jobs/lumic-job.md
-      - Distribution and binding: compute/scheduled-jobs/distribution-binding.md
-      - Job array: compute/scheduled-jobs/throughput.md
-      - Interactive jobs: compute/scheduled-jobs/interactive.md
-      - Container jobs: compute/scheduled-jobs/container-jobs.md
-      - Julia scheduled jobs: compute/scheduled-jobs/julia.md
-      - Python scheduled jobs: compute/scheduled-jobs/python.md
-      - Energy consumption: compute/scheduled-jobs/jobenergy.md
   - Software:
     - Overview: software/index.md
     - Install policy: software/policy.md
