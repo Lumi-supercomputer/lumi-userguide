@@ -144,7 +144,7 @@ latency-sensitive workloads where fast, node-local storage is required, without 
     While the LVM StorageClass provides persistent fast storage for Pods, it is less reliable compared to Ceph backed 
     StorageClasses, as data on the local physical disks is not replicated or backed up, and any disk failure will cause
     data loss. Please, use this StorageClass carefully for application requiring fast storage for non-critical data
-    similar to [emptyDir](01_ephemeral_storage.md), with the advantage of volumes surviving Pods restart and deletion. 
+    similar to [emptyDir](ephemeral_storage.md), with the advantage of volumes surviving Pods restart and deletion. 
 
 
 Example of a PVC using this StorageClass in LUMI-K:

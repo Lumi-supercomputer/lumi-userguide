@@ -17,7 +17,9 @@ If the user does not set custom requests and limits for a container within a Pod
 |limits| 2000m |  2Gi   |
 
 
-Note: `m` stands for milicores. `1000m` will be the equivalent of 1 CPU core.
+!!! info
+
+    `m` stands for milicores. `1000m` will be the equivalent of 1 CPU core.
 
 
 ### Custom requests and limits
@@ -32,15 +34,15 @@ configured by LUMI-K admins. The default range is as follows:
 | Max  |  8  |  16Gi  |
 
 
-Moreover, LUMI-K enforces a maximum limit/request ratio of 5. This means that the CPU or memory `limits` cannot be 
-more than 5 times the `request`. So if the CPU request is 1 core, the CPU limit cannot be higher than 5 cores. 
-And if you want to increase the CPU limit to 10 cores, you will have to also increase  CPU request to 2 cores.
+Moreover, LUMI-K enforces a maximum limit-to-request ratio of 5. This means that the CPU or memory `limits` cannot be 
+set to more than 5 times the `request`. So if the CPU request is 1 core, the CPU limit cannot be higher than 5 cores. 
+If you want to increase the CPU limit to 10 cores, you will have to also increase CPU request to at least 2 cores.
 
 
 !!! info
 
     If the default ranges are not suitable for your use case, you can request adjusted resource ranges by contacting 
-    LUMI support. See the [Contact page](../../../support/contact.md) for instructions.
+    LUMI support. See the [Contact page](../../../helpdesk/index.md) for instructions.
 
 The following example adjust the values of request and limit in a Pod to match LUMI-K defined range:
 
@@ -64,7 +66,7 @@ spec:
 
 ## Projects quotas
 
-All LUMI-K projects (a.k.a namespaces) associated with the same LUMI project share the same resource quota.
+All LUMI-K projects associated with the same LUMI project share the same resource quota.
 The default quota assigned to a LUMI project within LUMI-K is as follows:
 
 | Resource                                     | Default |
@@ -90,7 +92,7 @@ computing project cannot exceed 12 cores. The same restrictions apply for memory
 !!! warning "Note"
 
     If your LUMI project is shared with other team members, they can create new LUMI-K projects
-    (see [project creation page](usage/lumik_projects.md)). Keep in mind that the quota will be shared with them.
+    (see [project creation page](../getting-started/lumik_projects.md)). Keep in mind that the quota will be shared with them.
     
 You can find the resource usage and quota of a project in the project view in
 the web interface under **Administration -> ResourceQuota** and **Administration -> LimitRanges**.

@@ -1,7 +1,7 @@
 # Using LUMI-O object storage in LUMI-K
 
 
-Visit this page for more information about [LUMI-O](../../../../storage/lumio/index.md#lumi-o).
+Visit the [LUMI-O](../../../../storage/lumio/index.md#lumi-o) page for more information.
 
 ## Backup to LUMI-O
 
@@ -15,7 +15,7 @@ For this first example, we will deploy a `nginx` deployment running with a `Pers
 
 First, for our tutorial, we will build and deploy a NGINX server.
 
-We [build](../02_container_images/01_creating_images.md) our nginx image with this Dockerfile: (since it's not possible to use the regular `nginx` image in LUMI-K)
+We [build](../container_images/creating_images.md) our nginx image with this Dockerfile: (since it's not possible to use the regular `nginx` image in LUMI-K)
 
 ```Dockerfile
 FROM nginx:stable
@@ -34,7 +34,7 @@ RUN sed -i.bak 's/^user/#user/' /etc/nginx/nginx.conf
 EXPOSE 8080
 ```
 
-If you build your image locally, don't forget to [push](../02_container_images/03_lumik_integrated_registry.md) it to your project, and 
+If you build your image locally, don't forget to [push](../container_images/lumik_integrated_registry.md) it to your project, and 
 to convert it to amd64 architecture if needed.
 
 Then, you can deploy and expose this `nginx` server with this Deployment:
@@ -58,7 +58,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: <our_custom_nginx_image>
+        image: <custom_nginx_image>
         resources:
           limits:
             memory: "128Mi"
@@ -163,7 +163,7 @@ COPY rclone.sh /usr/local/bin/
 RUN chmod 755 /.rclone.conf
 RUN chmod +x /usr/local/bin/rclone.sh
 ```
-If you create your image locally, don't forget to [push](../02_container_images/03_lumik_integrated_registry.md) it to your project.
+If you create your image locally, don't forget to [push](../container_images/lumik_integrated_registry.md) it to your project.
 
 Once all this done, you can deploy your `rclone` pod.
 
@@ -317,7 +317,7 @@ Cons:
 !!! Warning "Storage performance"
     There are several things to take into account when using LUMI-O regarding performance:
 
-    - Small io kill storage performance. Given the same total size, a single big file will be faster than a bunch of small ones. A solution might be to collect all the small files into one archive file, like a `tar` file.
+    - Small I/O operation can kill storage performance. Given the same total size, a single large file will be faster than a bunch of small ones. A simple solution might be to collect all the small files into one archive file, like a `tar` file.
     - As the storage pool is shared, latency might vary. Shared hardware means shared performance among different users.
-    - Single threaded io is slow, it is advisable to use multi threaded io when possible.
+    - Single-threaded I/O is slow; it is advisable to use multi-threaded I/O when possible."
 

@@ -1,6 +1,6 @@
 # Keeping container images small
 
-It is important to keep container images small. Smalle images download faster, which reduces startup 
+It is important to keep container images small. Smaller images download faster, which reduces startup 
 time for Pods in Kubernetes and improves the responsiveness of scaling operations. They also use less storage in 
 registries and on cluster nodes, which matters in multi-tenant environments like LUMI-K. Moreover, a smaller image 
 contains fewer packages and files, which reduces the potential attack surface and lowers the chance of including 
@@ -44,6 +44,7 @@ layer (i.e., the same `RUN` instruction). As cleaning them in another RUN comman
 bloats the image. Example:
 
 ```Dockerfile
+...
 RUN apk add --no-cache build-base
 ```
 
@@ -82,7 +83,7 @@ RUN apt-get update && apt-get install -y curl
 ## Combine related commands into fewer layers.
 
 Every **RUN** instruction creates a new layer. If you install packages in one layer and clean them in another, 
-the unwanted content remains in earlier layers. Combining commands prevents this. Exampl:
+the unwanted content remains in earlier layers. Combining commands prevents this. Example:
 
 
 **Bad (bloated image)**:
@@ -105,7 +106,7 @@ RUN apt-get update && apt-get install -y python3 \
 ## Keep data out of the image
 
 Images should only contain the application's runtime. This means that the data needed to run the application should not 
-be added to the image. This way not only the image is smaller, but we avoid a rebuild when the data changes. 
-The data can be stored in an [external volume](../storage/persistent.md) that will be attached to the Pod upon startup, 
+be added to the image. In this way, not only the image is smaller, but we avoid a rebuild when the data changes. 
+The data can be stored in an [external volume](../storage/storage_overview.md) that will be attached to the Pod upon startup, 
 or it can be stored in a remote object storage like [LUMI-O](../../../../storage/lumio/index.md) and downloaded during
 the startup or on demand when needed.

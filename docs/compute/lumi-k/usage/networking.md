@@ -5,14 +5,14 @@ cluster and with the outside world. In this network, every Pod gets its own IP a
 other Pods directly. By default, a pod can communicate only with Pods running in the same namespace
 (i.e., LUMI-K project) unless changed by `NetworkPolicies`. When a Pod is restarted or moved, its IP address changes, 
 thus, in order to provide stable IPs to applications, `Services` are used to dynamically map the IPs of one or more Pods
-to fixed IPs and DNS records, which can be then used to reach the Pods. The IPs of Pods and Services are reachable form within the
+to fixed IPs and DNS records, which can be then used to reach the Pods. The IPs of Pods and Services are reachable within the
 cluster only, if a service is to be exposed to internet, you will need to create `Routes`. Hereafter, we explain these 
 concepts in details.
 
 ## Pod IPs
 
 Each Pod receives an IP address from the LUMI-K network (CIDR: 10.128.0.0/14). By default, Pods can communicate with
-other Pods in the same LUMI-K project (i.e., namespace ) and cross-nodes Pod communication is ensured dynamically by the
+other Pods in the same LUMI-K project (i.e., namespace) and cross-nodes Pod communication is ensured dynamically by the
 LUMI-K network. However, it is not advisable to use the Pod IPs directly to reach Pods, as the IPs are ephemeral 
 and can change when pods are recreated. You can check the IP addresses assigned to you pods using the following command:
 
@@ -53,9 +53,9 @@ spec:
 ## Services
 
 A Service is an abstraction that provides a stable way to access a group of Pods. Because Pods are temporary
-and can be replaced at any time, their IP addresses also are temporary. A Service solves this by giving the group of Pods a 
+and can be replaced at any time, their IP addresses also are temporary. A Service solves this by assigning the group of Pods a 
 consistent virtual IP and DNS name. The Service automatically keeps track of which Pods should receive traffic, 
-based on labels, and forwards traffic to them, acting as  **load balancers**. This allows applications to communicate 
+based on labels, and forwards traffic to them, acting as **load balancers**. This allows applications to communicate 
 with each other reliably even as individual Pods are replaced, restarted, or scaled.
 
 The following YAML definition creates a service object that points to all pods with label **app: my-app**, using the
@@ -195,27 +195,60 @@ check if your custom domain name has the right configuration using the following
 
 ### IP Whitelisting
 
-An important feature of Routes, is the IP whitelisting , ie: only allowing a range of IPs to access the route. 
+An important feature of Routes, is the IP whitelisting , i.e., only allowing a single IP or a range of IPs to access the `Route`. 
 This can be achieved by creating an annotation in the Route object with the key `haproxy.router.openshift.io/ip_whitelist`, 
-and by setting the value to a space separated list of IPs and/or network ranges:
+and by setting the value to a space-separated list of IPs and/or network ranges. See the examples below.
 
-* This first example will whitelist a network IP rang (`193.166.0.0/16`):
+!!! info "Note"
+
+    The list of the IPs is in the format of space-separated values.
+    For example: `"192.168.1.0/24 10.0.0.1"`
+
+!!! warning
+
+    If the whitelist entry is malformed, LUMI-K will discard the whitelist and allow all traffic.
+
+
+* This first example will whitelist a network IP range (`193.166.0.0/16`):
 
     ```bash
-    oc annotate route $route_name haproxy.router.openshift.io/ip_whitelist='193.166.0.0/16'
+    oc annotate route <route_name> haproxy.router.openshift.io/ip_whitelist='193.166.0.0/16'
     ```
 
 * It is possible to whitelist only a specific IP:
 
     ```bash
-    oc annotate route $route_name haproxy.router.openshift.io/ip_whitelist='188.184.9.236'
+    oc annotate route <route_name> haproxy.router.openshift.io/ip_whitelist='188.184.9.236'
     ```
 
 * It is also possible to whitelist multiple IPs and networks at the same time:
 
     ```bash
-    oc annotate route $route_name haproxy.router.openshift.io/ip_whitelist='193.166.0.0/15 193.167.189.25'
+    oc annotate route <route_name> haproxy.router.openshift.io/ip_whitelist='193.166.0.0/15 193.167.189.25'
     ```
+
+Alternatively, you can set the annotation directly to `Route` resource when creating it for the first time.
+
+```yaml
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: my-route
+  namespace: my-namespace
+  annotations:
+     haproxy.router.openshift.io/ip_whitelist: '192.168.1.0/24 10.0.0.1'
+spec:
+  host: my-route.apps.lumi-k.eu
+  to:
+    kind: Service
+    weight: 100
+    name: my-service
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+status:
+  ingress: []
+```
 
 
 ## Network policies

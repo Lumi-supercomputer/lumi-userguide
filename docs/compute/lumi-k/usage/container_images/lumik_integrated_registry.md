@@ -7,17 +7,17 @@ images locally and want to deploy them on the cluster without using an external 
 
 The process is simple:
 
-1. Make sure to [login vi the CLI](../../01_getting-started/04_lumik_cli.md)
+1. Make sure to [login vi the CLI](../../getting-started/lumik_cli.md)
 
 
 2. Log in to the registry
 
     ```sh
-      docker login -u $(oc whoami) -p $(oc whoami -t) registry.apps.v1.lumi-k.eu
+    docker login -u $(oc whoami) -p $(oc whoami -t) registry.apps.v1.lumi-k.eu
     ```
 
-!!! info
-    If you get any error, make sure you are logged in. If you run `oc whoami`, the command should return your username.
+    !!! info
+        If you get any error, make sure you are logged in. If you run `oc whoami`, the command should return your username.
 
 3. Tag your local image so it points to your project’s ImageStream location. Images must follow this format:
 
@@ -28,25 +28,25 @@ The process is simple:
     Example:
 
     ```sh
-        docker tag myapp:latest registry.apps.v1.lumi-k.eu/myproject/myapp:latest
+    docker tag myapp:latest registry.apps.v1.lumi-k.eu/myproject/myapp:latest
     ```
 
 
 4. Push the image to the registry:
 
-   ```sh
+    ```sh
     docker push  registry.apps.v1.lumi-k.eu/<lumik-project-name>/<image-name>:<image-tag>
-   ```
+    ```
     Example:
 
     ```sh
-      docker push myapp:latest registry.apps.v1.lumi-k.eu/myproject/myapp:latest
+    docker push myapp:latest registry.apps.v1.lumi-k.eu/myproject/myapp:latest
     ```
 
 5. Verify the ImageStream in LUMI-K.
 
     ```sh
-      oc describe is <image-name>
+    oc describe is <image-name>
     ```
 
 You should be able to see the ImageStream in the web console as well under Builds -> ImageStreams :
@@ -59,7 +59,7 @@ Alternatively you can query images in remote registry with `docker image ls [OPT
     If you receive this error when attempting to push your image:
 
     ```
-    unknown: unexpected status from HEAD request to https:// registry.apps.v1.lumi-k.eu/v2/<lumik-project-name>/<image-name>/manifests/sha256:834e7b036543663e8616810c2c3a199cd8a3618e981f75eea235e0920d601ce4: 500
+    unknown: unexpected status from HEAD request to https://registry.apps.v1.lumi-k.eu/v2/<lumik-project-name>/<image-name>/manifests/sha256:834e7b036543663e8616810c2c3a199cd8a3618e981f75eea235e0920d601ce4: 500
     ```
 
     You must create the `ImageStream` before pushing.
@@ -70,33 +70,34 @@ Alternatively you can query images in remote registry with `docker image ls [OPT
     oc create imagestream {YOUR_IMAGE_NAME}
     ```
 
-[oc](../../01_getting-started/04_lumik_cli.md) must be installed locally on your machine.
+[oc](../../getting-started/lumik_cli.md) must be installed locally on your machine.
 
 ## Download images from LUMI-K registry
 
-1. Make sure to [login vi the CLI](../../01_getting-started/04_lumik_cli.md)
+1. Make sure to [login vi the CLI](../../getting-started/lumik_cli.md)
 
 2. Log in to the registry
 
     ```sh
-      docker login -u $(oc whoami) -p $(oc whoami -t) registry.apps.v1.lumi-k.eu
+    docker login -u $(oc whoami) -p $(oc whoami -t) registry.apps.v1.lumi-k.eu
     ```
 
 3. Pull the image
 
     ```sh 
-     docker pull registry.apps.v1.lumi-k.eu/<lumik-project-name>/<image-name>:<image-tag>
+    docker pull registry.apps.v1.lumi-k.eu/<lumik-project-name>/<image-name>:<image-tag>
     ```
 
 4. Optionally you can re-tag the local image before using it (so you can refer to it without the the registry url)
 
     ```sh 
-     docker tag registry.apps.v1.lumi-k.eu/<lumik-project-name>/<image-name>:<image-tag> <image-name>:<image-tag> 
+    docker tag registry.apps.v1.lumi-k.eu/<lumik-project-name>/<image-name>:<image-tag> <image-name>:<image-tag> 
     ```
+
 5. Verify the image
 
     ```sh 
-     docker images
+    docker images
     ```
 
 ## Access control for the LUMI-K integrated registry
@@ -116,9 +117,9 @@ An image located at:
 
 is by default accessible only to:
 
-* users who have access to <lumik-project-name>
+* users who have access to \<lumik-project-name\>
 
-* service accounts in <lumik-project-name>
+* service accounts in \<lumik-project-name\>
 
 Users in other projects cannot pull or push this image unless explicit access is granted.
 

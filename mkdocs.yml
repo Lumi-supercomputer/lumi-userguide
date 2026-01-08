@@ -41,30 +41,30 @@ nav:
       - Daily management: compute/lumi_env/dailymanagement.md
       - Data storage options: storage/index.md
       - Billing policy: compute/lumi_env/billing.md
-    - LUMI-K cloud:
+    - LUMI-K Cluster:
       - Getting Started:
-        - What is LUMI-K: compute/lumi-k/01_getting-started/01_lumi_k_what_is.md
-        - Log in to LUMI-K: compute/lumi-k/01_getting-started/02_lumik_login.md
-        - Create projects: compute/lumi-k/01_getting-started/03_lumik_projects.md
-        - Command Line Interface (CLI): compute/lumi-k/01_getting-started/04_lumik_cli.md
-        - External documentation: compute/lumi-k/01_getting-started/05_ext_docs.md
+        - What is LUMI-K: compute/lumi-k/getting-started/lumi_k_what_is.md
+        - Log in to LUMI-K: compute/lumi-k/getting-started/lumik_login.md
+        - Create projects: compute/lumi-k/getting-started/lumik_projects.md
+        - Command Line Interface (CLI): compute/lumi-k/getting-started/lumik_cli.md
+        - External documentation: compute/lumi-k/getting-started/ext_docs.md
       - Usage:
-        - Kubernetes concepts: compute/lumi-k/02_usage/01_kube_concepts.md
+        - Kubernetes concepts: compute/lumi-k/usage/kube_concepts.md
         - Container images:
-          - compute/lumi-k/02_usage/02_container_images/00_images_overview.md
-          - Build container images: compute/lumi-k/02_usage/02_container_images/01_creating_images.md
-          - Best practices: compute/lumi-k/02_usage/02_container_images/02_best_practices.md
-          - LUMI-K image registry: compute/lumi-k/02_usage/02_container_images/03_lumik_integrated_registry.md
+          - compute/lumi-k/usage/container_images/images_overview.md
+          - Build container images: compute/lumi-k/usage/container_images/creating_images.md
+          - Best practices: compute/lumi-k/usage/container_images/best_practices.md
+          - LUMI-K image registry: compute/lumi-k/usage/container_images/lumik_integrated_registry.md
         - Storage:
-          - compute/lumi-k/02_usage/03_storage/00_storage_overview.md
-          - Ephemeral storage: compute/lumi-k/02_usage/03_storage/01_ephemeral_storage.md
-          - Persistent storage: compute/lumi-k/02_usage/03_storage/02_persistent_storage.md
-          - Object storage: compute/lumi-k/02_usage/03_storage/03_object_storage.md
-        - Networking: compute/lumi-k/02_usage/04_networking.md
+          - compute/lumi-k/usage/storage/storage_overview.md
+          - Ephemeral storage: compute/lumi-k/usage/storage/ephemeral_storage.md
+          - Persistent storage: compute/lumi-k/usage/storage/persistent_storage.md
+          - Object storage: compute/lumi-k/usage/storage/object_storage.md
+        - Networking: compute/lumi-k/usage/networking.md
       - Configuration:
-        - Resource quotas: compute/lumi-k/03_configuration/01_resource_quotas.md
-        - Networking: compute/lumi-k/03_configuration/02_network.md
-      - Security guide: compute/lumi-k/04_security_guide.md
+        - Resource quotas: compute/lumi-k/configuration/resource_quotas.md
+        - Networking: compute/lumi-k/configuration/network.md
+      - Security guide: compute/lumi-k/security_guide.md
     - Batch jobs:
       - Slurm quickstart: compute/scheduled-jobs/slurm-quickstart.md
       - Slurm partitions: compute/scheduled-jobs/partitions.md

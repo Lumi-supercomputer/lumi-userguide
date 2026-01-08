@@ -28,8 +28,8 @@ projects created by themselves or by their LUMI project team members. You can ch
 member of using the `lumi-workspaces` command as described [here](../../lumi_env/dailymanagement.md#lumi-workspaces).
 
 If you would like to know which LUMI project,  a LUMI-K project is associated with, you can do so using the _oc_ command
-line tool. You can find instructions for setting up oc in the [command line tool usage instructions ](04_lumik_cli.md). 
-For example, if your LUMI-K project is called *my-openshift-project*, you would run:
+line tool. You can find instructions for setting up oc in the [command line tool usage instructions ](lumik_cli.md). 
+For example, if your LUMI-K project is called *my-lumik-project*, you would run:
 
 ```bash
 oc get project my-lumik-project -o yaml
@@ -68,21 +68,21 @@ the project is `123456`. This information is also available via the web interfac
 
 ## Create a new project
 
-1. First, login to LUMI-K console as described [here](02_lumik_login.md). After being logged in, click the blue 
+1. First, login to LUMI-K console as described [here](lumik_login.md). After being logged in, click the blue 
 "Create Project" button as shown bellow:
 
-![lumik list_projects](../img/lumik_list_projects.png)
+    ![lumik list_projects](../img/lumik_list_projects.png)
 
 2. The following project creation form will pop-up:
 
-![LUMI-K new project dialog Developer](../img/lumik_create_project.png)  
+    ![LUMI-K new project dialog Developer](../img/lumik_create_project.png)  
 
-Enter the following information:
+    Enter the following information:
 
-* In the **Name** field, enter a **unique name** that is not in use by any other project
-in LUMI-K.
-* In the **Display name** field, you *can*  enter a **human-readable display name**, but this is optional.
-* In the **Description** field, enter the LUMI project number as instructed in the previous section, `lumi_project: 123456`.
+    * In the **Name** field, enter a **unique name** that is not in use by any other project
+    in LUMI-K.
+    * In the **Display name** field, you *can*  enter a **human-readable display name**, but this is optional.
+    * In the **Description** field, enter the LUMI project number as instructed in the previous section, `lumi_project: 123456`.
 
 
 3. Once you have filled in the fields, click "Create", and you will be redirected to the main project page, showing the details,
