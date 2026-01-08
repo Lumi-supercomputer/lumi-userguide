@@ -10,7 +10,7 @@ LUMI-K projects. Users can only see LUMI-K projects created by themselves or by 
 # Login to LUMI-K
 
 
-1. Create a LUMI project by following these [instructions](../../../firststeps/accessLUMI.md), note that you do not 
+1. Apply for a LUMI project by following these [instructions](../../../firststeps/accessLUMI.md), note that you do not 
 need to configure an SSH key to start using LUMI-K . If you already have a LUMI project used for accessing other LUMI 
 services (e.g., LUMI-G and LUMI-O), you can skip this step as you will already have default access to LUMI-K.
 
