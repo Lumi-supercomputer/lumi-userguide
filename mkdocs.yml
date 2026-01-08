@@ -41,7 +41,7 @@ nav:
       - Daily management: compute/lumi_env/dailymanagement.md
       - Data storage options: storage/index.md
       - Billing policy: compute/lumi_env/billing.md
-    - LUMI-K Cluster:
+    - Kubernetes:
       - Getting Started:
         - What is LUMI-K: compute/lumi-k/getting-started/lumi_k_what_is.md
         - Log in to LUMI-K: compute/lumi-k/getting-started/lumik_login.md
