@@ -4,7 +4,7 @@
 [softwarestacks]: ../../runjobs/lumi_env/softwarestacks.md
 [helpdesk]: ../../helpdesk/index.md
 [lumi-g]: ../../hardware/lumig.md
-[eap]: ../../hardware/runjobs/eap.md
+[eap]: ../../hardware/compute/eap.md
 [software-library]: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs
 
 Most software in the central LUMI [software stacks][softwarestacks] is
