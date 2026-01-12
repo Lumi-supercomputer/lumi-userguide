@@ -3,7 +3,7 @@
 ## Pushing local images to LUMI-K registry
 
 The internal registry allows you to store container images inside your LUMI-K project. This is useful when you build 
-images locally and want to deploy them on the cluster without using an external registry.
+images locally and want to deploy them on LUMI-K without using an external registry.
 
 The process is simple:
 
@@ -153,10 +153,10 @@ restricting access.
 
 ### 3. Specific LUMI-K users
 
-The easiest way to grant access to the registry for someone who is already a LUMI user, is to just add him as team 
-member to your LUMI project, the privileges will then propagate to LUMI-K. However, the user will have full access to 
-all your LUMI-K projects associated with the LUMI project. If you want to give others pull privilege in one LUMI-K 
-project only, use this command:
+The easiest way to grant access to the registry for someone who is already a LUMI user, is to just add them as a team 
+member to your LUMI project (the LUMI project PI needs to do this), and the privileges will then propagate to LUMI-K.
+However, the user will have full access to all your LUMI-K projects associated with the LUMI project. If you want to
+give others pull privilege in one LUMI-K project only, use this command:
 
   ```bash
   oc policy add-role-to-user registry-viewer <lumi-k-username> -n <lumi-k-project>
