@@ -99,7 +99,7 @@ docker login -p $(oc create token pusher) -u unused image-registry.apps.v1.lumi-
 
 Use the command `oc create token` to generate a new token for the service account.
 
-For example, you can run `oc create token pusher --duration=87600h` to create a token valid for 10 years.
+For example, you can run `oc create token pusher --duration=8766h` to create a token valid for 1 year.
 
 ## CLI cheat sheet
 
