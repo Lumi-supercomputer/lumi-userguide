@@ -15,7 +15,7 @@ found in [Command Line Tools](https://console.lumi-k.eu/command-line-tools) page
 
 ![LUMI_K command Line Tools page](../img/lumik_download_cli.png)
 
-You can also visit the command line tools page using the help menu in the top right corner of the web interface 
+You can also visit the command line tools page using the help menu in the top right corner of the LUMI-K web interface 
 
 ![Help command Line tools](../img/lumik_help_cli.png)
 
@@ -36,7 +36,7 @@ the username in the top right corner.
 
 ![copy login](../img/lumik_copy_login_command.png)
 
-As an additional security measure, you will be prompted to log in again via the web interface before the command and
+As an additional security measure, you will be prompted to log in again via the LUMI-k web interface before the command and
 token are revealed. Copy the command and paste it in a terminal to start using LUMI-K via the command line. The command looks like:
 
 ```bash

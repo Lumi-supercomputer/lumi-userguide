@@ -7,7 +7,7 @@ documentation. When looking at documentation, you should keep in mind that the
 documentation is versioned for each version of the platform. You should look at
 documentation for the platform with which you are currently working with. You
 can find out the relevant version information by clicking the question mark
-symbol in the top bar of the web interface and selecting "About".
+symbol in the top bar of the LUMI-K web interface and selecting "About".
 
   * [Kubernetes documentation](https://kubernetes.io/docs/home/)
   * [OKD documentation](https://docs.okd.io/)

@@ -25,7 +25,7 @@ lumi_project: 465000001
 
 It is to be noted that one LUMI project can be associated with multiple LUMI-K projects. Also, users can only see LUMI-K
 projects created by themselves or by their LUMI project team members. You can check the list of LUMI projects you are a 
-member of using the `lumi-workspaces` command as described [here](../../lumi_env/dailymanagement.md#lumi-workspaces).
+member of using the LUMI web interface or by using the`lumi-workspaces` command in the LUMI terminal as described [here](../../lumi_env/dailymanagement.md#lumi-workspaces).
 
 If you would like to know which LUMI project,  a LUMI-K project is associated with, you can do so using the _oc_ command
 line tool. You can find instructions for setting up oc in the [command line tool usage instructions ](lumik_cli.md). 
@@ -54,8 +54,8 @@ status:
   phase: Active
 ```
 
-In the output above, you can find the associated LUMI  project under `.metadata.labels.group`. In this case, 
-the project is `465000001`. This information is also available via the web interface.
+In the output above, you can find the associated LUMI project under `.metadata.labels.group`. In this case, 
+the project is `465000001`. This information is also available via the LUMI-K web interface.
 
 ![Labels web UI](../img/lumik_project_details.png)
 
@@ -93,12 +93,11 @@ list of Kubernetes objects, resource usage, and applied quota of your new LUMI-K
 By default, LUMI-K projects that are associated with a specific LUMI project are accessible to all members of that LUMI 
 project. All members automatically have administrative access to the corresponding LUMI-K projects.
 
-If you want to grant a new user access to your LUMI-K projects, simply [invite them to the parent LUMI project](../../../firststeps/accessLUMI.md) and wait a 
-few minutes for the access privileges to synchronize.
+If you want to grant a new user access to your LUMI-K projects, the LUMI project PI needs to [invite them to the parent LUMI project](../../../firststeps/accessLUMI.md) and wait a few minutes for the access privileges to synchronize.
 
-## Deleting a project
+## Deleting a LUMI-K project
 
-In order to delete a project, you need to go to the main landing page and click in the 3 vertical dots next to the name of the project. In the drop down menu, you will see the option "Delete Project"
+In order to delete a LUMI-K project, you need to go to the main landing page and click in the 3 vertical dots next to the name of the project. In the drop down menu, you will see the option "Delete Project"
 
 ![Delete drop down](../img/lumi_k_delete_project_menu.png)
 
@@ -106,7 +105,7 @@ Then you will be asked to input the name of the project to prevent accidental de
 
 !!! warning
 
-    After the project has been confirmed for deletion, all resources will be deleted and there will be no way to restore them, including the data stored in the persistent volumes.
+    After the project has been confirmed for deletion, all resources for that LUMI-K project will be deleted and there will be no way to restore them, including the data stored in the persistent volumes.
 
 ![Project name dialog](../img/lumik_delete_project_name.png)
 
