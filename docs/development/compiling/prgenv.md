@@ -20,7 +20,7 @@
 [lumi-c]: ../../hardware/lumic.md
 [lumi-d]: ../../hardware/lumid.md
 [lumi-g]: ../../hardware/lumig.md
-[eap]: ../../hardware/runjobs/eap.md
+[eap]: ../../hardware/compute/eap.md
 
 This page will give you an overview of the [Cray programming environment](https://cpe.ext.hpe.com/docs/) that is
 available on LUMI. It starts with a presentation of the [compiler suites][1]
