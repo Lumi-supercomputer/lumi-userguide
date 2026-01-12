@@ -4,6 +4,9 @@ LUMI-K can be used via the command line either with OpenShift's `oc` tool
 or with the `kubectl` tool from Kubernetes. Certain features specific to OpenShift
 are only available when using the oc tool.
 
+!!! warning "oc tool on LUMI"
+    Currently, oc CLI tool is not included in LUMI software stack.
+
 ## The "Command Line Tools" page in the LUMI-K web UI
 
 The `oc` tool is a single binary that only needs to be included in your `PATH` environment variable . 
