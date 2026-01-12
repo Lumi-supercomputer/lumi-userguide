@@ -11,14 +11,14 @@ LUMI-K projects. Users can only see LUMI-K projects created by themselves or by 
 
 
 1. Apply for a LUMI project by following these [instructions](../../../firststeps/accessLUMI.md), note that you do not 
-need to configure an SSH key to start using LUMI-K . If you already have a LUMI project used for accessing other LUMI 
+need to configure an SSH key to start using LUMI-K. If you already are part of a LUMI project used for accessing other LUMI 
 services (e.g., LUMI-G and LUMI-O), you can skip this step as you will already have default access to LUMI-K.
 
 2. Log in to LUMI-K at [https://console.lumi-k.eu/](https://console.lumi-k.eu/). Choose HAKA, CSC, or Puhuri depending on your organization. 
 
     !!! Warning "User not found"
-        If you get an error message similar to this please make sure to create a LUMI project as described in the previous step.
-        If you have just created a LUMI project, it might take up to 10 minutes for your profile information to be synced to LUMI-K.
+        If you get an error message similar to this please make sure that you are part of a LUMI project as described in the previous step.
+        If your LUMI project has just been created, it might take up to 10 minutes for your profile information to be synced to LUMI-K.
         ![Error_no_user](../img/lumik_error_no_user.png)
 
     After logging in you should see a page like this:
