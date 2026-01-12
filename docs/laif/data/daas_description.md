@@ -10,7 +10,7 @@ Version 1.0, 22.9.2025
 | Service level and availability | [LUMI Service Level Agreement](https://www.lumi-supercomputer.eu/content/uploads/2023/04/LUMI_Service_Level_Agreement.pdf)<br>[General terms of use for CSC’s services for research](https://research.csc.fi/terms-of-use/) |
 | Service hours and user support | [LUMI helpdesk](https://docs.lumi-supercomputer.eu/helpdesk/) |
 | Service documentation | [LUMI documentation](https://docs.lumi-supercomputer.eu/) |
-| Pricing | The datasets can be accessed free-of-charge, but to access LUMI, the project has to be granted resources on LUMI.<br>[LUMI resources consumption model](https://docs.lumi-supercomputer.eu/compute/lumi_env/billing/) |
+| Pricing | The datasets can be accessed free-of-charge, but to access LUMI, the project has to be granted resources on LUMI.<br>[LUMI resources consumption model](https://docs.lumi-supercomputer.eu/runjobs/lumi_env/billing/) |
 | Data protection (GDPR) | [LUMI privacy notice](https://www.lumi-supercomputer.eu/user-support/privacy-notice/) |
 | Customer's responsibilities | Customers and users are responsible for their data and computing:<br>- Quality and content of data<br>- Master data storage<br>- Backups<br>- Capacity requests |
 | Service provider's responsibilities | As a service provider CSC is responsible for:<br>- Producing and developing the LUMI AIF Dataset-as-a-Service |

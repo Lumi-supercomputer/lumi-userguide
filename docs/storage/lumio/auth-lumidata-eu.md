@@ -16,7 +16,7 @@ To be able to use LUMI-O, you need to be a member of a LUMI project.
 
 
 To connect to LUMI-O, one needs to create access credentials. These access credentials are valid for a pre-defined period of time. 
-Note that if you are using the LUMI web interface, you can also create the access credentials directly in the web interface as described [here](../../compute/webui/index.md#accessing-lumi-o). 
+Note that if you are using the LUMI web interface, you can also create the access credentials directly in the web interface as described [here](../../runjobs/webui/index.md#accessing-lumi-o). 
 
 
 Go to [LUMI-O credentials management service page][auth.lumidata.eu]. And click
@@ -153,7 +153,7 @@ You can access LUMI-O from any machine or server that is connected to internet. 
 
 ### Using the LUMI web interface
 
-LUMI-O can be used via the [LUMI web interface](../../compute/webui/index.md#accessing-lumi-o).
+LUMI-O can be used via the [LUMI web interface](../../runjobs/webui/index.md#accessing-lumi-o).
 
 
 

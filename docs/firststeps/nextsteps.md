@@ -4,7 +4,7 @@ hide:
   - toc
 ---
 
-[running-jobs]: ../compute/index.md
+[running-jobs]: ../runjobs/index.md
 [Hardware]: ../hardware/index.md
 [helpdesk]: ../helpdesk/index.md
 [software]: ../software/index.md

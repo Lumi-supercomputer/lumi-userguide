@@ -2,8 +2,8 @@
 [lumi-f]: ../../storage/parallel-filesystems/lumif.md
 [lumi-p]: ../../storage/parallel-filesystems/lumip.md
 [lumi-o]: ../../storage/lumio/index.md
-[slurm-quickstart]: ../../compute/scheduled-jobs/slurm-quickstart.md
-[slurm-partitions]: ../../compute/scheduled-jobs/partitions.md
+[slurm-quickstart]: ../../runjobs/scheduled-jobs/slurm-quickstart.md
+[slurm-partitions]: ../../runjobs/scheduled-jobs/partitions.md
 [data-storage-options]: ../../storage/index.md
 
 # Billing policy

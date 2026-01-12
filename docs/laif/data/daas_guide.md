@@ -154,7 +154,7 @@ related tasks in HPC environment:
 [https://docs.lumi-supercomputer.eu/software/local/lumi-aif/#containerized-workflows](https://docs.lumi-supercomputer.eu/software/local/lumi-aif/#containerized-workflows)
 
 Running jobs on LUMI:
-[https://docs.lumi-supercomputer.eu/compute/](https://docs.lumi-supercomputer.eu/compute/)
+[https://docs.lumi-supercomputer.eu/runjobs/](https://docs.lumi-supercomputer.eu/runjobs/)
 
 ## Citation
 

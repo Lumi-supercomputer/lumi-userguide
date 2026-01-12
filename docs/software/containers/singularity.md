@@ -15,13 +15,13 @@
 [singularity-def-file]: https://docs.sylabs.io/guides/latest/user-guide/definition_files.html
 [tykky-cotainr-diff]: https://github.com/DeiC-HPC/cotainr/issues/37
 
-[container-jobs]: ../../compute/scheduled-jobs/container-jobs.md
+[container-jobs]: ../../runjobs/scheduled-jobs/container-jobs.md
 [container-wrapper]: ../installing/container-wrapper.md
 [copying-files]: ../../firststeps/movingdata.md
 [easybuild]: ../../software/installing/easybuild.md
 [interconnect]: ../../hardware/network.md
 [lumi-g]: ../../hardware/lumig.md
-[lumi-software-stack]: ../../compute/lumi_env/softwarestacks.md
+[lumi-software-stack]: ../../runjobs/lumi_env/softwarestacks.md
 [python-packages]: ../installing/python.md
 [spack]: ../../software/installing/spack.md
 
@@ -229,5 +229,5 @@ $ sudo singularity build mpi_osu.sif mpi_osu.def
 
 The `mpi_osu.sif` file must then be [transferred to LUMI][copying-files]. See
 the [container jobs MPI documentation
-page](../../compute/scheduled-jobs/container-jobs.md#running-containerized-mpi-applications)
+page](../../runjobs/scheduled-jobs/container-jobs.md#running-containerized-mpi-applications)
 for instructions on running this MPI container on LUMI.

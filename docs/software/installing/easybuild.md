@@ -1,10 +1,10 @@
 # EasyBuild
 
-[Lmod_modules]: ../../compute/lumi_env/Lmod_modules.md
-[softwarestacks]: ../../compute/lumi_env/softwarestacks.md
+[Lmod_modules]: ../../runjobs/lumi_env/Lmod_modules.md
+[softwarestacks]: ../../runjobs/lumi_env/softwarestacks.md
 [helpdesk]: ../../helpdesk/index.md
 [lumi-g]: ../../hardware/lumig.md
-[eap]: ../../hardware/compute/eap.md
+[eap]: ../../hardware/runjobs/eap.md
 [software-library]: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs
 
 Most software in the central LUMI [software stacks][softwarestacks] is

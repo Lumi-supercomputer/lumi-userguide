@@ -1,5 +1,5 @@
 [lumi-c]: ../../hardware/lumic.md
-[container-jobs]: ../../compute/scheduled-jobs/container-jobs.md
+[container-jobs]: ../../runjobs/scheduled-jobs/container-jobs.md
 
 # Julia scheduled jobs
 

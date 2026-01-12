@@ -1,9 +1,9 @@
 [slurm]: https://slurm.schedmd.com/
 [slurmlearning]: http://slurmlearning.deic.dk/
-[partitions]: ../../compute/scheduled-jobs/partitions.md
-[batch-jobs]: ../../compute/scheduled-jobs/batch-job.md
+[partitions]: ../../runjobs/scheduled-jobs/partitions.md
+[batch-jobs]: ../../runjobs/scheduled-jobs/batch-job.md
 [accesslumi]: ../../firststeps/accessLUMI.md
-[billing]: ../../compute/lumi_env/billing.md
+[billing]: ../../runjobs/lumi_env/billing.md
 
 # Slurm quickstart
 

@@ -5,11 +5,11 @@
 [lumi-c]: ../hardware/lumic.md
 [lumi-g]: ../hardware/lumig.md
 [lumi-d]: ../hardware/lumid.md
-[slurm-quickstart]: ../compute/scheduled-jobs/slurm-quickstart.md
-[module-environment]: ../compute/lumi_env/Lmod_modules.md
-[software-stacks]: ../compute/lumi_env/softwarestacks.md
+[slurm-quickstart]: ../runjobs/scheduled-jobs/slurm-quickstart.md
+[module-environment]: ../runjobs/lumi_env/Lmod_modules.md
+[software-stacks]: ../runjobs/lumi_env/softwarestacks.md
 [data-storage-options]: ../storage/index.md
-[billing-policy]: ../compute/lumi_env/billing.md
+[billing-policy]: ../runjobs/lumi_env/billing.md
 
 ---
 

@@ -1,8 +1,8 @@
 # Batch jobs
 
-[slurm-quickstart]: ../../compute/scheduled-jobs/slurm-quickstart.md
-[lumic-examples]: ../../compute/scheduled-jobs/lumic-job.md
-[lumig-examples]: ../../compute/scheduled-jobs/lumig-job.md
+[slurm-quickstart]: ../../runjobs/scheduled-jobs/slurm-quickstart.md
+[lumic-examples]: ../../runjobs/scheduled-jobs/lumic-job.md
+[lumig-examples]: ../../runjobs/scheduled-jobs/lumig-job.md
 [slurm-doc]: https://slurm.schedmd.com/documentation.html
 [slurm-man]: https://slurm.schedmd.com/man_index.html
 [slurm-sbatch]: https://slurm.schedmd.com/sbatch.html

@@ -11,8 +11,8 @@
 [4]: #compile-an-openmp-application
 [5]: #accessing-the-programming-environment-on-lumi
 
-[modules]: ../../compute/lumi_env/Lmod_modules.md
-[softwarestacks]: ../../compute/lumi_env/softwarestacks.md
+[modules]: ../../runjobs/lumi_env/Lmod_modules.md
+[softwarestacks]: ../../runjobs/lumi_env/softwarestacks.md
 [easybuild]: ../../software/installing/easybuild.md
 [libraries]: ../../development/libraries/cray-libraries.md
 [cce]: cce.md
@@ -20,7 +20,7 @@
 [lumi-c]: ../../hardware/lumic.md
 [lumi-d]: ../../hardware/lumid.md
 [lumi-g]: ../../hardware/lumig.md
-[eap]: ../../hardware/compute/eap.md
+[eap]: ../../hardware/runjobs/eap.md
 
 This page will give you an overview of the [Cray programming environment](https://cpe.ext.hpe.com/docs/) that is
 available on LUMI. It starts with a presentation of the [compiler suites][1]

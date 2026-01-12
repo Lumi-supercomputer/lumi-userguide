@@ -1,6 +1,6 @@
 # Interactive Slurm jobs
 
-[sbatch-options]: ../../compute/scheduled-jobs/batch-job.md#common-slurm-options
+[sbatch-options]: ../../runjobs/scheduled-jobs/batch-job.md#common-slurm-options
 
 Interactive jobs allow a user to interact with applications on the compute
 nodes. With an interactive job, you request time and resources to work on a

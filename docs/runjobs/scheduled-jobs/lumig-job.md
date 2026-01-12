@@ -1,6 +1,6 @@
 # LUMI-G example batch scripts
 
-[gpu-binding]: ../../compute/scheduled-jobs/distribution-binding.md#gpu-binding
+[gpu-binding]: ../../runjobs/scheduled-jobs/distribution-binding.md#gpu-binding
 
 !!! warning "Only 56 cores available on LUMI-G"
 

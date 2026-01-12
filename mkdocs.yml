@@ -23,62 +23,62 @@ nav:
     - Data analytics nodes - LUMI-D: hardware/lumid.md
     - Network and interconnect: hardware/network.md
   - Compute:
-    - Overview: compute/index.md
+    - Overview: runjobs/index.md
     - Web interface:
-      - Introduction: compute/webui/index.md
+      - Introduction: runjobs/webui/index.md
       - Interactive applications:
-        - Overview: compute/webui/interactive-apps.md
-        - Desktop: compute/webui/desktop.md
-        - Julia-Jupyter: compute/webui/julia-jupyter.md
-        - Jupyter: compute/webui/jupyter.md
-        - Jupyter for courses: compute/webui/jupyter-for-courses.md
-        - MLflow: compute/webui/mlflow.md
-        - TensorBoard: compute/webui/tensorboard.md
-        - Visual Studio Code: compute/webui/vscode.md
+        - Overview: runjobs/webui/interactive-apps.md
+        - Desktop: runjobs/webui/desktop.md
+        - Julia-Jupyter: runjobs/webui/julia-jupyter.md
+        - Jupyter: runjobs/webui/jupyter.md
+        - Jupyter for courses: runjobs/webui/jupyter-for-courses.md
+        - MLflow: runjobs/webui/mlflow.md
+        - TensorBoard: runjobs/webui/tensorboard.md
+        - Visual Studio Code: runjobs/webui/vscode.md
     - LUMI environment:
-      - Module environment: compute/lumi_env/Lmod_modules.md
-      - Software stacks: compute/lumi_env/softwarestacks.md
-      - Daily management: compute/lumi_env/dailymanagement.md
+      - Module environment: runjobs/lumi_env/Lmod_modules.md
+      - Software stacks: runjobs/lumi_env/softwarestacks.md
+      - Daily management: runjobs/lumi_env/dailymanagement.md
       - Data storage options: storage/index.md
-      - Billing policy: compute/lumi_env/billing.md
+      - Billing policy: runjobs/lumi_env/billing.md
     - Slurm jobs:
-      - Slurm quickstart: compute/scheduled-jobs/slurm-quickstart.md
-      - Slurm partitions: compute/scheduled-jobs/partitions.md
-      - Batch jobs: compute/scheduled-jobs/batch-job.md
-      - Full machine runs: compute/scheduled-jobs/hero-runs.md
-      - GPU examples: compute/scheduled-jobs/lumig-job.md
-      - CPU examples: compute/scheduled-jobs/lumic-job.md
-      - Distribution and binding: compute/scheduled-jobs/distribution-binding.md
-      - Job array: compute/scheduled-jobs/throughput.md
-      - Interactive jobs: compute/scheduled-jobs/interactive.md
-      - Container jobs: compute/scheduled-jobs/container-jobs.md
-      - Julia scheduled jobs: compute/scheduled-jobs/julia.md
-      - Python scheduled jobs: compute/scheduled-jobs/python.md
-      - Energy consumption: compute/scheduled-jobs/jobenergy.md
+      - Slurm quickstart: runjobs/scheduled-jobs/slurm-quickstart.md
+      - Slurm partitions: runjobs/scheduled-jobs/partitions.md
+      - Batch jobs: runjobs/scheduled-jobs/batch-job.md
+      - Full machine runs: runjobs/scheduled-jobs/hero-runs.md
+      - GPU examples: runjobs/scheduled-jobs/lumig-job.md
+      - CPU examples: runjobs/scheduled-jobs/lumic-job.md
+      - Distribution and binding: runjobs/scheduled-jobs/distribution-binding.md
+      - Job array: runjobs/scheduled-jobs/throughput.md
+      - Interactive jobs: runjobs/scheduled-jobs/interactive.md
+      - Container jobs: runjobs/scheduled-jobs/container-jobs.md
+      - Julia scheduled jobs: runjobs/scheduled-jobs/julia.md
+      - Python scheduled jobs: runjobs/scheduled-jobs/python.md
+      - Energy consumption: runjobs/scheduled-jobs/jobenergy.md
     - LUMI-K Cloud:
       - Getting Started:
-        - What is LUMI-K: compute/lumi-k/getting-started/lumi_k_what_is.md
-        - Log in to LUMI-K: compute/lumi-k/getting-started/lumik_login.md
-        - Create projects: compute/lumi-k/getting-started/lumik_projects.md
-        - Command Line Interface (CLI): compute/lumi-k/getting-started/lumik_cli.md
-        - External documentation: compute/lumi-k/getting-started/ext_docs.md
+        - What is LUMI-K: runjobs/lumi-k/getting-started/lumi_k_what_is.md
+        - Log in to LUMI-K: runjobs/lumi-k/getting-started/lumik_login.md
+        - Create projects: runjobs/lumi-k/getting-started/lumik_projects.md
+        - Command Line Interface (CLI): runjobs/lumi-k/getting-started/lumik_cli.md
+        - External documentation: runjobs/lumi-k/getting-started/ext_docs.md
       - Usage:
-        - Kubernetes concepts: compute/lumi-k/usage/kube_concepts.md
+        - Kubernetes concepts: runjobs/lumi-k/usage/kube_concepts.md
         - Container images:
-          - compute/lumi-k/usage/container_images/images_overview.md
-          - Build container images: compute/lumi-k/usage/container_images/creating_images.md
-          - Best practices: compute/lumi-k/usage/container_images/best_practices.md
-          - LUMI-K image registry: compute/lumi-k/usage/container_images/lumik_integrated_registry.md
+          - Overview: runjobs/lumi-k/usage/container_images/images_overview.md
+          - Build container images: runjobs/lumi-k/usage/container_images/creating_images.md
+          - Best practices: runjobs/lumi-k/usage/container_images/best_practices.md
+          - LUMI-K image registry: runjobs/lumi-k/usage/container_images/lumik_integrated_registry.md
         - Storage:
-          - compute/lumi-k/usage/storage/storage_overview.md
-          - Ephemeral storage: compute/lumi-k/usage/storage/ephemeral_storage.md
-          - Persistent storage: compute/lumi-k/usage/storage/persistent_storage.md
-          - Object storage: compute/lumi-k/usage/storage/object_storage.md
-        - Networking: compute/lumi-k/usage/networking.md
+          - Storage in LUMI-K: runjobs/lumi-k/usage/storage/storage_overview.md
+          - Ephemeral storage: runjobs/lumi-k/usage/storage/ephemeral_storage.md
+          - Persistent storage: runjobs/lumi-k/usage/storage/persistent_storage.md
+          - Object storage: runjobs/lumi-k/usage/storage/object_storage.md
+        - Networking: runjobs/lumi-k/usage/networking.md
       - Configuration:
-        - Resource quotas: compute/lumi-k/configuration/resource_quotas.md
-        - Networking: compute/lumi-k/configuration/network.md
-      - Security guide: compute/lumi-k/security_guide.md
+        - Resource quotas: runjobs/lumi-k/configuration/resource_quotas.md
+        - Networking: runjobs/lumi-k/configuration/network.md
+      - Security guide: runjobs/lumi-k/security_guide.md
   - Software:
     - Overview: software/index.md
     - Install policy: software/policy.md
@@ -247,7 +247,7 @@ plugins:
 #  - section-index
   - redirects:
       redirect_maps:
-        'computing/Lmod_modules.md': 'compute/lumi_env/Lmod_modules.md'
+        'computing/Lmod_modules.md': 'runjobs/lumi_env/Lmod_modules.md'
         'firststeps/getstarted.md': 'firststeps/index.md'
         'software/packages/pytorch.md': 'https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/p/PyTorch/'
   - search
