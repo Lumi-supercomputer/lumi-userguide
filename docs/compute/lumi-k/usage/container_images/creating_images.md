@@ -107,11 +107,11 @@ The methods below use LUMI-K to build container images.
 ### Using a local folder for building
 
 This method allows building an image using a local folder containing a Dockerfile and the other required project files
-(source code, executables, configuration, etc.). It is useful when it is not possible or inconvenient to allow LUMI-K to
+(source code, executables, configuration, etc.). It is useful when it is impossible or inconvenient to allow LUMI-K to
 clone your git repository directly. As prerequisites, you should have:
 
 * Created a project in LUMI-K as described [here](../../getting-started/lumik_projects.md)
-* Logged to the cluster using the `oc` [CLI](../../getting-started/lumik_cli.md)
+* Logged in to the LUMI-K cluster using the `oc` [CLI](../../getting-started/lumik_cli.md)
 
 **Steps:**
 
