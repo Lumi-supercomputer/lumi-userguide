@@ -9,18 +9,18 @@ you must be a member of at least one LUMI project. The LUMI project can be then 
 LUMI-K project by specifying its number as  `lumi_project: <lumi_project_number>` in the _Description_ field of project 
 creation form in LUMI-K.
 
-For example, if you are already a member of a LUMI project with number 123456, you can use it to create LUMI-K projects 
+For example, if you are already a member of a LUMI project with number 465000001, you can use it to create LUMI-K projects 
 by entering the following text in the _Description_ field of the project creation form in LUMI-K:
 
 ```
-lumi_project: 123456
+lumi_project: 465000001
 ```
 
 You can also enter a human-readable description for the project, in which case the field could look like this:
 
 ```
 This project is used for hosting the Pied Piper web application.
-lumi_project: 123456
+lumi_project: 465000001
 ```
 
 It is to be noted that one LUMI project can be associated with multiple LUMI-K projects. Also, users can only see LUMI-K
@@ -45,7 +45,7 @@ metadata:
     ...
   creationTimestamp: 2025-11-22T12:27:05Z
   labels:
-    group: "123456"
+    group: "465000001"
   name: my-lumik-project
 spec:
   finalizers:
@@ -55,7 +55,7 @@ status:
 ```
 
 In the output above, you can find the associated LUMI  project under `.metadata.labels.group`. In this case, 
-the project is `123456`. This information is also available via the web interface.
+the project is `465000001`. This information is also available via the web interface.
 
 ![Labels web UI](../img/lumik_project_details.png)
 
@@ -82,7 +82,7 @@ the project is `123456`. This information is also available via the web interfac
     * In the **Name** field, enter a **unique name** that is not in use by any other project
     in LUMI-K.
     * In the **Display name** field, you *can*  enter a **human-readable display name**, but this is optional.
-    * In the **Description** field, enter the LUMI project number as instructed in the previous section, `lumi_project: 123456`.
+    * In the **Description** field, enter the LUMI project number as instructed in the previous section, `lumi_project: 465000001`.
 
 
 3. Once you have filled in the fields, click "Create", and you will be redirected to the main project page, showing the details,
