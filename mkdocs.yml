@@ -55,7 +55,7 @@ nav:
       - Julia scheduled jobs: compute/scheduled-jobs/julia.md
       - Python scheduled jobs: compute/scheduled-jobs/python.md
       - Energy consumption: compute/scheduled-jobs/jobenergy.md
-    - Kubernetes:
+    - LUMI-K Cloud:
       - Getting Started:
         - What is LUMI-K: compute/lumi-k/getting-started/lumi_k_what_is.md
         - Log in to LUMI-K: compute/lumi-k/getting-started/lumik_login.md
