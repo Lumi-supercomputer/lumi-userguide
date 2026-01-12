@@ -86,8 +86,8 @@ computing project cannot exceed 12 cores. The same restrictions apply for memory
 
 !!! warning "Note"
 
-    Note that LUMI-K quotas are independent of the LUMI computing quotas that you applied for when creating LUMI project,
-    and that LUMI-K usage does not count toward the LUMI computing quota.
+    Note that LUMI-K quotas are independent of the LUMI computing quotas of your LUMI project.
+    Moreover, LUMI-K usage does not count toward the LUMI computing quota.
 
 !!! warning "Note"
 
@@ -95,7 +95,7 @@ computing project cannot exceed 12 cores. The same restrictions apply for memory
     (see [project creation page](../getting-started/lumik_projects.md)). Keep in mind that the quota will be shared with them.
     
 You can find the resource usage and quota of a project in the project view in
-the web interface under **Administration -> ResourceQuota** and **Administration -> LimitRanges**.
+the LUMI-K web interface under **Administration -> ResourceQuota** and **Administration -> LimitRanges**.
 
 
 ### Requesting more quota
