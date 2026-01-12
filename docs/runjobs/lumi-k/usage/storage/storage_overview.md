@@ -8,6 +8,10 @@ persistent storage, and object storage. Each serves a different purpose and is s
 
 ![Storage options](../../img/lumik_storage_options.svg)
 
+!!! Info
+    Other than LUMI-O, LUMI storage systems can not be acccessed directly from LUMI-K. Data can be moved from, for example,
+    LUMI-P to LUMI-O object storage and then accessed from LUMI-K.
+
 ## Ephemeral storage
 
 Ephemeral storage exists only for the lifetime of a Pod. When the Pod stops, restarts, or is rescheduled to another 
@@ -53,4 +57,4 @@ unstructured, or need to be published over internet and does not need to be acce
 * Application assets served externally.
 * Logs or analytical outputs stored outside the cluster.
 
-[LUMI-O](../../../../storage/lumio/index.md#lumi-o) is an object storage service that can be used in LUMI-K.
+[LUMI-O](../../../../storage/lumio/index.md#lumi-o) is an object storage service that can be used in LUMI-K as shown [here](object_storage.md).
