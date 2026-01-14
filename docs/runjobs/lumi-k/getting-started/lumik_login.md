@@ -18,7 +18,7 @@ services (e.g., LUMI-G and LUMI-O), you can skip this step as you will already h
 
     !!! Warning "User not found"
         If you get an error message similar to this please make sure that you are part of a LUMI project as described in the previous step.
-        If your LUMI project has just been created, it might take up to 10 minutes for your profile information to be synced to LUMI-K.
+        If your LUMI project has just been created, it might take up to 2 hours for your profile information to be synced to LUMI-K.
         ![Error_no_user](../img/lumik_error_no_user.png)
 
     After logging in you should see a page like this:

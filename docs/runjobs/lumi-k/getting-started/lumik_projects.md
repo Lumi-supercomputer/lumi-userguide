@@ -93,7 +93,7 @@ list of Kubernetes objects, resource usage, and applied quota of your new LUMI-K
 By default, LUMI-K projects that are associated with a specific LUMI project are accessible to all members of that LUMI 
 project. All members automatically have administrative access to the corresponding LUMI-K projects.
 
-If you want to grant a new user access to your LUMI-K projects, the LUMI project PI needs to [invite them to the parent LUMI project](../../../firststeps/accessLUMI.md) and wait a few minutes for the access privileges to synchronize.
+If you want to grant a new user access to your LUMI-K projects, the LUMI project PI needs to [invite them to the parent LUMI project](../../../firststeps/accessLUMI.md). The synchronization for the user access can take up to 2 hours.
 
 ## Deleting a LUMI-K project
 
