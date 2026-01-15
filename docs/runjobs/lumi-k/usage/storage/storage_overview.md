@@ -57,4 +57,4 @@ unstructured, or need to be published over internet and does not need to be acce
 * Application assets served externally.
 * Logs or analytical outputs stored outside the cluster.
 
-[LUMI-O](../../../../storage/lumio/index.md#lumi-o) is an object storage service that can be used in LUMI-K as shown [here](object_storage.md).
+LUMI-K internal storage cluster does not provide object storage endpoint, however, [LUMI-O](../../../../storage/lumio/index.md#lumi-o) is an object storage service that can be used in LUMI-K as shown [here](object_storage.md).
