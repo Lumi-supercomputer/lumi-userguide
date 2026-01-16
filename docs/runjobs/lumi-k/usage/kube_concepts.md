@@ -50,7 +50,7 @@ the terms _project_ and _namespace_ are often used interchangeably, as both refe
 user’s resources.
 
 The first step when starting with LUMI-K is to create a project (also known as a namespace). 
-In order to create a project in LUMI-K, please refer to the [Creating a project](../getting-started/lumik_projects.md#creating-a-project) section of the documentation.
+In order to create a project in LUMI-K, please refer to the [Creating a project](../getting-started/lumik_projects.md#create-a-new-project) section of the documentation.
 
 ### Pod
 

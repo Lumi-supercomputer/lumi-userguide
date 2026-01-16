@@ -215,7 +215,7 @@ Cons:
 
 For the following script to work, we assume that you have the `rclone` command-line program installed and LUMI-O
 bucket name is created. The `rclone.conf` should be set on your local system as explained [here](../../../../storage/lumio/connect-local.md). LUMI-O bucket can also be created using rclone as
-described [here](http://localhost:8000/storage/lumio/clients-general/#rclone).
+described [here](../../../../storage/lumio/clients-general.md#rclone).
 
 This script will backup an application deployed in LUMI-K. 
 The application has, for example the name `/backup`, as the `volumeMounts` `mountPath`.
