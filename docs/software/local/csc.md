@@ -36,6 +36,7 @@ Available software and tools:
 * [LAMMPS](https://docs.csc.fi/apps/lammps/#lumi)
 * [MATLAB](https://docs.csc.fi/apps/matlab/#lumi)
 * [NAMD](https://docs.csc.fi/apps/namd/#lumi-g-1-gcd)
+* [NMRLipids](https://docs.csc.fi/apps/nmrlipids/#lumi)
 * [Nextflow](https://docs.csc.fi/apps/nextflow/)
 * [OpenFOAM](https://docs.csc.fi/apps/openfoam/)
 * [PALM](https://docs.csc.fi/apps/palm/)
