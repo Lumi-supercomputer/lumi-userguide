@@ -123,10 +123,10 @@ with a `rclone` Docker image.
 
 Create a `rclone.conf` with your `access_key_id` and `secret_access_key`.
 
-If you don't have `access_key_id` and `secret_access_key`, you need to generate them as described [here](../../../../storage/lumio/auth-lumidata-eu.md#environment-variables)-
+If you don't have `access_key_id` and `secret_access_key`, you need to generate them as described [here](../../../../storage/lumio/auth-lumidata-eu.md).
 
 
-Once GENERATED, create your `rclone.conf` file:
+Once generated, create your `rclone.conf` file:
 
 ```ini
 [default]
@@ -139,7 +139,7 @@ endpoint = lumidata.eu
 acl = private
 ```
 
-_Replace `{ACCESS_KEY_ID}` and `{SECRET_ACCESS_KEY}` by your own credentilas._
+_Replace `{ACCESS_KEY_ID}` and `{SECRET_ACCESS_KEY}` by your own credentials._
 
 Create a `rclone.sh` script:
 
