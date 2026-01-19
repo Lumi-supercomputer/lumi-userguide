@@ -21,6 +21,7 @@ nav:
     - GPU nodes - LUMI-G: hardware/lumig.md
     - CPU nodes - LUMI-C: hardware/lumic.md
     - Data analytics nodes - LUMI-D: hardware/lumid.md
+    - Cloud - LUMI-K: hardware/lumik.md
     - Network and interconnect: hardware/network.md
   - Compute:
     - Overview: runjobs/index.md

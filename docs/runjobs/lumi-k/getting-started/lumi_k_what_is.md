@@ -18,10 +18,10 @@ and rolling updates, which help ensure that your applications stay responsive du
 The platform also offers ready-made templates for common workloads, such as databases and web servers, allowing you 
 to set up these applications with only a few clicks.
 
-The LUMI-K platform comprises 28 worker nodes, each equipped with 128 CPU cores and 503 GiB of memory. Collectively, this 
-provides a total of 3,584 CPU cores and 14,084 GiB of memory. The platform also includes a Ceph-backed persistent storage cluster, 
+The LUMI-K platform comprises 28 worker nodes, each equipped with 128 vCPU cores and 503 GiB of memory. Collectively, this 
+provides a total of 3,584 vCPU cores and 14,084 GiB of memory. The platform also includes a Ceph-backed persistent storage cluster, 
 offering 89 TiB of total storage capacity. This capacity is dynamically allocated between block storage and filesystem storage classes, 
-ensuring flexible and efficient resource utilization.
+ensuring flexible and efficient resource utilization. More information regarding the LUMI-K hardware can be found [here](../../../hardware/lumik.md).
 
 ## When should I choose LUMI-K?
 
