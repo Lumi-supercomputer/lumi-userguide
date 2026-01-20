@@ -3,6 +3,7 @@
 [lumi-c]: ../hardware/lumic.md
 [lumi-g]: ../hardware/lumig.md
 [lumi-d]: ../hardware/lumid.md
+[lumi-k]: ../hardware/lumik.md
 [network]: ../hardware/network.md
 [lumi-top500]: https://top500.org/system/180048/
 
@@ -15,17 +16,15 @@ hardware partitions available on LUMI.
 
 LUMI is one of the three European pre-exascale supercomputers. It's an HPE Cray
 EX supercomputer consisting of several hardware partitions targeted different
-use cases. All the hardware partitions are connected via an HPE Slingshot 11
+use cases. All the hardware partitions (except [LUMI-K][lumi-k]) are connected via an HPE Slingshot 11
 high-speed [interconnect][network]. As of 06/2025, LUMI ranks ninth on the
 [top500.org list][lumi-top500] and is currently the fourth fastest supercomputer
 in Europe.
 
 The primary compute power in LUMI is found in the [LUMI-G][lumi-g] hardware
 partition which features GPU accelerated nodes using AMD Instinct MI250X GPUs.
-In addition to this, there is a smaller [LUMI-C][lumi-c] CPU-only hardware
+Complementing this is the smaller [LUMI-C][lumi-c] CPU-only hardware
 partition that features AMD EPYC "Milan" CPUs, as well as a small
 [LUMI-D][lumi-d] data analytics hardware partition featuring large memory nodes
-(4 TB) and some NVIDIA A40 GPUs for data visualization.
-
-
-
+(4 TB) and some NVIDIA A40 GPUs for data visualization. In addition, the [LUMI‑K][lumi-k]
+cloud partition provides Kubernetes compute resources based on AMD EPYC 7742 CPUs.

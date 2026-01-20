@@ -21,8 +21,9 @@ nav:
     - GPU nodes - LUMI-G: hardware/lumig.md
     - CPU nodes - LUMI-C: hardware/lumic.md
     - Data analytics nodes - LUMI-D: hardware/lumid.md
+    - Cloud - LUMI-K: hardware/lumik.md
     - Network and interconnect: hardware/network.md
-  - Run jobs:
+  - Compute:
     - Overview: runjobs/index.md
     - Web interface:
       - Introduction: runjobs/webui/index.md
@@ -41,7 +42,7 @@ nav:
       - Daily management: runjobs/lumi_env/dailymanagement.md
       - Data storage options: storage/index.md
       - Billing policy: runjobs/lumi_env/billing.md
-    - Batch jobs:
+    - Slurm jobs:
       - Slurm quickstart: runjobs/scheduled-jobs/slurm-quickstart.md
       - Slurm partitions: runjobs/scheduled-jobs/partitions.md
       - Batch jobs: runjobs/scheduled-jobs/batch-job.md
@@ -55,6 +56,30 @@ nav:
       - Julia scheduled jobs: runjobs/scheduled-jobs/julia.md
       - Python scheduled jobs: runjobs/scheduled-jobs/python.md
       - Energy consumption: runjobs/scheduled-jobs/jobenergy.md
+    - LUMI-K Cloud:
+      - Getting Started:
+        - What is LUMI-K: runjobs/lumi-k/getting-started/lumi_k_what_is.md
+        - Log in to LUMI-K: runjobs/lumi-k/getting-started/lumik_login.md
+        - Create projects: runjobs/lumi-k/getting-started/lumik_projects.md
+        - Command Line Interface (CLI): runjobs/lumi-k/getting-started/lumik_cli.md
+        - External documentation: runjobs/lumi-k/getting-started/ext_docs.md
+      - Usage:
+        - Kubernetes concepts: runjobs/lumi-k/usage/kube_concepts.md
+        - Container images:
+          - Overview: runjobs/lumi-k/usage/container_images/images_overview.md
+          - Build container images: runjobs/lumi-k/usage/container_images/creating_images.md
+          - Best practices: runjobs/lumi-k/usage/container_images/best_practices.md
+          - LUMI-K image registry: runjobs/lumi-k/usage/container_images/lumik_integrated_registry.md
+        - Storage:
+          - Storage in LUMI-K: runjobs/lumi-k/usage/storage/storage_overview.md
+          - Ephemeral storage: runjobs/lumi-k/usage/storage/ephemeral_storage.md
+          - Persistent storage: runjobs/lumi-k/usage/storage/persistent_storage.md
+          - Object storage: runjobs/lumi-k/usage/storage/object_storage.md
+        - Networking: runjobs/lumi-k/usage/networking.md
+      - Configuration:
+        - Resource quotas: runjobs/lumi-k/configuration/resource_quotas.md
+        - Networking: runjobs/lumi-k/configuration/network.md
+      - Security guide: runjobs/lumi-k/security_guide.md
   - Software:
     - Overview: software/index.md
     - Install policy: software/policy.md
