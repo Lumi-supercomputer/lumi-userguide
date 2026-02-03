@@ -29,7 +29,7 @@ At the moment, we recommend using the AMD-provided containers, which can be foun
 | 2.6.0             | 3.12              | lumi-pytorch-rocm-6.2.4-python-3.12-pytorch-v2.6.0.sif    |
 | 2.5.1             | 3.12              | lumi-pytorch-rocm-6.2.3-python-3.12-pytorch-v2.5.1.sif    |
 
-There are older containers for PyTorch versions (2.4.1, 2.3.1, 2.3.0, 2.2.2) that *might* not fully work after the [January 2026 LUMI maintenance break](https://lumi-supercomputer.eu/lumi-service-status/information-lumi-maintenance-break-7-21-january-2026/).
+There are containers for older PyTorch versions (2.4.1, 2.3.1, 2.3.0, 2.2.2) that *might* not fully work after the [January 2026 LUMI maintenance break](https://lumi-supercomputer.eu/lumi-service-status/information-lumi-maintenance-break-7-21-january-2026/).
 
 ### How to use the containers
 
