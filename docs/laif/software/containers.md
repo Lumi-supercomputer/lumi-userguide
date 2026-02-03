@@ -31,6 +31,8 @@ At the moment, we recommend using the AMD-provided containers, which can be foun
 
 There are containers for older PyTorch versions (2.4.1, 2.3.1, 2.3.0, 2.2.2) that *might* not fully work after the [January 2026 LUMI maintenance break](https://lumi-supercomputer.eu/lumi-service-status/information-lumi-maintenance-break-7-21-january-2026/).
 
+See [instructions in the AI Guide](https://github.com/Lumi-supercomputer/LUMI-AI-Guide/tree/main/2-setting-up-environment#interacting-with-a-containerized-environment) for checking which other Python packages are installed.
+
 ### How to use the containers
 
 See the [Environment setup section in the LUMI AI Guide](https://github.com/Lumi-supercomputer/LUMI-AI-Guide/tree/main/2-setting-up-environment) for instructions on how to use these containers. The guide explains the following steps:
