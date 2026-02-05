@@ -1,9 +1,5 @@
 # AI Software Environment
 
-!!! info "Note"
-    Software installed under `/appl/local` are maintained by the respective
-    local organizations.
-
 The LUMI AI Factory Software Environment aims to be a comprehensive, ready-to-use containerised stack for AI
 and machine learning workloads on the LUMI supercomputer. The environment is designed to address
 the complexity of deploying and maintaining AI/ML software in high-performance computing (HPC)
