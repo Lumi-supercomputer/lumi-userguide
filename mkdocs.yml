@@ -90,7 +90,6 @@ nav:
       - LUMI container wrapper: software/installing/container-wrapper.md
     - Containers: 
       - Singularity/Apptainer: software/containers/singularity.md
-      - AI Containers: software/containers/ai-containers.md
     - Software guides:
       - Software library: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/
       #- CP2K: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/c/CP2K/
@@ -178,6 +177,7 @@ nav:
         - Service description: laif/data/daas_description.md
     - Software:
       - Overview: laif/software/index.md
+      - AI Environment: laif/software/ai-environment.md
       - Containerized Workflows: laif/software/workflows.md
     
  
