@@ -177,7 +177,7 @@ nav:
         - Service description: laif/data/daas_description.md
     - Software:
       - Overview: laif/software/index.md
-      - AI Environment: laif/software/ai-environment.md
+      - AI Software Environment: laif/software/ai-environment.md
       - Containerized Workflows: laif/software/workflows.md
     
  
