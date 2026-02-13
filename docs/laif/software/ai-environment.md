@@ -73,7 +73,7 @@ To inspect which specific packages are included in the images you can use this s
 
 ```
 export SIF=/appl/local/laifs/containers/lumi-multitorch-u24r64f21m43t29-20260124_092648/lumi-multitorch-full-u24r64f21m43t29-20260124_092648.sif
-singularity exec $SIF pip list
+singularity run $SIF pip list
 ```
 
 Alternatively, you can have a look at the software bill of materials (SBOM) `.json` file in the [GitHub releases](https://github.com/lumi-ai-factory/laifs-container-recipes/releases) or in the directory of the container on LUMI.
