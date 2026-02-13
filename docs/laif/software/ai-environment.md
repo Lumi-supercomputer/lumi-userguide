@@ -26,7 +26,7 @@ new major functionality in the following order:
 2. `lumi-multitorch-libfabric-*`: Adds libfabric to the ROCm image
 3. `lumi-multitorch-mpich-*`: Adds MPICH with GPU support to the libfabric image
 4. `lumi-multitorch-torch-*`: Adds PyTorch to the MPICH image
-5. `lumi-multitorch-full-*`: Adds selection of AI and ML libraries to the PyTorch image
+5. `lumi-multitorch-full-*`: Adds selection of AI and ML libraries (e.g., Bitsandbytes, DeepSpeed, Flash Attention, Megatron LM, vLLM) to the PyTorch image
 
 The name of the container includes a timestamp and version identifier. It is explained in the [releases on GitHub](https://github.com/lumi-ai-factory/laifs-container-recipes/releases).
 
