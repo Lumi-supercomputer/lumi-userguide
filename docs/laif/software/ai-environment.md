@@ -28,6 +28,8 @@ new major functionality in the following order:
 4. `lumi-multitorch-torch-*`: Adds PyTorch to the MPICH image
 5. `lumi-multitorch-full-*`: Adds selection of AI and ML libraries (e.g., Bitsandbytes, DeepSpeed, Flash Attention, Megatron LM, vLLM) to the PyTorch image
 
+The [releases on GitHub](https://github.com/lumi-ai-factory/laifs-container-recipes/releases) also include full details of the included software of each image.
+
 The name of the container includes a timestamp and version identifier. It is explained in the [releases on GitHub](https://github.com/lumi-ai-factory/laifs-container-recipes/releases).
 
 For users running AI applications based on PyTorch the containers starting with `lumi-multitorch-full-*` are most likely the best starting point. Advanced users can build on intermediate containers to customize to their use cases. We aim to release containers for jax or other software in the future.
