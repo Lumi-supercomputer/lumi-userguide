@@ -47,7 +47,7 @@ The container images are available from the following locations:
 
 This list only includes some examples for using the container images. More examples that use older containers supplied by AMD can be found in the [LUMI AI guide](https://github.com/Lumi-supercomputer/LUMI-AI-Guide/). We will update these examples with the AI Software Environment by LUMI AI Factory soon.
 
-!!! Info "singularity-AI-bindings module"
+!!! Info "lumi-aif-singularity-bindings module"
     To give LUMI containers access to the Slingshot network for good RCCL and MPI performance and access to the file system of the working directory, some additional bindings are required. As it can be quite cumbersome to set these bindings manually, we provide a module that does this for you. You can load the module with the following commands:
 
     ```
