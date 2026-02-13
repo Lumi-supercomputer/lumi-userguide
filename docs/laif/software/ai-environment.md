@@ -42,13 +42,23 @@ The container images are available from the following locations:
 
 This list only includes some examples for using the container images. More examples that use older containers supplied by AMD can be found in the [LUMI AI guide](https://github.com/Lumi-supercomputer/LUMI-AI-Guide/). We will update these examples with the AI Environment by LUMI AI Factory soon.
 
-### Run PyTorch using the container 
+!!! Info "singularity-AI-bindings module"
+    To give LUMI containers access to the Slingshot network for good RCCL and MPI performance and access to the file system of the working directory, some additional bindings are required. As it can be quite cumbersome to set these bindings manually, we provide a module that does this for you. You can load the module with the following commands:
+
+    ```
+    module use /appl/local/containers/ai-modules
+    module load singularity-AI-bindings
+    ```
+
+    If you prefer to set the bindings manually, we recommend taking a look at the [Running containers on LUMI lecture](https://lumi-supercomputer.github.io/LUMI-training-materials/ai-20240529/extra_05_RunningContainers/) from the [LUMI AI workshop material](https://github.com/Lumi-supercomputer/Getting_Started_with_AI_workshop).
+
+### Run PyTorch using the container
 
 ```
 module use /appl/local/containers/ai-modules
 module load singularity-AI-bindings
-export SIF=/appl/local/containers/sif-images/lumi-pytorch-rocm-6.0.3-python-3.12-pytorch-v2.3.1.sif
-srun singularity exec $SIF python -c "import torch; print(torch.cuda.device_count())"'
+export SIF=/appl/local/laifs/containers/lumi-multitorch-u24r64f21m43t29-20260124_092648/lumi-multitorch-full-u24r64f21m43t29-20260124_092648.sif
+srun singularity exec $SIF python -c "import torch; print(torch.cuda.device_count())"
 ```
 
 ### List pip packages in container
