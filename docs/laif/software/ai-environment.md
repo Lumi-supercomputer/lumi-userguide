@@ -51,8 +51,9 @@ This list only includes some examples for using the container images. More examp
     To give LUMI containers access to the Slingshot network for good RCCL and MPI performance and access to the file system of the working directory, some additional bindings are required. As it can be quite cumbersome to set these bindings manually, we provide a module that does this for you. You can load the module with the following commands:
 
     ```
-    module use /appl/local/containers/ai-modules
-    module load singularity-AI-bindings
+    module purge
+    module use /appl/local/laifs/modules
+    module load lumi-aif-singularity-bindings
     ```
 
     If you prefer to set the bindings manually, we recommend taking a look at the [Running containers on LUMI lecture](https://lumi-supercomputer.github.io/LUMI-training-materials/ai-20240529/extra_05_RunningContainers/) from the [LUMI AI workshop material](https://github.com/Lumi-supercomputer/Getting_Started_with_AI_workshop).
@@ -60,8 +61,9 @@ This list only includes some examples for using the container images. More examp
 ### Run PyTorch using the container
 
 ```
-module use /appl/local/containers/ai-modules
-module load singularity-AI-bindings
+module purge
+module use /appl/local/laifs/modules
+module load lumi-aif-singularity-bindings
 export SIF=/appl/local/laifs/containers/lumi-multitorch-u24r64f21m43t29-20260124_092648/lumi-multitorch-full-u24r64f21m43t29-20260124_092648.sif
 srun singularity exec $SIF python -c "import torch; print(torch.cuda.device_count())"
 ```
@@ -81,8 +83,9 @@ Alternatively, you can have a look at the software bill of materials (SBOM) `.js
 You might find yourself in a situation where none of the provided containers contain all Python packages you need. One possible way of adding custom packages not included in the image is to use a virtual environment on top of the conda environment. For this example, we need to add the HDF5 Python package `h5py` to the environment:
 
 ```
-module use /appl/local/containers/ai-modules
-module load singularity-AI-bindings
+module purge
+module use /appl/local/laifs/modules
+module load lumi-aif-singularity-bindings
 export SIF=/appl/local/laifs/containers/lumi-multitorch-u24r64f21m43t29-20260124_092648/lumi-multitorch-full-u24r64f21m43t29-20260124_092648.sif
 singularity shell $SIF
 Singularity> python -m venv h5-env --system-site-packages
