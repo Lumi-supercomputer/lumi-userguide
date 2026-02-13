@@ -55,7 +55,7 @@ srun singularity exec $SIF python -c "import torch; print(torch.cuda.device_coun
 To inspect which specific packages are included in the images you can use this simple command:
 
 ```
-export SIF=/appl/local/containers/sif-images/lumi-pytorch-rocm-6.2.1-python-3.12-pytorch-20240918-vllm-4075b35.sif
+export SIF=/appl/local/laifs/containers/lumi-multitorch-u24r64f21m43t29-20260124_092648/lumi-multitorch-full-u24r64f21m43t29-20260124_092648.sif
 singularity exec $SIF pip list
 ```
 
@@ -66,7 +66,7 @@ You might find yourself in a situation where none of the provided containers con
 ```
 module use /appl/local/containers/ai-modules
 module load singularity-AI-bindings
-export SIF=/appl/local/containers/sif-images/lumi-pytorch-rocm-6.2.1-python-3.12-pytorch-20240918-vllm-4075b35.sif
+export SIF=/appl/local/laifs/containers/lumi-multitorch-u24r64f21m43t29-20260124_092648/lumi-multitorch-full-u24r64f21m43t29-20260124_092648.sif
 singularity shell $SIF
 Singularity> python -m venv h5-env --system-site-packages
 Singularity> source h5-env/bin/activate
@@ -76,6 +76,7 @@ Singularity> source h5-env/bin/activate
 This will create an h5-env environment in the working directory. The `--system-site-packages` flag gives the virtual environment access to the packages from the container. Now one can execute a script with and import the h5py package. To execute a script called `my-script.py` within the container using the virtual environment, use the additional activation command:
 
 ```
+export SIF=/appl/local/laifs/containers/lumi-multitorch-u24r64f21m43t29-20260124_092648/lumi-multitorch-full-u24r64f21m43t29-20260124_092648.sif
 singularity exec $SIF bash -c 'source h5-env/bin/activate && python my-script.py'
 ```
 
