@@ -65,7 +65,7 @@ module purge
 module use /appl/local/laifs/modules
 module load lumi-aif-singularity-bindings
 export SIF=/appl/local/laifs/containers/lumi-multitorch-u24r64f21m43t29-20260124_092648/lumi-multitorch-full-u24r64f21m43t29-20260124_092648.sif
-srun singularity run $SIF python -c "import torch; print(torch.cuda.device_count())"
+srun -A <your-project-id> -p small-g -n 1 --gpus-per-task=1 singularity run $SIF python -c "import torch; print(torch.cuda.device_count())"
 ```
 
 ### List pip packages in container
