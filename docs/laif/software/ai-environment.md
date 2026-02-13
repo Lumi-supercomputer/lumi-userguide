@@ -102,7 +102,7 @@ Now one can execute a script with and import the h5py package. To execute a scri
 
 ```
 export SIF=/appl/local/laifs/containers/lumi-multitorch-u24r64f21m43t29-20260124_092648/lumi-multitorch-full-u24r64f21m43t29-20260124_092648.sif
-singularity exec $SIF bash -c 'source h5-env/bin/activate && python my-script.py'
+singularity run $SIF bash -c 'source h5-env/bin/activate && python my-script.py'
 ```
 
 
