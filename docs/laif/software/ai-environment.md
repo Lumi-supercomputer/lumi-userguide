@@ -72,6 +72,8 @@ export SIF=/appl/local/laifs/containers/lumi-multitorch-u24r64f21m43t29-20260124
 singularity exec $SIF pip list
 ```
 
+Alternatively, you can have a look at the software bill of materials (SBOM) `.json` file in the [GitHub releases](https://github.com/lumi-ai-factory/laifs-container-recipes/releases) or in the directory of the container on LUMI.
+
 ### Add more pip packages to container
 
 You might find yourself in a situation where none of the provided containers contain all Python packages you need. One possible way of adding custom packages not included in the image is to use a virtual environment on top of the conda environment. For this example, we need to add the HDF5 Python package `h5py` to the environment:
