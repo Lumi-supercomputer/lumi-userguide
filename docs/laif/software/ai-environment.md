@@ -22,13 +22,16 @@ environments.
 At the moment each release includes the following container images, each building on the previous one by adding
 new major functionality in the following order:
 
-1. `lumi-multitorch-rocm-*`: Starts from Ubuntu base image and adds ROCm 6.4.4
-2. `lumi-multitorch-libfabric-*`: Adds libfabric 2.1 to the ROCm image
-3. `lumi-multitorch-mpich-*`: Adds MPICH 4.3.2 with GPU support to the libfabric image
-4. `lumi-multitorch-torch-*`: Adds PyTorch 2.9.1 to the MPICH image
+1. `lumi-multitorch-rocm-*`: Starts from Ubuntu base image and adds ROCm
+2. `lumi-multitorch-libfabric-*`: Adds libfabric to the ROCm image
+3. `lumi-multitorch-mpich-*`: Adds MPICH with GPU support to the libfabric image
+4. `lumi-multitorch-torch-*`: Adds PyTorch to the MPICH image
 5. `lumi-multitorch-full-*`: Adds selection of AI and ML libraries to the PyTorch image
 
-For users running AI applications based on PyTorch the containers starting with `lumi-multitorch-full-*` are most likely the best starting point. Advanced users can build on intermediate containers to customize to their use cases.
+The name of the container includes a timestamp and version identifier. It is explained in the [releases on GitHub](https://github.com/lumi-ai-factory/laifs-container-recipes/releases).
+
+For users running AI applications based on PyTorch the containers starting with `lumi-multitorch-full-*` are most likely the best starting point. Advanced users can build on intermediate containers to customize to their use cases. We aim to release containers for jax or other software in the future.
+
 
 ## Access to container images
 
@@ -83,15 +86,19 @@ Singularity> source h5-env/bin/activate
 (h5-env) Singularity> pip install h5py
 ```
 
-This will create an h5-env environment in the working directory. The `--system-site-packages` flag gives the virtual environment access to the packages from the container. Now one can execute a script with and import the h5py package. To execute a script called `my-script.py` within the container using the virtual environment, use the additional activation command:
+This will create an h5-env environment in the working directory. The `--system-site-packages` flag gives the virtual environment access to the packages from the container. 
+
+!!! Warning "Strain on Lustre file system"
+    Installing Python packages typically creates thousands of small files. This puts a lot of strain on the Lustre file system and might exceed your file quota. This problem can be solved by creating a new container.
+
+Now one can execute a script with and import the h5py package. To execute a script called `my-script.py` within the container using the virtual environment, use the additional activation command:
 
 ```
 export SIF=/appl/local/laifs/containers/lumi-multitorch-u24r64f21m43t29-20260124_092648/lumi-multitorch-full-u24r64f21m43t29-20260124_092648.sif
 singularity exec $SIF bash -c 'source h5-env/bin/activate && python my-script.py'
 ```
 
-!!! Warning "Strain on Lustre file system"
-    Installing Python packages typically creates thousands of small files. This puts a lot of strain on the Lustre file system and might exceed your file quota. This problem can be solved by creating a new container.
+
 
 ## More information
 
