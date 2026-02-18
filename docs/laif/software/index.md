@@ -9,4 +9,5 @@ preview.
 
 Currently available tools and software:
 
+* [AI Software Enviroment](./ai-environment.md)
 * [Containerized Workflows](./workflows.md)
