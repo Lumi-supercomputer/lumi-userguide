@@ -13,4 +13,8 @@
 {% endblock %}
 
 
-{% block footer %}{% endblock %}
+{% block footer %}
+{% block disclaimer %}
+{{ super() }}
+{% endblock %}
+{% endblock %}

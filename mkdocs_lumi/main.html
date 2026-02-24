@@ -106,3 +106,12 @@
     })
   </script>
 {% endblock %}
+
+{% block footer %}
+  {{ super() }}
+  {% block disclaimer %}
+  {% if config.extra.environment == "preview" %}
+    {% include "partials/disclaimer.html" %}
+  {% endif %}
+  {% endblock %}
+{% endblock footer %}

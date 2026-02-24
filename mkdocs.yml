@@ -213,6 +213,7 @@ theme:
     page: https://lumi-supercomputer.eu/
 
 extra:
+  environment: !ENV [MKDOCS_ENV, "preview"]
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/Lumi-supercomputer/lumi-userguide/

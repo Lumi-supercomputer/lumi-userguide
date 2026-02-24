@@ -1,0 +1,188 @@
+<div id="disclaimer-container">
+  <style>
+    :scope {
+      --info-color: #00b8d4;
+      --info-bg-color: #00b8d41a;
+      --danger-color: #ff1744;
+      --font-weight-title: 700;
+    }
+
+    #disclaimer-container {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 10;
+      margin: 0 auto;
+      max-width: calc(100vw / 3);
+    }
+
+    #disclaimer-container > :not(:first-child) {
+      margin-top: .5rem;
+    }
+
+    .disclaimer {
+      display: none;
+      border: .075rem solid var(--info-color);
+      border-radius: .2rem;
+      background-color: var(--md-admonition-bg-color);
+      padding: 0 .6rem;
+      margin: 1.5625em 0;
+      font-size: .8rem;
+      box-shadow: var(--md-shadow-z1);
+      transition: scale 125ms;
+    }
+
+    .disclaimer.preview {
+      border-color: var(--info-color);
+    }
+
+    .disclaimer > .disclaimer-title {
+      margin: unset;
+      padding: .4rem .6rem .4rem 2rem;
+      margin: 0 -.6rem;
+      position: relative;
+      background-color: var(--info-bg-color);
+      font-weight: var(--font-weight-title);
+      line-height: 1.65;
+    }
+
+    .disclaimer > .disclaimer-title:before {
+      content: "";
+      height: 1rem;
+      width: 1rem;
+      -webkit-mask-position: center;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: contain;
+      position: absolute;
+      left: .6rem;
+      top: .55rem;
+    }
+
+    .disclaimer.preview > .disclaimer-title:before {
+      -webkit-mask-image: var(--md-admonition-icon--info);
+      mask-image: var(--md-admonition-icon--info);
+      background-color: var(--info-color);
+    }
+
+    .disclaimer > .disclaimer-content {
+      font-style: italic;
+      margin: 1rem 0 1rem 0;
+      color: var(--danger-color);
+    }
+
+    .disclaimer .button-row {
+      margin: 0 0 .6rem 0;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+    }
+
+    .disclaimer .button-row > a {
+      padding: 15px 15px;
+      cursor: pointer;
+      color: hsla(207,100%,28%, 1);
+    }
+
+    .disclaimer .button-row > a[href] {
+      border: none;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: var(--font-weight-title);
+      cursor: pointer;
+      color: white;
+      background-color: hsla(207,100%,28%, 1);
+    }
+  </style>
+  <div class="disclaimer preview">
+    <p class="disclaimer-title">You are viewing a development build</p>
+    <p class="disclaimer-content">The content on this page has not been approved for release.</p>
+    <div class="button-row">
+      <a class="close-button">Close</a>
+      <a href="https://docs.lumi-supercomputer.eu/">Visit official site</a>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const STORAGE_KEY = "acknowledgedDisclaimers"
+    const CONTAINER_ID = "disclaimer-container"
+
+    const getAcknowledgedDisclaimers = () => {
+      try {
+        return JSON.parse(sessionStorage.getItem(STORAGE_KEY))
+      } catch (e) {
+        console.error(e)
+        return null
+      }
+    }
+
+    const setAcknowledgedDisclaimers = disclaimersObject => {
+      try {
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(disclaimersObject))
+      } catch (e) {
+        console.error(e)
+      }
+    }
+
+    const populateAcknowledgedDisclaimers = () => {
+      if (!getAcknowledgedDisclaimers()) {
+        setAcknowledgedDisclaimers({
+          preview: false,
+        })
+      }
+    }
+
+    const getDisclaimerElem = className => {
+      const containerElem = document.getElementById(CONTAINER_ID)
+
+      return containerElem.querySelector(`.disclaimer.${className}`)
+    }
+
+    const hideDisclaimer = disclaimerElem => disclaimerElem.style.scale = 0
+    const showDisclaimer = disclaimerElem => disclaimerElem.style.display = "block"
+    const acknowledgeDisclaimer = disclaimerClassName => {
+      const disclaimerElem = getDisclaimerElem(disclaimerClassName)
+      const acknowledgedDisclaimers = getAcknowledgedDisclaimers()
+
+      if (acknowledgedDisclaimers) {
+        acknowledgedDisclaimers[disclaimerClassName] = true
+
+        setAcknowledgedDisclaimers(acknowledgedDisclaimers)
+      }
+
+      hideDisclaimer(disclaimerElem)
+    }
+
+    const initializeDisclaimers = () => {
+      populateAcknowledgedDisclaimers()
+
+      const acknowledgedDisclaimers = getAcknowledgedDisclaimers()
+
+      if (acknowledgedDisclaimers) {
+        Object.entries(acknowledgedDisclaimers).forEach(([className, acknowledged]) => {
+          const disclaimerElem = getDisclaimerElem(className)
+
+          if (disclaimerElem && !acknowledged) {
+            const disclaimerCloseButtonElem = disclaimerElem.querySelector(".close-button")
+
+            disclaimerCloseButtonElem.addEventListener("click", event => {
+              event.preventDefault()
+
+              hideDisclaimer(disclaimerElem)
+              acknowledgeDisclaimer(className)
+            })
+
+            showDisclaimer(disclaimerElem)
+          }
+        })
+      }
+    }
+
+    initializeDisclaimers()
+  })
+</script>
