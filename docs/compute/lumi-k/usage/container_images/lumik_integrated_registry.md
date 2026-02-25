@@ -135,7 +135,7 @@ This method allows **all images** within a LUMI-K project to be pulled by **anyo
 
 !!! info "Expose selected images only"
 
-    If you need to only make one or more specific images see [Use case 3](../container_images/lumik_integrated_registry.md#use-case-3-granular-control-over-publicly-exposing-specific-image-recommended)
+    If you need to only make one or more specific images publicly accessible see [Use case 3](../container_images/lumik_integrated_registry.md#use-case-3-granular-control-over-publicly-exposing-specific-image-recommended)
 
 
 - **How to enable**: Use one of the following commands to allow anyone pulling images from your LUMI-K project:
