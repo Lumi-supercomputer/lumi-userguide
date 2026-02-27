@@ -3,17 +3,17 @@
 ## Pushing local images to LUMI-K registry
 
 The internal registry allows you to store container images inside your LUMI-K project. This is useful when you build 
-images locally and want to deploy them on LUMI-K without using an external registry.
+images locally and want to deploy them on the cluster without using an external registry.
 
 The process is simple:
 
-1. Make sure to [login vi the CLI](../../getting-started/lumik_cli.md)
+1. Make sure to [login via the CLI](../../getting-started/lumik_cli.md)
 
 
 2. Log in to the registry
 
     ```sh
-    docker login -u $(oc whoami) -p $(oc whoami -t) registry.apps.v1.lumi-k.eu
+    docker login -u unused -p $(oc whoami -t) registry.apps.v1.lumi-k.eu
     ```
 
     !!! info
@@ -49,10 +49,10 @@ The process is simple:
     oc describe is <image-name>
     ```
 
-You should be able to see the ImageStream in the web console as well under Builds -> ImageStreams :
+You should be able to see the ImageStream in the web console as well under Builds -> ImageStreams.
 
 
-Alternatively you can query images in remote registry with `docker image ls [OPTIONS] [REPOSITORY[:TAG]]`
+Alternatively, you can query images in remote registry with `docker image ls [OPTIONS] [REPOSITORY[:TAG]]`
 
 !!! warning "Troubleshooting"
 
@@ -74,12 +74,12 @@ Alternatively you can query images in remote registry with `docker image ls [OPT
 
 ## Download images from LUMI-K registry
 
-1. Make sure to [login vi the CLI](../../getting-started/lumik_cli.md)
+1. Make sure to [login via the CLI](../../getting-started/lumik_cli.md)
 
 2. Log in to the registry
 
     ```sh
-    docker login -u $(oc whoami) -p $(oc whoami -t) registry.apps.v1.lumi-k.eu
+    docker login -u unused -p $(oc whoami -t) registry.apps.v1.lumi-k.eu
     ```
 
 3. Pull the image
@@ -109,55 +109,109 @@ manage images.
 
 ### Registry ownership and image visibility
 
-Images stored in the internal registry are scoped to the project that owns them.
+Stored images in the internal registry are scoped to the project that owns them.
 An image located at:
 
-`registry.apps.v1.lumi-k.eu/<lumik-project-name>/<image-name>:<image-tag>`
+`registry.apps.v1.lumi-k.eu/<lumi-k-project-name>/<image-name>:<image-tag>`
 
 
 is by default accessible only to:
 
-* users who have access to \<lumik-project-name\>
+* users who have access to same `lumi-k-project-name`
 
-* service accounts in \<lumik-project-name\>
+* service accounts in `lumi-k-project-name`
 
-Users in other projects cannot pull or push this image unless explicit access is granted.
-
-
-LUMI-K allows fine-grained control over access to the integrated image registry, enabling management of access based 
-on [user authentication](https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/authentication_and_authorization/index).
+Users in other projects cannot pull this image or push unless explicit access is granted.
 
 
-### 1. **Unauthenticated Access** (`system:unauthenticated`)
+LUMI-K provides granular control over access to the integrated image registry, allowing users to manage permissions based on [user authentication](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/authentication_and_authorization/index).
 
-This group includes all users who are accessing the system without valid authentication credentials, including anonymous
-users.
+As a LUMI-K user, you can choose how broadly your stored images are exposed for different scenarios.
 
-- **How to enable**: Grant unauthenticated users access with the command:
+
+#### Use case 1: Publicly pullable images through the internet
+
+This method allows **all images** within a LUMI-K project to be pulled by **anyone on the internet**.
+
+!!! info "Expose selected images only"
+
+    If you need to only make one or more specific images publicly accessible see [Use case 3](../container_images/lumik_integrated_registry.md#use-case-3-granular-control-over-publicly-exposing-specific-image-recommended)
+
+
+- **How to enable**: Use one of the following commands to allow anyone pulling images from your LUMI-K project:
+
   ```bash
-  oc policy add-role-to-user registry-viewer system:unauthenticated -n <lumi-k-project>
+  oc policy add-role-to-user "system:image-puller" "system:anonymous" -n <project>
+  # OR
+  oc policy add-role-to-group "system:image-puller" "system:unauthenticated" -n <project>
   ```
-- **Use case**: Suitable for cases where you want to make images publicly accessible, allowing anyone to view or pull 
-images without logging in.
 
-### 2. **Authenticated Access** (`system:authenticated`)
+- **How to disable**: Use one of the following commands to revert above changes:
 
-Authenticated users are those who have successfully logged in using valid credentials (e.g., OAuth tokens).
-
-- **How to enable**: To allow all authenticated users to access the registry:
   ```bash
-  oc policy add-role-to-user registry-viewer system:authenticated -n <lumi-k-project>
+  oc policy remove-role-from-user "system:image-puller" "system:anonymous" -n <project>
+  # OR
+  oc policy remove-role-from-group "system:image-puller" "system:unauthenticated" -n <project>
   ```
-- **Use case**: This allows any user with valid credentials (all LUMI-K users) to view or pull images, useful for 
-restricting access.
 
-### 3. Specific LUMI-K users
+#### Use case 2: Pullable images for all LUMI-K users, groups, serviceaccounts, and projects
 
-The easiest way to grant access to the registry for someone who is already a LUMI user, is to just add them as a team 
-member to your LUMI project (the LUMI project PI needs to do this), and the privileges will then propagate to LUMI-K.
-However, the user will have full access to all your LUMI-K projects associated with the LUMI project. If you want to
-give others pull privilege in one LUMI-K project only, use this command:
+This method allows **all images** within a project to be pulled by **any authenticated LUMI-K user**, including other projects and service accounts inside LUMI-K.
+
+- **How to enable**: Use the following command to allow anyone pulling images from your LUMI-K project:
 
   ```bash
-  oc policy add-role-to-user registry-viewer <lumi-k-username> -n <lumi-k-project>
+  oc policy add-role-to-group "system:image-puller" "system:authenticated" -n <project>
+  ```
+
+- **How to disable**: Use the following command to revert above changes:
+
+  ```bash
+  oc policy remove-role-from-group "system:image-puller" "system:authenticated" -n <project>
+  ```
+
+#### Use case 3: Granular control over publicly exposing specific image (Recommended)
+
+This method provides fine-grained control, allowing you to expose **only selected imagestreams** to unauthenticated users on the internet.
+It is a more safe alternative to Use case 1 because it exposes only what you explicitly choose.
+
+- **How to enable**: For this, you are required to create a custom role and rolebinding in your LUMI-K project. 
+
+  ```bash
+  # Select your project
+  oc project my-project
+
+  # Creating custom role
+  # oc create role <ROLE_NAME> --verb=get --resource=imagestreams.image.openshift.io/layers --resource-name=<IMAGE_NAME>
+  oc create role my-image-puller --verb=get --resource=imagestreams.image.openshift.io/layers --resource-name=MY_IMAGE_NAME # Repeat the option --resource-name to select more Imagestreams
+
+  # Create custom rolebinding
+  # oc create rolebinding <RB_NAME> --role=<ROLE_NAME> --user="system:anonymous"
+  oc create rolebinding my-image-puller --role=my-image-puller --user="system:anonymous" # Alternative to --user, you can use --group="system:unauthenticated"
+  ```
+
+- **How to disable**: Use the following commands to revert above changes:
+
+  ```bash
+  # Delete the role and rolebinding
+  
+  oc delete rolebinding my-image-puller
+  oc delete role my-image-puller
+  ```
+
+#### Use case 4: Exposing the images from one LUMI-K project to another LUMI-K project (cross-namespace pulling)
+
+This method enables one LUMI-K project to pull images from another project.
+It is useful when different namespaces need to share base images.
+
+- **How to enable**: To do so, you need to allow a certain `serviceaccount` from the other namespace be able to pull the image.
+
+  ```bash
+  oc policy add-role-to-group -n <project-that-has-the-image> "system:image-puller" "system:serviceaccounts:<project-that-pulls-the-image>"
+  ```
+
+- **How to disable**: Use the following command to revert above changes:
+
+  ```bash
+  oc policy remove-role-from-group -n <project-that-has-the-image> "system:image-puller" "system:serviceaccounts:<project-that-pulls-the-image>"
   ```
