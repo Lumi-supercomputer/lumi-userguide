@@ -11,7 +11,7 @@ MLflow in LUMI-K can be deployed using [Helm](https://helm.sh/) either from the 
 
 ### Using the Software Catalog
 
-1. Create a project in LUMI-K as explained [here](../../getting-started/lumik_projects/#create-a-new-project).
+1. Create a project in LUMI-K as explained [here](../getting-started/lumik_projects.md#create-a-new-project).
 
 2. Navigate to MLflow Helm Chart in the LUMI-K Software Catalog:
     - On the menu in the left, click on Software Catalog under the Home section.
@@ -33,7 +33,7 @@ MLflow in LUMI-K can be deployed using [Helm](https://helm.sh/) either from the 
 ### Using the Helm CLI
 
 1. Install Helm CLI tool in your local workstation following the instructions [here](https://helm.sh/docs/intro/install).
-2. Login to LUMI-K using the oc CLI tool as explained [here](../../getting-started/lumik_cli/#how-to-login-with-oc).
+2. Login to LUMI-K using the oc CLI tool as explained [here](../getting-started/lumik_cli.md#how-to-login-with-oc).
 3. Create a project in LUMI-K:
     ```bash
     oc new-project <your project name> --description="lumi_project: <lumi_project_number>"
