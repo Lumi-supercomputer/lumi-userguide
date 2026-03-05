@@ -42,7 +42,7 @@ The [releases on GitHub][releases on GitHub] also include full details of the in
 
 The name of the container includes a timestamp and version identifier. It is explained in the [releases on GitHub][releases on GitHub].
 
-For users running AI applications based on PyTorch the containers starting with `lumi-multitorch-full-*` are most likely the best starting point. Advanced users can [build on intermediate containers to customize to their use cases](#build-new-containers-based-the-above). We aim to release containers for jax or other software in the future.
+For users running AI applications based on PyTorch the containers starting with `lumi-multitorch-full-*` are most likely the best starting point. Advanced users can [build on intermediate containers to customize to their use cases](#build-new-containers-based-the-on-the-above). We aim to release containers for jax or other software in the future.
 
 
 ## Access to container images
@@ -115,7 +115,7 @@ export SIF=/appl/local/laifs/containers/lumi-multitorch-u24r64f21m43t29-20260124
 singularity run $SIF bash -c 'source h5-env/bin/activate && python my-script.py'
 ```
 
-## Build new containers based the above
+## Build new containers based the on the above
 It is possible to create new containers based on the existing containers. In general, the [instructions to extend singularity images](../../software/containers/singularity.md) can be followed.
 
 !!! Warning "GPU support and communication libraries"
