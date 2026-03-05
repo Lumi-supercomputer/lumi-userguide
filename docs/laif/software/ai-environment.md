@@ -186,3 +186,4 @@ To build a new container the following steps are required:
 - [LUMI AI Guide][LUMI AI Guide]
 - [PyTorch documentation][PyTorch documentation]
 - [CSC's Machine learning guide][CSC's Machine learning guide]
+- [Singularity in LUMI documentation](../../software/containers/singularity.md)
