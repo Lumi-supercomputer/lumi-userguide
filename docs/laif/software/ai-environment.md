@@ -50,8 +50,9 @@ For users running AI applications based on PyTorch the containers starting with 
 The container images are available from the following locations:
 
 - LUMI supercomputer in directory: `/appl/local/laifs/containers/`
-- GitHub releases in [public GitHub repository][releases on GitHub]
 - Docker Hub in the [LUMI AI Factory organisation](https://hub.docker.com/u/lumiaifactory)
+
+The GitHub releases in a [public GitHub repository][releases on GitHub] include full details of the provided container images.
 
 ## Examples for using the container images
 
