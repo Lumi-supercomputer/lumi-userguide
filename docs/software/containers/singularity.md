@@ -12,6 +12,7 @@
 [osu-benchmark]: https://mvapich.cse.ohio-state.edu/benchmarks/
 [singularityce]: https://docs.sylabs.io/guides/latest/user-guide/
 [singularity-def-file]: https://docs.sylabs.io/guides/latest/user-guide/definition_files.html
+[singularity-cache-dir]: https://docs.sylabs.io/guides/latest/user-guide/build_env.html#cache-folders
 [tykky-cotainr-diff]: https://github.com/DeiC-HPC/cotainr/issues/37
 
 [container-jobs]: ../../runjobs/scheduled-jobs/container-jobs.md
@@ -260,6 +261,10 @@ and create your image with
 ```bash
 singularity build container.sif container.def
 ```
+
+!!! Warning "Singularity Cache Directory"
+    Note that singularity by default caches pulled files in your `home` directory.
+    We recommend setting it to another location or using the flag `--disable-cache` as described in the [Singularity documentation][singularity-cache-dir].
 
 Note that this is a powerful tool that allows you to build iteratively from an already existing container. For example you could configure your container.def to start from an existing sif file in this way:
 
