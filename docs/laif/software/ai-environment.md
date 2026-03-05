@@ -142,7 +142,7 @@ To build a new container the following steps are required:
 
     - Add pip package like `scikit-learn` to `lumi-multitorch-torch-*`:
 
-        Save the following as `scitkit.def`.
+        Save the following as `scikit.def`.
         ```
         Bootstrap: docker
         From: docker.io/lumiaifactory/lumi-multitorch:torch
@@ -170,6 +170,11 @@ To build a new container the following steps are required:
 
     !!! Warning "Memory requirements"
         Creating new containers based on the provided containers might require significant memory. One option is to use an [interactive slurm job](../../runjobs/scheduled-jobs/interactive/#interactive-slurm-jobs) and allocating sufficient memory for it. 
+
+    Example:
+
+    - `singularity build scikit.sif scikit.def`
+    - `singularity build nvtop.sif nvtop.def`
 
 
 5. Check if the package has been installed correctly
