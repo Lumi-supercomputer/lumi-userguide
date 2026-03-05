@@ -177,7 +177,7 @@ To build a new container the following steps are required:
     - `singularity build nvtop.sif nvtop.def`
 
 
-5. Check if the package has been installed correctly
+5. Check if the package has been installed correctly. It depends on the specific package installed how to do that, but for packages using GPUs it might be worth checking if the GPU is being detected. For packages using multiple nodes it is recommended to verify that all nodes are used by your package.
 
 
 ## More information
