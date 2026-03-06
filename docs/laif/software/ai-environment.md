@@ -15,11 +15,6 @@ and machine learning workloads on the LUMI supercomputer. The environment is des
 the complexity of deploying and maintaining AI/ML software in high-performance computing (HPC)
 setting.
 
-!!! Info "Release of the AI Software Environment by LUMI AI Factory"
-    The AI Software Environment by LUMI AI Factory currently undergoes testing and a full release is planned for end of February 2026.
-
-    You can already start using the AI Software Environment now, but we we will update this page with more information about the AI Software Environment and prepare use examples.
-
 All build artifacts are publicly available. This includes the full recipe,
 Containerfiles, build logs, and the resulting final container images. This
 transparent approach enables full customization for special use cases, reuse
@@ -56,7 +51,7 @@ The GitHub releases in a [public GitHub repository][releases on GitHub] include 
 
 ## Examples for using the container images
 
-This list only includes some examples for using the container images. More examples that use older containers supplied by AMD can be found in the [LUMI AI guide][LUMI AI Guide]. We will update these examples with the AI Software Environment by LUMI AI Factory soon.
+This list only includes some examples for using the container images. More examples can be found in the [LUMI AI guide][LUMI AI Guide]. 
 
 !!! Info "lumi-aif-singularity-bindings module"
     To give LUMI containers access to the Slingshot network for good RCCL and MPI performance and access to the file system of the working directory, some additional bindings are required. As it can be quite cumbersome to set these bindings manually, we provide a module that does this for you. You can load the module with the following commands:
