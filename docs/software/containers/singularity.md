@@ -264,7 +264,7 @@ singularity build container.sif container.def
 
 !!! Warning "Singularity Cache Directory"
     Note that singularity by default caches pulled files in your `home` directory.
-    We recommend setting it to another location or using the flag `--disable-cache` as described in the [Singularity documentation][singularity-cache-dir].
+    We recommend setting it to another location or disabling it as described in the [Singularity documentation][singularity-cache-dir].
 
 Note that this is a powerful tool that allows you to build iteratively from an already existing container. For example you could configure your container.def to start from an existing sif file in this way:
 
