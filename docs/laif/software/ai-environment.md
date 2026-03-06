@@ -54,7 +54,7 @@ The GitHub releases in a [public GitHub repository][releases on GitHub] include 
 This list only includes some examples for using the container images. More examples can be found in the [LUMI AI guide][LUMI AI Guide]. 
 
 !!! Info "lumi-aif-singularity-bindings module"
-    To give LUMI containers access to the Slingshot network for good RCCL and MPI performance and access to the file system of the working directory, some additional bindings are required. As it can be quite cumbersome to set these bindings manually, we provide a module that does this for you. You can load the module with the following commands:
+    To give LUMI containers access to the file system of the working directory, some additional bindings are required. As it can be quite cumbersome to set these bindings manually, we provide a module that does this for you. You can load the module with the following commands:
 
     ```
     module purge
