@@ -111,7 +111,7 @@ export SIF=/appl/local/laifs/containers/lumi-multitorch-u24r64f21m43t29-20260124
 singularity run $SIF bash -c 'source h5-env/bin/activate && python my-script.py'
 ```
 
-## Build new containers based the on the images
+## Build new containers based on the images
 It is possible to create new containers based on the existing containers. In general, the [instructions to extend singularity images](../../software/containers/singularity.md) can be followed.
 
 !!! Warning "GPU support and communication libraries"
