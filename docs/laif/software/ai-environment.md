@@ -133,7 +133,7 @@ To build a new container the following steps are required:
 
     Examples:
 
-    - For installing jax start with the `lumi-multitorch-mpich-*` image
+    - For installing an alternative deep learning framework like JAX, start with the `lumi-multitorch-mpich-*` image
 
     - For installing a system package while requiring PyTorch and vLLM start with the `lumi-multitorch-full-*` image.
 
