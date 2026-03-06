@@ -37,7 +37,7 @@ The [releases on GitHub][releases on GitHub] also include full details of the in
 
 The name of the container includes a timestamp and version identifier. It is explained in the [releases on GitHub][releases on GitHub].
 
-For users running AI applications based on PyTorch, the containers starting with `lumi-multitorch-full-*` are most likely the best starting point. Advanced users can [build on intermediate containers to customize to their use cases](#build-new-containers-based-the-on-the-images).
+For users running AI applications based on PyTorch, the containers starting with `lumi-multitorch-full-*` are most likely the best starting point. Advanced users can [build on intermediate containers to customize to their use cases](#build-new-containers-based-on-the-images).
 
 
 ## Access to container images
