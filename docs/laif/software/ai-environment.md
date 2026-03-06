@@ -42,7 +42,7 @@ The [releases on GitHub][releases on GitHub] also include full details of the in
 
 The name of the container includes a timestamp and version identifier. It is explained in the [releases on GitHub][releases on GitHub].
 
-For users running AI applications based on PyTorch the containers starting with `lumi-multitorch-full-*` are most likely the best starting point. Advanced users can [build on intermediate containers to customize to their use cases](#build-new-containers-based-the-on-the-images). We aim to release containers for jax or other software in the future.
+For users running AI applications based on PyTorch, the containers starting with `lumi-multitorch-full-*` are most likely the best starting point. Advanced users can [build on intermediate containers to customize to their use cases](#build-new-containers-based-the-on-the-above).
 
 
 ## Access to container images
@@ -133,7 +133,7 @@ To build a new container the following steps are required:
 
     Examples:
 
-    - For installing jax start with the `lumi-multitorch-mpich-*` image
+    - For installing an alternative deep learning framework like JAX, start with the `lumi-multitorch-mpich-*` image
 
     - For installing a system package while requiring PyTorch and vLLM start with the `lumi-multitorch-full-*` image.
 
