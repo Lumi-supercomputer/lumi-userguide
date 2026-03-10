@@ -162,10 +162,10 @@ To build a new container the following steps are required:
 
         ```
 
-4. Build the container using the [instructions to extend singularity images](../../software/containers/singularity.md). This is possible either on your [own hardware](../../software/containers/singularity.md#building-containers-on-local-hardware) or directly on [LUMI using PR root](../../software/containers/singularity.md#building-or-extending-containers-with-proot).
+4. Build the container using the [instructions to extend singularity images](../../software/containers/singularity.md). This is possible either on your [own hardware](../../software/containers/singularity.md#building-containers-on-local-hardware) or directly on [LUMI using PRoot](../../software/containers/singularity.md#building-or-extending-containers-with-proot).
 
     !!! Warning "Memory requirements"
-        Creating new containers based on the provided containers might require significant memory. One option is to use an [interactive slurm job](../../runjobs/scheduled-jobs/interactive/#interactive-slurm-jobs) and allocating sufficient memory for it. 
+        Creating new containers based on the provided containers might require significant memory. One option is to use an [interactive slurm job](../../runjobs/scheduled-jobs/interactive.md/#interactive-slurm-jobs) and allocating sufficient memory for it. 
 
     Example:
 
