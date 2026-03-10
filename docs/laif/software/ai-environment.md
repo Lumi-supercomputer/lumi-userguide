@@ -115,7 +115,7 @@ singularity run $SIF bash -c 'source h5-env/bin/activate && python my-script.py'
 It is possible to create new containers based on the existing containers. In general, the [instructions to extend singularity images](../../software/containers/singularity.md) can be followed.
 
 !!! Warning "GPU support and communication libraries"
-    Note that for some packages installing for GPU or the correct communication libraries might require significant work. We recommend starting with a suitable image that has most of the required software to migitate the risk of that happening.
+    Note that for some packages installing for GPU or the correct communication libraries might require significant work. We recommend starting with a suitable image that has most of the required software to mitigate the risk of that happening.
 
 To build a new container the following steps are required:
 
@@ -124,7 +124,7 @@ To build a new container the following steps are required:
     *Note: For small pip packages a [virtual environment](#list-pip-packages-in-container) might be sufficient.*
 
 
-2. Identify the correct base container from the the [releases on GitHub][releases on GitHub].
+2. Identify the correct base container from the [releases on GitHub][releases on GitHub].
 
     Examples:
 
@@ -165,7 +165,7 @@ To build a new container the following steps are required:
 4. Build the container using the [instructions to extend singularity images](../../software/containers/singularity.md). This is possible either on your [own hardware](../../software/containers/singularity.md#building-containers-on-local-hardware) or directly on [LUMI using PRoot](../../software/containers/singularity.md#building-or-extending-containers-with-proot).
 
     !!! Warning "Memory requirements"
-        Creating new containers based on the provided containers might require significant memory. One option is to use an [interactive slurm job](../../runjobs/scheduled-jobs/interactive.md/#interactive-slurm-jobs) and allocating sufficient memory for it. 
+        Creating new containers based on the provided containers might require significant memory. One option is to use an [interactive slurm job](../../runjobs/scheduled-jobs/interactive.md/#interactive-slurm-jobs) with sufficient memory. 
 
     Example:
 
