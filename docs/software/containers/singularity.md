@@ -12,6 +12,7 @@
 [osu-benchmark]: https://mvapich.cse.ohio-state.edu/benchmarks/
 [singularityce]: https://docs.sylabs.io/guides/latest/user-guide/
 [singularity-def-file]: https://docs.sylabs.io/guides/latest/user-guide/definition_files.html
+[singularity-cache-dir]: https://docs.sylabs.io/guides/latest/user-guide/build_env.html#cache-folders
 [tykky-cotainr-diff]: https://github.com/DeiC-HPC/cotainr/issues/37
 
 [container-jobs]: ../../runjobs/scheduled-jobs/container-jobs.md
@@ -237,14 +238,15 @@ for instructions on running this MPI container on LUMI.
 
 ### Building or extending containers with PRoot
 
-It is possible to create or extend containers on lumi by using the PRoot build procedure provided by Singularity CE. This way of building containers does NOT require any root privileges so it is compatible with the strict security policies adopted on LUMI. It is however not covering all the possible cases, so it may not cover your specific use case. Please look at the [Official SingularityCE docs](https://docs.sylabs.io/guides/3.11/user-guide/build_a_container.html#unprivilged-proot-builds) for the specific details on coverage and usage.
+It is possible to create or extend containers on LUMI by using the PRoot build procedure provided by Singularity CE. This way of building containers does NOT require any root privileges so it is compatible with the strict security policies adopted on LUMI. It is however not covering all the possible cases, so it may not cover your specific use case. Please look at the [Official SingularityCE docs](https://docs.sylabs.io/guides/3.11/user-guide/build_a_container.html#unprivilged-proot-builds) for the specific details on coverage and usage.
 PRoot is provided in LUMI as a module and in its [documentation](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/p/PRoot/) you can see various ways of loading it.
 The easiest way is to use
 
 ```bash
 module load CrayEnv
 module load PRoot
-````
+```
+
 Then you need to define a container.def file for your container, for example
 
 ```bash
@@ -259,6 +261,10 @@ and create your image with
 ```bash
 singularity build container.sif container.def
 ```
+
+!!! Warning "Singularity Cache Directory"
+    Note that singularity by default caches pulled files in your `home` directory.
+    We recommend setting it to another location or disabling it as described in the [Singularity documentation][singularity-cache-dir].
 
 Note that this is a powerful tool that allows you to build iteratively from an already existing container. For example you could configure your container.def to start from an existing sif file in this way:
 
