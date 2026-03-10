@@ -1,4 +1,4 @@
-[terms-of-use]: https://www.lumi-supercomputer.eu/lumi-general-terms-of-use_1-0/
+[terms-of-use]: https://lumi-supercomputer.eu/wp-content/uploads/2026/03/LUMI-General-Terms-of-Use_2026.pdf
 [support-account]: https://lumi-supercomputer.eu/user-support/need-help/account/
 [myaccessid-profile]: https://mms.myaccessid.org/profile/
 [mycsc-profile]: https://my.csc.fi/
