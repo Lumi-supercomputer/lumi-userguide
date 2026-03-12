@@ -86,7 +86,12 @@ Alternatively, you can have a look at the software bill of materials (SBOM) `.js
 
 ### Add more pip packages to container
 
-You might find yourself in a situation where none of the provided containers contain all Python packages you need. One possible way of adding custom packages not included in the image is to use a virtual environment on top of the conda environment. For this example, we need to add the HDF5 Python package `h5py` to the environment:
+You might find yourself in a situation where none of the provided containers contain all Python packages you need. There are multiple ways of adding more pip packages:
+
+- If you need many or large pip packages, you should [build new containers based on the existing images](#build-new-containers-based-on-the-images).
+- If you only need a few small pip packages, you can use a virtual environment together with the provided containers and follow this example.
+
+For this example, we need to add the HDF5 Python package `h5py` to the environment:
 
 ```
 module purge
@@ -102,7 +107,7 @@ Singularity> source h5-env/bin/activate
 This will create an h5-env environment in the working directory. The `--system-site-packages` flag gives the virtual environment access to the packages from the container. 
 
 !!! Warning "Strain on Lustre file system"
-    Installing Python packages typically creates thousands of small files. This puts a lot of strain on the Lustre file system and might exceed your file quota. This problem can be solved by creating a new container.
+    Installing Python packages typically creates thousands of small files. This puts a lot of strain on the Lustre file system and might exceed your file quota. This problem can be solved by [building new containers based on the images](#build-new-containers-based-on-the-images).
 
 Now one can execute a script with and import the h5py package. To execute a script called `my-script.py` within the container using the virtual environment, use the additional activation command:
 
@@ -115,16 +120,16 @@ singularity run $SIF bash -c 'source h5-env/bin/activate && python my-script.py'
 It is possible to create new containers based on the existing containers. In general, the [instructions to extend singularity images](../../software/containers/singularity.md) can be followed.
 
 !!! Warning "GPU support and communication libraries"
-    Note that for some packages installing for GPU or the correct communication libraries might require significant work. We recommend starting with a suitable image that has most of the required software to migitate the risk of that happening.
+    Note that for some packages installing for GPU or the correct communication libraries might require significant work. We recommend starting with a suitable image that has most of the required software to mitigate the risk of that happening.
 
 To build a new container the following steps are required:
 
 1. Check what software you want to install.
 
-    *Note: For small pip packages a [virtual environment](#list-pip-packages-in-container) might be sufficient.*
+    *Note: For a few small pip packages a [virtual environment](#list-pip-packages-in-container) might be sufficient.*
 
 
-2. Identify the correct base container from the the [releases on GitHub][releases on GitHub].
+2. Identify the correct base container from the [releases on GitHub][releases on GitHub].
 
     Examples:
 
@@ -165,7 +170,7 @@ To build a new container the following steps are required:
 4. Build the container using the [instructions to extend singularity images](../../software/containers/singularity.md). This is possible either on your [own hardware](../../software/containers/singularity.md#building-containers-on-local-hardware) or directly on [LUMI using PRoot](../../software/containers/singularity.md#building-or-extending-containers-with-proot).
 
     !!! Warning "Memory requirements"
-        Creating new containers based on the provided containers might require significant memory. One option is to use an [interactive slurm job](../../runjobs/scheduled-jobs/interactive.md/#interactive-slurm-jobs) and allocating sufficient memory for it. 
+        Creating new containers based on the provided containers might require significant memory. One option is to use an [interactive slurm job](../../runjobs/scheduled-jobs/interactive.md/#interactive-slurm-jobs) with sufficient memory. 
 
     Example:
 
