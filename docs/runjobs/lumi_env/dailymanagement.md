@@ -6,17 +6,26 @@ On LUMI, the following commands are available to check information of your proje
 
 ## lumi-workspaces
 
-Shows quota and allocations of your projects as obtained directly from Lustre (i.e. the information is almost real-time). The command does not take any command line options. 
+This is the premier command to check the status of your quota and allocations.
+Quota information is obtained directly from Lustre and is almost real-time, while
+the information about your allocations is is gathered in the background on the 
+system on a periodic basis and is not instantaneous.
+The command also shows which filesystems house your account and projects.
+The command does not take any command line options. 
 
 Usage:
 ```
 lumi-workspaces
 ```
 
+The command basically combines the tasks of the next two commands, `lumi-quota` and
+`lumi-allocations`, in a single command.
+
 
 ## lumi-quota
 
-Shows quota of your projects. The information is obtained directly from Lustre, and is almost real-time. 
+Shows quota of your projects. The information is obtained directly from Lustre, and is almost real-time.
+
 
 Usage:
 
@@ -61,6 +70,8 @@ Usage:
 lumi-check-quota
 ```
 
+It is not really meant to be used directly, but it is used to show warnings at login.
+
 
 ## lumi-ldap-userinfo
 
@@ -89,6 +100,3 @@ Information of a specific project:
 ```
 lumi-ldap-projectinfo --project project_46XXXXXXX
 ```
-
-
-
