@@ -63,6 +63,7 @@ On LUMI, we provide some pre-installed software in both central software stacks 
     themselves, not by the LUMI User Support Team.
 
        - [CSC installed software collection](local/csc.md)
+       - [LUMI AI factory software](../laif/software/ai-environment.md)
        - [Quantum computing software collection by CSC](local/csc-quantum.md)
 
 ## Installing additional software
