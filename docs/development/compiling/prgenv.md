@@ -533,3 +533,5 @@ The Cray programming environment can be accessed in three different ways on LUMI
    modules also take care of the target architecture modules based on the
    ``partition`` module that is loaded (which offer a way to do cross-compiling
    for another section of LUMI than you are working on).
+   And in `partition/G`, the suitable `rocm` module is also loaded when you load
+   one of the compiler toolchain modules (`cpeGNU`, `cpeCray` or `cpeAMD`).
