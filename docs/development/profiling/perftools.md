@@ -3,7 +3,8 @@
 [sampling]: #sampling
 [lite]: #perftools-lite
 
-[Cray Performance Analysis Tool (CrayPat)](https://cpe.ext.hpe.com/docs/#profiling-and-performance-optimization-tools) is a performance analysis tool used to
+[Cray Performance Analysis Tool (CrayPat)](https://cpe.ext.hpe.com/docs/latest/performance-tools/index.html) 
+is a performance analysis tool used to
 evaluate program behaviour on HPE Cray supercomputer systems like LUMI.
 
 ## Perftools-lite
