@@ -133,8 +133,12 @@ Make sure that you have read and understood the license terms for
 [Miniconda](https://docs.conda.io/en/latest/miniconda.html) as well as any used
 conda channels before using the command:
 
-- [Terms of service](https://www.anaconda.com/terms-of-service)
-- [Anaconda FAQ](https://www.anaconda.com/blog/anaconda-commercial-edition-faq)
+-   [Anaconda Terms of service](https://www.anaconda.com/legal/terms/terms-of-service)
+    and [Academic Policy](https://www.anaconda.com/legal/terms/academic).
+    Note that academic use is free, but you do need a license with them, either in
+    person or at the institute level.
+-   [Anaconda Pricing FAQ](https://www.anaconda.com/pricing#faq)
+
 
 #### End-to-end example of wrapping a Conda installation
 
