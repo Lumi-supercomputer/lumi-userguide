@@ -56,7 +56,9 @@ installations on LUMI.
     When you log into LUMI, running `python3` without loading a module or using
     a container will result in using the operating system Python installation.
     This is quite an old Python installation (version 3.6) without any Scientific
-    Python packages, which is likely not what you want.
+    Python packages, which is likely not what you want. After the January 2026
+    maintenance period, the system image also contains a Python 3.11 interpreter
+    but with hardly any additional library and you should not use that one either.
 
 ## Generally recommended installation methods
 
@@ -73,6 +75,12 @@ If somebody is already publishing a container which includes the Python
 packages you need, e.g. this [PyTorch ROCm
 container](https://hub.docker.com/r/rocm/pytorch), you may [pull and use that
 container][pull-container].
+Note though that this is generally not a very good idea if you want to run
+your application across multiple nodes, as the MPI and/or RCCL libraries in
+those containers generally do not support the Slingshot 11 network of LUMI,
+leading to poor performance. This can sometimes be fixed, but requires a lot
+of technical knowledge.
+
 
 ### Use a container you build specifically tailored to your needs
 
@@ -80,6 +88,9 @@ If you are not able to find an existing container that suits your needs, you
 may [build your own][singularity-build]. If you are used to managing
 [Conda][conda]/[pip][pip] environments locally, you may use [cotainr] to build
 a container based on a [Conda environment][conda-env] file for use on LUMI.
+The cotainr tool can also start from containers that at least for RCCL, contain
+the necessary plugin for good network performance.
+
 
 ## Installation methods recommended for specific use cases
 
@@ -118,7 +129,7 @@ approach is given in the LUMI PyTorch guide][container-virt-env-example].
 
 We provide the [LUMI container wrapper][tykky] which may be used to solve
 the "many small files" performance problem by wrapping a
-[Conda][conda]/[pip][pip] installation. This is a convenient way to get access
+[Conda][conda] or [pip][pip] installation. This is a convenient way to get access
 to a performant Python installation if you only run a single binary/script
 and/or need to intertwine with the host software environment without having to
 explicitly deal with containers. See [this GitHub
@@ -126,17 +137,24 @@ issues](https://github.com/DeiC-HPC/cotainr/issues/37) for a more detailed
 discussion of when this approach may be preferred over using a container
 directly.
 
-### Use the CSC software stack
+### Use the CSC software stack or LUMI AI Factory containers
 
 [CSC provides a small additional software stack][csc-software-stack] on LUMI, similar to the
 software stacks provided on the Finnish HPC systems, which contains some Python
 packages. Please note that this software stack is only supported by CSC, not
 the LUMI User Support Team (LUST).
 
+The LUMI AI factory container also offers some 
+[ready-built containers](../../laif/software/ai-environment.md).
+You can even extend these with several approaches, e.g., 
+using the [singularity unprivileged PRoot build process](../../software/containers/singularity.md#building-or-extending-containers-with-proot)
+and some can be used as a basis for [cotainr][cotainr] also.
+
+
 ## Discouraged installation methods
 
 **We strongly discourage installing large collections of Python packages
-directly on the file systems on LUMI, i.e.**
+directly on the file systems on LUMI, i.e.,**
 
 - **Don't install conda/pip environments directly on the file systems**.
 - **Don't install pip virtual environments directly on the file systems using
@@ -144,3 +162,9 @@ directly on the file systems on LUMI, i.e.**
 - **Don't install Python packages directly on the file systems using
   Easybuild**.
 - **Don't install Python packages directly on the file systems using Spack**.
+
+The one exception for a direct installation is an installation in '/tmp' 
+as that is not on a Lustre filesystem.
+You can then pack that installation in a single tar archive or zip file store on Lustre and 
+untar/uncompress it at the start of the job in the `/tmp` of all nodes used by 
+your job. But this will eat from the RAM memory available to the job.
