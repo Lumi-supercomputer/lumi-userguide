@@ -61,7 +61,7 @@ DockerHub with the following command:
 $ singularity pull docker://ubuntu:24.04
 ```
 
-This will create the Singularity image file `ubuntu_22.04.sif` in the directory
+This will create the Singularity image file `ubuntu_24.04.sif` in the directory
 where the command was run. Once the image has been pulled, the container can be
 run. Instructions for running the container may be found on the [container jobs
 page][container-jobs].
