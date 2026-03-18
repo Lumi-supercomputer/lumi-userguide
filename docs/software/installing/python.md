@@ -122,8 +122,7 @@ a [pip virtual environment][pip-virt-env].
 
 If you have an existing container but need a few extra packages, you may
 install such packages on the file systems in [pip virtual
-environment][pip-virt-env] and use them with the container. [An example of this
-approach is given in the LUMI PyTorch guide][container-virt-env-example].
+environment][pip-virt-env] and use them with the container.
 
 ### Use the LUMI container wrapper
 
