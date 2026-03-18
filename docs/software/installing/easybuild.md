@@ -451,9 +451,10 @@ install them (and also removed from the search path for `eb -S` or `eb
     EESSI supports a subset of the EasyBuild toolchains (currently foss and its
     subtoolchains) and many regular EasyConfigs should build on top of EESSI.
 
-    The LUST is not responsible for supporting EESSI though. Support will come 
-    through a dedicated help desk for the European Federation Platform and 
-    the LUST does not plan to do any developments on top of EESSI themselves
+    The LUST is not responsible for supporting EESSI though. Once EESSI is 
+    available, support will come 
+    through [the EuroHPC Federation Platform portal](https://my-eurohpc.eu/).
+    The LUST does not plan to do any developments on top of EESSI themselves
     as we have more upstream support options for the HPE Cray Programming 
     Environment.
 
