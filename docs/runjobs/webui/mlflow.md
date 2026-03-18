@@ -1,7 +1,7 @@
 # MLflow
 
-[lumi-k]: ../..lumi-k/getting-started/lumi_k_what_is.md
-[lumi-k-mlflow]: ../../tutorials/mlflow.md
+[lumi-k]: ../../lumi-k/getting-started/lumi_k_what_is.md
+[lumi-k-mlflow]: ../../lumi-k/tutorials/mlflow.md
 
 The MLflow app launches [MLflow
 Tracking](https://mlflow.org/docs/latest/tracking.html), a user interface for
