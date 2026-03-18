@@ -7,7 +7,7 @@ Version 1.0, 22.9.2025
 | Detailed description | **Service Functions and Features**<br>Data catalogue<br>Access to HPC tools<br>Expert support<br>**Service Lifecycle**<br>Minimum viable product (MVP), in production, in development |
 | Target audience | Academic, public and private sector |
 | How to obtain the service | To be able to use the datasets, the customer has to register as a LUMI user and apply to use a dataset. To be able to offer a dataset via Dataset-as-a-Service, the customer has to contact the LUMI AI Factory. |
-| Service level and availability | [LUMI Service Level Agreement](https://www.lumi-supercomputer.eu/content/uploads/2023/04/LUMI_Service_Level_Agreement.pdf)<br>[General terms of use for CSC’s services for research](https://research.csc.fi/terms-of-use/) |
+| Service level and availability | [LUMI Service Level Agreement](https://www.lumi-supercomputer.eu/wp-content/uploads/2023/04/LUMI_Service_Level_Agreement.pdf)<br>[General terms of use for CSC’s services for research](https://research.csc.fi/terms-of-use/) |
 | Service hours and user support | [LUMI helpdesk](https://docs.lumi-supercomputer.eu/helpdesk/) |
 | Service documentation | [LUMI documentation](https://docs.lumi-supercomputer.eu/) |
 | Pricing | The datasets can be accessed free-of-charge, but to access LUMI, the project has to be granted resources on LUMI.<br>[LUMI resources consumption model](https://docs.lumi-supercomputer.eu/runjobs/lumi_env/billing/) |
