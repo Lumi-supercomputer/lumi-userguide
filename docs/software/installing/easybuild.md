@@ -455,7 +455,7 @@ install them (and also removed from the search path for `eb -S` or `eb
     available, support will come 
     through [the EuroHPC Federation Platform portal](https://my-eurohpc.eu/).
     The LUST does not plan to do any developments on top of EESSI themselves
-    as we have more upstream support options for the HPE Cray Programming 
+    as there are more upstream support options for the HPE Cray Programming 
     Environment.
 
 
