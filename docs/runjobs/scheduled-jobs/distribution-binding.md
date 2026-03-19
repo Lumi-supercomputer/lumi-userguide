@@ -298,8 +298,18 @@ srun --cpu-bind=${CPU_BIND} <app> <args>
 
 ####  Application that cannot select GPU automatically
 
-For an application that cannot select a GPU automatically, in addition to CPU binding
-described in the previous section, you can use a wrapper script to set the GPU binding.
+For an application that cannot select a GPU automatically, the binding can be achieved by
+using the following srun options
+
+```
+srun --cpus-per-task=7 --gpu-bind=map:4,5,2,3,6,7,0,1 --gres-flags=allow-task-sharing <app> <args>
+```
+
+Please not the `--gres-flags=allow-task-sharing` flag is required to allow GPU IPC direct 
+communication. 
+
+Per-task GPU assignement can be also set manually using, in addition to CPU binding
+described in the previous section, a wrapper script to set the GPU visiblity.
 
 This script sets `ROCR_VISIBLE_DEVICES` to the value of the Slurm-defined `SLURM_LOCALID`
 environment variable so that:
