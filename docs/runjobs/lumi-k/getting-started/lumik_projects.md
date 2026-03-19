@@ -63,7 +63,7 @@ the project is `465000001`. This information is also available via the LUMI-K we
 
     It is not possible for users to change the *lumi_project* label
     after a project has been created. If you would like to change the label for
-    an existing project, please [contact the support](../../../support/contact.md). You can also create
+    an existing project, please [contact the support](../../../helpdesk/index.md). You can also create
     a completely new project if you want to use a different label.
 
 ## Create a new project
