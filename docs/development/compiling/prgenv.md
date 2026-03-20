@@ -22,7 +22,7 @@
 [lumi-g]: ../../hardware/lumig.md
 [eap]: ../../hardware/compute/eap.md
 
-This page will give you an overview of the [Cray programming environment](https://cpe.ext.hpe.com/docs/) that is
+This page will give you an overview of the [Cray programming environment](https://cpe.ext.hpe.com/docs/latest/index.html) that is
 available on LUMI. It starts with a presentation of the [compiler suites][1]
 and [compiler wrappers][2] that you can use to compile your C, C++ or Fortran
 code. Finally, some basic information on how to compile an [MPI][3] or
@@ -64,10 +64,29 @@ After you have loaded a programming environment, the [compiler wrappers][2]
 
 ### Changing compiler versions
 
-If the default compiler version does not suit you, you can change the version
-after having a loaded a programming environment. This operation is performed
-using the `module swap` command.
+The safest way to change version of compilers, is to change to a different
+version of the programming environment. Those versions have the form YY.MM,
+referring to the year and the month in which they were released. This can
+be done by loading the corresponding `cpe` module, e.g.,
 
+```bash
+module load cpe/25.09
+```
+to switch to compilers and libraries of the 25.09 version of the programming
+environment. That module will try to reload all loaded programming environment
+modules in their default version for that version of the programming environment.
+As such you get a set of modules that were tested together by HPE. In some cases,
+the reload is not complete, but loading the module a second time corrects this.
+
+If versions of individual compilers or libraries don't suit you and you want to
+experiment with a different combination, you can change the version
+after having loaded a programming environment. This operation is performed
+using the `module load` or `module swap` command.
+
+```bash
+$ module load <compiler>/version>
+```
+or
 ```bash
 $ module swap <compiler> <compiler>/<version>
 ```
@@ -77,16 +96,28 @@ programming environment and `<version>` the version you want to use. For
 example
 
 === "CCE"
-
     ```bash
-    $ module swap cce cce/16.0.1
+    $ module load cce/20.0.0
+    ```
+    or
+    ```bash
+    $ module swap cce cce/20.0.0
     ```
 
 === "GNU"
-
     ```bash
-    $ module swap gcc-native gcc-native/12.3
+    $ module load gcc-native/14.2
     ```
+    or
+    ```bash
+    $ module swap gcc-native gcc-native/14.2
+    ```
+
+The `module swap` command is not really needed on LUMI as the autoswap feature
+is enabled in Lmod. Moreover, in the latest versions of the programming environment,
+loading a different compiler will also automatically load a correct `PrgEnv-*` module
+if none is loaded or the wrong one is loaded.
+
 
 ## Compiler Wrappers
 
@@ -100,13 +131,17 @@ commands used to invoke these wrappers are listed below.
 No matter which vendor's compiler module is loaded, always use one of the above
 commands to invoke the compiler. Using these wrappers will invoke the
 underlying compiler according to the [compiler suite][1] that is loaded in the
-environment. For some libraries, the appropriate option for the linking will
-also be included. See [here][2.2] for more information.
+environment. For some libraries, the appropriate linker options will also be
+automatically included. See [here][2.2] for more information.
 
 !!! note "About MPI Wrappers"
     The Cray compiler wrappers replace other wrappers commonly found on HPC
     systems like the `mpicc`, `mpic++` and `mpif90` wrappers. You don't need to
     use these wrappers to compile an MPI code on LUMI. See [here][3].
+    If you insist, you can still use them, but you loose all other advantages of
+    the Cray compiler wrappers such as automatic linking of some mathematics
+    and data processing libraries, or automatic selection of the right optimisation
+    target.
 
 Below are examples how to use the wrappers for the different programming languages.
 
@@ -212,19 +247,28 @@ environment, this is not the case anymore: libraries are now **dynamically
 linked**. The following options are available to you to control the behavior
 of your application
 
-- Follow the default Linux policy and at runtime use the system default version
-  of the shared libraries (so may change as and when the system is upgraded)
-- Hard code the path of each library into the binary at compile time so that a
-  specific version is loaded when the application starts (as long as the library
-  is still installed). Set `CRAY_ADD_RPATH=yes` at compile time to use this
-  mode.
-- Allow the currently loaded programming environment modules to select the
-  library version at runtime. Applications must not be linked with
-  `CRAY_ADD_RPATH=yes`, and must add the following line to the Slurm script:
+-   Follow the default Linux policy and at runtime use the system default version
+    of the shared libraries (so may change as and when the system is upgraded)
+-   Hard code the path of each library into the binary at compile time so that a
+    specific version is loaded when the application starts (as long as the library
+    is still installed). Set `CRAY_ADD_RPATH=yes` at compile time to use this
+    mode.
+-   Allow the currently loaded programming environment modules to select the
+    library version at runtime. Applications must not be linked with
+    `CRAY_ADD_RPATH=yes`, and must add the following line to the Slurm script:
   
-  ```bash
-  export LD_LIBRARY_PATH=${CRAY_LD_LIBRARY_PATH}:$LD_LIBRARY_PATH
-  ```
+    ```bash
+    export LD_LIBRARY_PATH=${CRAY_LD_LIBRARY_PATH}:$LD_LIBRARY_PATH
+    ```
+
+    after loading all modules.
+    Alternatively, when working in the CrayEnv environment or LUMI software stack
+    (see the ["Software stacks" page][softwarestacks],
+    you can also simply load the `lumi-CrayPath` module after loading all other
+    modules and it will take care of correcting `LD_LIBRARY_PATH` and resetting
+    the situation if you unload the module again (or correct if you reload after
+    loading some other modules).
+
 
 ### Using the wrappers with build systems
 
@@ -489,3 +533,5 @@ The Cray programming environment can be accessed in three different ways on LUMI
    modules also take care of the target architecture modules based on the
    ``partition`` module that is loaded (which offer a way to do cross-compiling
    for another section of LUMI than you are working on).
+   And in `partition/G`, the suitable `rocm` module is also loaded when you load
+   one of the compiler toolchain modules (`cpeGNU`, `cpeCray` or `cpeAMD`).

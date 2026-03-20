@@ -7,12 +7,13 @@
 [cotainr-usecases]: https://cotainr.readthedocs.io/en/stable/user_guide/index.html#use-cases
 [dockerhub]: https://hub.docker.com/
 [docker-wiki]: https://en.wikipedia.org/wiki/Docker_(software)
-[infinity-hub]: https://www.amd.com/en/technologies/infinity-hub
+[infinity-hub]: https://www.amd.com/en/developer/resources/infinity-hub.html
 [mpich-abi]: https://www.mpich.org/abi/
 [osu-benchmark]: https://mvapich.cse.ohio-state.edu/benchmarks/
-[singularityce]: https://docs.sylabs.io/guides/latest/user-guide/
-[singularity-def-file]: https://docs.sylabs.io/guides/latest/user-guide/definition_files.html
-[singularity-cache-dir]: https://docs.sylabs.io/guides/latest/user-guide/build_env.html#cache-folders
+[apptainer]: https://apptainer.org/
+[singularityce]: https://docs.sylabs.io/guides/3.11/user-guide/
+[singularity-def-file]: https://docs.sylabs.io/guides/3.11/user-guide/definition_files.html
+[singularity-cache-dir]: https://docs.sylabs.io/guides/3.11/user-guide/build_env.html#cache-folders
 [tykky-cotainr-diff]: https://github.com/DeiC-HPC/cotainr/issues/37
 
 [container-jobs]: ../../runjobs/scheduled-jobs/container-jobs.md
@@ -53,14 +54,14 @@ guidance on running your container on LUMI.
 Singularity allows pulling existing container images (Singularity or Docker)
 from container registries such as [DockerHub][dockerhub] or [AMD Infinity
 Hub][infinity-hub]. Pulling container images from registries can be done on
-LUMI. For instance, the Ubuntu image `ubuntu:22.04` can be pulled from
+LUMI. For instance, the Ubuntu image `ubuntu:24.04` can be pulled from
 DockerHub with the following command:
 
 ```bash
-$ singularity pull docker://ubuntu:22.04
+$ singularity pull docker://ubuntu:24.04
 ```
 
-This will create the Singularity image file `ubuntu_22.04.sif` in the directory
+This will create the Singularity image file `ubuntu_24.04.sif` in the directory
 where the command was run. Once the image has been pulled, the container can be
 run. Instructions for running the container may be found on the [container jobs
 page][container-jobs].
@@ -82,6 +83,15 @@ page][container-jobs].
     $ export SINGULARITY_CACHEDIR=/tmp/$USER
     ```
 
+!!! note "Compatibility of containers"
+    Containers pulled from DockerHub or AMD Infinity Hub rarely offer full support
+    for the interconnect of LUMI. This will show as degraded performance or even
+    crashes. Also, a container built with a ROCm version that is not supported by
+    the driver on LUMI, may not work. To get optimal performance on LUMI, you will
+    need containers that are built specifically for the hardware and kernel/driver
+    versions on LUMI.
+
+
 ## Building Singularity SIF containers
 
 Building your own container on LUMI is, unfortunately, not fully straightforward.
@@ -94,7 +104,8 @@ LUMI, you have three options:
    containers on LUMI (only for certain use cases).
 2. [Build your own container](#building-containers-on-local-hardware) on your
    local hardware, e.g. your laptop.
-3. [Build/Extend a container using PRoot](#building-or-extending-containers-with-proot)
+3. [Build/Extend a container using the singularity unprivileged PRoot build procedure](#building-or-extending-containers-with-proot)
+
 
 ### Building containers using the cotainr tool
 
@@ -102,8 +113,8 @@ LUMI, you have three options:
 containers on LUMI for certain [use cases][cotainr-usecases]. It is **not** a
 general purpose container building tool.
 
-On LUMI, `cotainr` is available in the 
-[Cray Programming Environment][lumi-software-stack] and may be loaded using
+On LUMI, `cotainr` is available in all LUMI software stacks and the
+CrayEnv stack and may be loaded using
 
 ```bash
 $ module load CrayEnv
@@ -122,9 +133,24 @@ $ cotainr info
 System info
 -------------------------------------------------------------------------------
 Available system configurations:
-    - lumi-g
     - lumi-c
+    - lumi-g
+    - rocm-6.2
+    - rocm-6.4
 ```
+
+??? Tip "Further info about those images"
+    One way to get a bit more information about those images, is to check the
+    help information of the module:
+
+    ``` bash
+    $ module help cotainr
+    ```
+
+    For the `cotainr` version used above, which was 2025.7.1, both the `lumi-c`
+    and `lumi-g` image are based on Ubuntu rather than the OS used on LUMI, while
+    the `rocm-6.2` image uses an older container image built on top of 
+    OpenSUSE 15, but still using a slightly older version than used on the system.
 
 As an example, you may then use `cotainr build` to create a container for
 [LUMI-G][lumi-g] containing a Conda/pip environment by running
@@ -181,7 +207,7 @@ MPI stack on LUMI.
     with the host MPI.
 
 The following [Singularity definition file][singularity-def-file]
-`mpi_osu.def`, installs MPICH-3.1.4, which is ABI-compatible with the
+`mpi_osu.def`, installs MPICH-3.4.3, which is ABI-compatible with the
 Cray-MPICH found on LUMI. That MPICH will be used to compile the [OSU
 micro-benchmarks][osu-benchmark]. Finally, the OSU point to point bandwidth test
 is set as the "runscript" of the image.
@@ -225,7 +251,7 @@ From: ubuntu:24.04
   /usr/local/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_bw
 ```
 
-The image can be built **on your local hardware (not on LUMI)** with
+The image can be built **on your local hardware** with
 
 ```bash
 $ sudo singularity build mpi_osu.sif mpi_osu.def
@@ -236,10 +262,23 @@ the [container jobs MPI documentation
 page](../../runjobs/scheduled-jobs/container-jobs.md#running-containerized-mpi-applications)
 for instructions on running this MPI container on LUMI.
 
+The above example would actually also build on LUMI, but then you cannot use `sudo` and 
+instead need to use the approach in the following paragraph. And the build would be rather
+slow due to the overhead of the tool that needs to be used:
+
+
 ### Building or extending containers with PRoot
 
-It is possible to create or extend containers on LUMI by using the PRoot build procedure provided by Singularity CE. This way of building containers does NOT require any root privileges so it is compatible with the strict security policies adopted on LUMI. It is however not covering all the possible cases, so it may not cover your specific use case. Please look at the [Official SingularityCE docs](https://docs.sylabs.io/guides/3.11/user-guide/build_a_container.html#unprivilged-proot-builds) for the specific details on coverage and usage.
-PRoot is provided in LUMI as a module and in its [documentation](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/p/PRoot/) you can see various ways of loading it.
+It is possible to create or extend containers on LUMI by using the so-called
+"unprivileged PRoot build" procedure provided by Singularity CE. 
+This way of building containers does NOT require any root privileges so it is compatible 
+with the strict security policies adopted on LUMI. It is however not covering all the 
+possible cases, so it may not cover your specific use case. Please look at the 
+[Official SingularityCE docs](https://docs.sylabs.io/guides/3.11/user-guide/build_a_container.html#unprivilged-proot-builds) 
+for the specific details on coverage and usage.
+PRoot is provided in LUMI as a module and in its [
+documentation](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/p/PRoot/) 
+you can see various ways of loading it.
 The easiest way is to use
 
 ```bash
@@ -251,7 +290,7 @@ Then you need to define a container.def file for your container, for example
 
 ```bash
 Bootstrap: docker
-From: docker.io/opensuse/leap:15.5
+From: docker.io/opensuse/leap:15.6
 
 %post
     # Continue to install software into the container normally.
@@ -273,7 +312,9 @@ Bootstrap: localimage
 From: /path/to/YOUR/container.sif
 
 %post
-    #things that you want to do on your existing container, such as adding some zypper packages, installing some pip wheels, etc...
+    # Things that you want to do on your existing container, 
+    # such as adding some zypper packages, installing some 
+    # pip wheels, etc...
 ```
 
 

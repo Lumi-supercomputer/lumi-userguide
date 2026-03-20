@@ -31,7 +31,9 @@ Hugepages can be beneficial
 
 !!! warning "Transparent hugepages not active on LUMI-G"
 
-    MPI can make use of transparent hugepages which are disabled with the low-noise 
+    MPI can make use of transparent hugepages (a feature where the OS will automatically 
+    identify opportunities to group standard 4kB pages into 2MB chuks)
+    which are disabled with the low-noise 
     mode of the LUMI-G compute nodes. For this reason explicit use of hugepages can 
     improve GPU-accelerated MPI applications performance. 
 
@@ -80,10 +82,15 @@ srun ./myprogram
 
 !!! warning "Modules for larger hugepages"
 
-    You can use hugepages modules for larger sizes than CPU supports. This
+    You can use hugepages modules for different sizes than CPU supports. This
     is emulated with the `libhugetlbfs` library. Caution is needed with enabling
     very large page sizes while these can easily exhaust node's resources. 
     Use huge page sizes no larger than needed.
+
+!!! bug "Hugepages partly broken on SUSE 15SP6"
+    After the January 2026 system update, hugepage support for many sizes seems broken
+    at the OS level. The 2MB pages seem to work OK though, so users are recommended
+    to stick to the `craype-hugepages2M` if they experience issues.
 
 If you execute multiple applications in your job, but only some of them can
 benefit from using hugepages, export the `HUGETLB_RESTRICT_EXE` environment

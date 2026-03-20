@@ -53,7 +53,7 @@ On LUMI, we provide some pre-installed software in both central software stacks 
     were chosen when installing the software on LUMI.
     
     Consult the [module environment page][module-env] for instructions on identifying the pre-installed software on LUMI through the module system instead.
-    Read more about the user-installable software with EasyBuild in the [next section](#installing-additional-software).
+    Read more about the user-installable software with EasyBuild on the ["EasyBuild" page"](#installing-additional-software).
 
 - Software collections by local organizations
 
@@ -62,7 +62,9 @@ On LUMI, we provide some pre-installed software in both central software stacks 
     users, but are updated and supported by the local LUMI consortium organizations
     themselves, not by the LUMI User Support Team.
 
-       - [CSC installed software collection](https://docs.lumi-supercomputer.eu/software/local/csc/)
+       - [CSC installed software collection](local/csc.md)
+       - [LUMI AI factory software](../laif/software/ai-environment.md)
+       - [Quantum computing software collection by CSC](local/csc-quantum.md)
 
 ## Installing additional software
 
