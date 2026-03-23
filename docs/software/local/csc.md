@@ -16,6 +16,7 @@ same:
 ```bash
 module load Local-CSC
 ```
+
 !!! Tip "Quick overview"
     To get a quick overview of the available modules and their versions, simply
     use 
@@ -24,7 +25,6 @@ module load Local-CSC
     ```
     after enabling the CSC modules, and the list will show a
     "Local software collection managed by CSC" section.
-
 
 Available software and tools:
 
@@ -47,7 +47,7 @@ Available software and tools:
 *   [Nextflow](https://docs.csc.fi/apps/nextflow/)
 *   [OpenFOAM](https://docs.csc.fi/apps/openfoam/)
 *   [PALM](https://docs.csc.fi/apps/palm/)
-*   [PLUMED](https://docs.csc.fi/apps/plumed/) (Though LUMI is not mentioned on the page)
+*   [PLUMED](https://docs.csc.fi/apps/plumed/)
 *   [PDAL](https://docs.csc.fi/apps/pdal/) - Only indirectly via [QGIS](https://docs.csc.fi/apps/qgis/)
 *   [QGIS](https://docs.csc.fi/apps/qgis/)
 *   [Quantum ESPRESSO](https://docs.csc.fi/apps/qe/#lumi-c)
