@@ -11,5 +11,5 @@ To launch it, select the log directory where you have data to visualize and the
 resources for the Slurm job. The log directory must be a valid directory with
 logs for MLflow to function correctly.
 
-Note there is also possible to deploy MLflow as a service on Kubernetes 
+Note it is also possible to deploy MLflow as a service on Kubernetes 
 (using [LUMI-K Cloud][lumi-k]), more details are available in the short [tutorial][lumi-k-mlflow].
