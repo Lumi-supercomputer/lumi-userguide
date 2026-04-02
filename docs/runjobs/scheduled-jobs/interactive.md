@@ -42,7 +42,8 @@ $ srun --cpu_bind=none --nodes=2 --pty bash -i
 
 If you want to use an application with a GUI, you need to use the interactive
 [desktop][web-desktop] available from the LUMI web interface accessible with 
-a web browser. 
+a web browser. Alternatively you can use native VNC client following instructions 
+visible at the desktop job creation step in the web interface. 
 
 ## Using `srun`
 
