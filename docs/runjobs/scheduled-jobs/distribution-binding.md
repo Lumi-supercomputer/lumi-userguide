@@ -305,7 +305,7 @@ using the following srun options
 srun --cpus-per-task=7 --gpu-bind=map:4,5,2,3,6,7,0,1 --gres-flags=allow-task-sharing <app> <args>
 ```
 
-Please not the `--gres-flags=allow-task-sharing` flag is required to allow GPU IPC direct 
+Please note the `--gres-flags=allow-task-sharing` flag is required to allow GPU IPC direct 
 communication. 
 
 Per-task GPU assignement can be also set manually using, in addition to CPU binding
