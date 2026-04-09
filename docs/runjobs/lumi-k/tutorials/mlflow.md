@@ -118,9 +118,9 @@ Since there are multiple custom values, it is better to use a single values file
         tracking:
             extraEnvVars: 
             - name: AWS_REQUEST_CHECKSUM_CALCULATION
-                value: when_required
+              value: when_required
             - name: AWS_RESPONSE_CHECKSUM_VALIDATION
-                value: when_required
+              value: when_required
     rahti:
         buildconfig:
             auth:
