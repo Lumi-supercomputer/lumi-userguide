@@ -443,20 +443,16 @@ install them (and also removed from the search path for `eb -S` or `eb
 --search` to avoid any confusion that they might work).
 
 ??? note "EESSI software stack and its toolchains"
-    EESSI will come to LUMI as part of the European Federation Platform in 2026.
-    It is also based on EasyBuild. It will be possible to also install software on 
+    EESSI is available on LUMI as part of the European Federation Platform.
+    It is also based on EasyBuild. It is possible to also install software on 
     top of EESSI using EasyBuild and the 
     [`EESSI-extend` module](https://www.eessi.io/docs/available_software/detail/EESSI-extend/) 
     that has the same function as the `EasyBuild-user` module has for the LUMI stacks.
     EESSI supports a subset of the EasyBuild toolchains (currently foss and its
     subtoolchains) and many regular EasyConfigs should build on top of EESSI.
 
-    The LUST is not responsible for supporting EESSI though. Once EESSI is 
-    available, support will come 
-    through [the EuroHPC Federation Platform portal](https://my-eurohpc.eu/).
-    The LUST does not plan to do any developments on top of EESSI themselves
-    as there are more upstream support options for the HPE Cray Programming 
-    Environment.
+    See the [EESSI local software collection page](../local/EESSI.md) for more information
+    and links to the relevant documentation.
 
 
 ### Building your own EasyBuild repository
