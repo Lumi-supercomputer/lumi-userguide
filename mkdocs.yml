@@ -181,6 +181,7 @@ nav:
     - Software:
       - Overview: laif/software/index.md
       - AI Software Environment: laif/software/ai-environment.md
+      - Agent infrastructure: laif/software/agent-infrastructure.md
       - Containerized Workflows: laif/software/workflows.md
     
  
