@@ -41,6 +41,7 @@ nav:
       - Software stacks: runjobs/lumi_env/softwarestacks.md
       - Daily management: runjobs/lumi_env/dailymanagement.md
       - Data storage options: storage/index.md
+      - Jobs and data privacy: runjobs/lumi_env/privacy-on-system.md
       - Billing policy: runjobs/lumi_env/billing.md
     - Slurm jobs:
       - Slurm quickstart: runjobs/scheduled-jobs/slurm-quickstart.md
