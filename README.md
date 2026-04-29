@@ -14,12 +14,15 @@ documentation is themed with mkdocs-material + LUMI customization.
   - [Generate the static site](#generate-the-static-site)
 
 
-## Creating issues
+## Improving the documentation
 
 If you find that anything is wrong, badly written or missing, please
 help us to fix it. We try to make this guide as good as possible. We
 appreciate your help.
 
+You can help by creating issues or contributing directly.
+
+### Creating Issues
 The easiest way to create issues is to go to a page that you want to
 create an issue about, and click 'File a bug report for this article'. More
 general issues can be submitted through GitHubs [Issues tab][2].
@@ -27,6 +30,10 @@ general issues can be submitted through GitHubs [Issues tab][2].
 Creating an Issue requires a GitHub account.
 
 [2]: https://github.com/Lumi-supercomputer/docs/issues
+
+### Contributing
+
+See [CONTRIBUTING.MD](CONTRIBUTING.MD) for instructions on how to contribute to the documentation.
 
 ## Building
 
