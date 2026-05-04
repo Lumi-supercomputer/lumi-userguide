@@ -1,17 +1,17 @@
 # Privacy of jobs and data on LUMI
 
 
-This pages gives you information about privacy settings on LUMI, i.e. who else can see your data and activity on LUMI. This page is not meant to be a comprehensive security guide, but more a list of things that you may want to take into account when working on LUMI.
+This pages gives you information about privacy settings on LUMI, i.e. who else can see your data and activity on LUMI. This page is not meant to be a comprehensive security guide, and may not succeed with listing all relevant items and points. This page simply aims for users to understand better what it means privacy vice to work in a shared HPC system like LUMI, and is more of a list of things that you may want to take into account when working on LUMI. (For the legal documents of data processing on LUMI, see the [LUMI Terms and Policies documents](https://lumi-supercomputer.eu/termsandpolicies/).)
 
 What it comes to LUMI-K and LUMI-O, these are services with different kind of deployment. Please visit pages for [LUMI-K](https://docs.lumi-supercomputer.eu/runjobs/lumi-k/security_guide/) and [LUMI-O](../../storage/lumio/index.md#security-aspects) for additional information. 
 
 
-The system administrators can view all information on LUMI. 
+Regardless of what usage information we are talking about, the system administrators can view all information on LUMI. 
 
 
 ## User account and project information
 
-Account and project information is visible for LUMI personnel. 
+Account and project information is visible for LUMI operative and support personnel.
 
 What other users can see about your account information:   
 
@@ -34,15 +34,15 @@ What information is visible about your project:
 
 - Contents of project directories is by default visible and accessible for all members of the project.
 
-- The temporary location /tmp on login nodes (separate on each login node) is personal, and other users can't see the contents in there.
+- The temporary location `/tmp` on login nodes (separate on each login node) is personal, and other users can't see the contents in there.
 
-- The temporary location /local/tmp on login nodes (separate on each login node) is shared by everyone on the same login node (all users in the system). 
+- The temporary location `/local/tmp` on login nodes (separate on each login node) is shared by everyone on the same login node (all users in the system). 
 
 
 The command `ls -l` shows you the permissions of contents in the current directory.
 
 !!! warning  
-    The permissions for directories and files work the same way as in a regular unix file system. If you give permissions to some content for the group 'others', the content is accessible for all other LUMI users.
+    The permissions for directories and files work in a similar manner to a regular unix file system. If you give permissions to some content for the group 'others', depending on the content location on LUMI, the content may be accessible for all other LUMI users.
 
 
 
@@ -63,17 +63,17 @@ The commands you run on the exclusive compute nodes (partitions `standard` and `
 
 Other users can see information about your batch jobs submitted to the system, e.g. with the slurm command `squeue`.
 
-Visible for all is your username, project number, name of the job, state of the job, what kind of resources you have requested (number of nodes, partition, walltime), which exact nodes your job is using, and e.g. the submit command that you used to launch the job including any command line arguments that you used, and directory paths from where the job was launched or where it writes output to.
+Visible for all is your username, project number, name of the job, state of the job, what kind of resources you have requested (number of nodes, partition, walltime), which exact nodes your job is using, and e.g. the submit command that you used to launch the job including any command line arguments that you used, and names of directory paths from where the job was launched or where it writes output to.
 
 Other users can also see information of your past jobs (e.g. with `sacct`).
 
 ## Compute nodes
 
-On the exclusive partitions `standard` and `standard-g`, where you can only reserve full nodes, you are the only user on the node. This is true also if you reserve a full node from the shared partitions with the `--exclusive` flag. In these cases there are no other users who could observe your processes or read your commands on the node, but as for all jobs on LUMI, other users can still see the job activity as described in [Batch jobs].  
+On the exclusive partitions `standard` and `standard-g`, where you can only reserve full nodes, you are the only user on the node. This is true also if you reserve a full node from the shared partitions with the `--exclusive` flag. In these cases there are no other users who could observe your processes or read your commands on the node, but as for all jobs on LUMI, other users can still see the job activity as described in [Batch jobs](#batch-jobs).  
 The temporary directory /tmp that resides in node memory is cleaned after each job. 
 
-On shared partitions (`small`, `small-g`, `dev-g`, `debug`, `largemem`, `lumid`) you should pay attention that there could be other users on these nodes that can observe the processes that are run on that node. (In the same way as [Commands you run]) 
-On shared compute nodes all users on that node share the same /tmp location of the node. Everyone on the node can see the file names (and what kind of permission restrictions they have) in the shared /tmp. It then depends on the permissions of your files, if other users on the same node can access these files or not. After the job is finished, any leftover files of the job on /tmp are cleaned.
+On shared partitions (`small`, `small-g`, `dev-g`, `debug`, `largemem`, `lumid`) you should pay attention that there could be other users on these nodes that can observe the processes that are run on that node. (In the same way as [Commands you run](#commands-you-run).) 
+On shared compute nodes all users on that node share the same /tmp location of the node. Everyone on the node can see the file names (and what kind of permission restrictions they have) in the shared /tmp. It then depends on the permissions of your files, if other users on the same node can access these files or not. After the job is finished, please consider to delete anything explicitly created by the job on `/tmp`. There is an automatic cleanup procedure to remove any leftover files of the job from `/tmp`, but this cleanup fails sometimes, so you shouldn't explicitly trust it.
 
 
 
