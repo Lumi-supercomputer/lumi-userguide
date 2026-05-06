@@ -27,7 +27,9 @@ must use pull requests.
  - Make a pull request for your work to be added to `production`
     - Assign one or more reviewers, try to choose someone who knows the _content_.
         - Please add a link to the rahtiapp-preview page `https://lumi-supercomputer-docs-preview.rahtiapp.fi/origin/<your-branch-name>/rest-of-url/` in the Pull Request description to help reviewer.
-    - Pull requests which do not meet the requirements will not be accepted. Note that you can keep committing to a pull request after it has been submitted.
+    - Not all pull requests or suggestions to LUMI docs are necessarily accepted. 
+    - Be prepared to modify your PR based on reviewer feedback.
+    - Note that you can keep committing to a pull request after it has been submitted.
     - Write meaningful pull request messages, so it is easier for reviewers to do their job.
     - Communicate! Use a [draft PR](https://github.blog/news-insights/product-news/introducing-draft-pull-requests/), if you don't wish the branch to be merged to master (i.e. you want to continue working with it).
  - Once your PR has been accepted, remove the temporary branch (if not deleted automatically at merge)
