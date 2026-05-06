@@ -23,7 +23,7 @@ must use pull requests.
     - [fork the repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) otherwise
  - Create / bring there the content you want to work with. Pay attention to file naming!
  - Make sure to check that the language is correct, commands work, and style is same as in other articles.
- - When creating a new article, add it also to the `mkdocs.yml` navigation OR in the `index.md` file in that folder.
+ - When creating a new page, add it also to the `mkdocs.yml` navigation.
  - Make a pull request for your work to be added to `production`
     - Assign one or more reviewers, try to choose someone who knows the _content_.
         - Please add a link to the rahtiapp-preview page `https://lumi-supercomputer-docs-preview.rahtiapp.fi/origin/<your-branch-name>/rest-of-url/` in the Pull Request description to help reviewer.
