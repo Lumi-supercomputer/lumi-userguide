@@ -22,7 +22,7 @@ must use pull requests.
     - from `production` if you are a member of the repository
     - [fork the repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) otherwise
  - Create / bring there the content you want to work with. Pay attention to file naming!
- - Make sure the data is 100% correct (language is correct, commands work, style is same as in other articles)
+ - Make sure to check that the language is correct, commands work, and style is same as in other articles.
  - When creating a new article, add it also to the `mkdocs.yml` navigation OR in the `index.md` file in that folder.
  - Make a pull request for your work to be added to `production`
     - Assign one or more reviewers, try to choose someone who knows the _content_.
