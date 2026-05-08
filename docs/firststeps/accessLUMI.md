@@ -59,7 +59,7 @@ There are three different types of LUMI projects: **_Puhuri managed_** (all nati
     For projects that have been applied on 15th April 2026 or later that have the resources allocated by EuroHPC JU.
 
     The project management is done in the _EFP portal_ . 
-    Please see the [documentation of EuroHPC Federation Platform](https://docs.my-eurohpc.eu/) for detailed guidance.
+    Please see the [documentation of EuroHPC Federation Platform](https://docs.my-eurohpc.eu/aai/register/) for detailed guidance.
 
     For any questions regarding joining an EFP managed project, or account/project management of these projects, please contact the [EFP helpdesk](https://docs.my-eurohpc.eu/support/).  
 
