@@ -66,7 +66,7 @@ The commands you run on the exclusive compute nodes (partitions `standard` and `
 
 Other users can see information about your batch jobs submitted to the system, e.g., with the slurm command `squeue`.
 
-Visible for all is your username, project number, name of the job, state of the job, what kind of resources you have requested (number of nodes, partition, walltime), which exact nodes your job is using, and, e.g., the submit command that you used to launch the job including any command line arguments that you used, and names of directory paths from where the job was launched or where it writes output to.
+Visible for all is your username, project number, name of the job, state of the job, what kind of resources you have requested (number of nodes, partition, walltime), which exact nodes your job is using, and, e.g., the submit command that you used to launch the job including any command line arguments that you used, and names of directory paths from where the job was launched or where it writes the standard output to (stdout and stderr). Your application output location is not visible for other users. 
 
 Other users can also see information of your past jobs (e.g. with `sacct`).
 
@@ -76,7 +76,7 @@ On the exclusive partitions `standard` and `standard-g`, where you can only rese
 The temporary directory `/tmp` that resides in node memory is cleaned after each job. 
 
 On shared partitions (`small`, `small-g`, `dev-g`, `debug`, `largemem`, `lumid`) you should pay attention that there could be other users on these nodes that can observe the processes that are run on that node. (In the same way as [Commands you run](#commands-you-run).) 
-On shared compute nodes all users on that node share the same `/tmp` location of the node. Everyone on the node can see the file names (and what kind of permission restrictions they have) in the shared `/tmp`. It then depends on the permissions of your files, if other users on the same node can access these files or not. After the job is finished, please consider deleting anything explicitly created by the job on `/tmp`. There is an automatic cleanup procedure to remove any leftover files of the job from `/tmp`, but this cleanup fails sometimes, so you shouldn't explicitly trust it.
+On shared compute nodes all users on that node share the same `/tmp` location of the node. Everyone on the node can see the file names (and what kind of permission restrictions they have) in the shared `/tmp`. It then depends on the permissions of your files, if other users on the same node can access these files or not. After the job is finished, any leftover files of the job on `/tmp` should be automatically cleaned. To make sure that there doesn't remain any leftover files created by your job, consider deleting anything explicitly created by the job on `/tmp`. 
 
 
 
