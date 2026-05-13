@@ -1,52 +1,32 @@
-# Dataset-as-a-Service User Guide
+# LUMI AI Factory Dataset-as-a-Service User Guide
 
-## What is Dataset-as-a-Service?
+## What is LUMI AIF Dataset as a Service?
 
-Dataset-as-a-Service (DaaS) offers curated high-quality datasets close to
+LUMI AI Factory Dataset as a Service (LUMI AIF DaaS) offers curated high-quality datasets close to
 high-performance computing resources, enabling researchers, innovators, and
 industry users to focus on research and development rather than data
 acquisition and infrastructure management. The datasets are usually accessible
-through a front-end portal and application programming interfaces (APIs).
+through a front-end portal and application programming interfaces (APIs). 
 
-The data and storage management is the core of Dataset-as-a-Service (DaaS). To
-ingest, organize, store, and maintain the datasets, the DaaS platform shall
-include a solution for handling databases, data lakes and provide data
-lifecycle management for controlling data retention and eventually deletion.
-The platform shall allow users to discover available datasets, monitor dataset
-usage and availability, etc.
+You can find our current datasets in [our data catalog](https://lumi-aif.fairadata.fi). If you are interested in sharing your data as part of our curated collection, you will find more information in this guide.
 
-Dataset-as-a-Service (DaaS) shall support a consistent way for applications to
-access the DaaS platform. That shall include API access. To make the DaaS
-platform interoperable, it will be developed to adhere to industry standards,
-and to use APIs, protocols and connectors to external storage systems, and to
-use industry standard data formats such as CSV, JSON, etc.
+LUMI AIF DaaS is currently a Minimum Viable Product (MVP). MVP is the
+simplest version of a product that includes only the core features necessary
+to deliver value to early users and validate the product concept. LUMI AIF DaaS is built upon existing services and as such the user experience and available features are already quite advanced for an MVP.
 
-The Dataset-as-a-Service platform shall support reliable identity and access
-management (IAM) and role-based access control (RBAC) to enforce granular
-access control over which users and groups have access to which datasets.
-
-Dataset-as-a-Service is not intended for archival or digital preservation
+LUMI AIF DaaS is not intended for archival or digital preservation
 purposes.
 
-## Service Development
+### Who can use LUMI AI Factory Dataset as a Service? What can they use it for?
 
-Dataset-as-a-Service is currently a Minimum Viable Product (MVP). MVP is the
-simplest version of a product that includes only the core features necessary
-to deliver value to early users and validate the product concept. The goal of
-an MVP is to test assumptions quickly and with minimal resources, to gather
-user feedback, and to use that feedback to guide further development.
-
-## Who can use Dataset-as-a-Service? What can they use it for?
-
-Dataset-as-a-Service is developed for two central user roles, data users and
-data providers.
+LUMI AI Factory Dataset as a Service is developed for European AI research and innovation in private (especially startups and SME's), academic and public sectors. It serves two central user roles, data users and data providers.
 
 **Data users** are those individual users who utilize the datasets in their
 research or development work. They can
 
-* search or browse the public data catalogue to find datasets
-* apply to access a dataset
-* use the dataset in their research (when given access to the dataset)
+* search or browse the public [data catalogue](https://lumi-aif.fairadata.fi) to find datasets
+* apply to access a dataset if necessary
+* use the dataset in their research
 * combine datasets with their own data, if needed, and delete the data they've
   uploaded for their own use
 
@@ -57,10 +37,10 @@ via Dataset-as-a-Service. They can
   metadata) available for data users
 * limit the use and level of publicity of the dataset
 
-## Do I have to pay to use the datasets?
+### Do I have to pay to use the datasets?
 
-The Dataset-as-a-Service (DaaS) datasets can be accessed and utilized
-free-of-charge, but to access the LUMI supercomputer and to run jobs with LUMI
+The LUMI AI Factory Dataset as a Service datasets can be accessed and utilized
+free-of-charge. To access the LUMI supercomputer and to run jobs with LUMI
 using the DaaS datasets, you need to be a member of a project that has been
 granted resources on LUMI.
 
@@ -69,175 +49,107 @@ overview of the access policies is provided on the
 [LUMI Supercomputer Get Started](https://lumi-supercomputer.eu/get-started/)
 page.
 
-## I'd like to offer a dataset to be used via Dataset-as-a-Service. What can I do?
+LUMI AIF DaaS supports access management to datasets. It is possible for data providers and data users to agree upon payment for usage of datasets in the future. Currently we do not have such datasets.
 
-We'd be happy to hear from you! Please contact us to tell us about your
-dataset. Dataset-as-a-Service is still under development, but we warmly
-welcome pilot datasets to offer through the service.
+### Feedback
+We are building a new service and would be happy to hear about your experiences and suggestions on how we can make LUMI AI Factory Dataset as a Service better.
 
-## Searching for Datasets
+## Finding and using datasets
 
-The currently available datasets are listed in the **data catalogue**.
+To start using LUMI AI Factory Dataset as a Service, head to our [data catalogue](https://lumi-aif.fairadata.fi), find an interesting dataset and use it in your LUMI project or elsewhere. If you need help or want more information, check this guide. You can contact [LUMI AI Factory user support](mail:ai-factory-support@lumi-supercomputer.eu) to receive support at any step of
+the process.  
+
+### Searching for Datasets
+
+The currently available datasets are listed in the [data catalogue](https://lumi-aif.fairadata.fi).
 Take a look – you don't need have an account to browse it.
 
-Dataset-as-a-Service data catalogue:
-[https://dataset-portal-test-rahti.2.rahtiapp.fi/](https://dataset-portal-test-rahti.2.rahtiapp.fi/)
-
-You can search for datasets by using
+You can search for datasets by using e.g.
 
 * access type (open/restricted)
 * year
 * field of science
 * keywords
 
-To access a dataset and to use it in your project you will need an account:
-[https://docs.lumi-supercomputer.eu/firststeps/accessLUMI/](https://docs.lumi-supercomputer.eu/firststeps/accessLUMI/)
+When you open a dataset, it has general information of the data, links to its documentation and information on how to access it. Many datasets have open API's or portals where you can browse the data. To access a dataset and to use it in your LUMI project you will need an account. For the LUMI access process and requirements, you can find information in
+[the LUMI guide](https://docs.lumi-supercomputer.eu/firststeps/accessLUMI/)
 
-## Accessing a dataset
+### Applying to Use a Dataset
 
-1. Search for a dataset from the Dataset-as-Service data catalogue:
-   [https://dataset-portal-test-rahti.2.rahtiapp.fi/](https://dataset-portal-test-rahti.2.rahtiapp.fi/)
-2. Apply to access a dataset
-    1. Currently you can apply by sending an e-mail to the LUMI AI Factory
-       support
-3. You will receive a notification by e-mail about permission to access the
-   dataset
-    1. If the permission process for the dataset is automated (a
-       non-restricted dataset), you will receive the notification quickly
-    2. If the data provider makes the decisions on date permit manually (a
-       restricted dataset), receiving the notification will take longer
-    3. If you have questions about the data content or the terms of
-       permission, contact the data provider directly
-4. Make use of the dataset in your research or RDI project
-    1. You need to be a member of a project that has been granted resources on
-       LUMI. The LUMI consortium countries have different policies for
-       accessing LUMI. An overview of the access policies is provided on the
-       [LUMI Supercomputer Get Started](https://lumi-supercomputer.eu/get-started/)
-       page.
-5. Evaluate the usability of Dataset-as-a-Service and give feedback
-    1. We are building a new service and would be happy to hear about your
-       experiences and how we can make Dataset-as-a-Service better
+Some datasets are of restricted use. Applying to use such datasets is currently done by e-mail. Please contact us by
+e-mail (ai-factory-support@lumi-supercomputer.eu) if you want to apply to use one or several of the current restricted datasets in LUMI AI Factory Dataset as a Service. In your email, please state a short description of the use case you have in mind for the dataset.
 
-You can contact LUMI AI Factory user support to receive support at any step of
-the process.
-
-## Applying to Use a Dataset
-
-Applying to use datasets is currently done by e-mail. Please contact us by
-e-mail if you want to apply to use one or several of the current
-Dataset-as-a-Service datasets.
+Many datasets are open and thus you can use them without applying for access. However we are interested in the different use cases and can help with accessing the open datasets as well, so we appreciate if you sent us an email in such cases as well.
 
 You will be notified by e-mail when you have been granted or denied access for
 a dataset. After you've been granted access to a dataset, the LUMI AI Factory
 support can help you to access the dataset so you can use it in your project
-with LUMI resources.
+with LUMI resources. 
 
-## Using Datasets with HPC Tools
+### Accessing LUMI and using Datasets with HPC Tools
 
 To be able to use the HPC tools on LUMI, you need to be a member of a project
 that has been granted resources on LUMI. The LUMI consortium countries have
 different policies for accessing LUMI. An overview of the access policies is
 provided on the
 [LUMI Supercomputer Get Started](https://lumi-supercomputer.eu/get-started/)
-page.
+page. For startups and SME's, the easiest way to get started in using LUMI is by using one of [the computing packages of LUMI AI Factory](https://lumi-ai-factory.eu/service-catalogue/).
 
 You can use pre-installed software on LUMI, install additional software
 yourself or use an Apptainer/Singularity container or the LUMI container
-wrapper:
-[https://docs.lumi-supercomputer.eu/software/](https://docs.lumi-supercomputer.eu/software/).
+wrapper [as detailed in LUMI user guide](https://docs.lumi-supercomputer.eu/software/).
 
-Software library:
-[https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/)
+Other useful documentation:
+- [Software library](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/)
+- [Containerized Workflows](https://docs.lumi-supercomputer.eu/software/local/lumi-aif/#containerized-workflows) are developed by the LUMI AI Factory to streamline AI
+related tasks in HPC environment
+- [Running jobs on LUMI](https://docs.lumi-supercomputer.eu/runjobs/)
 
-Containerized Workflows are developed by the LUMI AI Factory to streamline AI
-related tasks in HPC environment:
-[https://docs.lumi-supercomputer.eu/software/local/lumi-aif/#containerized-workflows](https://docs.lumi-supercomputer.eu/software/local/lumi-aif/#containerized-workflows)
-
-Running jobs on LUMI:
-[https://docs.lumi-supercomputer.eu/runjobs/](https://docs.lumi-supercomputer.eu/runjobs/)
-
-## Citation
+### Citation
 
 Datasets have unique URLs for citation. Licensing information is embedded in
-metadata and maintained by data providers.
+metadata and maintained by data providers. You can get citation examples on the datasets page by clicking the Copy Citation/References -button.
 
-## Combining Datasets and Working with Your Own Data
+### Combining Datasets and Working with Your Own Data
 
 You can combine your own data with a Dataset-as-a-Service dataset or use more
 than one dataset in your project, if you have been granted access for several
 datasets.
 
-Please note that LUMI is not designed to process personal data, and you must
-not transfer personal data to the service. Uploading and deleting your own
-data is on your own responsibility.
+If your own dataset contains personal data, do remember to check [LUMI's Terms of Use relating to it](https://lumi-supercomputer.eu/wp-content/uploads/2026/03/LUMI-General-Terms-of-Use_2026.pdf). Uploading and deleting your own data is on your own responsibility.
 
-Data storage options:
-[https://docs.lumi-supercomputer.eu/storage/](https://docs.lumi-supercomputer.eu/storage/)
+LUMI's [data storage options are detailed in the user guide](https://docs.lumi-supercomputer.eu/storage/).
 
-## Providing your dataset to be used via Dataset-as-a-Service
+## Sharing your dataset to LUMI AI Factory Dataset as a Service
 
-1. Get to know LUMI AI Factory Dataset-as-a-Service to see if providing your
-   dataset through the service would be a fitting way to offer it for a wider
-   research community
-    1. You will find information about the service in this user guide, the
-       service description and user policy
-    2. There is more information about the AI factory on the LUMI AI Factory
-       website
-    3. All LUMI AI Factory services are described on the service catalogue
-2. Contact the AI Factory support
-    1. We will be happy to learn about your dataset and discuss the details of
-       providing the dataset through Dataset-as-a-Service
-3. LUMI AI Factory will make a quality assessment of your dataset and decide,
-   if the dataset would be suitable to be offered through Dataset-as-a-Service
-4. LUMI AI Factory will ask you to sign an agreement about providing the
-   dataset
-5. After signing the agreement, you will be asked to add the dataset to the
-   service and add the required information, like sufficient metadata
-    1. We will give you further details about how to proceed with adding the
-       dataset
-    2. We will publish the dataset after reviewing the required information
-       and the technical functionality of the dataset
-6. Evaluate the suitability of Dataset-as-a-Service and give feedback on the
-   user experience
-    1. We are building a new service and would be happy to hear about your
-       experiences and suggestions on how we can make Dataset-as-a-Service
-       better
-7. If you have decided to restrict the access of your dataset, you will be
-   notified by e-mail about every data permit request on your dataset
-8. If you need information about the usage of your dataset, you can always
-   contact the LUMI AI Factory support
-9. If you need to update the dataset (make a new version) or remove the
-   dataset before the time determined on the agreement has passed, you can
-   always contact the LUMI AI Factory support
+We are always looking for new datasets that would be of value to AI research and innovation. If you have or know of a potential dataset, we'd be happy to hear from you! Please contact us by sending us an email to ai-factory-support@lumi-supercomputer.eu to tell us about your dataset. We will guide you through the selection and upload process. You can also find more information about the practicalities of sharing your dataset in this guide.
 
-## Data Agreement
+### Why should I share my dataset?
+LUMI AI Factory Dataset as a Service is a way for you to get visibility for your dataset. Our users are frontier developers and innovators of AI in Europe. Our vision is to empower AI start-ups, SMEs, academic researchers, and other public and private users to develop innovative AI models and applications. With this we aim to support trustworthy AI.
 
-A data agreement is required between the data provider (data controller) and
-the LUMI AI Factory (data processor).
+LUMI AIF DaaS is not a repository or a preservation service. It does not take away your ownership of data or remove your right to manage access to it. LUMI AIF DaaS facilitates access and findability. Publish your data to increase its impact, discover new use cases, meet compliance requirements, attract collaborators and customers, and participate in cutting‑edge scientific and industrial innovation.
 
-## Adding Your Dataset and Metadata
+### What is required of a dataset in LUMI AI Factory Dataset as a Service
+LUMI AI Factory Dataset as a Service offers a curated catalog. This means that every dataset offered has been through a process where its suitability has been evaluated. LUMI AI Factory curation criteria is evolving and it will be presented to data providers during our cooperation. To summarize the criteria, the datasets need to be relevant for AI usage, they need to be AI-ready and the data providers need to agree to provide the data under such a license or agreement that it is possible to use it in AI innovation. If you already have used good data management practices and you have a large dataset with some idea of AI useage, your dataset is most likely good to go.
 
-The LUMI AI Factory support will help you to add your dataset into
-Dataset-as-a-Service.
+Every data provider needs to accept the Terms of Use of LUMI AI Factory Dataset as a Service. If your data contains personal data, also a record of processing activities should be documented. LUMI AIF DaaS accepts datasets containing personal data and other confidential datasets. Datasets containing special categories of personal data are not currently accepted.
 
-Comprehensive metadata for datasets provides the data users detailed
-descriptions of the data and helps them to discover the data they need. The
-Metax metadata model is designed to describe research datasets and related
-entities in a structured, interoperable way.
+### Adding the dataset
+When you have contacted LUMI AI Factory user support and your dataset has been accepted for LUMI AI Factory Dataset as a Service, you will be guided to add information about the dataset. The metadata about the dataset will be added to Fairdata services. You can do this yourself or we can do it for you. Comprehensive metadata for datasets provides the data users detailed descriptions of the data and helps them to discover the data they need. You can fin detailed description of the metadata upload process and possible metadata fields in [Fairdata guide for adding dataset metadata](https://www.fairdata.fi/qvaimen-kayttoopas/). 
 
-The Metax metadata model:
-[https://wiki.eduuni.fi/spaces/Fairdataverkosto/pages/469015907/In+English+Data+Model+and+metadata+in+Metax+V3](https://wiki.eduuni.fi/spaces/Fairdataverkosto/pages/469015907/In+English+Data+Model+and+metadata+in+Metax+V3)
+In the dataset description, you will need to add documentation related to the dataset and ways to access the dataset. If the dataset is already accessible through a national repository or other services, you can add this access point. In addition or if such an access point is not possible, we can give you space to upload the data into LUMI-O. We will help you with the upload process where needed, but you can also check the [LUMI-O user guide](https://docs.lumi-supercomputer.eu/storage/lumio/). 
 
-Contact the LUMI AI Factory support if you need help with providing
-comprehensive metadata for your dataset.
+### Reviewing Applications from Data Users
 
-## Reviewing Applications from Data Users
+Datasets can have restricted access. During the process of providing the dataset to LUMI AI Factory Dataset as a Service, criteria for the access to the restricted datasets will be agreed on. If so agreed, the data provider can evaluate every possible data use case. Currently this process is conducted by e-mail.
 
-Currently the data permit process is conducted by e-mail.
+You will receive data permit applications from potential data users by e-mail and you can either accept or deny the requests by e-mail. If you have set a definitive criteria for acceptance, the data permit management can be done without your approval as well.
 
-You will receive data permit applications from potential data users by e-mail
-and you can either accept or deny the requests by e-mail.
+### Withdrawing a Dataset
 
-## Withdrawing a Dataset
+If you want to withdraw your dataset, please contact the LUMI AI Factory support (ai-factory-support@lumi-supercomputer.eu). The LUMI AI Factory Dataset as a Service will also evaluate the usefulness of datasets in the service at regular intervals. If the datasets are no longer useful for AI innovation, they can be removed from the catalog. In such cases the data providers will be notified one month in advance.
 
-If you want to withdraw your dataset, please contact the LUMI AI Factory support.
+### Information about use of the Dataset
+LUMI AI Factory Dataset as a Service has limited information about the use of the datasets. In each the publication page of each dataset, there is a views-metric available. You can check this for information on the interest your dataset has generated. The views-metric is updated once a day.
+
+If you have published the dataset as restricted, we will have information about access granted. In your access criteria you can also dictate what sort of information you require for the access to be granted (e.g. field of science, use case described).
