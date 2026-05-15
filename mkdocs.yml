@@ -178,8 +178,8 @@ nav:
     - Services: laif/index.md
     - Data:
       - Dataset as a Service:
-        - User guide: laif/data/daas_guide.md
-        - Service description: laif/data/daas_description.md
+        - User guide: laif/data/daas-guide.md
+        - Service description: laif/data/daas-description.md
     - Software:
       - Overview: laif/software/index.md
       - AI Software Environment: laif/software/ai-environment.md
