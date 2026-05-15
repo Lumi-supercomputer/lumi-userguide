@@ -89,7 +89,7 @@ When you open a dataset, it has general information of the data, links to its do
 ### Applying to Use a Dataset
 
 Some datasets are of restricted use. Applying to use such datasets is currently done by e-mail. Please contact us by
-[e-mail](mailto:ai-factory-support@lumi-supercomputer.eu) if you want to apply to use one or several of the current restricted datasets in LUMI AI Factory Dataset as a Service. In your email, please state a short description of the use case you have in mind for the dataset.
+[e-mail][LAIF user support email] if you want to apply to use one or several of the current restricted datasets in LUMI AI Factory Dataset as a Service. In your email, please state a short description of the use case you have in mind for the dataset.
 
 Many datasets are open and thus you can use them without applying for access. However we are interested in the different use cases and can help with accessing the open datasets as well, so we appreciate if you sent us an email in such cases as well.
 
