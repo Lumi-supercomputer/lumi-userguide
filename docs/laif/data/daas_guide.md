@@ -7,6 +7,7 @@
 [fairdata guide for adding dataset metadata]: https://www.fairdata.fi/qvaimen-kayttoopas/
 [get started]: https://lumi-supercomputer.eu/get-started/
 [LAIF computing packages]: https://lumi-ai-factory.eu/service-catalogue/
+[LAIF user support email]: mailto:ai-factory-support@lumi-supercomputer.eu
 [LUMI-O user guide]: ./../../storage/lumio/index.md
 [run jobs]: ./../../runjobs/index.md
 [software library]: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/
@@ -68,7 +69,7 @@ We are building a new service and would be happy to hear about your experiences 
 
 ## Finding and using datasets
 
-To start using LUMI AI Factory Dataset as a Service, head to our [data catalogue][data catalogue], find an interesting dataset and use it in your LUMI project or elsewhere. If you need help or want more information, check this guide. You can contact [LUMI AI Factory user support](mailto:ai-factory-support@lumi-supercomputer.eu) to receive support at any step of
+To start using LUMI AI Factory Dataset as a Service, head to our [data catalogue][data catalogue], find an interesting dataset and use it in your LUMI project or elsewhere. If you need help or want more information, check this guide. You can contact [LUMI AI Factory user support][LAIF user support email] to receive support at any step of
 the process.  
 
 ### Searching for Datasets
@@ -136,7 +137,7 @@ LUMI's [data storage options are detailed in the user guide][data storage].
 
 ## Sharing your dataset to LUMI AI Factory Dataset as a Service
 
-We are always looking for new datasets that would be of value to AI research and innovation. If you have or know of a potential dataset, we'd be happy to hear from you! Please contact us by sending an email to [LUMI AI Factory user support](mailto:ai-factory-support@lumi-supercomputer.eu) to tell us about your dataset. We will guide you through the selection and upload process. You can also find more information about the practicalities of sharing your dataset in this guide.
+We are always looking for new datasets that would be of value to AI research and innovation. If you have or know of a potential dataset, we'd be happy to hear from you! Please contact us by sending an email to [LUMI AI Factory user support][LAIF user support email] to tell us about your dataset. We will guide you through the selection and upload process. You can also find more information about the practicalities of sharing your dataset in this guide.
 
 ### Why should I share my dataset?
 LUMI AI Factory Dataset as a Service is a way for you to get visibility for your dataset. Our users are frontier developers and innovators of AI in Europe. Our vision is to empower AI start-ups, SMEs, academic researchers, and other public and private users to develop innovative AI models and applications. With this we aim to support trustworthy AI.
@@ -161,7 +162,7 @@ You will receive data permit applications from potential data users by e-mail an
 
 ### Withdrawing a Dataset
 
-If you want to withdraw your dataset, please contact the [LUMI AI Factory support](mailto:ai-factory-support@lumi-supercomputer.eu). The LUMI AI Factory Dataset as a Service will also evaluate the usefulness of datasets in the service at regular intervals. If the datasets are no longer useful for AI innovation, they can be removed from the catalog. In such cases the data providers will be notified one month in advance.
+If you want to withdraw your dataset, please contact the [LUMI AI Factory support][LAIF user support email]. The LUMI AI Factory Dataset as a Service will also evaluate the usefulness of datasets in the service at regular intervals. If the datasets are no longer useful for AI innovation, they can be removed from the catalog. In such cases the data providers will be notified one month in advance.
 
 ### Information about use of the Dataset
 LUMI AI Factory Dataset as a Service has limited information about the use of the datasets. In each the publication page of each dataset, there is a views-metric available. You can check this for information on the interest your dataset has generated. The views-metric is updated once a day.
