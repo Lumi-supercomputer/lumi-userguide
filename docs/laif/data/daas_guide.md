@@ -1,6 +1,7 @@
 # LUMI AI Factory Dataset-as-a-Service User Guide
 
 [access LUMI]: ./../../firststeps/accessLUMI.md
+[AI software environment]: ./../../laif/software/ai-environment.md
 [containerized workflows]: ./../software/workflows.md
 [data catalogue]: https://lumi-aif.fairadata.fi
 [data storage]: ./../../storage/index.md
@@ -118,6 +119,8 @@ Other useful documentation:
 
 - [Containerized Workflows][containerized workflows] are developed by the LUMI AI Factory to streamline AI
 related tasks in HPC environment
+
+- [AI software environment][AI software environment]
 
 - [Running jobs on LUMI][run jobs]
 
