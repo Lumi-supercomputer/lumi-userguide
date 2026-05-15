@@ -100,9 +100,12 @@ yourself or use an Apptainer/Singularity container or the LUMI container
 wrapper [as detailed in LUMI user guide](https://docs.lumi-supercomputer.eu/software/).
 
 Other useful documentation:
+
 - [Software library](https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/)
+
 - [Containerized Workflows](https://docs.lumi-supercomputer.eu/software/local/lumi-aif/#containerized-workflows) are developed by the LUMI AI Factory to streamline AI
 related tasks in HPC environment
+
 - [Running jobs on LUMI](https://docs.lumi-supercomputer.eu/runjobs/)
 
 ### Citation
