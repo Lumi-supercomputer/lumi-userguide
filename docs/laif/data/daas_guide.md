@@ -10,6 +10,7 @@
 [LAIF user support email]: mailto:ai-factory-support@lumi-supercomputer.eu
 [LUMI-O user guide]: ./../../storage/lumio/index.md
 [run jobs]: ./../../runjobs/index.md
+[software]: ./../../storage/index.md
 [software library]: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/
 [terms of use]: https://lumi-supercomputer.eu/wp-content/uploads/2026/03/LUMI-General-Terms-of-Use_2026.pdf
 
@@ -109,7 +110,7 @@ page. For startups and SME's, the easiest way to get started in using LUMI is by
 
 You can use pre-installed software on LUMI, install additional software
 yourself or use an Apptainer/Singularity container or the LUMI container
-wrapper [as detailed in LUMI user guide](https://docs.lumi-supercomputer.eu/software/).
+wrapper [as detailed in LUMI user guide][software].
 
 Other useful documentation:
 
