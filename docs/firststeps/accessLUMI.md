@@ -41,7 +41,7 @@ and EuroHPC JU allocated projects before 15.4.2026,
 
 * **myCSC portal** for national projects of Finland.
 
-=== "Consortium allocation portals"
+=== "Consortium portals"
 
     This tab is for regular users (with a non-Finnish allocation), who have a project with resources allocated by a LUMI consortium country (other than Finland), or by EuroHPC JU _before_ 15th April 2026.
     
@@ -68,7 +68,7 @@ and EuroHPC JU allocated projects before 15.4.2026,
     The project management is done in the _EFP portal_ . 
     Please see the [documentation of EuroHPC Federation Platform](https://docs.my-eurohpc.eu/aai/register/) for detailed guidance.
 
-    For any questions regarding joining an EFP managed project, or account/project management of these projects, please contact the [EFP helpdesk](https://docs.my-eurohpc.eu/support/).  
+    For questions regarding the EuroHPC Federation Platform portal, please contact the [EFP helpdesk](https://docs.my-eurohpc.eu/support/); for all other issues please contact the [LUMI helpdesk][support].
 
 
 === "Finnish allocation portal"
