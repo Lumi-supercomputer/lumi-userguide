@@ -32,9 +32,16 @@ page.
 Please note that when using LUMI, you must accept and adhere to the [LUMI Terms
 of Use][terms-of-use].
 
-There are three different types of LUMI projects: **_Puhuri managed_** (all national projects of LUMI consortium countries except Finland, and EuroHPC JU allocated projects before 15.4.2026), **_EuroHPC Federation Platform (EFP) managed projects_** (all EuroHPC JU allocated projects after 15.4.2026), and **_national projects of Finland_**. Please see the guideline for your project type below.
+Depending on access path there are different allocation portals for managing the project:
 
-=== "Puhuri managed projects"
+* **Consortium allocation portals** for all national projects of LUMI consortium countries except Finland, 
+and EuroHPC JU allocated projects before 15.4.2026,
+
+* **EuroHPC Federation Platform (EFP)** for all EuroHPC JU allocated projects after 15.4.2026, 
+
+* **myCSC portal** for national projects of Finland.
+
+=== "Consortium allocation portals"
 
     This tab is for regular users (with a non-Finnish allocation), who have a project with resources allocated by a LUMI consortium country (other than Finland), or by EuroHPC JU _before_ 15th April 2026.
     
@@ -54,7 +61,7 @@ There are three different types of LUMI projects: **_Puhuri managed_** (all nati
     
     <iframe id="kaltura_player" src="https://api.kaltura.nordu.net/p/191/sp/19100/embedIframeJs/uiconf_id/14971191/partner_id/191?iframeembed=true&playerId=kaltura_player&entry_id=0_qb2xq6e9&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=0_zexcx6xb" width="100%" height="400" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="LUMI Getting Started: Account via MyAccessID"></iframe>
 
-=== "EuroHPC JU projects"
+=== "EuroHPC Federation Platform"
 
     For projects that have been applied on 15th April 2026 or later that have the resources allocated by EuroHPC JU.
 
@@ -64,6 +71,6 @@ There are three different types of LUMI projects: **_Puhuri managed_** (all nati
     For any questions regarding joining an EFP managed project, or account/project management of these projects, please contact the [EFP helpdesk](https://docs.my-eurohpc.eu/support/).  
 
 
-=== "Finnish allocation projects"
+=== "Finnish allocation portal"
 
     Users with a Finnish allocation (via [MyCSC](https://my.csc.fi/welcome)) must follow the instructions given in the [CSC documentation for creating a Finnish LUMI project](https://docs.csc.fi/accounts/how-to-create-new-project/#creating-a-lumi-project-and-applying-for-resources).
