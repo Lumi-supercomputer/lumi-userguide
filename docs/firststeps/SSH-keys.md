@@ -9,6 +9,14 @@
 [website-getstarted]: https://lumi-supercomputer.eu/get-started/
 [jump-register-keys]: #register-your-public-key
 [eidas-eduid]: https://puhuri.neic.no/user_guides/myaccessid_registration/
+[efp-aai-ssh]: https://docs.my-eurohpc.eu/aai/ssh/ 
+
+# Secure Shell (SSH) 
+
+If you want to use LUMI from a terminal, you need to set up SSH authentication. For projects managed by the EuroHPC Federation Platform (EFP)
+Secure Shell certificates are used. Please follow EFP's [Secure Shell guide][efp-aai-ssh] to set up you connection.
+
+Other projects use traditional SSH key-based authentication. Please follow the steps belowe to set up your connection.
 
 # Setting up SSH keypair
 
