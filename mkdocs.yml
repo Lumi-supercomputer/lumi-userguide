@@ -11,7 +11,7 @@ nav:
   - First steps: 
     - Get Started: firststeps/index.md
     - Access to LUMI: firststeps/accessLUMI.md
-    - Setting up SSH key pair: firststeps/SSH-keys.md
+    - Secure Shell (SSH): firststeps/SSH-keys.md
     - Logging in (with SSH client): firststeps/loggingin.md
     - Logging in (with web interface): firststeps/loggingin-webui.md
     - Moving data to/from LUMI: firststeps/movingdata.md
