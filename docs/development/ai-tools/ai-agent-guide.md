@@ -8,7 +8,7 @@ AI agents like [Claude Code](https://code.claude.com/docs/en/overview) and [Open
 ## I am running an AI agent — what should I take into account?
 
 1. Be aware of what could go wrong (summarised in the [table below](#common-problems-with-coding-agents-and-how-to-avoid-them)).
-2. Run your agent in a [container](./../../software/containers/singularity.md) to control its access to files.
+2. Run your agent in a [container](../../../software/containers/singularity) to control its access to files.
 3. Do not give your AI agent access to personal data of other users.
 4. You are always responsible for your agent. The agent itself cannot be held accountable.
 
