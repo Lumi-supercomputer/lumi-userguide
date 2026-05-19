@@ -41,6 +41,7 @@ nav:
       - Software stacks: runjobs/lumi_env/softwarestacks.md
       - Daily management: runjobs/lumi_env/dailymanagement.md
       - Data storage options: storage/index.md
+      - Jobs and data privacy: runjobs/lumi_env/privacy-on-system.md
       - Billing policy: runjobs/lumi_env/billing.md
     - Slurm jobs:
       - Slurm quickstart: runjobs/scheduled-jobs/slurm-quickstart.md
@@ -101,6 +102,7 @@ nav:
     - Local software collections:
       - CSC: software/local/csc.md
       - CSC_quantum: software/local/csc-quantum.md
+      - EESSI: software/local/EESSI.md
       - LAIF AI containers: laif/software/ai-environment.md
       #- Quantum ESPRESSO: software/guides/quantumespresso.md
       #- ParaView: software/guides/paraview.md
@@ -184,6 +186,7 @@ nav:
       - Overview: laif/software/index.md
       - AI Software Environment: laif/software/ai-environment.md
       - Containerized Workflows: laif/software/workflows.md
+      - Infrastructure for AI agents: laif/software/agent-infrastructure.md
     
  
 theme:
@@ -222,8 +225,10 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/Lumi-supercomputer/lumi-userguide/
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/LUMIhpc
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/lumi-supercomputer/   
+    - icon: fontawesome/brands/bluesky
+      link: https://bsky.app/profile/lumi-supercomputer.eu
 
 markdown_extensions:
   - toc:

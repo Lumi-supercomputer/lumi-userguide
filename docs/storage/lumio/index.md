@@ -49,14 +49,23 @@ Structure of an object storage is different from a normal file system structure.
   etc.), an object storage allows you to add custom metadata.
 
 
-
 Objects are managed through simple atomic operations. One can put an object in the object storage, get its content, copy an object or delete an object. But contrary to a file e.g. in the Lustre filesystem, the object in LUMI-O cannot be modified: One cannot simply change a part of the content of an object. To edit an object, it needs to be replaced with a new object.
 
-With LUMI-O, one LUMI project is considered as _one user account_, i.e. by default all project members have the same user rights to all the data that is stored in LUMI-O for the project.
+## Security aspects
 
-!!!info
-    Projects in LUMI-O are handled as "single user tenants/accounts", where the project numerical id (e.g. 465000001) corresponds both the tenant/account name and the project name.
-    Subsequently, **all members of a LUMI-O project have the exact same rights and permissions**, unlike in the LUMI filesystem, where files have individual owners.**Keep this in mind if you have critical data in LUMI-O as any other member of your LUMI project could accidentally delete it**.
+Please note that the points listed here should not be treated as a comprehensive security guide to use LUMI-O, but more like a list that you may want to take into account when using LUMI-O.
+
+- Although data traffic is encrypted, data is not stored encrypted by default - more sensitive data should therefore be encrypted before being added to the service.
+
+- Access rights to the data in LUMI-O can be changed as it is described in [Sharing access to data](https://docs.lumi-supercomputer.eu/storage/lumio/advanced/) page. Checking the current access rights is described [here](https://docs.lumi-supercomputer.eu/storage/lumio/clients-general/#is-my-bucket-public-or-private). All project members can change the access rights for the buckets of the project.
+
+- Take good care of your [authentication credentials](https://docs.lumi-supercomputer.eu/storage/lumio/auth-lumidata-eu/#authentication-credentials), and treat them similarily as your passwords. The only thing a random person needs to get access to your data in LUMI-O is your valid LUMI-O access credentials, and your LUMI project number that these credentials are associated with. It is a good practise to each time to only set them to be valid for the time that you actively need them. You can also anytime log in to the [authentication portal](https://auth.lumidata.eu/) and revoke your active access credentials.
+
+- With LUMI-O, one LUMI project is considered as _one user account_, i.e. by default all project members have the same user rights to all the data that is stored in LUMI-O for the project.
+
+    !!!info
+        Projects in LUMI-O are handled as "single user tenants/accounts", where the project numerical id (e.g. 465000001) corresponds both the tenant/account name and the project name.
+        Subsequently, **all members of a LUMI-O project have the exact same rights and permissions in LUMI-O**, unlike in the LUMI filesystem, where files have individual owners.**Keep this in mind if you have critical data in LUMI-O as any other member of your LUMI project could accidentally delete it**.
 
 ## Training material
 
