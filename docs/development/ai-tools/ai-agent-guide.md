@@ -13,9 +13,8 @@ AI agents like [Claude Code](https://code.claude.com/docs/en/overview) and [Open
 4. You are always responsible for your agent. The agent itself cannot be held accountable.
 
 !!! Info "Updates"
-    We will update this guide based on experiences and users’ feedback.
-    We might enforce stricter rules in future if it is necessary for system stability.
-
+    This guide will be updated based on observed usage as well as user feedback.
+    Stricter rules may be enforced in the future if it is required for maintaining system stability.
 
 ## Common problems with AI agents and how to avoid them
 
