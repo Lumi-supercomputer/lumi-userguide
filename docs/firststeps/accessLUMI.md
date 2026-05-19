@@ -34,7 +34,7 @@ of Use][terms-of-use].
 
 Depending on access path there are different allocation portals for managing the project:
 
-* **Consortium allocation portals** for all national projects of LUMI consortium countries except Finland, 
+* **Consortium allocation portals** for all national projects of LUMI consortium countries (except Finland), 
 and EuroHPC JU allocated projects before 15.4.2026,
 
 * **EuroHPC Federation Platform (EFP)** for all EuroHPC JU allocated projects after 15.4.2026, 

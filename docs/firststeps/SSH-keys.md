@@ -11,21 +11,29 @@
 [eidas-eduid]: https://puhuri.neic.no/user_guides/myaccessid_registration/
 [efp-aai-ssh]: https://docs.my-eurohpc.eu/aai/ssh/ 
 
-# Secure Shell (SSH) 
 
-If you want to use LUMI from a terminal, you need to set up SSH authentication. For projects managed by the EuroHPC Federation Platform (EFP)
+# SSH authentication
+
+If you want to use LUMI from a terminal, you need to set up SSH authentication. SSH keys and SSH certificates are the only ways to connect to LUMI when using a Linux, macOS or Windows PowerShell terminal, or MobaXterm or PuTTY from Windows. There is no option for using passwords. 
+
+Depending on your project allocation, there are two methods: 1) [SSH certificates](#option-1-ssh-certificates) for EFP (EuroHPC Federation platform) managed projects, and 2) [SSH keys](#option-2-ssh-keys) for other project types.
+
+
+## Option 1) SSH Certificates
+
+For projects managed by the EuroHPC Federation Platform (EFP)
 Secure Shell certificates are used. Please follow EFP's [Secure Shell guide][efp-aai-ssh] to set up you connection.
 
 Other projects use traditional SSH key-based authentication. Please follow the steps below to set up your connection.
 
-# Setting up SSH keypair
+## Option 2) SSH keys
 
-SSH key-based access requires you to register an SSH key pair. The SSH keys (or certificates) are the only way to connect to LUMI when using a Linux, macOS or Windows PowerShell terminal, or MobaXterm or PuTTY from Windows. There is no option for using passwords. 
+SSH key-based access requires you to register an SSH key pair. 
 
 LUMI only accepts SSH keys based on the RSA (4096 bit) or ed25519 algorithms.
 If possible, we recommend using ed25519.
 
-## Generate your SSH keys
+### Generate your SSH keys
 
 If you already have an appropriate SSH key pair that you want to use with LUMI,
 you may skip to [registering your public key][jump-register-keys]. If not,
@@ -125,7 +133,7 @@ start by generating an SSH key pair as detailed below.
     password! Otherwise, anyone with access to the file system can steal your
     SSH key.
 
-## Register your public key
+### Register your public key
 
 === "For regular users (with a non-Finnish allocation)"
 
