@@ -6,9 +6,8 @@ AI agents like [Claude Code](https://code.claude.com/docs/en/overview) and [Open
     The user is always responsible for the actions of their AI agents. Understand that any command run by your agent is executed under your personal user account. As a LUMI user, you must always follow the [LUMI Terms of Use](https://lumi-supercomputer.eu/termsandpolicies/).
 
 ## I am running an AI agent — what should I take into account?
-
 1. Be aware of what could go wrong (summarised in the [table below](#common-problems-with-coding-agents-and-how-to-avoid-them)).
-2. Run your agent in a [container](../../../software/containers/singularity) to control its access to files.
+2. Run your agent in a [container](../../software/containers/singularity.md) to control its access to files.
 3. Do not give your AI agent access to personal data of other users.
 4. You are always responsible for your agent. The agent itself cannot be held accountable.
 
@@ -29,7 +28,7 @@ AI agents like [Claude Code](https://code.claude.com/docs/en/overview) and [Open
 | **Prompt injection** | Agents may read documentation, repositories, or web pages that contain hidden instructions hijacking behavior (prompt injection). | Be cautious about the URLs and repositories agents can browse. Review actions taken after reading external content and installed "skills." Prefer agents that request confirmation. See [Maloyan & Namiot (2026)](https://arxiv.org/html/2601.17548v1) for an extensive review of prompt injection attacks. |
 | **LLM provider data retention** | Providers may retain queries according to their privacy policies. | Read and understand provider privacy policies before your first session. |
 | **Third-party terms of service** | Each tool has its own terms of service. LUMI User Support does not provide support for third-party services. | Read and comply with each tool's terms of service. Contact the tool maintainer for tool-specific support. |
-| **Runtime context** | The agent might not be aware of certain limits on LUMI, like [storage quotas](../../../storage#lumi-network-file-system-disk-storage-areas) or [Slurm partitions](../../../runjobs/scheduled-jobs/partitions). | Carefully inspect any error messages received from the agent before sending a ticket to user support. Consider using the [LUMI AI Factory MCP server](../../../laif/software/agent-infrastructure) to make the agent aware of LUMI documentation. |
+| **Runtime context** | The agent might not be aware of certain limits on LUMI, like [storage quotas](../../storage/index.md#lumi-network-file-system-disk-storage-areas) or [Slurm partitions](../../runjobs/scheduled-jobs/partitions.md). | Carefully inspect any error messages received from the agent before sending a ticket to user support. Consider using the [LUMI AI Factory MCP server](../../laif/software/agent-infrastructure.md) to make the agent aware of LUMI documentation. |
 
 ## Further resources
 - The [CodeRefinery project](https://coderefinery.org/) provides a session on [responsible use of generative AI in assisted coding](https://coderefinery.github.io/coding-with-ai/).
