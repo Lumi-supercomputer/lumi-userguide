@@ -25,7 +25,8 @@ through a front-end portal and application programming interfaces (APIs).
 
 You can find our current datasets in [our data catalog][data catalogue]. If you are interested in sharing your data as part of our curated collection, you will find more information in this guide.
 
-LUMI AIF DaaS is currently a Minimum Viable Product (MVP). MVP is the simplest version of a product that includes only the core features necessary to deliver value to early users and validate the product concept. LUMI AIF DaaS is built upon existing services and as such the user experience and available features are already quite advanced for an MVP.
+!!! info "LUMI AIF DaaS is a Minimum Viable Product (MVP)"
+    LUMI AIF DaaS is currently a Minimum Viable Product (MVP). MVP is the simplest version of a product that includes only the core features necessary to deliver value to early users and validate the product concept. LUMI AIF DaaS is built upon existing services and as such the user experience and available features are already quite advanced for an MVP.
 
 LUMI AIF DaaS is not intended for archival or digital preservation
 purposes.
