@@ -6,7 +6,7 @@ AI agents like [Claude Code](https://code.claude.com/docs/en/overview) and [Open
     The user is always responsible for the actions of their AI agents. Understand that any command run by your agent is executed under your personal user account. As a LUMI user, you must always follow the [LUMI Terms of Use](https://lumi-supercomputer.eu/termsandpolicies/).
 
 ## I am running an AI agent — what should I take into account?
-1. Be aware of what could go wrong (summarised in the [table below](#common-problems-with-coding-agents-and-how-to-avoid-them)).
+1. Be aware of what could go wrong (summarised in the [table below](#common-problems-with-ai-agents-and-how-to-avoid-them)).
 2. Run your agent in a [container](../../software/containers/singularity.md) to control its access to files.
 3. Do not give your AI agent access to personal data of other users.
 4. You are always responsible for your agent. The agent itself cannot be held accountable.
