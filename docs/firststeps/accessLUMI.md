@@ -22,10 +22,9 @@ accessing LUMI. An overview of the access policies is provided on the [LUMI
 Supercomputer Get Started][website-getstarted] page.
 
 In general, a Resource Allocator (RA) must create a project and invite the
-Principal Investigator (PI), i.e. the lead researcher, to the project. The
-project PI can then invite other project members. If you have been granted
+Principal Investigator (PI), i.e. the lead researcher and members to the project. If you have been granted
 access to LUMI but didn't receive an invitation to a project, please contact
-your PI or your local organization. You may find contact information for your
+your PI or your local organization RA. You may find contact information for your
 local organization on the [LUMI Supercomputer Get Started][website-getstarted]
 page.
 
@@ -34,43 +33,19 @@ of Use][terms-of-use].
 
 Depending on access path there are different allocation portals for managing the project:
 
-* **Consortium allocation portals** for all national projects of LUMI consortium countries (except Finland), 
-and EuroHPC JU allocated projects before 15.4.2026,
+| Consortium country | Resource Allocator (Org) | Portal URL | Support contact | Access guide |
+|---|---|---|---|---|
+| EuroHPC JU | CSC | [https://my.lumi-supercomputer.eu](https://my.lumi-supercomputer.eu) (all EuroHPC JU allocated projects before 15.4.2026) | [servicedesk@csc.fi](mailto:servicedesk@csc.fi) | [Puhuri docs](https://puhuri.neic.no/user_guides/myaccessid_registration/) |
+| EuroHPC JU | CSC | [https://my-eurohpc.eu/](https://my-eurohpc.eu/) (all EuroHPC JU allocated projects after 15.4.2026) | [helpdesk@my-eurohpc.eu](mailto:helpdesk@my-eurohpc.eu) | [Documentation for EuroHPC Federation Platform](https://docs.my-eurohpc.eu/aai/aai/)|
+| Belgium | Vlaams Supercomputer Centrum and Consortium des Equipements de Calcul Intensif | [https://puhuri-portal.neic.no/](https://puhuri-portal.neic.no/) | | [Puhuri docs](https://puhuri.neic.no/user_guides/myaccessid_registration/) |
+| Czech Republic | VSB Technical University of Ostrava | [https://portal-lumi.it4i.cz/](https://portal-lumi.it4i.cz/) | | |
+| Denmark | DeiC - Danish e-infrastructure Cooperation and consortium universities | [https://lumi.deic.dk/](https://lumi.deic.dk/) | | [Puhuri docs](https://puhuri.neic.no/user_guides/myaccessid_registration/) |
+| Estonia | ETAIS | [http://minu.etais.ee/](http://minu.etais.ee/) | [support@puhuri.io](mailto:support@puhuri.io) | |
+| Finland | CSC | [https://my.csc.fi/](https://my.csc.fi/) | [servicedesk@csc.fi](mailto:servicedesk@csc.fi) | |
+| Iceland | University of Iceland | [https://puhuri-portal.neic.no/](https://puhuri-portal.neic.no/) | | [Puhuri docs](https://puhuri.neic.no/user_guides/myaccessid_registration/) |
+| Netherlands | SURF | [https://puhuri-portal.neic.no/](https://puhuri-portal.neic.no/) | | [Puhuri docs](https://puhuri.neic.no/user_guides/myaccessid_registration/) |
+| Norway | UNINETT Sigma2 AS | [https://puhuri.metacenter.no](https://puhuri.metacenter.no) | | [Puhuri docs](https://puhuri.neic.no/user_guides/myaccessid_registration/) |
+| Poland | PLGrid Consortium (Cyfronet+) | [https://portal.plgrid.pl/](https://portal.plgrid.pl/) | | |
+| Sweden | SNIC | [https://supr.snic.se/](https://supr.snic.se/) | | |
+| Switzerland | CSCS - ETH Zürich | [https://account.lumi.cscs.ch](https://account.lumi.cscs.ch) | | [Puhuri docs](https://puhuri.neic.no/user_guides/myaccessid_registration/) |
 
-* **EuroHPC Federation Platform (EFP)** for all EuroHPC JU allocated projects after 15.4.2026, 
-
-* **myCSC portal** for national projects of Finland.
-
-=== "Consortium portals"
-
-    This tab is for regular users (with a non-Finnish allocation), who have a project with resources allocated by a LUMI consortium country (other than Finland), or by EuroHPC JU _before_ 15th April 2026.
-    
-    Once you have received an invitation to a project on LUMI, you need to register to MyAccessID and accept the terms of use as instructed in the invitation. The procedure for registering to MyAccessID differs between the LUMI consortium countries. In general, the recommended authentication method is to use your home organization's identity provider. You should find it by typing your organization into the *Choose Your Identity Provider* search field. If you found your organization, but you got an error, please contact your identity provider for assistance. Alternative registration options are available for some countries. Please see the [Puhuri documentation][eidas-eduid] for information about these alternatives (the passport-based identity vetting is currently not available).
-
-    For the next step, you will be directed to the registration page, where you have to accept the Acceptable Use Policy and LUMI Terms of Use document, which is linked there. Please read them carefully! 
-
-    <figure>
-      <img src="../../assets/images/Puhuri_Registration_example.png" width="480" alt="Screenshot of registration portal">
-      <figcaption>MyAccessID Registration portal</figcaption>
-    </figure>
-
-    You may also modify the email address, but according to [LUMI Terms of Use][terms-of-use] you must use your institutional email address. For a more detailed description of how to register for MyAccessID, please consult the [Puhuri documentation][eidas-eduid] (the passport-based identity vetting is currently not available).
-    
-    The following short video shows an example procedure from receiving the email invitation to accessing the project's puhuri page.
-    This example uses a Czech consortium project. Note that the Puhuri portal might look slightly different for other countries.
-    
-    <iframe id="kaltura_player" src="https://api.kaltura.nordu.net/p/191/sp/19100/embedIframeJs/uiconf_id/14971191/partner_id/191?iframeembed=true&playerId=kaltura_player&entry_id=0_qb2xq6e9&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=0_zexcx6xb" width="100%" height="400" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="LUMI Getting Started: Account via MyAccessID"></iframe>
-
-=== "EuroHPC Federation Platform"
-
-    For projects that have been applied on 15th April 2026 or later that have the resources allocated by EuroHPC JU.
-
-    The project management is done in the _EFP portal_ . 
-    Please see the [documentation of EuroHPC Federation Platform](https://docs.my-eurohpc.eu/aai/register/) for detailed guidance.
-
-    For questions regarding the EuroHPC Federation Platform portal, please contact the [EFP helpdesk](https://docs.my-eurohpc.eu/support/); for all other issues please contact the [LUMI helpdesk][support].
-
-
-=== "Finnish allocation portal"
-
-    Users with a Finnish allocation (via [MyCSC](https://my.csc.fi/welcome)) must follow the instructions given in the [CSC documentation for creating a Finnish LUMI project](https://docs.csc.fi/accounts/how-to-create-new-project/#creating-a-lumi-project-and-applying-for-resources).
