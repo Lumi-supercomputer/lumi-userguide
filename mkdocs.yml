@@ -125,6 +125,8 @@ nav:
     - Performance analysis:
       - Performance analysis strategies: development/profiling/strategies.md
       - Cray Performance Analysis Tool: development/profiling/perftools.md
+    - AI tools:
+      - AI agent guide: development/ai-tools/ai-agent-guide.md
   - Storage:
     - Overview: storage/index.md
     - Parallel filesystems:
