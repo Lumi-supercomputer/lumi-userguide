@@ -44,6 +44,10 @@ of Use][terms-of-use].
     </figure>
 
     You may also modify the email address, but according to [LUMI Terms of Use][terms-of-use] you must use your institutional email address. For a more detailed description of how to register for MyAccessID, please consult the [Puhuri documentation][eidas-eduid] (the passport-based identity vetting is currently not available).
+
+    Note for users associated to Finland:
+If you already have a CSC user account, and have been invited to a Puhuri managed LUMI project:
+You must use the exactly same email address than with MyCSC when joining the project and when registering with MyAccessID. Otherwise another LUMI account will be created, and you end up with two separate LUMI accounts. See for account linking in the [CSC documentation](https://docs.csc.fi/accounts/how-to-manage-user-information/#how-to-link-your-csc-user-account-to-external-authentication-sources)
     
     The following short video shows an example procedure from receiving the email invitation to accessing the project's puhuri page.
     This example uses a Czech consortium project. Note that the Puhuri portal might look slightly different for other countries.
@@ -53,3 +57,9 @@ of Use][terms-of-use].
 === "With a Finnish allocation"
 
     Users with a Finnish allocation (via [MyCSC](https://my.csc.fi/welcome)) must follow the instructions given in the [CSC documentation for creating a Finnish LUMI project](https://docs.csc.fi/accounts/how-to-create-new-project/#creating-a-lumi-project-and-applying-for-resources).
+
+    Note that if you have a MyCSC account, and are joining a _Puhuri managed_ LUMI project (= all other projects than projects allocated by Finland), you should:
+    - Use the same email address than with MyCSC with the Puhuri managed LUMI project
+    - Link your account to MyAccessID authentication (see [CSC documentation](https://docs.csc.fi/accounts/how-to-manage-user-information/#how-to-link-your-csc-user-account-to-external-authentication-sources) ) 
+
+Otherwise you will end up with a second LUMI account for the non-Finnish allocated LUMI project.
