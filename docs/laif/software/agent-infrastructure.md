@@ -87,13 +87,14 @@ You can find documentation on how to write your own `opencode.json` in the
     other files in that folder) or place the file in your current working directory (`$PWD`).
 
 ### Capabilities
-The opencode application has the following capabilities by default:
 
-- It can read and write to the mounted directories (`$pwd`) and subdirectories by default but it will ask for permission to execute any commands.
-- It has access to the [LUMI AI Factory MCP Server](#mcp-server) to answer questions about LUMI with more accuracy.
-- It can use the following Slurm commands: `sacct`, `sbatch`, `scancel`, `sinfo`, `squeue`, and `srun`. 
-- It uses the following [`Agents.md`][Agents.md] file to provide additional context about the LUMI to the model to improve the performance.
+By default, OpenCode has the following capabilities running inside the agent environment:
 
+- Read and write permissions to mounted directories (but will ask for permission before executing commands)
+- Access to the [LUMI AI Factory MCP Server](#mcp-server) for writing code that takes into account
+  LUMI's computing environment
+- An [`AGENTS.md`][AGENTS.md] file that provides runtime context such as a description of the
+  Lustre file system
 
 ## MCP server
 
