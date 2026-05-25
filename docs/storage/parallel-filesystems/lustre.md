@@ -102,6 +102,25 @@ lmm_stripe_offset: 14
 In the example above, we see that `file.txt` inherited the layout of its parent
 directory and that the file is striped on 4 OSTs (14, 1, 3 and 5).
 
+## Default striping pattern
+
+For projects starting from May 2026 onwards, default striping layout uses a 
+Progressive File Layout (PFL). PFL applies striping proportional to file size, 
+to balance performance, scalability, and operational robustness depending on
+the storage partition:
+
+- *LUMI-P*:
+   - 1 stripe up to 256 MB,
+   - 256M to 16G striped over 4 OSTs,
+   - 16G and larger striped over 8 OSTs.
+- *LUMI-F*:
+   - 1 stripe up to 256 MB.
+   - 256M to 16G striped over 8 OSTs.
+   - 16G and larger striped over 16 OSTs.
+
+Projects created before May 2026 have no default striping applied leaving stripe 
+settings entirely for user decision.
+
 ## Performance Considerations
 
 Striping should be adapted to your application I/O pattern and the size of your
