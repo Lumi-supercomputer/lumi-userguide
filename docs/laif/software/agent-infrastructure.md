@@ -73,10 +73,18 @@ opencode /path/to/project/dir
 
 ### Using a custom endpoint
 
-In order to use the model you need to create a `opencode.json` configuration file. You can find the default configuration [`opencode.json` in the agent environment repository][opencode json]. You can find documentation on how to write your own `configuration.json` in the [OpenCode documentation][opencode documentation config].
+You can configure a custom endpoint by creating an `opencode.json` configuration file, e.g., in
+your current working directory. See OpenCode's
+[config precedence order](https://opencode.ai/docs/config/#precedence-order) for more information.
 
-!!! Info "Place your `configuration.json` in a mounted folder"
-    The `configuration.json` needs to be in a folder accessible by OpenCode. You could either explictly mount the folder that contains it (remember that this gives OpenCode also access to other files in that folder) or place the file in your current working directory `$pwd`.
+The agent environment container ships with [a default configuration][opencode json].
+You can find documentation on how to write your own `opencode.json` in the
+[OpenCode documentation][opencode documentation config].
+
+!!! Info "Place your `opencode.json` in a mounted folder"
+    The `opencode.json` file needs to be in a folder accessible by OpenCode. You could either
+    explictly mount the folder that contains it (remember that this gives OpenCode also access to
+    other files in that folder) or place the file in your current working directory (`$PWD`).
 
 ### Capabilities
 The opencode application has the following capabilities by default:
