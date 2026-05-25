@@ -17,9 +17,9 @@ and an [MCP server](#mcp-server) that provides agents access to relevant user do
 
 ## Agent environment
 
-The LUMI AI Factory agent environment provides [singularity containers][singularity] to use agents directly on LUMI to assist with the usage of LUMI.
-At the moment we provide a container to use the open-source and terminal-based AI coding agent [OpenCode][opencode website] on LUMI. For more information on OpenCode see also [this blogpost][opencode blogpost] on connecting OpenCode to a vLLM instance running on LUMI.
-You can inspect the source code of the agent environment in [this GitHub repository][github repository].
+The LUMI AI Factory agent environment offers [Singularity containers][singularity] for using agents directly on LUMI to assist with using the system.
+Currently, we provide a container to use the open-source, terminal-based [OpenCode][opencode website] AI coding agent on LUMI. For more information on OpenCode, see the LUMI AI Factory blog post on [connecting OpenCode to a vLLM instance running on LUMI][opencode blogpost].
+The source code of the agent environment is made available in [the LUMI AI Factory agent environment GitHub repository][github repository].
 
 !!! Warning "Responsibility for running AI agents"
     The user is always responsible for the actions of their AI agents. Understand that any command run by your agent is executed under your personal user account. As a LUMI user, you must always follow the [LUMI Terms of Use][terms of use].
