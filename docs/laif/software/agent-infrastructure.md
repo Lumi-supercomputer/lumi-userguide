@@ -28,7 +28,7 @@ The source code of the agent environment is made available in [the LUMI AI Facto
 
 ### Must read
 
-Please understand the following points before using the agent environment:
+Please ensure you understand the following points before using the agent environment:
 
 - **Third-party inference endpoint:** By default, OpenCode uses the third-party
   [OpenCode Zen](https://opencode.ai/docs/zen/) inference endpoint. This endpoint is hosted by the
