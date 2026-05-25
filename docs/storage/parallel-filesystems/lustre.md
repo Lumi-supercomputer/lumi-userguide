@@ -109,14 +109,14 @@ Progressive File Layout (PFL). PFL applies striping proportional to file size,
 to balance performance, scalability, and operational robustness depending on
 the storage partition:
 
-- *LUMI-P*:
-   - 1 stripe up to 256 MB,
-   - 256M to 16G striped over 4 OSTs,
-   - 16G and larger striped over 8 OSTs.
-- *LUMI-F*:
-   - 1 stripe up to 256 MB.
-   - 256M to 16G striped over 8 OSTs.
-   - 16G and larger striped over 16 OSTs.
+- **LUMI-P**: 
+    - **1** stripe up to **256 MB**,
+    - **256M to 16G** striped over **4** OSTs,
+    - **16G** and larger striped over **8** OSTs.
+- **LUMI-F**:
+    - **1** stripe up to **256 MB**.
+    - **256M to 16G** striped over **8** OSTs.
+    - **16G** and larger striped over **16** OSTs.
 
 Projects created before May 2026 have no default striping applied leaving stripe 
 settings entirely for user decision.
