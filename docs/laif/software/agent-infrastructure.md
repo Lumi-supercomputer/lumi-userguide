@@ -3,6 +3,11 @@
 The LUMI AI Factory develops software infrastructure that supports the use of AI agents for
 LUMI-related tasks.
 
+## Agent environment
+
+
+
+
 ## MCP server
 
 The LUMI AI Factory provides a public
