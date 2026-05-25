@@ -57,3 +57,15 @@ After the job completes, the reason for job completion will be visible.
 Usually this is due to reaching the time limit of the Slurm job, or manually cancelling the session, but some error messages may also be visible here, with additional details available in the log file linked.
 If you are sending a support ticket regarding your app session, please include the log file.
 ![Interactive app completed](../../assets/images/wwwLumiCardTimeout.png)
+
+## Launching Slurm jobs from interactive applications
+
+Interactive applications will have `SLURM_*` environment variables set, which
+may cause errors when trying to launch additional Slurm jobs from the
+Interactive applications, e.g. `srun: fatal: SLURM_MEM_PER_CPU, SLURM_MEM_PER_GPU, and SLURM_MEM_PER_NODE are mutually exclusive`.
+To submit Slurm jobs, you will first need to clear the conflicting Slurm
+environment variables, for example, in Bash:
+```
+# Unsets all environment variables with a prefix of SLURM_
+unset "${!SLURM_@}"
+```
