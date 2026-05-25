@@ -1,11 +1,11 @@
 # Infrastructure for AI agents
 
-[Agents.md]: https://github.com/lumi-ai-factory/laifs-agent-env/blob/main/opencode/AGENTS.md
+[Agents.md]: https://github.com/lumi-ai-factory/laifs-agent-env/blob/main/config/AGENTS.md
 [github repository]: https://github.com/lumi-ai-factory/laifs-agent-env
 [LUMI AI agent guide]: ./../../development/ai-tools/ai-agent-guide.md
 [opencode blogpost]: https://lumi-supercomputer.eu/connecting-opencode-to-lumi/
 [opencode documentation config]: https://opencode.ai/docs/config/ 
-[opencode json]: https://github.com/lumi-ai-factory/laifs-agent-env/blob/main/opencode/opencode.json
+[opencode json]: https://github.com/lumi-ai-factory/laifs-agent-env/blob/main/config/opencode.json
 [opencode website]: https://opencode.ai
 [singularity]: ./../../software/containers/singularity.md
 [terms of use]: https://lumi-supercomputer.eu/termsandpolicies/
