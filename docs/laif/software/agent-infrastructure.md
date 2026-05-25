@@ -1,6 +1,6 @@
 # Infrastructure for AI agents
 
-[Agents.md]: https://github.com/lumi-ai-factory/laifs-agent-env/blob/main/config/AGENTS.md
+[AGENTS.md]: https://github.com/lumi-ai-factory/laifs-agent-env/blob/main/config/AGENTS.md
 [github repository]: https://github.com/lumi-ai-factory/laifs-agent-env
 [LUMI AI agent guide]: ./../../development/ai-tools/ai-agent-guide.md
 [opencode blogpost]: https://lumi-supercomputer.eu/connecting-opencode-to-lumi/
@@ -26,7 +26,6 @@ The source code of the agent environment is made available in [the LUMI AI Facto
 
     Read also the [LUMI AI agent guide][LUMI AI agent guide] and the below [must read section](#must-read).
 
-
 ### Must read
 
 Please understand the following points before using the agent environment:
@@ -43,6 +42,19 @@ Please understand the following points before using the agent environment:
   [OpenCode documentation on tools](https://opencode.ai/docs/tools/).
 - **Experimental status:** The agent environment is experimental and may evolve rapidly. Check
   the GitHub repository for any changes to agent capabilities and permissions.
+
+### Capabilities and limitations
+
+OpenCode has the following capabilities and limitations inside the agent environment:
+
+* Mounted directories can be read and written to, but the default `opencode.json` configuration
+  shipped with the container makes OpenCode ask for permission before executing commands.
+* OpenCode has access to the [LUMI AI Factory MCP Server](#mcp-server) for retrieving context
+  information that helps it write code that takes into account LUMI's computing environment.
+* The [AGENTS.md][AGENTS.md] file that ships with the container provides basic runtime context, such
+  as the limitations of login nodes.
+* Slurm commands are not available inside the container. We are working on implementing this
+  feature in a secure manner.
 
 ### How to use
 
@@ -85,16 +97,6 @@ You can find documentation on how to write your own `opencode.json` in the
     The `opencode.json` file needs to be in a folder accessible by OpenCode. You could either
     explictly mount the folder that contains it (remember that this gives OpenCode also access to
     other files in that folder) or place the file in your current working directory (`$PWD`).
-
-### Capabilities
-
-By default, OpenCode has the following capabilities running inside the agent environment:
-
-- Read and write permissions to mounted directories (but will ask for permission before executing commands)
-- Access to the [LUMI AI Factory MCP Server](#mcp-server) for writing code that takes into account
-  LUMI's computing environment
-- An [`AGENTS.md`][AGENTS.md] file that provides runtime context such as a description of the
-  Lustre file system
 
 ## MCP server
 
