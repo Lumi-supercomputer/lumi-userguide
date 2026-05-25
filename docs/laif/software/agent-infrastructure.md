@@ -28,11 +28,21 @@ The source code of the agent environment is made available in [the LUMI AI Facto
 
 
 ### Must read
+
 Please understand the following points before using the agent environment:
 
-- **Open endpoint:** The agent environment uses an open endpoint running outside of LUMI by default so it possibly shares your data openly with that external, but you can configure it to use [your own model](#use-with-your-own-model).
-- **Access to your files:** The current working directory `$pwd` and all subdirectories are accessible to the agent environment by default, but you need to grant permission to write to the directory.
-- **Experimental:** The agent environment is experimental and it might change rapidly. Do not rely on its outputs.
+- **Third-party inference endpoint:** By default, OpenCode uses the third-party
+  [OpenCode Zen](https://opencode.ai/docs/zen/) inference endpoint. This endpoint is hosted by the
+  OpenCode developers, so be aware that any data you enter will be sent to an external party.
+  However, you can configure OpenCode to use a different endpoint,
+  [including a custom one](#using-a-custom-endpoint).
+- **File access:** By default, your current working directory (`$PWD`) and all its
+  subdirectories are accessible to the agent. However, the default configuration included in the
+  container ensures that the agent must prompt for your permission to use any tools, including
+  reading and writing. For more information about tool use, see
+  [OpenCode documentation on tools](https://opencode.ai/docs/tools/).
+- **Experimental status:** The agent environment is experimental and may evolve rapidly. Check
+  the GitHub repository for any changes to agent capabilities and permissions.
 
 ### How to use
 
@@ -56,7 +66,8 @@ export SINGULARITY_BIND=$SINGULARITY_BIND,/path/to/project/dir
 opencode /path/to/project/dir
 ```
 
-### Use with your own model
+### Using a custom endpoint
+
 In order to use the model you need to create a `opencode.json` configuration file. You can find the default configuration [`opencode.json` in the agent environment repository][opencode json]. You can find documentation on how to write your own `configuration.json` in the [OpenCode documentation][opencode documentation config].
 
 !!! Info "Place your `configuration.json` in a mounted folder"
