@@ -46,21 +46,26 @@ Please understand the following points before using the agent environment:
 
 ### How to use
 
-We recommend using opencode with [your own model](#use-with-your-own-model), but you can try it out with the open endpoint.
+You can try out OpenCode with the default endpoint, but it is recommended to use it with
+[a custom endpoint](#using-a-custom-endpoint).
 
 ```shell
 # Load relevant modules
-ml load Local-LAIF opencode
+ml load Local-LAIF lumi-aif-agents
 
-# Start opencode. ATTENTION! This gives opencode access to your 
-# current working directory $pwd and its subdirectories.
-opencode /path/to/project/dir
+# Start opencode
+#
+# NB! This gives OpenCode access to your current working directory (`$PWD`)
+# as well as any subdirectories.
+opencode
 ```
 
-You can provide opencode access to more directories. In the following example we give it access to `/path/to/project/dir`.
+By default, project directories like `/scratch` and `/projappl` are not available in the container
+environment, so if your current working directory is not under one of them, you need to mount them
+yourself.
 
 ```shell
-# Bind more directories than $pwd (optional)
+# Bind additional directories (optional)
 export SINGULARITY_BIND=$SINGULARITY_BIND,/path/to/project/dir
 
 opencode /path/to/project/dir
