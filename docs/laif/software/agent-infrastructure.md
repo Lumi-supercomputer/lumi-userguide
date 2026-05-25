@@ -11,8 +11,9 @@
 [terms of use]: https://lumi-supercomputer.eu/termsandpolicies/
 
 The LUMI AI Factory develops software infrastructure that supports the use of AI agents for
-LUMI-related tasks. At the moment there is a [agent environment](#agent-environment) that allows you to use OpenCode on LUMI
-and an [MCP server](#mcp-server) to provide agents access to LUMI related documentation.
+LUMI-related tasks. The current offering comprises a containerized [agent environment](#agent-environment)
+for using the OpenCode coding agent on LUMI
+and an [MCP server](#mcp-server) that provides agents access to relevant user documentation.
 
 ## Agent environment
 
