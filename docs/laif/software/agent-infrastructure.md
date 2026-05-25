@@ -1,11 +1,73 @@
 # Infrastructure for AI agents
 
+[Agents.md]: https://github.com/lumi-ai-factory/laifs-agent-env/blob/main/opencode/AGENTS.md
+[github repository]: https://github.com/lumi-ai-factory/laifs-agent-env
+[LUMI AI agent guide]: ./../../development/ai-tools/ai-agent-guide.md
+[opencode blogpost]: https://lumi-supercomputer.eu/connecting-opencode-to-lumi/
+[opencode documentation config]: https://opencode.ai/docs/config/ 
+[opencode json]: https://github.com/lumi-ai-factory/laifs-agent-env/blob/main/opencode/opencode.json
+[opencode website]: https://opencode.ai
+[singularity]: ./../../software/containers/singularity.md
+[terms of use]: https://lumi-supercomputer.eu/termsandpolicies/
+
 The LUMI AI Factory develops software infrastructure that supports the use of AI agents for
-LUMI-related tasks.
+LUMI-related tasks. At the moment there is a [agent environment](#agent-environment) that allows you to use OpenCode on LUMI
+and an [MCP server](#mcp-server) to provide agents access to LUMI related documentation.
 
 ## Agent environment
 
+The LUMI AI Factory agent environment provides [singularity containers][singularity] to use agents directly on LUMI to assist with the usage of LUMI.
+At the moment we provide a container to use the open-source and terminal-based AI coding agent [OpenCode][opencode website] on LUMI. For more information on OpenCode see also [this blogpost][opencode blogpost] on connecting OpenCode to a vLLM instance running on LUMI.
+You can inspect the source code of the agent environment in [this GitHub repository][github repository].
 
+!!! Warning "Responsibility for running AI agents"
+    The user is always responsible for the actions of their AI agents. Understand that any command run by your agent is executed under your personal user account. As a LUMI user, you must always follow the [LUMI Terms of Use][terms of use].
+
+    Read also the [LUMI AI agent guide][LUMI AI agent guide] and the below [must read section](#must-read).
+
+
+### Must read
+Please understand the following points before using the agent environment:
+
+- **Open endpoint:** The agent environment uses an open endpoint running outside of LUMI by default so it possibly shares your data openly with that external, but you can configure it to use [your own model](#use-with-your-own-model).
+- **Access to your files:** The current working directory `$pwd` and all subdirectories are accessible to the agent environment by default, but you need to grant permission to write to the directory.
+- **Experimental:** The agent environment is experimental and it might change rapidly. Do not rely on its outputs.
+
+### How to use
+
+We recommend using opencode with [your own model](#use-with-your-own-model), but you can try it out with the open endpoint.
+
+```shell
+# Load relevant modules
+ml load Local-LAIF opencode
+
+# Start opencode. ATTENTION! This gives opencode access to your 
+# current working directory $pwd and its subdirectories.
+opencode /path/to/project/dir
+```
+
+You can provide opencode access to more directories. In the following example we give it access to `/path/to/project/dir`.
+
+```shell
+# Bind more directories than $pwd (optional)
+export SINGULARITY_BIND=$SINGULARITY_BIND,/path/to/project/dir
+
+opencode /path/to/project/dir
+```
+
+### Use with your own model
+In order to use the model you need to create a `opencode.json` configuration file. You can find the default configuration [`opencode.json` in the agent environment repository][opencode json]. You can find documentation on how to write your own `configuration.json` in the [OpenCode documentation][opencode documentation config].
+
+!!! Info "Place your `configuration.json` in a mounted folder"
+    The `configuration.json` needs to be in a folder accessible by OpenCode. You could either explictly mount the folder that contains it (remember that this gives OpenCode also access to other files in that folder) or place the file in your current working directory `$pwd`.
+
+### Capabilities
+The opencode application has the following capabilities by default:
+
+- It can read and write to the mounted directories (`$pwd`) and subdirectories by default but it will ask for permission to execute any commands.
+- It has access to the [LUMI AI Factory MCP Server](#mcp-server) to answer questions about LUMI with more accuracy.
+- It can use the following Slurm commands: `sacct`, `sbatch`, `scancel`, `sinfo`, `squeue`, and `srun`. 
+- It uses the following [`Agents.md`][Agents.md] file to provide additional context about the LUMI to the model to improve the performance.
 
 
 ## MCP server
