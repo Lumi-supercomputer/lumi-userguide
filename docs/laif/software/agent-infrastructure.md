@@ -36,31 +36,24 @@ agent environment is available in a public [GitHub repository][github repository
 
 Please ensure you understand the following points before using the agent environment:
 
-- **Third-party inference endpoint:** By default, OpenCode uses the third-party
-  [OpenCode Zen](https://opencode.ai/docs/zen/) inference endpoint. This endpoint is hosted by the
-  OpenCode developers, so be aware that any data you enter will be sent to an external party.
-  However, you can configure OpenCode to use a different endpoint,
-  [including a custom one](#using-a-custom-endpoint).
-- **File access:** By default, your current working directory (`$PWD`) and all its
-  subdirectories are accessible to the agent. However, the default configuration included in the
-  container ensures that the agent must prompt for your permission to use any tools, including
-  reading and writing. For more information about tool use, see
-  [OpenCode documentation on tools](https://opencode.ai/docs/tools/).
-- **Experimental status:** The agent environment is experimental and may evolve rapidly. Check
-  the GitHub repository for any changes to agent capabilities and permissions.
-
-### Capabilities and limitations
-
-OpenCode has the following capabilities and limitations inside the agent environment:
-
-* Mounted directories can be read and written to, but the default `opencode.json` configuration
-  shipped with the container makes OpenCode ask for permission before executing commands.
-* OpenCode has access to the [LUMI AI Factory MCP Server](#mcp-server) for retrieving context
-  information that helps it write code that takes into account LUMI's computing environment.
-* The [AGENTS.md][AGENTS.md] file that ships with the container provides basic runtime context, such
-  as the limitations of login nodes.
-* Slurm commands are not available inside the container. We are working on implementing this
-  feature in a secure manner.
+- **Data privacy:** OpenCode uses the third-party
+  [OpenCode Zen](https://opencode.ai/docs/zen/) inference endpoint by default, which is hosted by
+  [Anomaly Innovations Inc.](https://anoma.ly/) If you use this endpoint, be aware that any data
+  you enter will be sent to the company hosting it. Consider configuring OpenCode to use a
+  different endpoint, for example a [custom endpoint](#using-a-custom-endpoint).
+- **Data security:** Your current working directory (`$PWD`) and any subdirectories are accessible
+  inside the environment. Your
+  [home directory is not](https://docs.sylabs.io/guides/latest/user-guide/bind_paths_and_mounts.html#contain-containall),
+  with the exception of
+  [certain directories](https://github.com/lumi-ai-factory/laifs-agent-env/blob/main/modules/lumi-aif-agents/1.0.0.lua),
+  where OpenCode looks for configuration files and stores data. The
+  [default configuration file][opencode json]
+  included in the environment enforces prompting the user for
+  [permission to use any tools](https://opencode.ai/docs/tools/), including reading and writing,
+  except for the document retrieval tool offered by the LUMI AIF MCP server.
+- **Experimental status:** The agent environment is experimental and may evolve rapidly. It is
+  recommended to check the GitHub repository for any changes to agent capabilities and permissions
+  before use.
 
 ### How to use
 
@@ -90,6 +83,22 @@ export SINGULARITY_BIND=$SINGULARITY_BIND,/path/to/dir1,/path/to/dir2
 
 opencode /path/to/dir1
 ```
+
+To find out more about accessing directories inside containers, see the SingularityCE documentation on
+[bind paths and mounts](https://docs.sylabs.io/guides/latest/user-guide/bind_paths_and_mounts.html).
+
+### Capabilities and limitations
+
+OpenCode has the following capabilities and limitations inside the agent environment:
+
+* Mounted directories can be read and written to, but the default configuration file
+  shipped with the container enforces prompting for permission before executing any commands.
+* OpenCode has access to the [LUMI AI Factory MCP Server](#mcp-server) for retrieving context
+  information that helps it write code that takes into account LUMI's computing environment.
+* The [AGENTS.md][AGENTS.md] file that ships with the container provides basic runtime context,
+  such as the limitations of login nodes and the Lustre file system.
+* Slurm commands are not available inside the container. We are working on implementing this
+  feature in a secure manner.
 
 ### Using a custom endpoint
 
