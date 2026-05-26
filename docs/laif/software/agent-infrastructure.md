@@ -110,10 +110,11 @@ The agent environment container ships with [a default configuration][opencode js
 You can find documentation on how to write your own `opencode.json` in the
 [OpenCode documentation][opencode documentation config].
 
-!!! Info "Place your `opencode.json` in a mounted folder"
-    The `opencode.json` file needs to be in a folder accessible by OpenCode. You could either
-    explictly mount the folder that contains it (remember that this gives OpenCode also access to
-    other files in that folder) or place the file in your current working directory.
+!!! Info "Store your `opencode.json` in a mounted directory"
+    The `opencode.json` file needs to be in a directory accessible inside the environment. It is
+    recommended to store the file either in the current directory (project-specific) or under
+    `~/.config/opencode/` (global), both of which are mounted in the environment and searched by
+    OpenCode by default.
 
 ## MCP server
 
