@@ -37,9 +37,9 @@ agent environment is available in a public [GitHub repository][github repository
 Please ensure you understand the following points before using the agent environment:
 
 - **Data privacy:** OpenCode uses the third-party
-  [OpenCode Zen](https://opencode.ai/docs/zen/) inference endpoint by default, which is hosted by
-  [Anomaly Innovations Inc.](https://anoma.ly/) If you use this endpoint, be aware that any data
-  you enter will be sent to the company hosting it. Consider configuring OpenCode to use a
+  [OpenCode Zen](https://opencode.ai/docs/zen/) model endpoint by default, which is hosted by
+  [Anomaly Innovations Inc.](https://anoma.ly/) If you use models from this endpoint, be aware that
+  any data you enter will be sent to the company hosting it. Consider configuring OpenCode to use a
   different endpoint, for example a [custom endpoint](#using-a-custom-endpoint).
 - **Data security:** Your current working directory (`$PWD`) and any subdirectories are accessible
   inside the environment. Your
@@ -57,8 +57,8 @@ Please ensure you understand the following points before using the agent environ
 
 ### How to use
 
-The default OpenCode Zen endpoint does not require the user to authenticate, but free usage is
-limited. It is recommended to use OpenCode with a [custom endpoint](#using-a-custom-endpoint).
+The default OpenCode Zen model endpoint does not require the user to authenticate, but free usage
+is limited. It is recommended to use OpenCode with a [custom endpoint](#using-a-custom-endpoint).
 
 ```shell
 # Load relevant modules
@@ -102,8 +102,8 @@ OpenCode has the following capabilities and limitations inside the agent environ
 
 ### Using a custom endpoint
 
-You can configure a custom endpoint by creating an `opencode.json` configuration file, e.g., in
-your current working directory. See OpenCode's
+You can configure a custom model endpoint by creating an `opencode.json` configuration file, e.g.,
+in your current working directory. See OpenCode's
 [config precedence order](https://opencode.ai/docs/config/#precedence-order) for more information.
 
 The agent environment container ships with [a default configuration][opencode json].
