@@ -54,14 +54,14 @@ guidance on running your container on LUMI.
 Singularity allows pulling existing container images (Singularity or Docker)
 from container registries such as [DockerHub][dockerhub] or [AMD Infinity
 Hub][infinity-hub]. Pulling container images from registries can be done on
-LUMI. For instance, the Ubuntu image `ubuntu:24.04` can be pulled from
+LUMI. For instance, the latest Ubuntu image `ubuntu:latest` can be pulled from
 DockerHub with the following command:
 
 ```bash
-$ singularity pull docker://ubuntu:24.04
+$ singularity pull docker://ubuntu:latest
 ```
 
-This will create the Singularity image file `ubuntu_24.04.sif` in the directory
+This will create the Singularity image file `ubuntu_latest.sif` in the directory
 where the command was run. Once the image has been pulled, the container can be
 run. Instructions for running the container may be found on the [container jobs
 page][container-jobs].
