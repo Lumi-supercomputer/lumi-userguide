@@ -67,7 +67,7 @@ ml load Local-LAIF lumi-aif-agents
 
 # Start opencode
 #
-# NB! This gives OpenCode access to your current working directory (`$PWD`)
+# NB! This gives OpenCode access to your current working directory
 # as well as any subdirectories.
 opencode
 ```
@@ -96,7 +96,7 @@ You can find documentation on how to write your own `opencode.json` in the
 !!! Info "Place your `opencode.json` in a mounted folder"
     The `opencode.json` file needs to be in a folder accessible by OpenCode. You could either
     explictly mount the folder that contains it (remember that this gives OpenCode also access to
-    other files in that folder) or place the file in your current working directory (`$PWD`).
+    other files in that folder) or place the file in your current working directory.
 
 ## MCP server
 
