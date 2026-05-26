@@ -64,29 +64,31 @@ OpenCode has the following capabilities and limitations inside the agent environ
 
 ### How to use
 
-You can try out OpenCode with the default endpoint, but it is recommended to use it with
-[a custom endpoint](#using-a-custom-endpoint).
+The default OpenCode Zen endpoint does not require the user to authenticate, but free usage is
+limited. It is recommended to use OpenCode with a [custom endpoint](#using-a-custom-endpoint).
 
 ```shell
 # Load relevant modules
-ml load Local-LAIF lumi-aif-agents
+module load Local-LAIF lumi-aif-agents
 
 # Start opencode
 #
-# NB! This gives OpenCode access to your current working directory
-# as well as any subdirectories.
+# NB! This gives OpenCode access to your current
+# working directory, as well as any subdirectories.
+#
 opencode
 ```
 
-By default, project directories like `/scratch` and `/projappl` are not available in the container
-environment, so if your current working directory is not under one of them, you need to mount them
-yourself.
+Your home directory, as well as any project directories under, e.g, `/scratch`,
+are not mounted in the container environment by default. If you wish OpenCode to have access to
+directories that are not under your current working directory, you can bind mount them by appending
+them to the `SINGULARITY_BIND` environment variable.
 
 ```shell
-# Bind additional directories (optional)
-export SINGULARITY_BIND=$SINGULARITY_BIND,/path/to/project/dir
+# Bind mount additional directories (optional)
+export SINGULARITY_BIND=$SINGULARITY_BIND,/path/to/dir1,/path/to/dir2
 
-opencode /path/to/project/dir
+opencode /path/to/dir1
 ```
 
 ### Using a custom endpoint
