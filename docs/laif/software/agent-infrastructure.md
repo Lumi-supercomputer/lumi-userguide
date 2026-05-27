@@ -38,19 +38,19 @@ Please ensure you understand the following points before using the agent environ
 
 - **Data privacy:** OpenCode uses the third-party
   [OpenCode Zen](https://opencode.ai/docs/zen/) model endpoint by default, which is hosted by
-  [Anomaly Innovations Inc.](https://anoma.ly/) If you use models from this endpoint, be aware that
-  any data you enter will be sent to the company hosting it. Consider configuring OpenCode to use a
-  different endpoint, for example a [custom endpoint](#using-a-custom-endpoint).
+  [Anomaly Innovations Inc.](https://anoma.ly/), the company that maintains OpenCode. If you use
+  models from this endpoint, be aware that any data that you enter or is read from your working
+  directory will be sent to the company hosting the endpoint. Consider configuring OpenCode to use
+  a different endpoint, for example a [custom endpoint](#using-a-custom-endpoint).
 - **Data security:** Your current working directory (`$PWD`) and any subdirectories are accessible
   inside the environment. Your
-  [home directory is not](https://docs.sylabs.io/guides/latest/user-guide/bind_paths_and_mounts.html#contain-containall),
+  [home directory is not accessible](https://docs.sylabs.io/guides/latest/user-guide/bind_paths_and_mounts.html#contain-containall),
   with the exception of
   [certain directories](https://github.com/lumi-ai-factory/laifs-agent-env/blob/main/modules/lumi-aif-agents/1.0.0.lua),
-  where OpenCode looks for configuration files and stores data. The
-  [default configuration file][opencode json]
-  included in the environment enforces prompting the user for
-  [permission to use any tools](https://opencode.ai/docs/tools/), including reading and writing,
-  except for the document retrieval tool offered by the LUMI AIF MCP server.
+  where OpenCode looks for configuration files and stores data.
+- **Tool use**: The [default configuration file][opencode json] included in the environment
+  enforces prompting the user for [permission to use any tools](https://opencode.ai/docs/tools/),
+  including reading and writing, except for the [LUMI AIF MCP server](#mcp-server).
 - **Experimental status:** The agent environment is experimental and may evolve rapidly. It is
   recommended to check the GitHub repository for any changes to agent capabilities and permissions
   before use.
@@ -104,7 +104,7 @@ OpenCode has the following capabilities and limitations inside the agent environ
 
 You can configure a custom model endpoint by creating an `opencode.json` configuration file, e.g.,
 in your current working directory. See OpenCode's
-[config precedence order](https://opencode.ai/docs/config/#precedence-order) for more information.
+[config precedence order](https://opencode.ai/docs/config/#locations) for more information.
 
 The agent environment container ships with [a default configuration][opencode json].
 You can find documentation on how to write your own `opencode.json` in the
