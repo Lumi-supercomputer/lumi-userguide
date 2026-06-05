@@ -3,6 +3,31 @@ KServe is an open-source Kubernetes-native model inference platform. It provides
 
 Learn more in the official KServe documentation: https://kserve.github.io/website/docs/intro
 
+## KServe Custom Resources
+
 KServe exposes its functionality primarily through Kubernetes custom resources, which means deploying a model is a declarative operation — you describe the desired state in YAML, and the KServe controller reconciles the underlying Kubernetes resources like pods and services for you. Rather than interacting with the full surface area of the platform, day-to-day usage centers on just two CRs: ServingRuntime (or ClusterServingRuntime) and InferenceService.
 
-The split between these two resources reflects a clean separation of concerns. ServingRuntime captures the infrastructure-level details of a model server such as the container image, supported frameworks, and runtime configuration. InferenceService then captures the model-level details. Together they let you go from a trained model artifact to a production endpoint with a single short YAML file, while inheriting the protocol standardization that KServe provides.
+The split between these two resources reflects a clean separation of concerns. ServingRuntime captures the infrastructure-level details of a model server while the InferenceService captures the model-level details. Together they let you go from a trained model artifact to a production endpoint with a single short YAML file, while inheriting the protocol standardization that KServe provides.
+
+### ServingRuntime
+
+A ServingRuntime is a reusable template that defines how a particular class of models is served. It encapsulates the container image of a model server, the model formats it understands, and the runtime configuration needed to launch it.
+
+ServingRuntime is a namespaced custom resource, therefore if you define a ServingRuntime it can only be used in your namespace. ClusterServingRuntime custom resource is the same as ServingRuntime except that it is cluster scoped. Unfortunately, it is not allowed to create ClusterServingRuntime objects in LUMI-K, however, the cluster has the following pre-defined ClusterServingRuntime which are available to all namespaces:
+
+    - kserve-huggingfaceserver
+    - kserve-torchserve
+    - kserve-lgbserver
+    - kserve-mlserver
+    - kserve-pmmlserver
+    - kserve-xgbserver
+    - kserve-tensorflow-serving
+    - kserve-paddleserver
+    - kserve-sklearnserver
+
+If a namespaced ServingRuntime and a cluster-scoped ClusterServingRuntime have the same name in case the runtime is explicitly specified in the InferenceService CR, then Kserve will select the ServingRuntime.
+
+More information about the Serving Runtimes in the official documentation: https://kserve.github.io/website/docs/concepts/resources/servingruntime
+
+### InferenceService
+
