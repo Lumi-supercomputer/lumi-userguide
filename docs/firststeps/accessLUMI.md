@@ -42,14 +42,14 @@ Depending on access path there are different allocation portals for managing the
 | EuroHPC JU | CSC – IT Center for Science Ltd. | [https://my.lumi-supercomputer.eu](https://my.lumi-supercomputer.eu) (all EuroHPC JU allocated projects before 15.4.2026) | [Puhuri docs](https://puhuri.neic.no/user_guides/myaccessid_registration/) |
 | EuroHPC JU | CSC – IT Center for Science Ltd. | [https://my-eurohpc.eu/](https://my-eurohpc.eu/) (all EuroHPC JU allocated projects after 15.4.2026) | [Documentation for EuroHPC Federation Platform](https://docs.my-eurohpc.eu/aai/aai/)|
 | Belgium | Vlaams Supercomputer Centrum and Consortium des Equipements de Calcul Intensif | [https://puhuri-portal.neic.no/](https://puhuri-portal.neic.no/) | [Puhuri docs](https://puhuri.neic.no/user_guides/myaccessid_registration/) |
-| Czech Republic | VSB Technical University of Ostrava | [https://portal-lumi.it4i.cz/](https://portal-lumi.it4i.cz/) | |
+| Czech Republic | VSB Technical University of Ostrava | [https://portal-lumi.it4i.cz/](https://portal-lumi.it4i.cz/) | [ CZ HPC infra docs](https://docs.it4i.cz/en/docs/introduction) |
 | Denmark | DeiC - Danish e-infrastructure Cooperation and consortium universities | [https://lumi.deic.dk/](https://lumi.deic.dk/) | [Puhuri docs](https://puhuri.neic.no/user_guides/myaccessid_registration/) |
-| Estonia | ETAIS | [http://minu.etais.ee/](http://minu.etais.ee/) | |
+| Estonia | ETAIS | [http://minu.etais.ee/](http://minu.etais.ee/) | [ETAIS guide](https://docs.hpc.ut.ee/public/ETAIS/overview/) |
 | Finland | CSC – IT Center for Science Ltd. | [https://my.csc.fi/](https://my.csc.fi/) | [CSC docs](https://docs.csc.fi/accounts/how-to-create-new-project/#creating-a-lumi-project-and-applying-for-resources) |
 | Iceland | University of Iceland | [https://puhuri-portal.neic.no/](https://puhuri-portal.neic.no/) | [Puhuri docs](https://puhuri.neic.no/user_guides/myaccessid_registration/) |
 | Netherlands | SURF | [https://puhuri-portal.neic.no/](https://puhuri-portal.neic.no/) | [Puhuri docs](https://puhuri.neic.no/user_guides/myaccessid_registration/) |
 | Norway | UNINETT Sigma2 AS | [https://puhuri.metacenter.no](https://puhuri.metacenter.no) | [Puhuri docs](https://puhuri.neic.no/user_guides/myaccessid_registration/) |
-| Poland | PLGrid Consortium (Cyfronet+) | [https://portal.plgrid.pl/](https://portal.plgrid.pl/) | |
-| Sweden | SNIC | [https://supr.snic.se/](https://supr.snic.se/) | |
+| Poland | PLGrid Consortium (Cyfronet+) | [https://portal.plgrid.pl/](https://portal.plgrid.pl/) | [PLGrid documentation](https://guide.plgrid.pl/en) |
+| Sweden | NAISS | [https://supr.naiss.se/](https://supr.naiss.se/) | [Getting started options](https://supr.naiss.se/) |
 | Switzerland | CSCS - ETH Zürich | [https://account.lumi.cscs.ch](https://account.lumi.cscs.ch) | [Puhuri docs](https://puhuri.neic.no/user_guides/myaccessid_registration/) |
 

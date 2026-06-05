@@ -16,15 +16,14 @@
 
 If you want to use LUMI from a terminal, you need to set up SSH authentication. SSH keys and SSH certificates are the only ways to connect to LUMI when using a Linux, macOS or Windows PowerShell terminal, or MobaXterm or PuTTY from Windows. There is no option for using passwords. 
 
-Depending on your project allocation, there are two methods: 1) [SSH certificates](#option-1-ssh-certificates) for EFP (EuroHPC Federation platform) managed projects, and 2) [SSH keys](#option-2-ssh-keys) for other project types.
+Depending on your project allocation, there are two methods: 1) [SSH certificates](#option-1-ssh-certificates) for EFP (EuroHPC Federation Platform) managed projects, and 2) [SSH keys](#option-2-ssh-keys) for other project types.
 
 
 ## Option 1) SSH Certificates
 
-For projects managed by the EuroHPC Federation Platform (EFP)
-Secure Shell certificates are used. Please follow EFP's [Secure Shell guide][efp-aai-ssh] to set up you connection.
+For projects managed by the **EuroHPC Federation Platform (EFP)**, Secure Shell certificates are used. Please follow EFP's [Secure Shell guide][efp-aai-ssh] to set up your SSH authentication.
 
-Other projects use traditional SSH key-based authentication. Please follow the steps below to set up your connection.
+Other projects use traditional SSH key-based authentication. Please follow the steps below to set up the SSH authentication for other project types.
 
 ## Option 2) SSH keys
 
