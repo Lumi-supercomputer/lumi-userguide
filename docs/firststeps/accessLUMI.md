@@ -52,4 +52,3 @@ Depending on access path there are different allocation portals for managing the
 | Poland | PLGrid Consortium (Cyfronet+) | [https://portal.plgrid.pl/](https://portal.plgrid.pl/) | [PLGrid documentation](https://guide.plgrid.pl/en) |
 | Sweden | NAISS | [https://supr.naiss.se/](https://supr.naiss.se/) | [Getting started options](https://supr.naiss.se/) |
 | Switzerland | CSCS - ETH Zürich | [https://account.lumi.cscs.ch](https://account.lumi.cscs.ch) | [Puhuri docs](https://puhuri.neic.no/user_guides/myaccessid_registration/) |
-
