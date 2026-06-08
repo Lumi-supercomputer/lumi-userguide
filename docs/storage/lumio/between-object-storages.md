@@ -49,7 +49,7 @@ rclone copyto otherobjectstorage:bucket-x/object-y lumi-46XXXXXXX-private:bucket
 
 Two copy/move data between two LUMI-O endpoints, you need to have user rights to access both of the LUMI-O projects, and your LUMI-O access keys for both projects need to be valid. 
 
-If you need to move a very large amount of data, tens or hundreds of terabytes (TB), between two of your LUMI-O project storages, you can also contact the [LUMI user support team](../../helpdesk/index.md) for this.
+If you need to move a very large amount of data, 50 terabytes (TB) or more, between two of your LUMI-O project storages, you can also contact the [LUMI user support team](../../helpdesk/index.md) for this.
 
 An example for how to set the `rclone.conf` file:
 
