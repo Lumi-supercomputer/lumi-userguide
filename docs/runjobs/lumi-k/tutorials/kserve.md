@@ -233,16 +233,16 @@ spec:
 
 The predictor block in the InferenceService Spec defines the component that actually serves the model. There are some configurations that should be noted:
 
-- serviceAccountName: kserve-deploy-sa — the ServiceAccount the predictor Pod runs as. This the same SA we defined earlier and is bound to the secrets needed to authenticate to Hugging Face.
-- modelFormat.name: huggingface — selects a ServingRuntime (or ClusterServingRuntime in this case) that advertises support for the huggingface format.
-- storageUri: hf://Qwen/Qwen3-4B-Instruct-2507 — the source of the model weights. The hf:// scheme tells KServe to pull directly from the Hugging Face Hub, using the token attached to the ServiceAccount above.
-- env.VLLM_CPU_KVCACHE_SPACE: '24' — reserves 24 GiB of host memory for the KV cache when running vLLM on CPU. If not defined, vLLM's KV cache assumes it can consume all the memory avaible on the physical node. This results in the pod to be OOM killed due to memory resource limits.
-- args — flags passed through to the vLLM server:
-    - --model_name=qwen — the logical name clients use when making inference requests.
-    - --enable-auto-tool-choice and --tool-call-parser=qwen3_xml — enable tool-calling and tell vLLM how to parse Qwen's tool-call output format.
-    - --max-model-len=8192 — caps the context window at 8K tokens. This can be increased up to 262,144 for this model but will require much more memory.
-    - --max-num-seqs=8 — limits concurrent in-flight sequences, keeping memory usage predictable.
-    - --dtype=bfloat16 — loads weights in bfloat16 to reduce memory footprint.
-- resources — requests 8 CPUs / 24 GiB of memory and caps the Pod at 16 CPUs / 32 GiB. These bounds must accommodate both the model weights and the KV cache reservation above.
-- spec.predictor.volumes: kserve-provision-location — a PVC mounted into the predictor Pod, used by KServe's storage initContainer to stage the downloaded model weights as explained above. Make sure to keep the name of the volume to be always "kserve-provision-location" as shown in the example.
+- **serviceAccountName: kserve-deploy-sa** — the ServiceAccount the predictor Pod runs as. This the same SA we defined earlier and is bound to the secrets needed to authenticate to Hugging Face.
+- **modelFormat.name: huggingface** — selects a ServingRuntime (or ClusterServingRuntime in this case) that advertises support for the huggingface format.
+- **storageUri: hf://Qwen/Qwen3-4B-Instruct-2507** — the source of the model weights. The hf:// scheme tells KServe to pull directly from the Hugging Face Hub, using the token attached to the ServiceAccount above.
+- **env.VLLM_CPU_KVCACHE_SPACE: '24'** — reserves 24 GiB of host memory for the KV cache when running vLLM on CPU. If not defined, vLLM's KV cache assumes it can consume all the memory avaible on the physical node. This results in the pod to be OOM killed due to memory resource limits.
+- **args** — flags passed through to the vLLM server:
+    - **--model_name=qwen** — the logical name clients use when making inference requests.
+    - **--enable-auto-tool-choice** and **--tool-call-parser=qwen3_xml** — enable tool-calling and tell vLLM how to parse Qwen's tool-call output format.
+    - **--max-model-len=8192** — caps the context window at 8K tokens. This can be increased up to 262,144 for this model but will require much more memory.
+    - **--max-num-seqs=8** — limits concurrent in-flight sequences, keeping memory usage predictable.
+    - **--dtype=bfloat16** — loads weights in bfloat16 to reduce memory footprint.
+- **resources** — requests 8 CPUs / 24 GiB of memory and caps the Pod at 16 CPUs / 32 GiB. These bounds must accommodate both the model weights and the KV cache reservation above.
+- **spec.predictor.volumes: kserve-provision-location** — a PVC mounted into the predictor Pod, used by KServe's storage initContainer to stage the downloaded model weights as explained above. Make sure to keep the name of the volume to be always "kserve-provision-location" as shown in the example.
 
