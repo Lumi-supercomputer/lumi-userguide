@@ -1,5 +1,5 @@
 # KServe
-KServe is an open-source Kubernetes-native model inference platform. It provides a standardized InferenceService custom resource that abstracts away the complexity of serving machine learning models. It works across major ML frameworks such as PyTorch, vLLM and Hugging Face transformers through pluggable model runtimes, and supports both predictive and generative AI workloads with the Open Inference Protocol for consistent client APIs.
+KServe is an open-source Kubernetes-native model inference platform. It provides a standardized InferenceService custom resource that abstracts away the complexity of serving machine learning models. It works across major ML frameworks such as PyTorch, vLLM and Hugging Face transformers through pluggable model runtimes, and supports both predictive and generative AI workloads with the Open Inference Protocols for consistent client APIs.
 
 Learn more in the official KServe documentation: https://kserve.github.io/website/docs/intro
 
@@ -120,7 +120,7 @@ spec:
   host: sklearn-inference.apps.lumi-k.eu
   to:
     kind: Service
-    name: sklearn-inference
+    name: sklearn-inference-predictor
   port:
     targetPort: 80
 ```
@@ -145,7 +145,22 @@ curl -v \
   -d @./iris-input.json \
   http://sklearn-inference.apps.lumi-k.eu/v2/models/sklearn-iris/infer
 ```
-
+This should return an output similar to the following:
+```
+{
+  "model_name": "sklearn-iris",
+  "model_version": null,
+  "id": "c9d537b8-9716-46ce-a437-42f1ae9333d3",
+  "parameters": null,
+  "outputs": [
+    {
+      "name": "output-0",
+      "shape": [2],
+      "datatype": "INT32",
+      "parameters": null,
+      "data": [1,1]
+    }]}
+```
 ### Deploying an LLM Model
 In this example, we will deploy Qwen3-4B-Instruct-2507 model which is hosted in Hugging Face Model Hub [here](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507). It is a small 4B parameters model with function/tool calling capabilities for agentic use. We'll use the pre-defined ClusterServingRuntime `kserve-huggingfaceserver` which is available in all namespaces. Furthermore, the example uses a Hugging Face access token in place of the anonymous client, allowing models that require authentication to be retrieved.
 
@@ -246,3 +261,76 @@ The predictor block in the InferenceService Spec defines the component that actu
 - **resources** — requests 8 CPUs / 24 GiB of memory and caps the Pod at 16 CPUs / 32 GiB. These bounds must accommodate both the model weights and the KV cache reservation above.
 - **spec.predictor.volumes: kserve-provision-location** — a PVC mounted into the predictor Pod, used by KServe's storage initContainer to stage the downloaded model weights as explained above. Make sure to keep the name of the volume to be always "kserve-provision-location" as shown in the example.
 
+Similar to the previous example, when the InferenceService object and the corresponding pod(s) become ready, the model deployment is completed. KServe automatically creates a service which exposes the inference endpoint. We can expose the endpoint to the internet using a Route:
+
+```
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: qwen-inference
+  namespace: kserve-inference-test
+  annotations:
+    haproxy.router.openshift.io/timeout: '300s'
+spec:
+  host: qwen-inference.apps.lumi-k.eu
+  to:
+    kind: Service
+    name: qwen-inference-predictor
+  port:
+    targetPort: 80
+```
+LLMs can take a while to respond due to multiple factors such the amount of memory available for the model and how complicated the prompt is. Therefore, it is recommended to add the annotation in the Route object to increase the timeout for the ingress connection as shown above.
+
+Finally, we can test our deployed model with an input payload:
+
+```
+{
+  "model": "qwen",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant that provides clear and concise answers."
+    },
+    {
+      "role": "user",
+      "content": "Write a paragraph on climate change."
+    }
+  ],
+  "max_tokens": 150,
+  "temperature": 0.7,
+  "stream": false
+}
+```
+
+We can use curl or any HTTP client to send a request to the inference endpoint using OpenAI-compatible API.
+
+```
+curl -v \
+  -H "Content-Type: application/json" \
+  -d @./qwen-input.json \
+  http://qwen-inference.apps.lumi-k.eu/openai/v1/chat/completions
+```
+This should return an output similar to the following:
+```
+{
+  "id": "chatcmpl-878aae738737f602",
+  "object": "chat.completion",
+  "created": 1781006737,
+  "model": "qwen",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Climate change refers to the long-term changes in Earth's weather patterns, including rising temperatures, altered precipitation patterns,and shifts in seasonal climates. These changes have serious implications for human societies around the world, affecting everything from agriculture and water resources to air quality and public health.\n\nOne of the most significant impacts of climate change is its impact on ecosystems. Many species are facing extinction due to habitat loss, pollution, and other factors. Climate change also alters the timing of seasons and weather events, leading to increased frequency and intensity of extreme weather events such as hurricanes, droughts, and floods.\n\nThe effects of climate change extend far beyond the immediate environment. It can lead to social and economic disruptions, including food shortages, displacement of people, and reduced access to",
+      },
+      "finish_reason": "length",
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 32,
+    "total_tokens": 182,
+    "completion_tokens": 150,
+  },
+}
+```
