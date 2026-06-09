@@ -92,7 +92,7 @@ spec:
       storageUri: "gs://kfserving-examples/models/sklearn/1.0/model"
 ```
 
-Here the model is downloaded from a Google Cloud Storage (GCS) bucket. LUMI-K KServe supports the following storage options:
+Here the model is downloaded from a Google Cloud Storage (GCS) bucket as an anonymous user. LUMI-K KServe supports the following storage options:
 
     - Hugging Face Model Hub
     - S3 compliant object storage
@@ -147,8 +147,102 @@ curl -v \
 ```
 
 ### Deploying an LLM Model
+In this example, we will deploy Qwen3-4B-Instruct-2507 model which is hosted in Hugging Face Model Hub [here](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507). It is a small 4B parameters model with function/tool calling capabilities for agentic use. We'll use the pre-defined ClusterServingRuntime `kserve-huggingfaceserver` which is available in all namespaces. Furthermore, the example uses a Hugging Face access token in place of the anonymous client, allowing models that require authentication to be retrieved.
 
-setting up authentication
-create the pvc
-create inference service
-    use the environment variable
+First create a secret that stores you Hugging Face token. Make sure this token has enough permissions to pull the required model:
+```
+apiVersion: v1
+kind: Secret
+metadata:
+  name: hf-token
+  namespace: kserve-inference-test
+type: Opaque
+data:
+  HF_TOKEN: <hf-token base64 encoded>
+```
+
+Create a Kubernetes ServiceAccount and reference the created secret so that the ServiceAccount can access it:
+```
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kserve-deploy-sa
+  namespace: kserve-inference-test
+secrets:
+  - name: hf-token
+```
+
+LLM models require substantial disk space. Therefore, it is a good idea to download the model into a PVC instead of an ephemeral emptyDir. KServe uses an initContainer in the same pod as the inference server pod which automatically downloads the model and stores it at /mnt/models/ directory. We can use the LUMI-K's LVM storage class which stores the model in a persistent volume using the SSD disks present on the worker nodes which ensures low latency. More information regarding LVM storage class can be found [here](../usage/storage/persistent_storage.md#3-lvm-storageclass).
+
+```
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: my-pvc
+  namespace: kserve-inference-test
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: lvms-local
+  volumeMode: Filesystem
+```
+
+In case of model being hosted by Hugging Face, the initContainer also uses the path `/.cache` of the initContainer while downloading the model. This is not permitted according to OKD security policies. Therefore, in LUMI-K Kserve, if the model is pulled from Hugging Face, the same PVC as created above is configured to be automatically mounted at `/.cache`.
+
+Next we create the InferenceService CR which defines the model to be deployed, the resources to be used and its runtime arguments:
+
+```
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: qwen-inference
+  namespace: kserve-inference-test
+spec:
+  predictor:
+    serviceAccountName: kserve-deploy-sa
+    model:
+      args:
+        - '--model_name=qwen'
+        - '--enable-auto-tool-choice'
+        - '--tool-call-parser=qwen3_xml'
+        - '--max-model-len=8192'
+        - '--max-num-seqs=8'
+        - '--dtype=bfloat16'
+      env:
+        - name: VLLM_CPU_KVCACHE_SPACE
+          value: '24'
+      modelFormat:
+        name: huggingface
+      name: ''
+      resources:
+        limits:
+          cpu: '16'
+          memory: 32Gi
+        requests:
+          cpu: '8'
+          memory: 24Gi
+      storageUri: 'hf://Qwen/Qwen3-4B-Instruct-2507'
+    volumes:
+      - name: kserve-provision-location
+        persistentVolumeClaim:
+          claimName: my-pvc
+```
+
+The predictor block in the InferenceService Spec defines the component that actually serves the model. There are some configurations that should be noted:
+
+- serviceAccountName: kserve-deploy-sa — the ServiceAccount the predictor Pod runs as. This the same SA we defined earlier and is bound to the secrets needed to authenticate to Hugging Face.
+- modelFormat.name: huggingface — selects a ServingRuntime (or ClusterServingRuntime in this case) that advertises support for the huggingface format.
+- storageUri: hf://Qwen/Qwen3-4B-Instruct-2507 — the source of the model weights. The hf:// scheme tells KServe to pull directly from the Hugging Face Hub, using the token attached to the ServiceAccount above.
+- env.VLLM_CPU_KVCACHE_SPACE: '24' — reserves 24 GiB of host memory for the KV cache when running vLLM on CPU. If not defined, vLLM's KV cache assumes it can consume all the memory avaible on the physical node. This results in the pod to be OOM killed due to memory resource limits.
+- args — flags passed through to the vLLM server:
+    - --model_name=qwen — the logical name clients use when making inference requests.
+    - --enable-auto-tool-choice and --tool-call-parser=qwen3_xml — enable tool-calling and tell vLLM how to parse Qwen's tool-call output format.
+    - --max-model-len=8192 — caps the context window at 8K tokens. This can be increased up to 262,144 for this model but will require much more memory.
+    - --max-num-seqs=8 — limits concurrent in-flight sequences, keeping memory usage predictable.
+    - --dtype=bfloat16 — loads weights in bfloat16 to reduce memory footprint.
+- resources — requests 8 CPUs / 24 GiB of memory and caps the Pod at 16 CPUs / 32 GiB. These bounds must accommodate both the model weights and the KV cache reservation above.
+- spec.predictor.volumes: kserve-provision-location — a PVC mounted into the predictor Pod, used by KServe's storage initContainer to stage the downloaded model weights as explained above. Make sure to keep the name of the volume to be always "kserve-provision-location" as shown in the example.
+
