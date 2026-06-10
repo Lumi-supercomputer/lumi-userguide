@@ -176,6 +176,7 @@ nav:
     - Known issues: helpdesk/issues.md
     - LUMI service status: https://www.lumi-supercomputer.eu/lumi-service-status/
     - Mailing list archive: https://postit.csc.fi/sympa/arc/lumi-users
+    - Contribution and feedback: helpdesk/feedback.md  
   - LUMI AI Factory:
     - Services: laif/index.md
     - Data:
