@@ -5,7 +5,7 @@
 [LUMI AI agent guide]: ./../../development/ai-tools/ai-agent-guide.md
 [opencode blogpost]: https://lumi-supercomputer.eu/connecting-opencode-to-lumi/
 [opencode documentation config]: https://opencode.ai/docs/config/ 
-[opencode json]: https://github.com/lumi-ai-factory/laifs-agent-env/blob/main/config/opencode.json
+[opencode json]: https://github.com/lumi-ai-factory/laifs-agent-env/blob/main/config/opencode/opencode.json
 [opencode website]: https://opencode.ai
 [singularity]: ./../../software/containers/singularity.md
 [terms of use]: https://lumi-supercomputer.eu/termsandpolicies/
@@ -46,7 +46,7 @@ Please ensure you understand the following points before using the agent environ
   inside the environment. Your
   [home directory is not accessible](https://docs.sylabs.io/guides/latest/user-guide/bind_paths_and_mounts.html#contain-containall),
   with the exception of
-  [certain directories](https://github.com/lumi-ai-factory/laifs-agent-env/blob/main/modules/lumi-aif-agents/1.0.0.lua),
+  [certain directories](https://github.com/lumi-ai-factory/laifs-agent-env/blob/main/modulefiles/lumi-aif-agents/1.0.lua),
   where OpenCode looks for configuration files and stores data.
 - **Tool use**: The [default configuration file][opencode json] included in the environment
   enforces prompting the user for [permission to use any tools](https://opencode.ai/docs/tools/),
