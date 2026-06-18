@@ -183,6 +183,9 @@ nav:
       - Dataset as a Service:
         - User guide: laif/data/daas-guide.md
         - Service description: laif/data/daas-description.md
+    - AI Inference:
+      - Overview: laif/inference/index.md
+      - Aitta Inference Service: laif/inference/aitta.md
     - Software:
       - Overview: laif/software/index.md
       - AI Software Environment: laif/software/ai-environment.md
