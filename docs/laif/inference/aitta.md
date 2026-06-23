@@ -37,74 +37,77 @@ Currently Aitta includes generative Large Language Models (LLMs) and text embedd
 
 ## Web Frontend - Interactive chat usage
 
-1. Visit the web frontend at [aitta.csc.fi][aitta]. Click the "Log In" button at the top to log in. Go through the usual CSC authentication flow.
+Visit the web frontend at [aitta.csc.fi][aitta]. Click the "Log In" button at the top to log in. Go through the usual CSC authentication flow. Check the below steps for detailled instructions on how to use the web frontend.
 
-2. After you have logged in, you will see a page that shows the available models and whether they are currently online or not. If the model is online, it means that is already loaded into GPU memory and ready to respond immediately. Starting a chat with a model marked as offline means you will have to wait a bit while the model is made ready to respond. Click on any model to open a chat view.
-  <figure>
-    <img
-      src="/assets/images/laifs/aitta/aitta_model_page.png"
-      alt="The Aitta model page displays the available model names and icons in a tiled view."
-    />
-    <figcaption>The Aitta model page displays the available model names and icons in a tiled view.</figcaption>
-  </figure>
+<details><summary>Detailed instructions for the web frontend</summary>
 
-3. If the model is not currently running, you cannot interact with it. Click the "Start model" button to request that Aitta starts the model on the LUMI supercomputer hardware.
-  <figure>
-    <img
-      src="/assets/images/laifs/aitta/offline_model_page.png"
-      width="1000px"
-      alt='For a model that is offline, the web frontend displays the notice "The model is not currently running" as well as a "Start model" button.'
-    />
-    <figcaption>For a model that is offline, the web frontend displays the notice "The model is not currently running" as well as a "Start model" button.</figcaption>
-  </figure>
+  1. After you have logged in, you will see a page that shows the available models and whether they are currently online or not. If the model is online, it means that is already loaded into GPU memory and ready to respond immediately. Starting a chat with a model marked as offline means you will have to wait a bit while the model is made ready to respond. Click on any model to open a chat view.
+    <figure>
+      <img
+        src="/assets/images/laifs/aitta/aitta_model_page.png"
+        alt="The Aitta model page displays the available model names and icons in a tiled view."
+      />
+      <figcaption>The Aitta model page displays the available model names and icons in a tiled view.</figcaption>
+    </figure>
 
-4. You will have to wait a while until the model becomes available. The web frontend will display messages "Waiting for computing resources..." or "The model is loading. This can take several minutes..." (when compute resources were allocated and the model is loaded from storage to GPU memory) to indicate the current status. The "Start model" button cannot be interacted with during that time. The exact waiting time depends on the current load of the LUMI-G partition as well as the size of the model: A larger model requires more resources, resulting in potentially longer queueing times and also takes a bit longer to load into GPU memory.
-  <figure>
-    <img
-      src="/assets/images/laifs/aitta/model_loading_page.png"
-      width="1000px"
-      alt='While a model is loading the web frontend displays the message "The model is loading. This can take several minutes...".'
-    />
-    <figcaption>While a model is loading the web frontend displays the message "The model is loading. This can take several minutes...".</figcaption>
-  </figure>
+  2. If the model is not currently running, you cannot interact with it. Click the "Start model" button to request that Aitta starts the model on the LUMI supercomputer hardware.
+    <figure>
+      <img
+        src="/assets/images/laifs/aitta/offline_model_page.png"
+        width="1000px"
+        alt='For a model that is offline, the web frontend displays the notice "The model is not currently running" as well as a "Start model" button.'
+      />
+      <figcaption>For a model that is offline, the web frontend displays the notice "The model is not currently running" as well as a "Start model" button.</figcaption>
+    </figure>
 
-5. When the model is ready, the web frontend will display a chat window. As in similar chat applications, you can enter your messages to the model in the input field at the bottom. Click the button that looks like an arrow to send your message. If you selected a model that was indicated as "Online" on the model selection page, you will see this page immediately and do not have to start the model.
-  <figure>
-    <img
-      src="/assets/images/laifs/aitta/model_ready_page.png"
-      width="1000px"
-      alt='When the model is ready the website displays an empty chat window. The user has typed "Can you explain to me the difference between a laptop and a supercomputer?" in the message input field at the buttom of the page.'
-    />
-    <figcaption>When the model is ready the website displays an empty chat window. The user has typed "Can you explain to me the difference between a laptop and a supercomputer?" in the message input field at the buttom of the page.</figcaption>
-  </figure>
+  3. You will have to wait a while until the model becomes available. The web frontend will display messages "Waiting for computing resources..." or "The model is loading. This can take several minutes..." (when compute resources were allocated and the model is loaded from storage to GPU memory) to indicate the current status. The "Start model" button cannot be interacted with during that time. The exact waiting time depends on the current load of the LUMI-G partition as well as the size of the model: A larger model requires more resources, resulting in potentially longer queueing times and also takes a bit longer to load into GPU memory.
+    <figure>
+      <img
+        src="/assets/images/laifs/aitta/model_loading_page.png"
+        width="1000px"
+        alt='While a model is loading the web frontend displays the message "The model is loading. This can take several minutes...".'
+      />
+      <figcaption>While a model is loading the web frontend displays the message "The model is loading. This can take several minutes...".</figcaption>
+    </figure>
 
-6. Aitta will forward your message to the model and stream the response back to the web frontend where it will appear in the chat window. Every message has associated buttons which you can use to
+  4. When the model is ready, the web frontend will display a chat window. As in similar chat applications, you can enter your messages to the model in the input field at the bottom. Click the button that looks like an arrow to send your message. If you selected a model that was indicated as "Online" on the model selection page, you will see this page immediately and do not have to start the model.
+    <figure>
+      <img
+        src="/assets/images/laifs/aitta/model_ready_page.png"
+        width="1000px"
+        alt='When the model is ready the website displays an empty chat window. The user has typed "Can you explain to me the difference between a laptop and a supercomputer?" in the message input field at the buttom of the page.'
+      />
+      <figcaption>When the model is ready the website displays an empty chat window. The user has typed "Can you explain to me the difference between a laptop and a supercomputer?" in the message input field at the buttom of the page.</figcaption>
+    </figure>
 
-    1. copy the message to the clipboard,
-    2. repeat the previous request to see if the model generates a better response message, or
-    3. remove the last request and response (the last request will be copied into the input field, where you can modify it).
+  5. Aitta will forward your message to the model and stream the response back to the web frontend where it will appear in the chat window. Every message has associated buttons which you can use to
 
-  <figure>
-    <img
-      src="/assets/images/laifs/aitta/model_response_page.png"
-      width="1000px"
-      alt='After the user has sent a request, the request and response show as message bubbles in the chat window.'
-    />
-    <figcaption>After the user has sent a request, the request and response show as message bubbles in the chat window.</figcaption>
-  </figure>
+      1. copy the message to the clipboard,
+      2. repeat the previous request to see if the model generates a better response message, or
+      3. remove the last request and response (the last request will be copied into the input field, where you can modify it).
 
-7. You can switch between different models at any time. You can hover over the "Models" text at the top of the page to see a dropdown menu of all models in the system. Click on any model to go to the respective model page. Alternatively, you can click on the Aitta logo to return to the model selection page.<br/>
-  <figure>
-    <img
-      src="/assets/images/laifs/aitta/model_dropdown.png"
-      width="1000px"
-      alt='Hovering the mouse over the "Models" text at the top of the page shows a list of all models.'
-    />
-    <figcaption>Hovering the mouse over the "Models" text at the top of the page shows a list of all models.</figcaption>
-  </figure>
+    <figure>
+      <img
+        src="/assets/images/laifs/aitta/model_response_page.png"
+        width="1000px"
+        alt='After the user has sent a request, the request and response show as message bubbles in the chat window.'
+      />
+      <figcaption>After the user has sent a request, the request and response show as message bubbles in the chat window.</figcaption>
+    </figure>
 
-8. When you are done, you can log out via the "Log Out" button at the top right corner or simply leave the page. You do not need to explicitely shut down any model you were using.
+  6. You can switch between different models at any time. You can hover over the "Models" text at the top of the page to see a dropdown menu of all models in the system. Click on any model to go to the respective model page. Alternatively, you can click on the Aitta logo to return to the model selection page.<br/>
+    <figure>
+      <img
+        src="/assets/images/laifs/aitta/model_dropdown.png"
+        width="1000px"
+        alt='Hovering the mouse over the "Models" text at the top of the page shows a list of all models.'
+      />
+      <figcaption>Hovering the mouse over the "Models" text at the top of the page shows a list of all models.</figcaption>
+    </figure>
 
+  7. When you are done, you can log out via the "Log Out" button at the top right corner or simply leave the page. You do not need to explicitely shut down any model you were using.
+
+</details>
 ### Limitations
 
 The web frontend is only a basic chat interface with no additional features. The entire chat history is kept in your browser. If you leave the page, the conversation is deleted and can not be recovered. Furthermore, if the model becomes unavailable during the conversation, the frontend will return to show the message that the model is currently not running. This also results in the chat history being lost. While Aitta tries to ensure that a model is always running when you are actively using, it can happen that the current allocation of resources expires before Aitta is able to obtain a new allocation.
