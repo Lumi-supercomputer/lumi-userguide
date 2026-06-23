@@ -125,29 +125,29 @@ To access the API you need to provide an access token to authenticate to the sys
 Authorization: Bearer your-token-goes-here
 ```
 
-You can obtain an access token from [aitta-auth.csc.fi/myToken][aitta-auth-token] (or by following the "Generate token" link from the web frontend after you logged in) if you have a valid LUMI computing project. This will immediately start a (new) login sequence with CSC's authentication system. After completing the authentication you will see a website displaying your access token for Aitta. Alongside the access token itself, you will see the LUMI projects included in its access scope as well as the duration of validity for the token. This token is meant for day-to-day interactions and is valid for 24 hours by default. When the token expires, you need to visit the same page again to generate a new token.
+You can obtain an access token from [aitta-auth.csc.fi/myToken][aitta-auth-token] (or by following the "Generate token" link from the web frontend after you logged in) if you have a valid LUMI computing project. This will immediately start a (new) login sequence with CSC's authentication system. After completing the authentication you will be asked to select one of your LUMI projects. Your access token will be tied to this project. If you have only one LUMI project, you may not see this screen.
 
 <figure>
   <img
-    src="/assets/images/laifs/aitta/access_token.png"
+    src="/assets/images/laifs/aitta/auth_project_list.png"
     width="1000px"
-    alt='The Aitta token website displays the access token'
+    alt='The Aitta token website displays a list of LUMI projects the user is a member of and asks the user to select one of them.'
   />
-  <figcaption>The Aitta token website displays the access token</figcaption>
+  <figcaption>The Aitta token website displays a list of LUMI projects the user is a member of and asks the user to select one of them.</figcaption>
 </figure>
 
-#### Long-lived tokens
-
-To enable use in long running client applications, you have the option to create a longer lived access token by narrowing. To do so, you can use the drop-down menu shown at the bottom of the page to select one of your projects and press the "Generate project token" button. After confirming, the website will show the project specific token at the bottom of the page. This token is currently valid for 90 days.
+After choosing the project, the next screen will display your access token for Aitta. There is also a button to copy the access token to your clipboard as well as an example `curl` command with which you can try out the access token in your terminal to verify that it works.
 
 <figure>
   <img
-    src="/assets/images/laifs/aitta/project_access_token.png"
+    src="/assets/images/laifs/aitta/auth_access_token.png"
     width="1000px"
-    alt='The project-specific access token is displayed after the "Generate project token button was pressed.'
+    alt='The access token is displayed after selecting the LUMI project.'
   />
-  <figcaption>The project-specific access token is displayed after the "Generate project token button was pressed.</figcaption>
+  <figcaption>The access token is displayed after selecting the LUMI project.</figcaption>
 </figure>
+
+All access tokens are currently valid for 90 days to enable use in long-running client applications. However, the validity of the token ends early if the LUMI project it is tied to reaches its end date or your user account is closed.
 
 ### Inference in Python
 
