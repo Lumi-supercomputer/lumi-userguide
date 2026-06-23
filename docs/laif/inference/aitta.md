@@ -37,7 +37,7 @@ Currently Aitta includes generative Large Language Models (LLMs) and text embedd
 
 ## Web Frontend - Interactive chat usage
 
-Visit the web frontend at [aitta.csc.fi][aitta]. Click the "Log In" button at the top to log in. Go through the usual CSC authentication flow. Check the below steps for detailled instructions on how to use the web frontend.
+Visit the web frontend at [aitta.csc.fi][aitta]. Click the "Log In" button at the top to log in. Go through the usual CSC authentication flow. Check the below steps for detailed instructions on how to use the web frontend.
 
 <details><summary>Detailed instructions for the web frontend</summary>
 
