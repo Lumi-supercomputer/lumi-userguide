@@ -1,4 +1,4 @@
-# Aitta - Machine Learning Inference on LUMI Supercomputer
+# Aitta Inference Service
 
 [aitta]: https://aitta.csc.fi
 [aitta-tou]: https://aitta.csc.fi/terms-of-use
@@ -9,22 +9,22 @@
 [openai-embeddings]: https://developers.openai.com/api/reference/resources/embeddings/methods/create
 [openai-completions]: https://developers.openai.com/api/reference/resources/chat/subresources/completions/methods/create
 
-Aitta is a machine learning inference service that allows you to interact with large open models directly on the LUMI Supercomputer hardware without dealing with any of the technical details. You just send your inference request to an OpenAI compatible API - Aitta takes care of allocating resources from the supercomputer scheduling system (Slurm), loading the model and forwarding the request to the designated compute node.
+Aitta is a machine learning inference service that allows you to interact with large open-weight models (i.e., models that are openly available for download e.g. from huggingface.co) directly on the LUMI Supercomputer hardware without dealing with any of the technical details. You just send your inference request to an OpenAI compatible API - Aitta takes care of allocating resources from the supercomputer scheduling system (Slurm), loading the model and forwarding the request to the designated compute node.
 
 Aitta provides an API for programmatic access which allows you to develop or test applications that require inference as a service component. It also enables you to perform automated evaluation of a model you are interested in. Additionally, Aitta provides a web frontend with basic chat interfaces that you can use to interact with the models directly.
 
 Aitta is currently available for all users with access to the LUMI supercomputer. You need a valid CSC account with access to at least one active LUMI project.
 
-!!! Info "Restriction to Users with CSC account during Pilot phase"
+!!! Warning "Restriction of Users during Pilot phase"
     Aitta is currently undergoing a piloting phase before a full public release. Integration with all LUMI authentication providers is incomplete.
-    Therefore only users that can use MyCSC or Haka authentication can currently access the service.
+    Therefore only users that can use MyCSC or Haka authentication can currently access the service. Users that need to authenticate via Puhuri, MyAccessID, the European Federation Platform, or others unfortunately cannot access Aitta at the moment. We are hoping resolve this soon.
 
 ## What can I use it for?
 
 Aitta is intended for research and development, including for example
 
 - exploring capabilities of models,
-- performing research that relies on models to generate or evaluate data,
+- performing research that relies on models to generate or evaluate data, or
 - building applications that rely on inference as a part of their functionality.
 
 However, Aitta is entirely reliant on the LUMI supercomputer hardware and scheduler and thus there is no guarantee for availability of a particular model at any given time. In particular this means that Aitta is unsuited as a production-level inference service. You should not use it to deploy applications that require assured availability.
@@ -39,16 +39,16 @@ Currently Aitta includes generative Large Language Models (LLMs) and text embedd
 
 1. Visit the web frontend at [aitta.csc.fi][aitta]. Click the "Log In" button at the top to log in. Go through the usual CSC authentication flow.
 
-2. After you have logged in, you will see a page that shows the available models and whether they are currently online or not. Click on any model to open a chat view.
+2. After you have logged in, you will see a page that shows the available models and whether they are currently online or not. If the model is online, it means that is already loaded into GPU memory and ready to respond immediately. Starting a chat with a model marked as offline means you will have to wait a bit while the model is made ready to respond. Click on any model to open a chat view.
   <figure>
     <img
       src="/assets/images/laifs/aitta/aitta_model_page.png"
-      alt="The Aitta model page displays the avialable model names and icons in a tiled view."
+      alt="The Aitta model page displays the available model names and icons in a tiled view."
     />
-    <figcaption>The Aitta model page displays the avialable model names and icons in a tiled view.</figcaption>
+    <figcaption>The Aitta model page displays the available model names and icons in a tiled view.</figcaption>
   </figure>
 
-1. If the model is not currently running, you cannot interact with it. Click the "Start model" button to request that Aitta starts the model on the LUMI supercomputer hardware.
+3. If the model is not currently running, you cannot interact with it. Click the "Start model" button to request that Aitta starts the model on the LUMI supercomputer hardware.
   <figure>
     <img
       src="/assets/images/laifs/aitta/offline_model_page.png"
@@ -58,7 +58,7 @@ Currently Aitta includes generative Large Language Models (LLMs) and text embedd
     <figcaption>For a model that is offline, the web frontend displays the notice "The model is not currently running" as well as a "Start model" button.</figcaption>
   </figure>
 
-1. You will have to wait a while until the model becomes available. The web frontend will display messages "Waiting for computing resources..." or "The model is loading. This can take several minutes..." (when compute resources were allocated and the model is loaded from storage to GPU memory) to indicate the current status. The "Start model" button cannot be interacted with during that time.
+4. You will have to wait a while until the model becomes available. The web frontend will display messages "Waiting for computing resources..." or "The model is loading. This can take several minutes..." (when compute resources were allocated and the model is loaded from storage to GPU memory) to indicate the current status. The "Start model" button cannot be interacted with during that time. The exact waiting time depends on the current load of the LUMI-G partition as well as the size of the model: A larger model requires more resources, resulting in potentially longer queueing times and also takes a bit longer to load into GPU memory.
   <figure>
     <img
       src="/assets/images/laifs/aitta/model_loading_page.png"
@@ -68,7 +68,7 @@ Currently Aitta includes generative Large Language Models (LLMs) and text embedd
     <figcaption>While a model is loading the web frontend displays the message "The model is loading. This can take several minutes...".</figcaption>
   </figure>
 
-1. When the model is ready, the web frontend will display a chat window. As in similar chat applications, you can enter your messages to the model in the input field at the bottom. Click the button that looks like an arrow to send your message. If you selected a model that was indicated as "Online" on the model selection page, you will see this page immediately and do not have to start the model.
+5. When the model is ready, the web frontend will display a chat window. As in similar chat applications, you can enter your messages to the model in the input field at the bottom. Click the button that looks like an arrow to send your message. If you selected a model that was indicated as "Online" on the model selection page, you will see this page immediately and do not have to start the model.
   <figure>
     <img
       src="/assets/images/laifs/aitta/model_ready_page.png"
@@ -78,7 +78,7 @@ Currently Aitta includes generative Large Language Models (LLMs) and text embedd
     <figcaption>When the model is ready the website displays an empty chat window. The user has typed "Can you explain to me the difference between a laptop and a supercomputer?" in the message input field at the buttom of the page.</figcaption>
   </figure>
 
-1. Aitta will forward your message to the model and stream the response back to the web frontend where it will appear in the chat window. Every message has associated buttons which you can use to
+6. Aitta will forward your message to the model and stream the response back to the web frontend where it will appear in the chat window. Every message has associated buttons which you can use to
 
     1. copy the message to the clipboard,
     2. repeat the previous request to see if the model generates a better response message, or
@@ -93,7 +93,7 @@ Currently Aitta includes generative Large Language Models (LLMs) and text embedd
     <figcaption>After the user has sent a request, the request and response show as message bubbles in the chat window.</figcaption>
   </figure>
 
-1. You can switch between different models at any time. You can hover over the "Models" text at the top of the page to see a dropdown menu of all models in the system. Click on any model to go to the respective model page. Alternatively, you can click on the Aitta logo to return to the model selection page.<br/>
+7. You can switch between different models at any time. You can hover over the "Models" text at the top of the page to see a dropdown menu of all models in the system. Click on any model to go to the respective model page. Alternatively, you can click on the Aitta logo to return to the model selection page.<br/>
   <figure>
     <img
       src="/assets/images/laifs/aitta/model_dropdown.png"
@@ -103,7 +103,7 @@ Currently Aitta includes generative Large Language Models (LLMs) and text embedd
     <figcaption>Hovering the mouse over the "Models" text at the top of the page shows a list of all models.</figcaption>
   </figure>
 
-1. When you are done, you can log out via the "Log Out" button at the top right corner or simply leave the page. You do not need to explicitely shut down any model you were using.
+8. When you are done, you can log out via the "Log Out" button at the top right corner or simply leave the page. You do not need to explicitely shut down any model you were using.
 
 ### Limitations
 
