@@ -9,15 +9,16 @@
 [openai-embeddings]: https://developers.openai.com/api/reference/resources/embeddings/methods/create
 [openai-completions]: https://developers.openai.com/api/reference/resources/chat/subresources/completions/methods/create
 
+!!! Warning "Restriction of Users during Pilot phase"
+    Aitta is currently undergoing a piloting phase before a full public release. Integration with all LUMI authentication providers is incomplete.
+    Therefore only users that can use MyCSC or Haka authentication can currently access the service. Users that need to authenticate via Puhuri, MyAccessID, the European Federation Platform, or others unfortunately cannot access Aitta at the moment. We are hoping resolve this soon.
+
 Aitta is a machine learning inference service that allows you to interact with large open-weight models (i.e., models that are openly available for download e.g. from huggingface.co) directly on the LUMI Supercomputer hardware without dealing with any of the technical details. You just send your inference request to an OpenAI compatible API - Aitta takes care of allocating resources from the supercomputer scheduling system (Slurm), loading the model and forwarding the request to the designated compute node.
 
 Aitta provides an API for programmatic access which allows you to develop or test applications that require inference as a service component. It also enables you to perform automated evaluation of a model you are interested in. Additionally, Aitta provides a web frontend with basic chat interfaces that you can use to interact with the models directly.
 
 Aitta is currently available for all users with access to the LUMI supercomputer. You need a valid CSC account with access to at least one active LUMI project.
 
-!!! Warning "Restriction of Users during Pilot phase"
-    Aitta is currently undergoing a piloting phase before a full public release. Integration with all LUMI authentication providers is incomplete.
-    Therefore only users that can use MyCSC or Haka authentication can currently access the service. Users that need to authenticate via Puhuri, MyAccessID, the European Federation Platform, or others unfortunately cannot access Aitta at the moment. We are hoping resolve this soon.
 
 ## What can I use it for?
 
