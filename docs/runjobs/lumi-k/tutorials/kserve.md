@@ -1,19 +1,36 @@
 # KServe
-KServe is an open-source Kubernetes-native model inference platform. It provides a standardized InferenceService custom resource that abstracts away the complexity of serving machine learning models. It works across major ML frameworks such as PyTorch, vLLM and Hugging Face transformers through pluggable model runtimes, and supports both predictive and generative AI workloads with the Open Inference Protocols for consistent client APIs.
+KServe is an open-source Kubernetes-native model inference platform. It provides a standardized **InferenceService** 
+object that abstracts away the complexity of serving machine learning models.  It works across major ML frameworks such
+as PyTorch, vLLM and Hugging Face transformers through pluggable model runtimes, and supports both predictive and 
+generative AI workloads with standard client APIs.
 
 Learn more in the official KServe documentation: https://kserve.github.io/website/docs/intro
 
-## KServe Custom Resources
+## KServe functionality
 
-KServe exposes its functionality primarily through Kubernetes custom resources, which means deploying a model is a declarative operation — you describe the desired state in YAML, and the KServe controller reconciles the underlying Kubernetes resources like pods and services for you. Rather than interacting with the full surface area of the platform, day-to-day usage centers on just two CRs: ServingRuntime (or ClusterServingRuntime) and InferenceService.
+KServe exposes its functionality primarily through Kubernetes dedicated objects (a.k.a Custom Resources), which means 
+deploying a model is a declarative operation. In other words, you describe the desired model  and its runtime as YAML 
+definition in the LUMI-K cluster, and the Kserve controller do the actual deployment of the model by managing the 
+underlying Kubernetes resources like pods and services for you. Rather than managing several Kubernetes objects required
+for deploying and exposing your AI models, day-to-day operations for your inference service can be handled by two 
+dedicated Kubernetes objects: **ServingRuntime** and **InferenceService**.
 
-The split between these two resources reflects a clean separation of concerns. ServingRuntime captures the infrastructure-level details of a model server while the InferenceService captures the model-level details. Together they let you go from a trained model artifact to a production endpoint with YAML files, while inheriting the protocol standardization that KServe provides.
+The split between these two resources reflects a clean separation of concerns. **ServingRuntime** captures the 
+infrastructure-level details of a model server while the **InferenceService** captures the model-level details. Together 
+they let you go from a trained model artifact to a production endpoint with abstracted and simple configuration.
+
 
 ### ServingRuntime
 
-A ServingRuntime is a reusable template that defines how a particular class of models is served. It encapsulates the container image of a model server, the model formats it understands, and the runtime configuration needed to launch it.
+A **ServingRuntime** is a reusable template that defines how a particular class of models is served. It encapsulates the
+container image of a model server, the model formats it understands, and the runtime configuration needed to launch it.
 
-ServingRuntime is a namespaced custom resource, therefore if you define a ServingRuntime it can only be used in your namespace. ClusterServingRuntime custom resource is the same as ServingRuntime except that it is cluster scoped. Unfortunately, it is not allowed to create ClusterServingRuntime objects in LUMI-K, however, the cluster has the following pre-defined ClusterServingRuntime which are available to all namespaces:
+ServingRuntime is a namespaced object, therefore if you create a ServingRuntime it can only be used in your namespace. 
+
+In addition to ServingRuntime objects managed by users, LUMI-K provide default runtimes via the ClusterServingRuntime 
+objects. The ClusterServingRuntime object is the same as ServingRuntime except that it is cluster scoped 
+(i.e., can be used referenced from all namespaces). Users are not allowed to edit or create  ClusterServingRuntimes,
+however they can use them directly in their InferenceServices. LUMI-K provide the following default ClusterServingRuntime: 
 
     - kserve-huggingfaceserver
     - kserve-torchserve
@@ -25,22 +42,32 @@ ServingRuntime is a namespaced custom resource, therefore if you define a Servin
     - kserve-paddleserver
     - kserve-sklearnserver
 
-If a namespaced ServingRuntime and a cluster-scoped ClusterServingRuntime have the same name in case the runtime is explicitly specified in the InferenceService CR, then Kserve will select the ServingRuntime.
-
-More information about the Serving Runtimes in the official documentation: https://kserve.github.io/website/docs/concepts/resources/servingruntime
+If a namespaced ServingRuntime and a cluster-scoped ClusterServingRuntime have the same name, the ServingRuntime has 
+precedence in the InferenceService object. More information about the Serving Runtimes in the official
+[documentation](https://kserve.github.io/website/docs/concepts/resources/servingruntime).
 
 ### InferenceService
 
-An InferenceService is the CR that actually brings a model online. It is a namespaced CR so the user has full control over its specification. Deploying a model in Kubernetes normally means hand-authoring a Deployment, a Service, and a route, and keeping them in sync as the model evolves.
-InferenceService defines what to serve by pointing at a specific model artifact and declaring the deployment-level concerns that matter for a production endpoint. It collapses everything into a single declarative spec focused on the things a model owner actually cares about. The KServe controller reconciles the spec into the underlying Kubernetes objects and keeps them aligned with the desired state as you iterate.
+An **InferenceService** is the object that actually deploys and exposes the model as an API. It is a namespaced object,
+which means that users have full control over its specification. InferenceService defines what to serve by pointing at a
+specific model artifact and declaring other parameters that specifies how the model is deployed and exposed. 
+It encompasses everything into a single declarative specification focused on the things a model owner actually cares 
+about. The KServe controller reconciles the specification into the underlying Kubernetes objects and keeps them aligned 
+with the desired state as you iterate.
+
 
 ## Setting up Inference in LUMI-K
 
-In this tutorial we will deploy two models in LUMI-K: a scikit-learn predictive model and a huggingface LLM model using vLLM server. Both examples will be deployed in `kserve-inference-test` namespace; steps for creating a namespace in LUMI-K are explained [here](../getting-started/lumik_projects.md#create-a-new-project). **Note:  The following examples are adapted from the upstream KServe documentation and tailored to the LUMI-K deployment.**
+In this tutorial we will deploy two models in LUMI-K: a scikit-learn predictive model and a huggingface LLM model using
+vLLM server. Both examples will be deployed in `kserve-inference-test` namespace; steps for creating a namespace 
+(a.k.a., project) in LUMI-K are explained [here](../getting-started/lumik_projects.md#create-a-new-project).
+
+**Note:  The following examples are adapted from the upstream KServe documentation and tailored to the LUMI-K deployment.**
 
 ### Deploying a Predictive Model
 
-First, we will create a ServingRuntime custom resource and name it `scikit-learn-server`. This will provide the tepmplate to run scikit-learn based models.
+First, we will create a **ServingRuntime** object and name it `scikit-learn-server`. This will provide the runtime for 
+scikit-learn based models.
 
 ```
 apiVersion: serving.kserve.io/v1alpha1
@@ -74,7 +101,9 @@ spec:
           memory: 20Gi
 ```
 
-We are using the upstream provided `kserve/sklearnserver` image for scikit-learn, but, you can also build your own custom image and replace this field. Once the ServingRuntime is created, we can proceed to creating the InferenceService CR.
+We are using the upstream provided `kserve/sklearnserver` image for scikit-learn, but, you can also build your own 
+custom image and replace this field. Once the **ServingRuntime** is created, we can proceed to creating the **InferenceService**
+object.
 
 ```
 apiVersion: serving.kserve.io/v1beta1
@@ -102,13 +131,17 @@ Here the model is downloaded from a Google Cloud Storage (GCS) bucket as an anon
     - LUMI-K's Persistent Volume Claims (PVCs)
     - HTTP(S) URIs
 
-You can read more about each of the storage options and their authentication methods [here](https://kserve.github.io/website/docs/model-serving/storage/overview).
+You can read more about each of the storage options and their authentication methods 
+[here](https://kserve.github.io/website/docs/model-serving/storage/overview).
 
-After creating the InferenceService CR, wait for it to become ready. You can also check the status of the correspoding pod in the `kserve-inference-test` namespace:
+After creating the InferenceService object, wait for it to become ready. You can also check the status of the 
+corresponding pod in the `kserve-inference-test` namespace:
 
 `oc get pods -n kserve-inference-test`
 
-The sckit-learn model inference is deployed and ready to be used when the pod and the InferenceService CR are in the ready state. A Kubernetes service is automatically created in the same namespace to expose the inference endpoints. However, to expose the endpoints to the internet, we will need to create a Route object. Routes and IP whitelisting in LUMI-K are explained [here](../usage/networking.md#routes).
+The sckit-learn model inference is deployed and ready to be used when the pod and the InferenceService object are in the
+ready state. A Kubernetes service is automatically created in the same namespace to expose the inference endpoints. 
+However, to expose the endpoints to the internet, we will need to create a Route object. Routes and IP whitelisting in LUMI-K are explained [here](../usage/networking.md#routes).
 
 ```
 apiVersion: route.openshift.io/v1
@@ -162,9 +195,14 @@ This should return an output similar to the following:
     }]}
 ```
 ### Deploying an LLM Model
-In this example, we will deploy Qwen3-4B-Instruct-2507 model which is hosted in Hugging Face Model Hub [here](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507). It is a small 4B parameters model with function/tool calling capabilities for agentic use. We'll use the pre-defined ClusterServingRuntime `kserve-huggingfaceserver` which is available in all namespaces. Furthermore, the example uses a Hugging Face access token in place of the anonymous client, allowing models that require authentication to be retrieved.
+In this example, we will deploy Qwen3-4B-Instruct-2507 model which is hosted in Hugging Face Model Hub [here](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507). 
+It is a small 4B parameters model with function/tool calling capabilities for agentic use. We'll use the pre-defined 
+**ClusterServingRuntime** `kserve-huggingfaceserver` which is available for all namespaces. 
+Furthermore, the example uses a Hugging Face access token in place of the anonymous client, allowing models that require
+authentication to be retrieved.
 
-First create a secret that stores you Hugging Face token. Make sure this token has enough permissions to pull the required model:
+First create a secret that stores you Hugging Face token. Make sure this token has enough permissions to pull the
+required model:
 ```
 apiVersion: v1
 kind: Secret
@@ -187,7 +225,18 @@ secrets:
   - name: hf-token
 ```
 
-LLM models require substantial disk space. Therefore, it is a good idea to download the model into a PVC instead of an ephemeral emptyDir. KServe uses an initContainer in the same pod as the inference server pod which automatically downloads the model and stores it at /mnt/models/ directory. We can use the LUMI-K's LVM storage class which stores the model in a persistent volume using the SSD disks present on the worker nodes which ensures low latency. More information regarding LVM storage class can be found [here](../usage/storage/persistent_storage.md#3-lvm-storageclass).
+
+
+KServe uses  an initContainer in the same pod as the inference server pod which automatically downloads the model and
+stores it at `/mnt/models/`. However. as LLM models require substantial disk space. It is recommended to mount a 
+[PersistentVolumeClaim (PVC)](../usage/storage/persistent_storage.md/#persistentvolumeclaims-pvcs) at `/mnt/models/` 
+using one of LUMI-K's [storage classes](../usage/storage/persistent_storage.md/#storageclasses-scs). For fast local 
+storage it is recommended to use the [LVM storage class](../usage/storage/persistent_storage.md/#3-lvm-storageclass). 
+Nevertheless, if you wish to mount the same PVC instance at different instances of your inference pods, you have to use
+the [CephFS storage class](../usage/storage/persistent_storage.md/#1-cephfs-storageclass).
+
+
+TO-DO: change the storageclass to CephFS.
 
 ```
 kind: PersistentVolumeClaim
