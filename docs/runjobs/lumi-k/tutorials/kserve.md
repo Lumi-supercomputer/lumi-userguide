@@ -235,9 +235,6 @@ storage it is recommended to use the [LVM storage class](../usage/storage/persis
 Nevertheless, if you wish to mount the same PVC instance at different instances of your inference pods, you have to use
 the [CephFS storage class](../usage/storage/persistent_storage.md/#1-cephfs-storageclass).
 
-
-TO-DO: change the storageclass to CephFS.
-
 ```
 kind: PersistentVolumeClaim
 apiVersion: v1
@@ -250,7 +247,7 @@ spec:
   resources:
     requests:
       storage: 100Gi
-  storageClassName: lvms-local
+  storageClassName: rook-ceph-fs
   volumeMode: Filesystem
 ```
 
