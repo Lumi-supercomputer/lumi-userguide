@@ -11,7 +11,7 @@
 
 !!! Warning "Restriction of Users during Pilot phase"
     Aitta is currently undergoing a piloting phase before a full public release. Integration with all LUMI authentication providers is incomplete.
-    Therefore only users that can use MyCSC or Haka authentication can currently access the service. Users that need to authenticate via Puhuri, MyAccessID, the European Federation Platform, or others unfortunately cannot access Aitta at the moment. We are hoping resolve this soon.
+    Therefore only users that can use MyCSC or Haka authentication can currently access the service. Users that need to authenticate via Puhuri, MyAccessID, the European Federation Platform, or others unfortunately cannot access Aitta at the moment. We are hoping to resolve this soon.
 
 Aitta is a machine learning inference service that allows you to interact with large open-weight models (i.e., models that are openly available for download e.g. from huggingface.co) directly on the LUMI Supercomputer hardware without dealing with any of the technical details. You just send your inference request to an OpenAI compatible API - Aitta takes care of allocating resources from the supercomputer scheduling system (Slurm), loading the model and forwarding the request to the designated compute node.
 
@@ -42,7 +42,7 @@ Visit the web frontend at [aitta.csc.fi][aitta]. Click the "Log In" button at th
 
 <details><summary>Detailed instructions for the web frontend</summary>
 
-  1. After you have logged in, you will see a page that shows the available models and whether they are currently online or not. If the model is online, it means that is already loaded into GPU memory and ready to respond immediately. Starting a chat with a model marked as offline means you will have to wait a bit while the model is made ready to respond. Click on any model to open a chat view.
+  1. After you have logged in, you will see a page that shows the available models and whether they are currently online or not. If the model is online, it means that it is already loaded into GPU memory and ready to respond immediately. Starting a chat with a model marked as offline means you will have to wait a bit while the model is made ready to respond. Click on any model to open a chat view.
     <figure>
       <img
         src="/assets/images/laifs/aitta/aitta_model_page.png"
@@ -76,9 +76,9 @@ Visit the web frontend at [aitta.csc.fi][aitta]. Click the "Log In" button at th
       <img
         src="/assets/images/laifs/aitta/model_ready_page.png"
         width="1000px"
-        alt='When the model is ready the website displays an empty chat window. The user has typed "Can you explain to me the difference between a laptop and a supercomputer?" in the message input field at the buttom of the page.'
+        alt='When the model is ready the website displays an empty chat window. The user has typed "Can you explain to me the difference between a laptop and a supercomputer?" in the message input field at the bottom of the page.'
       />
-      <figcaption>When the model is ready the website displays an empty chat window. The user has typed "Can you explain to me the difference between a laptop and a supercomputer?" in the message input field at the buttom of the page.</figcaption>
+      <figcaption>When the model is ready the website displays an empty chat window. The user has typed "Can you explain to me the difference between a laptop and a supercomputer?" in the message input field at the bottom of the page.</figcaption>
     </figure>
 
   5. Aitta will forward your message to the model and stream the response back to the web frontend where it will appear in the chat window. Every message has associated buttons which you can use to
@@ -106,12 +106,12 @@ Visit the web frontend at [aitta.csc.fi][aitta]. Click the "Log In" button at th
       <figcaption>Hovering the mouse over the "Models" text at the top of the page shows a list of all models.</figcaption>
     </figure>
 
-  7. When you are done, you can log out via the "Log Out" button at the top right corner or simply leave the page. You do not need to explicitely shut down any model you were using.
+  7. When you are done, you can log out via the "Log Out" button at the top right corner or simply leave the page. You do not need to explicitly shut down any model you were using.
 
 </details>
 ### Limitations
 
-The web frontend is only a basic chat interface with no additional features. The entire chat history is kept in your browser. If you leave the page, the conversation is deleted and can not be recovered. Furthermore, if the model becomes unavailable during the conversation, the frontend will return to show the message that the model is currently not running. This also results in the chat history being lost. While Aitta tries to ensure that a model is always running when you are actively using, it can happen that the current allocation of resources expires before Aitta is able to obtain a new allocation.
+The web frontend is only a basic chat interface with no additional features. The entire chat history is kept in your browser. If you leave the page, the conversation is deleted and can not be recovered. Furthermore, if the model becomes unavailable during the conversation, the frontend will return to show the message that the model is currently not running. This also results in the chat history being lost. While Aitta tries to ensure that a model is always running when you are actively using it, it can happen that the current allocation of resources expires before Aitta is able to obtain a new allocation.
 
 The frontend also performs no automatic compaction of the history. If the length of the conversation exceeds the capabilities of the underlying model, it will stop responding and you may encounter an error message.
 
@@ -205,7 +205,7 @@ The PyPI package [aitta-client][aitta-client-pypi] contains functions for intera
 
 ### API reference
 
-This section gives a broad overview of the available API functionality. To check a detailed reference for parameters and example usage, refer to the automated Swagger API reference at [api-aitta.csc.fi/docs][aitta-api-docs].
+This section gives a broad overview of the available API functionality. To check a detailed reference for parameters and example usage, refer to the automated Swagger API reference at [aitta-api.csc.fi/docs][aitta-api-docs].
 
 Responses from the Aitta API are typically JSON objects following the Hypertext Application Language (HAL) specification, which in every response includes URLs to further endpoints relevant to the requested resource. This allows you to write client code that follows the URLs linked from the responses based on semantic names for resource endpoints instead of hardcoding URLs in your code.
 
@@ -244,7 +244,7 @@ The API exposes details about available models. You can get a list of available 
 }
 ```
 
-The response of the model information endpoint is a JSON object containing a description of the model as well as a list of the models capabilities, indicating which inference endpoints are supported for the model. It also includes a list of URLs relevant to the model, including e.g. the OpenAI compatible inference endpoints the model supports as well as the URL of the endpoint listing currently active workers for the model. An example response for the `openai/gpt-oss-120b` model looks like the following:
+The response of the model information endpoint is a JSON object containing a description of the model as well as a list of the model's capabilities, indicating which inference endpoints are supported for the model. It also includes a list of URLs relevant to the model, including e.g. the OpenAI compatible inference endpoints the model supports as well as the URL of the endpoint listing currently active workers for the model. An example response for the `openai/gpt-oss-120b` model looks like the following:
 
 ```json
 {

@@ -7,7 +7,7 @@
 [ai-environment]: ../software/ai-environment.md
 [ai-guide-vllm]: https://github.com/Lumi-supercomputer/LUMI-AI-Guide/tree/main/10-LLM-inference
 
-AI-enabled services at their core rely on a trained machine learning model that predict an output based on the given input. A prominent example is when a large language model (LLM) generates a chat response based on the full log of the previous conversation and potentially some additonal context information for use in an AI chat assistant application. This prediction process is referered to as `inference`.
+AI-enabled services at their core rely on a trained machine learning model that predicts an output based on the given input. A prominent example is when a large language model (LLM) generates a chat response based on the full log of the previous conversation and potentially some additional context information for use in an AI chat assistant application. This prediction process is referred to as `inference`.
 
 An `inference service` (or server) is a software process that performs inference upon request from a downstream application and thus forms a core component of an AI application. The inference service hides the complexity of running the actual models, which due to their size often require several GPUs or even several entire LUMI-G compute nodes, behind an abstracted interface. This typically takes the form of semantic HTTP endpoints, like the [OpenAI API][openai-api-reference], which has become a de-facto standard.
 
@@ -25,7 +25,7 @@ The Aitta service frontpage is available at [aitta.csc.fi][aitta] and detailed u
 
 ### Self-hosted Inference Servers
 
-You can also run your own inference server like [vLLM][vllm], which is available in the [LUMI AI Factory AI Software Enviroment][ai-environment], or similar. This gives you full control over the inference server and the ability to perform inference with any model you desire. It also ensures that you have the server for yourself and no other user has access to it, giving you sole access to the compute power of the reserved GPUs (e.g. for processing large batches of data at once).
+You can also run your own inference server like [vLLM][vllm], which is available in the [LUMI AI Factory AI Software Environment][ai-environment], or similar. This gives you full control over the inference server and the ability to perform inference with any model you desire. It also ensures that you have the server for yourself and no other user has access to it, giving you sole access to the compute power of the reserved GPUs (e.g. for processing large batches of data at once).
 
 However, it also has a few drawbacks:
 
