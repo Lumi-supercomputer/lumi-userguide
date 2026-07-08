@@ -243,7 +243,7 @@ metadata:
   namespace: kserve-inference-test
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 100Gi
@@ -274,17 +274,17 @@ spec:
         - '--dtype=bfloat16'
       env:
         - name: VLLM_CPU_KVCACHE_SPACE
-          value: '24'
+          value: '12'
       modelFormat:
         name: huggingface
       name: ''
       resources:
         limits:
           cpu: '16'
-          memory: 32Gi
+          memory: 48Gi
         requests:
           cpu: '8'
-          memory: 24Gi
+          memory: 32Gi
       storageUri: 'hf://Qwen/Qwen3-4B-Instruct-2507'
     volumes:
       - name: kserve-provision-location
@@ -297,7 +297,7 @@ The predictor block in the InferenceService Spec defines the component that actu
 - **serviceAccountName: kserve-deploy-sa** — the ServiceAccount the predictor Pod runs as. This the same SA we defined earlier and is bound to the secrets needed to authenticate to Hugging Face.
 - **modelFormat.name: huggingface** — selects a ServingRuntime (or ClusterServingRuntime in this case) that advertises support for the huggingface format.
 - **storageUri: hf://Qwen/Qwen3-4B-Instruct-2507** — the source of the model weights. The hf:// scheme tells KServe to pull directly from the Hugging Face Hub, using the token attached to the ServiceAccount above.
-- **env.VLLM_CPU_KVCACHE_SPACE: '24'** — reserves 24 GiB of host memory for the KV cache when running vLLM on CPU. If not defined, vLLM's KV cache assumes it can consume all the memory avaible on the physical node. This results in the pod to be OOM killed due to memory resource limits.
+- **env.VLLM_CPU_KVCACHE_SPACE: '12'** — reserves 12 GiB of host memory for the KV cache when running vLLM on CPU. If not defined, vLLM's KV cache assumes it can consume all the memory avaible on the physical node. This results in the pod to be OOM killed due to memory resource limits.
 - **args** — flags passed through to the vLLM server:
     - **--model_name=qwen** — the logical name clients use when making inference requests.
     - **--enable-auto-tool-choice** and **--tool-call-parser=qwen3_xml** — enable tool-calling and tell vLLM how to parse Qwen's tool-call output format.
