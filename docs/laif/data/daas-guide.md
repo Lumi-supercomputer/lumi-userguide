@@ -11,8 +11,7 @@
 [LAIF user support email]: mailto:support@lumi-ai-factory.eu
 [LUMI-O user guide]: ./../../storage/lumio/index.md
 [run jobs]: ./../../runjobs/index.md
-[software]: ./../../storage/index.md
-[software library]: https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/
+[software]: ./../../software/index.md
 [terms of use]: https://lumi-supercomputer.eu/wp-content/uploads/2026/03/LUMI-General-Terms-of-Use_2026.pdf
 
 ## What is LUMI AIF Dataset as a Service?
@@ -76,7 +75,7 @@ the process.
 ### Searching for datasets
 
 The currently available datasets are listed in the [data catalogue][data catalogue].
-Take a look – you don't need have an account to browse it.
+Take a look – you don't need to have an account to browse it.
 
 You can search for datasets by using e.g.
 
@@ -128,7 +127,7 @@ LUMI AI Factory Dataset as a Service is a way for you to get visibility for your
 LUMI AIF DaaS is not a repository or a preservation service. It does not take away your ownership of data or remove your right to manage access to it. LUMI AIF DaaS facilitates access and findability. Publish your data to increase its impact, discover new use cases, meet compliance requirements, attract collaborators and customers, and participate in cutting‑edge scientific and industrial innovation.
 
 ### What is required of a dataset
-LUMI AI Factory Dataset as a Service offers a curated catalog. This means that every dataset offered has been through a process where its suitability has been evaluated. LUMI AI Factory curation criteria is evolving and it will be presented to data providers during our cooperation. To summarize the criteria, the datasets need to be relevant for AI usage, they need to be AI-ready and the data providers need to agree to provide the data under such a license or agreement that it is possible to use it in AI innovation. If you already have used good data management practices and you have a large dataset with some idea of AI useage, your dataset is most likely good to go.
+LUMI AI Factory Dataset as a Service offers a curated catalog. This means that every dataset offered has been through a process where its suitability has been evaluated. LUMI AI Factory curation criteria is evolving and it will be presented to data providers during our cooperation. To summarize the criteria, the datasets need to be relevant for AI usage, they need to be AI-ready and the data providers need to agree to provide the data under such a license or agreement that it is possible to use it in AI innovation. If you already have used good data management practices and you have a large dataset with some idea of AI usage, your dataset is most likely good to go.
 
 Every data provider needs to accept the Terms of Use of LUMI AI Factory Dataset as a Service. If your data contains personal data, also a record of processing activities should be documented. LUMI AIF DaaS accepts datasets containing personal data and other confidential datasets. Datasets containing special categories of personal data are not currently accepted.
 
