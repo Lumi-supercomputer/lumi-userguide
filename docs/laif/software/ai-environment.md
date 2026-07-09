@@ -12,7 +12,7 @@
 
 The AI Software Environment by LUMI AI Factory is a comprehensive, ready-to-use containerised stack for AI
 and machine learning workloads on the LUMI supercomputer. The environment is designed to address
-the complexity of deploying and maintaining AI/ML software in high-performance computing (HPC)
+the complexity of deploying and maintaining AI/ML software in a high-performance computing (HPC)
 settings.
 
 All build artifacts are publicly available. This includes the full recipe,
