@@ -155,7 +155,9 @@ The data analytics nodes of [LUMI-D hardware partition][lumi-d] include [large m
 
 - Slurm partition: `largemem`
 
-The partition `largemem` is operated in non-exclusive mode, i.e. you are billed per allocated memory (or per allocated core, if requesting less than 2GB memory per core). 
+The partition `largemem` is operated in exclusive mode, i.e. full nodes (128 CPU-cores) are always allocated for your jobs. 
+
+If you request less than 256 GB/node, your job is billed by the requested CPU-cores (i.e. for 128 CPU-cores per node). If you request more than 256 GB/node, your job is billed by the allocated memory. 
 
 Specifically, the formula used for billing is:
 
@@ -168,18 +170,18 @@ CPU-core-hours-billed = max(
 Thus,
 
 - if you use 2GB or less of memory per core, you are charged per allocated
-  cores (although in this case please consider using e.g. the partition `small` instead)  
+  cores.
 - if you use more than 2GB of memory per core, you are charged per 2GB slice
   of memory.
 
-For example, allocating 1 CPU-core and 32 GB of memory in a job running for 1 day
+For example, allocating 128 CPU-cores (1 node) and 256 GB of memory in a job running for 1 day
 consumes:
 
 ```text
-(32 GB / 2 GB) x 24 hours = 384 CPU-core-hours
+128 CPU-cores x 24 hours = 3 072 CPU-core-hours
 ```
 
-Allocating 64 CPU-cores and 3000 GB of memory in a job running for 1 day consumes:
+Allocating 128 CPU-cores (1 node) and 3000 GB of memory in a job running for 1 day consumes:
 
 ```text
 (3000 GB / 2 GB) x 24 hours = 36 000 CPU-core-hours
