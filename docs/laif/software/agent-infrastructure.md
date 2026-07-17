@@ -72,7 +72,7 @@ module load Local-LAIF lumi-aif-agents
 opencode
 ```
 
-Your home directory, as well as any project directories under, e.g, `/scratch`,
+Your home directory, as well as any project directories under, e.g., `/scratch`,
 are not mounted in the container environment by default. If you wish OpenCode to have access to
 directories that are not under your current working directory, you can bind mount them by appending
 them to the `SINGULARITY_BIND` environment variable.
