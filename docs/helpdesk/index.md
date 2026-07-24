@@ -60,11 +60,17 @@ The LUMI helpdesk is open every weekday from Monday to Friday except during [Fin
 
 |       | CE(S)T  | EE(S)T  | UTC (Summer)      |
 |-------|---------|---------|-------------------|
-| Start | 8:00 AM | 9:00 AM | 7:00 AM (6:00 AM) |
-| End   | 6:00 PM | 7:00 PM | 5:00 PM (4:00 PM) |
+| Start* | 8:00 AM | 9:00 AM | 7:00 AM (6:00 AM) |
+| End * | 6:00 PM | 7:00 PM | 5:00 PM (4:00 PM) | 
+
+*\*) During the summer vacation season (22nd June – 14th August) the LUMI helpdesk operates with reduced opening hours: 9:00 AM – 4:00 PM CEST / 10:00 AM – 5:00 PM EEST.*
 
 
 <br />
+
+
+If you want to give us general feedback, please see the [Contribution and feedback](./feedback.md) page.
+
 
 
 <!-- Please also check our [tech support FAQ][tech-faq] for the most frequently asked questions about the usage of LUMI.  -->

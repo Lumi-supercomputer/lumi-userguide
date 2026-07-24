@@ -52,16 +52,16 @@ guidance on running your container on LUMI.
 ## Pulling container images from a registry
 
 Singularity allows pulling existing container images (Singularity or Docker)
-from container registries such as [DockerHub][dockerhub] or [AMD Infinity
-Hub][infinity-hub]. Pulling container images from registries can be done on
-LUMI. For instance, the Ubuntu image `ubuntu:24.04` can be pulled from
-DockerHub with the following command:
+from container registries such as [DockerHub][dockerhub]. 
+Pulling container images from registries can be done on LUMI. For instance, 
+the latest Ubuntu image `ubuntu:latest` can be pulled from DockerHub with the 
+following command:
 
 ```bash
-$ singularity pull docker://ubuntu:24.04
+$ singularity pull docker://ubuntu:latest
 ```
 
-This will create the Singularity image file `ubuntu_24.04.sif` in the directory
+This will create the Singularity image file `ubuntu_latest.sif` in the directory
 where the command was run. Once the image has been pulled, the container can be
 run. Instructions for running the container may be found on the [container jobs
 page][container-jobs].
@@ -84,7 +84,7 @@ page][container-jobs].
     ```
 
 !!! note "Compatibility of containers"
-    Containers pulled from DockerHub or AMD Infinity Hub rarely offer full support
+    Containers pulled from generic sources rarely offer full support
     for the interconnect of LUMI. This will show as degraded performance or even
     crashes. Also, a container built with a ROCm version that is not supported by
     the driver on LUMI, may not work. To get optimal performance on LUMI, you will
@@ -214,7 +214,7 @@ is set as the "runscript" of the image.
 
 ```bash
 Bootstrap: docker
-From: ubuntu:24.04
+From: ubuntu:26.04
 
 %post
   #version values
@@ -240,7 +240,7 @@ From: ubuntu:24.04
   wget -q http://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-$BENCHMARK.tar.gz
   tar xf osu-micro-benchmarks-$BENCHMARK.tar.gz
   cd osu-micro-benchmarks-$BENCHMARK
-  ./configure --prefix=/usr/local CC=$(which mpicc) CFLAGS=-O3 --build=aarch64-unknown-linux-gnu
+  ./configure --prefix=/usr/local CC=$(which mpicc) CFLAGS=-O3 
   make
   make install
   cd ..

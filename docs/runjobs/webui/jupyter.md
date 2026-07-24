@@ -19,9 +19,12 @@ In the basic settings, the following settings are available:
 
 - **Python**:
     Currently, the following Python modules are available: `cray-python`,
-    `pytorch`, and `geoconda`. Note that `pytorch` and `geoconda` have limited
-    support available. You can also select _Custom_ to provide a full path to
-    the Python interpreter you want to use.
+    `lumi-multitorch` from the
+    [LUMI AI Factory AI Software Environment](../../../laif/software/ai-environment),
+    `geoconda` and `pytorch`. Note that `pytorch` and `geoconda` have limited
+    support available, and the `pytorch` module from the CSC software stack has
+    been deprecated in favor of `lumi-multitorch`. You can also select _Custom_
+    to provide a full path to the Python interpreter you want to use.
 - **Virtual environment:**
     After enabling the use of virtual environment in the form, you can provide
     a path to your virtual environment. If the provided path does not exist, a

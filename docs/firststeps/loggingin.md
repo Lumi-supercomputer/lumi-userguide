@@ -16,12 +16,16 @@
 
 # Logging in (with an SSH client)
 
-!!! info
-	It is now also possible to [log in using the LUMI web interface](./loggingin-webui.md) 
 
 Connecting to LUMI via the command line is possible from all major OS. Once you
-have completed the steps to [setting up an SSH key pair][setup-ssh-key] and
-everything has synchronized, you can connect using an ssh client:
+have completed the steps with [setting up SSH authentication][setup-ssh-key] and
+everything has synchronized, you can connect using either your SSH certificate or SSH keys (depending on your access method).
+
+!!! important
+	If you are connecting with an SSH certificate (EuroHPC Federation Platform projects), please follow the access guideline in the **EFP documentation to [connect to a resource](https://docs.my-eurohpc.eu/aai/ssh/#connect-to-a-resource)**.
+
+
+For other than EuroHPC Federation Platform projects, connect using SSH keys:
 
 ```bash
 ssh -i <path-to-private-key> <username>@lumi.csc.fi

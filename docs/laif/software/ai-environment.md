@@ -12,7 +12,7 @@
 
 The AI Software Environment by LUMI AI Factory is a comprehensive, ready-to-use containerised stack for AI
 and machine learning workloads on the LUMI supercomputer. The environment is designed to address
-the complexity of deploying and maintaining AI/ML software in high-performance computing (HPC)
+the complexity of deploying and maintaining AI/ML software in a high-performance computing (HPC)
 setting.
 
 All build artifacts are publicly available. This includes the full recipe,
@@ -109,7 +109,7 @@ This will create an h5-env environment in the working directory. The `--system-s
 !!! Warning "Strain on Lustre file system"
     Installing Python packages typically creates thousands of small files. This puts a lot of strain on the Lustre file system and might exceed your file quota. This problem can be solved by [building new containers based on the images](#build-new-containers-based-on-the-images).
 
-Now one can execute a script with and import the h5py package. To execute a script called `my-script.py` within the container using the virtual environment, use the additional activation command:
+Now one can execute a script that imports the h5py package. To execute a script called `my-script.py` within the container using the virtual environment, use the additional activation command:
 
 ```
 export SIF=/appl/local/laifs/containers/lumi-multitorch-u24r64f21m43t29-20260124_092648/lumi-multitorch-full-u24r64f21m43t29-20260124_092648.sif
@@ -126,7 +126,7 @@ To build a new container the following steps are required:
 
 1. Check what software you want to install.
 
-    *Note: For a few small pip packages a [virtual environment](#list-pip-packages-in-container) might be sufficient.*
+    *Note: For a few small pip packages a [virtual environment](#add-more-pip-packages-to-container) might be sufficient.*
 
 
 2. Identify the correct base container from the [releases on GitHub][releases on GitHub].
@@ -170,7 +170,7 @@ To build a new container the following steps are required:
 4. Build the container using the [instructions to extend singularity images](../../software/containers/singularity.md). This is possible either on your [own hardware](../../software/containers/singularity.md#building-containers-on-local-hardware) or directly on [LUMI using PRoot](../../software/containers/singularity.md#building-or-extending-containers-with-proot).
 
     !!! Warning "Memory requirements"
-        Creating new containers based on the provided containers might require significant memory. One option is to use an [interactive slurm job](../../runjobs/scheduled-jobs/interactive.md/#interactive-slurm-jobs) with sufficient memory. 
+        Creating new containers based on the provided containers might require significant memory. One option is to use an [interactive slurm job](../../runjobs/scheduled-jobs/interactive.md#interactive-slurm-jobs) with sufficient memory. 
 
     Example:
 

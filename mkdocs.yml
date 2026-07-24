@@ -11,7 +11,7 @@ nav:
   - First steps: 
     - Get Started: firststeps/index.md
     - Access to LUMI: firststeps/accessLUMI.md
-    - Setting up SSH key pair: firststeps/SSH-keys.md
+    - SSH authentication: firststeps/SSH-keys.md
     - Logging in (with SSH client): firststeps/loggingin.md
     - Logging in (with web interface): firststeps/loggingin-webui.md
     - Moving data to/from LUMI: firststeps/movingdata.md
@@ -41,6 +41,7 @@ nav:
       - Software stacks: runjobs/lumi_env/softwarestacks.md
       - Daily management: runjobs/lumi_env/dailymanagement.md
       - Data storage options: storage/index.md
+      - Jobs and data privacy: runjobs/lumi_env/privacy-on-system.md
       - Billing policy: runjobs/lumi_env/billing.md
     - Slurm jobs:
       - Slurm quickstart: runjobs/scheduled-jobs/slurm-quickstart.md
@@ -101,6 +102,7 @@ nav:
     - Local software collections:
       - CSC: software/local/csc.md
       - CSC_quantum: software/local/csc-quantum.md
+      - EESSI: software/local/EESSI.md
       - LAIF AI containers: laif/software/ai-environment.md
       #- Quantum ESPRESSO: software/guides/quantumespresso.md
       #- ParaView: software/guides/paraview.md
@@ -123,6 +125,8 @@ nav:
     - Performance analysis:
       - Performance analysis strategies: development/profiling/strategies.md
       - Cray Performance Analysis Tool: development/profiling/perftools.md
+    - AI tools:
+      - AI agent guide: development/ai-tools/ai-agent-guide.md
   - Storage:
     - Overview: storage/index.md
     - Parallel filesystems:
@@ -172,16 +176,21 @@ nav:
     - Known issues: helpdesk/issues.md
     - LUMI service status: https://www.lumi-supercomputer.eu/lumi-service-status/
     - Mailing list archive: https://postit.csc.fi/sympa/arc/lumi-users
+    - Contribution and feedback: helpdesk/feedback.md  
   - LUMI AI Factory:
     - Services: laif/index.md
     - Data:
       - Dataset as a Service:
-        - User guide: laif/data/daas_guide.md
-        - Service description: laif/data/daas_description.md
+        - User guide: laif/data/daas-guide.md
+        - Service description: laif/data/daas-description.md
+    - AI Inference:
+      - Overview: laif/inference/index.md
+      - Aitta Inference Service: laif/inference/aitta.md
     - Software:
       - Overview: laif/software/index.md
       - AI Software Environment: laif/software/ai-environment.md
       - Containerized Workflows: laif/software/workflows.md
+      - Infrastructure for AI agents: laif/software/agent-infrastructure.md
     
  
 theme:
@@ -220,8 +229,10 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/Lumi-supercomputer/lumi-userguide/
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/LUMIhpc
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/lumi-supercomputer/   
+    - icon: fontawesome/brands/bluesky
+      link: https://bsky.app/profile/lumi-supercomputer.eu
 
 markdown_extensions:
   - toc:
@@ -258,4 +269,6 @@ plugins:
         'software/packages/pytorch.md': 'https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/p/PyTorch/'
         'lumi-k.md': 'runjobs/lumi-k/getting-started/lumi_k_what_is.md'
         'lumi-o.md': 'storage/lumio/index.md'
+        'laif/data/daas_description.md': 'laif/data/daas-description.md'
+        'laif/data/daas_guide.md': 'laif/data/daas-guide.md'
   - search
