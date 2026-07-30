@@ -65,7 +65,7 @@ For more details, refer to the documentation available on LUMI at `/appl/local/l
 
 6. **Check results** in the `output/` directory after completion. You will get one output file for each input file.
 
-#### Vision-Language Batch Processing
+### Vision-Language Batch Processing
 
 The Vision-Language Batch Processing workflow can be used for image analysis using vision-language models. It uses the Transformers library to process input images based on user-provided instructions and generate output files with textual answers. This workflow supports task configuration through YAML files.
 
