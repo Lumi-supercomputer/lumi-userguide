@@ -80,3 +80,13 @@ Below are some useful options to use with `rsync`:
 - if your goal is to achieve mirroring use the `--delete` option. When this
   option is used, `rsync` deletes extraneous files from the destination
   location.
+
+## Copying files with `FileZilla`
+
+The tool `FileZilla` is a graphical user interface that facilitate transferring
+file using alternative protocols, such as the SFTP protocol. FileZilla has the
+advantage that the client is available for Linux, Mac and Windows users. Using
+FileZilla with LUMI is described by the NAISS / UPPMAX maintained documentation
+found here:
+[https://docs.uppmax.uu.se/naiss/lumi_file_transfer_using_filezilla/](https://docs.uppmax.uu.se/naiss/lumi_file_transfer_using_filezilla/)
+
