@@ -1,6 +1,7 @@
 # Interactive Slurm jobs
 
 [sbatch-options]: ../../runjobs/scheduled-jobs/batch-job.md#common-slurm-options
+[web-desktop]: ../../runjobs/webui/desktop.md
 
 Interactive jobs allow a user to interact with applications on the compute
 nodes. With an interactive job, you request time and resources to work on a
@@ -39,8 +40,10 @@ obtain a shell on the first allocated compute node you can use `srun --pty`.
 $ srun --cpu_bind=none --nodes=2 --pty bash -i
 ```
 
-If you want to use an application with a GUI, you can use the `--x11` flag with
-`srun` to enable X11 forwarding.
+If you want to use an application with a GUI, you need to use the interactive
+[desktop][web-desktop] available from the LUMI web interface accessible with 
+a web browser. Alternatively you can use native VNC client following instructions 
+visible at the desktop job creation step in the web interface. 
 
 ## Using `srun`
 
