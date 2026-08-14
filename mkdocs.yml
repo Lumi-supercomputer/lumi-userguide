@@ -182,7 +182,7 @@ nav:
     - Data:
       - Dataset as a Service:
         - User guide: laif/data/daas-guide.md
-        - Service description: laif/data/daas-description.md
+        - Dataset guides: laif/data/daas-dataset-guides.md
     - AI Inference:
       - Overview: laif/inference/index.md
       - Aitta Inference Service: laif/inference/aitta.md
