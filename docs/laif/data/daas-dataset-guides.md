@@ -1,11 +1,14 @@
 # LUMI AI Factory Dataset as a Service dataset guides
 [data catalogue]: https://lumi-aif.fairdata.fi
+[weather observations]: https://lumi-aif.fairdata.fi/dataset/371bcf2e-f2f0-40e7-8c70-b3a87d843b36/
+[weather observations lumi-o]: https://462001541.lumidata.eu/obs-ai-parquet-data/
 
-This page details additional information of datasets in the LUMI AI Factory Dataset as a Service catalog (LUMI AIF DaaS). This can be for example datamanagement guidelines, variable description or other relevant documentation about the compiling, structuring and upkeep of the dataset. 
+This page details additional information of datasets in the LUMI AI Factory Dataset as a Service catalog (LUMI AIF DaaS). This can be for example data management guidelines, variable description or other relevant documentation about the compiling, structuring and upkeep of the dataset. 
 
 This page only has information that is not already stored elsewhere. Your main source of information about the datasets is the LUMI AIF DaaS [data catalogue].
 
 ## Weather observations (2001-2025) for AI training
+You can find the general information of [Weather observations (2001-2025) for AI training in it's data catalogue entry][weather observations]. These variable descriptions help you understand the [data accessibly in LUMI][weather observations LUMI-O].
 ### Mesurands of Finnish observations
 | MEASURAND_ID | MEASURAND_CODE | MEASURAND_NAME | MEASURAND_LONG_NAME | MEASURAND_UNIT |
 | --- | --- | --- | --- | --- |
