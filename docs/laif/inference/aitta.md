@@ -9,15 +9,11 @@
 [openai-embeddings]: https://developers.openai.com/api/reference/resources/embeddings/methods/create
 [openai-completions]: https://developers.openai.com/api/reference/resources/chat/subresources/completions/methods/create
 
-!!! Warning "Restriction of Users during Pilot phase"
-    Aitta is currently undergoing a piloting phase before a full public release. Integration with all LUMI authentication providers is incomplete.
-    Therefore only users that can use MyCSC or Haka authentication can currently access the service. Users that need to authenticate via Puhuri, MyAccessID, the European Federation Platform, or others unfortunately cannot access Aitta at the moment. We are hoping to resolve this soon.
-
 Aitta is a machine learning inference service that allows you to interact with large open-weight models (i.e., models that are openly available for download e.g. from huggingface.co) directly on the LUMI Supercomputer hardware without dealing with any of the technical details. You just send your inference request to an OpenAI compatible API - Aitta takes care of allocating resources from the supercomputer scheduling system (Slurm), loading the model and forwarding the request to the designated compute node.
 
 Aitta provides an API for programmatic access which allows you to develop or test applications that require inference as a service component. It also enables you to perform automated evaluation of a model you are interested in. Additionally, Aitta provides a web frontend with basic chat interfaces that you can use to interact with the models directly.
 
-Aitta is currently available for all users with access to the LUMI supercomputer. You need a valid CSC account with access to at least one active LUMI project.
+Aitta is currently available for all users with access to the LUMI supercomputer. You need a valid LUMI account with access to at least one active LUMI project.
 
 
 ## What can I use it for?
@@ -126,7 +122,7 @@ To access the API you need to provide an access token to authenticate to the sys
 Authorization: Bearer your-token-goes-here
 ```
 
-You can obtain an access token from [aitta-auth.csc.fi/myToken][aitta-auth-token] (or by following the "Generate token" link from the web frontend after you logged in) if you have a valid LUMI computing project. This will immediately start a (new) login sequence with CSC's authentication system. After completing the authentication you will be asked to select one of your LUMI projects. Your access token will be tied to this project. If you have only one LUMI project, you may not see this screen.
+You can obtain an access token from [aitta-auth.csc.fi/myToken][aitta-auth-token] (or by following the "Generate token" link from the web frontend after you logged in) if you have a valid LUMI computing project. This will immediately start a (new) login sequence with the authentication system. After completing the authentication you will be asked to select one of your LUMI projects. Your access token will be tied to this project. If you have only one LUMI project, you may not see this screen.
 
 <figure>
   <img
