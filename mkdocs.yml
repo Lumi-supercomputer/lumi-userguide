@@ -182,7 +182,6 @@ nav:
     - Data:
       - Dataset as a Service:
         - User guide: laif/data/daas-guide.md
-        - Service description: laif/data/daas-description.md
     - AI Inference:
       - Overview: laif/inference/index.md
       - Aitta Inference Service: laif/inference/aitta.md
@@ -269,6 +268,5 @@ plugins:
         'software/packages/pytorch.md': 'https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/p/PyTorch/'
         'lumi-k.md': 'runjobs/lumi-k/getting-started/lumi_k_what_is.md'
         'lumi-o.md': 'storage/lumio/index.md'
-        'laif/data/daas_description.md': 'laif/data/daas-description.md'
         'laif/data/daas_guide.md': 'laif/data/daas-guide.md'
   - search
