@@ -214,6 +214,10 @@ The Aitta API offers OpenAI API compatible endpoints with a base url of `https:/
 
 Note that these endpoints do not include HAL resource links as that would be incompatible with the OpenAI API.
 
+The inference endpoints transparently handle loading of the model when it is not already running. However, this means that in your first request you might experience some delay until the model is ready to respond. Following requests to the same model will then receive responses more quickly.
+
+Note that the API will not send a response until the model is ready, so if for some reason a model is not loaded quickly, your request might appear to be stuck. See also the Section [Capacity limits](#capacity-limits) further below.
+
 #### Model information
 
 The API exposes details about available models. You can get a list of available models from the `aitta-api.csc.fi/model` endpoint. The JSON object contains a field with a list of model ids paired with a URL to retrieve more detailed information about each model. Model ids generally follow the format `model-vendor/model-name` as on e.g. Huggingface. Model information links currently replace the `/` with a `~` for technical reasons, so to get information about a model, you would need to query `aitta-api.csc.fi/model/model-vendor~model-name`. The following listing shows an example response:
@@ -331,6 +335,15 @@ The `/status` endpoint returns information about Aitta availability: either `"OK
 
 The `/downtimes` endpoint returns information about all current and upcoming maintenance breaks that are currently scheduled.
 
-#### Rate limits
+### Rate limits
 
 The amount of requests sent per minute by an individual user is limited. In case the API returns the status code `429 Too many requests`, you can resume the usage after a minute. There are currently no longer-term limits.
+
+
+### Capacity limits
+
+Aitta's capacity for running models is currently limited to 2 LUMI-G nodes, i.e., 16 GCDs in total. If the number of models requested by all users exceeds that capacity, some of the models will not become available before a previous model is stopped - on a first-come-first-served basis.
+
+If you send an inference request to a model that was not already online and it cannot be loaded due to missing capacity, the Aitta API might appear to be stuck or you might get a timeout error from your client. In that case it is best to switch to a model that is already running, which you can determine e.g. using the [worker information endpoint](#worker-information).
+
+For the same reason it is also not recommended to rapidly switch between models or send small request to many different models at once.
