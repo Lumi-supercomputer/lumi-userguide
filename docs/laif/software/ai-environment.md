@@ -58,8 +58,7 @@ This list only includes some examples for using the container images. More examp
 
     ```
     module purge
-    module use /appl/local/laifs/modules
-    module load lumi-aif-singularity-bindings
+    module load Local-LAIF lumi-aif-singularity-bindings
     ```
 
     If you prefer to set the bindings manually, we recommend taking a look at the [Running containers on LUMI lecture][Running containers on LUMI lecture] from the [LUMI AI workshop material][LUMI AI workshop material].
@@ -68,8 +67,7 @@ This list only includes some examples for using the container images. More examp
 
 ```
 module purge
-module use /appl/local/laifs/modules
-module load lumi-aif-singularity-bindings
+module load Local-LAIF lumi-aif-singularity-bindings
 export SIF=/appl/local/laifs/containers/lumi-multitorch-u24r64f21m43t29-20260124_092648/lumi-multitorch-full-u24r64f21m43t29-20260124_092648.sif
 srun -A <your-project-id> -p small-g -n 1 --gpus-per-task=1 singularity run $SIF python -c "import torch; print(torch.cuda.device_count())"
 ```
@@ -95,8 +93,7 @@ For this example, we need to add the HDF5 Python package `h5py` to the environme
 
 ```
 module purge
-module use /appl/local/laifs/modules
-module load lumi-aif-singularity-bindings
+module load Local-LAIF lumi-aif-singularity-bindings
 export SIF=/appl/local/laifs/containers/lumi-multitorch-u24r64f21m43t29-20260124_092648/lumi-multitorch-full-u24r64f21m43t29-20260124_092648.sif
 singularity shell $SIF
 Singularity> python -m venv h5-env --system-site-packages
