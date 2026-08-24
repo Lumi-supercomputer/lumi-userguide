@@ -56,10 +56,11 @@ MLflow in LUMI-K can be deployed using [Helm](https://helm.sh/) either from the 
     helm status <your release name> -n <your project name>
     ```
     The status field should show "Deployed" in case of a successful Helm deployment.
-7. If the Mlflow tracking server was exposed via a Route object, use the following command to get the tracking server endpoint:
+7. If the MLflow tracking server was exposed via an Ingress object (see the [Ingress section](#ingress)), use the following command to get the tracking server endpoint:
     ```bash
-    oc get route/mlflow-tracking --namespace=<your project name> -o jsonpath='{.spec.host}'
+    oc get routes --namespace=<your project name>
     ```
+    The endpoint is shown in the HOST/PORT column. LUMI-K (OpenShift) automatically creates this Route from the Ingress.
 
 
 ### Overriding the Default Values
