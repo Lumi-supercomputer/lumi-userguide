@@ -18,7 +18,7 @@ MLflow in LUMI-K can be deployed using [Helm](https://helm.sh/) either from the 
     - Search for MLflow in the search box.
     - Click on the MLflow Helm chart.
 
-    ![mlflow software caralog](../img/lumik_mlflow_software_caralog.png)
+    ![mlflow software catalog](../img/lumik_mlflow_software_caralog.png)
 
 3. Click on the create button. This will open the "Create Helm Release" form.
 4. Give a custom name to your Mlflow Helm release in the "Release name" dialogue box. 
@@ -67,48 +67,55 @@ The MLflow Helm chart from cscfi (and the dependent Mlflow chart from MLflow Com
 
 #### Database:
 Using a database as the MLflow backend store provides a scalable, reliable, and query-efficient foundation for experiment tracking and model lifecycle management. By default, MLflow has a built-in local SQLite database to store metadata. However, for production environments it is recommended to use an external database instance which have standard enterprise capabilities such as backups, and high availability. To use an external database, the following value needs to be set:
-```bash
-mlflow
-  backendStoreUri: "postgresql://{USERNAME}:{PASSWORD}@{DB_PUBLIC_IP/DOMAIN}:5432/mlflow"
+```yaml
+mlflow:
+  mlflow:
+    backendStoreUri: "postgresql://{USERNAME}:{PASSWORD}@{DB_PUBLIC_IP/DOMAIN}:5432/mlflow"
 ```
+
+!!! note
+    The double `mlflow` nesting is intentional: the cscfi wrapper chart passes values to a dependency subchart that is also named `mlflow`, and the subchart groups its application settings under its own `mlflow` section. Values placed at the wrong nesting level are silently ignored by Helm.
+
 Make sure to replace the correct values for the postgresql variables USERNAME, PASSWORD, DB_PUBLIC_IP/DOMAIN. You can also store the database URI in a Kubernetes Secret to avoid exposing credentials in values files:
 ```bash
-kubectl create secret generic mlflow-db-secret \
-  --namespace mlflow \
+oc create secret generic mlflow-db-secret \
+  --namespace <your project name> \
   --from-literal=uri="postgresql://{USERNAME}:{PASSWORD}@{DB_PUBLIC_IP/DOMAIN}:5432/mlflow"
 ```
 Reference the Secret in your values file:
-```bash
+```yaml
 mlflow:
-  backendStoreUriFrom:
-    secretKeyRef:
-      name: mlflow-db-secret
-      key: uri
+  mlflow:
+    backendStoreUriFrom:
+      secretKeyRef:
+        name: mlflow-db-secret
+        key: uri
 ```
 
-#### s3 Storage Backend:
-Using an object store such as LUMI-O via s3 as the MLflow artifact storage backend provides durable, highly available, and virtually unlimited storage for large model artifacts, datasets, and logs. It centralizes artifact management for all experiments and environments, enabling scalable, cost‑effective retention and easy sharing of artifacts across teams and infrastructure.
+#### S3 Storage Backend:
+Using an object store such as LUMI-O via S3 as the MLflow artifact storage backend provides durable, highly available, and virtually unlimited storage for large model artifacts, datasets, and logs. It centralizes artifact management for all experiments and environments, enabling scalable, cost‑effective retention and easy sharing of artifacts across teams and infrastructure.
 
-The MLflow helm chart values that need to be set for s3 connection with LUMI-O are as follows:
-```bash
+The MLflow helm chart values that need to be set for S3 connection with LUMI-O are as follows:
+```yaml
 mlflow:
-  defaultArtifactRoot: "mlflow-artifacts:/"
-  artifactsDestination: "s3://my-bucket/mlflow"
+  mlflow:
+    defaultArtifactRoot: "mlflow-artifacts:/"
+    artifactsDestination: "s3://my-bucket/mlflow"
   env:
     - name: MLFLOW_S3_ENDPOINT_URL
-        value: "https://lumidata.eu"
+      value: "https://lumidata.eu"
     - name: AWS_DEFAULT_REGION
-        value: "lumi-prod"
+      value: "lumi-prod"
     - name: AWS_ACCESS_KEY_ID
-        value: "abc123"
+      value: "abc123"
     - name: AWS_SECRET_ACCESS_KEY
-        value: "xxxx"
+      value: "xxxx"
 ```
 
 #### Authentication:
-MLflow has a build-in HTTP Basic Authentication, however, it needs to be enabled and required a CSRF secret key. Add the following with your own values: 
+MLflow has a built-in HTTP Basic Authentication, however, it needs to be enabled and requires a Flask secret key Add the following with your own values:
 
-```bash
+```yaml
 authentication:
   enabled: true
 
@@ -140,27 +147,41 @@ mlflow:
 ```
 
 #### Ingress
-Ingress object needs to be created to expose the MLflow tracking server to the internet. Add the following value to give your domain name for the ingress by replaceing the `host` field:
+An Ingress object needs to be created to expose the MLflow tracking server to the internet. The Ingress is disabled by default, so it must be explicitly enabled. Add the following values, replacing the `host` field with your own domain name:
 
-```bash
+```yaml
 mlflow:
   ingress:
-      hosts:
-        - host: mlflow-my-namespace.apps.lumi-k.eu
-          paths:
-            - path: /
-              pathType: Prefix
+    enabled: true
+    hosts:
+      - host: mlflow-my-namespace.apps.lumi-k.eu
+        paths:
+          - path: /
+            pathType: Prefix
 
   server:
     value_options:
       allowed_hosts: "mlflow-my-namespace.apps.lumi-k.eu"
-      cors_allowed_origins: "http://mlflow-my-namespace.apps.lumi-k.eu"
+      cors_allowed_origins: "https://mlflow-my-namespace.apps.lumi-k.eu"
 ```
 
-#### Accumulated
-Since there are multiple custom values, it is better to use a single values file rahter than setting them inline. This can be easily done using a `values.yml` file as shown below and refering it to `helm install` command using the `-f` option.
+#### Garbage Collection
+MLflow only soft-deletes experiments and runs — deleted items remain in the backend store and artifact storage until they are permanently removed. The chart provides an optional CronJob that periodically runs `mlflow gc`. It is disabled by default and can be enabled with:
 
-```bash
+```yaml
+mlflow:
+  garbageCollection:
+    enabled: true
+    schedule: "0 2 * * 0"
+    olderThan: "30d"
+```
+
+The chart's default pod affinity co-schedules the garbage collection job on the same node as the tracking server, which is required when using the default persistent volume storage (the volume can only be attached to one node at a time).
+
+#### Accumulated
+Since there are multiple custom values, it is better to use a single values file rather than setting them inline. This can be easily done using a `values.yml` file as shown below and referring to it in the `helm install` command using the `-f` option.
+
+```yaml
 authentication:
   enabled: true
   adminPassword: I_am_a_long_password_123
@@ -169,9 +190,9 @@ authentication:
 mlflow:
   server:
     value_options:
-      app_name: "basic-auth"  
+      app_name: "basic-auth"
       allowed_hosts: "mlflow-my-namespace.apps.lumi-k.eu"
-      cors_allowed_origins: "http://mlflow-my-namespace.apps.lumi-k.eu"
+      cors_allowed_origins: "https://mlflow-my-namespace.apps.lumi-k.eu"
 
   env:
     - name: MLFLOW_FLASK_SERVER_SECRET_KEY
@@ -204,11 +225,16 @@ mlflow:
     defaultArtifactRoot: "mlflow-artifacts:/"
     artifactsDestination: "s3://my-bucket/mlflow"
 
-  ingress:
-      hosts:
-        - host: mlflow-my-namespace.apps.lumi-k.eu
-          paths:
-            - path: /
-              pathType: Prefix
+  garbageCollection:
+    enabled: true
+    schedule: "0 2 * * 0"
+    olderThan: "30d"
 
+  ingress:
+    enabled: true
+    hosts:
+      - host: mlflow-my-namespace.apps.lumi-k.eu
+        paths:
+          - path: /
+            pathType: Prefix
 ```
