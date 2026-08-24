@@ -74,7 +74,7 @@ mlflow:
     backendStoreUri: "postgresql://{USERNAME}:{PASSWORD}@{DB_PUBLIC_IP/DOMAIN}:5432/mlflow"
 ```
 
-!!! note
+!!! info "Note"
     The double `mlflow` nesting is intentional: the cscfi wrapper chart passes values to a dependency subchart that is also named `mlflow`, and the subchart groups its application settings under its own `mlflow` section. Values placed at the wrong nesting level are silently ignored by Helm.
 
 Make sure to replace the correct values for the postgresql variables USERNAME, PASSWORD, DB_PUBLIC_IP/DOMAIN. You can also store the database URI in a Kubernetes Secret to avoid exposing credentials in values files:
