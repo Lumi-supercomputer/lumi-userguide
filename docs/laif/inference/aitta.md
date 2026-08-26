@@ -34,7 +34,7 @@ Currently Aitta includes generative Large Language Models (LLMs) and text embedd
 
 ## Web Frontend - Interactive chat usage
 
-Visit the web frontend at [aitta.csc.fi][aitta]. Click the "Log In" button at the top to log in. Go through the usual CSC authentication flow. Check the below steps for detailed instructions on how to use the web frontend.
+Visit the web frontend at [aitta.csc.fi][aitta]. Click the "Log In" button at the top to log in. Go through the usual CSC authentication flow, using either your Haka, MyAccessId/Puhuri or CSC account. After completing the authentication you will be asked to select one of your LUMI projects. Your session will be tied to this project. If you have only one LUMI project, you may not see the corresponding screen. Check the below steps for detailed instructions on how to use the web frontend.
 
 <details><summary>Detailed instructions for the web frontend</summary>
 
@@ -105,6 +105,7 @@ Visit the web frontend at [aitta.csc.fi][aitta]. Click the "Log In" button at th
   7. When you are done, you can log out via the "Log Out" button at the top right corner or simply leave the page. You do not need to explicitly shut down any model you were using.
 
 </details>
+
 ### Limitations
 
 The web frontend is only a basic chat interface with no additional features. The entire chat history is kept in your browser. If you leave the page, the conversation is deleted and can not be recovered. Furthermore, if the model becomes unavailable during the conversation, the frontend will return to show the message that the model is currently not running. This also results in the chat history being lost. While Aitta tries to ensure that a model is always running when you are actively using it, it can happen that the current allocation of resources expires before Aitta is able to obtain a new allocation.
@@ -122,7 +123,7 @@ To access the API you need to provide an access token to authenticate to the sys
 Authorization: Bearer your-token-goes-here
 ```
 
-You can obtain an access token from [aitta-auth.csc.fi/myToken][aitta-auth-token] (or by following the "Generate token" link from the web frontend after you logged in) if you have a valid LUMI computing project. This will immediately start a (new) login sequence with the authentication system. After completing the authentication you will be asked to select one of your LUMI projects. Your access token will be tied to this project. If you have only one LUMI project, you may not see this screen.
+You can obtain an access token from [aitta-auth.csc.fi/myToken][aitta-auth-token] (or by following the "Generate token" link from the web frontend) if you have a valid LUMI computing project. This will immediately start a (new) login sequence with the authentication system for which you can use either your Haka, MyAccessId/Puhuri or CSC account. After completing the authentication you will be asked to select one of your LUMI projects. Your access token will be tied to this project. If you have only one LUMI project, you may not see the corresponding screen.
 
 <figure>
   <img
@@ -220,7 +221,9 @@ Note that the API will not send a response until the model is ready, so if for s
 
 #### Model information
 
-The API exposes details about available models. You can get a list of available models from the `aitta-api.csc.fi/model` endpoint. The JSON object contains a field with a list of model ids paired with a URL to retrieve more detailed information about each model. Model ids generally follow the format `model-vendor/model-name` as on e.g. Huggingface. Model information links currently replace the `/` with a `~` for technical reasons, so to get information about a model, you would need to query `aitta-api.csc.fi/model/model-vendor~model-name`. The following listing shows an example response:
+The API exposes details about available models. You can get a list of available models from the `aitta-api.csc.fi/model` endpoint. The JSON object contains a field with a list of model ids paired with a URL to retrieve more detailed information about each model. Model ids generally follow the format `model-vendor/model-name` as on e.g. Huggingface. Model information links currently replace the `/` with a `~` for technical reasons, so to get information about a model, you would need to query `aitta-api.csc.fi/model/model-vendor~model-name`. Expand the following listing to see an example response:
+
+<details markdown="1"><summary>Model list response example</summary>
 
 ```json
 {
@@ -244,7 +247,11 @@ The API exposes details about available models. You can get a list of available 
 }
 ```
 
-The response of the model information endpoint is a JSON object containing a description of the model as well as a list of the model's capabilities, indicating which inference endpoints are supported for the model. It also includes a list of URLs relevant to the model, including e.g. the OpenAI compatible inference endpoints the model supports as well as the URL of the endpoint listing currently active workers for the model. An example response for the `openai/gpt-oss-120b` model looks like the following:
+</details>
+
+The response of the model information endpoint is a JSON object containing a description of the model as well as a list of the model's capabilities, indicating which inference endpoints are supported for the model. It also includes a list of URLs relevant to the model, including e.g. the OpenAI compatible inference endpoints the model supports as well as the URL of the endpoint listing currently active workers for the model. Expand the following listing to see an example response for the `openai/gpt-oss-120b` model:
+
+<details markdown="1"><summary>Model information response example</summary>
 
 ```json
 {
@@ -254,43 +261,54 @@ The response of the model information endpoint is a JSON object containing a des
     "openai-chat-completion"
   ],
   "_links": {
-    "self": {
-      "href": "/model/openai~gpt-oss-120b",
-      "name": "self",
-      "title": "Refer back to the resource itself."
-    },
-    "metadata": {
-      "href": "/model/openai~gpt-oss-120b/metadata",
-      "name": "metadata",
-      "title": "Model metadata as stored in the database"
-    },
     "openai-chat-completion": {
       "href": "/openai/v1/chat/completions",
       "name": "openai-chat-completion",
       "title": "An OpenAI compatible endpoint for generating chat completions. See https://platform.openai.com/docs/api-reference/chat/create for usage. Currently not all features are supported."
     },
-    "worker": {
-      "href": "/worker/openai~gpt-oss-120b",
-      "name": "worker",
-      "title": "Obtain a list of all workers hosting the model."
+    "self": {
+      "href": "/model/openai~gpt-oss-120b",
+      "name": "self",
+      "title": "Refer back to the resource itself."
     },
     "collection": {
       "href": "/model",
       "name": "collection",
       "title": "Obtain a list of all models served by the API."
     },
+    "preload": {
+      "href": "/model/openai~gpt-oss-120b/preload",
+      "name": "preload",
+      "title": "Request starting a model worker so that upcoming inference requests can be handled immediately.",
+      "method": "POST"
+    },
     "openai": {
       "href": "/openai/v1",
       "name": "openai",
       "title": "Base URL for OpenAI compatible endpoints. Currently not all endpoints or features are supported."
+    },
+    "metadata": {
+      "href": "/model/openai~gpt-oss-120b/metadata",
+      "name": "metadata",
+      "title": "Model metadata as stored in the database"
+    },
+    "worker": {
+      "href": "/worker/openai~gpt-oss-120b",
+      "name": "worker",
+      "title": "Obtain a list of all workers hosting the model."
     }
   }
 }
+
 ```
+
+</details>
 
 #### Worker information
 
 The `/worker` endpoint can be used to query which workers (inference engine instances serving a particular model) are currently running. This can be used by your application e.g. to inform the user about possible delays when a worker needs to be started, or to dynamically pick a currently running model to avoid the delay.
+
+<details markdown="1"><summary>Worker list response example</summary>
 
 ```json
 {
@@ -315,25 +333,110 @@ The `/worker` endpoint can be used to query which workers (inference engine inst
         "method": "GET"
       }
     ]
+  },
+  "_embedded": {
+    "workers": [
+      {
+        "id": "openai/gpt-oss-120b-PKA0",
+        "model": "openai/gpt-oss-120b",
+        "status": "running",
+        "_links": {
+          "self": {
+            "href": "/worker/openai~gpt-oss-120b/PKA0",
+            "name": "self",
+            "title": "This link refers back to the resource itself.",
+            "method": "GET"
+          },
+          "collection": {
+            "href": "/worker/openai~gpt-oss-120b",
+            "name": "collection",
+            "title": "Link to the collection of workers for the model.",
+            "method": "GET"
+          },
+          "model": {
+            "href": "/model/openai~gpt-oss-120b",
+            "name": "model",
+            "title": "Link to the model served by this worker.",
+            "method": "GET"
+          }
+        }
+      },
+      {
+        "id": "Qwen/Qwen3-Coder-Next-u31z",
+        "model": "Qwen/Qwen3-Coder-Next",
+        "status": "requested",
+        "_links": {
+          "self": {
+            "href": "/worker/Qwen~Qwen3-Coder-Next/u31z",
+            "name": "self",
+            "title": "This link refers back to the resource itself.",
+            "method": "GET"
+          },
+          "collection": {
+            "href": "/worker/Qwen~Qwen3-Coder-Next",
+            "name": "collection",
+            "title": "Link to the collection of workers for the model.",
+            "method": "GET"
+          },
+          "model": {
+            "href": "/model/Qwen~Qwen3-Coder-Next",
+            "name": "model",
+            "title": "Link to the model served by this worker.",
+            "method": "GET"
+          }
+        }
+      }
+    ]
   }
 }
 ```
 
-The worker name includes the model name.
+</details>
 
 #### Maintenance downtime information
 
-The `/status` endpoint returns information about Aitta availability: either `"OK"` or information about a maintenance break, for example:
+The `/status` endpoint returns information about Aitta availability: either `"OK"` or information about a maintenance break. Open the box to see some examples.
 
-```json
-{
-  "begin": "2026-05-07T13:37:48Z",
-  "end": "2026-05-07T14:07:48Z",
-  "reason": "Filesystem problems on LUMI, see: https://lumi-supercomputer.eu/lumi-service-status/information-lustre-filesystem-performance/"
-}
-```
+<details markdown="1"><summary>Example status responses</summary>
 
-The `/downtimes` endpoint returns information about all current and upcoming maintenance breaks that are currently scheduled.
+  1. Everything okay
+  ```json
+  {
+    "is_available": true,
+    "reason": null,
+    "downtime": null,
+    "retry_after_seconds": null
+  }
+  ```
+
+  2. Unscheduled incident
+  ```json
+  {
+    "is_available": false,
+    "reason": "Filesystem problems on LUMI, see: https://lumi-supercomputer.eu/lumi-service-status/information-lustre-filesystem-performance/",
+    "downtime": null,
+    "retry_after_seconds": 600
+  }
+  ```
+
+  3. Scheduled downtime
+  ```json
+  {
+    "is_available": false,
+    "reason": "Scheduled LUMI maintenance",
+    "downtime": {
+      "begin": "2026-04-07T13:37:48Z",
+      "end": "2026-04-17T14:07:48Z",
+      "reason": "Scheduled LUMI maintenance"
+    },
+    "retry_after_seconds": 432000
+  }
+
+  ```
+
+</details>
+
+The `/downtimes` endpoint returns information about all known current and upcoming  scheduled maintenance breaks.
 
 ### Rate limits
 
@@ -347,3 +450,27 @@ Aitta's capacity for running models is currently limited to 2 LUMI-G nodes, i.e.
 If you send an inference request to a model that was not already online and it cannot be loaded due to missing capacity, the Aitta API might appear to be stuck or you might get a timeout error from your client. In that case it is best to switch to a model that is already running, which you can determine e.g. using the [worker information endpoint](#worker-information).
 
 For the same reason it is also not recommended to rapidly switch between models or send small request to many different models at once.
+
+## Changelog
+
+
+<details markdown="1"><summary>2026-08-25</summary>
+
+  **General**
+
+  - Authentication is now possible via MyAccessId/Puhuri in addition to Haka and CSC user accounts.
+  - Internal improvements in monitoring, error reporting, etc., which will result in improved reliability and better error response.
+
+  **API**
+
+  - The `/status` endpoint now returns a JSON response even if everything is fine (when it would previously just return "OK") and tries to obtain the current system status from LUMI Status API to correctly signal that Aitta is unavailable during any LUMI downtime.
+  - The `/worker` (and `/worker/<model_id>`) endpoint now embeds the status information for each worker instead of only providing a list of links to get more details on each worker.
+  - The `/model/<model-id>` listing contains an additional `preload` link which can be used to request a model to be loaded ahead of sending a request.
+
+  **Frontend**
+
+  - The main page now shows correct status for models that are loading or have failed to start.
+  - The `User Guide` link on the frontend now links to the guide in LUMI docs.
+  - The `Generate token` link is now available on the frontend homepage, so if you only need a token for the API, you do not need to log in to the frontend anymore.
+
+</details>
