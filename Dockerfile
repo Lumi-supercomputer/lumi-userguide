@@ -1,4 +1,4 @@
-FROM rockylinux:8.5
+FROM rockylinux:8
 
 LABEL maintainer="CSC Service Desk <servicedesk@csc.fi>"
 
@@ -14,8 +14,8 @@ RUN chgrp -R root ${ROOT_GROUP_DIRS} &&\
 
 COPY . .
 
-RUN pip3 install --no-cache-dir -r requirements.txt && \
-    mkdocs build -d /usr/share/nginx/html
+RUN python3.12 -m pip install --no-cache-dir -r requirements.txt && \
+    python3.12 -m mkdocs build -d /usr/share/nginx/html
 
 COPY nginx.conf /etc/nginx
 COPY entry-point.sh /
