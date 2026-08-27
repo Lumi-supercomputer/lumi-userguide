@@ -1,4 +1,4 @@
-FROM rockylinux:8
+FROM rockylinux:9
 
 LABEL maintainer="CSC Service Desk <servicedesk@csc.fi>"
 
