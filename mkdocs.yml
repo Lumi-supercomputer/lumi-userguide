@@ -174,7 +174,7 @@ nav:
     - Help desk: helpdesk/index.md
     - Training and events: helpdesk/training.md
     - Known issues: helpdesk/issues.md
-    - LUMI service status: https://www.lumi-supercomputer.eu/lumi-service-status/
+    - LUMI service status: https://status.lumi.csc.fi
     - Mailing list archive: https://postit.csc.fi/sympa/arc/lumi-users
     - Contribution and feedback: helpdesk/feedback.md  
   - LUMI AI Factory:
