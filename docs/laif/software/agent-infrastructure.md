@@ -120,18 +120,18 @@ You can find documentation on how to write your own `opencode.json` in the
 
 The LUMI AI Factory provides a public
 [Model Context Protocol (MCP)](https://modelcontextprotocol.io/docs/getting-started/intro) server,
-which can be found at <https://lumi-aif-agents.2.rahtiapp.fi/mcp>. The server features a tool
-called `retrieve_docs`, which allows agents to search a regularly-updated knowledge base of LUMI
-documentation. The search functionality is implemented using an embedding model that is run locally
-on the MCP server host.
+which can be found at <https://lumi-aif-agents.2.rahtiapp.fi/mcp>. The server offers the
+following tools:
 
-Access to this tool allows AI agents to, e.g., answer questions about LUMI with more accuracy and
-write code that takes into account LUMI's particular system architecture and software environment.
-
-The knowledge base is comprised of the following sources:
-
-* LUMI Docs (this site)
-* [LUMI AI Guide](https://github.com/Lumi-supercomputer/LUMI-AI-Guide)
+- `retrieve_docs` allows agents to search an up-to-date knowledge base of LUMI documentation. The
+  search functionality is implemented using an embedding model that runs locally on the MCP server
+  host. Access to this tool allows AI agents to, e.g., answer questions about LUMI with more
+  accuracy and write code that takes into account LUMI's particular system architecture and
+  software environment. The knowledge base is comprised of LUMI Documentation (this site) and the
+  [LUMI AI Guide](https://github.com/Lumi-supercomputer/LUMI-AI-Guide).
+- `get_service_status` uses the [LUMI Service Status](https://status.lumi.csc.fi/) server to
+  provide status information on LUMI and related services. This includes node availability,
+  response time, and any outages due to maintenance or incidents.
 
 ### Test the server
 
