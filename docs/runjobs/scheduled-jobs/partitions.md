@@ -22,15 +22,13 @@ take advantage of all the resources on the node as you will be billed for the
 complete node regardless of the resource actually used as detailed in the
 [billing policy](../../runjobs/lumi_env/billing.md).
 
-| Name           | Max walltime | Max jobs          | Max resources/job | Hardware<br>partition<br>used         |
+| Name           | Max walltime | Max jobs          | Max resources/job | Hardware<br>partition<br>used         |            
 | -------------- | ------------ | ----------------- | ----------------- | --------------------------------------|
 | standard-g     | 2 days       | 210 (200 running) | 1024 nodes        | [LUMI-G][lumi-g]                      |
-| standard       | 2 days       | 120 (100 running) |  512 nodes        | [LUMI-C][lumi-c]                      |
-| bench          | 6 hours      | n/a               |  All nodes        | [LUMI-C][lumi-c] and [LUMI-G][lumi-g] |
+| standard       | 2 days       | 120 (100 running) | 512 nodes         | [LUMI-C][lumi-c]                      |
+| largemem       | 1 day        | 30 (20 running)   | 1 nodes           | [LUMI-D][lumi-d]                      |
 
-The `bench` partition is not available by default and is reserved for
-large-scale benchmark runs. Projects wishing to have access to this partition
-must send a [request for a full machine run][herorun].
+
 
 ## Slurm partitions allocatable by resources
 
@@ -44,8 +42,7 @@ that your job may share the node with other jobs.
 | debug    | 30 minutes   |   2 (2 running)         |  4 nodes           | [LUMI-C][lumi-c]   | [Debugging and testing](#debugging-nodes)                                |
 | small-g  | 3 days       | 210 (200 running)       |  4 nodes           | [LUMI-G][lumi-g]   | [Small GPU jobs](#small-partitions)                                      | 
 | small    | 3 days       | 220 (200 running)       |  4 nodes           | [LUMI-C][lumi-c]   | [Small](#small-partitions) or [memory intense](#large-memory-nodes) jobs |
-| largemem | 1 day        |  30 (20 running)        |  1 nodes           | [LUMI-D][lumi-d]   | [Memory intense jobs](#large-memory-nodes)                               |
-| lumid    | 4 hours      |   1 (1 running)         |  1 GPU             | [LUMI-D][lumi-d]   | [Visualisation](#visualization-nodes)                                    |
+| lumid    | 12 hours     |   16 (8 running)        |  1 GPU             | [LUMI-D][lumi-d]   | [Visualisation](#visualization-nodes)                                    |
 
 | Name     | Max walltime | Max jobs                | Max resources/job  | Hardware partition | Purpose                                                                  |
 | -------- | ------------ | ----------------------- | ------------------ | ------------------ | ------------------------------------------------------------------------ |
