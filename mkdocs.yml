@@ -126,6 +126,8 @@ nav:
     - Performance analysis:
       - Performance analysis strategies: development/profiling/strategies.md
       - Cray Performance Analysis Tool: development/profiling/perftools.md
+    - HPC API:
+      - FirecREST: development/api/firecrest.md
     - AI tools:
       - AI agent guide: development/ai-tools/ai-agent-guide.md
   - Storage:
