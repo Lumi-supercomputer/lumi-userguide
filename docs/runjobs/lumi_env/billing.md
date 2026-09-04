@@ -38,15 +38,21 @@ Compute is billed whenever you submit a job to the [Slurm job scheduler][slurm-q
 
 ### GPU nodes - LUMI-G
 
-For GPU compute, your project is allocated GPU-hours that are consumed
+For GPU compute on the LUMI'sAMD MI250X GPU nodes, your project is allocated GPU-hours that are consumed
 when running jobs on the GPU nodes. A GPU-hour corresponds to the allocation
 of a full [MI250x module (2 GCDs)][lumi-g] for one hour, i.e. on LUMI-G, one node hour corresponds to 4 GPU-hours.  
 
 #### Partitions allocatable by node 
 
-- Slurm partition: `standard-g`  
+- Slurm partitions: `standard-g`  
 
 The partition `standard-g` is operated in exclusive mode: it's not possible to reserve a part of a node on this partition, but entire nodes will always be allocated for your jobs, and four MI250x GPU modules (8 GCD's) are thus billed for every allocated node even if your job has requested less than 8 GCD's per node.  
+
+The billing formula is:
+
+```text
+GPU-hours-billed = 4 * NNodes * runtime-of-job
+```
 
 For example, allocating 4 nodes and running for 24 hours on standard-g consumes:
 
@@ -59,7 +65,7 @@ For example, allocating 4 nodes and running for 24 hours on standard-g consumes:
 - Slurm partitions: `small-g`, `dev-g`  
 
 
-For the `small-g` and `dev-g` Slurm partitions, where allocation can be done at 
+For the `small-g` and `dev-g` partitions, where allocation can be done at 
 the level of Graphics Compute Dies (GCD's), you will be billed at a 0.5 rate per
 GCD allocated. However, if you allocate more than 8 CPU cores or more than 64 GB
 of memory per GCD, you will be billed per slice of 8 cores or 64 GB of memory.
@@ -102,10 +108,19 @@ when running jobs on the CPU nodes.
 
 The `standard` partition is operated in exclusive mode: it's not possible to reserve a part of a node on this partition, but entire nodes will always be allocated for your jobs. 128 CPU-core-hours are billed for every allocated node and per hour even if your job has requested less than 128 cores per node.
 
+
+
+
+The billing formula is:
+
+```text
+CPU-core-hours-billed = NNodes * 128 CPU-cores/node * runtime-of-job
+```
+
 For example, allocating 16 nodes and running for 12 hours on standard consumes:
 
 ```text
-16 nodes x 128 CPU-cores/node x 12 hours = 24576 CPU-core-hours
+16 nodes * 128 CPU-cores/node * 12 hours = 24576 CPU-core-hours
 ```
 
 #### Partitions allocatable by resources 
@@ -153,7 +168,7 @@ The data analytics nodes of [LUMI-D hardware partition][lumi-d] include [large m
 
 #### Large memory nodes
 
-- Slurm partition: `largemem`
+- Slurm partitions: `largemem`
 
 The partition `largemem` is operated in exclusive mode, i.e. full nodes (128 CPU-cores) are always allocated for your jobs. 
 
@@ -191,7 +206,7 @@ Allocating 128 CPU-cores (1 node) and 3000 GB of memory in a job running for 1 d
 
 #### Visualization partition
 
-- Slurm partition: `lumid`  
+- Slurm partitions: `lumid`  
 
 
 The `lumid` visualization nodes in [LUMI-D][lumid-gpu] are billed in CPU-core-hours (since May 2026).
