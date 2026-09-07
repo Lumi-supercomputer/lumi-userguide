@@ -14,6 +14,7 @@ nav:
     - SSH authentication: firststeps/SSH-keys.md
     - Logging in (with SSH client): firststeps/loggingin.md
     - Logging in (with web interface): firststeps/loggingin-webui.md
+    - Logging in (with REST API): firststeps/loggingin-hpc-api.md
     - Moving data to/from LUMI: firststeps/movingdata.md
     - Next steps: firststeps/nextsteps.md
   - Hardware:
