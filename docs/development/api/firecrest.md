@@ -57,9 +57,12 @@ FirecREST HPC API can be used with personal access tokens, which allow access to
 
 As the name suggests, personal access tokens are intended for personal use.
 
-A personal access token can be retrieved from the [MyCSC portal](https://my.csc.fi/firecrest-token). Note that there's no direct link from the portal itself yet. Personal access tokens are valid for 24 hours at a time.
+A personal access token can be retrieved from
 
-You can view and revoke your active tokens at [CSC IdP federated personal profile page](https://user-auth.csc.fi/idp/profile/userprofile), under *Connected organizations* -> *Firecrest-access-tokens*.
+- via an App in the LUMI Webinterface (all users, pending)
+- Finnish CSC account only: From the [MyCSC portal](https://my.csc.fi/firecrest-token). Note that there's no direct link from the portal itself yet. You can view and revoke your active tokens at [CSC IdP federated personal profile page](https://user-auth.csc.fi/idp/profile/userprofile), under *Connected organizations* -> *Firecrest-access-tokens*.
+
+Personal access tokens are valid for 24 hours at a time.
 
 ### Examples
 
@@ -135,7 +138,7 @@ PyFirecREST also ships with a handy command line utility `firecrest` for interac
 We can use the `--token-command` (env `FIRECREST_TOKEN_COMMAND`) option of `firecrest` CLI to supply the personal access token to the utility:
 
 ```bash
-# Copied and pasted access token from MyCSC
+# Copied and pasted access token
 access_token="<JWT>"
 
 # Set up URL and token command using environment variables.
