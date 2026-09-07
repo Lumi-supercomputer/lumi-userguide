@@ -42,8 +42,9 @@ On LUMI, four types of software stacks are currently offered:
     integrate in the central stack (even the corresponding modules will be made
     available automatically).
 
--   `spack` is an extensible software stack based on the 
-    [Spack package manager][spack-site]. You can read more about Spack on LUMI
+-   `spack-cpu` and `spack-gpu` are extensible software stacks based on the
+    [Spack package manager][spack-site], one for the CPU partition and one for
+    the GPU partition. You can read more about Spack on LUMI
     on [the "Spack" page in the "Software" section][spack-in-docs].
     Spack is offered "as-is" for users experienced in the use of Spack, but
     properly pre-configured to use compilers and some libraries already installed
@@ -90,11 +91,11 @@ $ module avail
 ... some lines removed here
 
 ----------------------------- Software stacks -----------------------------
-   CrayEnv    (S)    LUMI/23.12            (S)      spack/22.08-2
-   LUMI/22.08 (S)    LUMI/24.03            (S,D)    spack/23.03
-   LUMI/22.12 (S)    Local-CSC/default     (S)      spack/23.03-2
-   LUMI/23.03 (S)    Local-quantum/default (S)      spack/23.09   (D)
-   LUMI/23.09 (S)    spack/22.08
+   CrayEnv    (S)    LUMI/23.12            (S)      spack-cpu/1.1
+   LUMI/22.08 (S)    LUMI/24.03            (S,D)    spack-gpu/1.1
+   LUMI/22.12 (S)    Local-CSC/default     (S)
+   LUMI/23.03 (S)    Local-quantum/default (S)
+   LUMI/23.09 (S)
 
 --------------------- Modify the module display style ---------------------
    ModuleColour/off      (S)      ModuleLabel/label       (S,L,D)
@@ -122,7 +123,7 @@ software stack.
 
 The *Software stacks* block in the output shows the available software stacks:
 `CrayEnv`, 6 versions of the `LUMI` stack, 
-5 versions of the `spack` stack,
+the two Spack stacks `spack-cpu` and `spack-gpu`,
 and two stack modules whose name starts with `Local-` 
 in this example. The `(S)` besides the
 name shows that these are sticky modules that won't be removed by default by
