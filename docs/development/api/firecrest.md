@@ -19,16 +19,19 @@ The FirecREST HPC API provides a standardized RESTful HTTP interface for accessi
 It is an ideal solution for building automated access to computing resources, as well as for creating and running personal web-based client applications that consume computing resources.
 
 ## How to get access to the API?
-!!! warning "Robot Accounts"
-    In order to use the REST API for building more serious integrations, such as CI pipelines or building web applications, you can request a machine-to-machine robot account to be created for your project.
-    These are not available yet.
 
-All LUMI users can use the FirecREST HPC API using time-limited personal access tokens. This effectively allows using the REST API as an alternative to a direct SSH connection, as all API operations are executed on LUMI using your account identity and privileges.
+All LUMI users can access the FirecREST HPC API with time-limited personal access tokens. This effectively provides an alternative to a direct SSH connection, as all API operations are executed on LUMI using your account identity and privileges.
 
 Personal access tokens can be generated:
 
 - via an App in the LUMI Webinterface (all users, pending)
-- [https://my.csc.fi/firecrest-token][firecrest-token] (Finnish CSC account only)
+- from the [MyCSC portal][firecrest-token] (Finnish CSC account only). Note that there's no direct link from the portal itself yet. You can view and revoke your active tokens at the [CSC IdP federated personal profile page][csc-idp-profile], under *Connected organizations* -> *Firecrest-access-tokens*.
+
+Personal access tokens are valid for 24 hours at a time.
+
+!!! warning "Robot Accounts"
+    In order to use the REST API for building more serious integrations, such as CI pipelines or building web applications, you can request a machine-to-machine robot account to be created for your project.
+    These are not available yet.
 
 ## Connecting to LUMI FirecREST HPC API
 
@@ -65,23 +68,18 @@ FirecREST HPC API can be used with personal access tokens, which allow access to
 
 As the name suggests, personal access tokens are intended for personal use.
 
-A personal access token can be retrieved from
-
-- via an App in the LUMI Webinterface (all users, pending)
-- Finnish CSC account only: From the [MyCSC portal][firecrest-token]. Note that there's no direct link from the portal itself yet. You can view and revoke your active tokens at [CSC IdP federated personal profile page][csc-idp-profile], under *Connected organizations* -> *Firecrest-access-tokens*.
-
-Personal access tokens are valid for 24 hours at a time.
+See [How to get access to the API?](#how-to-get-access-to-the-api) for how to generate a personal access token.
 
 ## Large file transfer using S3
 
-FirecREST HPC API implements asynchronous large file transfer model using an S3 object storage as a staging medium. On LUMI, the S3 storage used is [LUMI-O][lumio]. FirecREST uses its own dedicated tenant with dynamically created user-specific buckets.
+FirecREST HPC API implements an asynchronous large file transfer model using an S3 object storage as a staging medium. On LUMI, the S3 storage used is [LUMI-O][lumio]. FirecREST uses its own dedicated tenant with dynamically created user-specific buckets.
 
 ### How it works
 
 Upon sending an API request to [upload][api-upload] or [download][api-download] task, FirecREST:
 
 - Creates a user-specific bucket in its own LUMI-O tenant.
-- Generates pre-signed S3 URLs for the data transfer, using multi-part model if necessitated by the given `fileSize`.
+- Generates pre-signed S3 URLs for the data transfer, using a multi-part model if necessitated by the given `fileSize`.
 - Schedules a new Slurm DataTransferJob using `account` (your project) defined in the API request, to either transfer files from LUMI-O to LUMI after your upload is completed, or from LUMI to LUMI-O for you to download.
 - Returns pre-signed URLs to API client for transferring the data.
 
@@ -100,7 +98,6 @@ python3 -m pip install pyfirecrest
 ```
 
 Please see the [PyFirecREST documentation from CSCS][pyfirecrest-docs] for tutorials and API reference. FirecREST HPC API on LUMI only supports [PyFirecREST API v2][pyfirecrest-api-v2].
-
 
 ### Using with personal access tokens
 
