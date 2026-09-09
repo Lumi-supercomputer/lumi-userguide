@@ -8,6 +8,9 @@
 [pypi]: https://pypi.org/project/pyfirecrest/
 [pyfirecrest-docs]: https://pyfirecrest.readthedocs.io/en/stable/index.html
 [pyfirecrest-api-v2]: https://pyfirecrest.readthedocs.io/en/stable/reference_v2_index.html
+[lumio]: ./../../storage/lumio/index.md
+[api-upload]: https://api.lumi.csc.fi/v1/docs#/filesystem/post_upload_filesystem__system_name__transfer_upload_post
+[api-download]: https://api.lumi.csc.fi/v1/docs#/filesystem/post_download_filesystem__system_name__transfer_download_post
 
 # FirecREST HPC API
 
@@ -16,6 +19,9 @@ The FirecREST HPC API provides a standardized RESTful HTTP interface for accessi
 It is an ideal solution for building automated access to computing resources, as well as for creating and running personal web-based client applications that consume computing resources.
 
 ## How to get access to the API?
+!!! warning "Robot Accounts"
+    In order to use the REST API for building more serious integrations, such as CI pipelines or building web applications, you can request a machine-to-machine robot account to be created for your project.
+    These are not available yet.
 
 All LUMI users can use the FirecREST HPC API using time-limited personal access tokens. This effectively allows using the REST API as an alternative to a direct SSH connection, as all API operations are executed on LUMI using your account identity and privileges.
 
@@ -23,15 +29,6 @@ Personal access tokens can be generated:
 
 - via an App in the LUMI Webinterface (all users, pending)
 - [https://my.csc.fi/firecrest-token][firecrest-token] (Finnish CSC account only)
-
-In order to use the REST API for building more serious integrations, such as CI pipelines or building web applications, you can request for a machine-to-machine robot account to be created for your project.
-
-!!! info "About robot accounts"
-    Robot accounts are tied to a specific project. They have access to the same computing resources, and consume your project's resource allocations, as any regular project member would.
-
-    FirecREST HPC API does not impose any additional restrictions for robot account. It can schedule any Slurm job, or perform any data transfer or file system operation within the scope of your project.
-
-    If a robot account is used to provide a HPC backend for a web application intended for humans, please be mindful of having sufficient guardrails, input validation and user authorization in the application itself to prevent unauthorized workloads or commands being run under your project's privileges.
 
 ## Connecting to LUMI FirecREST HPC API
 
@@ -64,7 +61,7 @@ All requests sent to the API are executed on LUMI using the same user account th
 
 ### Connecting with a personal access token
 
-FirecREST HPC API can be used with personal access tokens, which allow access to same computing resources and projects as your direct terminal access. Personal access tokens are useful for running desktop applications or automation utilities in interactive terminals, that integrate with HPC resources using [PyFirecREST][pyfirecrest] Python SDK, for example.
+FirecREST HPC API can be used with personal access tokens, which allow access to the same computing resources and projects as your direct terminal access. Personal access tokens are useful for running desktop applications or automation utilities in interactive terminals, that integrate with HPC resources using [PyFirecREST][pyfirecrest] Python SDK, for example.
 
 As the name suggests, personal access tokens are intended for personal use.
 
@@ -74,6 +71,19 @@ A personal access token can be retrieved from
 - Finnish CSC account only: From the [MyCSC portal][firecrest-token]. Note that there's no direct link from the portal itself yet. You can view and revoke your active tokens at [CSC IdP federated personal profile page][csc-idp-profile], under *Connected organizations* -> *Firecrest-access-tokens*.
 
 Personal access tokens are valid for 24 hours at a time.
+
+## Large file transfer using S3
+
+FirecREST HPC API implements asynchronous large file transfer model using an S3 object storage as a staging medium. On LUMI, the S3 storage used is [LUMI-O][lumio]. FirecREST uses its own dedicated tenant with dynamically created user-specific buckets.
+
+### How it works
+
+Upon sending an API request to [upload][api-upload] or [download][api-download] task, FirecREST:
+
+- Creates a user-specific bucket in its own LUMI-O tenant.
+- Generates pre-signed S3 URLs for the data transfer, using multi-part model if necessitated by the given `fileSize`.
+- Schedules a new Slurm DataTransferJob using `account` (your project) defined in the API request, to either transfer files from LUMI-O to LUMI after your upload is completed, or from LUMI to LUMI-O for you to download.
+- Returns pre-signed URLs to API client for transferring the data.
 
 ### Examples
 
