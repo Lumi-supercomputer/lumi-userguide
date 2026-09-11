@@ -63,13 +63,24 @@ It is recommended that you use the [LUMI container wrapper](../../software/insta
 After creating the environment using the LUMI container wrapper, the full path to the `bin` directory needs to be added inside the `prepend_path` in the Lua file for the course above.
 
 ### AI Software Environment (PyTorch) Example
-This example uses the [LUMI AI Factory Software Environment](./../../laif/software/ai-environment.md) that for example includes PyTorch and other AI software. As the AI Software Environment uses singularity containers some extra steps are required:
+This example uses the [LUMI AI Factory Software Environment](./../../laif/software/ai-environment.md) that for example includes PyTorch and other AI software. As the AI Software Environment uses Singularity containers, you need to create an executable wrapper script (`chmod +x`) for Python.
 
-- Add `prepend_path("MODULEPATH","/appl/local/laifs/ood/lumi-multitorch")` to the `some-course.lua`.
-- Pick an appropriate module under `/appl/local/laifs/ood/lumi-multitorch` for the container you like to use. Add it to the `some-course.lua` e.g. like this: `depends_on("full-u24r70f21m50t210-20260807_115122")`.
--  Create wrapper script for python (see below)  under  `/projappl/project_1234567/www_lumi_modules/wrappers/python`
-- Make wrapper script executable with `chmod +x`.
-- Add wrapper script to the `some-course.lua` with `prepend_path("PATH", "/projappl/project_1234567/www_lumi_modules/wrappers")`.
+Module (`/projappl/project_1234567/www_lumi_modules/some-pytorch-course.lua`):
+```
+-- Jupyter
+prepend_path("MODULEPATH","/appl/local/laifs/ood/lumi-multitorch")
+-- pick from /appl/local/laifs/ood/lumi-multitorch
+depends_on("full-u24r70f21m50t210-20260807_115122")
+prepend_path("PATH", "/projappl/project_1234567/www_lumi_modules/wrappers")
+setenv("_COURSE_BASE_NAME","FolderName")
+-- Relative to the course dir
+setenv("_COURSE_NOTEBOOK","notebooks/tutorial.ipynb")
+setenv("_COURSE_GIT_REPO","https://github.com/VeryCoolCode/projectA.git")
+-- Anything valid for checkout
+setenv("_COURSE_GIT_REF","")
+-- lab / notebook / empty (defaults to jupyter)
+setenv("_COURSE_NOTEBOOK_TYPE","notebook")
+```
 
 Wrapper script for Python (`/projappl/project_1234567/www_lumi_modules/wrappers/python`):
 
