@@ -56,7 +56,7 @@ partition: "interactive"
 mem: "16GB"
 ```
 
-You can specify gpus with `gpus: 1` in the `some-course-resources.yml`. Note that the [slurm partition](./../../runjobs/scheduled-jobs/partitions.md) needs to have GPU resources (e.g., `small-g`).
+You can specify gpus with `gpus: 1` in the `some-course-resources.yml`. Note that the [Slurm partition](./../../runjobs/scheduled-jobs/partitions.md) needs to have GPU resources (e.g., `small-g`).
 
 The Python environment for the course also needs to be created.
 It is recommended that you use the [LUMI container wrapper](../../software/installing/container-wrapper.md) for creating the Python environment.
