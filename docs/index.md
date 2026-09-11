@@ -25,7 +25,7 @@ hide:
     
     <center>
         [:octicons-link-24: LUMI helpdesk](https://lumi-supercomputer.eu/user-support/need-help/) &nbsp;&nbsp;&nbsp;&nbsp;
-        [:octicons-link-24: LUMI status](https://lumi-supercomputer.eu/lumi-service-status/) &nbsp;&nbsp;&nbsp;&nbsp;
+        [:octicons-link-24: LUMI status](https://status.lumi.csc.fi/) &nbsp;&nbsp;&nbsp;&nbsp;
         [:octicons-link-24: LUMI events](https://lumi-supercomputer.eu/events/) &nbsp;&nbsp;&nbsp;&nbsp;
         [:octicons-link-24: LUMI training materials](https://lumi-supercomputer.github.io/LUMI-training-materials/)
     </center>

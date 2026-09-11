@@ -17,6 +17,7 @@ Features available in the web interface:
     - Julia-Jupyter
     - Jupyter
     - Jupyter for courses: An interactive Jupyter session specifically for courses
+    - marimo
     - MATLAB
     - MLflow
     - TensorBoard

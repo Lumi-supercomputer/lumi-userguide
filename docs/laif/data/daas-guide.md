@@ -13,10 +13,12 @@
 [run jobs]: ./../../runjobs/index.md
 [software]: ./../../software/index.md
 [terms of use]: https://lumi-supercomputer.eu/wp-content/uploads/2026/03/LUMI-General-Terms-of-Use_2026.pdf
+[daas terms of use]: https://lumi-ai-factory.eu/terms-of-use-of-lumi-ai-factory-dataset-as-a-service/
+[service description]: https://lumi-ai-factory.eu/dataset-as-a-service/
 
 ## What is LUMI AIF Dataset as a Service?
 
-LUMI AI Factory Dataset as a Service (LUMI AIF DaaS) offers curated high-quality datasets close to
+[LUMI AI Factory Dataset as a Service (LUMI AIF DaaS)][service description] offers curated high-quality datasets close to
 high-performance computing resources, enabling researchers, innovators, and
 industry users to focus on research and development rather than data
 acquisition and infrastructure management. The datasets are usually accessible
@@ -129,7 +131,7 @@ LUMI AIF DaaS is not a repository or a preservation service. It does not take aw
 ### What is required of a dataset
 LUMI AI Factory Dataset as a Service offers a curated catalog. This means that every dataset offered has been through a process where its suitability has been evaluated. LUMI AI Factory curation criteria is evolving and it will be presented to data providers during our cooperation. To summarize the criteria, the datasets need to be relevant for AI usage, they need to be AI-ready and the data providers need to agree to provide the data under such a license or agreement that it is possible to use it in AI innovation. If you already have used good data management practices and you have a large dataset with some idea of AI usage, your dataset is most likely good to go.
 
-Every data provider needs to accept the Terms of Use of LUMI AI Factory Dataset as a Service. If your data contains personal data, also a record of processing activities should be documented. LUMI AIF DaaS accepts datasets containing personal data and other confidential datasets. Datasets containing special categories of personal data are not currently accepted.
+Every data provider needs to accept the [Terms of Use of LUMI AI Factory Dataset as a Service][daas terms of use]. If your data contains personal data, also a record of processing activities should be documented. LUMI AIF DaaS accepts datasets containing personal data and other confidential datasets. Datasets containing special categories of personal data are not currently accepted.
 
 ### Adding the dataset
 When you have contacted LUMI AI Factory user support and your dataset has been accepted for LUMI AI Factory Dataset as a Service, you will be guided to add information about the dataset. The metadata about the dataset will be added to Fairdata services. You can do this yourself or we can do it for you. Comprehensive metadata for datasets provides the data users detailed descriptions of the data and helps them to discover the data they need. You can find detailed description of the metadata upload process and possible metadata fields in [Fairdata guide for adding dataset metadata][fairdata guide for adding dataset metadata]. 

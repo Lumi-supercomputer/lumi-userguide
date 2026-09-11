@@ -33,6 +33,7 @@ nav:
         - Julia-Jupyter: runjobs/webui/julia-jupyter.md
         - Jupyter: runjobs/webui/jupyter.md
         - Jupyter for courses: runjobs/webui/jupyter-for-courses.md
+        - marimo: runjobs/webui/marimo.md
         - MLflow: runjobs/webui/mlflow.md
         - TensorBoard: runjobs/webui/tensorboard.md
         - Visual Studio Code: runjobs/webui/vscode.md
@@ -174,7 +175,7 @@ nav:
     - Help desk: helpdesk/index.md
     - Training and events: helpdesk/training.md
     - Known issues: helpdesk/issues.md
-    - LUMI service status: https://www.lumi-supercomputer.eu/lumi-service-status/
+    - LUMI service status: https://status.lumi.csc.fi
     - Mailing list archive: https://postit.csc.fi/sympa/arc/lumi-users
     - Contribution and feedback: helpdesk/feedback.md  
   - LUMI AI Factory:
@@ -182,7 +183,6 @@ nav:
     - Data:
       - Dataset as a Service:
         - User guide: laif/data/daas-guide.md
-        - Service description: laif/data/daas-description.md
     - AI Inference:
       - Overview: laif/inference/index.md
       - Aitta Inference Service: laif/inference/aitta.md
@@ -269,6 +269,5 @@ plugins:
         'software/packages/pytorch.md': 'https://lumi-supercomputer.github.io/LUMI-EasyBuild-docs/p/PyTorch/'
         'lumi-k.md': 'runjobs/lumi-k/getting-started/lumi_k_what_is.md'
         'lumi-o.md': 'storage/lumio/index.md'
-        'laif/data/daas_description.md': 'laif/data/daas-description.md'
         'laif/data/daas_guide.md': 'laif/data/daas-guide.md'
   - search

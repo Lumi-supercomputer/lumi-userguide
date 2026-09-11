@@ -33,7 +33,7 @@ Two files are needed for the course modules to be visible in the web interface:
  - a `<course>-resources.yml` that defines the default resources used for Jupyter.
     If this file is omitted, the resources must explicitly be defined in the resource settings in the form.
 
-### Examples
+### General Example
 Module (`/projappl/project_1234567/www_lumi_modules/some-course.lua`):
 ```
 -- Jupyter
@@ -56,6 +56,37 @@ partition: "interactive"
 mem: "16GB"
 ```
 
+You can specify gpus with `gpus: 1` in the `some-course-resources.yml`. Note that the [Slurm partition](./../../runjobs/scheduled-jobs/partitions.md) needs to have GPU resources (e.g., `small-g`).
+
 The Python environment for the course also needs to be created.
 It is recommended that you use the [LUMI container wrapper](../../software/installing/container-wrapper.md) for creating the Python environment.
 After creating the environment using the LUMI container wrapper, the full path to the `bin` directory needs to be added inside the `prepend_path` in the Lua file for the course above.
+
+### AI Software Environment (PyTorch) Example
+This example uses the [LUMI AI Factory Software Environment](./../../laif/software/ai-environment.md) that for example includes PyTorch and other AI software. As the AI Software Environment uses Singularity containers, you need to create an executable wrapper script (`chmod +x`) for Python.
+
+Module (`/projappl/project_1234567/www_lumi_modules/some-pytorch-course.lua`):
+```
+-- Jupyter
+prepend_path("MODULEPATH","/appl/local/laifs/ood/lumi-multitorch")
+-- pick from /appl/local/laifs/ood/lumi-multitorch
+depends_on("full-u24r70f21m50t210-20260807_115122")
+prepend_path("PATH", "/projappl/project_1234567/www_lumi_modules/wrappers")
+setenv("_COURSE_BASE_NAME","FolderName")
+-- Relative to the course dir
+setenv("_COURSE_NOTEBOOK","notebooks/tutorial.ipynb")
+setenv("_COURSE_GIT_REPO","https://github.com/VeryCoolCode/projectA.git")
+-- Anything valid for checkout
+setenv("_COURSE_GIT_REF","")
+-- lab / notebook / empty (defaults to jupyter)
+setenv("_COURSE_NOTEBOOK_TYPE","notebook")
+```
+
+Wrapper script for Python (`/projappl/project_1234567/www_lumi_modules/wrappers/python`):
+
+The `$SIF` variable points to the container image and is set by the `lumi-multitorch` module loaded above.
+
+```bash
+#!/bin/bash
+exec singularity exec "$SIF" python "$@"
+```
