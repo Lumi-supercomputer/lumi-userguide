@@ -14,6 +14,7 @@ nav:
     - SSH authentication: firststeps/SSH-keys.md
     - Logging in (with SSH client): firststeps/loggingin.md
     - Logging in (with web interface): firststeps/loggingin-webui.md
+    - Logging in (with REST API): firststeps/loggingin-hpc-api.md
     - Moving data to/from LUMI: firststeps/movingdata.md
     - Next steps: firststeps/nextsteps.md
   - Hardware:
@@ -126,6 +127,8 @@ nav:
     - Performance analysis:
       - Performance analysis strategies: development/profiling/strategies.md
       - Cray Performance Analysis Tool: development/profiling/perftools.md
+    - HPC API:
+      - FirecREST: development/api/firecrest.md
     - AI tools:
       - AI agent guide: development/ai-tools/ai-agent-guide.md
   - Storage:
