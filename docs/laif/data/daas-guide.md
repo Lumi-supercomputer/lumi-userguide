@@ -17,7 +17,8 @@
 [service description]: https://lumi-ai-factory.eu/dataset-as-a-service/
 [rems]: https://lumi-aif-rems.csc.fi/
 [myaccessid]: https://docs.csc.fi/accounts/how-to-manage-user-information/#how-to-link-your-csc-user-account-to-external-authentication-sources
-[lumiopenondemand]: https://www.lumi.csc.fi/pun/sys/dashboard/custom/project_status
+[web interface project status app]: https://www.lumi.csc.fi/pun/sys/dashboard/custom/project_status
+[web interface docs]: ./../../runjobs/webui/index.md
 
 ## What is LUMI AIF Dataset as a Service?
 
@@ -95,7 +96,7 @@ When you open a dataset, it has general information of the data, links to its do
 
 Some datasets are of restricted use. In each dataset you can find instructions on how to apply, usually an Apply access link in the Data-tab of the Datasets metadata page. This will guide you to log in to our [data permit management solution][rems] by using MyAccessID. If you already have a CSC account and are new to MyAccessID, you can check this [guide on linking your CSC account to a MyAccessID account][myaccessid]. 
 
-After logging in you will see an application form which details the relevant information needed for gaining access. You always need to give the ID of the LUMI project you are requesting access for (you can find this UNIX group ID for example through [LUMI OpenOnDemand project listing][lumiopenondemand]). If you do not have a LUMI project already, you can check [the computing packages of LUMI AI Factory][LAIF computing packages] or get an overview of access policies from [LUMI Supercomputer Get Started][get started] page.
+After logging in you will see an application form which details the relevant information needed for gaining access. You always need to give the ID of the LUMI project you are requesting access for (you can find this UNIX group ID for example through the [project status app][web interface project status app] in the [LUMI web interface][web interface docs]). If you do not have a LUMI project already, you can check [the computing packages of LUMI AI Factory][LAIF computing packages] or get an overview of access policies from [LUMI Supercomputer Get Started][get started] page.
 
 Many datasets are open and thus you can use them without applying for access. However we are interested in the different use cases and can help with accessing the open datasets as well, so we appreciate if you sent us an email in such cases as well.
 
