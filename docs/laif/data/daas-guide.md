@@ -98,7 +98,7 @@ Some datasets are of restricted use. In each dataset you can find instructions o
 
 After logging in you will see an application form which details the relevant information needed for gaining access. You always need to give the ID of the LUMI project you are requesting access for (you can find this UNIX group ID for example through the [project status app][web interface project status app] in the [LUMI web interface][web interface docs]). If you do not have a LUMI project already, you can check [the computing packages of LUMI AI Factory][LAIF computing packages] or get an overview of access policies from [LUMI Supercomputer Get Started][get started] page.
 
-Many datasets are open and thus you can use them without applying for access. However we are interested in the different use cases and can help with accessing the open datasets as well, so we appreciate if you sent us an email in such cases as well.
+Many datasets are open and thus you can use them without applying for access. However we are interested in the different use cases and can help with accessing the open datasets as well, so we appreciate if you sent us an email to [LUMI AI Factory user support][LAIF user support email] in such cases as well.
 
 You will be notified by e-mail when you have been granted or denied access for
 a dataset. After you've been granted access to a dataset, the LUMI AI Factory
