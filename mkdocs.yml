@@ -83,6 +83,7 @@ nav:
         - Networking: runjobs/lumi-k/configuration/network.md
       - Tutorials:
         - MLflow: runjobs/lumi-k/tutorials/mlflow.md
+        - KServe: runjobs/lumi-k/tutorials/kserve.md
       - Security guide: runjobs/lumi-k/security_guide.md
   - Software:
     - Overview: software/index.md
