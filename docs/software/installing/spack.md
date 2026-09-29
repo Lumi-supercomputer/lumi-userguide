@@ -82,15 +82,6 @@ debugging, into a project storage folder `/project/project_465000XYZ/spack`.
     `install/`, `cache/`, `modules/` and `environments/` subdirectories under
     the prefix automatically when it is loaded.
 
-    !!! warning "Use one Spack version per `$SPACK_USER_PREFIX`"
-        The prefix does not depend on the Spack version: all `spack-cpu` and
-        `spack-gpu` versions put their installations, database and environments
-        in the same directories. A newer Spack release may upgrade the install
-        database or environment lock files to a format that an older release
-        can no longer read. If you want to keep using an older Spack version,
-        give each version its own prefix, for example
-        `/project/project_465000XYZ/spack-1.2`.
-
 2. Check the information Spack has about the package, especially the
    configuration options:
 
@@ -143,12 +134,12 @@ debugging, into a project storage folder `/project/project_465000XYZ/spack`.
     ```console
     $ spack install kokkos +debug_bounds_check
     ...
-    ==> Installing kokkos-... [n/n]
-    ==> kokkos: Successfully installed kokkos-...
-    [+] /project/project_465000XYZ/spack/install/kokkos-4.x.x-xxxxxxx
+    [e] xxxxxxx hip@6.3.4 /opt/rocm-6.3.4 (0s)
+    [+] xxxxxxx cmake@3.xx.x /project/project_465000XYZ/spack/install/[padded-to-128-chars]/cmake-3.xx.x-xxxxxxx (...)
+    [+] xxxxxxx kokkos@4.x.x /project/project_465000XYZ/spack/install/[padded-to-128-chars]/kokkos-4.x.x-xxxxxxx (...)
     ```
 
-    The final line shows where the software is installed on disk, under
+    Each line shows a package and where it is installed on disk, under
     `$SPACK_USER_PREFIX/install`. A module is also generated automatically and
     added to your `$MODULEPATH`. Module names follow the pattern
     `<name>/<version>-<compiler>-<compiler version>-<hash>`, where the short hash
