@@ -145,7 +145,7 @@ Comprehensive metadata for datasets provides the data users detailed description
 
 You can find detailed description of the metadata upload process and possible metadata fields in [Fairdata guide for adding dataset metadata][fairdata guide for adding dataset metadata]. 
 
-For the data itself, we will give you space to upload the use copy of the data into LUMI-O. We will help you with the upload process where needed, but you can also check the [LUMI-O user guide][LUMI-O user guide]. If the dataset is already accessible through a national repository or other services, you can also inform the users of this access point in the metadata.
+For the data itself, we will give you space to upload the copy of the data into LUMI-O. We will help you with the upload process where needed, but you can also check the [LUMI-O user guide][LUMI-O user guide]. If the dataset is already accessible through a national repository or other services, you can also inform the users of this access point in the metadata.
 
 ### Reviewing applications from data users
 
