@@ -92,9 +92,9 @@ $ module avail
 
 ----------------------------- Software stacks -----------------------------
    CrayEnv    (S)    LUMI/23.12            (S)      spack-cpu/1.1
-   LUMI/22.08 (S)    LUMI/24.03            (S,D)    spack-gpu/1.1
-   LUMI/22.12 (S)    Local-CSC/default     (S)
-   LUMI/23.03 (S)    Local-quantum/default (S)
+   LUMI/22.08 (S)    LUMI/24.03            (S,D)    spack-cpu/1.2 (D)
+   LUMI/22.12 (S)    Local-CSC/default     (S)      spack-gpu/1.1
+   LUMI/23.03 (S)    Local-quantum/default (S)      spack-gpu/1.2 (D)
    LUMI/23.09 (S)
 
 --------------------- Modify the module display style ---------------------

@@ -9,8 +9,17 @@ the same software. It also comes with a virtual environment feature that is
 useful when developing software.
 
 LUMI provides pre-configured Spack instances as Lmod modules, one per compute
-partition: `spack-cpu/1.1` for the LUMI-C (CPU) nodes and `spack-gpu/1.1` for
-the LUMI-G (GPU) nodes. The version number (`1.1`) is the Spack release version.
+partition: `spack-cpu` for the LUMI-C (CPU) nodes and `spack-gpu` for the
+LUMI-G (GPU) nodes. The module version is the Spack release version. Several
+Spack releases can be installed side by side; `module avail spack` lists them,
+and the newest one is the default:
+
+```console
+$ module avail spack
+   spack-cpu/1.1    spack-cpu/1.2 (D)    spack-gpu/1.1    spack-gpu/1.2 (D)
+```
+
+The examples on this page use Spack 1.2.
 
 Both modules reuse the compilers and system libraries already present on LUMI —
 from the Cray Programming Environment and from the operating system — rather
@@ -28,9 +37,9 @@ The setup is organized per compute partition rather than per Cray Programming
 Environment release: a single configuration lists every compiler installed on
 the system, so it is not tied to one CPE version.
 
-* `spack-cpu/1.1` — for the LUMI-C CPU nodes. It uses the system `libfabric`
+* `spack-cpu` — for the LUMI-C CPU nodes. It uses the system `libfabric`
   and builds `mpich`/`openmpi` without GPU support.
-* `spack-gpu/1.1` — for the LUMI-G GPU nodes. Everything in the CPU
+* `spack-gpu` — for the LUMI-G GPU nodes. Everything in the CPU
   configuration, plus the AMD ROCm/HIP stack as external packages (currently
   ROCm 6.3.4, from `/opt/rocm-6.3.4`), the AMD `llvm-amdgpu` compiler, and
   `+rocm amdgpu_target=gfx90a` applied by default so that packages are built for
@@ -61,7 +70,7 @@ debugging, into a project storage folder `/project/project_465000XYZ/spack`.
 
     ```bash
     $ export SPACK_USER_PREFIX=/project/project_465000XYZ/spack
-    $ module load spack-gpu/1.1
+    $ module load spack-gpu/1.2
     ```
 
     `$SPACK_USER_PREFIX` determines where your installed packages, generated
@@ -72,6 +81,15 @@ debugging, into a project storage folder `/project/project_465000XYZ/spack`.
     you do not have to set it every time. The module creates the
     `install/`, `cache/`, `modules/` and `environments/` subdirectories under
     the prefix automatically when it is loaded.
+
+    !!! warning "Use one Spack version per `$SPACK_USER_PREFIX`"
+        The prefix does not depend on the Spack version: all `spack-cpu` and
+        `spack-gpu` versions put their installations, database and environments
+        in the same directories. A newer Spack release may upgrade the install
+        database or environment lock files to a format that an older release
+        can no longer read. If you want to keep using an older Spack version,
+        give each version its own prefix, for example
+        `/project/project_465000XYZ/spack-1.2`.
 
 2. Check the information Spack has about the package, especially the
    configuration options:
@@ -244,7 +262,8 @@ under `/appl/lumi`, which is read-only for users:
 
 ```text
 /appl/lumi/
-├── spack-1.1/                # Spack source tree (one directory per Spack version)
+├── spack-1.1/                # Spack source trees, one directory per Spack version
+├── spack-1.2/
 └── lumi-spack-settings/      # LUMI configuration and the Lmod modulefiles
     └── configs/
         ├── common/           # shared: compilers, install tree, modules, providers
@@ -253,7 +272,7 @@ under `/appl/lumi`, which is read-only for users:
 ```
 
 When you load a Spack module, it points `$SPACK_ROOT` at the shared Spack source
-tree (`/appl/lumi/spack-1.1`) and layers the configuration on top through Spack's
+tree of its version (`/appl/lumi/spack-<version>`) and layers the configuration on top through Spack's
 [configuration scopes](https://spack.readthedocs.io/en/latest/configuration.html):
 
 * the `configs/common` directory is used as the *system* scope
@@ -292,7 +311,7 @@ If you want to use Spack directly (without `module load`), you can source the
 Spack initialization script from the shared source tree:
 
 ```bash
-$ source /appl/lumi/spack-1.1/share/spack/setup-env.sh
+$ source /appl/lumi/spack-1.2/share/spack/setup-env.sh
 ```
 
 In that case you have to set `$SPACK_USER_PREFIX`, and point
