@@ -195,8 +195,9 @@ The `module spider` command has three levels, producing different outputs:
     versions of `CMake` (3.27.7, 3.29.3, 3.31.7, 3.31.77 and 4.2.3) 
     are available on the system as
     extensions of another module.
-    If you have one of the `spack` modules loaded, you may see a line "Other
-    possible matches" with some lowercase modulenames that contain the string "cmake".
+    If you have one of the Spack modules (`spack-cpu` or `spack-gpu`) loaded, you
+    may see a line "Other possible matches" with some lowercase modulenames that
+    contain the string "cmake".
 
     !!! info "Information on LUMI software stacks?"
         For more information on the software stacks on LUMI, head to the
