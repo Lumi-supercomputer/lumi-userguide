@@ -26,7 +26,7 @@ complete node regardless of the resource actually used as detailed in the
 | -------------- | ------------ | ----------------- | ----------------- | --------------------------------------|
 | standard-g     | 2 days       | 210 (200 running) | 1024 nodes        | [LUMI-G][lumi-g]                      |
 | standard       | 2 days       | 120 (100 running) | 512 nodes         | [LUMI-C][lumi-c]                      |
-| largemem       | 1 day        | 30 (20 running)   | 1 nodes           | [LUMI-D][lumi-d]                      |
+| largemem       | 2 day        | 30 (20 running)   | 1 nodes           | [LUMI-D][lumi-d]                      |
 
 
 
