@@ -1,7 +1,7 @@
 # This is what we actually install
 mkdocs==1.6.0
-mkdocs-material==9.5.24
-pymdown-extensions==10.21.3
+mkdocs-material==9.7.7
+pymdown-extensions==11.0.0
 
 # This is dependencies
 Babel==2.15.0
