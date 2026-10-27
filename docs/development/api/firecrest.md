@@ -1,4 +1,5 @@
-[firecrest-token]: https://my.csc.fi/firecrest-token
+[firecrest-auth-app]: https://www.lumi.csc.fi/pun/sys/dashboard/custom/firecrest_auth
+[firecrest-token-mycsc]: https://my.csc.fi/firecrest-token
 [api-base]: https://api.lumi.csc.fi
 [api-openapi]: https://api.lumi.csc.fi/v1/openapi.json
 [api-docs]: https://api.lumi.csc.fi/v1/docs
@@ -22,12 +23,23 @@ It is an ideal solution for building automated access to computing resources, as
 
 All LUMI users can access the FirecREST HPC API with time-limited personal access tokens. This effectively provides an alternative to a direct SSH connection, as all API operations are executed on LUMI using your account identity and privileges.
 
-Personal access tokens can be generated:
+Personal access tokens are generated with the FirecREST authentication tool in the LUMI web interface. To open it, either:
 
-- via an App in the LUMI Webinterface (all users, pending)
-- from the [MyCSC portal][firecrest-token] (Finnish CSC account only). Note that there's no direct link from the portal itself yet. You can view and revoke your active tokens at the [CSC IdP federated personal profile page][csc-idp-profile], under *Connected organizations* -> *Firecrest-access-tokens*.
+- go directly to the [FirecREST authentication tool][firecrest-auth-app], or
+- log in to the [LUMI web interface](../../runjobs/webui/index.md) and select *Tools* > *FirecREST authentication tool* from the top menu.
+
+!!! note "Alternative for CSC users"
+    Users with a Finnish CSC account can also generate tokens from the [MyCSC portal][firecrest-token-mycsc]. There is no direct link to this page from the portal itself.
 
 Personal access tokens are valid for 24 hours at a time.
+
+### Revoking access tokens
+
+You can revoke your active tokens at the [CSC IdP personal profile page][csc-idp-profile]:
+
+1. Open *Connected organizations*.
+2. Expand the *LUMI FirecREST* section (tokens from the FirecREST authentication tool) or the *Firecrest-access-tokens* section (tokens from the MyCSC portal).
+3. Click *Revoke now*.
 
 !!! warning "Robot Accounts"
     In order to use the REST API for building more serious integrations, such as CI pipelines or building web applications, you can request a machine-to-machine robot account to be created for your project.
@@ -68,7 +80,7 @@ FirecREST HPC API can be used with personal access tokens, which allow access to
 
 As the name suggests, personal access tokens are intended for personal use.
 
-See [How to get access to the API?](#how-to-get-access-to-the-api) for how to generate a personal access token.
+Generate a personal access token with the [FirecREST authentication tool][firecrest-auth-app] (see [How to get access to the API?](#how-to-get-access-to-the-api)).
 
 ## Large file transfer using S3
 
