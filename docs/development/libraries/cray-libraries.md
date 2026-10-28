@@ -134,4 +134,4 @@ nonblocking APIs that can give better performance when used well.
 !!! Tip "Finding out the configuration of PnetCDF"
     The `pnetcdf_version` command will show how the library is configured on LUMI.
 
-[Official documentation of PnetCDF](doc-pnetcdf)
+[Official documentation of PnetCDF][doc-pnetcdf]
