@@ -14,6 +14,60 @@ An example batch job script is included for each example, which you can use to s
 
 ## Overview of available workflows
 
+### LLM Fine-tuning Single-node Full SFT
+
+The LLM Fine-tuning Single-node Full SFT workflow fine-tunes Hugging Face text-generation (or image-text-to-text) models with full-parameter supervised fine-tuning (SFT) on one LUMI-G node. The workflow has two stages: tokenization and preprocessing on a CPU node and fine-tuning with TRL `SFTTrainer` and DeepSpeed ZeRO-3 on a GPU node. The default example uses local LUMI copies of `Mistral-Small-3.2-24B-Instruct-2506` and the `poro2-instruction-collection` dataset.
+
+**Use Case Examples:**
+
+- Specializing an instruction model for a domain-specific assistant, such as product-specific support, internal documentation aligned question answering, or task-specific context adherence.
+- Fine-tuning a model to follow task-specific output formats, terminology, or response style using supervised examples.
+- Using publicly available datasets to improve model performance in specific tasks such as programming, mathematics, or retrieval-augmented generation.
+
+For more details, refer to the documentation available on LUMI at `/appl/local/laifs/workflows/llm-finetuning-single-node-full-sft`.
+
+**Usage Example:**
+
+1. **Copy the example directory** to your project space:
+   ```bash
+   cp -r /appl/local/laifs/workflows/llm-finetuning-single-node-full-sft/examples/example1 ~/my-llm-finetuning-example
+   cd ~/my-llm-finetuning-example
+   ```
+
+2. **Edit the `task.yaml`** to specify the model, dataset, preprocessed dataset path, output directory, and training settings:
+   ```yaml
+   ---
+   name: Mistral Small 3.2 full SFT example
+   model: /appl/local/laifs/models/Mistral-Small-3.2-24B-Instruct-2506
+   dataset: /appl/local/laifs/datasets/poro2-instruction-collection
+   preprocessed_dataset: ./output/poro2-instruction-collection-preprocessed
+   split: train
+   dataset_format: messages
+   output_dir: ./output/mistral-small-3.2-poro2-sft
+   max_seq_length: 4096
+   num_train_epochs: 1
+   per_device_train_batch_size: 1
+   gradient_accumulation_steps: 16
+   learning_rate: 2.0e-5
+   ```
+
+3. **Submit the tokenization job** using the provided CPU batch script:
+   ```bash
+   sbatch -A your_project tokenize-batch.sh
+   ```
+
+4. **Submit the fine-tuning job** after tokenization has completed. You can also submit it immediately with a dependency on the tokenization job ID:
+   ```bash
+   sbatch -A your_project --dependency=afterok:<tokenization_job_id> finetune-batch.sh
+   ```
+
+5. **Monitor progress** via Slurm output:
+   ```bash
+   tail -f slurm-*.out
+   ```
+
+6. **Check results** after completion. The tokenized dataset is written to the `preprocessed_dataset` directory and the fine-tuned model and checkpoints are written to `output_dir`.
+
 ### LLM Text Processing
 
 The LLM Text Processing workflow enables efficient text processing using Large Language Models (LLMs). This workflow is designed for tasks such as dataset curation, text summarization, and language translation. It leverages the vLLM library to process input files based on user-provided instructions and generate corresponding output files. The workflow uses a YAML configuration file to specify the files used for inputs, outputs, and processing instructions. It utilizes tensor parallelism and batched processing for achieving optimal performance.
@@ -65,7 +119,7 @@ For more details, refer to the documentation available on LUMI at `/appl/local/l
 
 6. **Check results** in the `output/` directory after completion. You will get one output file for each input file.
 
-#### Vision-Language Batch Processing
+### Vision-Language Batch Processing
 
 The Vision-Language Batch Processing workflow can be used for image analysis using vision-language models. It uses the Transformers library to process input images based on user-provided instructions and generate output files with textual answers. This workflow supports task configuration through YAML files.
 
@@ -159,4 +213,3 @@ For more details, refer to the documentation available on LUMI at `/appl/local/l
    Prediction: leopard with probability 0.42%
    ```
    You will get one output file for each input image.
-
