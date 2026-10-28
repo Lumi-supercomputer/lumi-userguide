@@ -11,9 +11,9 @@ RUN dnf --refresh --assumeyes install nginx python3.12 python3.12-pip && \
 RUN chgrp -R root ${ROOT_GROUP_DIRS} && \
     chmod -R g+rwx ${ROOT_GROUP_DIRS}
 
-COPY --parents \
-  ./docs ./mkdocs_lumi ./mkdocs.yml ./requirements.txt \
-  ./
+COPY ./docs/ ./docs/
+COPY ./mkdocs_lumi/ ./mkdocs_lumi/
+COPY ./mkdocs.yml ./requirements.txt ./
 
 ARG PIP_ROOT_USER_ACTION=ignore
 
