@@ -11,7 +11,9 @@ RUN dnf --refresh --assumeyes install nginx python3.12 python3.12-pip && \
 RUN chgrp -R root ${ROOT_GROUP_DIRS} &&\
     chmod -R g+rwx ${ROOT_GROUP_DIRS}
 
-COPY . .
+COPY --parents \
+  ./docs ./mkdocs_lumi ./mkdocs.yml ./requirements.txt \
+  ./
 
 RUN python3.12 -m pip install --no-cache-dir -r requirements.txt && \
     python3.12 -m mkdocs build -d /usr/share/nginx/html
