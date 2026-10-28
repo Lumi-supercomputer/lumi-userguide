@@ -15,7 +15,10 @@ COPY --parents \
   ./docs ./mkdocs_lumi ./mkdocs.yml ./requirements.txt \
   ./
 
-RUN python3.12 -m pip install --no-cache-dir -r requirements.txt && \
+ARG PIP_ROOT_USER_ACTION=ignore
+
+RUN python3.12 -m pip install --upgrade pip && \
+    python3.12 -m pip install --no-cache-dir --no-deps --requirement requirements.txt && \
     python3.12 -m mkdocs build -d /usr/share/nginx/html
 
 COPY nginx.conf /etc/nginx
