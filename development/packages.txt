@@ -1,0 +1,6 @@
+# The packages listed here are what we actually install, while the
+# file ../requirements.txt contains the current frozen environment.
+mkdocs
+mkdocs-material
+mkdocs-redirects
+pymdown-extensions
