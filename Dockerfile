@@ -18,10 +18,7 @@ RUN python3.12 -m pip install --no-cache-dir -r requirements.txt && \
     python3.12 -m mkdocs build -d /usr/share/nginx/html
 
 COPY nginx.conf /etc/nginx
-COPY entry-point.sh /
-
-RUN chmod +x entry-point.sh
 
 EXPOSE 8000
 
-CMD [ "/entry-point.sh" ]
+CMD ["/usr/sbin/nginx"]
