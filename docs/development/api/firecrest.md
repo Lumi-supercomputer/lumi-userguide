@@ -10,8 +10,10 @@
 [pyfirecrest-docs]: https://pyfirecrest.readthedocs.io/en/stable/index.html
 [pyfirecrest-api-v2]: https://pyfirecrest.readthedocs.io/en/stable/reference_v2_index.html
 [lumio]: ./../../storage/lumio/index.md
-[api-upload]: https://api.lumi.csc.fi/v1/docs#/filesystem/post_upload_filesystem__system_name__transfer_upload_post
-[api-download]: https://api.lumi.csc.fi/v1/docs#/filesystem/post_download_filesystem__system_name__transfer_download_post
+[api-ops-upload]: https://api.lumi.csc.fi/v1/docs#/filesystem/post_upload_filesystem__system_name__ops_upload_post
+[api-ops-download]: https://api.lumi.csc.fi/v1/docs#/filesystem/get_download_filesystem__system_name__ops_download_get
+[api-transfer-upload]: https://api.lumi.csc.fi/v1/docs#/filesystem/post_upload_filesystem__system_name__transfer_upload_post
+[api-transfer-download]: https://api.lumi.csc.fi/v1/docs#/filesystem/post_download_filesystem__system_name__transfer_download_post
 
 # FirecREST HPC API
 
@@ -21,7 +23,7 @@ It is an ideal solution for building automated access to computing resources, as
 
 ## How to get access to the API?
 
-All LUMI users can access the FirecREST HPC API with time-limited personal access tokens. This effectively provides an alternative to a direct SSH connection, as all API operations are executed on LUMI using your account identity and privileges.
+All LUMI users can access the FirecREST HPC API with time-limited personal access tokens. This effectively provides an alternative to a direct SSH connection, as all API operations are executed on LUMI using your account identity and privileges. Tokens give the same access as your SSH login and are meant for personal use, such as desktop applications or scripts using [PyFirecREST][pyfirecrest].
 
 Personal access tokens are generated with the FirecREST authentication tool in the LUMI web interface. To open it, either:
 
@@ -33,26 +35,30 @@ Personal access tokens are generated with the FirecREST authentication tool in t
 
 Personal access tokens are valid for 24 hours at a time.
 
+!!! warning "Access tokens are secrets"
+    Access tokens issued for FirecREST HPC API allow the token holder to interact with Slurm jobs, and read, manipulate and transfer data with your privileges. Don't share your access token with anyone.
+
 ### Revoking access tokens
+
+Revoke a token immediately if it may have been exposed, for example if it was committed to a public repository or pasted into a chat or email.
 
 You can revoke your active tokens at the [CSC IdP personal profile page][csc-idp-profile]:
 
 1. Open *Connected organizations*.
 2. Expand the *LUMI FirecREST* section (tokens from the FirecREST authentication tool) or the *Firecrest-access-tokens* section (tokens from the MyCSC portal).
 3. Click *Revoke now*.
+4. Generate a new token if needed.
 
 !!! warning "Robot Accounts"
-    In order to use the REST API for building more serious integrations, such as CI pipelines or building web applications, you can request a machine-to-machine robot account to be created for your project.
-    These are not available yet.
+    Machine-to-machine robot accounts for more serious integrations, such as CI pipelines or web applications, are not available on LUMI yet.
 
 ## Connecting to LUMI FirecREST HPC API
 
-!!! warning "Access tokens are secrets"
-    Access tokens issued for FirecREST HPC API allow the token holder to interact with Slurm jobs, and read, manipulate and transfer data with your privileges. Don't share your access token with anyone.
-
-LUMI FirecREST HPC API endpoints can be found under the URL [https://api.lumi.csc.fi][api-base]. The service uses versioned URL scheme, where the first element of the URL path represents the API generation. The current, latest API generation is `v1`. It is based on the latest release of FirecREST v2.
+LUMI FirecREST HPC API endpoints can be found under the URL [https://api.lumi.csc.fi][api-base]. The service uses versioned URL scheme, where the first element of the URL path represents the API generation. The current API generation is `v1`. It is based on FirecREST v2.
 
 Possible major or breaking changes to the API will be released as new API generation. By default, a new release will not replace any existing APIs. Earlier generations will be maintained and kept available.
+
+On LUMI, the API exposes a single system named `lumi`, which covers all partitions. The system name is part of the endpoint paths, for example `/v1/compute/lumi/jobs`.
 
 ### API documentation
 
@@ -74,30 +80,35 @@ Authorization header must be present in every API request sent to FirecREST. Tok
 
 All requests sent to the API are executed on LUMI using the same user account that was used to retrieve the access token. For example, with a personal access token, all commands run via FirecREST are executed as you on the target system.
 
-### Connecting with a personal access token
+## Uploading and downloading files
 
-FirecREST HPC API can be used with personal access tokens, which allow access to the same computing resources and projects as your direct terminal access. Personal access tokens are useful for running desktop applications or automation utilities in interactive terminals, that integrate with HPC resources using [PyFirecREST][pyfirecrest] Python SDK, for example.
+Which endpoints you use depends on the file size:
 
-As the name suggests, personal access tokens are intended for personal use.
+- **Files up to 32 MiB:** use [`/filesystem/lumi/ops/upload`][api-ops-upload] and [`/filesystem/lumi/ops/download`][api-ops-download]. The file is sent directly with the request.
+- **Larger files:** use [`/filesystem/lumi/transfer/upload`][api-transfer-upload] and [`/filesystem/lumi/transfer/download`][api-transfer-download]. The file passes through [LUMI-O][lumio], which acts as a temporary drop-off point.
 
-Generate a personal access token with the [FirecREST authentication tool][firecrest-auth-app] (see [How to get access to the API?](#how-to-get-access-to-the-api)).
+FirecREST doesn't choose the endpoints for you; your client does. PyFirecREST chooses automatically, but with a lower default limit (see [File transfers with PyFirecREST](#file-transfers-with-pyfirecrest)).
 
-## Large file transfer using S3
+For transfers through LUMI-O:
 
-FirecREST HPC API implements an asynchronous large file transfer model using an S3 object storage as a staging medium. On LUMI, the S3 storage used is [LUMI-O][lumio]. FirecREST uses its own dedicated tenant with dynamically created user-specific buckets.
+- **Upload:** you put the file on LUMI-O, and FirecREST moves it to LUMI.
+- **Download:** FirecREST puts the file on LUMI-O, and you fetch it from there.
 
-### How it works
+FirecREST tells you where to upload or download the file, so you don't need your own LUMI-O account or credentials. Files on LUMI-O are deleted automatically after a while, so download them soon after the transfer and don't use LUMI-O to store them.
 
-Upon sending an API request to [upload][api-upload] or [download][api-download] task, FirecREST:
+The temporary storage is free. The step that moves the file between LUMI-O and LUMI runs as a Slurm job, which is billed to the project you give as `account` in the request, for example `project_465000000`.
 
-- Creates a user-specific bucket in its own LUMI-O tenant.
-- Generates pre-signed S3 URLs for the data transfer, using a multi-part model if necessitated by the given `fileSize`.
-- Schedules a new Slurm DataTransferJob using `account` (your project) defined in the API request, to either transfer files from LUMI-O to LUMI after your upload is completed, or from LUMI to LUMI-O for you to download.
-- Returns pre-signed URLs to API client for transferring the data.
+??? note "How it works in detail"
+    When you request an upload or download, FirecREST:
 
-### Examples
+    1. Creates a user-specific bucket in its own LUMI-O storage area.
+    2. Generates pre-signed S3 URLs for the transfer. For uploads, large files are split into multiple parts, based on the `fileSize` you give in the request.
+    3. Schedules a Slurm data transfer job under your `account`. The job moves the file from LUMI-O to LUMI after an upload, or from LUMI to LUMI-O for a download.
+    4. Returns the pre-signed URLs to your client.
 
-Various detailed examples for implementing S3 data transfer using bash, .NET and PyFirecREST can be found in [FirecREST v2 user guide][firecrest-v2-userguide].
+    The URLs need no S3 credentials. To upload, `PUT` each part, then send the "complete multipart upload" request. To download, wait for the transfer job to finish, then `GET` the file. PyFirecREST does this for you.
+
+For examples using bash, .NET and PyFirecREST, see the [FirecREST v2 user guide][firecrest-v2-userguide].
 
 ## PyFirecREST
 
@@ -113,9 +124,7 @@ Please see the [PyFirecREST documentation from CSCS][pyfirecrest-docs] for tutor
 
 ### Using with personal access tokens
 
-The PyFirecREST library ships with one built-in authorization class, `ClientCredentialsAuth`, which is suitable for use with robot accounts.
-
-In order to use the library with personal access token, a separate Authorization object needs to be created for the `firecrest.v2.Firecrest` client. In this example, we create a "pass-through" authorization class which reads the token from environment variable `FIRECREST_TOKEN`, makes sure it has not expired, and then hands it over to the `firecrest.v2.Firecrest` client as-is:
+To use PyFirecREST with a personal access token, you need to create an authorization object for the `firecrest.v2.Firecrest` client. In this example, we create a "pass-through" authorization class which reads the token from environment variable `FIRECREST_TOKEN`, makes sure it has not expired, and then hands it over to the `firecrest.v2.Firecrest` client as-is:
 
 ```python
 import os
@@ -123,27 +132,27 @@ import time
 import jwt
 
 class TokenAuth:
-  def __init__(self):
-    pass
+    def __init__(self):
+        pass
 
-  # Use PyJWT to decode the token and verify expiration time.
-  # Return False if decoding fails (input is not valid JWT) or if the token has expired
-  def _is_token_valid(self, token: str) -> bool:
-    try:
-      payload = jwt.decode(token, options={"verify_signature": False, "verify_exp": False, "verify_aud": False})
-      return time.time() <= payload["exp"]
-    except Exception:
-      return False
+    # Use PyJWT to decode the token and verify expiration time.
+    # Return False if decoding fails (input is not valid JWT) or if the token has expired
+    def _is_token_valid(self, token: str) -> bool:
+        try:
+            payload = jwt.decode(token, options={"verify_signature": False, "verify_exp": False, "verify_aud": False})
+            return time.time() <= payload["exp"]
+        except Exception:
+            return False
 
-  # A PyFirecREST Authorization object is required to have method get_access_token(),
-  # which, when called, will return a valid JWT access token.
-  def get_access_token(self):
-    token = os.getenv('FIRECREST_TOKEN', None)
-    if not token:
-      raise RuntimeError("Environment variable FIRECREST_TOKEN is not defined.")
-    if not self._is_token_valid(token):
-      raise RuntimeError("Token is invalid or has expired.")
-    return token
+    # A PyFirecREST Authorization object is required to have method get_access_token(),
+    # which, when called, will return a valid JWT access token.
+    def get_access_token(self):
+        token = os.getenv('FIRECREST_TOKEN', None)
+        if not token:
+            raise RuntimeError("Environment variable FIRECREST_TOKEN is not defined.")
+        if not self._is_token_valid(token):
+            raise RuntimeError("Token is invalid or has expired.")
+        return token
 
 import firecrest as fc
 firecrest = fc.v2.Firecrest(firecrest_url="https://api.lumi.csc.fi/v1", authorization=TokenAuth())
@@ -159,9 +168,27 @@ except Exception as e:
 
 ```
 
+PyFirecREST also ships with a built-in authorization class, `ClientCredentialsAuth`, for robot accounts. Robot accounts are not yet available on LUMI.
+
+### File transfers with PyFirecREST
+
+The `upload()` and `download()` methods of `firecrest.v2.Firecrest` choose the transfer method automatically based on file size. Files smaller than `MAX_DIRECT_UPLOAD_SIZE` are transferred directly, and larger files go through [LUMI-O](#uploading-and-downloading-files).
+
+By default, `MAX_DIRECT_UPLOAD_SIZE` is 1 MiB, which is lower than the 32 MiB limit on LUMI. To transfer files up to 32 MiB directly, without staging them on LUMI-O and running a Slurm job, raise the limit on your client:
+
+```python
+import firecrest as fc
+
+# Or reuse the client from the example above
+firecrest = fc.v2.Firecrest(firecrest_url="https://api.lumi.csc.fi/v1", authorization=TokenAuth())
+firecrest.MAX_DIRECT_UPLOAD_SIZE = 33554432  # 32 MiB, LUMI's limit for direct transfers
+```
+
+For files that go through LUMI-O, pass your project as `account`, for example `firecrest.upload(..., account="project_465000000")`. The Slurm job that moves the file is billed to this project.
+
 ### FirecREST CLI
 
-PyFirecREST also ships with a handy command line utility `firecrest` for interacting with FirecREST APIs. It implements support for OIDC client credentials based authentication, which can be used with robot accounts, as well as support for getting or setting an access token with an arbitrary shell command starting from version `v3.8.0`.
+PyFirecREST also ships with a handy command line utility `firecrest` for interacting with FirecREST APIs. It implements support for OIDC client credentials based authentication, which can be used with robot accounts (not yet available on LUMI), as well as support for getting or setting an access token with an arbitrary shell command starting from version `v3.8.0`.
 
 #### Using CLI with personal access token
 
