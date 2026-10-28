@@ -8,7 +8,7 @@ ENV ROOT_GROUP_DIRS='/var/run /var/log/nginx /var/lib/nginx'
 RUN dnf --refresh --assumeyes install nginx python3.12 python3.12-pip && \
     dnf clean all
 
-RUN chgrp -R root ${ROOT_GROUP_DIRS} &&\
+RUN chgrp -R root ${ROOT_GROUP_DIRS} && \
     chmod -R g+rwx ${ROOT_GROUP_DIRS}
 
 COPY --parents \
