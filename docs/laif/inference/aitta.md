@@ -474,3 +474,7 @@ For the same reason it is also not recommended to rapidly switch between models 
   - The `Generate token` link is now available on the frontend homepage, so if you only need a token for the API, you do not need to log in to the frontend anymore.
 
 </details>
+
+## Contact and Support
+
+If you have questions about or require assistance with Aitta, please contact us at support@lumi-ai-factory.eu .
