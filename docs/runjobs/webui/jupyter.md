@@ -20,7 +20,7 @@ In the basic settings, the following settings are available:
 - **Python**:
     Currently, the following Python modules are available: `cray-python`,
     `lumi-multitorch` from the
-    [LUMI AI Factory AI Software Environment](../../../laif/software/ai-environment),
+    [LUMI AI Factory AI Software Environment](../../laif/software/ai-environment.md),
     `geoconda` and `pytorch`. Note that `pytorch` and `geoconda` have limited
     support available, and the `pytorch` module from the CSC software stack has
     been deprecated in favor of `lumi-multitorch`. You can also select _Custom_
