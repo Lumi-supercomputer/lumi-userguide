@@ -10,7 +10,7 @@
 [lumi-software-stack]: ../../runjobs/lumi_env/softwarestacks.md
 [lustre]: ../../storage/parallel-filesystems/lustre.md
 [pull-container]: ../containers/singularity.md#pulling-container-images-from-a-registry
-[singularity-build]: ../containers/singularity.md#building-apptainersingularity-sif-containers
+[singularity-build]: ../containers/singularity.md#building-singularity-sif-containers
 [singularity-containers]: ../containers/singularity.md
 [tykky]: ./container-wrapper.md
 
@@ -105,7 +105,7 @@ binary/script and/or need intertwining with the host software environment, you
 may [wrap it using the LUMI container wrapper](#use-the-lumi-container-wrapper).
 - If you are used to the managed software stacks on the CSC HPC systems, you may
 prefer to [use pre-installed Python packages in the CSC software
-stack](#use-the-csc-software-stack).
+stack](#use-the-csc-software-stack-or-lumi-ai-factory-containers).
 
 ### Use the cray-python module
 
