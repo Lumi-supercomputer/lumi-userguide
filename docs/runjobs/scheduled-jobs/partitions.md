@@ -46,25 +46,32 @@ that your job may share the node with other jobs.
 
 | Name     | Max walltime | Max jobs                | Max resources/job  | Hardware partition | Purpose                                                                  |
 | -------- | ------------ | ----------------------- | ------------------ | ------------------ | ------------------------------------------------------------------------ |
-| dev-g    | 30 minutes   |   2 (1 running)         | 32 nodes           | [LUMI-G][lumi-g]   | [Debugging](#debugging-nodes)                                            |
-|          | 1 hour       |   2 (2 running)         | 16 nodes           | [LUMI-G][lumi-g]   | [Debugging](#debugging-nodes)                                            |
-|          | 2 hours      |   2 (2 running)         | 8 nodes            | [LUMI-G][lumi-g]   | [Debugging](#debugging-nodes)                                            |
+| dev-g    | 30 minutes   |   1 (1 running)         | 32 nodes           | [LUMI-G][lumi-g]   | [Debugging](#debugging-nodes)                                            |
+|          | 1 hour       |   1 (1 running)         | 16 nodes           | [LUMI-G][lumi-g]   | [Debugging](#debugging-nodes)                                            |
+|          | 2 hours      |   1 (1 running)         | 8 nodes            | [LUMI-G][lumi-g]   | [Debugging](#debugging-nodes)                                            |
 
 
 !!! info "Notes about specific partitions"
 
-    #### Debugging nodes
-    Nodes in the `debug` and `dev-g` partition are meant for debugging and
-    quick testing purposes and not for production runs. 
+    #### Debugging partitions
+    The `debug` and `dev-g` queues are meant for debugging and quick testing purposes, and **not for production runs** (and for `dev-g`, interactive development if the presence of a GPU is required to, e.g. correctly compile a code). Debugging has an interactive character which is why it has its own queue. Some examples of "interactive character":  
+
+    - You are working in an interactive session, issuing commands in that session, e.g., manually trying a sequence from/for a job script.
+    - You have an interactive debugger attached to a job.
+    - You run a job with an interactive session attached to closely monitor the behaviour of a job (e.g., the load on the GPUs).
+    - You want to run a job under very close supervision, continuously monitoring the output of a job (e.g., using the tail command on one of the login nodes), so it is obvious that you cannot wait long for that job to start or that it should not start during the night.
+    - You run a short test, e.g., to judge the performance or correctness impact of a code change that you just made, that literally takes only a few minutes.
     
-    The max runtime on dev-g depends on the number of nodes one requests, as 
-    seen from the table: on dev-g the max resources one can ask per job is 16 
-    node hours. This corresponds to allocating 16 nodes for 1 hour, more nodes 
-    for a shorter time, or part of a node for a longer time. The max run time 
-    for a job on the partition is 3 hours. 
-    
-    Repeated abuse of these
-    partitions might result in account suspension.
+    The max runtime on `dev-g` depends on the number of nodes one requests, as seen from the table: on `dev-g` the max resources one can ask per job is 16 node hours. This corresponds to allocating 16 nodes for 1 hour, more nodes for a shorter time, or part of a node for a longer time. The max run time for a job on the partition is 3 hours. 
+
+    On `dev-g`, the maximum number of jobs is **one per user** and **one per project**. Both limits apply at the same time:  
+    **Per user**: you can have only one job on dev-g at a time (running or in queue), even if you belong to several projects.  
+    **Per project**: only one job per project is allowed on dev-g at a time. If another member of your project already has a job there, you will not be able to submit a new job to dev-g until theirs has finished.
+
+
+    _Repeated abuse of these partitions might result in account suspension._
+
+
 
     #### Small partitions
     LUMI is optimized for large jobs (dozens of nodes). However not all 
