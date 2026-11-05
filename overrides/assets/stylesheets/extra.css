@@ -65,11 +65,11 @@
 }
 
 .md-typeset {
-  h1, h2 {
+  h1, h2, strong {
     font-weight: 500;
   }
 
-  h3, strong {
+  h3 {
     font-weight: 400;
   }
 
