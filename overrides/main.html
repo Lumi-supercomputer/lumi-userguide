@@ -36,10 +36,10 @@
 {% endblock container %}
 
 {% block footer %}
-  {{ super() }}
-  {% block disclaimer %}
-  {% if config.extra.environment == "preview" %}
-    {% include "partials/disclaimer.html" %}
-  {% endif %}
-  {% endblock %}
+{% block disclaimer %}
+{% if config.extra.environment == "preview" %}
+{% include "partials/disclaimer.html" %}
+{% endif %}
+{% endblock disclaimer %}
+{{ super() }}
 {% endblock footer %}
