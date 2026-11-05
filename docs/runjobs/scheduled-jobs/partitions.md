@@ -54,7 +54,7 @@ that your job may share the node with other jobs.
 !!! info "Notes about specific partitions"
 
     #### Debugging partitions
-    The `debug` and `dev-g` queues are meant for debugging and quick testing purposes, and **not for production runs** (and for `dev-g`, interactive development if the presence of a GPU is required to, e.g. correctly compile a code). Debugging has an interactive character which is why it has its own queue. Some examples of "interactive character":
+    The `debug` and `dev-g` queues are meant for debugging and quick testing purposes, and **not for production runs** (and for `dev-g`, interactive development if the presence of a GPU is required to, e.g. correctly compile a code). Debugging has an interactive character which is why it has its own queue. Some examples of "interactive character":  
 
     - You are working in an interactive session, issuing commands in that session, e.g., manually trying a sequence from/for a job script.
     - You have an interactive debugger attached to a job.
@@ -64,10 +64,9 @@ that your job may share the node with other jobs.
     
     The max runtime on `dev-g` depends on the number of nodes one requests, as seen from the table: on `dev-g` the max resources one can ask per job is 16 node hours. This corresponds to allocating 16 nodes for 1 hour, more nodes for a shorter time, or part of a node for a longer time. The max run time for a job on the partition is 3 hours. 
 
-    On `dev-g`, the maximum number of jobs is **one per user** and **one per project**. Both limits apply at the same time: <br>
--     **Per user**: you can have only one job on dev-g at a time (running or in queue), even if you belong to several projects. <br>
-
--     **Per project**: only one job per project is allowed on dev-g at a time. If another member of your project already has a job there, you will not be able to submit a new job to dev-g until theirs has finished.
+    On `dev-g`, the maximum number of jobs is **one per user** and **one per project**. Both limits apply at the same time:  
+    - **Per user**: you can have only one job on dev-g at a time (running or in queue), even if you belong to several projects.  
+    - **Per project**: only one job per project is allowed on dev-g at a time. If another member of your project already has a job there, you will not be able to submit a new job to dev-g until theirs has finished.
 
 
     _Repeated abuse of these partitions might result in account suspension._
