@@ -1,5 +1,21 @@
 {% extends "base.html" %}
 
+{% block extrahead %}
+<script>
+    const modifyExternalLinksToOpenInNewTab = () => {
+    const anchorElements = Array.from(document.getElementsByTagName("a"))
+
+    const anchorElementsWithHrefPointingOutside = anchorElements
+        .filter(a => a.host && a.host !== window.location.host && !a.hasAttribute("target"))
+
+    anchorElementsWithHrefPointingOutside
+        .forEach(a => a.setAttribute("target", "_blank"))
+    }
+
+    window.addEventListener("load", modifyExternalLinksToOpenInNewTab, false)
+</script>
+{% endblock extrahead %}
+
 {% block container %}
 {{ super() }}
 {# Remove LUMI from site_name when shown next to logo #}
