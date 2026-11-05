@@ -1,0 +1,48 @@
+{{- $resourcename := include "lumi-docs.name" . -}}
+{{- $buildername := include "lumi-docs.builderName" . -}}
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: {{ $resourcename }}
+  labels:
+{{ include "lumi-docs.labels" . | indent 4 }}
+spec:
+  triggers:
+    - type: ImageChange
+      imageChange: {}
+    - type: ImageChange
+      imageChange:
+        from:
+          kind: ImageStreamTag
+          name: {{ $buildername | printf "%s:latest" | squote }}
+    - type: GitHub
+      github:
+        secretReference:
+          name: {{ include "lumi-docs.webhookSecretName" . }}
+  output:
+    to:
+      kind: ImageStreamTag
+      name: {{ $resourcename | printf "%s:latest" | squote }}
+  strategy:
+    type: Docker
+    dockerStrategy:
+      dockerfilePath: Containerfile
+      env:
+        - name: PROPERDOCS_ENV
+          value: {{ .Values.environment | default "preview" }}
+        - name: SITE_URL
+          value: {{ .Values.siteUrl | required "siteUrl not provided!" }}
+      buildArgs:
+        - name: builder_image
+          value: {{ printf "%s/%s/%s:latest" .Values.localRegistry
+                                             .Release.Namespace
+                                             $buildername
+                    | squote }}
+      from:
+        kind: ImageStreamTag
+        namespace: openshift
+        name: {{ .Values.serverImage | squote }}
+  source:
+    type: Git
+    git:
+{{ .Values.git | toYamlPretty | indent 6 }}

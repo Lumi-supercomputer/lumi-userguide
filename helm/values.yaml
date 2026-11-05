@@ -1,0 +1,12 @@
+
+git:
+  uri: https://github.com/Lumi-supercomputer/lumi-userguide.git
+  ref: production
+environment: production
+siteUrl: https://docs.lumi-supercomputer.eu/
+ipAllowlist: []
+baseImage: python:3.12-ubi9
+serverImage: nginx:1.26-ubi9
+replicaCount: 2
+localRegistry: image-registry.openshift-image-registry.svc:5000
+nameOverride: null

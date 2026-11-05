@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "gitSource": {
+      "description": "GitBuildSource for BuildConfigs.",
+      "type": "object",
+      "properties": {
+        "uri": {
+          "type": "string",
+          "format": "uri"
+        },
+        "ref": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "uri"
+      ]
+    },
+    "deploymentReplicas": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 1
+    }
+  },
+  "properties": {
+    "git": {
+      "$ref": "#/$defs/gitSource"
+    },
+    "environment": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": "preview"
+    },
+    "siteUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "ipAllowlist": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "baseImage": {
+      "type": "string"
+    },
+    "serverImage": {
+      "type,": "string"
+    },
+    "replicaCount": {
+      "$ref": "#/$defs/deploymentReplicas"
+    },
+    "localRegistry": {
+      "type": "string"
+    },
+    "nameOverride": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

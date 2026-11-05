@@ -1,0 +1,27 @@
+{{/*
+
+TODO: Add production route.
+
+*/}}
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: {{ include "lumi-docs.name" . | printf "%s-rahtiapp" | trunc 63 | trimSuffix "-" }}
+  labels:
+{{ include "lumi-docs.labels" . | indent 4 }}
+{{- if .Values.ipAllowlist | default list | len | lt 0 }}
+  annotations:
+    haproxy.router.openshift.io/ip_allowlist: {{ .Values.ipAllowlist | join " " }}
+{{- end }}
+spec:
+  host: {{ include "lumi-docs.name" . | printf "%s.rahtiapp.fi" }}
+  to:
+    kind: Service
+    name: {{ include "lumi-docs.name" . }}
+    weight: 100
+  port:
+    targetPort: 8000-tcp
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None

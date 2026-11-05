@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block container %}
+{{ super() }}
+{# Remove LUMI from site_name when shown next to logo #}
+<script>
+    Array.from(
+        document.querySelectorAll(
+            [
+                ".md-header__topic:not([data-md-component=header-topic])>.md-ellipsis",
+                ".md-nav__title:has(a[data-md-component=logo])"
+            ].join(",")
+        )
+    ).forEach(node =>
+        Array.from(node.childNodes)
+            .filter(n => n.nodeType === Node.TEXT_NODE)
+            .forEach(n => n.nodeValue = n.nodeValue.replace(/(?<=^\s*)\bLUMI\b/, ""))
+    )
+</script>
+{% endblock container %}
+
+{% block footer %}
+  {{ super() }}
+  {% block disclaimer %}
+  {% if config.extra.environment == "preview" %}
+    {% include "partials/disclaimer.html" %}
+  {% endif %}
+  {% endblock %}
+{% endblock footer %}

@@ -1,0 +1,27 @@
+@import url("https://use.typekit.net/nlo5lta.css?ver=5.5.3");
+
+:root {
+    --md-text-font: "canada-type-gibson";
+}
+
+.md-header [data-md-component=logo] {
+    filter: invert(1.0)
+            brightness(2.0);
+}
+
+.md-header__topic:not([data-md-component=header-topic])>.md-ellipsis {
+    line-height: 3;
+}
+
+.md-grid:has(.md-sidebar--primary[hidden]) {
+    max-width: 51rem;
+}
+
+[data-md-color-primary=black] {
+    .md-button:not(.md-button--primary) {
+        color: var(--md-primary-fg-color);
+    }
+    .md-button--primary {
+        background-color: var(--md-accent-fg-color);
+    }
+}
