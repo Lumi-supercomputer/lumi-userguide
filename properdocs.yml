@@ -20,7 +20,7 @@ theme:
     - content.code.annotate
   palette:
     scheme: default
-    primary: black
+    primary: white
     accent: blue
   topbar_style: primary
 

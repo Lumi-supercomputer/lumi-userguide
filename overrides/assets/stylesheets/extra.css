@@ -1,27 +1,94 @@
 @import url("https://use.typekit.net/nlo5lta.css?ver=5.5.3");
 
 :root {
-    --md-text-font: "canada-type-gibson";
-}
-
-.md-header [data-md-component=logo] {
-    filter: invert(1.0)
-            brightness(2.0);
+  --md-text-font: "canada-type-gibson";
 }
 
 .md-header__topic:not([data-md-component=header-topic])>.md-ellipsis {
-    line-height: 3;
+  line-height: 3;
+}
+
+@media screen and (min-width: 60em) {
+  [data-md-toggle="search"]:not(:checked)~.md-header .md-search__form {
+    box-shadow: none;
+    border: 2px solid var(--md-default-fg-color);
+
+    * {
+      color: var(--md-default-fg-color);
+    }
+  }
+}
+
+.md-search *,
+[data-md-toggle="search"]:checked ~ .md-header .md-search__form,
+[dir="ltr"] .md-search__output,
+.md-nav__link {
+  border-radius: 0;
 }
 
 .md-grid:has(.md-sidebar--primary[hidden]) {
-    max-width: 51rem;
+  max-width: 51rem;
 }
 
-[data-md-color-primary=black] {
-    .md-button:not(.md-button--primary) {
-        color: var(--md-primary-fg-color);
+
+[data-md-color-primary=white] {
+  --md-typeset-a-color: var(--md-accent-fg-color);
+
+  .md-button {
+    border-radius: 0;
+  }
+
+  .md-button--primary:hover,
+  .md-button--primary:focus {
+    color: var(--md-primary-fg-color);
+  }
+
+  .md-button:not(.md-button--primary):hover,
+  .md-button:not(.md-button--primary):focus {
+    background-color: var(--md-primary-fg-color--dark);
+  }
+
+  .md-button:not(.md-button--primary) {
+    color: var(--md-default-fg-color);
+    background-color: var(--md-primary-fg-color);
+    border: 2px solid var(--md-default-fg-color);
+  }
+
+  .md-button--primary {
+    background-color: var(--md-accent-fg-color);
+  }
+}
+
+[data-md-color-accent=blue] {
+  --md-accent-fg-color: #004e8e;
+  --md-accent-fg-color--transparent: #004e8e1a;
+}
+
+.md-typeset {
+  h1, h2 {
+    font-weight: 500;
+  }
+
+  h3, strong {
+    font-weight: 400;
+  }
+
+  .admonition, details {
+    --md-admonition-title-bg-color: color-mix(in srgb, var(--md-admonition-color), transparent 90%);
+    --md-admonition-border-color: var(--md-admonition-color);
+    border-width: 1.5px;
+    border-radius: 0;
+  }
+
+  .grid.cards {
+    >ul, >ol {
+      >li {
+        border-radius: 0;
+      }
     }
-    .md-button--primary {
-        background-color: var(--md-accent-fg-color);
-    }
+  }
+}
+
+.md-footer {
+  filter: invert(1)
 }

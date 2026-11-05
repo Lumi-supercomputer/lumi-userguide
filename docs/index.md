@@ -15,7 +15,7 @@ hide:
 
     To navigate this guide, select a category from the navigation bar at the top of the page or use the search function.
 
-    !!! tip "You have not connected to LUMI yet?"
+    !!! abstract "You have not connected to LUMI yet?"
         Please visit the first steps section to get started. 
 
         [:octicons-arrow-right-24: First steps](firststeps/index.md)
@@ -35,14 +35,14 @@ hide:
 </style>
 <div markdown class="lumi-links">
 
-- [:octicons-link-24: LUMI helpdesk](https://lumi-supercomputer.eu/user-support/need-help/){ .md-button }
-- [:octicons-link-24: LUMI status](https://status.lumi.csc.fi/){ .md-button }
-- [:octicons-link-24: LUMI events](https://lumi-supercomputer.eu/events/){ .md-button }
-- [:octicons-link-24: LUMI training materials](https://lumi-supercomputer.github.io/LUMI-training-materials/){ .md-button }
+- [:octicons-link-24: LUMI helpdesk](https://lumi-supercomputer.eu/user-support/need-help/){ .md-button .md-button--primary }
+- [:octicons-link-24: LUMI status](https://status.lumi.csc.fi/){ .md-button .md-button--primary }
+- [:octicons-link-24: LUMI events](https://lumi-supercomputer.eu/events/){ .md-button .md-button--primary }
+- [:octicons-link-24: LUMI training materials](https://lumi-supercomputer.github.io/LUMI-training-materials/){ .md-button .md-button--primary }
 
 </div>
 
-<div class="grid cards" markdown>
+<div class="grid cards" markdown style="margin-bottom: 8rem;">
 
 -   **Discover the LUMI Hardware**
 
