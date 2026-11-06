@@ -26,11 +26,6 @@
   border-radius: 0;
 }
 
-.md-grid:has(.md-sidebar--primary[hidden]) {
-  max-width: 51rem;
-}
-
-
 [data-md-color-primary=white] {
   --md-typeset-a-color: var(--md-accent-fg-color);
 
