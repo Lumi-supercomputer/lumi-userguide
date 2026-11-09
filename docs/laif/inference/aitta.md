@@ -110,7 +110,7 @@ Visit the web frontend at [aitta.csc.fi][aitta]. Click the "Log In" button at th
 
 ### Limitations
 
-The web frontend is only a basic chat interface with no additional features. The entire chat history is kept in your browser. If you leave the page, the conversation is deleted and can not be recovered. Furthermore, if the model becomes unavailable during the conversation, the frontend will return to show the message that the model is currently not running. This also results in the chat history being lost. While Aitta tries to ensure that a model is always running when you are actively using it, it can happen that the current allocation of resources expires before Aitta is able to obtain a new allocation.
+The web frontend is only a basic chat interface with no additional features. Speech transcription models can also be tried out in the web frontend by uploading an audio file. The entire chat history is kept in your browser. If you leave the page, the conversation is deleted and can not be recovered. Furthermore, if the model becomes unavailable during the conversation, the frontend will return to show the message that the model is currently not running. This also results in the chat history being lost. While Aitta tries to ensure that a model is always running when you are actively using it, it can happen that the current allocation of resources expires before Aitta is able to obtain a new allocation.
 
 The frontend also performs no automatic compaction of the history. If the length of the conversation exceeds the capabilities of the underlying model, it will stop responding and you may encounter an error message.
 
@@ -167,15 +167,18 @@ If you still need access afterwards, [generate a new token](#get-your-access-tok
 Aitta offers a drop-in replacement for an OpenAI-compatible API which
 is possible to use through various client libraries.
 
+The examples below read the access token from the environment variable `AITTA_API_KEY`. Avoid writing the token directly into your code, so that it does not end up in a git repository or elsewhere by accident (see [Revoking a token](#revoking-a-token)).
+
 #### The vanilla OpenAI client
 
 The official `openai` client can be used to interact with Aitta:
 
 ```python
+import os
 import openai
 
 client = openai.OpenAI(
-    api_key="< your token >",
+    api_key=os.environ["AITTA_API_KEY"],
     base_url="https://aitta-api.csc.fi/openai/v1"
 )
 chat_completion = client.chat.completions.create(
@@ -191,16 +194,34 @@ for chunk in chat_completion:
         print(chunk.choices[0].delta.content, end='', flush=True)
 ```
 
+The same client can be used to transcribe an audio file with a speech transcription model. For a quick test, you can download a short sample recording from the Whisper repository:
+
+```bash
+curl -L -o jfk.flac https://github.com/openai/whisper/raw/main/tests/jfk.flac
+```
+
+```python
+with open("jfk.flac", "rb") as audio_file:
+    transcription = client.audio.transcriptions.create(
+        file=audio_file,
+        model="openai/whisper-large-v3"
+    )
+print(transcription.text)
+```
+
+For supported audio formats and further parameters, refer to the [OpenAI Transcriptions Request Specification][openai-transcriptions]. Audio files are limited to 25 MiB.
+
 #### LangChain
 
 LangChain is a popular library for creating LLM applications. Aitta can
 be used as an OpenAI-compatible endpoint as follows:
 
 ```python
+import os
 from langchain_openai import ChatOpenAI
 
 llm = ChatOpenAI(
-    api_key="< your token >",
+    api_key=os.environ["AITTA_API_KEY"],
     base_url="https://aitta-api.csc.fi/openai/v1",
     model="openai/gpt-oss-120b"
 )
