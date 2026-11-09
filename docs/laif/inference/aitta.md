@@ -8,6 +8,7 @@
 
 [openai-embeddings]: https://developers.openai.com/api/reference/resources/embeddings/methods/create
 [openai-completions]: https://developers.openai.com/api/reference/resources/chat/subresources/completions/methods/create
+[openai-transcriptions]: https://developers.openai.com/api/reference/resources/audio/subresources/transcriptions/methods/create
 
 Aitta is a machine learning inference service that allows you to interact with large open-weight models (i.e., models that are openly available for download e.g. from huggingface.co) directly on the LUMI Supercomputer hardware without dealing with any of the technical details. You just send your inference request to an OpenAI compatible API - Aitta takes care of allocating resources from the supercomputer scheduling system (Slurm), loading the model and forwarding the request to the designated compute node.
 
@@ -26,7 +27,7 @@ Aitta is intended for research and development, including for example
 
 However, Aitta is entirely reliant on the LUMI supercomputer hardware and scheduler and thus there is no guarantee for availability of a particular model at any given time. In particular this means that Aitta is unsuited as a production-level inference service. You should not use it to deploy applications that require assured availability.
 
-Currently Aitta includes generative Large Language Models (LLMs) and text embedding models. Image input is supported for LLMs with vision capability. Further multimodal capabilities are planned for the future.
+Currently Aitta includes generative Large Language Models (LLMs), text embedding models and speech transcription models. Image input is supported for LLMs with vision capability. Further multimodal capabilities are planned for the future.
 
 !!! Warning "Responsibility for model usage"
     The models available via the Aitta inference service are provided "as-is" without any additional safeguards or guarantees for correctness or availability.
@@ -208,10 +209,11 @@ Responses from the Aitta API are typically JSON objects following the Hypertext 
 
 #### OpenAI compatible inference
 
-The Aitta API offers OpenAI API compatible endpoints with a base url of `https://aitta-api.csc.fi/openai/v1`. Currently endpoints for chat completion and embedding inference requests are implemented. Refer to the corresponding OpenAI API specification for available parameters.
+The Aitta API offers OpenAI API compatible endpoints with a base url of `https://aitta-api.csc.fi/openai/v1`. Currently endpoints for chat completion, embedding and audio transcription inference requests are implemented. Refer to the corresponding OpenAI API specification for available parameters.
 
 - `aitta-api.csc.fi/openai/v1/embeddings`: [OpenAI Embeddings Request Specification][openai-embeddings]
 - `aitta-api.csc.fi/openai/v1/chat/completions`: [OpenAI Completions Request Specification][openai-completions]
+- `aitta-api.csc.fi/openai/v1/audio/transcriptions`: [OpenAI Transcriptions Request Specification][openai-transcriptions]. Audio files are limited to 25 MiB and the supported response formats are `json`, `text` and `verbose_json`.
 
 Note that these endpoints do not include HAL resource links as that would be incompatible with the OpenAI API.
 
@@ -221,7 +223,7 @@ Note that the API will not send a response until the model is ready, so if for s
 
 #### Model information
 
-The API exposes details about available models. You can get a list of available models from the `aitta-api.csc.fi/model` endpoint. The JSON object contains a field with a list of model ids paired with a URL to retrieve more detailed information about each model. Model ids generally follow the format `model-vendor/model-name` as on e.g. Huggingface. Model information links currently replace the `/` with a `~` for technical reasons, so to get information about a model, you would need to query `aitta-api.csc.fi/model/model-vendor~model-name`. Expand the following listing to see an example response:
+The API exposes details about available models. You can get a list of available models from the `aitta-api.csc.fi/model` endpoint. The JSON object contains a field with a list of model ids paired with a URL to retrieve more detailed information about each model. Model ids generally follow the format `model-vendor/model-name` as on e.g. Huggingface. Model information links currently replace the `/` with a `~` for technical reasons, so to get information about a model, you would need to query `aitta-api.csc.fi/model/model-vendor~model-name`. For models that are deprecated and scheduled for removal, the model information includes an `available_until` field with the planned removal date. Expand the following listing to see an example response:
 
 <details markdown="1"><summary>Model list response example</summary>
 
@@ -453,6 +455,18 @@ For the same reason it is also not recommended to rapidly switch between models 
 
 ## Changelog
 
+<details markdown="1"><summary>2026-11-06</summary>
+
+  **General**
+
+  - Added support for speech transcription models (currently `whisper-large-v3`) via the OpenAI compatible `/openai/v1/audio/transcriptions` endpoint.
+  - Several behind-the-scenes improvements, which should result in better stability.
+
+  **API**
+
+  - The model information returned by the `/model` and `/model/<model-id>` endpoints may now include an `available_until` field with the planned removal date for deprecated models.
+
+</details>
 
 <details markdown="1"><summary>2026-08-25</summary>
 
