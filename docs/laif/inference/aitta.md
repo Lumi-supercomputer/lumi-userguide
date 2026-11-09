@@ -4,6 +4,7 @@
 [aitta-tou]: https://aitta.csc.fi/terms-of-use
 [aitta-api-docs]: https://aitta-api.csc.fi/docs
 [aitta-auth-token]: https://aitta-auth.csc.fi/myToken
+[aitta-auth-profile]: https://aitta-auth.csc.fi/idp/profile/userprofile
 [aitta-client-pypi]: https://pypi.org/project/aitta-client/
 
 [openai-embeddings]: https://developers.openai.com/api/reference/resources/embeddings/methods/create
@@ -147,6 +148,19 @@ After choosing the project, the next screen will display your access token for A
 </figure>
 
 All access tokens are currently valid for 90 days to enable use in long-running client applications. However, the validity of the token ends early if the LUMI project it is tied to reaches its end date or your user account is closed.
+
+#### Revoking a token
+
+Treat your access token like a password. Revoke it yourself when you no longer need it, or right away if it has leaked (e.g., committed to a git repository or shared in a chat):
+
+1. Go to [aitta-auth.csc.fi/idp/profile/userprofile][aitta-auth-profile] and log in.
+2. Open "Connected Organizations".
+3. Find "Aitta Token Generator" and click "Revoke now".
+
+If you still need access afterwards, [generate a new token](#get-your-access-token) and replace the old one wherever you use it.
+
+!!! Warning "Leaked tokens must always be revoked"
+    Removing a token from a git repository in a new commit is not enough, because it remains in the history. Always revoke a leaked token.
 
 ### Inference in Python
 
