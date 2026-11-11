@@ -155,7 +155,8 @@ Treat your access token like a password. Revoke it yourself when you no longer n
 
 1. Go to [aitta-auth.csc.fi/idp/profile/userprofile][aitta-auth-profile] and log in.
 2. Open "Connected Organizations".
-3. Find "Aitta Token Generator" and click "Revoke now".
+3. Click "Aitta Token Generator". This will display a list of currently active tokens.
+4. Click the "Revoke now" button for the token(s) you want to revoke.
 
 If you still need access afterwards, [generate a new token](#get-your-access-token) and replace the old one wherever you use it.
 
