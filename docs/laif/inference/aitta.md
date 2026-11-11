@@ -4,10 +4,12 @@
 [aitta-tou]: https://aitta.csc.fi/terms-of-use
 [aitta-api-docs]: https://aitta-api.csc.fi/docs
 [aitta-auth-token]: https://aitta-auth.csc.fi/myToken
+[aitta-auth-profile]: https://aitta-auth.csc.fi/idp/profile/userprofile
 [aitta-client-pypi]: https://pypi.org/project/aitta-client/
 
 [openai-embeddings]: https://developers.openai.com/api/reference/resources/embeddings/methods/create
 [openai-completions]: https://developers.openai.com/api/reference/resources/chat/subresources/completions/methods/create
+[openai-transcriptions]: https://developers.openai.com/api/reference/resources/audio/subresources/transcriptions/methods/create
 
 Aitta is a machine learning inference service that allows you to interact with large open-weight models (i.e., models that are openly available for download e.g. from huggingface.co) directly on the LUMI Supercomputer hardware without dealing with any of the technical details. You just send your inference request to an OpenAI compatible API - Aitta takes care of allocating resources from the supercomputer scheduling system (Slurm), loading the model and forwarding the request to the designated compute node.
 
@@ -26,7 +28,7 @@ Aitta is intended for research and development, including for example
 
 However, Aitta is entirely reliant on the LUMI supercomputer hardware and scheduler and thus there is no guarantee for availability of a particular model at any given time. In particular this means that Aitta is unsuited as a production-level inference service. You should not use it to deploy applications that require assured availability.
 
-Currently Aitta includes generative Large Language Models (LLMs) and text embedding models. Image input is supported for LLMs with vision capability. Further multimodal capabilities are planned for the future.
+Currently Aitta includes generative Large Language Models (LLMs), text embedding models and speech transcription models. Image input is supported for LLMs with vision capability. Further multimodal capabilities are planned for the future.
 
 !!! Warning "Responsibility for model usage"
     The models available via the Aitta inference service are provided "as-is" without any additional safeguards or guarantees for correctness or availability.
@@ -108,7 +110,7 @@ Visit the web frontend at [aitta.csc.fi][aitta]. Click the "Log In" button at th
 
 ### Limitations
 
-The web frontend is only a basic chat interface with no additional features. The entire chat history is kept in your browser. If you leave the page, the conversation is deleted and can not be recovered. Furthermore, if the model becomes unavailable during the conversation, the frontend will return to show the message that the model is currently not running. This also results in the chat history being lost. While Aitta tries to ensure that a model is always running when you are actively using it, it can happen that the current allocation of resources expires before Aitta is able to obtain a new allocation.
+The web frontend is only a basic chat interface with no additional features. Speech transcription models can also be tried out in the web frontend by uploading an audio file. The entire chat history is kept in your browser. If you leave the page, the conversation is deleted and can not be recovered. Furthermore, if the model becomes unavailable during the conversation, the frontend will return to show the message that the model is currently not running. This also results in the chat history being lost. While Aitta tries to ensure that a model is always running when you are actively using it, it can happen that the current allocation of resources expires before Aitta is able to obtain a new allocation.
 
 The frontend also performs no automatic compaction of the history. If the length of the conversation exceeds the capabilities of the underlying model, it will stop responding and you may encounter an error message.
 
@@ -147,20 +149,37 @@ After choosing the project, the next screen will display your access token for A
 
 All access tokens are currently valid for 90 days to enable use in long-running client applications. However, the validity of the token ends early if the LUMI project it is tied to reaches its end date or your user account is closed.
 
+#### Revoking a token
+
+Treat your access token like a password. Revoke it yourself when you no longer need it, or right away if it has leaked (e.g., committed to a git repository or shared in a chat):
+
+1. Go to [aitta-auth.csc.fi/idp/profile/userprofile][aitta-auth-profile] and log in.
+2. Open "Connected Organizations".
+3. Click "Aitta Token Generator". This will display a list of currently active tokens.
+4. Click the "Revoke now" button for the token(s) you want to revoke.
+
+If you still need access afterwards, [generate a new token](#get-your-access-token) and replace the old one wherever you use it.
+
+!!! Warning "Leaked tokens must always be revoked"
+    Removing a token from a git repository in a new commit is not enough, because it remains in the history. Always revoke a leaked token.
+
 ### Inference in Python
 
 Aitta offers a drop-in replacement for an OpenAI-compatible API which
 is possible to use through various client libraries.
+
+The examples below read the access token from the environment variable `AITTA_API_KEY`. Avoid writing the token directly into your code, so that it does not end up in a git repository or elsewhere by accident (see [Revoking a token](#revoking-a-token)).
 
 #### The vanilla OpenAI client
 
 The official `openai` client can be used to interact with Aitta:
 
 ```python
+import os
 import openai
 
 client = openai.OpenAI(
-    api_key="< your token >",
+    api_key=os.environ["AITTA_API_KEY"],
     base_url="https://aitta-api.csc.fi/openai/v1"
 )
 chat_completion = client.chat.completions.create(
@@ -176,16 +195,34 @@ for chunk in chat_completion:
         print(chunk.choices[0].delta.content, end='', flush=True)
 ```
 
+The same client can be used to transcribe an audio file with a speech transcription model. For a quick test, you can download a short sample recording from the Whisper repository:
+
+```bash
+curl -L -o jfk.flac https://github.com/openai/whisper/raw/main/tests/jfk.flac
+```
+
+```python
+with open("jfk.flac", "rb") as audio_file:
+    transcription = client.audio.transcriptions.create(
+        file=audio_file,
+        model="openai/whisper-large-v3"
+    )
+print(transcription.text)
+```
+
+For supported audio formats and further parameters, refer to the [OpenAI Transcriptions Request Specification][openai-transcriptions]. Audio files are limited to 25 MiB.
+
 #### LangChain
 
 LangChain is a popular library for creating LLM applications. Aitta can
 be used as an OpenAI-compatible endpoint as follows:
 
 ```python
+import os
 from langchain_openai import ChatOpenAI
 
 llm = ChatOpenAI(
-    api_key="< your token >",
+    api_key=os.environ["AITTA_API_KEY"],
     base_url="https://aitta-api.csc.fi/openai/v1",
     model="openai/gpt-oss-120b"
 )
@@ -208,10 +245,11 @@ Responses from the Aitta API are typically JSON objects following the Hypertext 
 
 #### OpenAI compatible inference
 
-The Aitta API offers OpenAI API compatible endpoints with a base url of `https://aitta-api.csc.fi/openai/v1`. Currently endpoints for chat completion and embedding inference requests are implemented. Refer to the corresponding OpenAI API specification for available parameters.
+The Aitta API offers OpenAI API compatible endpoints with a base url of `https://aitta-api.csc.fi/openai/v1`. Currently endpoints for chat completion, embedding and audio transcription inference requests are implemented. Refer to the corresponding OpenAI API specification for available parameters.
 
 - `aitta-api.csc.fi/openai/v1/embeddings`: [OpenAI Embeddings Request Specification][openai-embeddings]
 - `aitta-api.csc.fi/openai/v1/chat/completions`: [OpenAI Completions Request Specification][openai-completions]
+- `aitta-api.csc.fi/openai/v1/audio/transcriptions`: [OpenAI Transcriptions Request Specification][openai-transcriptions]. Audio files are limited to 25 MiB and the supported response formats are `json`, `text` and `verbose_json`.
 
 Note that these endpoints do not include HAL resource links as that would be incompatible with the OpenAI API.
 
@@ -221,7 +259,7 @@ Note that the API will not send a response until the model is ready, so if for s
 
 #### Model information
 
-The API exposes details about available models. You can get a list of available models from the `aitta-api.csc.fi/model` endpoint. The JSON object contains a field with a list of model ids paired with a URL to retrieve more detailed information about each model. Model ids generally follow the format `model-vendor/model-name` as on e.g. Huggingface. Model information links currently replace the `/` with a `~` for technical reasons, so to get information about a model, you would need to query `aitta-api.csc.fi/model/model-vendor~model-name`. Expand the following listing to see an example response:
+The API exposes details about available models. You can get a list of available models from the `aitta-api.csc.fi/model` endpoint. The JSON object contains a field with a list of model ids paired with a URL to retrieve more detailed information about each model. Model ids generally follow the format `model-vendor/model-name` as on e.g. Huggingface. Model information links currently replace the `/` with a `~` for technical reasons, so to get information about a model, you would need to query `aitta-api.csc.fi/model/model-vendor~model-name`. For models that are deprecated and scheduled for removal, the model information includes an `available_until` field with the planned removal date. Expand the following listing to see an example response:
 
 <details markdown="1"><summary>Model list response example</summary>
 
@@ -453,6 +491,18 @@ For the same reason it is also not recommended to rapidly switch between models 
 
 ## Changelog
 
+<details markdown="1"><summary>2026-11-06</summary>
+
+  **General**
+
+  - Added support for speech transcription models (currently `whisper-large-v3`) via the OpenAI compatible `/openai/v1/audio/transcriptions` endpoint.
+  - Several behind-the-scenes improvements, which should result in better stability.
+
+  **API**
+
+  - The model information returned by the `/model` and `/model/<model-id>` endpoints may now include an `available_until` field with the planned removal date for deprecated models.
+
+</details>
 
 <details markdown="1"><summary>2026-08-25</summary>
 
