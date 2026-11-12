@@ -61,15 +61,17 @@ To accommodate diverse hybrid scientific workflows, the stack is organized into 
 | **`Lumi-IQ-qml`** | Quantum Machine Learning and Hybrid AI computations. |
 | **`Lumi-IQ-ems`** | Quantum Error Mitigation and Classical Shadows tomography. |
 
-*(Note: When targeting the local simulator for testing without QPU credentials, you can load the simulation profile `module load Lumi-IQ-qaas/SIM`).*
+!!! note "Testing with the local simulator"
+
+    When targeting the local simulator for testing without QPU credentials, you can load the simulation profile `module load Lumi-IQ-qaas/SIM`.
 
 ---
 
 ## Running your first job
 
-LUMI-IQ jobs are executed **from within Python**. Your script runs on any machine with network access to the quantum computer, such as a LUMI node, and submits circuits to the physical QPU or local simulator.
+LUMI-IQ jobs must be executed on **LUMI compute nodes** and scheduled using Slurm (e.g. via `sbatch` or interactive sessions). Do not run jobs on login nodes.
 
-Heavy classical computations and hybrid variational loops must **not** run on login nodes. Schedule them on LUMI compute nodes using Slurm.
+Your Slurm job runs a Python script that either dispatches quantum circuits to the physical QPU over the network or executes them locally on the compute node using the simulator.
 
 !!! note "Targeting the VLQ QPU"
 
@@ -85,10 +87,8 @@ For complete, runnable hybrid examples (including authentication, Variational Qu
 ## More Information & References
 
 - [Quantum Computer Infrastructure (IT4I)](https://www.it4i.cz/en/infrastructure/vlq-quantum-computer)
-- [IT4Innovations VLQ Documentation & Access Guide](https://docs.it4i.cz/en/docs/clusters/vlq/)
-- [Calibration and Health Status](https://docs.it4i.cz/en/docs/clusters/vlq/calibration_health)
+- [IT4Innovations VLQ Calibration and Health Status](https://docs.it4i.cz/en/docs/clusters/vlq/calibration_health)
 - [IQM Quantum Hardware & Pulla Documentation](https://docs.iqm.tech/)
-- [CSC Quantum Computing Documentation](https://docs.csc.fi/computing/quantum-computing/)
+- [CSC Quantum Computing Documentation](https://docs.csc.fi/computing/quantum-computing/overview/)
 - [LUMI AI Factory Quantum Services](https://lumi-ai-factory.eu/services/quantum-services/)
-- [IQM Hardware Documentation](https://docs.iqm.tech/)
 - [LUMI User Support Team](https://lumi-supercomputer.eu/user-support/need-help/)
