@@ -77,10 +77,9 @@ Your Slurm job runs a Python script that either dispatches quantum circuits to t
 
     Submitting circuits to the physical QPU requires a dedicated quantum allocation (see the [Quantum Hardware Access Guide](https://docs.it4i.cz/en/docs/clusters/vlq/access)).
 
-For complete, runnable hybrid examples (including authentication, Variational Quantum Eigensolver, Quantum Machine Learning, and Error Mitigation) as well as sample Slurm batch scripts (`sbatch`), please refer to the official repository:
+For runnable hybrid examples and workflows, please refer to the official repository:
 
-- [LUMI-IQ GitHub Repository & Example Workflows](https://github.com/lumi-ai-factory/lumi-iq)
-- [Sample Slurm Batch Scripts (`sbatch`)](https://github.com/lumi-ai-factory/lumi-iq/tree/main/WP2)
+- [LUMI-IQ GitHub Repository](https://github.com/lumi-ai-factory/lumi-iq)
 
 ---
 
