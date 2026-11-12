@@ -198,6 +198,7 @@ nav:
       - Infrastructure for AI agents:
         - Overview: laif/software/agent-infrastructure/index.md
         - Agent environment: laif/software/agent-infrastructure/agent-env.md
+        - FirecREST MCP Server: laif/software/agent-infrastructure/firecrest-mcp.md
         - Knowledge MCP Server: laif/software/agent-infrastructure/knowledge-mcp.md
     
  
