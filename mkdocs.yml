@@ -82,6 +82,7 @@ nav:
       - Configuration:
         - Resource quotas: runjobs/lumi-k/configuration/resource_quotas.md
         - Networking: runjobs/lumi-k/configuration/network.md
+        - Workload security: runjobs/lumi-k/configuration/workload_security.md
       - Tutorials:
         - MLflow: runjobs/lumi-k/tutorials/mlflow.md
         - KServe: runjobs/lumi-k/tutorials/kserve.md
