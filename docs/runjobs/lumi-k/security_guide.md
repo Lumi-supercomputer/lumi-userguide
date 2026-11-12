@@ -16,7 +16,8 @@ By default, LUMI-K applies the default security policies:
 
 - **Random UID/GID**: When your pod is deployed in LUMI-K, a random UID will be generated. You cannot assign a UID/GID out of this range (for example, `1001`), it will require special privileges. Usually, the number is like `1000620000`.
 
-- **[Restricted-v2 policy](https://connect.redhat.com/en/blog/important-openshift-changes-pod-security-standards)**: Since Openshift 4.11, the new SCC policies are introduced according to the [Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/).
+- **[Restricted-v2 policy](https://connect.redhat.com/en/blog/important-openshift-changes-pod-security-standards)**:
+    - LUMI-K enforces restricted policies for the users' workload. Read more in [Workload security](configuration/workload_security.md) page.
 
 - **[Default Pod resource limits](configuration/resource_quotas.md#default-requests-and-limits)**
 
