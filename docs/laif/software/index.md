@@ -11,4 +11,4 @@ Currently available tools and software:
 
 * [AI Software Environment](./ai-environment.md)
 * [Containerized Workflows](./workflows.md)
-* [Infrastructure for AI agents](./agent-infrastructure.md)
+* [Infrastructure for AI agents](./agent-infrastructure/index.md)
