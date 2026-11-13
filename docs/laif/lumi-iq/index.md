@@ -59,7 +59,7 @@ To accommodate diverse hybrid scientific workflows, the stack is organized into 
 | **`Lumi-IQ-qaas/SIM`** | **HPC Simulator Target**: High-performance classical circuit simulation on LUMI CPU nodes. |
 | **`Lumi-IQ-core`** | Baseline quantum circuit transpilation and hybrid orchestration. |
 | **`Lumi-IQ-qml`** | Quantum Machine Learning and Hybrid AI computations. |
-| **`Lumi-IQ-ems`** | Quantum Error Mitigation and Classical Shadows tomography. |
+| **`Lumi-IQ-ems`** | Quantum Error Mitigation. |
 
 !!! note "Testing with the local simulator"
 
