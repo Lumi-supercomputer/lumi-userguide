@@ -8,7 +8,7 @@ LUMI-IQ establishes a hybrid HPC+QC architecture, allowing classical workloads t
 
     Until the dedicated LUMI-IQ system is commissioned, the **VLQ** quantum computer of the
     [LUMI-Q consortium](https://www.it4i.cz/en/infrastructure/vlq-quantum-computer) serves as the primary hardware target. VLQ is hosted and operated by the IT4Innovations National Supercomputing Center in Ostrava, Czech Republic.
-    Hybrid HPC-QC workflows and software modules deployed on VLQ today run seamlessly and provide an immediate head start for LUMI-IQ.
+    Hybrid HPC+QC workflows and software modules deployed on VLQ today run seamlessly and provide an immediate head start for LUMI-IQ.
 
 ---
 
