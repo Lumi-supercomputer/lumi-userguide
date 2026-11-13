@@ -79,7 +79,7 @@ Your Slurm job runs a Python script that either dispatches quantum circuits to t
 
 For runnable hybrid examples and workflows, please refer to the official repository:
 
-- [LUMI-IQ GitHub Repository](https://github.com/lumi-ai-factory/lumi-iq)
+- [LUMI-IQ Example Workflows](https://github.com/lumi-ai-factory/lumi-iq/tree/main/WP2)
 
 ---
 
