@@ -483,9 +483,9 @@ The amount of requests sent per minute by an individual user is limited. In case
 
 ### Capacity limits
 
-Aitta's capacity for running models is currently limited to 2 LUMI-G nodes, i.e., 16 GCDs in total. If the number of models requested by all users exceeds that capacity, some of the models will not become available before a previous model is stopped - on a first-come-first-served basis.
+There are currently 2 nodes (16 GCDs) reserved for running Aitta models on LUMI-G. If the number of models requested by all users exceeds that capacity, Aitta requests resources for additional models from the LUMI Slurm queues. In that case it might take some time before the resources are allocated to run the model, depending on the overall system load.
 
-If you send an inference request to a model that was not already online and it cannot be loaded due to missing capacity, the Aitta API might appear to be stuck or you might get a timeout error from your client. In that case it is best to switch to a model that is already running, which you can determine e.g. using the [worker information endpoint](#worker-information).
+If you send an inference request to a model that was not already online and it has to wait for resources from the queue, the Aitta API might appear to be stuck or you might get a timeout error from your client. In that case it is best to switch to a model that is already running, which you can determine e.g. using the [worker information endpoint](#worker-information).
 
 For the same reason it is also not recommended to rapidly switch between models or send small request to many different models at once.
 
