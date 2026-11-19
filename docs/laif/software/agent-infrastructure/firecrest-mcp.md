@@ -21,16 +21,16 @@ partitions these tools accept. On this page, "the config" means this file. See
 [What the server protects against](#what-the-server-protects-against) and
 [what it does not protect against](#what-the-server-does-not-protect-against).
 
+Use the server together with the [Knowledge MCP Server][knowledge mcp], which lets the agent
+search the LUMI documentation. Without it, an agent may, for example, write CUDA code for LUMI's
+AMD GPUs. Add both servers to the agent's configuration, as shown in
+[Connecting the agent](#connecting-the-agent).
+
 !!! Warning "Jobs are not limited by the config"
     The config only limits the arguments of the server's tools. It does not limit what a job does
     once it runs. A job script submitted by the agent can read, change or delete any file that you
     can access on LUMI, also outside the paths in the config. Always check the job script and its
     environment variables before the agent submits a job.
-
-Use the server together with the [Knowledge MCP Server][knowledge mcp], which lets the agent
-search the LUMI documentation. Without it, an agent may, for example, write CUDA code for LUMI's
-AMD GPUs. Add both servers to the agent's configuration, as shown in
-[Connecting the agent](#connecting-the-agent).
 
 !!! Warning "Responsibility for running AI agents"
     You are always responsible for the actions of your AI agents. Everything done through the
@@ -103,8 +103,8 @@ nano ~/.firecrest-token   # paste the token and save
 
 Tokens are valid for 24 hours, and the server refuses expired tokens. The server reads the file
 on every request, so to refresh the token you only need to overwrite the file. To keep the token
-somewhere else, set `FIRECREST_TOKEN_PATH`. If a token may have been exposed,
-[revoke it][firecrest revoke].
+somewhere else, set the `FIRECREST_TOKEN_PATH` environment variable. If a token may have been
+exposed, [revoke it][firecrest revoke].
 
 ### Creating the project config
 
@@ -130,9 +130,9 @@ default_partition = "dev-g"
 
 The keys are explained in [Project config](#project-config).
 
-If the project is a Git repository, add `.firecrest-mcp.toml` to `.gitignore`. The config contains
-your own paths. If it is in the repository, a commit by someone else could also change what your
-agent is allowed to do.
+!!! Info "Add `.firecrest-mcp.toml` to `.gitignore`"
+    The config contains your own paths. If it is committed to the repository, a commit by someone
+    else could also change what your agent is allowed to do.
 
 ### Connecting the agent
 
@@ -147,6 +147,9 @@ access the files you mount into the container, and not your token or other crede
     cd /Users/<username>/example-project
     FIRECREST_URL=https://api.lumi.csc.fi/v1 firecrest-mcp --transport http
     ```
+
+    If your token is not in `~/.firecrest-token`, also set `FIRECREST_TOKEN_PATH` in this command,
+    for example `FIRECREST_TOKEN_PATH=~/secrets/firecrest-token`.
 
     The server listens on `127.0.0.1:8000` until you stop it with Ctrl+C.
 
