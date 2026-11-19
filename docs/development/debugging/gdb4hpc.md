@@ -135,4 +135,11 @@ dbg all> attach $a 123456.0
 Attaching to application, please wait...
 ```
 
-[THIS SECTION NEEDS TO BE WRITTEN]: <> (## CCDB: Cray Comparative Debugger)
+## Debugging GPU application
+
+You can extend debugging and examine threads running on a GPU with gdb4hpc. To allow
+gdb4hpc detect GPU code you need to add `--gpu` option to your launch command. 
+
+When running a debugging session with multiple GPU devices you may need to add 
+`--gres-flags=allow-task-sharing` srun option to the `--launcher-args` field. 
+:This option is required to allow direct GPU to GPU communication.
