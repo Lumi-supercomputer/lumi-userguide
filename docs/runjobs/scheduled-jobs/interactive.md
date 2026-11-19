@@ -39,9 +39,6 @@ obtain a shell on the first allocated compute node you can use `srun --pty`.
 $ srun --cpu_bind=none --nodes=2 --pty bash -i
 ```
 
-If you want to use an application with a GUI, you can use the `--x11` flag with
-`srun` to enable X11 forwarding.
-
 ## Using `srun`
 
 For simple interactive session, you can use `srun` with no prior allocation. In
