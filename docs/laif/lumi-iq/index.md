@@ -88,6 +88,6 @@ For runnable hybrid examples and workflows, please refer to the official reposit
 - [Quantum Computer Infrastructure (IT4I)](https://www.it4i.cz/en/infrastructure/vlq-quantum-computer)
 - [IT4Innovations VLQ Calibration and Health Status](https://docs.it4i.cz/en/docs/clusters/vlq/calibration_health)
 - [IQM Quantum Hardware & Pulla Documentation](https://docs.iqm.tech/)
-- [CSC Quantum Computing Documentation](https://docs.csc.fi/computing/quantum-computing/overview/)
+- [CSC Quantum Computing Documentation](https://docs.csc.fi/quantum-computing/)
 - [LUMI AI Factory Quantum Services](https://lumi-ai-factory.eu/services/quantum-services/)
 - [LUMI User Support Team](https://lumi-supercomputer.eu/user-support/need-help/)
