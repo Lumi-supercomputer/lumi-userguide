@@ -3,6 +3,7 @@
 [firecrest]: ./../../../development/api/firecrest.md
 [firecrest token]: ./../../../development/api/firecrest.md#how-to-get-access-to-the-api
 [firecrest revoke]: ./../../../development/api/firecrest.md#revoking-access-tokens
+[firecrest attach issue]: https://github.com/eth-cscs/firecrest-v2/issues/262
 [knowledge mcp]: ./knowledge-mcp.md
 [LUMI AI agent guide]: ./../../../development/ai-tools/ai-agent-guide.md
 [mcp]: https://modelcontextprotocol.io/docs/getting-started/intro
@@ -65,18 +66,30 @@ agent does not try paths, accounts or partitions that the tools would refuse.
 
 The agent has no shell on a login node, but the tools above cover many tasks, such as managing
 files and checking jobs. For tasks that need a shell, such as compiling, the agent can submit a
-job that only sleeps and run commands in it with `attach_to_job`:
+job that only sleeps, for example in `dev-g`, and run commands in it with `attach_to_job`:
 
 ```bash
 #!/bin/bash
 #SBATCH --time=00:30:00
 #SBATCH --nodes=1
+#SBATCH --gpus-per-node=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=7
+#SBATCH --mem-per-gpu=60G
 sleep infinity
 ```
 
-`attach_to_job` does not return output, so redirect it to a file, for example
-`make > build.log 2>&1`, and read the file with `read_file`. Cancel the job with `cancel_job` when
-done, so that it does not use billing units until its time limit.
+`attach_to_job` does not return output, and only the first command runs in the job, on one core.
+Anything after `;` or `&&` runs on a login node (see
+[FirecREST issue #262][firecrest attach issue]). Wrap the commands in `bash -c`, redirect the
+output to a file and read the file with `read_file`:
+
+```bash
+bash -c 'cd /scratch/project_xxxxxxxxx/<username>/example-project && make > build.log 2>&1'
+```
+
+Cancel the job with `cancel_job` when done, so that it does not use billing units until its time
+limit.
 
 ## Setting up the server
 
