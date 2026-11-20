@@ -41,7 +41,7 @@ features.
      - Environment Modules version 3.X which uses modules written in Tcl but itself
        is written in C. This version is no longer maintained, but is one of the
        systems offered on Cray systems.
-     - [Environment Modules version 4.X and 5.X](http://modules.sourceforge.net/)
+     - [Environment Modules version 4.X and 5.X](https://envmodules.io/)
        which is a continuation of the Tcl modules but now entirely written
        in Tcl itself. It is developed at CEA in France.
      - [Lmod][lmod] uses module files written in Lua and itself is also written
