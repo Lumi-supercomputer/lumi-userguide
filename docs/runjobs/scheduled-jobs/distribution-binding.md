@@ -225,13 +225,15 @@ the manpage: `man srun`.
 
 ### GPU Binding
 
-!!! warning "Only 56 cores available on LUMI-G"
+!!! warning "Only 56 cores and 480 GB of memory available on LUMI-G"
 
     The LUMI-G compute nodes have the low-noise mode activated. This mode
     reserve 1 core to the operating system. In order to get a more balanced 
     layout, we also disabled the first core in each of the 8 L3 region. As a
     consequence only 56 cores are available to the jobs. Jobs requesting 64 
     cores/node will never run.
+
+    Similarly, only 480 GB of the 512 GB of memory are available to the jobs.
 
 Correct CPU and GPU binding is important to get the best performance out of the
 GPU nodes. The reason is that each of the 4 NUMA nodes is directly linked to 
