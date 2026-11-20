@@ -9,6 +9,7 @@
 [slurm-quickstart]: ../../runjobs/scheduled-jobs/slurm-quickstart.md
 [slurm-partitions]: ../../runjobs/scheduled-jobs/partitions.md
 [data-storage-options]: ../../storage/index.md
+[lumig-job]: ../scheduled-jobs/lumig-job.md
 
 # Billing policy
 
@@ -94,6 +95,13 @@ be billed for this memory:
 ```
 (128 GB / 64 GB) * 24 hours * 0.5 = 24 GPU-hours
 ```
+
+!!! tip "Request at most 7 cores and 60 GB of memory per GCD"
+    Although the billing slices are 8 cores and 64 GB, request at most 7 CPU cores
+    and 60 GB of memory for each GCD. Only [56 cores and 480 GB of memory][lumig-job]
+    are usable on a LUMI-G node, so with 7 cores and 60 GB per GCD all 8 GCDs of a
+    node can be used by jobs. Jobs that request more may wait longer in the queue,
+    and they can leave GCDs unusable for other jobs.
 
 ### CPU nodes - LUMI-C
 
