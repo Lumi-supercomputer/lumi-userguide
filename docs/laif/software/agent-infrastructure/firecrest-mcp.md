@@ -63,6 +63,21 @@ The server offers the following tools:
 The `config` tool shows the agent what the [project config](#project-config) allows, so that the
 agent does not try paths, accounts or partitions that the tools would refuse.
 
+The agent has no shell on a login node, but the tools above cover many tasks, such as managing
+files and checking jobs. For tasks that need a shell, such as compiling, the agent can submit a
+job that only sleeps and run commands in it with `attach_to_job`:
+
+```bash
+#!/bin/bash
+#SBATCH --time=00:30:00
+#SBATCH --nodes=1
+sleep infinity
+```
+
+`attach_to_job` does not return output, so redirect it to a file, for example
+`make > build.log 2>&1`, and read the file with `read_file`. Cancel the job with `cancel_job` when
+done, so that it does not use billing units until its time limit.
+
 ## Setting up the server
 
 The following steps set up the server for a local project in `/Users/<username>/example-project`.
