@@ -137,7 +137,7 @@ conda channels before using the command:
     and [Academic Policy](https://www.anaconda.com/legal/terms/academic).
     Note that academic use is free, but you do need a license with them, either in
     person or at the institute level.
--   [Anaconda Pricing FAQ](https://www.anaconda.com/pricing#faq)
+-   [Anaconda Pricing](https://www.anaconda.com/pricing)
 
 
 #### End-to-end example of wrapping a Conda installation
