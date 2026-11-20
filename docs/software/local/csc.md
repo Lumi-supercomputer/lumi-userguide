@@ -58,7 +58,7 @@ The following packages are no longer updated by CSC but will be managed by the
 LUMI AI Factory and documented [on their pages](../../laif/software/ai-environment.md):
 
 *   [JAX](https://docs.csc.fi/apps/jax/)
-*   [PyTorch](https://docs.csc.fi/apps/pytorch/#lumi)
+*   [PyTorch](https://docs.csc.fi/apps/pytorch/#lumi-note)
 *   [TensorFlow](https://docs.csc.fi/apps/tensorflow/#lumi)
 
 See also the [CSC list of software available on LUMI](https://docs.csc.fi/apps/by_availability/#lumi)
