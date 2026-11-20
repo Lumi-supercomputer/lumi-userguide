@@ -228,7 +228,7 @@ More information about creating package repositories is available in the
     - disabling a variant of the package
     - modifying which dependencies are used to build the target package (see
       [Specs and
-      Dependencies](https://spack.readthedocs.io/en/latest/basic_usage.html#specs-dependencies)
+      Dependencies](https://spack.readthedocs.io/en/latest/spec_syntax.html#dependencies)
       in the official Spack documentation)
 
     In some cases, changes have to be made to the `package.py` file of a package.

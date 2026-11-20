@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-[slingshot-11-hpe-page]: https://www.hpe.com/emea_europe/en/compute/hpc/slingshot-interconnect.html
+[slingshot-11-hpe-page]: https://www.hpe.com/us/en/collaterals/collateral.a50002546enw.html
 
 All LUMI compute nodes use the [HPE Cray Slingshot-11][slingshot-11-hpe-page]
 200 Gbps network interconnect (NIC). The LUMI-C nodes (CPU) are equipped with a

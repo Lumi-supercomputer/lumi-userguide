@@ -182,4 +182,4 @@ Object types have abbreviations that are recognized in the CLI:
 See the official documentation for more information about using the command line
 interface:
 
-* [OKD documentation: CLI reference](https://docs.okd.io/latest/cli_reference/openshift_cli/getting-started-cli.html#cli-getting-started)
+* [OKD documentation: CLI reference](https://docs.okd.io/latest/cli_reference/openshift_cli/getting-started-cli.html)

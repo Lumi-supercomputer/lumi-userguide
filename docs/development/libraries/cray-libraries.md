@@ -4,7 +4,7 @@
 [2]: #libraries-supported-by-the-lust
 
 [doc-fftw]: http://www.fftw.org/fftw3_doc/
-[doc-hdf5]: https://portal.hdfgroup.org/display/HDF5/Learning+the+Basics
+[doc-hdf5]: https://support.hdfgroup.org/documentation/hdf5/latest/_learn_basics.html
 [doc-netcdf]: https://docs.unidata.ucar.edu/nug/current/
 [doc-netcdf-c]: https://docs.unidata.ucar.edu/netcdf-c/current/
 [doc-netcdf-c++]: https://docs.unidata.ucar.edu/netcdf-cxx/current/

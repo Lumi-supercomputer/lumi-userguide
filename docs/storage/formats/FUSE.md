@@ -1,5 +1,5 @@
 [singularity_mounts]: https://docs.sylabs.io/guides/3.7/user-guide/bind_paths_and_mounts.html
-[fuse]: https://docs.kernel.org/filesystems/fuse.html
+[fuse]: https://docs.kernel.org/filesystems/fuse/index.html
 [squashfs]: https://docs.kernel.org/filesystems/squashfs.html
 
 # FUSE
